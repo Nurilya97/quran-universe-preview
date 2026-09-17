@@ -1,0 +1,58 @@
+.scene-word .orbit-field {
+  width: min(900px, 92vw);
+  height: min(620px, 72dvh);
+  top: 52%;
+}
+
+.scene-word .orbit-track-one {
+  inset: 20% 16%;
+  transform: none;
+  border-color: #d2c5a51a;
+}
+
+.scene-word .orbit-track-two {
+  display: none;
+}
+
+.scene-word .word-core {
+  top: 50%;
+}
+
+.scene-word .orbit-node {
+  min-width: 116px;
+  min-height: 74px;
+  padding: 8px;
+}
+
+.scene-word .node-light {
+  margin-bottom: 13px;
+}
+
+.scene-word .node-caption,
+.scene-word .scene-label {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .scene-word .orbit-field {
+    width: 100%;
+    height: min(570px, calc(100dvh - 155px));
+    top: 52%;
+  }
+
+  .scene-word .orbit-track-one {
+    inset: 20% 16%;
+    transform: none;
+  }
+
+  .scene-word .orbit-node {
+    min-width: 104px;
+    padding: 6px 4px;
+  }
+
+  .scene-word .node-label {
+    max-width: 108px;
+    font-size: 15px;
+    line-height: 1.3;
+  }
+}
