@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import { Cosmos } from './Cosmos.jsx'
 import { COPY, FORMS, TAQWA_REFERENCES, resolveQuery } from '../demo.js'
 import './ImmersiveUniverse.css'
-import './WordOrbit.css'
 
 function Icon({ name }) {
   return <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -93,8 +92,8 @@ export function ImmersiveUniverse() {
   const className = 'universe scene-' + scene + (journey ? ' is-travelling' : '') + (paused || reducedMotion ? ' is-still' : '')
 
   const wordOrbitNodes = [
-    { key: 'quran', left: '35%', top: '23%' },
-    { key: 'structure', left: '84%', top: '50%' },
+    { key: 'quran', left: '30%', top: '25%' },
+    { key: 'structure', left: '84%', top: '48%' },
     { key: 'meaning', left: '35%', top: '77%' },
   ]
 
@@ -150,13 +149,14 @@ export function ImmersiveUniverse() {
         <div className="orbit-track orbit-track-one" aria-hidden="true" />
         <div className="word-core">
           <h1 ref={destinationHeading} tabIndex={-1} lang="ar" dir="rtl">{word.arabic}</h1>
-          <p>{t[word.type]}</p>
+          <p>{word.id === 'taqwa' ? 'taqwā' : t[word.type]}</p>
         </div>
         {wordOrbitNodes.map(({ key, left, top }) => <button key={key} className={'orbit-node node-' + key}
           style={{ left, top }} onClick={() => setPanel(key)} aria-haspopup="dialog">
           <span className="node-light" aria-hidden="true" /><span className="node-label">{t[key]}</span>
         </button>)}
       </div>
+      <p className="scene-label">{t.orbit}</p>
     </section>}
 
     {scene === 'root' && !journey && <section className="root-stage stage-reveal" aria-label={t.rootSpace}>
