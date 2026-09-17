@@ -149,7 +149,7 @@ export function ImmersiveUniverse() {
         <div className="orbit-track orbit-track-one" aria-hidden="true" />
         <div className="word-core">
           <h1 ref={destinationHeading} tabIndex={-1} lang="ar" dir="rtl">{word.arabic}</h1>
-          <p>{word.id === 'taqwa' ? 'taqwā' : t[word.type]}</p>
+          {word.id === 'taqwa' && <p className="word-reading">taqwā</p>}
         </div>
         {wordOrbitNodes.map(({ key, left, top }) => <button key={key} className={'orbit-node node-' + key}
           style={{ left, top }} onClick={() => setPanel(key)} aria-haspopup="dialog">
