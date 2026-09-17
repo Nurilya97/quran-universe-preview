@@ -1,13 +1,15 @@
 .scene-word .orbit-field {
-  width: min(900px, 92vw);
-  height: min(620px, 72dvh);
-  top: 52%;
+  width: min(620px, 86vw, 68dvh);
+  height: auto;
+  aspect-ratio: 1 / 1;
+  top: 53%;
 }
 
 .scene-word .orbit-track-one {
-  inset: 20% 16%;
+  inset: 8%;
   transform: none;
   border-color: #d2c5a51a;
+  border-radius: 50%;
 }
 
 .scene-word .orbit-track-two {
@@ -19,9 +21,26 @@
 }
 
 .scene-word .orbit-node {
-  min-width: 116px;
-  min-height: 74px;
-  padding: 8px;
+  min-width: 112px;
+  min-height: 70px;
+  padding: 6px 4px;
+  align-content: start;
+  transform: translate(-50%, -7px);
+}
+
+.scene-word .node-quran {
+  left: 18% !important;
+  top: 23% !important;
+}
+
+.scene-word .node-structure {
+  left: 92% !important;
+  top: 50% !important;
+}
+
+.scene-word .node-meaning {
+  left: 23% !important;
+  top: 82% !important;
 }
 
 .scene-word .node-light {
@@ -35,23 +54,41 @@
 
 @media (max-width: 600px) {
   .scene-word .orbit-field {
-    width: 100%;
-    height: min(570px, calc(100dvh - 155px));
-    top: 52%;
+    width: min(520px, 88vw, 62dvh);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    top: 53%;
   }
 
   .scene-word .orbit-track-one {
-    inset: 20% 16%;
+    inset: 7%;
     transform: none;
+    border-radius: 50%;
   }
 
   .scene-word .orbit-node {
-    min-width: 104px;
-    padding: 6px 4px;
+    min-width: 100px;
+    padding: 5px 3px;
+    transform: translate(-50%, -6px);
+  }
+
+  .scene-word .node-quran {
+    left: 18% !important;
+    top: 23% !important;
+  }
+
+  .scene-word .node-structure {
+    left: 92% !important;
+    top: 50% !important;
+  }
+
+  .scene-word .node-meaning {
+    left: 23% !important;
+    top: 82% !important;
   }
 
   .scene-word .node-label {
-    max-width: 108px;
+    max-width: 105px;
     font-size: 15px;
     line-height: 1.3;
   }
