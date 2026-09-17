@@ -4,19 +4,10 @@
   top: 53%;
 }
 
-.scene-word .orbit-track-one {
-  width: 84%;
-  height: 84%;
-  left: 50%;
-  top: 50%;
-  inset: auto;
-  transform: translate(-50%, -50%);
-  border-color: #d2c5a51a;
-  border-radius: 50%;
-}
-
+.scene-word .orbit-track,
+.scene-word .orbit-track-one,
 .scene-word .orbit-track-two {
-  display: none;
+  display: none !important;
 }
 
 .scene-word .word-core {
@@ -65,16 +56,6 @@
     width: min(460px, 84vw, 58dvh);
     height: min(460px, 84vw, 58dvh);
     top: 53%;
-  }
-
-  .scene-word .orbit-track-one {
-    width: 84%;
-    height: 84%;
-    left: 50%;
-    top: 50%;
-    inset: auto;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
   }
 
   .scene-word .orbit-node {
