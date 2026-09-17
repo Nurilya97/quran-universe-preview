@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Cosmos } from './Cosmos.jsx'
-import { COPY, FORMS, TAQWA_REFERENCES, resolveQuery } from '../demo.js'
+import { COPY, FORMS, ROOT_ORBITS, SOURCES, TAQWA_REFERENCES, resolveQuery, rootPosition } from '../demo.js'
 import './ImmersiveUniverse.css'
 
 function Icon({ name }) {
@@ -159,19 +159,21 @@ export function ImmersiveUniverse() {
     </section>}
 
     {scene === 'root' && !journey && <section className="root-stage stage-reveal" aria-label={t.rootSpace}>
-      <div className="root-intro"><p className="eyebrow">{t.rootSpace}</p></div>
+      <div className="root-intro"><p className="eyebrow">{t.families}</p></div>
       <div className="root-field">
-        <svg className="root-branches" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M50 49C42 46 23 42 24 24M50 49C48 32 67 26 73 27Q84 33 78 49M50 49C43 64 22 62 26 72Q43 100 66 79Q78 76 80 67" />
-        </svg>
+        {ROOT_ORBITS.map((orbit) => <div key={orbit.id} className={'root-orbit root-orbit-' + orbit.id}
+          style={{ '--diameter': orbit.radius * 2 + '%' }} aria-hidden="true"><span>{orbit.id}</span></div>)}
         <div className="root-core"><h1 ref={destinationHeading} tabIndex={-1} lang="ar" dir="rtl">و ق ي</h1><span>{t.root}</span></div>
-        {FORMS.map((form) => <button key={form.id} className={'root-star' + (form.id === 'taqwa' ? ' root-star-featured' : '')}
-          style={{ '--x': form.x + '%', '--y': form.y + '%' }} onClick={() => travel('word', form)}>
+        {FORMS.map((form) => {
+          const point = rootPosition(form)
+          return <button key={form.id} className={'root-star' + (form.id === 'taqwa' ? ' root-star-featured' : '')}
+          data-orbit={form.orbit} aria-label={form.arabic + ' · ' + t[form.type] + ' · ' + t.familyLabel + ' ' + form.orbit}
+          style={{ '--x': point.x + '%', '--y': point.y + '%' }} onClick={() => travel('word', form)}>
           <span className="star-point" aria-hidden="true" /><span className="arabic" lang="ar" dir="rtl">{form.arabic}</span>
           <span className="form-type">{t[form.type]}</span>
-        </button>)}
+        </button>})}
       </div>
-      <button className="forms-button" onClick={() => setPanel('forms')} aria-haspopup="dialog"><Icon name="list" />{t.allForms}<span>08</span></button>
+      <button className="forms-button" onClick={() => setPanel('forms')} aria-haspopup="dialog"><Icon name="list" />{t.allForms}<span>{FORMS.length}</span></button>
     </section>}
 
     {scene !== 'search' && !journey && <button className="motion-button icon-button" onClick={() => setPaused(!paused)}
@@ -191,13 +193,17 @@ export function ImmersiveUniverse() {
           <h3>{t.references}</h3><div className="verse-list">{TAQWA_REFERENCES.map((ref) => <a key={ref}
             href={'https://quran.com/' + ref.replace(':', '/')} target="_blank" rel="noopener noreferrer" aria-label={t.openVerse + ' ' + ref}>
             <span>{ref}</span><Icon name="external" /></a>)}</div><p className="sheet-note">{t.referenceNote}</p>
-        </> : <p className="sheet-note">{t.noReferences}</p>)}
+        </> : <p className="sheet-note">{word.lexicalOnly ? t.lexicalNote : t.noReferences}</p>)}
         {panel === 'structure' && <><dl className="structure-list"><div><dt>{t.root}</dt><dd lang="ar" dir="rtl">و ق ي</dd></div>
-          <div><dt>{t.wordType}</dt><dd>{t[word.type]}</dd></div></dl><p className="sheet-note">{t.researchPending}</p></>}
-        {panel === 'meaning' && <p className="sheet-note">{word.id === 'taqwa' ? t.meaningPending : t.noMeaning}</p>}
-        {panel === 'forms' && <>{['verbs', 'nouns', 'descriptions'].map((family) => <section className="form-family" key={family}>
-          <h3>{t[family]}</h3>{FORMS.filter((form) => form.family === family).map((form) => <button key={form.id} onClick={() => travel('word', form)}>
-            <span className="arabic" lang="ar" dir="rtl">{form.arabic}</span><span>{t[form.type]}</span><Icon name="arrow" /></button>)}
+          <div><dt>{t.wordType}</dt><dd>{t[word.type]}</dd></div><div><dt>{t.familyLabel}</dt><dd>{word.orbit}</dd></div></dl>
+          {word.lexicalOnly && <p className="sheet-note">{t.lexicalNote}</p>}
+          <p className="sheet-note">{t.researchPending}</p>
+          <a className="source-link" href={SOURCES[word.source]} target="_blank" rel="noopener noreferrer">{t.source}: {t[word.source === 'corpus' ? 'sourceCorpus' : word.source === 'taqwa' ? 'sourceAlmaany' : 'sourceLexicon']}<Icon name="external" /></a></>}
+        {panel === 'meaning' && <><p className="sheet-note">{word.gloss ? t[word.gloss] : word.id === 'taqwa' ? t.meaningPending : t.noMeaning}</p>
+          {word.gloss && <a className="source-link" href={SOURCES[word.source]} target="_blank" rel="noopener noreferrer">{t.sourceLexicon}<Icon name="external" /></a>}</>}
+        {panel === 'forms' && <>{ROOT_ORBITS.map((family) => <section className="form-family" key={family.id}>
+          <h3>{t[family.label]}</h3>{FORMS.filter((form) => form.orbit === family.id).map((form) => <button key={form.id} onClick={() => travel('word', form)}>
+            <span className="arabic" lang="ar" dir="rtl">{form.arabic}</span><span>{t[form.type]}{form.lexicalOnly && <small className="lexical-tag">{t.lexical}</small>}</span><Icon name="arrow" /></button>)}
         </section>)}<p className="sheet-note">{t.formsNote}</p></>}
       </div>
     </dialog>

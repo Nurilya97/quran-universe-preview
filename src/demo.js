@@ -1,14 +1,35 @@
 // Public interface demo only; no private research content.
-export const FORMS = [
-  { id: 'waqa', arabic: 'وَقَىٰ', family: 'verbs', type: 'verbI', x: 24, y: 24 },
-  { id: 'ittaqa', arabic: 'ٱتَّقَىٰ', family: 'verbs', type: 'verbVIII', x: 23, y: 47 },
-  { id: 'taqwa', arabic: 'تَقْوَى', family: 'nouns', type: 'noun', x: 73, y: 27 },
-  { id: 'tuqat', arabic: 'تُقَاة', family: 'nouns', type: 'noun', x: 78, y: 49 },
-  { id: 'muttaqin', arabic: 'مُتَّقِين', family: 'descriptions', type: 'participle', x: 26, y: 72 },
-  { id: 'waq', arabic: 'وَاق', family: 'descriptions', type: 'participle', x: 43, y: 87 },
-  { id: 'taqiyy', arabic: 'تَقِيّ', family: 'descriptions', type: 'adjective', x: 66, y: 79 },
-  { id: 'atqa', arabic: 'أَتْقَى', family: 'descriptions', type: 'elative', x: 80, y: 67 },
+// Rings group a verb with its lexical family, not a grammatical form number
+// assigned to every noun. Public sources are exposed in the structure panel.
+export const SOURCES = {
+  corpus: 'https://corpus.quran.com/qurandictionary.jsp?q=wqy',
+  lexicon: 'https://arabiclexicon.hawramani.com/%D9%88%D9%82%D9%89/',
+  taqwa: 'https://www.almaany.com/ar/dict/ar-ar/%D8%AA%D9%82%D9%88%D9%89/',
+}
+export const ROOT_ORBITS = [
+  { id: 'I', radius: 24, label: 'familyI' },
+  { id: 'V', radius: 34.5, label: 'familyV' },
+  { id: 'VIII', radius: 45.5, label: 'familyVIII' },
 ]
+export const FORMS = [
+  { id: 'waqa', arabic: 'وَقَىٰ', orbit: 'I', type: 'verbI', angle: 225, source: 'corpus' },
+  { id: 'ittaqa', arabic: 'ٱتَّقَىٰ', orbit: 'VIII', type: 'verbVIII', angle: 210, source: 'corpus' },
+  { id: 'taqwa', arabic: 'تَقْوَى', orbit: 'VIII', type: 'noun', angle: 270, source: 'taqwa' },
+  { id: 'tuqat', arabic: 'تُقَاة', orbit: 'VIII', type: 'verbalNoun', angle: 330, source: 'lexicon' },
+  { id: 'muttaqin', arabic: 'مُتَّقِين', orbit: 'VIII', type: 'participle', angle: 30, source: 'corpus' },
+  { id: 'waq', arabic: 'وَاق', orbit: 'I', type: 'participle', angle: 45, source: 'corpus' },
+  { id: 'taqiyy', arabic: 'تَقِيّ', orbit: 'VIII', type: 'adjective', angle: 90, source: 'lexicon' },
+  { id: 'atqa', arabic: 'أَتْقَى', orbit: 'VIII', type: 'elative', angle: 150, source: 'corpus' },
+  { id: 'wiqaa', arabic: 'وِقَاء', orbit: 'I', type: 'noun', angle: 315, source: 'lexicon', lexicalOnly: true, gloss: 'shield' },
+  { id: 'wiqaya', arabic: 'وِقَايَة', orbit: 'I', type: 'verbalNoun', angle: 135, source: 'lexicon', lexicalOnly: true },
+  { id: 'tawaqqa', arabic: 'تَوَقَّىٰ', orbit: 'V', type: 'verbV', angle: 0, source: 'lexicon', lexicalOnly: true },
+]
+
+export function rootPosition(form) {
+  const radius = ROOT_ORBITS.find((orbit) => orbit.id === form.orbit).radius
+  const radians = form.angle * Math.PI / 180
+  return { x: 50 + Math.cos(radians) * radius, y: 50 + Math.sin(radians) * radius }
+}
 export const TAQWA_REFERENCES = ['2:197', '5:8', '9:109', '22:32', '49:3']
 export const COPY = {
   ru: {
@@ -25,9 +46,14 @@ export const COPY = {
     researchPending: 'Подробный разбор и модель будут добавлены после проверки источников.',
     meaningPending: 'Здесь будет проверенная смысловая памятка: ядро значения, связь с корнем и источники. Исследовательские материалы пока не опубликованы.',
     noMeaning: 'Памятка для этого слова ещё не подготовлена.',
-    allForms: 'Все формы', formsNote: 'Восемь форм в демо. Это не полное древо корня. Расстояния пока композиционные, а не смысловой рейтинг.',
+    allForms: 'Все формы', formsNote: 'Каждая орбита объединяет глагол и связанную именную семью. Номер породы относится к глаголу; существительное может иметь собственную модель. Это подборка, не полное древо корня.',
+    familyI: 'I порода · семья وَقَىٰ', familyV: 'V порода · семья تَوَقَّىٰ', familyVIII: 'VIII порода · семья ٱتَّقَىٰ',
+    families: 'Словообразовательные семьи', familyLabel: 'Семья', allOrbits: 'Все орбиты',
+    lexical: 'Словарная форма', lexicalNote: 'Словарная форма. Кораническое вхождение этой формы в демо не заявлено.',
+    source: 'Источник', sourceCorpus: 'Коранический арабский корпус', sourceLexicon: 'Арабский словарь', sourceAlmaany: 'Словарь «Аль-Маани»',
+    shield: 'Средство защиты, покров; щит',
     verbs: 'Глаголы', nouns: 'Имена', descriptions: 'Производные признаки',
-    verbI: 'Глагол · I порода', verbVIII: 'Глагол · VIII порода', noun: 'Имя',
+    verbI: 'Глагол · I порода', verbV: 'Глагол · V порода', verbVIII: 'Глагол · VIII порода', noun: 'Имя', verbalNoun: 'Масдар',
     participle: 'Причастие', adjective: 'Прилагательное', elative: 'Имя предпочтения',
     pause: 'Остановить движение', resume: 'Включить движение',
   },
@@ -45,9 +71,14 @@ export const COPY = {
     researchPending: 'The detailed analysis and pattern will be added after source verification.',
     meaningPending: 'A verified note will appear here: core meaning, connection to the root, and sources. Research materials have not been published.',
     noMeaning: 'The note for this word is not available yet.',
-    allForms: 'All forms', formsNote: 'Eight demo forms, not a complete root tree. Distances are compositional for now, not a semantic ranking.',
+    allForms: 'All forms', formsNote: 'Each orbit groups a verb with its related nominal family. The form number describes the verb; a noun may have its own pattern. This is a selection, not a complete root tree.',
+    familyI: 'Form I · وَقَىٰ family', familyV: 'Form V · تَوَقَّىٰ family', familyVIII: 'Form VIII · ٱتَّقَىٰ family',
+    families: 'Derivational families', familyLabel: 'Family', allOrbits: 'All orbits',
+    lexical: 'Dictionary form', lexicalNote: 'A dictionary form. No Quranic occurrence of this form is claimed in this demo.',
+    source: 'Source', sourceCorpus: 'Quranic Arabic Corpus', sourceLexicon: 'Arabic Lexicon', sourceAlmaany: 'Almaany dictionary',
+    shield: 'A means of protection, covering; shield',
     verbs: 'Verbs', nouns: 'Nominal forms', descriptions: 'Derived attributes',
-    verbI: 'Verb · Form I', verbVIII: 'Verb · Form VIII', noun: 'Noun',
+    verbI: 'Verb · Form I', verbV: 'Verb · Form V', verbVIII: 'Verb · Form VIII', noun: 'Noun', verbalNoun: 'Verbal noun',
     participle: 'Participle', adjective: 'Adjective', elative: 'Elative',
     pause: 'Pause motion', resume: 'Resume motion',
   },
