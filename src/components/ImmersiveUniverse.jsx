@@ -91,6 +91,12 @@ export function ImmersiveUniverse() {
   const panelTitle = panel === 'forms' ? t.allForms : panel ? t[panel] : ''
   const className = 'universe scene-' + scene + (journey ? ' is-travelling' : '') + (paused || reducedMotion ? ' is-still' : '')
 
+  const wordOrbitNodes = [
+    { key: 'quran', left: '30%', top: '25%' },
+    { key: 'structure', left: '84%', top: '48%' },
+    { key: 'meaning', left: '35%', top: '77%' },
+  ]
+
   return <main className={className}>
     <Cosmos scene={scene} journey={journey} paused={paused} reducedMotion={reducedMotion} />
     <div className="cosmos-vignette" aria-hidden="true" />
@@ -141,15 +147,13 @@ export function ImmersiveUniverse() {
       </button>
       <div className="orbit-field">
         <div className="orbit-track orbit-track-one" aria-hidden="true" />
-        <div className="orbit-track orbit-track-two" aria-hidden="true" />
         <div className="word-core">
           <h1 ref={destinationHeading} tabIndex={-1} lang="ar" dir="rtl">{word.arabic}</h1>
           <p>{t[word.type]}</p>
         </div>
-        {['quran', 'structure', 'meaning'].map((key) => <button key={key} className={'orbit-node node-' + key}
-          onClick={() => setPanel(key)} aria-haspopup="dialog">
+        {wordOrbitNodes.map(({ key, left, top }) => <button key={key} className={'orbit-node node-' + key}
+          style={{ left, top }} onClick={() => setPanel(key)} aria-haspopup="dialog">
           <span className="node-light" aria-hidden="true" /><span className="node-label">{t[key]}</span>
-          <span className="node-caption">{t[key + 'Caption']}</span>
         </button>)}
       </div>
       <p className="scene-label">{t.orbit}</p>
