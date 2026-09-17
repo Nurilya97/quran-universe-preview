@@ -146,7 +146,6 @@ export function ImmersiveUniverse() {
         <Icon name="back" /><span>{t.root}</span><span lang="ar" dir="rtl">و ق ي</span>
       </button>
       <div className="orbit-field">
-        <div className="orbit-track orbit-track-one" aria-hidden="true" />
         <div className="word-core">
           <h1 ref={destinationHeading} tabIndex={-1} lang="ar" dir="rtl">{word.arabic}</h1>
           {word.id === 'taqwa' && <p className="word-reading">taqwā</p>}
