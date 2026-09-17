@@ -127,7 +127,7 @@ export function ImmersiveUniverse() {
           {error && <p id="search-error" className="search-error" role="status">{t.noResult}</p>}
           <p className="eyebrow">{t.available}</p>
           <button className="search-result" onClick={() => travel('word', FORMS[2])}>
-            <span lang="ar" dir="rtl">تَقْوَى</span><span>{t.word}</span><Icon name="arrow" />
+            <span className="word-label"><span className="arabic" lang="ar" dir="rtl">تَقْوَى</span><small className="transliteration" lang="ar-Latn" dir="ltr">taqwā</small></span><span>{t.word}</span><Icon name="arrow" />
           </button>
           <button className="search-result" onClick={() => travel('root')}>
             <span lang="ar" dir="rtl">و ق ي</span><span>{t.root}</span><Icon name="arrow" />
@@ -148,7 +148,7 @@ export function ImmersiveUniverse() {
       <div className="orbit-field">
         <div className="word-core">
           <h1 ref={destinationHeading} tabIndex={-1} lang="ar" dir="rtl">{word.arabic}</h1>
-          {word.id === 'taqwa' && <p className="word-reading">taqwā</p>}
+          <p className="word-reading transliteration" lang="ar-Latn" dir="ltr">{word.reading}</p>
         </div>
         {wordOrbitNodes.map(({ key, left, top }) => <button key={key} className={'orbit-node node-' + key}
           style={{ left, top }} onClick={() => setPanel(key)} aria-haspopup="dialog">
@@ -170,6 +170,7 @@ export function ImmersiveUniverse() {
           data-orbit={form.orbit} aria-label={form.arabic + ' · ' + t[form.type] + ' · ' + t.familyLabel + ' ' + form.orbit}
           style={{ '--x': point.x + '%', '--y': point.y + '%' }} onClick={() => travel('word', form)}>
           <span className="star-point" aria-hidden="true" /><span className="arabic" lang="ar" dir="rtl">{form.arabic}</span>
+          <small className="transliteration" lang="ar-Latn" dir="ltr">{form.reading}</small>
           <span className="form-type">{t[form.type]}</span>
         </button>})}
       </div>
@@ -188,7 +189,7 @@ export function ImmersiveUniverse() {
         <header className="sheet-header"><div><p className="eyebrow">{panel === 'forms' ? t.rootSpace : t.orbit}</p><h2 id="sheet-title">{panelTitle}</h2></div>
           <button className="icon-button" autoFocus onClick={() => setPanel(null)} aria-label={t.close}><Icon name="close" /></button>
         </header>
-        {panel !== 'forms' && <p className="sheet-word" lang="ar" dir="rtl">{word.arabic}</p>}
+        {panel !== 'forms' && <div className="sheet-word-label"><p className="sheet-word" lang="ar" dir="rtl">{word.arabic}</p><small className="transliteration" lang="ar-Latn" dir="ltr">{word.reading}</small></div>}
         {panel === 'quran' && (word.id === 'taqwa' ? <>
           <h3>{t.references}</h3><div className="verse-list">{TAQWA_REFERENCES.map((ref) => <a key={ref}
             href={'https://quran.com/' + ref.replace(':', '/')} target="_blank" rel="noopener noreferrer" aria-label={t.openVerse + ' ' + ref}>
@@ -203,7 +204,7 @@ export function ImmersiveUniverse() {
           {word.gloss && <a className="source-link" href={SOURCES[word.source]} target="_blank" rel="noopener noreferrer">{t.sourceLexicon}<Icon name="external" /></a>}</>}
         {panel === 'forms' && <>{ROOT_ORBITS.map((family) => <section className="form-family" key={family.id}>
           <h3>{t[family.label]}</h3>{FORMS.filter((form) => form.orbit === family.id).map((form) => <button key={form.id} onClick={() => travel('word', form)}>
-            <span className="arabic" lang="ar" dir="rtl">{form.arabic}</span><span>{t[form.type]}{form.lexicalOnly && <small className="lexical-tag">{t.lexical}</small>}</span><Icon name="arrow" /></button>)}
+            <span className="word-label"><span className="arabic" lang="ar" dir="rtl">{form.arabic}</span><small className="transliteration" lang="ar-Latn" dir="ltr">{form.reading}</small></span><span>{t[form.type]}{form.lexicalOnly && <small className="lexical-tag">{t.lexical}</small>}</span><Icon name="arrow" /></button>)}
         </section>)}<p className="sheet-note">{t.formsNote}</p></>}
       </div>
     </dialog>

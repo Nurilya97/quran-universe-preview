@@ -1,5 +1,54 @@
 :root {
+  --arabic-font: "Noto Sans Arabic", "Geeza Pro", Tahoma, sans-serif;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Inter, Arial, sans-serif;
+}
+
+.universe [lang="ar"],
+.universe .arabic {
+  font-family: var(--arabic-font);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.search-form input, .form-family h3 {
+  font-family: var(--ui-font), var(--arabic-font);
+}
+
+.transliteration {
+  display: block;
+  font-family: var(--ui-font);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: .025em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.word-label { display: grid; justify-items: center; min-width: 90px; gap: 2px; }
+.search-result .word-label .arabic { font-size: 28px; line-height: 1.65; }
+.root-star .transliteration { margin: 2px 0 3px; }
+.root-star .arabic { font-size: 26px; line-height: 1.6; }
+.root-star-featured .arabic { font-size: 31px; }
+.word-core h1 { font-size: clamp(52px, 16vw, 110px); }
+.sheet-word-label { margin: 20px 0 26px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.sheet-word-label .sheet-word { margin: 0; padding: 0; border: 0; }
+.sheet-word-label .transliteration { margin-top: 4px; }
+.form-family .word-label { min-width: 100px; }
+.form-family .arabic { font-size: 26px; line-height: 1.65; }
+
+@media (max-width: 600px) {
+  .root-star .arabic { font-size: 21px; }
+  .root-star-featured .arabic { font-size: 25px; }
+  .root-star .transliteration { font-size: 10.5px; margin: 1px 0 0; }
+  .root-core h1 { font-size: 27px; }
+  .word-core h1 { font-size: clamp(48px, 16vw, 80px); }
+}
+
+@media (max-height: 550px) {
+  .root-star .arabic { font-size: 21px; }
+  .root-star .transliteration { font-size: 10.5px; }
+  .word-core h1 { font-size: 52px; }
 }
 
 .brand-button,
