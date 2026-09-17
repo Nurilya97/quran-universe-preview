@@ -1,13 +1,16 @@
 .scene-word .orbit-field {
-  width: min(620px, 86vw, 68dvh);
-  height: auto;
-  aspect-ratio: 1 / 1;
+  width: min(500px, 86vw, 62dvh);
+  height: min(500px, 86vw, 62dvh);
   top: 53%;
 }
 
 .scene-word .orbit-track-one {
-  inset: 8%;
-  transform: none;
+  width: 84%;
+  height: 84%;
+  left: 50%;
+  top: 50%;
+  inset: auto;
+  transform: translate(-50%, -50%);
   border-color: #d2c5a51a;
   border-radius: 50%;
 }
@@ -18,6 +21,11 @@
 
 .scene-word .word-core {
   top: 50%;
+  left: 50%;
+}
+
+.scene-word .word-core p {
+  margin-top: -2px;
 }
 
 .scene-word .orbit-node {
@@ -29,8 +37,8 @@
 }
 
 .scene-word .node-quran {
-  left: 18% !important;
-  top: 23% !important;
+  left: 20.5% !important;
+  top: 20.5% !important;
 }
 
 .scene-word .node-structure {
@@ -39,8 +47,8 @@
 }
 
 .scene-word .node-meaning {
-  left: 23% !important;
-  top: 82% !important;
+  left: 20.5% !important;
+  top: 79.5% !important;
 }
 
 .scene-word .node-light {
@@ -54,15 +62,18 @@
 
 @media (max-width: 600px) {
   .scene-word .orbit-field {
-    width: min(520px, 88vw, 62dvh);
-    height: auto;
-    aspect-ratio: 1 / 1;
+    width: min(460px, 84vw, 58dvh);
+    height: min(460px, 84vw, 58dvh);
     top: 53%;
   }
 
   .scene-word .orbit-track-one {
-    inset: 7%;
-    transform: none;
+    width: 84%;
+    height: 84%;
+    left: 50%;
+    top: 50%;
+    inset: auto;
+    transform: translate(-50%, -50%);
     border-radius: 50%;
   }
 
@@ -73,8 +84,8 @@
   }
 
   .scene-word .node-quran {
-    left: 18% !important;
-    top: 23% !important;
+    left: 20.5% !important;
+    top: 20.5% !important;
   }
 
   .scene-word .node-structure {
@@ -83,8 +94,8 @@
   }
 
   .scene-word .node-meaning {
-    left: 23% !important;
-    top: 82% !important;
+    left: 20.5% !important;
+    top: 79.5% !important;
   }
 
   .scene-word .node-label {
