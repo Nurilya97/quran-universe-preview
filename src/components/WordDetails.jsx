@@ -101,7 +101,6 @@ function PatternEffect({ pattern, language }) {
 
 function MorphologyStructure({ word, content, language, onPick }) {
   const profile = MORPHOLOGY[word.id]
-  const c = MORPH_COPY[language]
   if (!profile) return null
 
   return <div className="entry-copy morphology-entry">
