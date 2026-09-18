@@ -296,6 +296,10 @@ export function WordDetails({ word, panel, language, onPick }) {
   if (panel === 'meaning') return <div className="entry-copy">
     <p className="entry-status">{t.semanticStatus}</p>
     <p className="entry-lead">{content.meaning[language].lead}</p><p>{content.meaning[language].body}</p>
+    {content.distinction?.[language] && <section className="meaning-distinction">
+      <p className="meaning-distinction-label">{language === 'ru' ? 'Чем отличается' : 'How it differs'}</p>
+      <p>{content.distinction[language]}</p>
+    </section>}
     <MeaningMap levels={content.meaningMap} language={language} />
     {content.translationNotes?.[language]?.length && <section className="translation-notes">
       {content.translationNotes[language].map((note, index) => <article className={'translation-note translation-note-' + note.tone} key={note.title + index}>
