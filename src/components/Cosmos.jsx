@@ -104,7 +104,7 @@ export function Cosmos({ scene, journey, paused, reducedMotion }) {
       const flight = current.journey
       const progress = flight ? clamp((now - flight.started) / flight.duration) : 0
       const speed = flight && !still ? Math.pow(Math.sin(progress * Math.PI), 2) : 0
-      const targetZoom = current.scene === 'word' ? 1.3 : current.scene === 'root' ? 1.1 : 1
+      const targetZoom = current.scene === 'ayah' ? 1.38 : current.scene === 'word' ? 1.3 : current.scene === 'root' ? 1.1 : 1
       const blend = 1 - Math.exp(-dt * 2.4)
       zoom += (targetZoom - zoom) * blend
       parallaxX += ((still ? 0 : pointerX) - parallaxX) * blend
