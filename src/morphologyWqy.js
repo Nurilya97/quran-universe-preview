@@ -159,14 +159,14 @@ export const MORPHOLOGY = {
       en: { title: 'Form VIII', text: '' },
     },
     formation: {
-      ru: 'تَقْوَىٰ (taqwā) происходит от глагола ٱتَّقَىٰ (ittaqā). ٱتَّقَىٰ означает: беречь / защищать себя, остерегаться, ограждать себя от чего-либо. تَقْوَىٰ описывает это действие как состояние или качество человека: осознанное остережение становится способом внутренней защиты.',
-      en: 'تَقْوَىٰ (taqwā) comes from the verb ٱتَّقَىٰ (ittaqā). ٱتَّقَىٰ means: to guard or protect oneself, be cautious, or guard oneself against something. تَقْوَىٰ describes this action as a state or quality of a person: conscious caution becomes a form of inner protection.',
+      ru: 'تَقْوَىٰ (taqwā) происходит от глагола ٱتَّقَىٰ (ittaqā). ٱتَّقَىٰ означает: беречь / защищать себя, остерегаться, ограждать себя от чего-либо. تَقْوَىٰ описывает это действие как состояние или качество человека. В этом смысле осознанность становится способом защиты: человек осознаёт то, от чего нужно себя уберечь, и остерегается этого.',
+      en: 'تَقْوَىٰ (taqwā) comes from the verb ٱتَّقَىٰ (ittaqā). ٱتَّقَىٰ means: to guard or protect oneself, be cautious, or guard oneself against something. تَقْوَىٰ describes this action as a state or quality of a person. In this sense, awareness becomes a form of protection: a person recognizes what they need to guard themselves from and is cautious of it.',
     },
     evolution: [
       { ar: 'و ق ي', reading: 'w-q-y', metaRu: 'корень', metaEn: 'root' },
       { ar: 'وَقَىٰ', reading: 'waqā', metaRu: 'глагол I формы · защищать, оберегать', metaEn: 'Form I verb · to protect, guard' },
       { ar: 'ٱتَّقَىٰ', reading: 'ittaqā', metaRu: 'глагол VIII формы · беречь / защищать себя, остерегаться', metaEn: 'Form VIII verb · guard/protect oneself, be cautious' },
-      { ar: 'تَقْوَىٰ', reading: 'taqwā', metaRu: 'существительное · состояние или качество', metaEn: 'noun · state or quality' },
+      { ar: 'تَقْوَىٰ', reading: 'taqwā', metaRu: 'существительное · осознанное остережение как внутренняя защита', metaEn: 'noun · conscious caution as inner protection' },
     ],
   },
 
