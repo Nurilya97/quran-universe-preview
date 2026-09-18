@@ -2371,3 +2371,49 @@
     max-height: 178px !important;
   }
 }
+
+/* Hide underlying ayah text during focus and keep lower callout readable */
+.analysis-focus-overlay {
+  background: rgba(1, 2, 3, .90) !important;
+}
+.ayah-space-shell.has-word-focus .analysis-ayah-continuous {
+  opacity: .025 !important;
+  filter: blur(14px) !important;
+}
+.ayah-space-shell.has-word-focus .analysis-verse-reference {
+  opacity: .06 !important;
+  filter: blur(8px);
+}
+.ayah-space-shell.has-word-focus .ayah-space-grid,
+.ayah-space-shell.has-word-focus .ayah-space-boundary,
+.ayah-space-shell.has-word-focus .ayah-space-world {
+  filter: blur(15px) brightness(.10) saturate(.35) !important;
+}
+
+@media (max-width: 760px) {
+  .analysis-focus-overlay {
+    background: rgba(1, 2, 3, .94) !important;
+  }
+
+  .analysis-focus-callout.semantic {
+    bottom: 42px !important;
+    width: calc(100vw - 60px) !important;
+    height: 184px !important;
+    min-height: 184px !important;
+    max-height: 184px !important;
+  }
+
+  .analysis-focus-callout.semantic .analysis-callout-page {
+    padding-bottom: 2px;
+  }
+}
+
+@media (max-width: 420px) {
+  .analysis-focus-callout.semantic {
+    bottom: 38px !important;
+    width: calc(100vw - 52px) !important;
+    height: 182px !important;
+    min-height: 182px !important;
+    max-height: 182px !important;
+  }
+}
