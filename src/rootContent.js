@@ -57,14 +57,52 @@ export const WORD_CONTENT = {
       en: ['A noun naming a quality or state. It is related to ٱتَّقَىٰ, but is not itself a Form VIII verb.', 'The common analysis shown here uses فَعْلَى. The initial ت corresponds to the root’s و; a change involving the final ي contributes to ـوَى. The root therefore remains و ق ي despite the visible ت.', 'Dictionaries also record other accounts of its historical formation. Orbit VIII represents the derivational family, not a verb-form number assigned to the noun.'],
     },
     meaning: {
-      ru: { lead: 'Защитная направленность, проявляющаяся во внутреннем состоянии, выборе и поступках.', body: 'Ар-Рагиб связывает تَقْوَى с помещением себя под защиту. В Коране слово раскрывается в нескольких смысловых слоях. Осознанность может поддерживать эту позицию; праведность может выражать её проявление или результат. Ни одно из этих слов не служит универсальной заменой تَقْوَى во всех контекстах.' },
-      en: { lead: 'A protective orientation expressed in inner disposition, choices, and actions.', body: 'Al-Raghib connects تَقْوَى with placing oneself under protection. Quranic usage brings different layers into focus. Mindfulness can sustain this stance; righteousness can express a manifestation or outcome. Neither is a universal substitute for تَقْوَى in every context.' },
+      ru: { lead: 'تَقْوَىٰ (taqwā) — состояние и качество осознанного остережения, направленного на защиту себя от вреда и недолжного.', body: 'Слово происходит от ٱتَّقَىٰ (ittaqā) — беречь / защищать себя, остерегаться, ограждать себя от чего-либо. Поэтому в основе تَقْوَىٰ (taqwā) лежит не просто знание или страх, а внутренняя защитная направленность, которая влияет на выбор и поступки человека.' },
+      en: { lead: 'تَقْوَىٰ (taqwā) is a state and quality of conscious caution directed toward guarding oneself from harm and wrongdoing.', body: 'The word is related to ٱتَّقَىٰ (ittaqā) — to guard or protect oneself, be cautious, and guard oneself against something. تَقْوَىٰ (taqwā) therefore points not simply to awareness or fear, but to an inner protective orientation that shapes a person’s choices and actions.' },
     },
-    layers: [
-      { ru: { title: 'Внутреннее состояние', text: 'Связь с сердцем: направленность человека не исчерпывается внешним действием.' }, en: { title: 'Inner disposition', text: 'Its connection with the heart extends beyond an outward act.' }, refs: ['22:32', '49:3'] },
-      { ru: { title: 'Этическое проявление', text: 'Связь со справедливостью и совместным действием. Проявление качества помогает понять его, но не заменяет всё понятие.' }, en: { title: 'Ethical expression', text: 'Connections with justice and collective action. An expression of the quality helps explain it without replacing the whole concept.' }, refs: ['5:8', '5:2'] },
-      { ru: { title: 'Направленность и руководство', text: 'Связь с принятием руководства и дальнейшим выбором человека.' }, en: { title: 'Orientation and guidance', text: 'A connection with receiving guidance and the choices that follow.' }, refs: ['47:17'] },
-      { ru: { title: 'Образы защиты и опоры', text: 'Одежда, запас и основание раскрывают разные стороны концепции.' }, en: { title: 'Images of protection and support', text: 'Clothing, provision, and a foundation bring out different aspects of the concept.' }, refs: ['7:26', '2:197', '9:109'] },
+    meaningMap: [
+      {
+        id: 'mechanism',
+        ru: { title: 'Ближе к механизму', description: 'Эти варианты передают саму внутреннюю защитную направленность تَقْوَىٰ (taqwā).', items: [
+          { term: 'Осознанное остережение', definition: 'Состояние, при котором человек понимает, от чего ему нужно себя уберечь, и сознательно удерживает защитную позицию в выборе и поступках.' },
+          { term: 'Оберегание себя', definition: 'Активная направленность на то, чтобы не допустить вредного или недолжного до себя.' },
+        ] },
+        en: { title: 'Closer to the mechanism', description: 'These renderings express the inner protective orientation of تَقْوَىٰ (taqwā).', items: [
+          { term: 'Conscious caution', definition: 'A state in which a person understands what they need to guard against and deliberately maintains a protective stance in choices and actions.' },
+          { term: 'Self-guarding', definition: 'An active orientation toward preventing harm or wrongdoing from reaching oneself.' },
+        ] },
+      },
+      {
+        id: 'component',
+        ru: { title: 'Составная часть механизма', description: 'Эти понятия помогают объяснить, как работает تَقْوَىٰ (taqwā), но не исчерпывают её значение.', items: [
+          { term: 'Осознанность', definition: 'Способность замечать и понимать последствия, границы и риски. Она позволяет распознать, от чего нужно себя уберечь, но сама по себе ещё не является всей تَقْوَىٰ (taqwā).' },
+          { term: 'Осторожность', definition: 'Внимательность к возможному вреду и склонность действовать так, чтобы его избежать. Это один из практических элементов защитной позиции.' },
+        ] },
+        en: { title: 'A component of the mechanism', description: 'These concepts help explain how تَقْوَىٰ (taqwā) works but do not exhaust its meaning.', items: [
+          { term: 'Awareness', definition: 'The ability to notice and understand consequences, boundaries, and risks. It helps a person recognise what to guard against but is not the whole of تَقْوَىٰ (taqwā).' },
+          { term: 'Caution', definition: 'Attentiveness to possible harm and a tendency to act so as to avoid it. It is one practical element of the protective stance.' },
+        ] },
+      },
+      {
+        id: 'manifestation',
+        ru: { title: 'Проявление', description: 'Так تَقْوَىٰ (taqwā) может проявляться в общей характеристике человека и его поступках.', items: [
+          { term: 'Праведность', definition: 'Соответствие убеждений и поступков нравственно правильному и предписанному. Праведность может быть проявлением تَقْوَىٰ (taqwā), но не объясняет её защитный механизм.' },
+          { term: 'Благочестие', definition: 'Религиозная преданность, выраженная в поведении и соблюдении обязанностей. Это широкое проявление качества, а не его полное определение.' },
+        ] },
+        en: { title: 'Manifestation', description: 'This is how تَقْوَىٰ (taqwā) may appear in a person’s conduct and broader character.', items: [
+          { term: 'Righteousness', definition: 'Alignment of beliefs and actions with what is morally right and prescribed. It can manifest تَقْوَىٰ (taqwā) without explaining its protective mechanism.' },
+          { term: 'Piety', definition: 'Religious devotion expressed in behaviour and observance. It is a broad manifestation of the quality rather than its complete definition.' },
+        ] },
+      },
+      {
+        id: 'result',
+        ru: { title: 'Следствие', description: 'Это то, к чему защитная направленность может привести.', items: [
+          { term: 'Защищённость / сохранение от вреда', definition: 'Результат, при котором вред не достигает человека или человек удерживается от того, что ведёт к вреду.' },
+        ] },
+        en: { title: 'Result', description: 'This is what the protective orientation may lead to.', items: [
+          { term: 'Protection / preservation from harm', definition: 'An outcome in which harm does not reach the person or the person is kept from what leads to harm.' },
+        ] },
+      },
     ],
     structureSources: ['laneTqy', 'jawhari'], meaningSources: ['raghib', 'laneTqy'], related: ['ittaqa', 'taqiyy', 'muttaqin'],
   },
