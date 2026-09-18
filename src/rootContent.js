@@ -207,7 +207,7 @@ export const WORD_CONTENT = {
       en: ['An elative adjective expressing a greater degree of a quality. The traditional Arabic term is اسم التفضيل.', 'It is not a Form IV verb. The final weak consonant gives ى. Depending on the construction, it can express “more…” or “most…”.'],
     },
     meaning: {
-      ru: { lead: 'В большей степени обладающий تَقْوَى.', body: 'Сравнивается степень качества: большее остережение и оберегание себя от недолжного. Само основание сравнения задаёт контекст.' },
+      ru: { lead: 'В большей степени обладающий تَقْوَى.', body: 'Сравнивается степень качества: большее остережение, оберегание себя и более последовательное удерживание установленных границ. Само основание сравнения задаёт контекст.' },
       en: { lead: 'Having a greater degree of تَقْوَى.', body: 'The form compares the degree of the quality: greater care in guarding oneself against wrongdoing. Context supplies the basis of comparison.' },
     },
     structureSources: ['laneTqy', 'corpus'], meaningSources: ['laneTqy'], related: ['taqiyy', 'taqwa'],
