@@ -1,6 +1,7 @@
 import { FORMS } from '../src/demo.js'
 import { OCCURRENCES, ROOT_OCCURRENCE_COUNT } from '../src/occurrences.js'
 import { WQY_PUBLIC_MODEL } from '../src/canonicalWqy.js'
+import { MORPHOLOGY } from '../src/morphologyWqy.js'
 
 const fail = message => {
   console.error('PREVIEW_CONTENT_GUARD_FAIL:', message)
@@ -39,3 +40,14 @@ if (WQY_PUBLIC_MODEL.translationFidelity.universalEquivalent !== false) {
 }
 
 console.log('Preview content guard passed: WQY v0.2 status, counts, role safeguards and taqwa scope are aligned.')
+
+const morphologyIds = FORMS.map(x => x.id)
+for (const id of morphologyIds) {
+  if (!MORPHOLOGY[id]) fail(`missing morphology teaching profile for ${id}`)
+  if (!Array.isArray(MORPHOLOGY[id]?.segments) || MORPHOLOGY[id].segments.length < 2) fail(`invalid morphology segments for ${id}`)
+  if (!Array.isArray(MORPHOLOGY[id]?.lineage) || MORPHOLOGY[id].lineage.length < 3) fail(`invalid derivation lineage for ${id}`)
+}
+if (!MORPHOLOGY.ittaqa.transformations.ru.some(x => x.includes('اِوْتَقَى'))) fail('ittaqa must preserve the و→ت Form VIII derivation step')
+if (!MORPHOLOGY.muttaqin.segments.some(x => x.kind === 'inflection' && x.text.includes('ين'))) fail('muttaqin must distinguish ـين as inflection')
+if (!MORPHOLOGY.waq.segments.some(x => x.kind === 'pattern' && x.text.includes('ا'))) fail('waq must expose the فاعل pattern alif')
+if (!MORPHOLOGY.taqwa.variantAnalysis) fail('taqwa historical formation must remain explicitly non-unique')
