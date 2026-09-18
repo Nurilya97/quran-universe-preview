@@ -409,9 +409,16 @@
   margin: 26px 0 8px;
 }
 .meaning-class {
-  padding: 20px 0;
+  --meaning-color: #d6d9de;
+  position: relative;
+  padding: 20px 0 20px 14px;
   border-top: 1px solid var(--line);
+  border-left: 2px solid color-mix(in srgb, var(--meaning-color) 68%, transparent);
 }
+.meaning-class-mechanism { --meaning-color: #7cff8b; }
+.meaning-class-component { --meaning-color: #59f2ff; }
+.meaning-class-manifestation { --meaning-color: #c65cff; }
+.meaning-class-result { --meaning-color: #ff7a59; }
 .meaning-class:last-child {
   border-bottom: 1px solid var(--line);
 }
@@ -455,19 +462,14 @@
   font-size: 13px !important;
   line-height: 1.68 !important;
 }
-.meaning-class-mechanism .meaning-class-label::before,
-.meaning-class-component .meaning-class-label::before,
-.meaning-class-manifestation .meaning-class-label::before,
-.meaning-class-result .meaning-class-label::before {
+.meaning-class-label::before {
   content: '';
   display: inline-block;
-  width: 6px;
-  height: 6px;
-  margin-right: 8px;
+  width: 8px;
+  height: 8px;
+  margin-right: 9px;
   border-radius: 50%;
   vertical-align: 1px;
-  background: #d6d9de;
+  background: var(--meaning-color);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--meaning-color) 45%, transparent);
 }
-.meaning-class-component .meaning-class-label::before { opacity: .76; }
-.meaning-class-manifestation .meaning-class-label::before { opacity: .52; }
-.meaning-class-result .meaning-class-label::before { opacity: .32; }
