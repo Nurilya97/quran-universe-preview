@@ -12,6 +12,27 @@ export const WQY_PUBLIC_MODEL = {
   humanReviewed: true,
   scholarReviewed: false,
   root: 'و ق ي',
+  meaningMethodology: {
+    status: 'approved_project_rule',
+    principle: {
+      ru: 'Значение слова в Quran Universe прежде всего выводится из самого Корана: его употреблений, морфологии и сопоставления всех коранических контекстов. Внешние источники используются как дополнительные проверочные слои.',
+      en: 'In Quran Universe, a word’s meaning is derived first from the Quran itself: its usages, morphology, and comparison across Quranic contexts. External sources are used as additional verification layers.',
+    },
+    primaryEvidence: [
+      { rank: 1, id: 'quran_usage', ru: 'Сам Коран: употребления слова и ближайших производных.', en: 'The Quran itself: usages of the word and its close derivatives.' },
+      { rank: 2, id: 'morphology', ru: 'Арабская морфология и словообразование: корень, форма, шаблон и грамматическая функция.', en: 'Arabic morphology and derivation: root, form, pattern, and grammatical function.' },
+      { rank: 3, id: 'cross_context', ru: 'Сопоставление всех коранических контекстов: предполагаемое значение должно выдерживать весь корпус употреблений.', en: 'Cross-context comparison across the Quran: a proposed meaning must hold across the full set of usages.' },
+    ],
+    secondaryEvidence: [
+      { rank: 4, id: 'classical_lexicons', ru: 'Классические арабские словари: подтверждают лексическое ядро и диапазон значений.', en: 'Classical Arabic lexicons: confirm the lexical nucleus and semantic range.' },
+      { rank: 5, id: 'translations', ru: 'Переводы: рассматриваются как варианты передачи смысла, а не как источник значения.', en: 'Translations: treated as renderings of meaning, not as the source of meaning.' },
+      { rank: 6, id: 'tafsir', ru: 'Тафсиры: самый низкий приоритет; это человеческие интерпретации конкретных аятов, а не определяющий источник значения слова.', en: 'Tafsir: lowest priority; these are human interpretations of particular verses, not the controlling source for a word’s meaning.' },
+    ],
+    validationRule: {
+      ru: 'Если смысловая модель не выдерживает другое кораническое употребление того же слова или его близкой формы, модель пересматривается.',
+      en: 'If a semantic model fails against another Quranic usage of the same word or a closely related form, the model must be revised.',
+    },
+  },
   rootNucleus: {
     ru: 'Фундаментальное значение корня — ограждать / защищать, не позволяя вреду достигнуть защищаемого. Корень объединяет в себе все смыслы этого направления: в производных словах это смысловое ядро раскрывается по-разному, но сохраняет общую линию защиты и оберегания.',
     en: 'The fundamental meaning of the root is to protect / shield by preventing harm from reaching what is protected. The root brings together the meanings that develop along this direction: its derivatives unfold this semantic core in different ways while preserving the shared line of protection and guarding.',
