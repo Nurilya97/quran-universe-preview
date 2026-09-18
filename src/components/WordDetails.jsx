@@ -90,7 +90,6 @@ function DerivedFrom({ source, language }) {
       </div>
       <small>{language === 'ru' ? source.metaRu : source.metaEn}</small>
     </div>
-    <p>{source[language]}</p>
   </section>
 }
 
@@ -125,13 +124,14 @@ function TaqwaForm({ profile, language }) {
   </section>
 }
 
-function TaqwaFormation({ profile, language }) {
+function WordFormation({ profile, language }) {
   const c = MORPH_COPY[language]
   const evolution = profile.evolution || []
+  if (!evolution.length) return null
 
   return <section className="morph-formation">
     <p className="morph-block-label">{c.wordFormation}</p>
-    <p className="morph-formation-explanation">{profile.formation[language]}</p>
+    {profile.formation?.[language] && <p className="morph-formation-explanation">{profile.formation[language]}</p>}
     <div className="morph-evolution" aria-label={c.evolution}>
       {evolution.map((step, index) => <div className="morph-evolution-row" key={step.ar + index}>
         <div className="morph-evolution-word">
@@ -155,10 +155,11 @@ function MorphologyStructure({ word, content, language, onPick }) {
     <ComponentBreakdown components={profile.components} language={language} />
     {word.id === 'taqwa' && <TaqwaForm profile={profile} language={language} />}
     {word.id === 'taqwa'
-      ? <TaqwaFormation profile={profile} language={language} />
+      ? <WordFormation profile={profile} language={language} />
       : <>
           <DerivedFrom source={profile.derivedFrom} language={language} />
           <PatternEffect pattern={profile.pattern} language={language} />
+          <WordFormation profile={profile} language={language} />
         </>}
 
 
