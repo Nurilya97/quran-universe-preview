@@ -68,6 +68,10 @@ export const WORD_CONTENT = {
         ] },
       },
     ],
+    distinction: {
+      ru: 'Базовый глагол семьи: وَقَىٰ (waqā) называет само действие «защищать». وِقَايَة (wiqāya) называет защиту как процесс, وَاقٍ (wāqin) — того, кто защищает, а وِقَاء (wiqāʾ) — средство защиты.',
+      en: 'The base verb of the family: وَقَىٰ (waqā) names the act “to protect.” وِقَايَة (wiqāya) names protection as a process, وَاقٍ (wāqin) the protector, and وِقَاء (wiqāʾ) the means of protection.',
+    },
     structureSources: ['jawhari', 'corpus'], meaningSources: ['raghib', 'laneWqy'], related: ['wiqaya', 'wiqaa', 'waq'],
   },
   ittaqa: {
@@ -103,16 +107,11 @@ export const WORD_CONTENT = {
           { term: 'Self-regulation', definition: 'Relating one’s action to the recognised boundary and restraining oneself from crossing it.' },
         ] },
       },
-      {
-        id: 'result',
-        ru: { title: 'Следствия', description: 'Защитная позиция направлена на то, чтобы человек не оказался в том, от чего он себя оберегает.', items: [
-          { term: 'Оберегание себя', definition: 'Человек удерживается от действия или положения, которое несёт вред или нарушение.' },
-        ] },
-        en: { title: 'Outcomes', description: 'The protective stance aims to keep the person from what they are guarding against.', items: [
-          { term: 'Self-protection', definition: 'The person is kept from an action or condition that brings harm or transgression.' },
-        ] },
-      },
     ],
+    distinction: {
+      ru: 'ٱتَّقَىٰ (ittaqā) — действие самого субъекта: он принимает защитную позицию. تَقْوَىٰ (taqwā) называет состояние/качество, возникающее из этой линии, а مُتَّقٍ (muttaqin) — человека, который осуществляет это действие.',
+      en: 'ٱتَّقَىٰ (ittaqā) is the subject’s own action: taking a protective stance. تَقْوَىٰ (taqwā) names the state/quality developing from this line, while مُتَّقٍ (muttaqin) names the person who enacts it.',
+    },
     structureSources: ['jawhari', 'laneTqy'], meaningSources: ['raghib', 'laneWqy'], related: ['taqwa', 'muttaqin', 'tuqat'],
   },
   taqwa: {
@@ -207,7 +206,11 @@ export const WORD_CONTENT = {
         },
       ],
     },
-        structureSources: ['laneTqy', 'jawhari'], meaningSources: ['raghib', 'laneTqy', 'baqarahMuttaqin'], related: ['ittaqa', 'taqiyy', 'muttaqin'],
+        distinction: {
+      ru: 'تَقْوَىٰ (taqwā) — не глагол и не название человека, а состояние/качество. Его защитное ядро приходит от و ق ي (w-q-y) и ٱتَّقَىٰ (ittaqā), а более широкий смысл раскрывается кораническим описанием.',
+      en: 'تَقْوَىٰ (taqwā) is neither a verb nor a label for a person, but a state/quality. Its protective core comes from و ق ي (w-q-y) and ٱتَّقَىٰ (ittaqā), while its broader sense is unfolded by Quranic description.',
+    },
+    structureSources: ['laneTqy', 'jawhari'], meaningSources: ['raghib', 'laneTqy', 'baqarahMuttaqin'], related: ['ittaqa', 'taqiyy', 'muttaqin'],
   },
   tuqat: {
     pattern: 'فُعَلَة', patternReading: 'fuʿala',
@@ -216,8 +219,8 @@ export const WORD_CONTENT = {
       en: ['A verbal noun related to ٱتَّقَىٰ. At 3:28, the Corpus annotates تُقَاةً as feminine singular and accusative.', 'The pattern فُعَلَة follows Al-Qurtubi’s linguistic analysis: initial و becomes ت, and the final root ي becomes long ā. Dictionaries also discuss other analyses of this form.'],
     },
     meaning: {
-      ru: { lead: 'Остережение, принятие мер защиты.', body: 'Слово называет само действие или состояние предосторожности. Аль-Джаухари связывает его с تَقِيَّة и глаголом ٱتَّقَىٰ. Значение конкретного употребления следует рассматривать в его контексте.' },
-      en: { lead: 'Taking precautions or guarding oneself.', body: 'The word names the act or state of precaution. Al-Jawhari links it with تَقِيَّة and ٱتَّقَىٰ. Each occurrence should be understood in its own context.' },
+      ru: { lead: 'تُقَاة (tuqāt) — остережение, предосторожность или защитная мера.', body: 'Форма называет само остережение как действие или меру защиты. В отличие от более широкого состояния تَقْوَىٰ (taqwā), здесь акцент находится на конкретной предосторожности.' },
+      en: { lead: 'تُقَاة (tuqāt) is caution, precaution, or a protective measure.', body: 'The form names caution as an act or protective measure. Unlike the broader state of تَقْوَىٰ (taqwā), the focus here is a concrete precaution.' },
     },
     meaningMap: [
       {
@@ -239,6 +242,10 @@ export const WORD_CONTENT = {
         ] },
       },
     ],
+    distinction: {
+      ru: 'تُقَاة (tuqāt) конкретнее تَقْوَىٰ (taqwā): она называет остережение или защитную меру, тогда как تَقْوَىٰ (taqwā) в Коране раскрывается как более широкое состояние.',
+      en: 'تُقَاة (tuqāt) is more concrete than تَقْوَىٰ (taqwā): it names caution or a protective measure, while تَقْوَىٰ (taqwā) is unfolded in the Quran as a broader state.',
+    },
     structureSources: ['tuqatPattern', 'corpus'], meaningSources: ['jawhari', 'laneTqy'], related: ['ittaqa', 'taqwa'],
   },
   muttaqin: {
@@ -248,17 +255,17 @@ export const WORD_CONTENT = {
       en: ['An active participle of Form VIII, naming someone who performs ٱتَّقَىٰ. The pattern is singular; the displayed word is plural.', 'The singular is مُتَّقٍ (muttaqin). The plural is مُتَّقُونَ (muttaqūna) in the nominative and مُتَّقِينَ (muttaqīna) in the accusative or genitive. Long ī distinguishes the displayed plural form.'],
     },
     meaning: {
-      ru: { lead: 'مُتَّقِينَ (muttaqīn) — люди, для которых تَقْوَىٰ (taqwā) стала устойчивым состоянием осознанности перед Всевышним и основой их выбора.', body: 'В начале Аль-Бакара Коран сам раскрывает это состояние: они верят в сокрытое, устанавливают молитву, расходуют из дарованного, верят в откровение и убеждены в Последней жизни. Поэтому مُتَّقِينَ (muttaqīn) нельзя свести только к «боящимся» или «остерегающимся»: это люди, чья вера формирует внимательность, доверие, поступки и защитную направленность.' },
-      en: { lead: 'مُتَّقِينَ (muttaqīn) are people for whom تَقْوَىٰ (taqwā) has become an enduring state of awareness before the Most High and a basis for their choices.', body: 'At the opening of Al-Baqarah, the Quran itself unfolds this state: they believe in the unseen, establish prayer, spend from what they have been provided, believe in revelation, and are certain of the Hereafter. مُتَّقِينَ (muttaqīn) therefore cannot be reduced to merely “those who fear” or “those who are cautious”: their faith shapes awareness, trust, conduct, and a protective orientation.' },
+      ru: { lead: 'مُتَّقِينَ (muttaqīn) — люди, которые осуществляют ٱتَّقَىٰ (ittaqā): их تَقْوَىٰ (taqwā) проявляется в выборе и поступках.', body: 'Это множественное действительное причастие от ٱتَّقَىٰ (ittaqā), поэтому слово называет людей через их защитно-ориентированную позицию. В 2:3–5 Коран сам раскрывает их: вера в сокрытое и откровение, убеждённость в Последней жизни, молитва, расходование из дарованного, руководство и успех.' },
+      en: { lead: 'مُتَّقِينَ (muttaqīn) are people who enact ٱتَّقَىٰ (ittaqā): their تَقْوَىٰ (taqwā) becomes visible in choices and actions.', body: 'This is the plural active participle of ٱتَّقَىٰ (ittaqā), so it names people through their protection-oriented stance. In 2:3–5, the Quran itself unfolds them through belief in the unseen and revelation, certainty in the Hereafter, prayer, spending, guidance, and success.' },
     },
     meaningMap: [
       {
         id: 'mechanism',
-        ru: { title: 'Механизм', description: 'مُتَّقِينَ (muttaqīn) описаны через устойчивое состояние веры, осознанности и защитного выбора.', items: [
+        ru: { title: 'Механизм', description: 'Как действительное причастие, مُتَّقِينَ (muttaqīn) называет людей через осуществляемую ими защитную позицию ٱتَّقَىٰ (ittaqā).', items: [
           { term: 'Осознанные перед Всевышним', definition: 'Люди, которые живут с пониманием присутствия и руководства Всевышнего и соотносят с этим свои решения.' },
           { term: 'Оберегающие себя', definition: 'Их осознанность приводит к внимательности к границам и к выбору, который удерживает от вреда и нарушения.' },
         ] },
-        en: { title: 'Mechanism', description: 'مُتَّقِينَ (muttaqīn) are described through an enduring state of faith, awareness, and protective choice.', items: [
+        en: { title: 'Mechanism', description: 'As an active participle, مُتَّقِينَ (muttaqīn) names people through the protective stance of ٱتَّقَىٰ (ittaqā) that they enact.', items: [
           { term: 'Aware before the Most High', definition: 'People who live with awareness of the presence and guidance of the Most High and relate their decisions to that reality.' },
           { term: 'Those who guard themselves', definition: 'Their awareness leads to attention to boundaries and choices that keep them from harm and transgression.' },
         ] },
@@ -305,6 +312,10 @@ export const WORD_CONTENT = {
         ] },
       },
     ],
+    distinction: {
+      ru: 'مُتَّقِينَ (muttaqīn) — люди, названные через действие ٱتَّقَىٰ (ittaqā); تَقِيّ (taqiyy) — прилагательное, описывающее человека через качество. Здесь акцент больше на действующей позиции, там — на характеристике.',
+      en: 'مُتَّقِينَ (muttaqīn) names people through the action ٱتَّقَىٰ (ittaqā); تَقِيّ (taqiyy) is an adjective describing a person through a quality. The former foregrounds an enacted stance, the latter a characteristic.',
+    },
     structureSources: ['corpus', 'laneTqy'], meaningSources: ['raghib', 'laneTqy', 'baqarahMuttaqin'], related: ['ittaqa', 'taqwa'],
   },
   waq: {
@@ -327,16 +338,11 @@ export const WORD_CONTENT = {
           { term: 'Protector / guardian', definition: 'The one from whom protection comes and who prevents harm from reaching what is protected.' },
         ] },
       },
-      {
-        id: 'result',
-        ru: { title: 'Следствия', description: 'Наличие وَاقٍ (wāqin) означает наличие действующего источника защиты.', items: [
-          { term: 'Защищённость', definition: 'Защищаемое получает защиту благодаря тому, кто её осуществляет.' },
-        ] },
-        en: { title: 'Outcomes', description: 'The presence of a وَاقٍ (wāqin) means there is an acting source of protection.', items: [
-          { term: 'Protection', definition: 'The protected object receives protection through the one who provides it.' },
-        ] },
-      },
     ],
+    distinction: {
+      ru: 'وَاقٍ (wāqin) — тот, кто защищает. Это не само действие وَقَىٰ (waqā) и не средство защиты وِقَاء (wiqāʾ).',
+      en: 'وَاقٍ (wāqin) is the one who protects. It is not the act وَقَىٰ (waqā) itself and not the protective means وِقَاء (wiqāʾ).',
+    },
     structureSources: ['corpus', 'jawhari'], meaningSources: ['raghib', 'laneWqy'], related: ['waqa', 'wiqaa'],
   },
   taqiyy: {
@@ -346,8 +352,8 @@ export const WORD_CONTENT = {
       en: ['An adjective describing a person’s quality. فَعِيل is one of the pattern analyses recorded by Lane, who also discusses an alternative historical account.', 'Its usage is close to مُتَّقٍ, but its form differs. A plural is أَتْقِيَاء (atqiyāʾ). The doubled ي in تَقِيّ belongs to the word’s formation.'],
     },
     meaning: {
-      ru: { lead: 'Человек, которому свойственна تَقْوَى.', body: 'Слово характеризует человека через качество. Lane сопоставляет его с مُتَّقٍ. Осторожность в поступках и праведное поведение относятся к возможным проявлениям; конкретный акцент задаёт контекст.' },
-      en: { lead: 'A person characterised by تَقْوَى.', body: 'The adjective presents the quality as characteristic of a person. Lane compares it with مُتَّقٍ. Care in conduct and righteous behaviour are possible expressions; context determines the emphasis.' },
+      ru: { lead: 'تَقِيّ (taqiyy) — человек, описанный как обладающий качеством تَقْوَىٰ (taqwā).', body: 'Это прилагательное: акцент находится на качестве как характеристике человека. Поэтому تَقِيّ (taqiyy) близок к مُتَّقٍ (muttaqin) по смысловой семье, но грамматически показывает не действие, а свойство.' },
+      en: { lead: 'تَقِيّ (taqiyy) is a person described as possessing the quality of تَقْوَىٰ (taqwā).', body: 'It is an adjective, so the focus is the quality as a characteristic of the person. تَقِيّ (taqiyy) belongs to the same semantic family as مُتَّقٍ (muttaqin), but grammatically it foregrounds an attribute rather than an action.' },
     },
     occurrenceNote: {
       ru: 'Особенность источника: корпус включает сюда تُقَاتِهِ из 3:102:7 и размечает его как существительное во множественном числе. Это иная словоформа, а не буквальное написание تَقِيّ. Счётчик сохраняет группировку корпуса.',
@@ -356,10 +362,10 @@ export const WORD_CONTENT = {
     meaningMap: [
       {
         id: 'mechanism',
-        ru: { title: 'Механизм', description: 'تَقِيّ (taqiyy) описывает человека через устойчивое качество تَقْوَىٰ (taqwā).', items: [
+        ru: { title: 'Механизм', description: 'تَقِيّ (taqiyy) описывает تَقْوَىٰ (taqwā) как качество, характеризующее человека.', items: [
           { term: 'Носитель качества', definition: 'Человек, для которого осознанность перед Всевышним и защитная направленность стали устойчивой характеристикой.' },
         ] },
-        en: { title: 'Mechanism', description: 'تَقِيّ (taqiyy) describes a person through the enduring quality of تَقْوَىٰ (taqwā).', items: [
+        en: { title: 'Mechanism', description: 'تَقِيّ (taqiyy) presents تَقْوَىٰ (taqwā) as a quality characterising the person.', items: [
           { term: 'Bearer of the quality', definition: 'A person for whom awareness before the Most High and a protective orientation have become a stable characteristic.' },
         ] },
       },
@@ -384,8 +390,8 @@ export const WORD_CONTENT = {
       en: ['An elative adjective expressing a greater degree of a quality. The traditional Arabic term is اسم التفضيل.', 'It is not a Form IV verb. The final weak consonant gives ى. Depending on the construction, it can express “more…” or “most…”.'],
     },
     meaning: {
-      ru: { lead: 'В большей степени обладающий تَقْوَى.', body: 'Сравнивается степень качества: большее остережение, оберегание себя и более последовательное удерживание установленных границ. Само основание сравнения задаёт контекст.' },
-      en: { lead: 'Having a greater degree of تَقْوَى.', body: 'The form compares the degree of the quality: greater care in guarding oneself against wrongdoing. Context supplies the basis of comparison.' },
+      ru: { lead: 'أَتْقَى (atqā) — более или наиболее обладающий تَقْوَىٰ (taqwā), в зависимости от конструкции.', body: 'Это форма сравнения اسم التفضيل (ism al-tafḍīl). Она не вводит новое качество, а показывает большую степень той же تَقْوَىٰ (taqwā).' },
+      en: { lead: 'أَتْقَى (atqā) means having a greater or greatest degree of تَقْوَىٰ (taqwā), depending on the construction.', body: 'It is the elative form اسم التفضيل (ism al-tafḍīl). It does not introduce a new quality; it compares the degree of the same تَقْوَىٰ (taqwā).' },
     },
     meaningMap: [
       {
@@ -397,16 +403,11 @@ export const WORD_CONTENT = {
           { term: 'Greater degree of the quality', definition: 'The same awareness and protective orientation are expressed more strongly or consistently; context supplies the basis of comparison.' },
         ] },
       },
-      {
-        id: 'manifestation',
-        ru: { title: 'Проявления', description: 'Большая степень качества видна в более последовательном выборе.', items: [
-          { term: 'Более последовательное соблюдение границ', definition: 'Человек устойчивее соотносит свои поступки с руководством и границами Всевышнего.' },
-        ] },
-        en: { title: 'Manifestations', description: 'A greater degree of the quality is visible in more consistent choices.', items: [
-          { term: 'More consistent observance of boundaries', definition: 'The person more consistently relates conduct to the guidance and boundaries of the Most High.' },
-        ] },
-      },
     ],
+    distinction: {
+      ru: 'أَتْقَى (atqā) не называет отдельный вид تَقْوَىٰ (taqwā): оно только сравнивает степень того же качества — «более / наиболее».',
+      en: 'أَتْقَى (atqā) does not name a separate kind of تَقْوَىٰ (taqwā); it only compares the degree of the same quality — “more / most.”',
+    },
     structureSources: ['laneTqy', 'corpus'], meaningSources: ['laneTqy'], related: ['taqiyy', 'taqwa'],
   },
   wiqaa: {
@@ -429,16 +430,11 @@ export const WORD_CONTENT = {
           { term: 'Means of protection', definition: 'A covering, barrier, or other means that prevents harm from reaching what is protected.' },
         ] },
       },
-      {
-        id: 'result',
-        ru: { title: 'Следствия', description: 'Функция وِقَاء (wiqāʾ) — обеспечить защищённость.', items: [
-          { term: 'Защитный покров', definition: 'Защищаемое получает барьер между собой и источником вреда.' },
-        ] },
-        en: { title: 'Outcomes', description: 'The function of وِقَاء (wiqāʾ) is to provide protection.', items: [
-          { term: 'Protective covering', definition: 'The protected object gains a barrier between itself and the source of harm.' },
-        ] },
-      },
     ],
+    distinction: {
+      ru: 'وِقَاء (wiqāʾ) — то, чем защищают: барьер, покров, средство. وَاقٍ (wāqin) — сам защитник, а وِقَايَة (wiqāya) — процесс защиты.',
+      en: 'وِقَاء (wiqāʾ) is what protection is provided with: a barrier, covering, or means. وَاقٍ (wāqin) is the protector, while وِقَايَة (wiqāya) is the process of protection.',
+    },
     structureSources: ['jawhari'], meaningSources: ['jawhari', 'raghib'], related: ['waqa', 'wiqaya', 'waq'],
   },
   wiqaya: {
@@ -448,8 +444,8 @@ export const WORD_CONTENT = {
       en: ['A verbal noun of وَقَىٰ. The pattern فِعَالَة names the act of protecting.', 'The root ي remains before the ending ة in وِقَايَة. Dictionaries also use the same form for something that provides protection.'],
     },
     meaning: {
-      ru: { lead: 'Защита, предохранение, сохранение от вреда.', body: 'В определении ар-Рагиба главное — сохранение того, что защищают, от повреждения и вреда. В центре внимания действие защиты; в отдельных употреблениях — защитное средство.' },
-      en: { lead: 'Protection, safeguarding, preservation from harm.', body: 'Al-Raghib’s definition focuses on keeping the protected object safe from damage and harm. The main focus is the act of protection, though some usages name a protective means.' },
+      ru: { lead: 'وِقَايَة (wiqāya) — защита / предохранение как действие или процесс.', body: 'Это масдар от وَقَىٰ (waqā): глагол называет «защищать», а وِقَايَة (wiqāya) — саму защиту как действие, процесс или понятие сохранения от вреда.' },
+      en: { lead: 'وِقَايَة (wiqāya) is protection / safeguarding as an action or process.', body: 'It is the verbal noun of وَقَىٰ (waqā): the verb means “to protect,” while وِقَايَة (wiqāya) names protection itself as an action, process, or concept of preservation from harm.' },
     },
     meaningMap: [
       {
@@ -461,16 +457,11 @@ export const WORD_CONTENT = {
           { term: 'Safeguarding', definition: 'An action directed toward preserving someone or something from damage and harm.' },
         ] },
       },
-      {
-        id: 'result',
-        ru: { title: 'Следствия', description: 'Успешная وِقَايَة (wiqāya) приводит к сохранению защищаемого.', items: [
-          { term: 'Сохранение от вреда', definition: 'То, что защищают, остаётся невредимым или менее подверженным вреду.' },
-        ] },
-        en: { title: 'Outcomes', description: 'Successful وِقَايَة (wiqāya) results in preservation of what is protected.', items: [
-          { term: 'Preservation from harm', definition: 'What is protected remains unharmed or less exposed to harm.' },
-        ] },
-      },
     ],
+    distinction: {
+      ru: 'وِقَايَة (wiqāya) — название самой защиты как действия/процесса. وَقَىٰ (waqā) — глагол «защищать», а وِقَاء (wiqāʾ) — средство, которым защищают.',
+      en: 'وِقَايَة (wiqāya) names protection itself as an action/process. وَقَىٰ (waqā) is the verb “to protect,” while وِقَاء (wiqāʾ) is the means used for protection.',
+    },
     structureSources: ['jawhari', 'raghib'], meaningSources: ['raghib', 'laneWqy'], related: ['waqa', 'wiqaa'],
   },
   tawaqqa: {
@@ -480,8 +471,8 @@ export const WORD_CONTENT = {
       en: ['A Form V verb. The pattern adds initial ت and doubles the second root letter ق. The root و remains visible after ت.', 'The present form is يَتَوَقَّى (yatawaqqā). The final root ي appears as ى in the displayed form.'],
     },
     meaning: {
-      ru: { lead: 'Остерегаться, беречься, принимать предосторожности.', body: 'Lane объясняет глагол через осторожность и защиту от того, чего следует избегать. Аль-Джаухари отмечает близость تَوَقَّى и ٱتَّقَىٰ по значению; их словообразовательные модели различны.' },
-      en: { lead: 'To beware, guard oneself, or take precautions.', body: 'Lane explains the verb through caution and guarding against something. Al-Jawhari notes the closeness in meaning between تَوَقَّى and ٱتَّقَىٰ; their derivational patterns differ.' },
+      ru: { lead: 'تَوَقَّىٰ (tawaqqā) — беречься, остерегаться, принимать меры предосторожности.', body: 'Словари сближают تَوَقَّىٰ (tawaqqā) и ٱتَّقَىٰ (ittaqā) по значению. Поэтому Quran Universe не приписывает им искусственно жёсткое смысловое различие только из-за разных моделей; تَوَقَّىٰ (tawaqqā) показан как словарная форма практического остережения.' },
+      en: { lead: 'تَوَقَّىٰ (tawaqqā) means to guard oneself, beware, or take precautions.', body: 'Lexicons bring تَوَقَّىٰ (tawaqqā) and ٱتَّقَىٰ (ittaqā) close in meaning. Quran Universe therefore does not impose a sharp semantic contrast from their different patterns alone; تَوَقَّىٰ (tawaqqā) is shown as a lexical form of practical caution.' },
     },
     meaningMap: [
       {
@@ -502,16 +493,11 @@ export const WORD_CONTENT = {
           { term: 'Taking precautions', definition: 'The person changes an action, route, or behaviour to reduce the likelihood of harm.' },
         ] },
       },
-      {
-        id: 'result',
-        ru: { title: 'Следствия', description: 'Цель предосторожности — не допустить вреда.', items: [
-          { term: 'Избежание вреда', definition: 'Человек не попадает в ситуацию или действие, от которого стремился себя уберечь.' },
-        ] },
-        en: { title: 'Outcomes', description: 'The aim of precaution is to prevent harm.', items: [
-          { term: 'Avoidance of harm', definition: 'The person avoids the situation or action they were seeking to guard against.' },
-        ] },
-      },
     ],
+    distinction: {
+      ru: 'تَوَقَّىٰ (tawaqqā) словарно очень близок к ٱتَّقَىٰ (ittaqā). Различие моделей показано в «Строении слова», но отдельный сильный смысл только из формы здесь не придумывается.',
+      en: 'تَوَقَّىٰ (tawaqqā) is lexically very close to ٱتَّقَىٰ (ittaqā). Their pattern difference is shown in Word Structure, but no strong semantic contrast is invented from morphology alone.',
+    },
     structureSources: ['laneWqy', 'jawhari'], meaningSources: ['laneWqy', 'jawhari'], related: ['waqa', 'ittaqa'],
   },
 }
