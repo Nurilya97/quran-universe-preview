@@ -252,13 +252,13 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
 
   const semanticDescriptionPages = splitCalloutText(
     meaning?.description || (ru ? selected.noteRu : selected.noteEn),
-    175
+    110
   ).map((text, index) => <div key={'meaning-' + index}>
     <strong>{index === 0 ? (meaning?.gloss || (ru ? selected.ru : selected.en)) : (ru ? 'Продолжение значения' : 'Meaning continued')}</strong>
     <p className="analysis-detail-text">{text}</p>
   </div>)
 
-  const semanticTranslationPages = splitCalloutText(meaning?.translation, 175).map((text, index) => <div key={'translation-' + index}>
+  const semanticTranslationPages = splitCalloutText(meaning?.translation, 105).map((text, index) => <div key={'translation-' + index}>
     <strong>{index === 0 ? (ru ? 'Почему такой перевод' : 'Why this translation') : (ru ? 'Продолжение' : 'Continued')}</strong>
     <p className="analysis-translation-choice">{text}</p>
   </div>)
@@ -306,7 +306,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
         <small>{ru ? 'ЗНАЧЕНИЕ' : 'MEANING'}</small>
         <div className="analysis-callout-page">{semanticPages[pages.semantic]}</div>
         <CalloutPager page={pages.semantic} count={semanticPages.length} onChange={(value) => setPage('semantic', value)} language={language} />
-        <button
+        {pages.semantic === semanticPages.length - 1 && <button
           className="analysis-orbit-button"
           disabled={!selected.orbitId}
           onClick={() => selected.orbitId && onOpenWordOrbit?.(selected)}
@@ -314,7 +314,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
           {selected.orbitId
             ? (ru ? 'Перейти в орбиту слова →' : 'Open word orbit →')
             : (ru ? 'Орбита слова · будет подключена' : 'Word orbit · coming next')}
-        </button>
+        </button>}
       </section>
     </div>
   </div>
