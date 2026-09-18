@@ -187,10 +187,16 @@ function MeaningMap({ levels, language }) {
           <p className="meaning-class-description">{copy.description}</p>
         </header>
         <div className="meaning-term-list">
-          {copy.items.map((item, index) => <article className="meaning-term" key={item.term + index}>
-            <h4>{item.term}</h4>
-            <p>{item.definition}</p>
-          </article>)}
+          {copy.items.map((item, index) => <div className="meaning-term-step" key={item.term + index}>
+            <article className="meaning-term">
+              <h4>{item.term}</h4>
+              <p>{item.definition}</p>
+            </article>
+            {item.connector && <div className="meaning-connector" aria-label={item.connector}>
+              <span aria-hidden="true">↓</span>
+              <small>{item.connector}</small>
+            </div>}
+          </div>)}
         </div>
       </section>
     })}
