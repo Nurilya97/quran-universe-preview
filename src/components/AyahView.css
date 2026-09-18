@@ -2315,3 +2315,59 @@
     height: 36px;
   }
 }
+
+/* Final focus cleanup: blur the actual background layers, remove connectors */
+.ayah-space-shell.has-word-focus .ayah-space-grid,
+.ayah-space-shell.has-word-focus .ayah-space-boundary,
+.ayah-space-shell.has-word-focus .ayah-space-world {
+  filter: blur(11px) brightness(.18) saturate(.5) !important;
+}
+.ayah-space-shell.has-word-focus .ayah-space-grid,
+.ayah-space-shell.has-word-focus .ayah-space-boundary {
+  transform: scale(1.035);
+}
+.ayah-space-shell.has-word-focus .ayah-space-topbar,
+.ayah-space-shell.has-word-focus .ayah-space-modes,
+.ayah-space-shell.has-word-focus .ayah-space-zoom,
+.ayah-space-shell.has-word-focus .ayah-space-hint,
+.ayah-space-shell.has-word-focus .ayah-space-source {
+  filter: blur(5px) brightness(.35);
+  opacity: .3;
+}
+
+.analysis-focus-overlay {
+  background: rgba(1, 2, 3, .5);
+}
+
+.analysis-focus-rays {
+  display: none !important;
+}
+.analysis-focus-callout::after {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  .ayah-space-shell.has-word-focus .ayah-space-grid,
+  .ayah-space-shell.has-word-focus .ayah-space-boundary,
+  .ayah-space-shell.has-word-focus .ayah-space-world {
+    filter: blur(13px) brightness(.14) saturate(.42) !important;
+  }
+
+  .analysis-focus-callout.semantic {
+    bottom: 38px !important;
+    width: calc(100vw - 56px) !important;
+    height: 184px !important;
+    min-height: 184px !important;
+    max-height: 184px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .analysis-focus-callout.semantic {
+    bottom: 34px !important;
+    width: calc(100vw - 48px) !important;
+    height: 178px !important;
+    min-height: 178px !important;
+    max-height: 178px !important;
+  }
+}
