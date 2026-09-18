@@ -83,6 +83,17 @@ export function ImmersiveUniverse() {
     requestAnimationFrame(() => destinationHeading.current?.focus?.({ preventScroll: true }))
   }
 
+  function openWordFromAyah(token) {
+    let nextWord = findWord(token?.arabic || token?.ar || token?.tr || '')
+    if (!nextWord && token?.root === 'و ق ي') {
+      if ((token.tr || '').includes('taqw')) nextWord = FORMS.find(form => form.id === 'taqwa')
+      else if ((token.tr || '').includes('ittaq')) nextWord = FORMS.find(form => form.id === 'ittaqa')
+    }
+    if (!nextWord) return
+    setAyahFocus(null)
+    travel('word', nextWord)
+  }
+
   function travel(destination, nextWord = word) {
     if (journey) return
     setPanel(null)
@@ -189,7 +200,7 @@ export function ImmersiveUniverse() {
       <p className="scene-label">{t.orbit}</p>
     </section>}
 
-    {scene === 'ayah' && !journey && ayahFocus && <AyahView reference={ayahFocus.reference} focusWordIndex={ayahFocus.wordIndex} language={language} onBack={closeAyah} />}
+    {scene === 'ayah' && !journey && ayahFocus && <AyahView reference={ayahFocus.reference} focusWordIndex={ayahFocus.wordIndex} language={language} onBack={closeAyah} onOpenWordOrbit={openWordFromAyah} />}
 
     {scene === 'root' && !journey && <section className="root-stage stage-reveal" aria-label={t.rootSpace}>
       <div className="root-intro"><p className="eyebrow">{t.families}</p></div>
