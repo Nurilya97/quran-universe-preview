@@ -101,11 +101,19 @@ h1:focus { outline: none; }
 .detail-sheet::backdrop { background: #02050866; }
 .detail-sheet[open] { animation: sheet-in .3s ease-out; }
 @keyframes sheet-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-.sheet-inner { padding: 26px; }
+.sheet-inner { position: relative; padding: 26px; }
 .sheet-handle { display: none; }
 .sheet-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
 .sheet-header h2 { margin: 7px 0 0; font-size: 21px; font-weight: 450; line-height: 1.35; }
 .sheet-header .icon-button { margin: -8px -10px 0 0; flex-shrink: 0; }
+.sheet-header-compact {
+  position: absolute;
+  z-index: 4;
+  top: 26px;
+  right: 26px;
+  display: block;
+}
+.sheet-header-compact .icon-button { margin: -8px -10px 0 0; }
 .sheet-word { margin: 20px 0 26px; padding-bottom: 16px; border-bottom: 1px solid var(--line); text-align: left; color: var(--accent); font-family: 'Traditional Arabic', 'Geeza Pro', serif; font-size: 46px; line-height: 1.6; }
 .sheet-inner h3 { margin: 18px 0 12px; font-size: 14px; font-weight: 500; color: #d6d9de; }
 .sheet-note { color: var(--muted); font-size: 16px; line-height: 1.7; margin: 22px 0 0; }
@@ -179,6 +187,10 @@ h1:focus { outline: none; }
     padding-left: max(24px, env(safe-area-inset-left));
   }
   .sheet-handle { display: block; width: 34px; height: 3px; margin: 0 auto 24px; border-radius: 3px; background: #d6d9de45; }
+  .sheet-header-compact {
+    top: 12px;
+    right: max(24px, env(safe-area-inset-right));
+  }
 }
 @media (max-height: 550px) {
   .search-stage { top: 32%; }
