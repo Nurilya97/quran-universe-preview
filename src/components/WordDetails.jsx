@@ -265,31 +265,36 @@ export function RootDetails({ language }) {
   </div>
 }
 
-export function WordDetails({ word, panel, language, onPick }) {
+export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
   const t = COPY[language]
   const content = WORD_CONTENT[word.id]
   if (panel === 'quran') {
     const occurrences = OCCURRENCES[word.id] || []
     const groups = groupOccurrences(word.id)
     const verses = new Set(occurrences.map(item => item.sura + ':' + item.ayah)).size
-    return <div className="entry-copy">
+    return <div className="entry-copy quran-occurrences">
       {word.lexicalOnly ? <p>{t.lexicalQuran}</p> : <>
         <h3>{t.references}</h3>
         <p className="occurrence-summary">{t.occurrenceCount}: <strong>{occurrences.length}</strong><span> · </span>{t.verseCount}: <strong>{verses}</strong></p>
         {content.occurrenceNote && <p className="entry-note annotation-note">{content.occurrenceNote[language]}</p>}
-        <div className="reference-groups">{groups.map(({ sura, items }) => <details key={sura} open={occurrences.length <= 20}>
+        <p className="entry-note quran-navigation-note">{t.referenceNote}</p>
+        <div className="reference-groups quran-reference-groups">{groups.map(({ sura, items }) => <details key={sura} open={occurrences.length <= 20}>
           <summary>{t.sura} {sura}<span>{items.length}</span></summary>
-          <ul>{items.map(item => <li key={item.ayah + ':' + item.word}>
-            <VerseLink reference={item.sura + ':' + item.ayah} language={language} />
-            <a className="word-reference" href={'https://corpus.quran.com/wordmorphology.jsp?location=(' + [item.sura, item.ayah, item.word].join(':') + ')'}
-              target="_blank" rel="noopener noreferrer" aria-label={t.openWord + ' ' + [item.sura, item.ayah, item.word].join(':')}>
-              {t.wordNumber} {item.word}<span aria-hidden="true">↗</span></a>
-          </li>)}</ul>
+          <div className="quran-reference-grid">{items.map(item => {
+            const reference = item.sura + ':' + item.ayah
+            const isPrototype = reference === '2:197'
+            return <button key={item.ayah + ':' + item.word} onClick={() => onOpenAyah?.(item)}
+              className={isPrototype ? 'has-prototype' : ''} aria-label={t.openVerse + ' ' + reference}>
+              <span>{reference}</span>
+              {isPrototype && <small>{language === 'ru' ? 'разбор' : 'study'}</small>}
+            </button>
+          })}</div>
         </details>)}</div>
-        <p className="entry-note">{t.referenceNote}</p>
       </>}
-      {word.id === 'tuqat' && <section><h3>{t.linkedPassage}</h3><p className="entry-note">{t.tuqatCrossReference}</p><div className="context-links"><VerseLink reference="3:102" language={language} /></div></section>}
-      <SourceLinks ids={['corpus', ...(['taqiyy', 'tuqat'].includes(word.id) ? ['tuqatCorpus'] : [])]} language={language} />
+      {word.id === 'tuqat' && <section><h3>{t.linkedPassage}</h3><p className="entry-note">{t.tuqatCrossReference}</p></section>}
+      <a className="quran-source-link" href="https://quran.gtaf.org/" target="_blank" rel="noopener noreferrer">
+        Al Quran · Greentech <span aria-hidden="true">↗</span>
+      </a>
     </div>
   }
   if (panel === 'structure') return <MorphologyStructure word={word} content={content} language={language} onPick={onPick} />
