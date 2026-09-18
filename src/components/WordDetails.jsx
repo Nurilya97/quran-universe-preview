@@ -95,7 +95,34 @@ function PatternEffect({ pattern, language }) {
       </div>
       <strong>{copy.title}</strong>
     </div>
-    <p>{copy.text}</p>
+    {copy.text && <p>{copy.text}</p>}
+  </section>
+}
+
+function TaqwaFormation({ profile, language }) {
+  const c = MORPH_COPY[language]
+  const pattern = profile.pattern
+  const source = profile.derivedFrom
+  const patternCopy = pattern[language]
+
+  return <section className="morph-formation">
+    <p className="morph-block-label">{c.wordFormation}</p>
+    <div className="morph-pattern-heading morph-formation-pattern">
+      <div className="morph-arabic-pair">
+        <span lang="ar" dir="rtl">{pattern.ar}</span>
+        <small className="transliteration" lang="ar-Latn" dir="ltr">{pattern.reading}</small>
+      </div>
+      <strong>{patternCopy.title}</strong>
+    </div>
+    <div className="morph-formation-arrow" aria-hidden="true">↓</div>
+    <div className="morph-derived-source morph-formation-source">
+      <div className="morph-arabic-pair">
+        <span lang="ar" dir="rtl">{source.ar}</span>
+        <small className="transliteration" lang="ar-Latn" dir="ltr">{source.reading}</small>
+      </div>
+      <small>{language === 'ru' ? source.metaRu : source.metaEn}</small>
+    </div>
+    <p>{source[language]}</p>
   </section>
 }
 
@@ -107,8 +134,12 @@ function MorphologyStructure({ word, content, language, onPick }) {
     <MorphFormula word={word} profile={profile} language={language} />
     <RootBreakdown language={language} />
     <ComponentBreakdown components={profile.components} language={language} />
-    <DerivedFrom source={profile.derivedFrom} language={language} />
-    <PatternEffect pattern={profile.pattern} language={language} />
+    {word.id === 'taqwa'
+      ? <TaqwaFormation profile={profile} language={language} />
+      : <>
+          <DerivedFrom source={profile.derivedFrom} language={language} />
+          <PatternEffect pattern={profile.pattern} language={language} />
+        </>}
 
 
     {word.lexicalOnly && <p className="entry-note">{COPY[language].lexicalNote}</p>}
