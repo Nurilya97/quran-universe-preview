@@ -363,3 +363,32 @@
 .morphology-entry .related-words button > [lang='ar'] {
   color: var(--word-white, #f7f8fa);
 }
+
+
+/* Coloured Arabic diacritics need their own visual layer:
+   browsers otherwise paint the combining mark with the base letter. */
+.morph-analysis .morph-part-with-mark {
+  position: relative;
+  display: inline-block;
+}
+.morph-analysis .morph-kasratan-mark {
+  position: absolute;
+  left: 49%;
+  bottom: .03em;
+  width: .34em;
+  height: .22em;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.morph-analysis .morph-kasratan-mark b {
+  position: absolute;
+  left: 0;
+  width: .31em;
+  height: .045em;
+  border-radius: 999px;
+  background: var(--morph-ending);
+  box-shadow: 0 0 .11em color-mix(in srgb, var(--morph-ending) 58%, transparent);
+  transform: rotate(-9deg);
+}
+.morph-analysis .morph-kasratan-mark b:first-child { top: .01em; }
+.morph-analysis .morph-kasratan-mark b:last-child { top: .105em; left: .035em; }
