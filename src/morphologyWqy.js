@@ -23,6 +23,8 @@ export const MORPH_COPY = {
     derivedFrom: 'Происходит от',
     patternEffect: 'Что нам даёт форма',
     wordFormation: 'Словообразование',
+    form: 'Форма',
+    evolution: 'Цепочка словообразования',
     noSeparateMeaning: 'Отдельно не переводится: его функция появляется только внутри всей формы.',
   },
   en: {
@@ -31,6 +33,8 @@ export const MORPH_COPY = {
     derivedFrom: 'Comes from',
     patternEffect: 'What the form tells us',
     wordFormation: 'Word formation',
+    form: 'Form',
+    evolution: 'Derivational chain',
     noSeparateMeaning: 'It is not translated separately: its function exists only inside the whole form.',
   },
 }
@@ -146,14 +150,24 @@ export const MORPHOLOGY = {
     ],
     derivedFrom: {
       ar: 'ٱتَّقَىٰ', reading: 'ittaqā', metaRu: 'глагол VIII формы', metaEn: 'Form VIII verb',
-      ru: 'تَقْوَىٰ (taqwā) происходит от глагола ٱتَّقَىٰ (ittaqā). Этот глагол означает: беречь / защищать себя, остерегаться, ограждать себя от чего-либо. تَقْوَىٰ (taqwā) описывает это действие уже как состояние или качество человека.',
-      en: 'تَقْوَىٰ (taqwā) comes from the verb ٱتَّقَىٰ (ittaqā). This verb means: to guard or protect oneself, be cautious, or guard oneself against something. تَقْوَىٰ (taqwā) describes that action as a state or quality of a person.',
+      ru: 'تَقْوَىٰ (taqwā) происходит от глагола ٱتَّقَىٰ (ittaqā).',
+      en: 'تَقْوَىٰ (taqwā) comes from the verb ٱتَّقَىٰ (ittaqā).',
     },
     pattern: {
       ar: 'اِفْتَعَلَ', reading: 'iftaʿala',
-      ru: { title: 'VIII форма глагола', text: '' },
-      en: { title: 'Form VIII verb', text: '' },
+      ru: { title: 'VIII форма', text: '' },
+      en: { title: 'Form VIII', text: '' },
     },
+    formation: {
+      ru: 'تَقْوَىٰ (taqwā) происходит от глагола ٱتَّقَىٰ (ittaqā). ٱتَّقَىٰ означает: беречь / защищать себя, остерегаться, ограждать себя от чего-либо. تَقْوَىٰ описывает это действие как состояние или качество человека.',
+      en: 'تَقْوَىٰ (taqwā) comes from the verb ٱتَّقَىٰ (ittaqā). ٱتَّقَىٰ means: to guard or protect oneself, be cautious, or guard oneself against something. تَقْوَىٰ describes this action as a state or quality of a person.',
+    },
+    evolution: [
+      { ar: 'و ق ي', reading: 'w-q-y', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'وَقَىٰ', reading: 'waqā', metaRu: 'глагол I формы · защищать, оберегать', metaEn: 'Form I verb · to protect, guard' },
+      { ar: 'ٱتَّقَىٰ', reading: 'ittaqā', metaRu: 'глагол VIII формы · беречь / защищать себя, остерегаться', metaEn: 'Form VIII verb · guard/protect oneself, be cautious' },
+      { ar: 'تَقْوَىٰ', reading: 'taqwā', metaRu: 'существительное · состояние или качество', metaEn: 'noun · state or quality' },
+    ],
   },
 
   atqa: {
