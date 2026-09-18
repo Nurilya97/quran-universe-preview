@@ -2225,3 +2225,93 @@
     line-height: 1.48;
   }
 }
+
+/* Focus polish: real background blur + white dotted connectors */
+.ayah-space-shell.has-word-focus .ayah-space-viewport {
+  filter: blur(7px) brightness(.24) saturate(.58);
+  transform: scale(1.035);
+  transition: filter .24s ease, transform .24s ease;
+}
+.ayah-space-shell.has-word-focus .ayah-space-world {
+  filter: none;
+}
+.analysis-focus-overlay {
+  background: rgba(1, 2, 3, .58);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Replace coloured SVG rays with card-anchored dotted connectors */
+.analysis-focus-rays {
+  display: none;
+}
+.analysis-focus-callout {
+  overflow: visible;
+}
+.analysis-callout-page {
+  overflow: hidden;
+}
+.analysis-focus-callout::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  opacity: .88;
+}
+.analysis-focus-callout.morph::after {
+  right: -70px;
+  bottom: 30px;
+  width: 78px;
+  border-top: 1px dotted rgba(255,255,255,.78);
+  transform: rotate(24deg);
+  transform-origin: left center;
+}
+.analysis-focus-callout.syntax::after {
+  left: -70px;
+  bottom: 30px;
+  width: 78px;
+  border-top: 1px dotted rgba(255,255,255,.78);
+  transform: rotate(-24deg);
+  transform-origin: right center;
+}
+.analysis-focus-callout.semantic::after {
+  left: 50%;
+  top: -54px;
+  height: 46px;
+  border-left: 1px dotted rgba(255,255,255,.78);
+  transform: translateX(-50%);
+}
+
+.analysis-focus-word span {
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(255,255,255,.38), 0 0 34px rgba(255,255,255,.16);
+}
+
+@media (max-width: 760px) {
+  .ayah-space-shell.has-word-focus .ayah-space-viewport {
+    filter: blur(8px) brightness(.20) saturate(.52);
+    transform: scale(1.045);
+  }
+
+  .analysis-focus-overlay {
+    background: rgba(1, 2, 3, .66);
+  }
+
+  .analysis-focus-callout.morph::after {
+    right: -52px;
+    bottom: 24px;
+    width: 60px;
+    transform: rotate(27deg);
+  }
+
+  .analysis-focus-callout.syntax::after {
+    left: -52px;
+    bottom: 24px;
+    width: 60px;
+    transform: rotate(-27deg);
+  }
+
+  .analysis-focus-callout.semantic::after {
+    top: -42px;
+    height: 36px;
+  }
+}
