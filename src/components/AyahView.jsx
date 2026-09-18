@@ -151,7 +151,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
   const meaning = detail?.meaning
 
   return <div className="analysis-focus-overlay" onClick={onClose}>
-    <div className="analysis-focus-space" onClick={(event) => event.stopPropagation()}>
+    <div className="analysis-focus-space" onClick={onClose}>
       <button className="analysis-focus-close" onClick={onClose} aria-label={ru ? 'Закрыть разбор' : 'Close analysis'}>×</button>
 
       <div className="analysis-focus-word">
@@ -165,7 +165,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
         <path className="semantic" d="M 500 335 C 500 405, 500 465, 500 530" />
       </svg>
 
-      <section className="analysis-focus-callout morph">
+      <section className="analysis-focus-callout morph" onClick={(event) => event.stopPropagation()}>
         <small>{ru ? 'МОРФОЛОГИЯ' : 'MORPHOLOGY'}</small>
         <strong>{ru ? 'Из чего состоит слово' : 'How the word is built'}</strong>
         {morphology?.parts?.length
@@ -180,7 +180,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
         {morphology?.text && <p className="analysis-detail-text">{morphology.text}</p>}
       </section>
 
-      <section className="analysis-focus-callout syntax">
+      <section className="analysis-focus-callout syntax" onClick={(event) => event.stopPropagation()}>
         <small>{ru ? 'СИНТАКСИС' : 'SYNTAX'}</small>
         <strong>{ru ? 'Что делает слово в предложении' : 'What the word does in the sentence'}</strong>
         {syntax?.plain && <p className="analysis-syntax-plain">{syntax.plain}</p>}
@@ -192,7 +192,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
         {!syntax && selectedBlock && <p className="analysis-detail-text">{selectedBlock[language].text}</p>}
       </section>
 
-      <section className="analysis-focus-callout semantic">
+      <section className="analysis-focus-callout semantic" onClick={(event) => event.stopPropagation()}>
         <small>{ru ? 'ЗНАЧЕНИЕ' : 'MEANING'}</small>
         <strong>{meaning?.gloss || (ru ? selected.ru : selected.en)}</strong>
         {meaning?.description
