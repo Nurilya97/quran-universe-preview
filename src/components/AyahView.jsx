@@ -18,7 +18,13 @@ function ResetIcon() {
 const WORLD = { width: 2500, height: 1900 }
 const BLOCK_Y = [300, 620, 940, 1260, 1580]
 const WORD_GAP = 152
-const PAN_LIMIT = { x: 360, y: 310 }
+const VIEW_BOUNDS = {
+  analysis: { left: 230, right: 2270, top: 30, bottom: 1820 },
+  composition: { left: 430, right: 2070, top: 40, bottom: 1840 },
+  rhetoric: { left: 300, right: 2200, top: 40, bottom: 1780 },
+  sound: { left: 300, right: 2200, top: 40, bottom: 1780 },
+  translations: { left: 300, right: 2200, top: 40, bottom: 1760 },
+}
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value))
@@ -263,6 +269,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack }) {
   const [camera, setCamera] = useState(() => ({ x: 0, y: 0, scale: defaultScale() }))
   const pointers = useRef(new Map())
   const gesture = useRef(null)
+  const viewportRef = useRef(null)
 
   useEffect(() => {
     setMode('analysis')
@@ -286,16 +293,33 @@ export function AyahView({ reference, focusWordIndex, language, onBack }) {
     ['translations', ru ? 'Переводы' : 'Translations'],
   ]
 
-  function clampCamera(next) {
-    return {
-      x: clamp(next.x, -PAN_LIMIT.x, PAN_LIMIT.x),
-      y: clamp(next.y, -PAN_LIMIT.y, PAN_LIMIT.y),
-      scale: clamp(next.scale, .48, 1.08),
-    }
+  function clampCamera(next, targetMode = mode) {
+    const scale = clamp(next.scale, .48, 1.08)
+    const viewport = viewportRef.current?.getBoundingClientRect()
+    if (!viewport) return { x: next.x, y: next.y, scale }
+
+    const bounds = VIEW_BOUNDS[targetMode] || VIEW_BOUNDS.analysis
+    const cx = viewport.width / 2
+    const cy = viewport.height / 2
+    const worldCx = WORLD.width / 2
+    const worldCy = WORLD.height / 2
+    const safeX = Math.min(90, viewport.width * .22)
+    const safeY = Math.min(110, viewport.height * .22)
+
+    const minX = safeX - cx - (bounds.right - worldCx) * scale
+    const maxX = viewport.width - safeX - cx - (bounds.left - worldCx) * scale
+    const minY = safeY - cy - (bounds.bottom - worldCy) * scale
+    const maxY = viewport.height - safeY - cy - (bounds.top - worldCy) * scale
+
+    const x = minX > maxX ? (minX + maxX) / 2 : clamp(next.x, minX, maxX)
+    const y = minY > maxY ? (minY + maxY) / 2 : clamp(next.y, minY, maxY)
+
+    return { x, y, scale }
   }
 
-  function resetCamera() {
-    setCamera({ x: 0, y: 0, scale: defaultScale() })
+  function resetCamera(targetMode = mode) {
+    const scale = defaultScale()
+    setCamera(clampCamera({ x: 0, y: 0, scale }, targetMode))
   }
 
   function zoomBy(delta) {
@@ -354,7 +378,10 @@ export function AyahView({ reference, focusWordIndex, language, onBack }) {
   function changeMode(nextMode) {
     setMode(nextMode)
     setSelectedWord(null)
-    setCamera({ x: 0, y: 0, scale: defaultScale() })
+    const scale = defaultScale()
+    requestAnimationFrame(() => {
+      setCamera(clampCamera({ x: 0, y: 0, scale }, nextMode))
+    })
   }
 
   return <section className="ayah-space-shell">
@@ -374,12 +401,14 @@ export function AyahView({ reference, focusWordIndex, language, onBack }) {
     </aside>}
 
     <div
+      ref={viewportRef}
       className="ayah-space-viewport"
       onWheel={onWheel}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerUp}
+      onDoubleClick={() => resetCamera()}
       onClick={() => selectedWord && setSelectedWord(null)}
     >
       <div className="ayah-space-grid" aria-hidden="true" />
@@ -396,7 +425,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack }) {
       <button onClick={resetCamera}><ResetIcon /></button>
     </div>
 
-    <div className="ayah-space-hint">{ru ? 'Перемещайте схему · масштаб ограничен рабочей областью' : 'Move the diagram · zoom stays inside the workspace'}</div>
+    <div className="ayah-space-hint">{ru ? 'Перемещайте схему · края удерживают вас внутри разбора · двойное нажатие возвращает центр' : 'Move the diagram · bounded edges keep the analysis in view · double tap resets'}</div>
 
     <a className="ayah-space-source" href={ayah.greentechUrl} target="_blank" rel="noopener noreferrer">
       Al Quran · Greentech <ExternalIcon />
