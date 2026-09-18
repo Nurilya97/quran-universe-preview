@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Cosmos } from './Cosmos.jsx'
 import { COPY, FORMS, ROOT_ORBITS, findWord, resolveQuery, rootPosition } from '../demo.js'
 import { RootDetails, WordDetails } from './WordDetails.jsx'
+import { AyahView } from './AyahView.jsx'
 import './ImmersiveUniverse.css'
 
 function Icon({ name }) {
@@ -31,6 +32,7 @@ export function ImmersiveUniverse() {
   const [error, setError] = useState(false)
   const [panel, setPanel] = useState(null)
   const [paused, setPaused] = useState(false)
+  const [ayahFocus, setAyahFocus] = useState(null)
   const [reducedMotion, setReducedMotion] = useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches)
   const timer = useRef(null)
   const dialog = useRef(null)
@@ -69,6 +71,18 @@ export function ImmersiveUniverse() {
     requestAnimationFrame(() => panelTrigger.current?.focus?.({ preventScroll: true }))
   }
 
+  function openAyah(item) {
+    setPanel(null)
+    setAyahFocus({ reference: item.sura + ':' + item.ayah, wordIndex: item.word })
+    setScene('ayah')
+  }
+
+  function closeAyah() {
+    setAyahFocus(null)
+    setScene('word')
+    requestAnimationFrame(() => destinationHeading.current?.focus?.({ preventScroll: true }))
+  }
+
   function travel(destination, nextWord = word) {
     if (journey) return
     setPanel(null)
@@ -91,6 +105,7 @@ export function ImmersiveUniverse() {
     setJourney(null)
     setPanel(null)
     setScene('search')
+    setAyahFocus(null)
     setQuery('')
     setError(false)
     setFocused(false)
@@ -174,6 +189,8 @@ export function ImmersiveUniverse() {
       <p className="scene-label">{t.orbit}</p>
     </section>}
 
+    {scene === 'ayah' && !journey && ayahFocus && <AyahView reference={ayahFocus.reference} focusWordIndex={ayahFocus.wordIndex} language={language} onBack={closeAyah} />}
+
     {scene === 'root' && !journey && <section className="root-stage stage-reveal" aria-label={t.rootSpace}>
       <div className="root-intro"><p className="eyebrow">{t.families}</p></div>
       <div className="root-field">
@@ -211,7 +228,7 @@ export function ImmersiveUniverse() {
         </header>
         {panel !== 'forms' && panel !== 'structure' && <div className="sheet-word-label"><p className="sheet-word" lang="ar" dir="rtl">{panel === 'root' ? 'و ق ي' : word.arabic}</p><small className="transliteration" lang="ar-Latn" dir="ltr">{panel === 'root' ? 'w-q-y' : word.reading}</small></div>}
         {panel === 'root' && <RootDetails language={language} />}
-        {['quran', 'structure', 'meaning'].includes(panel) && <WordDetails key={word.id + panel} word={word} panel={panel} language={language} onPick={form => travel('word', form)} />}
+        {['quran', 'structure', 'meaning'].includes(panel) && <WordDetails key={word.id + panel} word={word} panel={panel} language={language} onPick={form => travel('word', form)} onOpenAyah={openAyah} />}
         {panel === 'forms' && <>{ROOT_ORBITS.map((family) => <section className="form-family" key={family.id}>
           <h3>{t[family.label]}</h3>{FORMS.filter((form) => form.orbit === family.id).map((form) => <button key={form.id} onClick={() => travel('word', form)}>
             <span className="word-label"><span className="arabic" lang="ar" dir="rtl">{form.arabic}</span><small className="transliteration" lang="ar-Latn" dir="ltr">{form.reading}</small></span><span>{t[form.type]}{form.lexicalOnly && <small className="lexical-tag">{t.lexical}</small>}</span><Icon name="arrow" /></button>)}
