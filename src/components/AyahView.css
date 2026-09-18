@@ -1,13 +1,13 @@
 .ayah-stage {
   position: relative;
   z-index: 3;
-  width: min(1240px, calc(100vw - 44px));
-  height: calc(100dvh - 88px);
-  margin: 72px auto 0;
+  width: min(1180px, calc(100vw - 44px));
+  height: calc(100dvh - 86px);
+  margin: 70px auto 0;
   overflow-y: auto;
-  padding: 8px 8px 80px;
+  padding: 8px 8px 90px;
   scrollbar-width: thin;
-  scrollbar-color: #ffffff24 transparent;
+  scrollbar-color: #ffffff20 transparent;
   font-family: var(--ui-font), var(--arabic-font);
 }
 .ayah-stage::before {
@@ -17,7 +17,7 @@
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(circle at 50% 24%, #1c120b7d 0, #0a0d10c7 38%, #050709f2 80%);
+    radial-gradient(circle at 50% 18%, #1930492b 0, #0a0d10c9 38%, #050709f5 80%);
   backdrop-filter: blur(4px);
 }
 .ayah-topbar {
@@ -49,6 +49,7 @@
 .ayah-back:hover,
 .ayah-context-trigger:hover,
 .ayah-context-trigger.is-open { color: #fff; }
+
 .ayah-reference {
   display: flex;
   align-items: baseline;
@@ -68,8 +69,8 @@
   max-width: 760px;
   margin: 0 auto 12px;
   padding: 18px 20px;
-  border: 1px solid #ffffff17;
-  background: #0d1114f0;
+  border: 1px solid #ffffff14;
+  background: #0d1114ee;
   box-shadow: 0 18px 60px #0009;
   backdrop-filter: blur(18px);
 }
@@ -92,29 +93,30 @@
 
 .ayah-kicker {
   margin: 0;
-  color: #8f969c;
+  color: #858e95;
   font-size: 10px;
-  letter-spacing: .08em;
+  letter-spacing: .09em;
   text-transform: uppercase;
 }
 .ayah-hero {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 39vh;
-  padding: clamp(40px, 7vh, 78px) 4vw 44px;
+  min-height: 32vh;
+  padding: clamp(34px, 6vh, 68px) 4vw 28px;
   text-align: center;
 }
+.ayah-hero-diagram { min-height: 30vh; }
 .ayah-arabic {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2px 10px;
   max-width: 1040px;
-  margin-top: 24px;
+  margin-top: 22px;
   font-family: var(--arabic-font), 'Traditional Arabic', serif;
-  font-size: clamp(34px, 4.25vw, 58px);
-  line-height: 1.85;
+  font-size: clamp(33px, 4vw, 56px);
+  line-height: 1.9;
 }
 .ayah-token-static {
   position: relative;
@@ -122,385 +124,296 @@
   white-space: nowrap;
 }
 .ayah-token-static.is-entry-focus {
-  color: #ff8a3d;
-  text-shadow: 0 0 12px #ff8a3d88, 0 0 28px #ff8a3d44;
+  color: #dbeeff;
+  text-shadow: 0 0 12px #b6d7ff77, 0 0 30px #8bbcff33;
 }
 .ayah-token-static.is-entry-focus::after {
   content: '';
   position: absolute;
-  right: 7%;
-  bottom: 1px;
-  left: 7%;
+  right: 8%;
+  bottom: 0;
+  left: 8%;
   height: 1px;
-  background: #ff8a3d;
-  box-shadow: 0 0 9px #ff8a3d;
+  background: #b9d9f3;
+  box-shadow: 0 0 8px #a8d4ff;
 }
-.ayah-focus-line {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 9px;
-  margin-top: 22px;
-  color: #7f878d;
-  font-size: 10px;
-}
-.ayah-focus-line strong {
-  color: #ff8a3d;
-  font-family: var(--arabic-font);
-  font-size: 21px;
-  font-weight: 400;
-}
-.ayah-focus-line small { color: #aeb5ba; font-size: 10px; }
 
-.ayah-tabs {
+.ayah-lenses {
   position: sticky;
   top: 55px;
   z-index: 6;
   display: flex;
   justify-content: center;
-  gap: 2px;
-  margin: 0 auto 30px;
-  padding: 6px;
+  gap: 24px;
   width: fit-content;
   max-width: 100%;
-  border: 1px solid #ffffff10;
-  background: #090c0ee6;
+  margin: 0 auto 30px;
+  padding: 2px 0 9px;
+  background: linear-gradient(90deg, transparent, #080b0edb 13%, #080b0edb 87%, transparent);
   backdrop-filter: blur(14px);
 }
-.ayah-tabs button {
-  min-height: 38px;
-  padding: 0 15px;
+.ayah-lenses button {
+  position: relative;
+  min-height: 36px;
+  padding: 0 2px;
   border: 0;
-  background: transparent;
-  color: #8f969c;
+  background: none;
+  color: #7f8990;
   font: inherit;
   font-size: 11px;
+  letter-spacing: .015em;
 }
-.ayah-tabs button[aria-pressed='true'] {
-  background: #ffffff08;
-  color: #f2f4f5;
+.ayah-lenses button[aria-pressed='true'] { color: #f2f4f5; }
+.ayah-lenses button[aria-pressed='true']::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: #dce5eb;
+  box-shadow: 0 0 8px #c7dce855;
 }
 
 .ayah-workbench {
-  width: min(1080px, 100%);
+  width: min(1020px, 100%);
   margin: 0 auto;
 }
-.ayah-board-intro {
-  max-width: 720px;
-  margin-bottom: 30px;
+.ayah-diagram {
+  padding: 18px 0 0;
 }
-.ayah-board-intro h2,
-.ayah-layer h2,
-.ayah-flow-summary h2 {
-  margin: 12px 0 8px;
+.ayah-diagram-intro {
+  max-width: 700px;
+  margin: 0 0 34px;
+}
+.ayah-diagram-intro h2 {
+  margin: 10px 0 0;
   color: #eef1f3;
-  font-size: 22px;
-  font-weight: 500;
-  line-height: 1.45;
-}
-.ayah-board-intro > p:last-child,
-.ayah-layer > p,
-.ayah-flow-summary > p:last-child {
-  margin: 0;
-  color: #aab1b7;
-  font-size: 14px;
-  line-height: 1.75;
-}
-.ayah-board-steps {
-  display: grid;
-  gap: 34px;
-}
-.ayah-board-step {
-  position: relative;
-  padding: 24px 0 6px;
-  border-top: 1px solid #ffffff14;
-}
-.ayah-board-step-head {
-  display: grid;
-  grid-template-columns: 42px 1fr;
-  gap: 12px;
-  align-items: start;
-  margin-bottom: 18px;
-}
-.ayah-board-step-head > span {
-  color: #5f6870;
-  font-size: 10px;
-  padding-top: 4px;
-}
-.ayah-board-step-head p {
-  margin: 0 0 3px;
-  color: #777f86;
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: .07em;
-}
-.ayah-board-step-head h3 {
-  margin: 0;
-  color: #dfe3e5;
-  font-size: 15px;
-  font-weight: 500;
-}
-
-.ayah-board-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
-  gap: 9px;
-}
-.ayah-board-word {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  min-height: 178px;
-  padding: 14px 13px 12px;
-  border: 1px solid #ffffff0d;
-  border-radius: 8px;
-  background: #ffffff03;
-  color: #d8dde0;
-  text-align: left;
-  font: inherit;
-  transition: border-color .16s ease, background .16s ease, transform .16s ease;
-}
-.ayah-board-word:hover,
-.ayah-board-word:focus-visible {
-  border-color: #ffffff28;
-  background: #ffffff055;
-  outline: none;
-  transform: translateY(-1px);
-}
-.ayah-board-word.is-selected {
-  border-color: #ffffff35;
-  background: #ffffff07;
-}
-.ayah-board-word.is-entry {
-  border-color: #ff8a3d4d;
-  box-shadow: inset 0 0 0 1px #ff8a3d12;
-}
-.ayah-board-index {
-  margin-bottom: 8px;
-  color: #525a60;
-  font-size: 9px;
-  letter-spacing: .05em;
-}
-.ayah-board-ar {
-  width: 100%;
-  color: #f2f4f5;
-  font-family: var(--arabic-font), 'Traditional Arabic', serif;
-  font-size: 31px;
-  line-height: 1.45;
-  text-align: right;
-}
-.ayah-board-word.is-entry .ayah-board-ar {
-  color: #ff8a3d;
-  text-shadow: 0 0 10px #ff8a3d4f;
-}
-.ayah-board-tr {
-  margin-top: 4px;
-  color: #868f96;
-  font-size: 10px;
-}
-.ayah-board-word strong {
-  margin-top: 12px;
-  color: #d8dde0;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.45;
-}
-.ayah-board-word small {
-  margin-top: 6px;
-  color: #727b82;
-  font-size: 9.5px;
+  font-size: 23px;
+  font-weight: 450;
   line-height: 1.4;
+  letter-spacing: -.02em;
 }
-.ayah-board-word em {
-  margin-top: auto;
-  padding-top: 9px;
-  color: #c97a47;
-  font-size: 8.5px;
-  font-style: normal;
-  text-transform: uppercase;
-  letter-spacing: .06em;
+.ayah-diagram-flow {
+  display: grid;
+  gap: 0;
 }
-
-.ayah-construction-bracket {
+.ayah-diagram-unit {
   position: relative;
-  height: 20px;
-  margin: 10px 18px 0;
 }
-.ayah-construction-bracket::before,
-.ayah-construction-bracket::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  width: 1px;
-  height: 10px;
-  background: #ffffff20;
+.ayah-diagram-block {
+  position: relative;
+  padding: 26px 0 14px;
+  border-top: 1px solid #ffffff10;
 }
-.ayah-construction-bracket::before { left: 0; }
-.ayah-construction-bracket::after { right: 0; }
-.ayah-construction-bracket > span {
-  position: absolute;
-  top: 9px;
-  right: 0;
-  left: 0;
-  height: 1px;
-  background: linear-gradient(90deg, #ffffff20, #ffffff35 50%, #ffffff20);
-}
-.ayah-construction-result {
-  max-width: 840px;
-  margin: 0 auto;
-  padding: 0 20px 8px;
-  text-align: center;
-}
-.ayah-construction-result small {
-  color: #737c83;
-  font-size: 9px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-.ayah-construction-result p {
-  margin: 7px 0 0;
-  color: #b7bec3;
-  font-size: 13px;
-  line-height: 1.7;
-}
-
-.ayah-word-deep {
-  margin-top: 18px;
-  padding: 18px 20px 20px;
-  border: 1px solid #ffffff10;
-  border-left-color: #ff8a3d45;
-  background: #0b0f12bd;
-}
-.ayah-word-deep-heading {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 14px;
-}
-.ayah-word-deep-heading > div {
+.ayah-diagram-block-label {
   display: flex;
   align-items: baseline;
   gap: 10px;
+  margin-bottom: 14px;
 }
-.ayah-word-deep-heading span {
-  color: #eef1f3;
-  font-family: var(--arabic-font);
-  font-size: 30px;
-  line-height: 1.4;
+.ayah-diagram-block-label > span {
+  color: #5d6871;
+  font-size: 9px;
+  letter-spacing: .12em;
 }
-.ayah-word-deep-heading small { color: #929aa0; font-size: 10px; }
-.ayah-word-deep-heading > button {
-  width: 30px;
-  height: 30px;
-  border: 0;
-  background: none;
-  color: #727a80;
-  font-size: 20px;
-}
-.ayah-word-deep-role {
-  margin: 5px 0 0;
-  color: #7f888f;
+.ayah-diagram-block-label > small {
+  color: #9099a0;
   font-size: 10px;
+  letter-spacing: .02em;
 }
-.ayah-word-deep h4 {
-  margin: 13px 0 0;
-  color: #d9dde0;
-  font-size: 14px;
-  font-weight: 500;
+
+.ayah-diagram-phrase {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px 13px;
+  margin: 0 auto;
+  padding: 4px 18px 0;
+  color: #f4f6f7;
+  font-family: var(--arabic-font), 'Traditional Arabic', serif;
+  font-size: clamp(31px, 4.3vw, 50px);
+  line-height: 1.8;
 }
-.ayah-word-deep > p:last-child {
+.ayah-diagram-phrase > span {
+  position: relative;
+  white-space: nowrap;
+}
+.ayah-diagram-phrase > span.is-entry-focus {
+  color: #d8edff;
+  text-shadow: 0 0 18px #8fc6ff33;
+}
+.ayah-diagram-phrase > span.is-entry-focus::after {
+  content: '';
+  position: absolute;
+  right: 9%;
+  bottom: 4px;
+  left: 9%;
+  height: 1px;
+  background: #b8d8ef;
+}
+
+.ayah-diagram-meaning {
+  position: relative;
   max-width: 760px;
-  margin: 14px 0 0;
-  color: #aeb5ba;
+  margin: 9px auto 0;
+  padding-top: 39px;
+  text-align: center;
+}
+.ayah-diagram-stem {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 30px;
+  transform: translateX(-50%);
+  background: linear-gradient(#dce7ef5e, #dce7ef12);
+}
+.ayah-diagram-meaning::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 27px;
+  width: 5px;
+  height: 5px;
+  border-right: 1px solid #b8c6d0;
+  border-bottom: 1px solid #b8c6d0;
+  transform: translateX(-50%) rotate(45deg);
+}
+.ayah-diagram-meaning p {
+  margin: 0;
+  color: #bcc3c8;
   font-size: 13px;
-  line-height: 1.7;
+  line-height: 1.75;
 }
-.ayah-root-chip {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 9px;
-  margin-top: 12px;
-  padding: 7px 10px;
-  border: 1px solid #ffffff0f;
-  color: #8e969c;
-  font-size: 10px;
+
+.ayah-diagram-branches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+  gap: 18px 12px;
+  margin: 16px auto 0;
+  padding: 30px 0 4px;
+  direction: rtl;
 }
-.ayah-root-chip strong {
-  color: #d9dde0;
+.ayah-diagram-branch {
+  position: relative;
+  min-width: 0;
+  padding-top: 22px;
+  text-align: center;
+  direction: ltr;
+}
+.ayah-diagram-branch-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 16px;
+  transform: translateX(-50%);
+  background: #dbe6ee32;
+}
+.ayah-diagram-branch-line::after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  bottom: -1px;
+  width: 4px;
+  height: 4px;
+  border-right: 1px solid #93a1ac;
+  border-bottom: 1px solid #93a1ac;
+  transform: rotate(45deg);
+}
+.ayah-diagram-branch strong {
+  display: block;
+  color: #edf1f3;
   font-family: var(--arabic-font);
-  font-size: 18px;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.45;
+}
+.ayah-diagram-branch > small {
+  display: block;
+  margin-top: 5px;
+  color: #858f96;
+  font-size: 9.5px;
+  line-height: 1.45;
+}
+.ayah-diagram-grammar .ayah-diagram-branch > small {
+  max-width: 145px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.ayah-diagram-morphology .ayah-diagram-branch > p {
+  margin: 7px 0 0;
+  color: #909aa1;
+  font-size: 10px;
+  line-height: 1.5;
+}
+.ayah-diagram-morphology .ayah-diagram-branch > p span {
+  color: #6f7a82;
+  margin-right: 4px;
+}
+.ayah-diagram-morphology .ayah-diagram-branch > p b {
+  color: #d7dfe4;
+  font-family: var(--arabic-font);
+  font-size: 17px;
   font-weight: 400;
 }
-.ayah-root-chip small { font-size: 10px; color: #9fa6ac; }
-
-.ayah-flow-summary {
-  margin-top: 42px;
-  padding: 26px 0 8px;
-  border-top: 1px solid #ffffff15;
-}
-.ayah-flow-summary > p:last-child { max-width: 860px; }
-
-.ayah-layer {
-  padding: 24px 0 10px;
-  border-top: 1px solid #ffffff15;
-}
-.ayah-layer-list {
-  display: grid;
-  gap: 0;
-  margin-top: 20px;
-}
-.ayah-layer-list article {
-  padding: 18px 0;
-  border-top: 1px solid #ffffff0c;
-}
-.ayah-layer-list h3,
-.ayah-composition-flow h3 {
-  margin: 0;
-  color: #e1e4e6;
-  font-size: 14px;
-  font-weight: 500;
-}
-.ayah-layer-list p,
-.ayah-composition-flow p {
-  margin: 8px 0 0;
-  color: #9fa7ad;
-  font-size: 13px;
-  line-height: 1.7;
+.ayah-diagram-morphology .ayah-diagram-branch > p em {
+  margin-left: 5px;
+  color: #77828a;
+  font-size: 9px;
+  font-style: normal;
 }
 
-.ayah-composition-flow {
-  display: grid;
-  gap: 0;
-  margin-top: 22px;
-}
-.ayah-composition-flow article {
+.ayah-diagram-next {
   position: relative;
-  display: grid;
-  grid-template-columns: 42px 1fr;
-  gap: 14px;
-  padding: 20px 0 24px;
-  border-top: 1px solid #ffffff0c;
+  height: 68px;
 }
-.ayah-composition-flow article > span {
-  color: #5f6870;
-  font-size: 10px;
-  padding-top: 3px;
-}
-.ayah-composition-flow article:not(:last-child)::after {
-  content: '↓';
+.ayah-diagram-next > span {
   position: absolute;
-  left: 13px;
-  bottom: -7px;
-  color: #596168;
-  font-size: 11px;
+  left: 50%;
+  top: 7px;
+  bottom: 18px;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(#dce7ef18, #dce7ef46);
+}
+.ayah-diagram-next > b {
+  position: absolute;
+  left: 50%;
+  bottom: 3px;
+  transform: translateX(-50%);
+  color: #7c8992;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.ayah-diagram-whole {
+  position: relative;
+  max-width: 820px;
+  margin: 36px auto 0;
+  padding: 42px 0 8px;
+  text-align: center;
+  border-top: 1px solid #ffffff10;
+}
+.ayah-diagram-whole .ayah-diagram-stem {
+  top: 7px;
+  height: 24px;
+}
+.ayah-diagram-whole > p:last-child {
+  margin: 9px 0 0;
+  color: #aeb6bc;
+  font-size: 13px;
+  line-height: 1.75;
 }
 
 .ayah-greentech-link {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
   align-items: center;
   gap: 7px;
-  margin: 38px auto 0;
-  color: #9ea6ac;
+  margin: 42px auto 0;
+  color: #8f989e;
   font-size: 11px;
   text-decoration: none;
 }
@@ -552,48 +465,57 @@
     padding: 15px 16px;
   }
   .ayah-hero {
-    min-height: 40vh;
-    padding: 40px 0 32px;
+    min-height: 29vh;
+    padding: 34px 0 24px;
   }
   .ayah-arabic {
     gap: 1px 7px;
-    font-size: clamp(29px, 8.2vw, 40px);
+    font-size: clamp(28px, 8vw, 40px);
     line-height: 1.9;
   }
-  .ayah-tabs {
+  .ayah-lenses {
     top: 52px;
     width: 100%;
-    overflow-x: auto;
-    justify-content: flex-start;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
   }
-  .ayah-tabs button {
-    flex: 0 0 auto;
-    padding: 0 12px;
+  .ayah-diagram-intro h2 {
+    font-size: 20px;
   }
-  .ayah-board-grid {
+  .ayah-diagram-block {
+    padding-top: 22px;
+  }
+  .ayah-diagram-phrase {
+    padding-right: 0;
+    padding-left: 0;
+    gap: 1px 9px;
+    font-size: clamp(30px, 9vw, 42px);
+  }
+  .ayah-diagram-meaning {
+    padding-top: 34px;
+  }
+  .ayah-diagram-branches {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 10px;
+    padding-top: 24px;
   }
-  .ayah-board-word {
-    min-height: 164px;
-    padding: 12px 11px;
-  }
-  .ayah-board-ar { font-size: 27px; }
-  .ayah-board-step-head {
-    grid-template-columns: 30px 1fr;
-    gap: 8px;
-  }
-  .ayah-construction-result {
-    padding-right: 4px;
-    padding-left: 4px;
-  }
-  .ayah-word-deep {
-    padding: 15px 16px 17px;
+  .ayah-diagram-branch strong {
+    font-size: 21px;
   }
 }
 
-@media (max-width: 420px) {
-  .ayah-board-grid { grid-template-columns: 1fr 1fr; gap: 7px; }
-  .ayah-board-word { min-height: 154px; }
-  .ayah-board-word strong { font-size: 11.5px; }
-  .ayah-board-word small { font-size: 9px; }
+@media (max-width: 430px) {
+  .ayah-lenses {
+    gap: 16px;
+  }
+  .ayah-lenses button {
+    font-size: 10.5px;
+  }
+  .ayah-diagram-branches {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .ayah-diagram-branch > small {
+    font-size: 9px;
+  }
 }
