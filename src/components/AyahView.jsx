@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getAyahPrototype } from '../ayahPrototype.js'
 import './AyahView.css'
 
@@ -36,7 +36,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack }) {
   }
 
   const selected = ayah.tokens[selectedWord - 1]
-  const relatedRootIndexes = useMemo(() => ayah.tokens.map((token, i) => token.root === ayah.focusRoot ? i + 1 : null).filter(Boolean), [ayah])
+  const relatedRootIndexes = ayah.tokens.map((token, i) => token.root === ayah.focusRoot ? i + 1 : null).filter(Boolean)
   const currentBlock = ayah.blocks.find(block => selectedWord >= block.range[0] && selectedWord <= block.range[1])
 
   const tabs = [
