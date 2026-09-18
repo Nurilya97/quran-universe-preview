@@ -57,49 +57,49 @@ export const WORD_CONTENT = {
       en: ['A noun naming a quality or state. It is related to ٱتَّقَىٰ, but is not itself a Form VIII verb.', 'The common analysis shown here uses فَعْلَى. The initial ت corresponds to the root’s و; a change involving the final ي contributes to ـوَى. The root therefore remains و ق ي despite the visible ت.', 'Dictionaries also record other accounts of its historical formation. Orbit VIII represents the derivational family, not a verb-form number assigned to the noun.'],
     },
     meaning: {
-      ru: { lead: 'تَقْوَىٰ (taqwā) — состояние и качество осознанного остережения, направленного на защиту себя от вреда и недолжного.', body: 'Слово происходит от ٱتَّقَىٰ (ittaqā) — беречь / защищать себя, остерегаться, ограждать себя от чего-либо. Поэтому в основе تَقْوَىٰ (taqwā) лежит не просто знание или страх, а внутренняя защитная направленность, которая влияет на выбор и поступки человека.' },
-      en: { lead: 'تَقْوَىٰ (taqwā) is a state and quality of conscious caution directed toward guarding oneself from harm and wrongdoing.', body: 'The word is related to ٱتَّقَىٰ (ittaqā) — to guard or protect oneself, be cautious, and guard oneself against something. تَقْوَىٰ (taqwā) therefore points not simply to awareness or fear, but to an inner protective orientation that shapes a person’s choices and actions.' },
+      ru: { lead: 'تَقْوَىٰ (taqwā) — состояние осознанного остережения перед Всевышним: человек помнит о Нём, держит в сознании установленные Им границы и оберегает себя, не выходя за пределы дозволенного.', body: 'Слово связано с ٱتَّقَىٰ (ittaqā) — беречь / защищать себя, остерегаться, ограждать себя от чего-либо. Поэтому механизм تَقْوَىٰ (taqwā) можно увидеть как последовательность: осознание перед Всевышним → распознавание границы или возможного вреда → остережение → защитный выбор и действие. Из этого уже вырастают проявления качества и его последствия.' },
+      en: { lead: 'تَقْوَىٰ (taqwā) is a state of conscious caution before the Most High: a person keeps Him in mind, remains aware of the boundaries He has set, and guards themselves by staying within what is permitted.', body: 'The word is related to ٱتَّقَىٰ (ittaqā) — to guard or protect oneself, be cautious, and guard oneself against something. The mechanism of تَقْوَىٰ (taqwā) can therefore be seen as a sequence: awareness before the Most High → recognising a boundary or possible harm → caution → a protective choice and action. Its manifestations and outcomes grow from this mechanism.' },
     },
     meaningMap: [
       {
         id: 'mechanism',
-        ru: { title: 'Ближе к механизму', description: 'Эти варианты передают саму внутреннюю защитную направленность تَقْوَىٰ (taqwā).', items: [
+        ru: { title: 'Механизм', description: 'Эти варианты передают саму внутреннюю защитную направленность تَقْوَىٰ (taqwā).', items: [
           { term: 'Осознанное остережение', definition: 'Состояние, при котором человек понимает, от чего ему нужно себя уберечь, и сознательно удерживает защитную позицию в выборе и поступках.' },
-          { term: 'Оберегание себя', definition: 'Активная направленность на то, чтобы не допустить вредного или недолжного до себя.' },
+          { term: 'Оберегание себя', definition: 'Активная направленность на то, чтобы не допустить вреда до себя и не выходить за установленные границы.' },
         ] },
-        en: { title: 'Closer to the mechanism', description: 'These renderings express the inner protective orientation of تَقْوَىٰ (taqwā).', items: [
+        en: { title: 'Mechanism', description: 'These renderings express the inner protective orientation of تَقْوَىٰ (taqwā).', items: [
           { term: 'Conscious caution', definition: 'A state in which a person understands what they need to guard against and deliberately maintains a protective stance in choices and actions.' },
           { term: 'Self-guarding', definition: 'An active orientation toward preventing harm or wrongdoing from reaching oneself.' },
         ] },
       },
       {
         id: 'component',
-        ru: { title: 'Составная часть механизма', description: 'Эти понятия помогают объяснить, как работает تَقْوَىٰ (taqwā), но не исчерпывают её значение.', items: [
-          { term: 'Осознанность', definition: 'Способность замечать и понимать последствия, границы и риски. Она позволяет распознать, от чего нужно себя уберечь, но сама по себе ещё не является всей تَقْوَىٰ (taqwā).' },
+        ru: { title: 'Составные части механизма', description: 'Эти понятия помогают объяснить, как работает تَقْوَىٰ (taqwā), но не исчерпывают её значение.', items: [
+          { term: 'Осознанность', definition: 'Помнить о Всевышнем, держать в сознании установленные Им границы и понимать последствия выбора. Такая осознанность помогает человеку вовремя распознать, где нужно остановиться и от чего себя уберечь.' },
           { term: 'Осторожность', definition: 'Внимательность к возможному вреду и склонность действовать так, чтобы его избежать. Это один из практических элементов защитной позиции.' },
         ] },
-        en: { title: 'A component of the mechanism', description: 'These concepts help explain how تَقْوَىٰ (taqwā) works but do not exhaust its meaning.', items: [
-          { term: 'Awareness', definition: 'The ability to notice and understand consequences, boundaries, and risks. It helps a person recognise what to guard against but is not the whole of تَقْوَىٰ (taqwā).' },
+        en: { title: 'Components of the mechanism', description: 'These concepts help explain how تَقْوَىٰ (taqwā) works but do not exhaust its meaning.', items: [
+          { term: 'Awareness', definition: 'Keeping the Most High in mind, remaining aware of the boundaries He has set, and understanding the consequences of one’s choices. This awareness helps a person recognise when to stop and what to guard against.' },
           { term: 'Caution', definition: 'Attentiveness to possible harm and a tendency to act so as to avoid it. It is one practical element of the protective stance.' },
         ] },
       },
       {
         id: 'manifestation',
-        ru: { title: 'Проявление', description: 'Так تَقْوَىٰ (taqwā) может проявляться в общей характеристике человека и его поступках.', items: [
+        ru: { title: 'Проявления', description: 'Так تَقْوَىٰ (taqwā) может проявляться в общей характеристике человека и его поступках.', items: [
           { term: 'Праведность', definition: 'Соответствие убеждений и поступков нравственно правильному и предписанному. Праведность может быть проявлением تَقْوَىٰ (taqwā), но не объясняет её защитный механизм.' },
           { term: 'Благочестие', definition: 'Религиозная преданность, выраженная в поведении и соблюдении обязанностей. Это широкое проявление качества, а не его полное определение.' },
         ] },
-        en: { title: 'Manifestation', description: 'This is how تَقْوَىٰ (taqwā) may appear in a person’s conduct and broader character.', items: [
+        en: { title: 'Manifestations', description: 'This is how تَقْوَىٰ (taqwā) may appear in a person’s conduct and broader character.', items: [
           { term: 'Righteousness', definition: 'Alignment of beliefs and actions with what is morally right and prescribed. It can manifest تَقْوَىٰ (taqwā) without explaining its protective mechanism.' },
           { term: 'Piety', definition: 'Religious devotion expressed in behaviour and observance. It is a broad manifestation of the quality rather than its complete definition.' },
         ] },
       },
       {
         id: 'result',
-        ru: { title: 'Следствие', description: 'Это то, к чему защитная направленность может привести.', items: [
+        ru: { title: 'Следствия', description: 'Это то, к чему защитная направленность может привести.', items: [
           { term: 'Защищённость / сохранение от вреда', definition: 'Результат, при котором вред не достигает человека или человек удерживается от того, что ведёт к вреду.' },
         ] },
-        en: { title: 'Result', description: 'This is what the protective orientation may lead to.', items: [
+        en: { title: 'Outcomes', description: 'This is what the protective orientation may lead to.', items: [
           { term: 'Protection / preservation from harm', definition: 'An outcome in which harm does not reach the person or the person is kept from what leads to harm.' },
         ] },
       },
@@ -131,41 +131,41 @@ export const WORD_CONTENT = {
     meaningMap: [
       {
         id: 'mechanism',
-        ru: { title: 'Ближе к механизму', description: 'Эти варианты передают саму защитную направленность действия ٱتَّقَىٰ (ittaqā).', items: [
+        ru: { title: 'Механизм', description: 'Эти варианты передают саму защитную направленность действия ٱتَّقَىٰ (ittaqā).', items: [
           { term: 'Остерегающиеся', definition: 'Те, кто распознают то, от чего нужно себя уберечь, и сознательно держатся от этого в стороне.' },
-          { term: 'Оберегающие себя', definition: 'Те, кто занимают активную защитную позицию и действуют так, чтобы вред или недолжное не достигли их.' },
+          { term: 'Оберегающие себя', definition: 'Те, кто занимают активную защитную позицию, помнят о границах дозволенного и действуют так, чтобы не допустить вреда до себя.' },
         ] },
-        en: { title: 'Closer to the mechanism', description: 'These renderings express the protective orientation of ٱتَّقَىٰ (ittaqā) itself.', items: [
+        en: { title: 'Mechanism', description: 'These renderings express the protective orientation of ٱتَّقَىٰ (ittaqā) itself.', items: [
           { term: 'Those who are cautious', definition: 'People who recognise what they need to guard against and deliberately keep away from it.' },
           { term: 'Those who guard themselves', definition: 'People who take an active protective stance and act so that harm or wrongdoing does not reach them.' },
         ] },
       },
       {
         id: 'component',
-        ru: { title: 'Составная часть механизма', description: 'Это помогает механизму работать, но не исчерпывает значение слова.', items: [
-          { term: 'Осознанные', definition: 'Люди, которые замечают и понимают значимые последствия, границы и риски и удерживают их в поле внимания. Осознанность помогает выбрать защитное действие.' },
+        ru: { title: 'Составные части механизма', description: 'Это помогает механизму работать, но не исчерпывает значение слова.', items: [
+          { term: 'Осознанные', definition: 'Люди, которые помнят о Всевышнем, держат в сознании установленные Им границы и учитывают последствия своих решений. Такая осознанность помогает выбрать защитное действие.' },
         ] },
-        en: { title: 'A component of the mechanism', description: 'This helps the mechanism operate but does not exhaust the meaning of the word.', items: [
+        en: { title: 'Components of the mechanism', description: 'This helps the mechanism operate but does not exhaust the meaning of the word.', items: [
           { term: 'Mindful / aware', definition: 'People who notice and understand relevant consequences, boundaries, and risks and keep them in view. Awareness supports protective action.' },
         ] },
       },
       {
         id: 'manifestation',
-        ru: { title: 'Проявление', description: 'Так качество может проявляться в поступках и общей характеристике человека.', items: [
+        ru: { title: 'Проявления', description: 'Так качество может проявляться в поступках и общей характеристике человека.', items: [
           { term: 'Праведные', definition: 'Люди, чьи убеждения и поступки соответствуют нравственно правильному и предписанному. Праведность показывает проявление تَقْوَىٰ (taqwā), но не объясняет сам защитный механизм.' },
           { term: 'Благочестивые', definition: 'Люди, чья религиозная преданность выражается в поведении и соблюдении обязанностей. Это широкая характеристика проявления качества.' },
         ] },
-        en: { title: 'Manifestation', description: 'This is how the quality can appear in conduct and in a broader description of the person.', items: [
+        en: { title: 'Manifestations', description: 'This is how the quality can appear in conduct and in a broader description of the person.', items: [
           { term: 'Righteous', definition: 'People whose beliefs and actions accord with what is morally right and prescribed. Righteousness can manifest تَقْوَىٰ (taqwā) without defining its protective mechanism.' },
           { term: 'Pious', definition: 'People whose religious devotion is expressed in conduct and observance. This is a broad characterisation of how the quality may appear.' },
         ] },
       },
       {
         id: 'result',
-        ru: { title: 'Следствие', description: 'Это уже результат защитной позиции, а не прямой перевод مُتَّقِينَ (muttaqīn).', items: [
+        ru: { title: 'Следствия', description: 'Это уже результат защитной позиции, а не прямой перевод مُتَّقِينَ (muttaqīn).', items: [
           { term: 'Защищённость / сохранение от вреда', definition: 'Состояние, при котором вред не достигает человека или человек удерживается от того, что ведёт к вреду. Это возможный результат تَقْوَىٰ (taqwā), а не значение самого причастия.' },
         ] },
-        en: { title: 'Result', description: 'This is an outcome of the protective stance, not a direct translation of مُتَّقِينَ (muttaqīn).', items: [
+        en: { title: 'Outcomes', description: 'This is an outcome of the protective stance, not a direct translation of مُتَّقِينَ (muttaqīn).', items: [
           { term: 'Protection / preservation from harm', definition: 'A state in which harm does not reach a person or the person is kept from what leads to harm. This can be an outcome of تَقْوَىٰ (taqwā), not the meaning of the participle itself.' },
         ] },
       },
