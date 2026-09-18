@@ -18,8 +18,11 @@ function ResetIcon() {
 const WORLD = { width: 2500, height: 1900 }
 const BLOCK_Y = [300, 620, 940, 1260, 1580]
 const WORD_GAP = 152
+const ANALYSIS_ROW_Y = [520, 850, 1180]
+const ANALYSIS_ROW_COUNTS = [10, 10, 9]
+const ANALYSIS_WORD_GAP = 180
 const VIEW_BOUNDS = {
-  analysis: { left: 230, right: 2270, top: 30, bottom: 1820 },
+  analysis: { left: 330, right: 2170, top: 250, bottom: 1510 },
   composition: { left: 430, right: 2070, top: 40, bottom: 1840 },
   rhetoric: { left: 300, right: 2200, top: 40, bottom: 1780 },
   sound: { left: 300, right: 2200, top: 40, bottom: 1780 },
@@ -45,6 +48,28 @@ function phraseTokens(ayah, block) {
 
 function phraseText(ayah, block) {
   return phraseTokens(ayah, block).map(token => token.ar).join(' ')
+}
+
+function analysisWordPosition(index) {
+  let remaining = index
+  for (let row = 0; row < ANALYSIS_ROW_COUNTS.length; row += 1) {
+    const count = ANALYSIS_ROW_COUNTS[row]
+    if (remaining <= count) {
+      const i = remaining - 1
+      return {
+        x: WORLD.width / 2 + ((count - 1) / 2 - i) * ANALYSIS_WORD_GAP,
+        y: ANALYSIS_ROW_Y[row],
+      }
+    }
+    remaining -= count
+  }
+  return { x: WORLD.width / 2, y: ANALYSIS_ROW_Y[ANALYSIS_ROW_Y.length - 1] }
+}
+
+function analysisPositions(ayah) {
+  const map = new Map()
+  ayah.tokens.forEach((_, i) => map.set(i + 1, analysisWordPosition(i + 1)))
+  return map
 }
 
 function layoutBlock(block, blockIndex) {
@@ -75,86 +100,124 @@ function FullAyahRibbon({ ayah, focusWordIndex, language }) {
   </div>
 }
 
-function AnalysisDiagram({ ayah, focusWordIndex, language, selectedWord, onSelectWord }) {
+function AnalysisDiagram({ ayah, focusWordIndex, language, selectedWord, onSelectWord, onOpenWordOrbit }) {
   const ru = language === 'ru'
-  const positions = useMemo(() => allWordPositions(ayah), [ayah])
+  const positions = useMemo(() => analysisPositions(ayah), [ayah])
   const selected = selectedWord ? ayah.tokens[selectedWord - 1] : null
   const selectedPos = selectedWord ? positions.get(selectedWord) : null
+  const selectedBlock = selectedWord
+    ? ayah.blocks.find(block => selectedWord >= block.range[0] && selectedWord <= block.range[1])
+    : null
+
+  const morphPos = selectedPos ? {
+    x: clamp(selectedPos.x - 330, 260, WORLD.width - 260),
+    y: clamp(selectedPos.y - 175, 310, WORLD.height - 260),
+  } : null
+  const syntaxPos = selectedPos ? {
+    x: clamp(selectedPos.x + 330, 260, WORLD.width - 260),
+    y: clamp(selectedPos.y - 175, 310, WORLD.height - 260),
+  } : null
+  const semanticPos = selectedPos ? {
+    x: clamp(selectedPos.x, 270, WORLD.width - 270),
+    y: clamp(selectedPos.y + 245, 360, WORLD.height - 250),
+  } : null
 
   return <div className="diagram-view analysis-diagram">
-    <FullAyahRibbon ayah={ayah} focusWordIndex={focusWordIndex} language={language} />
+    <div className="analysis-prompt">
+      <small>{ru ? '2:197 · РАЗБОР' : '2:197 · ANALYSIS'}</small>
+      <strong>{ru ? 'Нажмите на слово' : 'Tap a word'}</strong>
+      <span>{ru ? 'Морфология · синтаксис · значение' : 'Morphology · syntax · meaning'}</span>
+    </div>
 
-    <svg className="diagram-lines" width={WORLD.width} height={WORLD.height} viewBox={`0 0 ${WORLD.width} ${WORLD.height}`} aria-hidden="true">
-      {ayah.blocks.map((block, blockIndex) => {
-        const points = layoutBlock(block, blockIndex)
-        const left = Math.min(...points.map(p => p.x))
-        const right = Math.max(...points.map(p => p.x))
-        const lineY = points[0].y + 182
-        return <g key={block.id}>
-          <path className="diagram-construction-line" d={`M ${left} ${lineY} L ${right} ${lineY}`} />
-          {points.map(point => <path key={point.index} className="diagram-word-thread" d={`M ${point.x} ${point.y + 28} L ${point.x} ${point.y + 102}`} />)}
-          {blockIndex < ayah.blocks.length - 1 && <path
-            className="diagram-flow-thread"
-            d={`M ${WORLD.width / 2} ${lineY + 54} L ${WORLD.width / 2} ${BLOCK_Y[blockIndex + 1] - 54}`}
-          />}
-        </g>
+    <svg className="diagram-lines analysis-core-lines" width={WORLD.width} height={WORLD.height} viewBox={`0 0 ${WORLD.width} ${WORLD.height}`} aria-hidden="true">
+      {ayah.tokens.slice(0, -1).map((_, i) => {
+        const a = positions.get(i + 1)
+        const b = positions.get(i + 2)
+        const sameRow = Math.abs(a.y - b.y) < 5
+        const d = sameRow
+          ? `M ${a.x - 46} ${a.y} L ${b.x + 46} ${b.y}`
+          : `M ${a.x - 42} ${a.y} C ${a.x - 150} ${a.y + 90}, ${b.x + 150} ${b.y - 90}, ${b.x + 42} ${b.y}`
+        return <path key={i} className="analysis-reading-thread" d={d} />
       })}
-    </svg>
 
-    {ayah.blocks.map((block, blockIndex) => {
-      const points = layoutBlock(block, blockIndex)
-      return <div key={block.id} className="diagram-block-label" style={{ left: WORLD.width / 2, top: BLOCK_Y[blockIndex] + 205 }}>
-        <span>{String(blockIndex + 1).padStart(2, '0')} · {block[language].title}</span>
-        <p>{block[language].text}</p>
-      </div>
-    })}
+      {selected && selectedPos && <>
+        <path className="analysis-ray morph" d={`M ${selectedPos.x} ${selectedPos.y} Q ${(selectedPos.x + morphPos.x) / 2} ${selectedPos.y - 80} ${morphPos.x} ${morphPos.y}`} />
+        <path className="analysis-ray syntax" d={`M ${selectedPos.x} ${selectedPos.y} Q ${(selectedPos.x + syntaxPos.x) / 2} ${selectedPos.y - 80} ${syntaxPos.x} ${syntaxPos.y}`} />
+        <path className="analysis-ray semantic" d={`M ${selectedPos.x} ${selectedPos.y} L ${semanticPos.x} ${semanticPos.y}`} />
+
+        {selectedBlock && phraseTokens(ayah, selectedBlock).map((_, i) => {
+          const relatedIndex = selectedBlock.range[0] + i
+          if (relatedIndex === selectedWord) return null
+          const relatedPos = positions.get(relatedIndex)
+          if (!relatedPos) return null
+          const midX = (selectedPos.x + relatedPos.x) / 2
+          const midY = Math.min(selectedPos.y, relatedPos.y) - 55
+          return <path key={relatedIndex} className="analysis-syntax-link" d={`M ${selectedPos.x} ${selectedPos.y - 8} Q ${midX} ${midY} ${relatedPos.x} ${relatedPos.y - 8}`} />
+        })}
+      </>}
+    </svg>
 
     {ayah.tokens.map((token, i) => {
       const wordIndex = i + 1
       const pos = positions.get(wordIndex)
-      if (!pos) return null
       const isEntry = wordIndex === focusWordIndex
       const isSelected = wordIndex === selectedWord
-      return <div key={wordIndex} className="diagram-word-cluster" style={{ left: pos.x, top: pos.y }}>
-        <button
-          className={'diagram-word-star' + (isEntry ? ' is-entry' : '') + (isSelected ? ' is-selected' : '')}
-          onClick={(event) => { event.stopPropagation(); onSelectWord(isSelected ? null : wordIndex) }}
-          aria-pressed={isSelected}
-        >
-          <i aria-hidden="true" />
-          <span lang="ar" dir="rtl">{token.ar}</span>
-        </button>
-        <div className="diagram-word-note">
-          <b>{token.tr}</b>
-          <strong>{ru ? token.ru : token.en}</strong>
-          <small>{ru ? token.roleRu : token.roleEn}</small>
-        </div>
-      </div>
+      const isRelated = selectedBlock && wordIndex >= selectedBlock.range[0] && wordIndex <= selectedBlock.range[1]
+      return <button
+        key={wordIndex}
+        className={'analysis-arabic-word' + (isEntry ? ' is-entry' : '') + (isSelected ? ' is-selected' : '') + (isRelated ? ' is-related' : '')}
+        style={{ left: pos.x, top: pos.y }}
+        onClick={(event) => {
+          event.stopPropagation()
+          onSelectWord(isSelected ? null : wordIndex)
+        }}
+        aria-pressed={isSelected}
+      >
+        <i aria-hidden="true" />
+        <span lang="ar" dir="rtl">{token.ar}</span>
+      </button>
     })}
 
-    {selected && selectedPos && <aside
-      className="diagram-inspector"
-      style={{
-        left: clamp(selectedPos.x + (selectedPos.x < WORLD.width / 2 ? 120 : -500), 90, WORLD.width - 520),
-        top: clamp(selectedPos.y - 25, 170, WORLD.height - 310),
-      }}
-      onPointerDown={event => event.stopPropagation()}
-      onClick={event => event.stopPropagation()}
-    >
-      <header>
-        <div><span lang="ar" dir="rtl">{selected.ar}</span><small>{selected.tr}</small></div>
-        <button onClick={() => onSelectWord(null)}>×</button>
-      </header>
-      <strong>{ru ? selected.ru : selected.en}</strong>
-      <p>{ru ? selected.roleRu : selected.roleEn}</p>
-      {selected.root && <div className="diagram-root-row"><small>{ru ? 'Корень' : 'Root'}</small><b lang="ar" dir="rtl">{selected.root}</b><i>{selected.rootReading}</i></div>}
-      {(ru ? selected.noteRu : selected.noteEn) && <p>{ru ? selected.noteRu : selected.noteEn}</p>}
-    </aside>}
+    {selected && selectedPos && <>
+      <div className="analysis-lens-node morph" style={{ left: morphPos.x, top: morphPos.y }}>
+        <i aria-hidden="true" />
+        <small>{ru ? 'МОРФОЛОГИЯ' : 'MORPHOLOGY'}</small>
+        <strong>{ru ? selected.roleRu : selected.roleEn}</strong>
+        {selected.root && <p><span>{ru ? 'корень' : 'root'}</span><b lang="ar" dir="rtl">{selected.root}</b><em>{selected.rootReading}</em></p>}
+      </div>
+
+      <div className="analysis-lens-node syntax" style={{ left: syntaxPos.x, top: syntaxPos.y }}>
+        <i aria-hidden="true" />
+        <small>{ru ? 'СИНТАКСИС' : 'SYNTAX'}</small>
+        <strong>{selectedBlock ? selectedBlock[language].title : (ru ? 'Связь в аяте' : 'Relation in the ayah')}</strong>
+        {selectedBlock && <p lang="ar" dir="rtl">{phraseText(ayah, selectedBlock)}</p>}
+      </div>
+
+      <div className="analysis-lens-node semantic" style={{ left: semanticPos.x, top: semanticPos.y }}>
+        <i aria-hidden="true" />
+        <small>{ru ? 'ЗНАЧЕНИЕ В ЭТОМ АЯТЕ' : 'MEANING HERE'}</small>
+        <strong>{ru ? selected.ru : selected.en}</strong>
+        <span>{selected.tr}</span>
+        {(ru ? selected.noteRu : selected.noteEn) && <p>{ru ? selected.noteRu : selected.noteEn}</p>}
+        <button
+          className="analysis-orbit-button"
+          disabled={!selected.root}
+          onClick={(event) => {
+            event.stopPropagation()
+            if (selected.root) onOpenWordOrbit?.(selected)
+          }}
+        >
+          {selected.root
+            ? (ru ? 'Перейти в орбиту слова →' : 'Open word orbit →')
+            : (ru ? 'Орбита слова · подключается' : 'Word orbit · coming next')}
+        </button>
+      </div>
+    </>}
   </div>
 }
 
 function SkeletonWords({ ayah, focusWordIndex }) {
-  const positions = allWordPositions(ayah)
+  const positions = analysisPositions(ayah)
   return <>{ayah.tokens.map((token, i) => {
     const wordIndex = i + 1
     const pos = positions.get(wordIndex)
@@ -257,15 +320,15 @@ function TranslationDiagram({ ayah, focusWordIndex, language }) {
   </div>
 }
 
-function CanvasWorld({ ayah, mode, focusWordIndex, language, selectedWord, onSelectWord }) {
-  if (mode === 'analysis') return <AnalysisDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} selectedWord={selectedWord} onSelectWord={onSelectWord} />
+function CanvasWorld({ ayah, mode, focusWordIndex, language, selectedWord, onSelectWord, onOpenWordOrbit }) {
+  if (mode === 'analysis') return <AnalysisDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} selectedWord={selectedWord} onSelectWord={onSelectWord} onOpenWordOrbit={onOpenWordOrbit} />
   if (mode === 'composition') return <CompositionDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} />
   if (mode === 'rhetoric') return <RhetoricDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} />
   if (mode === 'sound') return <SoundDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} />
   return <TranslationDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} />
 }
 
-export function AyahView({ reference, focusWordIndex, language, onBack }) {
+export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWordOrbit }) {
   const ayah = getAyahPrototype(reference)
   const [mode, setMode] = useState('analysis')
   const [contextOpen, setContextOpen] = useState(false)
@@ -428,6 +491,20 @@ export function AyahView({ reference, focusWordIndex, language, onBack }) {
     }
   }
 
+  function selectWord(wordIndex) {
+    setSelectedWord(wordIndex)
+    if (!wordIndex) return
+    const pos = analysisWordPosition(wordIndex)
+    const current = cameraRef.current
+    const desired = clampCamera({
+      ...current,
+      x: -(pos.x - WORLD.width / 2) * current.scale,
+      y: -(pos.y - WORLD.height / 2) * current.scale,
+    }, 'analysis')
+    cameraRef.current = desired
+    setCamera(desired)
+  }
+
   function changeMode(nextMode) {
     setMode(nextMode)
     setSelectedWord(null)
@@ -464,12 +541,12 @@ export function AyahView({ reference, focusWordIndex, language, onBack }) {
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerUp}
       onDoubleClick={() => resetCamera()}
-      onClick={() => selectedWord && setSelectedWord(null)}
+      onClick={() => selectedWord && selectWord(null)}
     >
       <div className="ayah-space-grid" aria-hidden="true" />
       <div className="ayah-space-boundary" aria-hidden="true" />
       <div className="ayah-space-world" style={{ transform: `translate(-50%, -50%) translate(${camera.x}px, ${camera.y}px) scale(${camera.scale})` }}>
-        <CanvasWorld ayah={ayah} mode={mode} focusWordIndex={focusWordIndex} language={language} selectedWord={selectedWord} onSelectWord={setSelectedWord} />
+        <CanvasWorld ayah={ayah} mode={mode} focusWordIndex={focusWordIndex} language={language} selectedWord={selectedWord} onSelectWord={selectWord} onOpenWordOrbit={onOpenWordOrbit} />
       </div>
     </div>
 
