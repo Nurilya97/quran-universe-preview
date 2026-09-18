@@ -117,13 +117,13 @@
   font: inherit;
   line-height: inherit;
 }
-.morph-root { color: var(--morph-root); }
-.morph-prefix { color: var(--morph-prefix); }
-.morph-suffix { color: var(--morph-suffix); }
-.morph-ending { color: var(--morph-ending); }
-.morph-particle { color: var(--morph-particle); }
-.morph-form { color: var(--morph-form); }
-.morph-fusion {
+.morph-analysis .morph-root { color: var(--morph-root); }
+.morph-analysis .morph-prefix { color: var(--morph-prefix); }
+.morph-analysis .morph-suffix { color: var(--morph-suffix); }
+.morph-analysis .morph-ending { color: var(--morph-ending); }
+.morph-analysis .morph-particle { color: var(--morph-particle); }
+.morph-analysis .morph-form { color: var(--morph-form); }
+.morph-analysis .morph-fusion {
   color: transparent;
   background: linear-gradient(90deg, var(--morph-root) 0 48%, var(--morph-form) 52% 100%);
   -webkit-background-clip: text;
@@ -193,6 +193,7 @@
 }
 .morph-fact-arabic {
   display: block;
+  color: var(--word-white, #f7f8fa);
   font-family: var(--arabic-font);
   font-size: 27px;
   line-height: 1.55;
@@ -241,7 +242,7 @@
   align-items: center;
 }
 .morph-pattern-heading .morph-arabic-pair > span {
-  color: var(--morph-form);
+  color: var(--word-white, #f7f8fa);
   font-family: var(--arabic-font);
   font-size: 27px;
   line-height: 1.55;
@@ -273,7 +274,7 @@
 }
 .morph-taqwa-form .morph-pattern-heading .morph-arabic-pair > span,
 .morph-taqwa-form .morph-pattern-heading > strong {
-  color: var(--morph-root);
+  color: var(--word-white, #f7f8fa);
 }
 .morph-formation-explanation {
   margin: 7px 0 17px !important;
@@ -302,7 +303,7 @@
   flex-wrap: wrap;
 }
 .morph-evolution-word > span {
-  color: var(--morph-root);
+  color: var(--word-white, #f7f8fa);
   font-family: var(--arabic-font);
   font-size: 24px;
   line-height: 1.45;
@@ -349,4 +350,16 @@
   margin-left: 4px;
   color: #92989f;
   font-size: 11px;
+}
+
+
+/* Colour coding belongs only to the top word analysis.
+   Arabic words in the rest of Word Structure stay white. */
+.morphology-entry .morph-components .morph-fact-arabic,
+.morphology-entry .morph-root-fact .morph-fact-arabic,
+.morphology-entry .morph-derived-source .morph-arabic-pair > span,
+.morphology-entry .morph-pattern-heading .morph-arabic-pair > span,
+.morphology-entry .morph-evolution-word > span,
+.morphology-entry .related-words button > [lang='ar'] {
+  color: var(--word-white, #f7f8fa);
 }
