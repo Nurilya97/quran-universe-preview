@@ -497,3 +497,38 @@
   font-size: 11px;
   line-height: 1.4;
 }
+
+
+.translation-notes {
+  display: grid;
+  gap: 10px;
+  margin: 24px 0 8px;
+}
+.translation-note {
+  padding: 15px 16px;
+  border-radius: 5px;
+  border: 1px solid #ffffff12;
+  background: #ffffff03;
+}
+.translation-note h4 {
+  margin: 0 0 7px;
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.4;
+}
+.translation-note p {
+  margin: 0 !important;
+  font-size: 13px !important;
+  line-height: 1.7 !important;
+  color: var(--muted) !important;
+}
+.translation-note-warning {
+  border-color: color-mix(in srgb, #ff5f5f 48%, transparent);
+  box-shadow: inset 3px 0 0 #ff5f5f;
+}
+.translation-note-warning h4 { color: #ff7676; }
+.translation-note-positive {
+  border-color: color-mix(in srgb, #7cff8b 42%, transparent);
+  box-shadow: inset 3px 0 0 #7cff8b;
+}
+.translation-note-positive h4 { color: #8cff98; }
