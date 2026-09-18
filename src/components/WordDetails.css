@@ -123,6 +123,12 @@
 .morph-ending { color: var(--morph-ending); }
 .morph-particle { color: var(--morph-particle); }
 .morph-form { color: var(--morph-form); }
+.morph-fusion {
+  color: transparent;
+  background: linear-gradient(90deg, var(--morph-root) 0 48%, var(--morph-form) 52% 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
 .morph-reading { margin-top: 0; color: #92989f; font-size: 13px; }
 .morph-arabic-pair {
   display: inline-flex;
@@ -160,6 +166,10 @@
 .morph-legend-ending { color: var(--morph-ending); }
 .morph-legend-particle { color: var(--morph-particle); }
 .morph-legend-form { color: var(--morph-form); }
+.morph-legend-fusion { color: var(--morph-root); }
+.morph-legend-fusion i {
+  background: linear-gradient(90deg, var(--morph-root) 0 48%, var(--morph-form) 52% 100%);
+}
 
 .morph-fact {
   padding: 16px 0;
@@ -318,4 +328,25 @@
   }
   .morph-evolution-word > span { font-size: 22px; }
   .morph-evolution-arrow { left: 42px; }
+}
+
+
+.morph-transformation {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  color: #8f959c;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.morph-transformation > span[lang='ar'] {
+  font-family: var(--arabic-font);
+  font-size: 19px;
+}
+.morph-transformation > small {
+  margin-left: 4px;
+  color: #92989f;
+  font-size: 11px;
 }
