@@ -220,7 +220,7 @@ function MorphBoard({ word, profile, language }) {
           const isRoot = index === 0
           const isTarget = index === lastIndex
           const isSource = !isRoot && !isTarget && profile.derivedFrom && step.ar === profile.derivedFrom.ar
-          return <div className="morph-board-flow-unit" key={step.ar + index}>
+          return <div className={'morph-board-flow-unit' + (isTarget ? ' is-target-unit' : '')} key={step.ar + index}>
             <article className={'morph-board-node' + (isRoot ? ' is-root' : '') + (isTarget ? ' is-target' : '')}>
               <div className="morph-board-node-topline">
                 <span>{String(index + 1).padStart(2, '0')}</span>
