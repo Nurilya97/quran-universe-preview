@@ -25,7 +25,6 @@ export const MORPH_COPY = {
     wordFormation: 'Словообразование',
     form: 'Форма',
     evolution: 'Цепочка словообразования',
-    noSeparateMeaning: 'Отдельно не переводится: его функция появляется только внутри всей формы.',
   },
   en: {
     analysis: 'Word analysis',
@@ -35,7 +34,6 @@ export const MORPH_COPY = {
     wordFormation: 'Word formation',
     form: 'Form',
     evolution: 'Derivational chain',
-    noSeparateMeaning: 'It is not translated separately: its function exists only inside the whole form.',
   },
 }
 
@@ -67,8 +65,8 @@ export const MORPHOLOGY = {
     components: [
       {
         role: 'ending', ar: 'ـٍ', reading: '-in',
-        ru: 'Касратан здесь маркирует неопределённую форму в رفع/جر. Это грамматика готового слова, а не его основное значение.',
-        en: 'Kasratan marks the indefinite nominative/genitive surface form here. It is grammar added to the word, not its lexical meaning.',
+        ru: 'Касратан показывает неопределённую форму в رفع/جر.',
+        en: 'Kasratan marks the indefinite nominative/genitive form here.',
       },
     ],
     derivedFrom: {
@@ -78,8 +76,8 @@ export const MORPHOLOGY = {
     },
     pattern: {
       ar: 'فَاعِل', reading: 'fāʿil',
-      ru: { title: 'Действительное причастие · اسم الفاعل', text: 'Модель переводит действие на деятеля: وَقَىٰ «защищать» → وَاقٍ «защищающий / защитник». Алиф — часть этой модели; сам по себе он не означает «деятель».' },
-      en: { title: 'Active participle · اسم الفاعل', text: 'The pattern shifts from the action to its doer: وَقَىٰ “to protect” → وَاقٍ “one who protects / protector”. The alif belongs to the pattern; it does not mean “doer” by itself.' },
+      ru: { title: 'Действительное причастие · اسم الفاعل', text: 'Модель переводит действие на деятеля: وَقَىٰ «защищать» → وَاقٍ «защищающий / защитник».' },
+      en: { title: 'Active participle · اسم الفاعل', text: 'The pattern shifts from the action to its doer: وَقَىٰ “to protect” → وَاقٍ “one who protects / protector”.' },
     },
   },
 
@@ -98,8 +96,8 @@ export const MORPHOLOGY = {
     },
     pattern: {
       ar: 'اِفْتَعَلَ', reading: 'iftaʿala',
-      ru: { title: 'Глагол VIII формы', text: 'ٱتَّقَىٰ (ittaqā) передаёт действие самого субъекта: беречь / защищать себя, остерегаться, ограждать себя от чего-либо. Это значение всей формы, а не отдельной буквы ت.' },
-      en: { title: 'Form VIII verb', text: 'ٱتَّقَىٰ (ittaqā) describes an action of the subject: to guard or protect oneself, be cautious, or guard oneself against something. This meaning belongs to the whole form, not to the letter ت by itself.' },
+      ru: { title: 'Глагол VIII формы', text: 'ٱتَّقَىٰ (ittaqā) передаёт действие самого субъекта: беречь / защищать себя, остерегаться, ограждать себя от чего-либо.' },
+      en: { title: 'Form VIII verb', text: 'ٱتَّقَىٰ (ittaqā) describes an action of the subject: to guard or protect oneself, be cautious, or guard oneself against something.' },
     },
   },
 
@@ -114,13 +112,13 @@ export const MORPHOLOGY = {
     components: [
       {
         role: 'prefix', ar: 'مُـ', reading: 'mu-',
-        ru: 'Часть образования действительного причастия от производного глагола. Само مُـ не означает «обладатель качества» без остальной модели.',
-        en: 'Part of active-participle formation from a derived verb. مُـ does not mean “possessor of the quality” independently of the whole pattern.',
+        ru: 'Участвует в образовании действительного причастия от производного глагола.',
+        en: 'Part of active-participle formation from a derived verb.',
       },
       {
         role: 'ending', ar: 'ـينَ', reading: '-īna',
-        ru: 'Окончание мужского سالم-множественного в نصب/جر. Оно показывает число и падеж, но не создаёт лексическое значение слова.',
-        en: 'The sound masculine plural ending in the accusative/genitive. It marks number and case but does not create the lexical meaning.',
+        ru: 'Окончание мужского سالم-множественного в نصب/جر. Показывает число и падеж.',
+        en: 'The sound masculine plural ending in the accusative/genitive. It marks number and case.',
       },
     ],
     derivedFrom: {
@@ -180,8 +178,8 @@ export const MORPHOLOGY = {
     components: [],
     derivedFrom: {
       ar: 'تَقْوَى / تَقِيّ', reading: 'taqwā / taqiyy', metaRu: 'семья качества корня و ق ي', metaEn: 'quality family of و ق ي',
-      ru: 'Это не глагол IV формы. Слово сравнивает степень качества внутри той же семьи.',
-      en: 'This is not a Form IV verb. The word compares degree within the same quality family.',
+      ru: 'Слово сравнивает степень качества внутри той же семьи.',
+      en: 'The word compares degree within the same quality family.',
     },
     pattern: {
       ar: 'أَفْعَل', reading: 'afʿal',
@@ -201,8 +199,8 @@ export const MORPHOLOGY = {
     components: [
       {
         role: 'suffix', ar: 'ـة', reading: '-ah',
-        ru: 'Часть именной формы. Здесь она не переводится сама по себе; значение создаёт всё словообразование.',
-        en: 'Part of the nominal formation. It is not translated by itself here; the derivation as a whole creates the word.',
+        ru: 'Часть именной формы.',
+        en: 'Part of the nominal formation.',
       },
     ],
     derivedFrom: {
@@ -212,8 +210,8 @@ export const MORPHOLOGY = {
     },
     pattern: {
       ar: 'فُعَلَة', reading: 'fuʿalah',
-      ru: { title: 'Именная форма действия', text: 'Называет само остережение / принятие мер защиты, а не человека, который его совершает.' },
-      en: { title: 'Action noun', text: 'Names the act/state of precaution rather than the person who performs it.' },
+      ru: { title: 'Именная форма действия', text: 'Называет само остережение / принятие мер защиты.' },
+      en: { title: 'Action noun', text: 'Names the act/state of precaution.' },
     },
   },
 
@@ -232,8 +230,8 @@ export const MORPHOLOGY = {
     },
     pattern: {
       ar: 'فَعِيل', reading: 'faʿīl',
-      ru: { title: 'Прилагательное качества', text: 'Называет человека через устойчивое качество, а не действие как событие.' },
-      en: { title: 'Quality adjective', text: 'Describes a person through a characteristic quality rather than an action as an event.' },
+      ru: { title: 'Прилагательное качества', text: 'Называет человека через устойчивое качество.' },
+      en: { title: 'Quality adjective', text: 'Describes a person through a characteristic quality.' },
     },
   },
 
@@ -268,8 +266,8 @@ export const MORPHOLOGY = {
     components: [
       {
         role: 'suffix', ar: 'ـة', reading: '-ah',
-        ru: 'Завершает именную модель فِعَالَة. Здесь это часть словообразования, а не самостоятельное слово.',
-        en: 'Completes the فِعَالَة nominal pattern. Here it is part of derivation, not an independent word.',
+        ru: 'Завершает именную модель فِعَالَة.',
+        en: 'Completes the فِعَالَة nominal pattern.',
       },
     ],
     derivedFrom: {
@@ -295,8 +293,8 @@ export const MORPHOLOGY = {
     components: [
       {
         role: 'prefix', ar: 'تَـ', reading: 'ta-',
-        ru: 'Словообразовательный префикс V формы. Его функция раскрывается вместе со всей моделью تَفَعَّلَ.',
-        en: 'A derivational prefix of Form V. Its function is understood together with the whole تَفَعَّلَ pattern.',
+        ru: 'Словообразовательный префикс V формы.',
+        en: 'A derivational prefix of Form V.',
       },
     ],
     derivedFrom: {
@@ -306,8 +304,8 @@ export const MORPHOLOGY = {
     },
     pattern: {
       ar: 'تَفَعَّلَ', reading: 'tafaʿʿala',
-      ru: { title: 'Глагол V формы', text: 'В этом корне даёт линию «беречься / остерегаться / принимать предосторожности». Это значение всей формы, а не одного префикса تَـ.' },
-      en: { title: 'Form V verb', text: 'In this root, it gives the line “guard oneself / be cautious / take precautions”. The meaning belongs to the whole form, not to prefix تَـ alone.' },
+      ru: { title: 'Глагол V формы', text: 'В этом корне даёт линию «беречься / остерегаться / принимать предосторожности».' },
+      en: { title: 'Form V verb', text: 'In this root, it gives the line “guard oneself / be cautious / take precautions”.' },
     },
   },
 }
