@@ -473,3 +473,27 @@
   background: var(--meaning-color);
   box-shadow: 0 0 10px color-mix(in srgb, var(--meaning-color) 45%, transparent);
 }
+
+
+.meaning-term-step {
+  display: grid;
+  gap: 7px;
+}
+.meaning-connector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 27px;
+  padding-left: 13px;
+  color: var(--meaning-color);
+}
+.meaning-connector > span {
+  font-size: 15px;
+  line-height: 1;
+  text-shadow: 0 0 9px color-mix(in srgb, var(--meaning-color) 42%, transparent);
+}
+.meaning-connector > small {
+  color: #8f969d;
+  font-size: 11px;
+  line-height: 1.4;
+}
