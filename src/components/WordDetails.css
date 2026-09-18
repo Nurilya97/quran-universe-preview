@@ -83,12 +83,12 @@
 
 /* Word Structure v2 — compact morpheme-first analysis */
 .morphology-entry {
-  --morph-root: #c9ced4;
+  --morph-root: #aeb5bd;
   --morph-prefix: #7cff8b;
   --morph-suffix: #ff7a59;
   --morph-ending: #c65cff;
   --morph-particle: #59f2ff;
-  --morph-form: #f4f6f8;
+  --morph-form: #f7f8fa;
 }
 .morph-analysis { margin: 4px 0 26px; }
 .morph-analysis > h3 { margin-bottom: 9px !important; }
