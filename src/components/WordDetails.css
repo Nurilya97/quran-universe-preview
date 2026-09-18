@@ -554,3 +554,82 @@
   font-size: 13px !important;
   line-height: 1.65 !important;
 }
+
+
+/* Quran occurrence navigator */
+.quran-occurrences .quran-navigation-note {
+  max-width: 34rem;
+  margin-top: 8px;
+}
+.quran-reference-groups {
+  margin-top: 18px;
+}
+.quran-reference-groups details {
+  padding-bottom: 6px;
+}
+.quran-reference-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+  padding: 2px 0 12px;
+}
+.quran-reference-grid button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  min-height: 44px;
+  padding: 9px 11px;
+  border: 1px solid #ffffff0d;
+  border-radius: 4px;
+  background: #ffffff025;
+  color: #d7dbde;
+  font: inherit;
+  font-size: 12px;
+  text-align: left;
+}
+.quran-reference-grid button:hover,
+.quran-reference-grid button:focus-visible {
+  border-color: #ffffff2c;
+  background: #ffffff05;
+  color: #fff;
+  outline: none;
+}
+.quran-reference-grid button.has-prototype {
+  border-color: #ff8a3d35;
+}
+.quran-reference-grid button.has-prototype::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ff8a3d;
+  box-shadow: 0 0 10px #ff8a3d99;
+  flex: 0 0 auto;
+}
+.quran-reference-grid button.has-prototype > span {
+  margin-right: auto;
+}
+.quran-reference-grid small {
+  color: #b7815f;
+  font-size: 9px;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+.quran-source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  margin-top: 26px;
+  color: #a7aeb4;
+  font-size: 11px;
+  text-decoration: none;
+}
+.quran-source-link:hover { color: #fff; }
+
+@media (max-width: 600px) {
+  .quran-reference-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .quran-reference-grid button { min-height: 46px; }
+}
