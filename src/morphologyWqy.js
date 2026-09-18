@@ -22,6 +22,7 @@ export const MORPH_COPY = {
     root: 'Корень',
     derivedFrom: 'Происходит от',
     patternEffect: 'Что нам даёт форма',
+    wordFormation: 'Словообразование',
     noSeparateMeaning: 'Отдельно не переводится: его функция появляется только внутри всей формы.',
   },
   en: {
@@ -29,6 +30,7 @@ export const MORPH_COPY = {
     root: 'Root',
     derivedFrom: 'Comes from',
     patternEffect: 'What the form tells us',
+    wordFormation: 'Word formation',
     noSeparateMeaning: 'It is not translated separately: its function exists only inside the whole form.',
   },
 }
@@ -144,13 +146,13 @@ export const MORPHOLOGY = {
     ],
     derivedFrom: {
       ar: 'ٱتَّقَىٰ', reading: 'ittaqā', metaRu: 'глагол VIII формы', metaEn: 'Form VIII verb',
-      ru: 'تَقْوَىٰ (taqwā) происходит от глагола ٱتَّقَىٰ (ittaqā), VIII формы. Этот глагол означает: беречь / защищать себя, остерегаться, ограждать себя от чего-либо. تَقْوَىٰ (taqwā) описывает это действие уже как состояние или качество человека.',
-      en: 'تَقْوَىٰ (taqwā) comes from the Form VIII verb ٱتَّقَىٰ (ittaqā). This verb means: to guard or protect oneself, be cautious, or guard oneself against something. تَقْوَىٰ (taqwā) describes that action as a state or quality of a person.',
+      ru: 'تَقْوَىٰ (taqwā) происходит от глагола ٱتَّقَىٰ (ittaqā). Этот глагол означает: беречь / защищать себя, остерегаться, ограждать себя от чего-либо. تَقْوَىٰ (taqwā) описывает это действие уже как состояние или качество человека.',
+      en: 'تَقْوَىٰ (taqwā) comes from the verb ٱتَّقَىٰ (ittaqā). This verb means: to guard or protect oneself, be cautious, or guard oneself against something. تَقْوَىٰ (taqwā) describes that action as a state or quality of a person.',
     },
     pattern: {
       ar: 'اِفْتَعَلَ', reading: 'iftaʿala',
-      ru: { title: 'VIII форма глагола', text: 'Связь с ٱتَّقَىٰ (ittaqā) показывает, какое действие лежит в основе تَقْوَىٰ (taqwā): человек сам бережёт и ограждает себя, остерегается. В существительном это действие становится состоянием или устойчивым качеством человека.' },
-      en: { title: 'Form VIII verb', text: 'The link to ٱتَّقَىٰ (ittaqā) shows the action behind تَقْوَىٰ (taqwā): a person guards and protects oneself and is cautious. In the noun, that action becomes a state or enduring quality of the person.' },
+      ru: { title: 'VIII форма глагола', text: '' },
+      en: { title: 'Form VIII verb', text: '' },
     },
   },
 
