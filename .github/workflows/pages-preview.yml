@@ -32,7 +32,29 @@ jobs:
         run: |
           npm run build
           cp dist/spatial.html "dist/build-${GITHUB_SHA::8}.html"
+          cp dist/spatial.html dist/latest.html
           mv dist/spatial.html dist/index.html
+          cat > dist/404.html <<'EOF'
+          <!doctype html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Quran Universe</title>
+            <script>
+              (function () {
+                var base = '/quran-universe-preview/';
+                if (location.pathname.indexOf(base + 'build-') === 0) {
+                  location.replace(base + '?v=' + Date.now());
+                }
+              }());
+            </script>
+          </head>
+          <body style="margin:0;background:#050709;color:#dfe3e5;font-family:system-ui,sans-serif;display:grid;place-items:center;min-height:100vh">
+            <a href="/quran-universe-preview/" style="color:#dfe3e5">Open Quran Universe</a>
+          </body>
+          </html>
+          EOF
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
