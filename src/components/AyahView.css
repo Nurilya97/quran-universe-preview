@@ -1858,3 +1858,229 @@
     bottom: 7px !important;
   }
 }
+
+/* Mobile focus layout — three separated callouts around the selected word */
+.ayah-space-shell.has-word-focus .ayah-space-world {
+  filter: brightness(.38) saturate(.72) blur(1.4px);
+}
+.analysis-focus-overlay {
+  background: #0203049c;
+  backdrop-filter: blur(6px) brightness(.62);
+  -webkit-backdrop-filter: blur(6px) brightness(.62);
+}
+.analysis-focus-rays {
+  z-index: 5;
+  opacity: .9;
+}
+.analysis-focus-rays path {
+  stroke-width: 1.35;
+  filter: drop-shadow(0 0 4px currentColor);
+}
+.analysis-focus-word {
+  top: 50%;
+}
+.analysis-focus-word span {
+  font-size: clamp(44px, 5vw, 56px);
+}
+.analysis-focus-callout {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #070a0df7;
+}
+.analysis-callout-page {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+.analysis-callout-pager {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 760px) {
+  .analysis-focus-space {
+    width: 100vw;
+    height: 100%;
+  }
+
+  .analysis-focus-word {
+    left: 50%;
+    top: 50%;
+  }
+
+  .analysis-focus-word span {
+    font-size: 46px;
+  }
+
+  .analysis-focus-word::before {
+    width: 88px;
+    height: 88px;
+  }
+
+  .analysis-focus-rays {
+    opacity: .95;
+  }
+
+  .analysis-focus-callout,
+  .analysis-focus-callout.is-active {
+    display: flex !important;
+    width: min(44vw, 275px);
+    height: 206px;
+    min-height: 206px;
+    max-height: 206px;
+    padding: 14px 15px 12px;
+    overflow: hidden;
+    transform: none !important;
+  }
+
+  .analysis-focus-callout.morph {
+    left: 10px !important;
+    right: auto !important;
+    top: 78px !important;
+    bottom: auto !important;
+  }
+
+  .analysis-focus-callout.syntax {
+    left: auto !important;
+    right: 10px !important;
+    top: 78px !important;
+    bottom: auto !important;
+  }
+
+  .analysis-focus-callout.semantic {
+    left: 50% !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: 18px !important;
+    width: min(76vw, 430px);
+    height: 218px;
+    min-height: 218px;
+    max-height: 218px;
+    transform: translateX(-50%) !important;
+  }
+
+  .analysis-callout-page > div > strong {
+    font-size: 12.5px;
+    line-height: 1.35;
+  }
+
+  .analysis-callout-page > div > p,
+  .analysis-focus-callout .analysis-detail-text,
+  .analysis-focus-callout .analysis-translation-choice,
+  .analysis-syntax-plain {
+    font-size: 10.5px !important;
+    line-height: 1.52;
+  }
+
+  .analysis-syntax-phrase {
+    margin-top: 7px;
+    padding: 6px 7px;
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  .analysis-morph-parts {
+    margin-top: 8px;
+    gap: 3px;
+  }
+
+  .analysis-morph-parts > div {
+    grid-template-columns: 48px 42px 1fr;
+    gap: 5px;
+    min-height: 28px;
+    padding: 3px 0;
+  }
+
+  .analysis-morph-parts b {
+    font-size: 17px;
+  }
+
+  .analysis-morph-parts em,
+  .analysis-morph-parts p {
+    font-size: 8.5px;
+    line-height: 1.3;
+  }
+
+  .analysis-callout-pager {
+    margin-top: 7px;
+    padding-top: 6px;
+  }
+
+  .analysis-callout-pager button {
+    width: 29px;
+    height: 27px;
+  }
+
+  .analysis-focus-callout.semantic .analysis-orbit-button {
+    margin-top: 7px;
+    min-height: 30px;
+  }
+}
+
+@media (max-width: 420px) {
+  .analysis-focus-callout,
+  .analysis-focus-callout.is-active {
+    width: calc(50vw - 14px);
+    height: 198px;
+    min-height: 198px;
+    max-height: 198px;
+    padding: 12px 11px 10px;
+  }
+
+  .analysis-focus-callout.morph {
+    left: 6px !important;
+  }
+
+  .analysis-focus-callout.syntax {
+    right: 6px !important;
+  }
+
+  .analysis-focus-callout.semantic {
+    width: calc(100vw - 34px);
+    height: 208px;
+    min-height: 208px;
+    max-height: 208px;
+    bottom: 10px !important;
+  }
+
+  .analysis-focus-word span {
+    font-size: 42px;
+  }
+
+  .analysis-callout-page > div > strong {
+    font-size: 11.5px;
+  }
+
+  .analysis-callout-page > div > p,
+  .analysis-focus-callout .analysis-detail-text,
+  .analysis-focus-callout .analysis-translation-choice,
+  .analysis-syntax-plain {
+    font-size: 9.8px !important;
+  }
+}
+
+@media (max-height: 720px) and (max-width: 760px) {
+  .analysis-focus-callout,
+  .analysis-focus-callout.is-active {
+    top: 58px !important;
+    height: 176px;
+    min-height: 176px;
+    max-height: 176px;
+  }
+
+  .analysis-focus-callout.semantic {
+    top: auto !important;
+    bottom: 7px !important;
+    height: 184px;
+    min-height: 184px;
+    max-height: 184px;
+  }
+
+  .analysis-focus-word {
+    top: 50%;
+  }
+
+  .analysis-focus-word span {
+    font-size: 40px;
+  }
+}
