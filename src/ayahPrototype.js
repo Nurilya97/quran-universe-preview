@@ -35,11 +35,11 @@ export const AYAH_PROTOTYPES = {
       { ar: 'خَيْرَ', tr: 'khayra', ru: 'лучший', en: 'the best', roleRu: 'существительное сравнения', roleEn: 'elative noun' },
       { ar: 'ٱلزَّادِ', tr: 'al-zādi', ru: 'запас / провизия', en: 'provision', roleRu: 'существительное', roleEn: 'noun' },
       {
-        ar: 'ٱلتَّقْوَىٰ', tr: 'al-taqwā', ru: 'تَقْوَىٰ (taqwā)', en: 'تَقْوَىٰ (taqwā)',
+        ar: 'ٱلتَّقْوَىٰ', tr: 'al-taqwā', ru: 'благочестие', en: 'piety',
         roleRu: 'существительное · состояние / качество', roleEn: 'noun · state / quality',
         root: 'و ق ي', rootReading: 'w-q-y',
-        noteRu: 'Здесь ٱلتَّقْوَىٰ (al-taqwā) стоит в конструкции خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ. Сначала важно увидеть её грамматическое место в этой конструкции; собственное значение تَقْوَىٰ (taqwā) раскрывается отдельно через корень, форму и коранические употребления.',
-        noteEn: 'Here ٱلتَّقْوَىٰ (al-taqwā) appears inside the construction خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ. Its grammatical place in that construction is shown first; the meaning of تَقْوَىٰ (taqwā) itself is explored separately through root, form, and Quranic usage.',
+        noteRu: 'В этом аяте «благочестие» используется как краткий контекстный перевод تَقْوَىٰ (taqwā): оно естественно входит в образ того, чем человек может «запастись». Полное значение слова раскрывается отдельно через корень, форму и коранические употребления.',
+        noteEn: 'Here “piety” is used as a short contextual rendering of تَقْوَىٰ (taqwā), fitting the image of something a person can take as provision. The fuller lexical meaning is explored separately through root, form, and Quranic usage.',
       },
       {
         ar: 'وَٱتَّقُونِ', tr: 'wa-ittaqūni', ru: 'и займите защитную позицию передо Мной', en: 'and take a protective stance before Me',
