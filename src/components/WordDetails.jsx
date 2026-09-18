@@ -278,18 +278,21 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
         <p className="occurrence-summary">{t.occurrenceCount}: <strong>{occurrences.length}</strong><span> · </span>{t.verseCount}: <strong>{verses}</strong></p>
         {content.occurrenceNote && <p className="entry-note annotation-note">{content.occurrenceNote[language]}</p>}
         <p className="entry-note quran-navigation-note">{t.referenceNote}</p>
-        <div className="reference-groups quran-reference-groups">{groups.map(({ sura, items }) => <details key={sura} open={occurrences.length <= 20}>
-          <summary>{t.sura} {sura}<span>{items.length}</span></summary>
-          <div className="quran-reference-grid">{items.map(item => {
-            const reference = item.sura + ':' + item.ayah
-            const isPrototype = reference === '2:197'
-            return <button key={item.ayah + ':' + item.word} onClick={() => onOpenAyah?.(item)}
-              className={isPrototype ? 'has-prototype' : ''} aria-label={t.openVerse + ' ' + reference}>
-              <span>{reference}</span>
-              {isPrototype && <small>{language === 'ru' ? 'разбор' : 'study'}</small>}
-            </button>
-          })}</div>
-        </details>)}</div>
+        <div className="reference-groups quran-reference-groups">{groups.map(({ sura, items }) => {
+          const verseItems = [...new Map(items.map(item => [item.ayah, item])).values()]
+          return <details key={sura} open={occurrences.length <= 20}>
+            <summary>{t.sura} {sura}<span>{verseItems.length}</span></summary>
+            <div className="quran-reference-grid">{verseItems.map(item => {
+              const reference = item.sura + ':' + item.ayah
+              const isPrototype = reference === '2:197'
+              return <button key={reference} onClick={() => onOpenAyah?.(item)}
+                className={isPrototype ? 'has-prototype' : ''} aria-label={t.openVerse + ' ' + reference}>
+                <span>{reference}</span>
+                {isPrototype && <small>{language === 'ru' ? 'разбор' : 'study'}</small>}
+              </button>
+            })}</div>
+          </details>
+        })}</div>
       </>}
       {word.id === 'tuqat' && <section><h3>{t.linkedPassage}</h3><p className="entry-note">{t.tuqatCrossReference}</p></section>}
       <a className="quran-source-link" href="https://quran.gtaf.org/" target="_blank" rel="noopener noreferrer">
