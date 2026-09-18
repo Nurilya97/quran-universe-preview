@@ -1,4 +1,4 @@
-// Short editorial explanations based only on the public sources linked below.
+import { WQY_PUBLIC_MODEL } from './canonicalWqy.js'\n\n// Short editorial explanations based only on the public sources linked below.
 // This is a lexical guide, not a translation of Quranic verses or a private archive.
 export const CONTENT_SOURCES = {
   corpus: { url: 'https://corpus.quran.com/qurandictionary.jsp?q=wqy', ru: 'Коранический арабский корпус · University of Leeds', en: 'Quranic Arabic Corpus · University of Leeds' },
@@ -13,11 +13,11 @@ export const CONTENT_SOURCES = {
 
 export const ROOT_CONTENT = {
   ru: {
-    lead: 'Ограждать защищаемое от достигающего его вреда.',
+    lead: WQY_PUBLIC_MODEL.rootNucleus.ru,
     body: 'Ибн Фарис связывает корень с отведением одного от другого посредством чего-то третьего. Ар-Рагиб объясняет وِقَايَة как сохранение чего-либо от того, что причиняет ему вред. Отсюда связаны действие защиты, средство защиты и оберегание себя.',
   },
   en: {
-    lead: 'To keep harm from reaching what is being protected.',
+    lead: WQY_PUBLIC_MODEL.rootNucleus.en,
     body: 'Ibn Faris connects the root with keeping one thing away from another by means of something else. Al-Raghib explains وِقَايَة as preserving something from what harms it. This connects the act of protecting, a means of protection, and guarding oneself.',
   },
   sources: ['ibnFaris', 'raghib'],
@@ -43,8 +43,8 @@ export const WORD_CONTENT = {
       en: ['A Form VIII verb from و ق ي. The first root letter و changes and assimilates with the pattern’s ت, producing the doubled ت in ٱتَّقَىٰ.', 'The present form is يَتَّقِي (yattaqī). The regular verbal noun is اِتِّقَاء (ittiqāʾ). تَقْوَى is a related noun with its own pattern.'],
     },
     meaning: {
-      ru: { lead: 'Занимать активную защитную позицию.', body: 'Субъект действует так, чтобы сохранить себя. От какого вреда, последствия или нарушения границы — показывает конкретная конструкция и контекст. То, что названо после глагола, нельзя автоматически считать источником опасности: грамматическое дополнение и смысловая роль не тождественны.' },
-      en: { lead: 'To take an active, protection-oriented stance.', body: 'The subject acts to safeguard themselves. The particular harm, consequence, or boundary is established by the construction and context. What follows the verb must not automatically be treated as a source of danger: grammatical object and semantic role are not identical.' },
+      ru: { lead: 'Занимать активную защитную позицию.', body: WQY_PUBLIC_MODEL.operativeMechanism.ru + ' ' + WQY_PUBLIC_MODEL.roleSafeguards.directObject.ru },
+      en: { lead: 'To take an active, protection-oriented stance.', body: WQY_PUBLIC_MODEL.operativeMechanism.en + ' ' + WQY_PUBLIC_MODEL.roleSafeguards.directObject.en },
     },
     structureSources: ['jawhari', 'laneTqy'], meaningSources: ['raghib', 'laneWqy'], related: ['taqwa', 'muttaqin', 'tuqat'],
   },
