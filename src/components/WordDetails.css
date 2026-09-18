@@ -532,3 +532,25 @@
   box-shadow: inset 3px 0 0 #7cff8b;
 }
 .translation-note-positive h4 { color: #8cff98; }
+
+
+.meaning-distinction {
+  margin: 22px 0 6px;
+  padding: 13px 14px;
+  border: 1px solid #ffffff10;
+  border-radius: 5px;
+  background: #ffffff025;
+}
+.meaning-distinction-label {
+  margin: 0 0 6px !important;
+  color: #aeb5bd !important;
+  font-size: 11px !important;
+  line-height: 1.4 !important;
+  letter-spacing: .035em;
+}
+.meaning-distinction > p:last-child {
+  margin: 0 !important;
+  color: var(--paper) !important;
+  font-size: 13px !important;
+  line-height: 1.65 !important;
+}
