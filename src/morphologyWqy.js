@@ -123,13 +123,13 @@ export const MORPHOLOGY = {
     ],
     derivedFrom: {
       ar: 'ٱتَّقَىٰ', reading: 'ittaqā', metaRu: 'глагол VIII формы', metaEn: 'Form VIII verb',
-      ru: 'Глагол называет действие/позицию; причастие называет человека, который это действие осуществляет или им характеризуется.',
-      en: 'The verb names the action/stance; the participle names a person who enacts it or is characterised by it.',
+      ru: 'مُتَّقِينَ (muttaqīn) связано с مُتَّقٍ (muttaqī) — действительным причастием от ٱتَّقَىٰ (ittaqā). Эта форма называет уже не само действие, а человека, который его осуществляет и характеризуется им.',
+      en: 'مُتَّقِينَ (muttaqīn) is related to مُتَّقٍ (muttaqī), the active participle of ٱتَّقَىٰ (ittaqā). This form names not the action itself but the person who performs it and is characterised by it.',
     },
     pattern: {
       ar: 'مُفْتَعِل', reading: 'muftaʿil',
-      ru: { title: 'Действительное причастие VIII формы', text: 'Переводит действие ٱتَّقَىٰ на его носителя. Сначала образуется مُتَّقٍ, а уже затем множественное مُتَّقِينَ.' },
-      en: { title: 'Form VIII active participle', text: 'Shifts the action ٱتَّقَىٰ to its bearer. First مُتَّقٍ is formed; the plural مُتَّقِينَ comes afterwards.' },
+      ru: { title: 'Действительное причастие VIII формы', text: 'Форма مُفْتَعِل (muftaʿil) переводит действие на его носителя: مُتَّقٍ (muttaqī) — тот, кто практикует تَقْوَىٰ (taqwā) и становится носителем этого качества. То есть человек, для которого осознанное остережение и защита стали устойчивой практикой и характеристикой. Множественное число — مُتَّقِينَ (muttaqīn).' },
+      en: { title: 'Form VIII active participle', text: 'The مُفْتَعِل (muftaʿil) pattern shifts the action to its bearer: مُتَّقٍ (muttaqī) is a person who practises تَقْوَىٰ (taqwā) and becomes characterised by it. In other words, conscious caution and protection become an enduring practice and quality. The plural is مُتَّقِينَ (muttaqīn).' },
     },
   },
 
