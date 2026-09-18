@@ -121,10 +121,15 @@ export const MORPHOLOGY = {
     displayArabic: 'مُتَّقِينَ',
     visualParts: [
       { text: 'مُ', role: 'prefix' },
-      { text: 'تَّ', role: 'form' },
+      { text: 'تَّ', role: 'fusion' },
       { text: 'قِ', role: 'root' },
       { text: 'ينَ', role: 'ending' },
     ],
+    transformation: {
+      root: 'و', form: 'ت', result: 'تّ',
+      ru: 'و корня сливается с ت формы; конечная корневая ي в этой форме множественного числа выпадает перед ـينَ.',
+      en: 'The root و assimilates with the form’s ت; the final root ي is dropped here before the plural ending ـينَ.',
+    },
     components: [
       {
         role: 'prefix', ar: 'مُـ', reading: 'mu-',
@@ -194,9 +199,10 @@ export const MORPHOLOGY = {
   atqa: {
     displayArabic: 'أَتْقَى',
     visualParts: [
-      { text: 'أَتْ', role: 'form' },
+      { text: 'أَ', role: 'form' },
+      { text: 'تْ', role: 'root' },
       { text: 'قَ', role: 'root' },
-      { text: 'ى', role: 'form' },
+      { text: 'ى', role: 'root' },
     ],
     components: [],
     derivedFrom: {
@@ -219,9 +225,9 @@ export const MORPHOLOGY = {
   tuqat: {
     displayArabic: 'تُقَاة',
     visualParts: [
-      { text: 'تُ', role: 'form' },
+      { text: 'تُ', role: 'root' },
       { text: 'قَ', role: 'root' },
-      { text: 'ا', role: 'form' },
+      { text: 'ا', role: 'root' },
       { text: 'ة', role: 'suffix' },
     ],
     components: [
@@ -251,10 +257,15 @@ export const MORPHOLOGY = {
   taqiyy: {
     displayArabic: 'تَقِيّ',
     visualParts: [
-      { text: 'تَ', role: 'form' },
+      { text: 'تَ', role: 'root' },
       { text: 'قِ', role: 'root' },
-      { text: 'يّ', role: 'form' },
+      { text: 'يّ', role: 'fusion' },
     ],
+    transformation: {
+      root: 'ي', form: 'ي', result: 'يّ',
+      ru: 'Конечная корневая ي соединяется с ي модели فَعِيل и даёт удвоенную يّ.',
+      en: 'The final root ي combines with the ي of the فَعِيل pattern, producing doubled يّ.',
+    },
     components: [],
     derivedFrom: {
       ar: 'ٱتَّقَىٰ / تَقْوَى', reading: 'ittaqā / taqwā', metaRu: 'словообразовательная семья', metaEn: 'derivational family',
@@ -278,7 +289,7 @@ export const MORPHOLOGY = {
     visualParts: [
       { text: 'وِقَ', role: 'root' },
       { text: 'ا', role: 'form' },
-      { text: 'ء', role: 'form' },
+      { text: 'ء', role: 'root' },
     ],
     components: [],
     derivedFrom: {
@@ -335,9 +346,14 @@ export const MORPHOLOGY = {
     visualParts: [
       { text: 'تَ', role: 'prefix' },
       { text: 'وَ', role: 'root' },
-      { text: 'قَّ', role: 'root' },
-      { text: 'ىٰ', role: 'form' },
+      { text: 'قَّ', role: 'fusion' },
+      { text: 'ىٰ', role: 'root' },
     ],
+    transformation: {
+      root: 'ق', form: 'ق', result: 'قّ',
+      ru: 'В V форме вторая корневая буква ق удваивается; конечная ىٰ представляет корневую ي.',
+      en: 'In Form V, the second root letter ق is doubled; final ىٰ represents the root ي.',
+    },
     components: [
       {
         role: 'prefix', ar: 'تَـ', reading: 'ta-',
