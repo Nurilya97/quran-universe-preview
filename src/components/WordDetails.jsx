@@ -31,6 +31,14 @@ function MorphFormula({ word, profile, language }) {
       </div>
     </div>
     <MorphLegend profile={profile} language={language} />
+    {profile.transformation && <div className="morph-transformation">
+      <span className="morph-root" lang="ar" dir="rtl">{profile.transformation.root}</span>
+      <span aria-hidden="true">+</span>
+      <span className="morph-form" lang="ar" dir="rtl">{profile.transformation.form}</span>
+      <span aria-hidden="true">→</span>
+      <span className="morph-fusion" lang="ar" dir="rtl">{profile.transformation.result}</span>
+      <small>{profile.transformation[language]}</small>
+    </div>}
   </section>
 }
 
