@@ -190,7 +190,7 @@ export const MORPHOLOGY = {
       },
     ],
     derivedFrom: {
-      ar: 'ٱتَّقَىٰ', metaRu: 'семья глагола VIII формы', metaEn: 'Form VIII verbal family',
+      ar: 'ٱتَّقَىٰ', reading: 'ittaqā', metaRu: 'семья глагола VIII формы', metaEn: 'Form VIII verbal family',
       ru: 'Глагольная линия оформляется как существительное действия/предосторожности.',
       en: 'The verbal line is packaged as a noun of action/precaution.',
     },
