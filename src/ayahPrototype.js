@@ -1,0 +1,111 @@
+export const AYAH_PROTOTYPES = {
+  '2:197': {
+    reference: '2:197',
+    surah: { ru: 'Аль-Бакара', en: 'Al-Baqarah', ar: 'البقرة' },
+    focusRoot: 'و ق ي',
+    greentechUrl: 'https://quran.gtaf.org/',
+    context: {
+      ru: 'Аят находится внутри блока о хадже (2:196–203). Он соединяет правила поведения во время хаджа с более широким внутренним ориентиром: после перечисления ограничений речь переходит к добру, запасу в путь и تَقْوَىٰ (taqwā).',
+      en: 'The verse sits inside the Hajj passage (2:196–203). It moves from rules of conduct during pilgrimage to a broader inner orientation: after the restrictions, the discourse turns to good action, provision for the journey, and تَقْوَىٰ (taqwā).',
+    },
+    tokens: [
+      { ar: 'ٱلْحَجُّ', tr: 'al-ḥajju', ru: 'хадж', en: 'the Hajj', roleRu: 'существительное · именительный', roleEn: 'noun · nominative' },
+      { ar: 'أَشْهُرٌ', tr: 'ashhurun', ru: 'месяцы', en: 'months', roleRu: 'существительное · мн. число', roleEn: 'noun · plural' },
+      { ar: 'مَّعْلُومَاتٌ', tr: 'maʿlūmātun', ru: 'известные / установленные', en: 'known / appointed', roleRu: 'прилагательное', roleEn: 'adjective' },
+      { ar: 'فَمَن', tr: 'faman', ru: 'и тот, кто', en: 'then whoever', roleRu: 'فاء + условное местоимение', roleEn: 'resumption + conditional noun' },
+      { ar: 'فَرَضَ', tr: 'faraḍa', ru: 'взял на себя / обязался', en: 'undertakes / commits', roleRu: 'глагол · прошедшее время', roleEn: 'perfect verb' },
+      { ar: 'فِيهِنَّ', tr: 'fīhinna', ru: 'в них', en: 'in them', roleRu: 'предлог + местоимение', roleEn: 'preposition + pronoun' },
+      { ar: 'ٱلْحَجَّ', tr: 'al-ḥajja', ru: 'хадж', en: 'the Hajj', roleRu: 'существительное · винительный', roleEn: 'noun · accusative' },
+      { ar: 'فَلَا', tr: 'falā', ru: 'тогда нет / пусть не будет', en: 'then no', roleRu: 'فاء результата + отрицательная частица', roleEn: 'result particle + negation' },
+      { ar: 'رَفَثَ', tr: 'rafatha', ru: 'интимной близости / непристойной речи', en: 'sexual relations / indecent speech', roleRu: 'существительное', roleEn: 'noun' },
+      { ar: 'وَلَا', tr: 'walā', ru: 'и нет / и пусть не будет', en: 'and no', roleRu: 'союз + отрицательная частица', roleEn: 'conjunction + negation' },
+      { ar: 'فُسُوقَ', tr: 'fusūqa', ru: 'неповиновения / греховного выхода', en: 'disobedience / sinful conduct', roleRu: 'существительное', roleEn: 'noun' },
+      { ar: 'وَلَا', tr: 'walā', ru: 'и нет / и пусть не будет', en: 'and no', roleRu: 'союз + отрицательная частица', roleEn: 'conjunction + negation' },
+      { ar: 'جِدَالَ', tr: 'jidāla', ru: 'спора', en: 'disputing', roleRu: 'существительное', roleEn: 'noun' },
+      { ar: 'فِي', tr: 'fī', ru: 'во время / в', en: 'during / in', roleRu: 'предлог', roleEn: 'preposition' },
+      { ar: 'ٱلْحَجِّ', tr: 'al-ḥajji', ru: 'хаджа', en: 'the Hajj', roleRu: 'существительное · родительный', roleEn: 'noun · genitive' },
+      { ar: 'وَمَا', tr: 'wamā', ru: 'и что бы ни', en: 'and whatever', roleRu: 'واو + условное местоимение', roleEn: 'resumption + conditional noun' },
+      { ar: 'تَفْعَلُوا۟', tr: 'tafʿalū', ru: 'вы делаете', en: 'you do', roleRu: 'глагол · 2 л. мн. ч.', roleEn: 'verb · 2nd person plural' },
+      { ar: 'مِنْ', tr: 'min', ru: 'из / какого-либо', en: 'of / any', roleRu: 'предлог', roleEn: 'preposition' },
+      { ar: 'خَيْرٍۢ', tr: 'khayrin', ru: 'добра', en: 'good', roleRu: 'существительное', roleEn: 'noun' },
+      { ar: 'يَعْلَمْهُ', tr: 'yaʿlamhu', ru: 'Он знает это', en: 'He knows it', roleRu: 'глагол + объектное местоимение', roleEn: 'verb + object pronoun' },
+      { ar: 'ٱللَّهُ', tr: 'Allāhu', ru: 'Аллах', en: 'Allah', roleRu: 'имя собственное · подлежащее', roleEn: 'proper noun · subject' },
+      { ar: 'وَتَزَوَّدُوا۟', tr: 'wa-tazawwadū', ru: 'и запасайтесь', en: 'and take provision', roleRu: 'повелительный глагол · V порода', roleEn: 'imperative · Form V' },
+      { ar: 'فَإِنَّ', tr: 'fa-inna', ru: 'ведь / поистине', en: 'for indeed', roleRu: 'فاء + частица усиления', roleEn: 'resumption + emphatic particle' },
+      { ar: 'خَيْرَ', tr: 'khayra', ru: 'лучший', en: 'the best', roleRu: 'существительное сравнения', roleEn: 'elative noun' },
+      { ar: 'ٱلزَّادِ', tr: 'al-zādi', ru: 'запас / провизия', en: 'provision', roleRu: 'существительное', roleEn: 'noun' },
+      {
+        ar: 'ٱلتَّقْوَىٰ', tr: 'al-taqwā', ru: 'تَقْوَىٰ (taqwā)', en: 'تَقْوَىٰ (taqwā)',
+        roleRu: 'существительное · состояние / качество', roleEn: 'noun · state / quality',
+        root: 'و ق ي', rootReading: 'w-q-y',
+        noteRu: 'Здесь تَقْوَىٰ (taqwā) названа «лучшим запасом». Образ физического запаса для пути переходит к внутреннему состоянию, которое направляет выбор человека.',
+        noteEn: 'Here تَقْوَىٰ (taqwā) is named “the best provision.” The image of physical provision for a journey shifts toward an inner state that guides a person’s choices.',
+      },
+      {
+        ar: 'وَٱتَّقُونِ', tr: 'wa-ittaqūni', ru: 'и займите защитную позицию передо Мной', en: 'and take a protective stance before Me',
+        roleRu: 'واو + повелительный глагол VIII породы + «Меня»', roleEn: 'conjunction + Form VIII imperative + “Me”',
+        root: 'و ق ي', rootReading: 'w-q-y',
+        noteRu: 'Повелительная форма ٱتَّقُوا (ittaqū) обращает защитное действие к самим адресатам. Суффикс ـنِ передаёт объект «Меня», поэтому вся конструкция читается только вместе, а не как изолированное слово.',
+        noteEn: 'The imperative ٱتَّقُوا (ittaqū) turns the protective action toward the addressees themselves. The ending ـنِ supplies the object “Me,” so the construction is understood as a whole rather than as an isolated word.',
+      },
+      { ar: 'يَـٰٓأُو۟لِي', tr: 'yā ulī', ru: 'о обладатели', en: 'O possessors', roleRu: 'частица обращения + существительное', roleEn: 'vocative particle + noun' },
+      { ar: 'ٱلْأَلْبَـٰبِ', tr: 'al-albābi', ru: 'разумения / глубокого разума', en: 'understanding / discerning intellect', roleRu: 'существительное · мн. число', roleEn: 'noun · plural' },
+    ],
+    blocks: [
+      {
+        id: 'time',
+        range: [1, 3],
+        ru: { title: 'Время хаджа', text: 'Аят открывается утверждением: хадж связан с известными месяцами.' },
+        en: { title: 'The time of Hajj', text: 'The verse opens with a statement: Hajj belongs to known months.' },
+      },
+      {
+        id: 'condition',
+        range: [4, 15],
+        ru: { title: 'Условие → ограничения', text: 'فَمَن (faman) вводит условную конструкцию. После принятия хаджа следуют три параллельных ограничения: رَفَث (rafath), فُسُوق (fusūq), جِدَال (jidāl).' },
+        en: { title: 'Condition → restrictions', text: 'فَمَن (faman) opens a conditional construction. After committing to Hajj, three parallel restrictions follow: رَفَث (rafath), فُسُوق (fusūq), and جِدَال (jidāl).' },
+      },
+      {
+        id: 'good',
+        range: [16, 21],
+        ru: { title: 'Переход к добру', text: 'После ограничений направление меняется: любое совершённое добро известно Аллаху.' },
+        en: { title: 'Turn toward good', text: 'After the restrictions, the direction changes: whatever good is done is known by Allah.' },
+      },
+      {
+        id: 'provision',
+        range: [22, 26],
+        ru: { title: 'Запас → лучший запас', text: 'Повеление «запасайтесь» развивается через слово ٱلزَّاد (al-zād, запас), а затем его вершиной называется ٱلتَّقْوَىٰ (al-taqwā).' },
+        en: { title: 'Provision → the best provision', text: 'The command “take provision” develops through ٱلزَّاد (al-zād, provision), and then names ٱلتَّقْوَىٰ (al-taqwā) as its highest form.' },
+      },
+      {
+        id: 'address',
+        range: [27, 29],
+        ru: { title: 'Прямое повеление и адресат', text: 'Финал становится прямым обращением: وَٱتَّقُونِ (wa-ittaqūni), затем адресаты названы أُولِي ٱلْأَلْبَاب (ulī al-albāb).' },
+        en: { title: 'Direct imperative and addressee', text: 'The ending becomes direct address: وَٱتَّقُونِ (wa-ittaqūni), followed by the addressees أُولِي ٱلْأَلْبَاب (ulī al-albāb).' },
+      },
+    ],
+    rhetoric: {
+      ru: [
+        { title: 'Тройной параллелизм', text: 'فَلَا رَفَثَ وَلَا فُسُوقَ وَلَا جِدَالَ — три ограничения построены одной повторяющейся схемой.' },
+        { title: 'Лексическая связка', text: 'وَتَزَوَّدُوا (wa-tazawwadū) и ٱلزَّاد (al-zād) происходят из одной словообразовательной семьи ز و د (z-w-d), связывая действие «запасаться» с самим «запасом».' },
+        { title: 'Смысловой поворот', text: 'Физический образ запаса для пути переходит к تَقْوَىٰ (taqwā) как «лучшему запасу», после чего следует прямое وَٱتَّقُونِ (wa-ittaqūni).' },
+      ],
+      en: [
+        { title: 'Three-part parallelism', text: 'فَلَا رَفَثَ وَلَا فُسُوقَ وَلَا جِدَالَ — three restrictions follow the same repeated pattern.' },
+        { title: 'Lexical linkage', text: 'وَتَزَوَّدُوا (wa-tazawwadū) and ٱلزَّاد (al-zād) belong to the same ز و د (z-w-d) derivational family, linking the act of taking provision with “provision” itself.' },
+        { title: 'Semantic turn', text: 'The physical image of provision for a journey moves to تَقْوَىٰ (taqwā) as “the best provision,” followed by the direct وَٱتَّقُونِ (wa-ittaqūni).' },
+      ],
+    },
+    sound: {
+      ru: 'Здесь будет отдельный проверяемый слой: tajwīd, madd, waqf и звуковые повторы. Факт чтения и интерпретация его возможного эффекта будут показаны раздельно.',
+      en: 'This will be a separate verifiable layer: tajwīd, madd, waqf, and sound recurrence. Recitation facts and interpretation of their possible effect will be shown separately.',
+    },
+    translations: {
+      ru: 'Сравнение переводов будет дополнительным слоем после разбора арабского текста. Основной экран сначала показывает, из чего складывается смысл самого аята.',
+      en: 'Translation comparison will be an optional layer after analysis of the Arabic text. The main view first shows how the verse’s meaning is built from the Arabic itself.',
+    },
+  },
+}
+
+export function getAyahPrototype(reference) {
+  return AYAH_PROTOTYPES[reference] || null
+}
