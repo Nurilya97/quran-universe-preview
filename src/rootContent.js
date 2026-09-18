@@ -17,11 +17,11 @@ export const CONTENT_SOURCES = {
 export const ROOT_CONTENT = {
   ru: {
     lead: WQY_PUBLIC_MODEL.rootNucleus.ru,
-    body: 'Ибн Фарис связывает корень с отведением одного от другого посредством чего-то третьего. Ар-Рагиб объясняет وِقَايَة как сохранение чего-либо от того, что причиняет ему вред. Отсюда связаны действие защиты, средство защиты и оберегание себя.',
+    body: 'Ибн Фарис связывает корень с отведением одного от другого посредством чего-то третьего. Ар-Рагиб объясняет وِقَايَة (wiqāya) как сохранение чего-либо от того, что причиняет ему вред. Поэтому на уровне самого корня объединяются действие защиты, защищающий, средство защиты и сохранение от вреда. Осознанность перед Всевышним, трепет и различение не являются буквальным значением корня: эти смысловые уровни возникают в производной линии ٱتَّقَىٰ (ittaqā) → تَقْوَىٰ (taqwā) и раскрываются через кораническое употребление.' ,
   },
   en: {
     lead: WQY_PUBLIC_MODEL.rootNucleus.en,
-    body: 'Ibn Faris connects the root with keeping one thing away from another by means of something else. Al-Raghib explains وِقَايَة as preserving something from what harms it. This connects the act of protecting, a means of protection, and guarding oneself.',
+    body: 'Ibn Faris connects the root with keeping one thing away from another by means of something else. Al-Raghib explains وِقَايَة (wiqāya) as preserving something from what harms it. At the root level, this therefore links the act of protection, the protector, a means of protection, and preservation from harm. Awareness before the Most High, awe, and discernment are not literal meanings of the root itself: these semantic layers emerge in the derived line ٱتَّقَىٰ (ittaqā) → تَقْوَىٰ (taqwā) and are unfolded through Quranic usage.',
   },
   sources: ['ibnFaris', 'raghib'],
 }
