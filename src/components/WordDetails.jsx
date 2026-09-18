@@ -8,7 +8,7 @@ import './WordDetails.css'
 
 
 function MorphLegend({ profile, language }) {
-  const roles = [...new Set(profile.visualParts.map(part => part.role))]
+  const roles = [...new Set(profile.visualParts.flatMap(part => part.markRole ? [part.role, part.markRole] : [part.role]))]
   return <div className="morph-legend" aria-label={language === 'ru' ? 'Цвета разбора слова' : 'Word-analysis colours'}>
     {roles.map(role => <span key={role} className={'morph-legend-' + role}>
       <i aria-hidden="true" />{MORPH_ROLES[role][language]}
@@ -24,7 +24,10 @@ function MorphFormula({ word, profile, language }) {
       <div className="morph-word-line">
         <div className="morph-word" lang="ar" dir="rtl" aria-label={profile.displayArabic}>
           {profile.visualParts.map((part, index) =>
-            <span key={index} className={'morph-part morph-' + part.role}>{part.text}</span>
+            <span key={index} className={'morph-part morph-' + part.role + (part.mark ? ' morph-part-with-mark' : '')}>
+              {part.text}
+              {part.mark === 'kasratan' && <i className="morph-kasratan-mark" aria-hidden="true"><b /><b /></i>}
+            </span>
           )}
         </div>
         <small className="transliteration morph-reading" lang="ar-Latn" dir="ltr">{word.reading}</small>
