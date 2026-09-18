@@ -17,11 +17,11 @@ export const CONTENT_SOURCES = {
 export const ROOT_CONTENT = {
   ru: {
     lead: WQY_PUBLIC_MODEL.rootNucleus.ru,
-    body: 'Ибн Фарис связывает корень с отведением одного от другого посредством чего-то третьего. Ар-Рагиб объясняет وِقَايَة (wiqāya) как сохранение чего-либо от того, что причиняет ему вред. На базовом уровне корень объединяет действие защиты, того, кто защищает, средство защиты и сохранение от вреда. В производной линии ٱتَّقَىٰ (ittaqā) → تَقْوَىٰ (taqwā) это защитное ядро развивается во внутреннюю позицию человека, а кораническое употребление раскрывает её через осознанность перед Всевышним, различение, трепет, внимание к границам и сознательный выбор.',
+    body: 'Ибн Фарис описывает этот корень через отделение одного от другого посредством защиты, а Ар-Рагиб — через сохранение от вреда. В производной линии ٱتَّقَىٰ (ittaqā) → تَقْوَىٰ (taqwā) это защитное ядро развивается во внутреннюю позицию человека; кораническое употребление раскрывает её через осознанность перед Всевышним, различение, трепет, внимание к границам и сознательный выбор.',
   },
   en: {
     lead: WQY_PUBLIC_MODEL.rootNucleus.en,
-    body: 'Ibn Faris connects the root with keeping one thing away from another by means of something else. Al-Raghib explains وِقَايَة (wiqāya) as preserving something from what harms it. At the basic level, the root brings together the act of protection, the protector, a means of protection, and preservation from harm. In the derived line ٱتَّقَىٰ (ittaqā) → تَقْوَىٰ (taqwā), this protective core develops into an inner stance, while Quranic usage unfolds it through awareness before the Most High, discernment, awe, attention to boundaries, and conscious choice.',
+    body: 'Ibn Faris describes this root through keeping one thing apart from another by means of protection, while Al-Raghib frames it as preservation from harm. In the derived line ٱتَّقَىٰ (ittaqā) → تَقْوَىٰ (taqwā), this protective core develops into an inner stance, while Quranic usage unfolds it through awareness before the Most High, discernment, awe, attention to boundaries, and conscious choice.',
   },
   sources: ['ibnFaris', 'raghib'],
 }
