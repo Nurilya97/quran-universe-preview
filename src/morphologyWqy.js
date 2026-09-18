@@ -14,6 +14,7 @@ export const MORPH_ROLES = {
   ending: { ru: 'Окончание', en: 'Ending' },
   particle: { ru: 'Частица', en: 'Particle' },
   form: { ru: 'Форма', en: 'Form' },
+  fusion: { ru: 'Корень + форма', en: 'Root + form' },
 }
 
 export const MORPH_COPY = {
@@ -84,10 +85,16 @@ export const MORPHOLOGY = {
   ittaqa: {
     displayArabic: 'ٱتَّقَىٰ',
     visualParts: [
-      { text: 'ٱتَّ', role: 'form' },
+      { text: 'ٱ', role: 'form' },
+      { text: 'تَّ', role: 'fusion' },
       { text: 'قَ', role: 'root' },
-      { text: 'ىٰ', role: 'form' },
+      { text: 'ىٰ', role: 'root' },
     ],
+    transformation: {
+      root: 'و', form: 'ت', result: 'تّ',
+      ru: 'و корня сливается с ت VIII формы.',
+      en: 'The root و assimilates with the Form VIII ت.',
+    },
     components: [],
     derivedFrom: {
       ar: 'وَقَىٰ', reading: 'waqā', metaRu: 'глагол I формы', metaEn: 'Form I verb',
