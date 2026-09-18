@@ -1,4 +1,6 @@
-import { WQY_PUBLIC_MODEL } from './canonicalWqy.js'\n\n// Short editorial explanations based only on the public sources linked below.
+import { WQY_PUBLIC_MODEL } from './canonicalWqy.js'
+
+// Short editorial explanations based only on the public sources linked below.
 // This is a lexical guide, not a translation of Quranic verses or a private archive.
 export const CONTENT_SOURCES = {
   corpus: { url: 'https://corpus.quran.com/qurandictionary.jsp?q=wqy', ru: 'Коранический арабский корпус · University of Leeds', en: 'Quranic Arabic Corpus · University of Leeds' },
