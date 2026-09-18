@@ -44,7 +44,7 @@ export const MORPHOLOGY = {
     visualParts: [
       { text: 'وَ', role: 'root' },
       { text: 'قَ', role: 'root' },
-      { text: 'ىٰ', role: 'form' },
+      { text: 'ىٰ', role: 'root' },
     ],
     components: [],
     derivedFrom: null,
@@ -65,8 +65,8 @@ export const MORPHOLOGY = {
     components: [
       {
         role: 'ending', ar: 'ـٍ', reading: '-in',
-        ru: 'Касратан показывает неопределённую форму в رفع/جر.',
-        en: 'Kasratan marks the indefinite nominative/genitive form here.',
+        ru: 'Танвин с касрой показывает неопределённую форму в رفع/جر.',
+        en: 'Tanwin with kasra marks the indefinite nominative/genitive form here.',
       },
     ],
     derivedFrom: {
