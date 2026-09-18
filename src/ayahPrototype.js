@@ -5,8 +5,8 @@ export const AYAH_PROTOTYPES = {
     focusRoot: 'و ق ي',
     greentechUrl: 'https://quran.gtaf.org/',
     context: {
-      ru: 'Аят находится внутри блока о хадже (2:196–203). Он соединяет правила поведения во время хаджа с более широким внутренним ориентиром: после перечисления ограничений речь переходит к добру, запасу в путь и تَقْوَىٰ (taqwā).',
-      en: 'The verse sits inside the Hajj passage (2:196–203). It moves from rules of conduct during pilgrimage to a broader inner orientation: after the restrictions, the discourse turns to good action, provision for the journey, and تَقْوَىٰ (taqwā).',
+      ru: 'Аят находится внутри блока о хадже (2:196–203). В 2:197 названы известные месяцы хаджа, ограничения для вступившего в хадж, доброе действие, запас в путь, تَقْوَىٰ (taqwā) и прямое обращение к أُولِي ٱلْأَلْبَاب (ulī al-albāb).',
+      en: 'The verse sits inside the Hajj passage (2:196–203). In 2:197 it names the known months of Hajj, restrictions for one who undertakes Hajj, good action, provision for the journey, تَقْوَىٰ (taqwā), and a direct address to أُولِي ٱلْأَلْبَاب (ulī al-albāb).',
     },
     tokens: [
       { ar: 'ٱلْحَجُّ', tr: 'al-ḥajju', ru: 'хадж', en: 'the Hajj', roleRu: 'существительное · именительный', roleEn: 'noun · nominative' },
@@ -38,8 +38,8 @@ export const AYAH_PROTOTYPES = {
         ar: 'ٱلتَّقْوَىٰ', tr: 'al-taqwā', ru: 'تَقْوَىٰ (taqwā)', en: 'تَقْوَىٰ (taqwā)',
         roleRu: 'существительное · состояние / качество', roleEn: 'noun · state / quality',
         root: 'و ق ي', rootReading: 'w-q-y',
-        noteRu: 'Здесь تَقْوَىٰ (taqwā) названа «лучшим запасом». Образ физического запаса для пути переходит к внутреннему состоянию, которое направляет выбор человека.',
-        noteEn: 'Here تَقْوَىٰ (taqwā) is named “the best provision.” The image of physical provision for a journey shifts toward an inner state that guides a person’s choices.',
+        noteRu: 'Здесь ٱلتَّقْوَىٰ (al-taqwā) стоит в конструкции خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ. Сначала важно увидеть её грамматическое место в этой конструкции; собственное значение تَقْوَىٰ (taqwā) раскрывается отдельно через корень, форму и коранические употребления.',
+        noteEn: 'Here ٱلتَّقْوَىٰ (al-taqwā) appears inside the construction خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ. Its grammatical place in that construction is shown first; the meaning of تَقْوَىٰ (taqwā) itself is explored separately through root, form, and Quranic usage.',
       },
       {
         ar: 'وَٱتَّقُونِ', tr: 'wa-ittaqūni', ru: 'и займите защитную позицию передо Мной', en: 'and take a protective stance before Me',
@@ -73,8 +73,8 @@ export const AYAH_PROTOTYPES = {
       {
         id: 'provision',
         range: [22, 26],
-        ru: { title: 'Запас → лучший запас', text: 'Повеление «запасайтесь» развивается через слово ٱلزَّاد (al-zād, запас), а затем его вершиной называется ٱلتَّقْوَىٰ (al-taqwā).' },
-        en: { title: 'Provision → the best provision', text: 'The command “take provision” develops through ٱلزَّاد (al-zād, provision), and then names ٱلتَّقْوَىٰ (al-taqwā) as its highest form.' },
+        ru: { title: 'Повеление запастись → пояснение', text: 'وَتَزَوَّدُوا (wa-tazawwadū) даёт повеление «запасайтесь». Затем فَإِنَّ (fa-inna) вводит пояснение, а خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ связывает «лучший», «запас» и تَقْوَىٰ (taqwā) в одну именную конструкцию.' },
+        en: { title: 'Command to take provision → explanation', text: 'وَتَزَوَّدُوا (wa-tazawwadū) gives the command “take provision.” Then فَإِنَّ (fa-inna) introduces an explanation, while خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ links “best,” “provision,” and تَقْوَىٰ (taqwā) in one nominal construction.' },
       },
       {
         id: 'address',
@@ -87,13 +87,17 @@ export const AYAH_PROTOTYPES = {
       ru: [
         { title: 'Тройной параллелизм', text: 'فَلَا رَفَثَ وَلَا فُسُوقَ وَلَا جِدَالَ — три ограничения построены одной повторяющейся схемой.' },
         { title: 'Лексическая связка', text: 'وَتَزَوَّدُوا (wa-tazawwadū) и ٱلزَّاد (al-zād) происходят из одной словообразовательной семьи ز و د (z-w-d), связывая действие «запасаться» с самим «запасом».' },
-        { title: 'Смысловой поворот', text: 'Физический образ запаса для пути переходит к تَقْوَىٰ (taqwā) как «лучшему запасу», после чего следует прямое وَٱتَّقُونِ (wa-ittaqūni).' },
+        { title: 'Переход внутри высказывания', text: 'После وَتَزَوَّدُوا (wa-tazawwadū) и ٱلزَّاد (al-zād) появляется تَقْوَىٰ (taqwā), а затем следует прямое وَٱتَّقُونِ (wa-ittaqūni). Риторический эффект этого перехода нужно оценивать уже после грамматического разбора конструкции.' },
       ],
       en: [
         { title: 'Three-part parallelism', text: 'فَلَا رَفَثَ وَلَا فُسُوقَ وَلَا جِدَالَ — three restrictions follow the same repeated pattern.' },
         { title: 'Lexical linkage', text: 'وَتَزَوَّدُوا (wa-tazawwadū) and ٱلزَّاد (al-zād) belong to the same ز و د (z-w-d) derivational family, linking the act of taking provision with “provision” itself.' },
-        { title: 'Semantic turn', text: 'The physical image of provision for a journey moves to تَقْوَىٰ (taqwā) as “the best provision,” followed by the direct وَٱتَّقُونِ (wa-ittaqūni).' },
+        { title: 'Transition within the statement', text: 'After وَتَزَوَّدُوا (wa-tazawwadū) and ٱلزَّاد (al-zād), تَقْوَىٰ (taqwā) appears, followed by the direct وَٱتَّقُونِ (wa-ittaqūni). The rhetorical effect of this transition is assessed only after the grammatical construction is clear.' },
       ],
+    },
+    flow: {
+      ru: 'Ход аята: время хаджа → ограничения для вступившего в хадж → любое добро известно Аллаху → повеление запастись → пояснение через خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ → прямое وَٱتَّقُونِ (wa-ittaqūni) и обращение к أُولِي ٱلْأَلْبَاب (ulī al-albāb).',
+      en: 'Flow of the verse: the time of Hajj → restrictions for one who undertakes Hajj → every good action is known by Allah → command to take provision → explanation through خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ → direct وَٱتَّقُونِ (wa-ittaqūni) and address to أُولِي ٱلْأَلْبَاب (ulī al-albāb).',
     },
     sound: {
       ru: 'Здесь будет отдельный проверяемый слой: tajwīd, madd, waqf и звуковые повторы. Факт чтения и интерпретация его возможного эффекта будут показаны раздельно.',
