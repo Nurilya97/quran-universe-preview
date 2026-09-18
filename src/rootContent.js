@@ -1,7 +1,7 @@
 import { WQY_PUBLIC_MODEL } from './canonicalWqy.js'
 
 // Short editorial explanations based only on the public sources linked below.
-// This is a lexical guide, not a translation of Quranic verses or a private archive.
+// This lexical guide presents public word-level explanations and linked sources.
 export const CONTENT_SOURCES = {
   corpus: { url: 'https://corpus.quran.com/qurandictionary.jsp?q=wqy', ru: 'Коранический арабский корпус · University of Leeds', en: 'Quranic Arabic Corpus · University of Leeds' },
   raghib: { url: 'https://arabiclexicon.hawramani.com/?p=9899#3cb2a3', ru: 'Ар-Рагиб · «Аль-Муфрадат», وقى', en: 'Al-Raghib · Al-Mufradat, وقى' },
@@ -117,8 +117,8 @@ export const WORD_CONTENT = {
   taqwa: {
     pattern: 'فَعْلَى', patternReading: 'faʿlā',
     structure: {
-      ru: ['Существительное, называющее качество или состояние. Оно связано с ٱتَّقَىٰ, но само не является глаголом VIII породы.', 'Здесь показан распространённый разбор по модели فَعْلَى. Корневая و соответствует начальной ت; изменение конечной ي участвует в образовании сочетания ـوَى. Поэтому корень остаётся و ق ي, хотя в слове видна ت.', 'Словари приводят и другие объяснения исторического образования. Орбита VIII обозначает словообразовательную семью, а не номер породы существительного.'],
-      en: ['A noun naming a quality or state. It is related to ٱتَّقَىٰ, but is not itself a Form VIII verb.', 'The common analysis shown here uses فَعْلَى. The initial ت corresponds to the root’s و; a change involving the final ي contributes to ـوَى. The root therefore remains و ق ي despite the visible ت.', 'Dictionaries also record other accounts of its historical formation. Orbit VIII represents the derivational family, not a verb-form number assigned to the noun.'],
+      ru: ['Существительное, называющее качество или состояние и словообразовательно связанное с ٱتَّقَىٰ. Для существительного показана собственная модель فَعْلَى.', 'Здесь показан распространённый разбор по модели فَعْلَى. Корневая و соответствует начальной ت; изменение конечной ي участвует в образовании сочетания ـوَى. Поэтому корень остаётся و ق ي, хотя в слове видна ت.', 'Словари приводят и другие объяснения исторического образования. Орбита VIII обозначает словообразовательную семью; модель существительного показана отдельно как فَعْلَى.'],
+      en: ['A noun naming a quality or state and derivationally related to ٱتَّقَىٰ. The noun is shown with its own pattern فَعْلَى.', 'The common analysis shown here uses فَعْلَى. The initial ت corresponds to the root’s و; a change involving the final ي contributes to ـوَى. The root therefore remains و ق ي despite the visible ت.', 'Dictionaries also record other accounts of its historical formation. Orbit VIII represents the derivational family; the noun’s own pattern is shown separately as فَعْلَى.'],
     },
     meaning: {
       ru: { lead: 'تَقْوَىٰ (taqwā) — целостное состояние осознанности перед Всевышним, основанное на вере и доверии Ему, осознании сокрытой реальности и Последней жизни.', body: 'Корень و ق ي сохраняет направление защиты и оберегания, а связь с ٱتَّقَىٰ (ittaqā) показывает активную позицию человека. Человек помнит о Всевышнем, воспринимает эту жизнь в связи с тем, что будет после неё, держит в сознании Его границы и делает выбор, который оберегает его. Остережение греха и наказания — часть защитного механизма. Более широкий уровень تَقْوَىٰ (taqwā) — сама осознанность перед Всевышним, из которой рождаются внимание, выбор и остережение.' },
@@ -356,8 +356,8 @@ export const WORD_CONTENT = {
       en: { lead: 'تَقِيّ (taqiyy) is a person described as possessing the quality of تَقْوَىٰ (taqwā).', body: 'It is an adjective, so the focus is the quality as a characteristic of the person. تَقِيّ (taqiyy) belongs to the same semantic family as مُتَّقٍ (muttaqin); grammatically the person’s attribute is foregrounded.' },
     },
     occurrenceNote: {
-      ru: 'Особенность источника: корпус включает сюда تُقَاتِهِ из 3:102:7 и размечает его как существительное во множественном числе. Это иная словоформа, а не буквальное написание تَقِيّ. Счётчик сохраняет группировку корпуса.',
-      en: 'Source distinction: the Corpus includes تُقَاتِهِ at 3:102:7 in this group and tags it as a plural noun. This is a different surface form, not the literal spelling تَقِيّ. The count preserves the Corpus grouping.',
+      ru: 'Особенность источника: корпус включает сюда تُقَاتِهِ из 3:102:7 и размечает его как существительное во множественном числе. Это отдельная словоформа; счётчик сохраняет именно такую группировку корпуса.',
+      en: 'Source distinction: the Corpus includes تُقَاتِهِ at 3:102:7 in this group and tags it as a plural noun. It is a separate surface form, and the count preserves this Corpus grouping.',
     },
     meaningMap: [
       {
@@ -386,8 +386,8 @@ export const WORD_CONTENT = {
   atqa: {
     pattern: 'أَفْعَل', patternReading: 'afʿal',
     structure: {
-      ru: ['Сравнительная форма прилагательного: показывает большую степень качества. Традиционный арабский термин — اسم التفضيل.', 'Это не глагол IV породы. Конечный слабый согласный даёт ى. Конструкция может означать «более…» или «самый…» в зависимости от контекста.'],
-      en: ['An elative adjective expressing a greater degree of a quality. The traditional Arabic term is اسم التفضيل.', 'It is not a Form IV verb. The final weak consonant gives ى. Depending on the construction, it can express “more…” or “most…”.'],
+      ru: ['Сравнительная форма прилагательного: показывает большую степень качества. Традиционный арабский термин — اسم التفضيل.', 'Форма относится к اسم التفضيل. Конечный слабый согласный даёт ى. Конструкция может означать «более…» или «самый…» в зависимости от контекста.'],
+      en: ['An elative adjective expressing a greater degree of a quality. The traditional Arabic term is اسم التفضيل.', 'The form belongs to اسم التفضيل. The final weak consonant gives ى. Depending on the construction, it can express “more…” or “most…”.'],
     },
     meaning: {
       ru: { lead: 'أَتْقَى (atqā) — более или наиболее обладающий تَقْوَىٰ (taqwā), в зависимости от конструкции.', body: 'Это форма сравнения اسم التفضيل (ism al-tafḍīl), показывающая большую степень той же تَقْوَىٰ (taqwā).' },
