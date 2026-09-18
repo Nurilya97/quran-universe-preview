@@ -128,24 +128,26 @@ export const WORD_CONTENT = {
     meaningMap: [
       {
         id: 'mechanism',
-        ru: { title: 'Механизм', description: 'В основе — осознанная ориентированность перед Всевышним, которая приводит к защитному выбору.', items: [
-          { term: 'Осознанность перед Всевышним', definition: 'Помнить о Нём, верить и доверять Ему, воспринимать жизнь в свете Его руководства и того, что существует за пределами непосредственного восприятия.' },
-          { term: 'Оберегание себя', definition: 'Из этой осознанности человек внимательно относится к установленным границам и выбирает то, что помогает ему не приблизиться к вреду и нарушению.' },
+        ru: { title: 'Механизм', description: 'Осознанность перед Всевышним делает последствия выбора значимыми для человека, помогает различать направление и приводит к защитному действию.', items: [
+          { term: 'Осознанность перед Всевышним', definition: 'Помнить о Нём, верить и доверять Ему, осознавать сокрытую реальность и Последнюю жизнь и воспринимать свой выбор в свете Его руководства.', connector: 'даёт различение' },
+          { term: 'Распознавание', definition: 'Человек замечает границу, направление и последствия выбора: что приближает к руководству, а что ведёт к нарушению и вреду.', connector: 'ведёт к защитному действию' },
+          { term: 'Оберегание себя', definition: 'Человек удерживается от того, что ведёт к греху и вредному исходу, и выбирает действие, которое сохраняет его в рамках руководства.' },
         ] },
-        en: { title: 'Mechanism', description: 'At the centre is conscious orientation before the Most High, which leads to protective choices.', items: [
-          { term: 'Awareness before the Most High', definition: 'Keeping Him in mind, believing in and trusting Him, and understanding life through His guidance and realities beyond immediate perception.' },
-          { term: 'Self-guarding', definition: 'From this awareness, a person pays attention to the boundaries that have been set and chooses what keeps them away from harm and transgression.' },
+        en: { title: 'Mechanism', description: 'Awareness before the Most High makes the consequences of choice meaningful, helps a person discern direction, and leads to protective action.', items: [
+          { term: 'Awareness before the Most High', definition: 'Keeping Him in mind, believing in and trusting Him, recognising the unseen and the Hereafter, and viewing one’s choices through His guidance.', connector: 'gives discernment' },
+          { term: 'Recognition', definition: 'The person notices the boundary, direction, and consequences of a choice: what moves toward guidance and what leads toward transgression and harm.', connector: 'leads to protective action' },
+          { term: 'Self-guarding', definition: 'The person holds back from what leads to sin and harmful consequences and chooses what keeps them within guidance.' },
         ] },
       },
       {
         id: 'component',
-        ru: { title: 'Составные части механизма', description: 'Коран раскрывает это состояние через убеждения, которые формируют восприятие и выбор человека.', items: [
+        ru: { title: 'Составные части механизма', description: 'Коран раскрывает основания, на которых держится эта осознанность и из которых формируется выбор человека.', items: [
           { term: 'Вера в сокрытое — الغيب (al-ghayb)', definition: 'Признание реальности, которая не воспринимается непосредственно чувствами и известна через откровение: Всевышнего, ангелов, Рая, Ада и других сокрытых вещей.' },
           { term: 'Убеждённость в Последней жизни — الآخرة (al-ākhirah)', definition: 'Осознание, что земная жизнь не является конечной и что за выбором человека последуют расчёт и воздаяние.' },
           { term: 'Вера в откровение', definition: 'Доверие тому, что Всевышний сообщает человеку через Своё руководство, и принятие этого руководства как основы для выбора.' },
           { term: 'Внимание к границам дозволенного', definition: 'Понимание того, где проходят установленные Всевышним границы, и сознательное стремление не выходить за них.' },
         ] },
-        en: { title: 'Components of the mechanism', description: 'The Quran unfolds this state through beliefs that shape a person’s perception and choices.', items: [
+        en: { title: 'Components of the mechanism', description: 'The Quran unfolds the foundations that sustain this awareness and shape a person’s choices.', items: [
           { term: 'Belief in the unseen — الغيب (al-ghayb)', definition: 'Acknowledging realities not directly perceived by the senses and known through revelation: the Most High, angels, Paradise, Hell, and other unseen realities.' },
           { term: 'Certainty in the Hereafter — الآخرة (al-ākhirah)', definition: 'Awareness that earthly life is not the end and that a person’s choices are followed by reckoning and recompense.' },
           { term: 'Faith in revelation', definition: 'Trusting what the Most High communicates through revelation and accepting that guidance as a basis for one’s choices.' },
