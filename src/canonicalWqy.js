@@ -38,8 +38,8 @@ export const WQY_PUBLIC_MODEL = {
     en: 'The fundamental meaning of the root is to protect / shield by preventing harm from reaching what is protected.',
   },
   operativeMechanism: {
-    ru: 'اتقى описывает активную защитно-ориентированную позицию субъекта. Конкретный вред, последствие или граница определяются конструкцией и контекстом.',
-    en: 'اتقى describes an active protection-oriented stance. The specific harm, consequence, or boundary is resolved from construction and context.',
+    ru: 'ٱتَّقَىٰ (ittaqā) описывает активную защитную позицию: человек сам действует так, чтобы уберечь себя.',
+    en: 'ٱتَّقَىٰ (ittaqā) describes an active protective stance: the person acts in a way that guards themself.',
   },
   roleSafeguards: {
     directObject: {
