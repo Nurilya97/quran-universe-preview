@@ -34,8 +34,8 @@ export const WQY_PUBLIC_MODEL = {
     },
   },
   rootNucleus: {
-    ru: 'Фундаментальное значение корня — ограждать / защищать, не позволяя вреду достигнуть защищаемого. Корень объединяет в себе все смыслы этого направления: в производных словах это смысловое ядро раскрывается по-разному, но сохраняет общую линию защиты и оберегания.',
-    en: 'The fundamental meaning of the root is to protect / shield by preventing harm from reaching what is protected. The root brings together the meanings that develop along this direction: its derivatives unfold this semantic core in different ways while preserving the shared line of protection and guarding.',
+    ru: 'Фундаментальное значение корня — ограждать / защищать, не позволяя вреду достигнуть защищаемого. Корень объединяет смыслы этого направления: действие защиты, защищающего, средство защиты и сохранение от вреда. Сам по себе корень не означает осознанность, трепет или различение; эти смысловые уровни возникают в производных формах и раскрываются кораническим употреблением, при этом сохраняется общая линия защиты и оберегания.',
+    en: 'The fundamental meaning of the root is to protect / shield by preventing harm from reaching what is protected. The root brings together meanings along this direction: the act of protection, the protector, a means of protection, and preservation from harm. The root itself does not mean awareness, awe, or discernment; those semantic layers emerge in derived forms and are unfolded through Quranic usage, while the shared line of protection and guarding remains.',
   },
   operativeMechanism: {
     ru: 'اتقى описывает активную защитно-ориентированную позицию субъекта. Конкретный вред, последствие или граница определяются конструкцией и контекстом.',
