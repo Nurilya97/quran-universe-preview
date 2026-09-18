@@ -165,19 +165,30 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
   const syntax = detail?.syntax
   const meaning = detail?.meaning
 
-  const morphPages = [
-    <div key="parts">
-      <strong>{ru ? 'Из чего состоит слово' : 'How the word is built'}</strong>
-      {morphology?.parts?.length
-        ? <div className="analysis-morph-parts">
-            {morphology.parts.map((part, index) => <div key={index}>
+  const morphologyParts = morphology?.parts || []
+  const morphPartPages = morphologyParts.length
+    ? Array.from({ length: Math.ceil(morphologyParts.length / 2) }, (_, pageIndex) => {
+        const pageParts = morphologyParts.slice(pageIndex * 2, pageIndex * 2 + 2)
+        return <div key={'parts-' + pageIndex}>
+          <strong>{pageIndex === 0
+            ? (ru ? 'Из чего состоит слово' : 'How the word is built')
+            : (ru ? 'Продолжение разбора' : 'Word structure continued')}</strong>
+          <div className="analysis-morph-parts">
+            {pageParts.map((part, index) => <div key={index}>
               <b lang="ar" dir="rtl">{part.ar}</b>
               <em>{part.tr}</em>
               <p>{part.label}</p>
             </div>)}
           </div>
-        : <p>{ru ? selected.roleRu : selected.roleEn}</p>}
-    </div>,
+        </div>
+      })
+    : [<div key="parts">
+        <strong>{ru ? 'Из чего состоит слово' : 'How the word is built'}</strong>
+        <p>{ru ? selected.roleRu : selected.roleEn}</p>
+      </div>]
+
+  const morphPages = [
+    ...morphPartPages,
     ...(morphology?.text ? [<div key="formation">
       <strong>{ru ? 'Как устроена форма' : 'How the form works'}</strong>
       <p className="analysis-detail-text">{morphology.text}</p>
