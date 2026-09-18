@@ -36,17 +36,109 @@ export const AYAH_PROTOTYPES = {
       { ar: 'ٱلزَّادِ', tr: 'al-zādi', ru: 'запас / провизия', en: 'provision', roleRu: 'существительное', roleEn: 'noun' },
       {
         ar: 'ٱلتَّقْوَىٰ', tr: 'al-taqwā', ru: 'благочестие', en: 'piety',
-        roleRu: 'существительное · состояние / качество', roleEn: 'noun · state / quality',
-        root: 'و ق ي', rootReading: 'w-q-y',
-        noteRu: 'В этом аяте «благочестие» используется как краткий контекстный перевод تَقْوَىٰ (taqwā): оно естественно входит в образ того, чем человек может «запастись». Полное значение слова раскрывается отдельно через корень, форму и коранические употребления.',
-        noteEn: 'Here “piety” is used as a short contextual rendering of تَقْوَىٰ (taqwā), fitting the image of something a person can take as provision. The fuller lexical meaning is explored separately through root, form, and Quranic usage.',
+        roleRu: 'существительное · именительный падеж', roleEn: 'noun · nominative',
+        root: 'و ق ي', rootReading: 'w-q-y', orbitId: 'taqwa',
+        noteRu: 'تَقْوَىٰ (taqwā) называет качество человека, связанное с осознанным остережением и защитой себя перед Всевышним.',
+        noteEn: 'تَقْوَىٰ (taqwā) names a quality connected with conscious caution and guarding oneself before Allah.',
+        analysis: {
+          ru: {
+            morphology: {
+              parts: [
+                { ar: 'ٱلـ', tr: 'al-', label: 'определённый артикль' },
+                { ar: 'تَقْوَىٰ', tr: 'taqwā', label: 'существительное' },
+                { ar: 'و ق ي', tr: 'w-q-y', label: 'корень: защита / оберегание' },
+                { ar: 'فَعْلَى', tr: 'faʿlā', label: 'именная модель' },
+              ],
+              text: 'В аяте слово стоит с артиклем ٱلـ. Внутри تَقْوَىٰ (taqwā) сохраняется словообразовательная связь с корнем و ق ي (w-q-y) и глаголом ٱتَّقَىٰ (ittaqā). Конечная ىٰ — alif maqṣūra.',
+            },
+            syntax: {
+              title: 'خبر إِنَّ · сказуемая часть после إِنَّ',
+              case: 'Грамматически مرفوع (marfūʿ) — именительный падеж.',
+              ending: 'Ожидаемая ḍamma здесь скрыта: слово заканчивается на ىٰ (alif maqṣūra), поэтому падеж выражается как ضمة مقدرة — подразумеваемая ḍamma.',
+              text: 'Конструкция: فَإِنَّ خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ. خَيْرَ (khayra) — имя إِنَّ в винительном падеже; ٱلزَّادِ (al-zādi) — إضافة, родительный; ٱلتَّقْوَىٰ (al-taqwā) сообщает, чем является «лучший запас».',
+            },
+            meaning: {
+              gloss: 'Благочестие',
+              description: 'Здесь تَقْوَىٰ (taqwā) — внутреннее религиозно-нравственное качество, которое направляет человека к правильному выбору и удерживает его в защитной позиции перед Всевышним.',
+              translation: '«Благочестие» хорошо передаёт качество внутренней религиозно-нравственной направленности и естественно входит в образ «запаса». «Праведность» тоже подходит по контексту и сильнее подчёркивает правильность поступков. В этом прототипе основным коротким переводом оставлено «благочестие», а пояснение сохраняет более широкий смысл تَقْوَىٰ (taqwā).',
+            },
+          },
+          en: {
+            morphology: {
+              parts: [
+                { ar: 'ٱلـ', tr: 'al-', label: 'definite article' },
+                { ar: 'تَقْوَىٰ', tr: 'taqwā', label: 'noun' },
+                { ar: 'و ق ي', tr: 'w-q-y', label: 'root: protection / guarding' },
+                { ar: 'فَعْلَى', tr: 'faʿlā', label: 'nominal pattern' },
+              ],
+              text: 'In the ayah the word carries the definite article ٱلـ. تَقْوَىٰ (taqwā) remains derivationally linked to the root و ق ي (w-q-y) and the verb ٱتَّقَىٰ (ittaqā). The final ىٰ is alif maqṣūra.',
+            },
+            syntax: {
+              title: 'خبر إِنَّ · predicate after إِنَّ',
+              case: 'Grammatically nominative (مرفوع).',
+              ending: 'The expected ḍamma is implicit because the word ends in ىٰ (alif maqṣūra): ضمة مقدرة.',
+              text: 'Construction: فَإِنَّ خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ. خَيْرَ (khayra) is the noun of إِنَّ in the accusative; ٱلزَّادِ (al-zādi) is genitive in an iḍāfa; ٱلتَّقْوَىٰ (al-taqwā) states what the “best provision” is.',
+            },
+            meaning: {
+              gloss: 'Piety',
+              description: 'Here تَقْوَىٰ (taqwā) names an inward religious-moral quality that guides choice and places a person in a protective stance before Allah.',
+              translation: '“Piety” foregrounds the inward religious-moral quality and fits the image of provision. “Righteousness” also works contextually and foregrounds right conduct. The prototype uses “piety” as the compact gloss while the explanation keeps the broader semantic range of تَقْوَىٰ (taqwā).',
+            },
+          },
+        },
       },
       {
-        ar: 'وَٱتَّقُونِ', tr: 'wa-ittaqūni', ru: 'и займите защитную позицию передо Мной', en: 'and take a protective stance before Me',
-        roleRu: 'واو + повелительный глагол VIII породы + «Меня»', roleEn: 'conjunction + Form VIII imperative + “Me”',
-        root: 'و ق ي', rootReading: 'w-q-y',
-        noteRu: 'Повелительная форма ٱتَّقُوا (ittaqū) обращает защитное действие к самим адресатам. Суффикс ـنِ передаёт объект «Меня», поэтому вся конструкция читается только вместе, а не как изолированное слово.',
-        noteEn: 'The imperative ٱتَّقُوا (ittaqū) turns the protective action toward the addressees themselves. The ending ـنِ supplies the object “Me,” so the construction is understood as a whole rather than as an isolated word.',
+        ar: 'وَٱتَّقُونِ', tr: 'wa-ittaqūni', ru: 'и остерегайтесь Меня / берегите себя передо Мной', en: 'and guard yourselves before Me',
+        roleRu: 'союз + повелительный глагол VIII формы + местоименный объект', roleEn: 'conjunction + Form VIII imperative + object pronoun',
+        root: 'و ق ي', rootReading: 'w-q-y', orbitId: 'ittaqa',
+        noteRu: 'وَٱتَّقُونِ (wa-ittaqūni) — прямое повеление адресатам, образованное от ٱتَّقَىٰ (ittaqā).',
+        noteEn: 'وَٱتَّقُونِ (wa-ittaqūni) is a direct imperative to the addressees, formed from ٱتَّقَىٰ (ittaqā).',
+        analysis: {
+          ru: {
+            morphology: {
+              parts: [
+                { ar: 'وَ', tr: 'wa-', label: 'союз «и»' },
+                { ar: 'ٱتَّقُوا', tr: 'ittaqū', label: 'повелительная форма, 2 л. мн. ч.' },
+                { ar: 'نِ', tr: '-ni', label: 'объект «Меня»; yā местоимения графически опущена' },
+                { ar: 'و ق ي', tr: 'w-q-y', label: 'корень' },
+              ],
+              text: 'Глагольная основа относится к VIII форме ٱتَّقَىٰ (ittaqā). Внутри формы корневая و ассимилируется с ت модели и даёт удвоенную تّ.',
+            },
+            syntax: {
+              title: 'فعل أمر · повелительный глагол',
+              case: 'و الجماعة — присоединённое местоимение в позиции подлежащего.',
+              ending: 'Объектное местоимение 1-го лица «Меня» связано с глаголом; в коранической записи yā местоимения опущена.',
+              text: 'وَ связывает это повеление с предыдущей частью аята. Глагол обращён к множественному адресату, а объектом выступает говорящий — «Меня».',
+            },
+            meaning: {
+              gloss: 'Остерегайтесь Меня / берегите себя передо Мной',
+              description: 'Повеление переводит تَقْوَىٰ (taqwā) из названного качества в действие: адресатам велено занять защитную, осторожную позицию в отношении Всевышнего.',
+              translation: 'Русский вариант зависит от того, какой оттенок выводится вперёд: «остерегайтесь Меня» сохраняет идею осторожности; «берегите себя передо Мной» яснее показывает защитное ядро корня. В полном разборе оба оттенка остаются видимыми.',
+            },
+          },
+          en: {
+            morphology: {
+              parts: [
+                { ar: 'وَ', tr: 'wa-', label: 'conjunction “and”' },
+                { ar: 'ٱتَّقُوا', tr: 'ittaqū', label: '2nd person plural imperative' },
+                { ar: 'نِ', tr: '-ni', label: 'object “Me”; pronominal yā is orthographically omitted' },
+                { ar: 'و ق ي', tr: 'w-q-y', label: 'root' },
+              ],
+              text: 'The verbal base belongs to Form VIII ٱتَّقَىٰ (ittaqā). Within the form, the root و assimilates with the pattern’s ت, producing doubled تّ.',
+            },
+            syntax: {
+              title: 'فعل أمر · imperative verb',
+              case: 'The plural wāw functions as the subject pronoun.',
+              ending: 'The first-person object pronoun “Me” is attached to the verb; its yā is omitted in the Quranic spelling.',
+              text: 'وَ links the command to the preceding discourse. The verb addresses a plural audience and takes the speaker as its object.',
+            },
+            meaning: {
+              gloss: 'Guard yourselves before Me',
+              description: 'The command turns تَقْوَىٰ (taqwā) from a named quality into an action: the addressees are told to take a protective, cautious stance before Allah.',
+              translation: 'Different renderings foreground different facets: “be wary of Me” stresses caution, while “guard yourselves before Me” keeps the protective root more visible.',
+            },
+          },
+        },
       },
       { ar: 'يَـٰٓأُو۟لِي', tr: 'yā ulī', ru: 'о обладатели', en: 'O possessors', roleRu: 'частица обращения + существительное', roleEn: 'vocative particle + noun' },
       { ar: 'ٱلْأَلْبَـٰبِ', tr: 'al-albābi', ru: 'разумения / глубокого разума', en: 'understanding / discerning intellect', roleRu: 'существительное · мн. число', roleEn: 'noun · plural' },
