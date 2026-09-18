@@ -31,6 +31,7 @@ jobs:
       - name: Build spatial preview
         run: |
           npm run build
+          cp dist/spatial.html "dist/build-${GITHUB_SHA::8}.html"
           mv dist/spatial.html dist/index.html
       - name: Configure Pages
         uses: actions/configure-pages@v5
