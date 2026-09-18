@@ -17,7 +17,7 @@ function ResetIcon() {
 
 const WORLD = { width: 2400, height: 1700 }
 const ANALYSIS_COLS = 10
-const ANALYSIS_START = { x: 2110, y: 310 }
+const ANALYSIS_START = { x: 2110, y: 470 }
 const ANALYSIS_GAP = { x: 205, y: 360 }
 
 function clamp(value, min, max) {
@@ -68,6 +68,8 @@ function AnalysisView({ ayah, focusWordIndex, language, selectedWord, onSelectWo
       <small>{ru ? 'РАЗБОР АЯТА' : 'AYAH ANALYSIS'}</small>
       <strong>{ru ? 'Слова → связи → конструкции' : 'Words → relations → constructions'}</strong>
     </div>
+
+    <WorldAyah ayah={ayah} focusWordIndex={focusWordIndex} className="analysis-ayah" />
 
     <svg className="analysis-sequence-lines" width={WORLD.width} height={WORLD.height} viewBox={`0 0 ${WORLD.width} ${WORLD.height}`} aria-hidden="true">
       {sequentialPaths}
