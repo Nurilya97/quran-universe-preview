@@ -14,9 +14,9 @@ function SourceLinks({ ids, language }) {
 function ModelStatus({ language }) {
   const ru = language === 'ru'
   const review = ru
-    ? `Модель ${WQY_PUBLIC_MODEL.modelVersion} · проверено человеком · экспертная проверка не завершена`
-    : `Model ${WQY_PUBLIC_MODEL.modelVersion} · human reviewed · scholar review pending`
-  return <p className="model-status">{review}</p>
+    ? 'Рабочая модель · проверено человеком · экспертная проверка впереди'
+    : 'Working model · human reviewed · scholar review pending'
+  return <p className="model-status" title={WQY_PUBLIC_MODEL.modelVersion}>{review}</p>
 }
 
 function CanonicalNote({ wordId, language }) {
@@ -31,7 +31,7 @@ function CanonicalNote({ wordId, language }) {
   if (wordId === 'taqwa') {
     const tf = WQY_PUBLIC_MODEL.translationFidelity[language]
     return <section className="canonical-note">
-      <h3>Translation Fidelity</h3>
+      <h3>{language === 'ru' ? 'Точность перевода' : 'Translation fidelity'}</h3>
       <p>{tf.summary}</p>
       <p>{tf.righteousness}</p>
       <p>{tf.godFearing}</p>
