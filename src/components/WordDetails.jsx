@@ -145,24 +145,162 @@ function WordFormation({ profile, language }) {
   </section>
 }
 
+function firstSentence(text = '') {
+  const match = text.trim().match(/^.*?[.!?](?:\s|$)/)
+  return match ? match[0].trim() : text
+}
+
+function MorphBoardArabic({ profile }) {
+  return <span className="morph-board-target-word" lang="ar" dir="rtl" aria-label={profile.displayArabic}>
+    {profile.visualParts.map((part, index) =>
+      <span key={index} className={'morph-board-part morph-board-' + part.role + (part.mark ? ' morph-board-part-with-mark' : '')}>
+        {part.text}
+        {part.mark === 'kasratan' && <i className="morph-board-kasratan-mark" aria-hidden="true"><b /><b /></i>}
+      </span>
+    )}
+  </span>
+}
+
+function MorphBoardCallout({ label, ar, reading, text, tone = 'quiet', expandable = false }) {
+  if (!label && !ar && !text) return null
+  const body = <div className="morph-board-callout-body">
+    {(ar || reading) && <div className="morph-board-callout-term">
+      {ar && <span lang="ar" dir="rtl">{ar}</span>}
+      {reading && <small className="transliteration" lang="ar-Latn" dir="ltr">{reading}</small>}
+    </div>}
+    {text && <p>{text}</p>}
+  </div>
+
+  if (expandable && text) {
+    return <details className={'morph-board-callout morph-board-callout-' + tone}>
+      <summary>
+        <span>{label}</span>
+        {ar && <b lang="ar" dir="rtl">{ar}</b>}
+        <i aria-hidden="true">+</i>
+      </summary>
+      {body}
+    </details>
+  }
+
+  return <aside className={'morph-board-callout morph-board-callout-' + tone}>
+    {label && <p className="morph-board-callout-label">{label}</p>}
+    {body}
+  </aside>
+}
+
+function MorphBoard({ word, profile, language }) {
+  const c = MORPH_COPY[language]
+  const ru = language === 'ru'
+  const rootStep = { ar: 'و ق ي', reading: 'w-q-y', metaRu: 'корень', metaEn: 'root' }
+  const rawSteps = profile.evolution?.length
+    ? profile.evolution
+    : [rootStep, {
+        ar: profile.displayArabic,
+        reading: word.reading,
+        metaRu: profile.pattern?.ru?.title || 'слово',
+        metaEn: profile.pattern?.en?.title || 'word',
+      }]
+  const steps = rawSteps[0]?.ar?.replace(/\s/g, '') === 'وقي' ? rawSteps : [rootStep, ...rawSteps]
+  const lastIndex = steps.length - 1
+  const patternCopy = profile.pattern?.[language]
+  const patternText = patternCopy?.text || ''
+  const derivedText = profile.derivedFrom?.[language] || ''
+  const formationText = profile.formation?.[language] || ''
+  const componentCopy = profile.components || []
+
+  return <section className="morph-board" aria-label={c.analysis}>
+    <header className="morph-board-header">
+      <p>{ru ? 'Визуальная морфология' : 'Visual morphology'}</p>
+      <h3>{ru ? 'Как слово складывается шаг за шагом' : 'How the word is built, step by step'}</h3>
+    </header>
+
+    <div className="morph-board-canvas">
+      <div className="morph-board-flow">
+        {steps.map((step, index) => {
+          const isRoot = index === 0
+          const isTarget = index === lastIndex
+          const isSource = !isRoot && !isTarget && profile.derivedFrom && step.ar === profile.derivedFrom.ar
+          return <div className="morph-board-flow-unit" key={step.ar + index}>
+            <article className={'morph-board-node' + (isRoot ? ' is-root' : '') + (isTarget ? ' is-target' : '')}>
+              <div className="morph-board-node-topline">
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <small>{isRoot ? c.root : (ru ? step.metaRu : step.metaEn)}</small>
+              </div>
+              <div className="morph-board-node-word">
+                {isTarget
+                  ? <MorphBoardArabic profile={profile} />
+                  : <span lang="ar" dir="rtl">{step.ar}</span>}
+                {step.reading && <small className="transliteration" lang="ar-Latn" dir="ltr">{step.reading}</small>}
+              </div>
+
+              {isRoot && <MorphBoardCallout
+                label={ru ? 'Смысловое ядро' : 'Root nucleus'}
+                text={WQY_PUBLIC_MODEL.rootNucleus[language]}
+              />}
+
+              {isSource && derivedText && <MorphBoardCallout
+                label={ru ? 'Что меняется' : 'What changes'}
+                text={firstSentence(derivedText)}
+              />}
+
+              {isTarget && <div className="morph-board-target-notes">
+                {profile.pattern && <MorphBoardCallout
+                  label={patternCopy?.title || (ru ? 'Форма' : 'Form')}
+                  ar={profile.pattern.ar}
+                  reading={profile.pattern.reading}
+                  text={patternText}
+                  tone="accent"
+                  expandable={patternText.length > 120}
+                />}
+
+                {profile.transformation && <MorphBoardCallout
+                  label={ru ? 'Изменение внутри слова' : 'Change inside the word'}
+                  ar={profile.transformation.result}
+                  text={profile.transformation[language]}
+                  tone="accent"
+                />}
+
+                {componentCopy.map((component, componentIndex) => <MorphBoardCallout
+                  key={component.ar + componentIndex}
+                  label={MORPH_ROLES[component.role][language]}
+                  ar={component.ar}
+                  reading={component.reading}
+                  text={component[language]}
+                  tone={component.role === 'ending' ? 'soft' : 'accent'}
+                />)}
+
+                {formationText && <MorphBoardCallout
+                  label={ru ? 'Что получилось' : 'What this creates'}
+                  text={formationText}
+                  tone="soft"
+                  expandable={formationText.length > 130}
+                />}
+              </div>}
+            </article>
+
+            {index < lastIndex && <div className="morph-board-arrow" aria-hidden="true">
+              <span />
+              <b>→</b>
+            </div>}
+          </div>
+        })}
+      </div>
+
+      <div className="morph-board-key" aria-label={ru ? 'Условные обозначения' : 'Legend'}>
+        <span><i className="key-root" />{ru ? 'корневые буквы' : 'root letters'}</span>
+        <span><i className="key-added" />{ru ? 'добавленная структура' : 'added structure'}</span>
+        {componentCopy.some(item => item.role === 'ending') && <span><i className="key-ending" />{ru ? 'окончание' : 'ending'}</span>}
+      </div>
+    </div>
+  </section>
+}
+
 function MorphologyStructure({ word, content, language, onPick }) {
   const profile = MORPHOLOGY[word.id]
   if (!profile) return null
 
-  return <div className="entry-copy morphology-entry">
-    <MorphFormula word={word} profile={profile} language={language} />
-    <RootBreakdown language={language} />
-    <ComponentBreakdown components={profile.components} language={language} />
-    {word.id === 'taqwa' && <TaqwaForm profile={profile} language={language} />}
-    {word.id === 'taqwa'
-      ? <WordFormation profile={profile} language={language} />
-      : <>
-          <DerivedFrom source={profile.derivedFrom} language={language} />
-          <PatternEffect pattern={profile.pattern} language={language} />
-          <WordFormation profile={profile} language={language} />
-        </>}
-
-
+  return <div className="entry-copy morphology-entry morphology-entry-board">
+    <MorphBoard word={word} profile={profile} language={language} />
     {word.lexicalOnly && <p className="entry-note">{COPY[language].lexicalNote}</p>}
     <RelatedWords ids={content.related} language={language} onPick={onPick} />
     <SourceLinks ids={content.structureSources} language={language} />
