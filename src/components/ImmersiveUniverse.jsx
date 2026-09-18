@@ -215,7 +215,7 @@ export function ImmersiveUniverse() {
       <Icon name={paused || reducedMotion ? 'play' : 'pause'} />
     </button>}
 
-    <dialog ref={dialog} className="detail-sheet"
+    <dialog ref={dialog} className={'detail-sheet' + (panel === 'structure' ? ' structure-sheet' : '')}
       aria-labelledby={panel === 'structure' ? undefined : 'sheet-title'}
       aria-label={panel === 'structure' ? t.structure : undefined}
       onCancel={(event) => { event.preventDefault(); closePanel() }}
