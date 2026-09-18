@@ -146,6 +146,37 @@ function CalloutPager({ page, count, onChange, language }) {
   </div>
 }
 
+function splitCalloutText(text, maxLength = 175) {
+  if (!text) return []
+  const sentences = text.match(/[^.!?…]+[.!?…]?/g)?.map(part => part.trim()).filter(Boolean) || [text]
+  const pages = []
+  let current = ''
+
+  for (const sentence of sentences) {
+    if (!current) {
+      if (sentence.length <= maxLength) current = sentence
+      else {
+        for (let i = 0; i < sentence.length; i += maxLength) pages.push(sentence.slice(i, i + maxLength).trim())
+      }
+      continue
+    }
+
+    if ((current + ' ' + sentence).length <= maxLength) {
+      current += ' ' + sentence
+    } else {
+      pages.push(current)
+      if (sentence.length <= maxLength) current = sentence
+      else {
+        for (let i = 0; i < sentence.length; i += maxLength) pages.push(sentence.slice(i, i + maxLength).trim())
+        current = ''
+      }
+    }
+  }
+
+  if (current) pages.push(current)
+  return pages
+}
+
 function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrbit }) {
   const [pages, setPages] = useState({ morph: 0, syntax: 0, semantic: 0 })
 
@@ -195,6 +226,15 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
     </div>] : []),
   ]
 
+  const syntaxEndingPages = splitCalloutText(syntax?.ending, 150).map((text, index) => <div key={'ending-' + index}>
+    <strong>{ru ? 'Почему такая огласовка' : 'Why this ending appears'}</strong>
+    <p><b>{ru ? 'Окончание / огласовка:' : 'Ending / vowel:'}</b> {text}</p>
+  </div>)
+  const syntaxDetailPages = splitCalloutText(syntax?.text, 165).map((text, index) => <div key={'syntax-detail-' + index}>
+    <strong>{ru ? 'Как устроена конструкция' : 'How the construction works'}</strong>
+    <p className="analysis-detail-text">{text}</p>
+  </div>)
+
   const syntaxPages = [
     <div key="plain">
       <strong>{ru ? 'Что делает слово в предложении' : 'What the word does in the sentence'}</strong>
@@ -206,24 +246,26 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
       {syntax?.title && <p><b>{ru ? 'Роль:' : 'Role:'}</b> {syntax.title}</p>}
       {syntax?.case && <p><b>{ru ? 'Падеж / форма:' : 'Case / form:'}</b> {syntax.case}</p>}
     </div>,
-    ...((syntax?.ending || syntax?.text) ? [<div key="ending">
-      <strong>{ru ? 'Почему именно такая форма' : 'Why this form appears'}</strong>
-      {syntax?.ending && <p><b>{ru ? 'Окончание / огласовка:' : 'Ending / vowel:'}</b> {syntax.ending}</p>}
-      {syntax?.text && <p className="analysis-detail-text">{syntax.text}</p>}
-    </div>] : []),
+    ...syntaxEndingPages,
+    ...syntaxDetailPages,
   ]
 
+  const semanticDescriptionPages = splitCalloutText(
+    meaning?.description || (ru ? selected.noteRu : selected.noteEn),
+    175
+  ).map((text, index) => <div key={'meaning-' + index}>
+    <strong>{index === 0 ? (meaning?.gloss || (ru ? selected.ru : selected.en)) : (ru ? 'Продолжение значения' : 'Meaning continued')}</strong>
+    <p className="analysis-detail-text">{text}</p>
+  </div>)
+
+  const semanticTranslationPages = splitCalloutText(meaning?.translation, 175).map((text, index) => <div key={'translation-' + index}>
+    <strong>{index === 0 ? (ru ? 'Почему такой перевод' : 'Why this translation') : (ru ? 'Продолжение' : 'Continued')}</strong>
+    <p className="analysis-translation-choice">{text}</p>
+  </div>)
+
   const semanticPages = [
-    <div key="meaning">
-      <strong>{meaning?.gloss || (ru ? selected.ru : selected.en)}</strong>
-      {meaning?.description
-        ? <p className="analysis-detail-text">{meaning.description}</p>
-        : <p className="analysis-detail-text">{ru ? selected.noteRu : selected.noteEn}</p>}
-    </div>,
-    ...(meaning?.translation ? [<div key="translation">
-      <strong>{ru ? 'Почему такой перевод' : 'Why this translation'}</strong>
-      <p className="analysis-translation-choice">{meaning.translation}</p>
-    </div>] : []),
+    ...(semanticDescriptionPages.length ? semanticDescriptionPages : [<div key="meaning-fallback"><strong>{ru ? selected.ru : selected.en}</strong></div>]),
+    ...semanticTranslationPages,
   ]
 
   function setPage(kind, value) {
@@ -240,9 +282,12 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
       </div>
 
       <svg className="analysis-focus-rays" viewBox="0 0 1000 720" aria-hidden="true">
-        <path className="morph" d="M 500 350 C 405 290, 320 225, 235 175" />
-        <path className="syntax" d="M 500 350 C 595 290, 680 225, 765 175" />
-        <path className="semantic" d="M 500 380 C 500 445, 500 500, 500 555" />
+        <path className="morph" d="M 480 345 C 405 305, 330 245, 245 190" />
+        <path className="syntax" d="M 520 345 C 595 305, 670 245, 755 190" />
+        <path className="semantic" d="M 500 375 C 500 435, 500 500, 500 565" />
+        <circle className="morph-dot" cx="245" cy="190" r="4" />
+        <circle className="syntax-dot" cx="755" cy="190" r="4" />
+        <circle className="semantic-dot" cx="500" cy="565" r="4" />
       </svg>
 
       <section className="analysis-focus-callout morph" onClick={(event) => event.stopPropagation()}>
