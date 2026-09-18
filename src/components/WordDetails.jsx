@@ -197,27 +197,6 @@ function MeaningMap({ levels, language }) {
   </section>
 }
 
-function MeaningMap({ levels, language }) {
-  if (!levels?.length) return null
-  return <section className="meaning-map">
-    {levels.map(level => {
-      const copy = level[language]
-      return <section className={'meaning-class meaning-class-' + level.id} key={level.id}>
-        <header>
-          <p className="meaning-class-label">{copy.title}</p>
-          <p className="meaning-class-description">{copy.description}</p>
-        </header>
-        <div className="meaning-term-list">
-          {copy.items.map((item, index) => <article className="meaning-term" key={item.term + index}>
-            <h4>{item.term}</h4>
-            <p>{item.definition}</p>
-          </article>)}
-        </div>
-      </section>
-    })}
-  </section>
-}
-
 function ModelStatus({ language }) {
   const ru = language === 'ru'
   const review = ru
