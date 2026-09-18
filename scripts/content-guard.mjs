@@ -42,12 +42,22 @@ if (WQY_PUBLIC_MODEL.translationFidelity.universalEquivalent !== false) {
 console.log('Preview content guard passed: WQY v0.2 status, counts, role safeguards and taqwa scope are aligned.')
 
 const morphologyIds = FORMS.map(x => x.id)
+const allowedRoles = new Set(['root', 'prefix', 'suffix', 'ending', 'particle', 'form'])
 for (const id of morphologyIds) {
-  if (!MORPHOLOGY[id]) fail(`missing morphology teaching profile for ${id}`)
-  if (!Array.isArray(MORPHOLOGY[id]?.segments) || MORPHOLOGY[id].segments.length < 2) fail(`invalid morphology segments for ${id}`)
-  if (!Array.isArray(MORPHOLOGY[id]?.lineage) || MORPHOLOGY[id].lineage.length < 3) fail(`invalid derivation lineage for ${id}`)
+  const profile = MORPHOLOGY[id]
+  if (!profile) fail(`missing morphology teaching profile for ${id}`)
+  if (!Array.isArray(profile?.visualParts) || profile.visualParts.length < 2) fail(`invalid visualParts for ${id}`)
+  if (!profile?.pattern?.ar || !profile?.pattern?.ru?.text || !profile?.pattern?.en?.text) fail(`missing pattern explanation for ${id}`)
+  if (!Array.isArray(profile?.components)) fail(`components must be an array for ${id}`)
+  for (const part of profile.visualParts || []) {
+    if (!allowedRoles.has(part.role)) fail(`unknown morphology role ${part.role} in ${id}`)
+  }
 }
-if (!MORPHOLOGY.ittaqa.transformations.ru.some(x => x.includes('اِوْتَقَى'))) fail('ittaqa must preserve the و→ت Form VIII derivation step')
-if (!MORPHOLOGY.muttaqin.segments.some(x => x.kind === 'inflection' && x.text.includes('ين'))) fail('muttaqin must distinguish ـين as inflection')
-if (!MORPHOLOGY.waq.segments.some(x => x.kind === 'pattern' && x.text.includes('ا'))) fail('waq must expose the فاعل pattern alif')
-if (!MORPHOLOGY.taqwa.variantAnalysis) fail('taqwa historical formation must remain explicitly non-unique')
+const taqwaRoles = [...new Set(MORPHOLOGY.taqwa.visualParts.map(x => x.role))]
+if (taqwaRoles.length !== 2 || !taqwaRoles.includes('root') || !taqwaRoles.includes('form')) {
+  fail('taqwa main formula must show only root + form colours')
+}
+if (!MORPHOLOGY.ittaqa.technical.ru.some(x => x.includes('اِوْتَقَى'))) fail('ittaqa must preserve the و→ت Form VIII derivation step in technical detail')
+if (!MORPHOLOGY.muttaqin.components.some(x => x.role === 'ending' && x.ar.includes('ين'))) fail('muttaqin must distinguish ـين as a grammatical ending')
+if (!MORPHOLOGY.waq.pattern.ru.text.includes('Алиф') || MORPHOLOGY.waq.pattern.ru.text.includes('сам по себе он означает')) fail('waq must explain alif as part of فاعل, not as an independent meaning')
+if (JSON.stringify(MORPHOLOGY.taqwa).includes('историческое изменение')) fail('taqwa main model must not expose the obsolete letter-by-letter change label')

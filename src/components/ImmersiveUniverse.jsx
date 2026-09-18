@@ -205,7 +205,7 @@ export function ImmersiveUniverse() {
         <header className="sheet-header"><div><p className="eyebrow">{panel === 'forms' || panel === 'root' ? t.rootSpace : t.orbit}</p><h2 id="sheet-title">{panelTitle}</h2></div>
           <button className="icon-button" autoFocus onClick={closePanel} aria-label={t.close}><Icon name="close" /></button>
         </header>
-        {panel !== 'forms' && <div className="sheet-word-label"><p className="sheet-word" lang="ar" dir="rtl">{panel === 'root' ? 'و ق ي' : word.arabic}</p><small className="transliteration" lang="ar-Latn" dir="ltr">{panel === 'root' ? 'w-q-y' : word.reading}</small></div>}
+        {panel !== 'forms' && panel !== 'structure' && <div className="sheet-word-label"><p className="sheet-word" lang="ar" dir="rtl">{panel === 'root' ? 'و ق ي' : word.arabic}</p><small className="transliteration" lang="ar-Latn" dir="ltr">{panel === 'root' ? 'w-q-y' : word.reading}</small></div>}
         {panel === 'root' && <RootDetails language={language} />}
         {['quran', 'structure', 'meaning'].includes(panel) && <WordDetails key={word.id + panel} word={word} panel={panel} language={language} onPick={form => travel('word', form)} />}
         {panel === 'forms' && <>{ROOT_ORBITS.map((family) => <section className="form-family" key={family.id}>

@@ -1,71 +1,87 @@
-import { useState } from 'react'
 import { COPY, FORMS } from '../demo.js'
 import { CONTENT_SOURCES, ROOT_CONTENT, WORD_CONTENT } from '../rootContent.js'
 import { OCCURRENCES, ROOT_OCCURRENCE_COUNT, groupOccurrences } from '../occurrences.js'
 import { WQY_PUBLIC_MODEL } from '../canonicalWqy.js'
-import { MORPH_COPY, MORPHOLOGY } from '../morphologyWqy.js'
+import { MORPH_COPY, MORPH_ROLES, MORPHOLOGY } from '../morphologyWqy.js'
 import './WordDetails.css'
 
 
-function MorphLegend({ language }) {
-  const c = MORPH_COPY[language]
-  return <div className="morph-legend" aria-label={language === 'ru' ? 'Легенда цветовой формулы' : 'Colour formula legend'}>
-    {['root', 'pattern', 'inflection', 'change'].map(kind =>
-      <span key={kind} className={'morph-legend-' + kind}><i aria-hidden="true" />{c[kind]}</span>
-    )}
+
+function MorphLegend({ profile, language }) {
+  const roles = [...new Set(profile.visualParts.map(part => part.role))]
+  return <div className="morph-legend" aria-label={language === 'ru' ? 'Цвета разбора слова' : 'Word-analysis colours'}>
+    {roles.map(role => <span key={role} className={'morph-legend-' + role}>
+      <i aria-hidden="true" />{MORPH_ROLES[role][language]}
+    </span>)}
   </div>
 }
 
-function MorphFormula({ profile, language }) {
+function MorphFormula({ word, profile, language }) {
   const c = MORPH_COPY[language]
-  const [activeIndex, setActiveIndex] = useState(0)
-  const active = profile.segments[activeIndex] || profile.segments[0]
-  const activeCopy = active?.[language] || []
-
-  return <section className="morph-visual">
-    <h3 className="morph-section-title">{c.formula}</h3>
-    <div className="morph-word" lang="ar" dir="rtl" aria-label={profile.displayArabic}>
-      {profile.segments.map((segment, index) =>
-        <button key={index} type="button"
-          className={'morph-segment morph-' + segment.kind + (index === activeIndex ? ' is-active' : '')}
-          aria-pressed={index === activeIndex}
-          onClick={() => setActiveIndex(index)}>
-          {segment.text}
-        </button>
-      )}
+  return <section className="morph-analysis">
+    <h3>{c.analysis}</h3>
+    <div className="morph-word-wrap">
+      <div className="morph-word" lang="ar" dir="rtl" aria-label={profile.displayArabic}>
+        {profile.visualParts.map((part, index) =>
+          <span key={index} className={'morph-part morph-' + part.role}>{part.text}</span>
+        )}
+      </div>
+      <small className="transliteration morph-reading" lang="ar-Latn" dir="ltr">{word.reading}</small>
     </div>
-    <MorphLegend language={language} />
-    <p className="morph-tap-hint">{c.tapHint}</p>
-    {active && <div className={'morph-explain morph-explain-' + active.kind}>
-      <p className="morph-explain-token" lang="ar" dir="rtl">{active.text}</p>
-      <div><strong>{activeCopy[0]}</strong><p>{activeCopy[1]}</p></div>
-    </div>}
+    <MorphLegend profile={profile} language={language} />
   </section>
 }
 
-function DerivationPath({ profile, language }) {
+function RootBreakdown({ language }) {
   const c = MORPH_COPY[language]
-  return <section className="morph-lineage">
-    <h3>{c.lineage}</h3>
-    <ol>{profile.lineage.map((step, index) =>
-      <li key={index}>
-        <span className="morph-lineage-node" aria-hidden="true" />
-        <div>
-          <span className="morph-lineage-arabic" lang="ar" dir="rtl">{step.ar}</span>
-          <small>{step[language]}</small>
-        </div>
-      </li>
-    )}</ol>
+  return <section className="morph-fact morph-root-fact">
+    <p className="morph-fact-label">{c.root}</p>
+    <div className="morph-fact-main">
+      <span className="morph-fact-arabic morph-root" lang="ar" dir="rtl">و ق ي</span>
+      <p>{WQY_PUBLIC_MODEL.rootNucleus[language]}</p>
+    </div>
   </section>
 }
 
-function PatternEffect({ profile, language }) {
+function ComponentBreakdown({ components, language }) {
+  if (!components?.length) return null
+  return <section className="morph-components">
+    {components.map((component, index) => <div className="morph-fact" key={index}>
+      <p className="morph-fact-label">
+        <span className={'morph-dot morph-' + component.role} aria-hidden="true" />
+        {MORPH_ROLES[component.role][language]}
+      </p>
+      <div className="morph-fact-main">
+        <span className={'morph-fact-arabic morph-' + component.role} lang="ar" dir="rtl">{component.ar}</span>
+        <p>{component[language]}</p>
+      </div>
+    </div>)}
+  </section>
+}
+
+function DerivedFrom({ source, language }) {
+  if (!source) return null
   const c = MORPH_COPY[language]
-  const [title, body] = profile.effect[language]
-  return <section className="morph-effect">
-    <p className="morph-effect-label">{c.patternEffect}</p>
-    <p className="morph-effect-pattern" lang="ar" dir="rtl">{title}</p>
-    <p>{body}</p>
+  return <section className="morph-derived">
+    <p className="morph-block-label">{c.derivedFrom}</p>
+    <div className="morph-derived-source">
+      <span lang="ar" dir="rtl">{source.ar}</span>
+      <small>{language === 'ru' ? source.metaRu : source.metaEn}</small>
+    </div>
+    <p>{source[language]}</p>
+  </section>
+}
+
+function PatternEffect({ pattern, language }) {
+  const c = MORPH_COPY[language]
+  const copy = pattern[language]
+  return <section className="morph-pattern-effect">
+    <p className="morph-block-label">{c.patternEffect}</p>
+    <div className="morph-pattern-heading">
+      <span lang="ar" dir="rtl">{pattern.ar}</span>
+      <strong>{copy.title}</strong>
+    </div>
+    <p>{copy.text}</p>
   </section>
 }
 
@@ -75,30 +91,18 @@ function MorphologyStructure({ word, content, language, onPick }) {
   if (!profile) return null
 
   return <div className="entry-copy morphology-entry">
-    <MorphFormula profile={profile} language={language} />
-    <DerivationPath profile={profile} language={language} />
-    <PatternEffect profile={profile} language={language} />
+    <MorphFormula word={word} profile={profile} language={language} />
+    <RootBreakdown language={language} />
+    <ComponentBreakdown components={profile.components} language={language} />
+    <DerivedFrom source={profile.derivedFrom} language={language} />
+    <PatternEffect pattern={profile.pattern} language={language} />
 
-    {profile.variantAnalysis && <p className="entry-note annotation-note morph-variant-note">{c.noteVariants}</p>}
+    {!!profile.technical?.[language]?.length && <details className="morph-technical">
+      <summary>{c.technical}</summary>
+      <ol>{profile.technical[language].map((item, index) => <li key={index}>{item}</li>)}</ol>
+    </details>}
 
-    <details className="morph-transform" open={word.id === 'ittaqa' || word.id === 'muttaqin'}>
-      <summary>{c.transformations}</summary>
-      <ol>{profile.transformations[language].map((item, index) => <li key={index}>{item}</li>)}</ol>
-    </details>
-
-    <details className="morph-more">
-      <summary>{c.more}</summary>
-      <dl className="structure-list">
-        <div><dt>{COPY[language].root}</dt><dd lang="ar" dir="rtl">و ق ي</dd></div>
-        <div><dt>{COPY[language].wordType}</dt><dd>{COPY[language][word.type]}</dd></div>
-        <div><dt>{COPY[language].familyLabel}</dt><dd>{word.orbit}</dd></div>
-        <div><dt>{COPY[language].pattern}</dt><dd><span className="pattern-arabic" lang="ar" dir="rtl">{content.pattern}</span>
-          <small className="transliteration" lang="ar-Latn" dir="ltr">{content.patternReading}</small></dd></div>
-      </dl>
-      {content.structure[language].map((paragraph, index) => <p key={index}>{paragraph}</p>)}
-      {word.lexicalOnly && <p className="entry-note">{COPY[language].lexicalNote}</p>}
-    </details>
-
+    {word.lexicalOnly && <p className="entry-note">{COPY[language].lexicalNote}</p>}
     <RelatedWords ids={content.related} language={language} onPick={onPick} />
     <SourceLinks ids={content.structureSources} language={language} />
   </div>
