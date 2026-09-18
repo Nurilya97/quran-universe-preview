@@ -100,32 +100,10 @@ function FullAyahRibbon({ ayah, focusWordIndex, language }) {
   </div>
 }
 
-function AnalysisDiagram({ ayah, focusWordIndex, language, selectedWord, onSelectWord, onOpenWordOrbit }) {
-  const ru = language === 'ru'
-  const positions = useMemo(() => analysisPositions(ayah), [ayah])
-  const selected = selectedWord ? ayah.tokens[selectedWord - 1] : null
-  const selectedPos = selectedWord ? positions.get(selectedWord) : null
+function AnalysisDiagram({ ayah, focusWordIndex, language, selectedWord, onSelectWord }) {
   const selectedBlock = selectedWord
     ? ayah.blocks.find(block => selectedWord >= block.range[0] && selectedWord <= block.range[1])
     : null
-  const detail = selected?.analysis?.[language]
-
-  const morphPos = selectedPos ? {
-    x: clamp(selectedPos.x - 240, 250, WORLD.width - 250),
-    y: clamp(selectedPos.y - 145, 360, WORLD.height - 240),
-  } : null
-  const syntaxPos = selectedPos ? {
-    x: clamp(selectedPos.x + 240, 250, WORLD.width - 250),
-    y: clamp(selectedPos.y - 145, 360, WORLD.height - 240),
-  } : null
-  const semanticPos = selectedPos ? {
-    x: clamp(selectedPos.x, 300, WORLD.width - 300),
-    y: clamp(selectedPos.y + 215, 430, WORLD.height - 250),
-  } : null
-
-  const morphology = detail?.morphology
-  const syntax = detail?.syntax
-  const meaning = detail?.meaning
 
   return <div className="diagram-view analysis-diagram">
     <div className="analysis-verse-reference">
@@ -133,58 +111,63 @@ function AnalysisDiagram({ ayah, focusWordIndex, language, selectedWord, onSelec
       <small>{ayah.surah[language]}</small>
     </div>
 
-    <svg className="diagram-lines analysis-core-lines" width={WORLD.width} height={WORLD.height} viewBox={`0 0 ${WORLD.width} ${WORLD.height}`} aria-hidden="true">
-      {selected && selectedPos && <>
-        <path className="analysis-ray morph" d={`M ${selectedPos.x} ${selectedPos.y} Q ${(selectedPos.x + morphPos.x) / 2} ${selectedPos.y - 55} ${morphPos.x} ${morphPos.y}`} />
-        <path className="analysis-ray syntax" d={`M ${selectedPos.x} ${selectedPos.y} Q ${(selectedPos.x + syntaxPos.x) / 2} ${selectedPos.y - 55} ${syntaxPos.x} ${syntaxPos.y}`} />
-        <path className="analysis-ray semantic" d={`M ${selectedPos.x} ${selectedPos.y + 6} L ${semanticPos.x} ${semanticPos.y}`} />
-
-        {selectedBlock && phraseTokens(ayah, selectedBlock).map((_, i) => {
-          const relatedIndex = selectedBlock.range[0] + i
-          if (relatedIndex === selectedWord) return null
-          const relatedPos = positions.get(relatedIndex)
-          if (!relatedPos) return null
-          const midX = (selectedPos.x + relatedPos.x) / 2
-          const midY = Math.min(selectedPos.y, relatedPos.y) - 38
-          return <path key={relatedIndex} className="analysis-syntax-link" d={`M ${selectedPos.x} ${selectedPos.y - 6} Q ${midX} ${midY} ${relatedPos.x} ${relatedPos.y - 6}`} />
-        })}
-      </>}
-    </svg>
-
-    <div className="analysis-ayah-text" lang="ar" dir="rtl">
-      {ayah.tokens.map((token, i) => {
-        const wordIndex = i + 1
-        const pos = positions.get(wordIndex)
+    <div className="analysis-ayah-continuous" lang="ar" dir="rtl">
+      {ayah.tokens.map((token, index) => {
+        const wordIndex = index + 1
         const isEntry = wordIndex === focusWordIndex
         const isSelected = wordIndex === selectedWord
         const isRelated = selectedBlock && wordIndex >= selectedBlock.range[0] && wordIndex <= selectedBlock.range[1]
-        return <button
-          key={wordIndex}
-          className={'analysis-arabic-word' + (isEntry ? ' is-entry' : '') + (isSelected ? ' is-selected' : '') + (isRelated ? ' is-related' : '')}
-          style={{ left: pos.x, top: pos.y }}
-          onClick={(event) => {
-            event.stopPropagation()
-            onSelectWord(isSelected ? null : wordIndex)
-          }}
-          aria-pressed={isSelected}
-        >
-          <span>{token.ar}</span>
-        </button>
+        return <span key={wordIndex}>
+          <button
+            className={'analysis-inline-word' + (isEntry ? ' is-entry' : '') + (isSelected ? ' is-selected' : '') + (isRelated ? ' is-related' : '')}
+            onClick={(event) => {
+              event.stopPropagation()
+              onSelectWord(isSelected ? null : wordIndex)
+            }}
+            aria-pressed={isSelected}
+          >{token.ar}</button>
+          {index < ayah.tokens.length - 1 ? ' ' : ''}
+        </span>
       })}
     </div>
 
-    {selected && selectedPos && <>
-      <button
-        className="analysis-close-all"
-        style={{ left: selectedPos.x + 92, top: selectedPos.y - 64 }}
-        onClick={(event) => { event.stopPropagation(); onSelectWord(null) }}
-        aria-label={ru ? 'Закрыть разбор слова' : 'Close word analysis'}
-      >×</button>
+    {!selectedWord && <div className="analysis-tap-hint">
+      {language === 'ru' ? 'Нажмите на любое слово, чтобы раскрыть его' : 'Tap any word to unfold it'}
+    </div>}
+  </div>
+}
 
-      <section className="analysis-lens-node morph" style={{ left: morphPos.x, top: morphPos.y }}>
+function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrbit }) {
+  if (!selectedWord) return null
+
+  const ru = language === 'ru'
+  const selected = ayah.tokens[selectedWord - 1]
+  if (!selected) return null
+
+  const selectedBlock = ayah.blocks.find(block => selectedWord >= block.range[0] && selectedWord <= block.range[1])
+  const detail = selected.analysis?.[language]
+  const morphology = detail?.morphology
+  const syntax = detail?.syntax
+  const meaning = detail?.meaning
+
+  return <div className="analysis-focus-overlay" onClick={onClose}>
+    <div className="analysis-focus-space" onClick={(event) => event.stopPropagation()}>
+      <button className="analysis-focus-close" onClick={onClose} aria-label={ru ? 'Закрыть разбор' : 'Close analysis'}>×</button>
+
+      <div className="analysis-focus-word">
+        <span lang="ar" dir="rtl">{selected.ar}</span>
+        <small>{selected.tr}</small>
+      </div>
+
+      <svg className="analysis-focus-rays" viewBox="0 0 1000 720" aria-hidden="true">
+        <path className="morph" d="M 500 310 C 420 270, 340 225, 260 190" />
+        <path className="syntax" d="M 500 310 C 580 270, 660 225, 740 190" />
+        <path className="semantic" d="M 500 335 C 500 405, 500 465, 500 530" />
+      </svg>
+
+      <section className="analysis-focus-callout morph">
         <small>{ru ? 'МОРФОЛОГИЯ' : 'MORPHOLOGY'}</small>
-        <strong lang="ar" dir="rtl">{selected.ar}</strong>
-        <span>{selected.tr}</span>
+        <strong>{ru ? 'Из чего состоит слово' : 'How the word is built'}</strong>
         {morphology?.parts?.length
           ? <div className="analysis-morph-parts">
               {morphology.parts.map((part, index) => <div key={index}>
@@ -197,36 +180,36 @@ function AnalysisDiagram({ ayah, focusWordIndex, language, selectedWord, onSelec
         {morphology?.text && <p className="analysis-detail-text">{morphology.text}</p>}
       </section>
 
-      <section className="analysis-lens-node syntax" style={{ left: syntaxPos.x, top: syntaxPos.y }}>
+      <section className="analysis-focus-callout syntax">
         <small>{ru ? 'СИНТАКСИС' : 'SYNTAX'}</small>
-        <strong>{syntax?.title || (selectedBlock ? selectedBlock[language].title : (ru ? selected.roleRu : selected.roleEn))}</strong>
-        {syntax?.case && <p><b>{ru ? 'Положение:' : 'Position:'}</b> {syntax.case}</p>}
-        {syntax?.ending && <p><b>{ru ? 'Окончание:' : 'Ending:'}</b> {syntax.ending}</p>}
-        {syntax?.text
-          ? <p className="analysis-detail-text">{syntax.text}</p>
-          : selectedBlock && <p className="analysis-detail-text">{selectedBlock[language].text}</p>}
+        <strong>{ru ? 'Что делает слово в предложении' : 'What the word does in the sentence'}</strong>
+        {syntax?.plain && <p className="analysis-syntax-plain">{syntax.plain}</p>}
+        <div className="analysis-syntax-phrase" lang="ar" dir="rtl">{selectedBlock ? phraseText(ayah, selectedBlock) : selected.ar}</div>
+        {syntax?.title && <p><b>{ru ? 'Роль:' : 'Role:'}</b> {syntax.title}</p>}
+        {syntax?.case && <p><b>{ru ? 'Падеж / форма:' : 'Case / form:'}</b> {syntax.case}</p>}
+        {syntax?.ending && <p><b>{ru ? 'Почему такая огласовка:' : 'Why this ending:'}</b> {syntax.ending}</p>}
+        {syntax?.text && <p className="analysis-detail-text">{syntax.text}</p>}
+        {!syntax && selectedBlock && <p className="analysis-detail-text">{selectedBlock[language].text}</p>}
       </section>
 
-      <section className="analysis-lens-node semantic" style={{ left: semanticPos.x, top: semanticPos.y }}>
-        <small>{ru ? 'ЗНАЧЕНИЕ В ЭТОМ АЯТЕ' : 'MEANING IN THIS AYAH'}</small>
+      <section className="analysis-focus-callout semantic">
+        <small>{ru ? 'ЗНАЧЕНИЕ' : 'MEANING'}</small>
         <strong>{meaning?.gloss || (ru ? selected.ru : selected.en)}</strong>
-        <span>{selected.tr}</span>
-        <p className="analysis-detail-text">{meaning?.description || (ru ? selected.noteRu : selected.noteEn) || (ru ? selected.ru : selected.en)}</p>
+        {meaning?.description
+          ? <p className="analysis-detail-text">{meaning.description}</p>
+          : <p className="analysis-detail-text">{ru ? selected.noteRu : selected.noteEn}</p>}
         {meaning?.translation && <p className="analysis-translation-choice">{meaning.translation}</p>}
         <button
           className="analysis-orbit-button"
           disabled={!selected.orbitId}
-          onClick={(event) => {
-            event.stopPropagation()
-            if (selected.orbitId) onOpenWordOrbit?.(selected)
-          }}
+          onClick={() => selected.orbitId && onOpenWordOrbit?.(selected)}
         >
           {selected.orbitId
             ? (ru ? 'Перейти в орбиту слова →' : 'Open word orbit →')
             : (ru ? 'Орбита слова · будет подключена' : 'Word orbit · coming next')}
         </button>
       </section>
-    </>}
+    </div>
   </div>
 }
 
@@ -334,8 +317,8 @@ function TranslationDiagram({ ayah, focusWordIndex, language }) {
   </div>
 }
 
-function CanvasWorld({ ayah, mode, focusWordIndex, language, selectedWord, onSelectWord, onOpenWordOrbit }) {
-  if (mode === 'analysis') return <AnalysisDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} selectedWord={selectedWord} onSelectWord={onSelectWord} onOpenWordOrbit={onOpenWordOrbit} />
+function CanvasWorld({ ayah, mode, focusWordIndex, language, selectedWord, onSelectWord }) {
+  if (mode === 'analysis') return <AnalysisDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} selectedWord={selectedWord} onSelectWord={onSelectWord} />
   if (mode === 'composition') return <CompositionDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} />
   if (mode === 'rhetoric') return <RhetoricDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} />
   if (mode === 'sound') return <SoundDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} />
@@ -367,7 +350,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
   }, [reference, focusWordIndex])
 
   if (!ayah) {
-    return <section className="ayah-space-shell"><button className="ayah-back" onClick={onBack}><ArrowIcon /></button></section>
+    return <section className={'ayah-space-shell' + (selectedWord && mode === 'analysis' ? ' has-word-focus' : '')}><button className="ayah-back" onClick={onBack}><ArrowIcon /></button></section>
   }
 
   const ru = language === 'ru'
@@ -507,16 +490,6 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
 
   function selectWord(wordIndex) {
     setSelectedWord(wordIndex)
-    if (!wordIndex) return
-    const pos = analysisWordPosition(wordIndex)
-    const current = cameraRef.current
-    const desired = clampCamera({
-      ...current,
-      x: -(pos.x - WORLD.width / 2) * current.scale,
-      y: -(pos.y - WORLD.height / 2) * current.scale,
-    }, 'analysis')
-    cameraRef.current = desired
-    setCamera(desired)
   }
 
   function changeMode(nextMode) {
@@ -559,10 +532,18 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     >
       <div className="ayah-space-grid" aria-hidden="true" />
       <div className="ayah-space-boundary" aria-hidden="true" />
-      <div className="ayah-space-world" style={{ transform: `translate(-50%, -50%) translate(${camera.x}px, ${camera.y}px) scale(${camera.scale})` }}>
-        <CanvasWorld ayah={ayah} mode={mode} focusWordIndex={focusWordIndex} language={language} selectedWord={selectedWord} onSelectWord={selectWord} onOpenWordOrbit={onOpenWordOrbit} />
+      <div className="ayah-space-world" style={{ transform: `translate(-50%, -50%) translate(${camera.x}px, ${camera.y}px) scale(${selectedWord && mode === 'analysis' ? Math.min(camera.scale * 1.08, 1.12) : camera.scale})` }}>
+        <CanvasWorld ayah={ayah} mode={mode} focusWordIndex={focusWordIndex} language={language} selectedWord={selectedWord} onSelectWord={selectWord} />
       </div>
     </div>
+
+    {mode === 'analysis' && <WordFocusOverlay
+      ayah={ayah}
+      selectedWord={selectedWord}
+      language={language}
+      onClose={() => selectWord(null)}
+      onOpenWordOrbit={onOpenWordOrbit}
+    />}
 
     <div className="ayah-space-zoom">
       <button onClick={() => zoomBy(.08)}>+</button>
