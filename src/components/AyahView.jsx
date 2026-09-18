@@ -399,8 +399,8 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     /* At overview zoom the diagram stays close to centre.
        Zooming in gradually unlocks more panning, like a map. */
     const zoomProgress = clamp((scale - .48) / .60, 0, 1)
-    const softLimitX = Math.min(viewport.width * .34, 88 + zoomProgress * 290)
-    const softLimitY = Math.min(viewport.height * .30, 105 + zoomProgress * 260)
+    const softLimitX = Math.min(viewport.width * .46, 120 + zoomProgress * 380)
+    const softLimitY = Math.min(viewport.height * .38, 120 + zoomProgress * 300)
 
     const contentMinX = -cx - (bounds.right - worldCx) * scale
     const contentMaxX = viewport.width - cx - (bounds.left - worldCx) * scale
