@@ -137,11 +137,20 @@ function AnalysisDiagram({ ayah, focusWordIndex, language, selectedWord, onSelec
   </div>
 }
 
+function CalloutPager({ page, count, onChange, language }) {
+  if (count <= 1) return null
+  return <div className="analysis-callout-pager">
+    <button onClick={() => onChange((page - 1 + count) % count)} aria-label={language === 'ru' ? 'Предыдущая страница' : 'Previous page'}>‹</button>
+    <span>{page + 1} / {count}</span>
+    <button onClick={() => onChange((page + 1) % count)} aria-label={language === 'ru' ? 'Следующая страница' : 'Next page'}>›</button>
+  </div>
+}
+
 function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrbit }) {
-  const [mobilePage, setMobilePage] = useState(0)
+  const [pages, setPages] = useState({ morph: 0, syntax: 0, semantic: 0 })
 
   useEffect(() => {
-    setMobilePage(0)
+    setPages({ morph: 0, syntax: 0, semantic: 0 })
   }, [selectedWord])
 
   if (!selectedWord) return null
@@ -155,14 +164,59 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
   const morphology = detail?.morphology
   const syntax = detail?.syntax
   const meaning = detail?.meaning
-  const pages = [
-    { id: 'morph', label: ru ? 'Морфология' : 'Morphology' },
-    { id: 'syntax', label: ru ? 'Синтаксис' : 'Syntax' },
-    { id: 'semantic', label: ru ? 'Значение' : 'Meaning' },
+
+  const morphPages = [
+    <div key="parts">
+      <strong>{ru ? 'Из чего состоит слово' : 'How the word is built'}</strong>
+      {morphology?.parts?.length
+        ? <div className="analysis-morph-parts">
+            {morphology.parts.map((part, index) => <div key={index}>
+              <b lang="ar" dir="rtl">{part.ar}</b>
+              <em>{part.tr}</em>
+              <p>{part.label}</p>
+            </div>)}
+          </div>
+        : <p>{ru ? selected.roleRu : selected.roleEn}</p>}
+    </div>,
+    ...(morphology?.text ? [<div key="formation">
+      <strong>{ru ? 'Как устроена форма' : 'How the form works'}</strong>
+      <p className="analysis-detail-text">{morphology.text}</p>
+    </div>] : []),
   ]
 
-  function changePage(delta) {
-    setMobilePage(current => (current + delta + pages.length) % pages.length)
+  const syntaxPages = [
+    <div key="plain">
+      <strong>{ru ? 'Что делает слово в предложении' : 'What the word does in the sentence'}</strong>
+      {syntax?.plain && <p className="analysis-syntax-plain">{syntax.plain}</p>}
+      <div className="analysis-syntax-phrase" lang="ar" dir="rtl">{selectedBlock ? phraseText(ayah, selectedBlock) : selected.ar}</div>
+    </div>,
+    <div key="role">
+      <strong>{ru ? 'Роль и положение' : 'Role and position'}</strong>
+      {syntax?.title && <p><b>{ru ? 'Роль:' : 'Role:'}</b> {syntax.title}</p>}
+      {syntax?.case && <p><b>{ru ? 'Падеж / форма:' : 'Case / form:'}</b> {syntax.case}</p>}
+    </div>,
+    ...((syntax?.ending || syntax?.text) ? [<div key="ending">
+      <strong>{ru ? 'Почему именно такая форма' : 'Why this form appears'}</strong>
+      {syntax?.ending && <p><b>{ru ? 'Окончание / огласовка:' : 'Ending / vowel:'}</b> {syntax.ending}</p>}
+      {syntax?.text && <p className="analysis-detail-text">{syntax.text}</p>}
+    </div>] : []),
+  ]
+
+  const semanticPages = [
+    <div key="meaning">
+      <strong>{meaning?.gloss || (ru ? selected.ru : selected.en)}</strong>
+      {meaning?.description
+        ? <p className="analysis-detail-text">{meaning.description}</p>
+        : <p className="analysis-detail-text">{ru ? selected.noteRu : selected.noteEn}</p>}
+    </div>,
+    ...(meaning?.translation ? [<div key="translation">
+      <strong>{ru ? 'Почему такой перевод' : 'Why this translation'}</strong>
+      <p className="analysis-translation-choice">{meaning.translation}</p>
+    </div>] : []),
+  ]
+
+  function setPage(kind, value) {
+    setPages(current => ({ ...current, [kind]: value }))
   }
 
   return <div className="analysis-focus-overlay" onClick={onClose}>
@@ -175,54 +229,27 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
       </div>
 
       <svg className="analysis-focus-rays" viewBox="0 0 1000 720" aria-hidden="true">
-        <path className="morph" d="M 500 350 C 420 300, 340 235, 260 190" />
-        <path className="syntax" d="M 500 350 C 580 300, 660 235, 740 190" />
-        <path className="semantic" d="M 500 370 C 500 430, 500 485, 500 545" />
+        <path className="morph" d="M 500 350 C 405 290, 320 225, 235 175" />
+        <path className="syntax" d="M 500 350 C 595 290, 680 225, 765 175" />
+        <path className="semantic" d="M 500 380 C 500 445, 500 500, 500 555" />
       </svg>
 
-      <div className="analysis-focus-pager" onClick={(event) => event.stopPropagation()}>
-        <button onClick={() => changePage(-1)} aria-label={ru ? 'Предыдущая выноска' : 'Previous callout'}>‹</button>
-        <span>{pages[mobilePage].label}</span>
-        <div className="analysis-focus-dots" aria-hidden="true">
-          {pages.map((page, index) => <i key={page.id} className={index === mobilePage ? 'is-active' : ''} />)}
-        </div>
-        <button onClick={() => changePage(1)} aria-label={ru ? 'Следующая выноска' : 'Next callout'}>›</button>
-      </div>
-
-      <section className={'analysis-focus-callout morph' + (mobilePage === 0 ? ' is-active' : '')} onClick={(event) => event.stopPropagation()}>
+      <section className="analysis-focus-callout morph" onClick={(event) => event.stopPropagation()}>
         <small>{ru ? 'МОРФОЛОГИЯ' : 'MORPHOLOGY'}</small>
-        <strong>{ru ? 'Из чего состоит слово' : 'How the word is built'}</strong>
-        {morphology?.parts?.length
-          ? <div className="analysis-morph-parts">
-              {morphology.parts.map((part, index) => <div key={index}>
-                <b lang="ar" dir="rtl">{part.ar}</b>
-                <em>{part.tr}</em>
-                <p>{part.label}</p>
-              </div>)}
-            </div>
-          : <p>{ru ? selected.roleRu : selected.roleEn}</p>}
-        {morphology?.text && <p className="analysis-detail-text">{morphology.text}</p>}
+        <div className="analysis-callout-page">{morphPages[pages.morph]}</div>
+        <CalloutPager page={pages.morph} count={morphPages.length} onChange={(value) => setPage('morph', value)} language={language} />
       </section>
 
-      <section className={'analysis-focus-callout syntax' + (mobilePage === 1 ? ' is-active' : '')} onClick={(event) => event.stopPropagation()}>
+      <section className="analysis-focus-callout syntax" onClick={(event) => event.stopPropagation()}>
         <small>{ru ? 'СИНТАКСИС' : 'SYNTAX'}</small>
-        <strong>{ru ? 'Что делает слово в предложении' : 'What the word does in the sentence'}</strong>
-        {syntax?.plain && <p className="analysis-syntax-plain">{syntax.plain}</p>}
-        <div className="analysis-syntax-phrase" lang="ar" dir="rtl">{selectedBlock ? phraseText(ayah, selectedBlock) : selected.ar}</div>
-        {syntax?.title && <p><b>{ru ? 'Роль:' : 'Role:'}</b> {syntax.title}</p>}
-        {syntax?.case && <p><b>{ru ? 'Падеж / форма:' : 'Case / form:'}</b> {syntax.case}</p>}
-        {syntax?.ending && <p><b>{ru ? 'Почему такая огласовка:' : 'Why this ending:'}</b> {syntax.ending}</p>}
-        {syntax?.text && <p className="analysis-detail-text">{syntax.text}</p>}
-        {!syntax && selectedBlock && <p className="analysis-detail-text">{selectedBlock[language].text}</p>}
+        <div className="analysis-callout-page">{syntaxPages[pages.syntax]}</div>
+        <CalloutPager page={pages.syntax} count={syntaxPages.length} onChange={(value) => setPage('syntax', value)} language={language} />
       </section>
 
-      <section className={'analysis-focus-callout semantic' + (mobilePage === 2 ? ' is-active' : '')} onClick={(event) => event.stopPropagation()}>
+      <section className="analysis-focus-callout semantic" onClick={(event) => event.stopPropagation()}>
         <small>{ru ? 'ЗНАЧЕНИЕ' : 'MEANING'}</small>
-        <strong>{meaning?.gloss || (ru ? selected.ru : selected.en)}</strong>
-        {meaning?.description
-          ? <p className="analysis-detail-text">{meaning.description}</p>
-          : <p className="analysis-detail-text">{ru ? selected.noteRu : selected.noteEn}</p>}
-        {meaning?.translation && <p className="analysis-translation-choice">{meaning.translation}</p>}
+        <div className="analysis-callout-page">{semanticPages[pages.semantic]}</div>
+        <CalloutPager page={pages.semantic} count={semanticPages.length} onChange={(value) => setPage('semantic', value)} language={language} />
         <button
           className="analysis-orbit-button"
           disabled={!selected.orbitId}
@@ -556,7 +583,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     >
       <div className="ayah-space-grid" aria-hidden="true" />
       <div className="ayah-space-boundary" aria-hidden="true" />
-      <div className="ayah-space-world" style={{ transform: `translate(-50%, -50%) translate(${camera.x}px, ${camera.y}px) scale(${selectedWord && mode === 'analysis' ? Math.min(camera.scale * 1.08, 1.12) : camera.scale})` }}>
+      <div className="ayah-space-world" style={{ transform: `translate(-50%, -50%) translate(${camera.x}px, ${camera.y}px) scale(${selectedWord && mode === 'analysis' ? Math.min(camera.scale * 1.16, 1.18) : camera.scale})` }}>
         <CanvasWorld ayah={ayah} mode={mode} focusWordIndex={focusWordIndex} language={language} selectedWord={selectedWord} onSelectWord={selectWord} />
       </div>
     </div>
