@@ -60,8 +60,7 @@ export const MORPHOLOGY = {
     visualParts: [
       { text: 'وَ', role: 'root' },
       { text: 'ا', role: 'form' },
-      { text: 'ق', role: 'root' },
-      { text: 'ٍ', role: 'ending' },
+      { text: 'ق', role: 'root', mark: 'kasratan', markRole: 'ending' },
     ],
     components: [
       {
