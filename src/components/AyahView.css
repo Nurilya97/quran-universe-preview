@@ -2417,3 +2417,83 @@
     max-height: 182px !important;
   }
 }
+
+/* Ayah-space cleanup: no oval grounding, reference directly under the ayah */
+.ayah-space-boundary {
+  display: none !important;
+}
+
+.ayah-space-shell.is-analysis .ayah-space-reference {
+  visibility: hidden;
+}
+
+.analysis-ayah-group {
+  position: absolute;
+  left: 1250px;
+  top: 650px;
+  width: 1540px;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.analysis-ayah-group .analysis-ayah-continuous {
+  position: static;
+  left: auto;
+  top: auto;
+  width: 100%;
+  transform: none;
+}
+
+.analysis-ayah-group .analysis-verse-reference {
+  position: static;
+  left: auto;
+  top: auto;
+  width: auto;
+  margin-top: 14px;
+  transform: none;
+  text-align: center;
+}
+
+.analysis-ayah-group .analysis-verse-reference span {
+  display: inline-block;
+  color: #9aa4aa;
+  font-size: 10px;
+  letter-spacing: .04em;
+}
+
+.analysis-ayah-group .analysis-verse-reference small {
+  display: inline-block;
+  margin: 0 0 0 7px;
+  color: #5e6970;
+  font-size: 8px;
+}
+
+@media (max-width: 760px) {
+  .analysis-ayah-group {
+    left: 1250px;
+    top: 790px;
+    width: 560px;
+  }
+
+  .analysis-ayah-group .analysis-ayah-continuous {
+    width: 100%;
+  }
+
+  .analysis-ayah-group .analysis-verse-reference {
+    margin-top: 10px;
+  }
+
+  .analysis-ayah-group .analysis-verse-reference span {
+    font-size: 9px;
+  }
+
+  .analysis-ayah-group .analysis-verse-reference small {
+    font-size: 7.5px;
+  }
+}
+
+@media (max-width: 390px) {
+  .analysis-ayah-group {
+    width: 535px;
+  }
+}
