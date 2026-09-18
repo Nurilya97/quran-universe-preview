@@ -87,9 +87,51 @@ export const WORD_CONTENT = {
       en: ['An active participle of Form VIII, naming someone who performs ٱتَّقَىٰ. The pattern is singular; the displayed word is plural.', 'The singular is مُتَّقٍ (muttaqin). The plural is مُتَّقُونَ (muttaqūna) in the nominative and مُتَّقِينَ (muttaqīna) in the accusative or genitive. Long ī distinguishes the displayed plural form.'],
     },
     meaning: {
-      ru: { lead: 'Те, кто придерживается защитной направленности تَقْوَى.', body: 'Причастие переносит внимание с действия ٱتَّقَىٰ на людей. В Коране они описываются через веру, расходование, исполнение обязательств, терпение и другие поступки. Это проявления качества; каждое из них не становится отдельным полным синонимом تَقْوَى.' },
-      en: { lead: 'Those who maintain the protective orientation of تَقْوَى.', body: 'The participle shifts attention from ٱتَّقَىٰ to people. Quranic descriptions include belief, giving, fulfilling commitments, patience, and other actions. These express the quality; no single action becomes a complete synonym for تَقْوَى.' },
+      ru: { lead: 'Люди, для которых تَقْوَىٰ (taqwā) стала устойчивой защитно-ориентированной практикой и качеством.', body: 'مُتَّقِينَ (muttaqīn) — множественное число от مُتَّقٍ (muttaqī), действительного причастия ٱتَّقَىٰ (ittaqā). Поэтому слово описывает людей через действие и качество: они осознанно остерегаются и оберегают себя. Один русский эквивалент не передаёт все слои этого механизма.' },
+      en: { lead: 'People for whom تَقْوَىٰ (taqwā) has become an enduring protection-oriented practice and quality.', body: 'مُتَّقِينَ (muttaqīn) is the plural of مُتَّقٍ (muttaqī), the active participle of ٱتَّقَىٰ (ittaqā). The word therefore describes people through both action and quality: they consciously guard themselves and remain cautious. No single English equivalent captures every layer of this mechanism.' },
     },
+    meaningMap: [
+      {
+        id: 'mechanism',
+        ru: { title: 'Ближе к механизму', description: 'Эти варианты передают саму защитную направленность действия ٱتَّقَىٰ (ittaqā).', items: [
+          { term: 'Остерегающиеся', definition: 'Те, кто распознают то, от чего нужно себя уберечь, и сознательно держатся от этого в стороне.' },
+          { term: 'Оберегающие себя', definition: 'Те, кто занимают активную защитную позицию и действуют так, чтобы вред или недолжное не достигли их.' },
+        ] },
+        en: { title: 'Closer to the mechanism', description: 'These renderings express the protective orientation of ٱتَّقَىٰ (ittaqā) itself.', items: [
+          { term: 'Those who are cautious', definition: 'People who recognise what they need to guard against and deliberately keep away from it.' },
+          { term: 'Those who guard themselves', definition: 'People who take an active protective stance and act so that harm or wrongdoing does not reach them.' },
+        ] },
+      },
+      {
+        id: 'component',
+        ru: { title: 'Составная часть механизма', description: 'Это помогает механизму работать, но не исчерпывает значение слова.', items: [
+          { term: 'Осознанные', definition: 'Люди, которые замечают и понимают значимые последствия, границы и риски и удерживают их в поле внимания. Осознанность помогает выбрать защитное действие.' },
+        ] },
+        en: { title: 'A component of the mechanism', description: 'This helps the mechanism operate but does not exhaust the meaning of the word.', items: [
+          { term: 'Mindful / aware', definition: 'People who notice and understand relevant consequences, boundaries, and risks and keep them in view. Awareness supports protective action.' },
+        ] },
+      },
+      {
+        id: 'manifestation',
+        ru: { title: 'Проявление', description: 'Так качество может проявляться в поступках и общей характеристике человека.', items: [
+          { term: 'Праведные', definition: 'Люди, чьи убеждения и поступки соответствуют нравственно правильному и предписанному. Праведность показывает проявление تَقْوَىٰ (taqwā), но не объясняет сам защитный механизм.' },
+          { term: 'Благочестивые', definition: 'Люди, чья религиозная преданность выражается в поведении и соблюдении обязанностей. Это широкая характеристика проявления качества.' },
+        ] },
+        en: { title: 'Manifestation', description: 'This is how the quality can appear in conduct and in a broader description of the person.', items: [
+          { term: 'Righteous', definition: 'People whose beliefs and actions accord with what is morally right and prescribed. Righteousness can manifest تَقْوَىٰ (taqwā) without defining its protective mechanism.' },
+          { term: 'Pious', definition: 'People whose religious devotion is expressed in conduct and observance. This is a broad characterisation of how the quality may appear.' },
+        ] },
+      },
+      {
+        id: 'result',
+        ru: { title: 'Следствие', description: 'Это уже результат защитной позиции, а не прямой перевод مُتَّقِينَ (muttaqīn).', items: [
+          { term: 'Защищённость / сохранение от вреда', definition: 'Состояние, при котором вред не достигает человека или человек удерживается от того, что ведёт к вреду. Это возможный результат تَقْوَىٰ (taqwā), а не значение самого причастия.' },
+        ] },
+        en: { title: 'Result', description: 'This is an outcome of the protective stance, not a direct translation of مُتَّقِينَ (muttaqīn).', items: [
+          { term: 'Protection / preservation from harm', definition: 'A state in which harm does not reach a person or the person is kept from what leads to harm. This can be an outcome of تَقْوَىٰ (taqwā), not the meaning of the participle itself.' },
+        ] },
+      },
+    ],
     structureSources: ['corpus', 'laneTqy'], meaningSources: ['raghib', 'laneTqy'], related: ['ittaqa', 'taqwa'],
   },
   waq: {
