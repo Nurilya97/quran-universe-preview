@@ -38,3 +38,22 @@
   .entry-copy .structure-list dd { font-size: 14px; }
   .root-core-trigger > span { font-size: 11px; }
 }
+
+.model-status {
+  margin: 5px 0 14px !important;
+  color: #807c72 !important;
+  font-size: 10px !important;
+  line-height: 1.55 !important;
+}
+.canonical-note {
+  margin: 26px 0;
+  padding: 2px 0 2px 14px;
+  border-left: 1px solid #d1bb8c66;
+}
+.canonical-note h3 {
+  margin-top: 0;
+}
+.canonical-note p {
+  font-size: 13px;
+  line-height: 1.7;
+}
