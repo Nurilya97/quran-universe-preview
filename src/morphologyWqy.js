@@ -22,7 +22,6 @@ export const MORPH_COPY = {
     root: 'Корень',
     derivedFrom: 'Происходит от',
     patternEffect: 'Что нам даёт форма',
-    technical: 'Технический разбор',
     noSeparateMeaning: 'Отдельно не переводится: его функция появляется только внутри всей формы.',
   },
   en: {
@@ -30,7 +29,6 @@ export const MORPH_COPY = {
     root: 'Root',
     derivedFrom: 'Comes from',
     patternEffect: 'What the form tells us',
-    technical: 'Technical analysis',
     noSeparateMeaning: 'It is not translated separately: its function exists only inside the whole form.',
   },
 }
@@ -49,10 +47,6 @@ export const MORPHOLOGY = {
       ar: 'فَعَلَ', reading: 'faʿala',
       ru: { title: 'Глагол I формы', text: 'Передаёт базовое действие корня: защищать, оберегать.' },
       en: { title: 'Form I verb', text: 'Expresses the basic root action: to protect, to guard.' },
-    },
-    technical: {
-      ru: ['Третья корневая — ي. В конечной слабой позиции словарной формы она проявляется как ىٰ.'],
-      en: ['The third root consonant is ي. In this final weak position of the citation form it appears as ىٰ.'],
     },
   },
 
@@ -81,10 +75,6 @@ export const MORPHOLOGY = {
       ru: { title: 'Действительное причастие · اسم الفاعل', text: 'Модель переводит действие на деятеля: وَقَىٰ «защищать» → وَاقٍ «защищающий / защитник». Алиф — часть этой модели; сам по себе он не означает «деятель».' },
       en: { title: 'Active participle · اسم الفاعل', text: 'The pattern shifts from the action to its doer: وَقَىٰ “to protect” → وَاقٍ “one who protects / protector”. The alif belongs to the pattern; it does not mean “doer” by itself.' },
     },
-    technical: {
-      ru: ['Основа действительного причастия — وَاقِي.', 'В неопределённом رفع/جر у اسم منقوص конечная ي основы выпадает: وَاقِي → وَاقٍ.'],
-      en: ['The active-participle stem is وَاقِي.', 'In the indefinite nominative/genitive of an اسم منقوص, stem-final ي drops: وَاقِي → وَاقٍ.'],
-    },
   },
 
   ittaqa: {
@@ -104,10 +94,6 @@ export const MORPHOLOGY = {
       ar: 'اِفْتَعَلَ', reading: 'iftaʿala',
       ru: { title: 'Глагол VIII формы', text: 'В этом корне форма даёт смысловую линию «беречь себя / остерегаться / принимать защитную позицию». Это функция всей формы, а не отдельной буквы ت.' },
       en: { title: 'Form VIII verb', text: 'In this root, the form gives the semantic line “guard oneself / be cautious / take a protective stance”. This comes from the whole form, not from the letter ت by itself.' },
-    },
-    technical: {
-      ru: ['اِوْتَقَى → اِتْتَقَى: начальная корневая و заменяется на ت перед ت формы VIII.', 'اِتْتَقَى → اِتَّقَى: две соседние ت сливаются и обозначаются шаддой.', 'Конечная корневая ي в этой форме проявляется как ىٰ.'],
-      en: ['اِوْتَقَى → اِتْتَقَى: initial root و is replaced by ت before the Form VIII ت.', 'اِتْتَقَى → اِتَّقَى: the adjacent ت consonants merge and are marked with shadda.', 'Final root ي appears here as ىٰ.'],
     },
   },
 
@@ -141,10 +127,6 @@ export const MORPHOLOGY = {
       ru: { title: 'Действительное причастие VIII формы', text: 'Переводит действие ٱتَّقَىٰ на его носителя. Сначала образуется مُتَّقٍ, а уже затем множественное مُتَّقِينَ.' },
       en: { title: 'Form VIII active participle', text: 'Shifts the action ٱتَّقَىٰ to its bearer. First مُتَّقٍ is formed; the plural مُتَّقِينَ comes afterwards.' },
     },
-    technical: {
-      ru: ['В основе действует то же و → ت → تّ, что и в ٱتَّقَىٰ.', 'Единственная основа содержит конечную корневую ي: مُتَّقِي / مُتَّقٍ.', 'При سالم-множественном эта ي основы удаляется, затем добавляется окончание ـونَ или ـينَ. Поэтому видимая ي в مُتَّقِينَ относится к окончанию ـينَ.'],
-      en: ['The stem carries the same و → ت → تّ process as ٱتَّقَىٰ.', 'The singular stem contains the final root ي: مُتَّقِي / مُتَّقٍ.', 'In the sound masculine plural, this stem-final ي is removed before ـونَ or ـينَ is added. The visible ي in مُتَّقِينَ therefore belongs to the ending ـينَ.'],
-    },
   },
 
   taqwa: {
@@ -170,10 +152,6 @@ export const MORPHOLOGY = {
       ru: { title: 'VIII форма глагола', text: 'Это показывает, от какого типа действия образовано تَقْوَى (taqwā): действие направлено на то, чтобы самому занять защитную, осторожную позицию. Поэтому слово описывает не просто «защиту» вообще, а внутреннее состояние осознанного остережения.' },
       en: { title: 'Form VIII verb', text: 'This shows the kind of action behind تَقْوَى (taqwā): the subject takes a protective, cautious stance. The noun therefore points to an inner state of conscious guarding rather than protection in the abstract.' },
     },
-    technical: {
-      ru: ['Корень остаётся و ق ي, даже если не все три корневые буквы буквально видны в современной поверхности слова.', 'Побуквенный исторический вывод начальной ت и финали ـوى описывается в традиционных источниках не полностью одинаково. Поэтому основной экран показывает корень и модель отдельно, не превращая спорный разбор в «значение букв».'],
-      en: ['The root remains و ق ي even though all three root consonants are not literally visible in the modern surface form.', 'Traditional sources do not give one fully identical letter-by-letter historical account of initial ت and final ـوى. The main UI therefore keeps root and pattern separate instead of turning a disputed analysis into “letter meanings”.'],
-    },
   },
 
   atqa: {
@@ -193,10 +171,6 @@ export const MORPHOLOGY = {
       ar: 'أَفْعَل', reading: 'afʿal',
       ru: { title: 'اسم التفضيل · сравнительная/превосходная степень', text: 'Модель выражает «более… / наиболее…» в зависимости от конструкции.' },
       en: { title: 'اسم التفضيل · elative', text: 'The pattern expresses “more…” / “most…” depending on the construction.' },
-    },
-    technical: {
-      ru: ['Корень — و ق ي; конечная слабая ي проявляется как ى.', 'Поскольку исторический разбор начальной ت имеет несколько объяснений, основной экран не приписывает ей отдельной функции вне всей модели.'],
-      en: ['The root is و ق ي; final weak ي appears as ى.', 'Because the historical account of initial ت has more than one explanation, the main UI does not assign it a standalone function outside the whole pattern.'],
     },
   },
 
@@ -225,10 +199,6 @@ export const MORPHOLOGY = {
       ru: { title: 'Именная форма действия', text: 'Называет само остережение / принятие мер защиты, а не человека, который его совершает.' },
       en: { title: 'Action noun', text: 'Names the act/state of precaution rather than the person who performs it.' },
     },
-    technical: {
-      ru: ['Форма редкая; основной экран показывает подтверждённую семейную связь и именную функцию, а спорные побуквенные детали не выдаёт за универсальное правило.'],
-      en: ['The form is rare; the main UI shows the established family relation and nominal function without presenting disputed letter-level details as a universal rule.'],
-    },
   },
 
   taqiyy: {
@@ -249,10 +219,6 @@ export const MORPHOLOGY = {
       ru: { title: 'Прилагательное качества', text: 'Называет человека через устойчивое качество, а не действие как событие.' },
       en: { title: 'Quality adjective', text: 'Describes a person through a characteristic quality rather than an action as an event.' },
     },
-    technical: {
-      ru: ['فَعِيل — один из традиционных разборов этой формы; поэтому основной экран показывает функцию прилагательного и не строит отдельные «значения» из ت или يّ.'],
-      en: ['فَعِيل is one traditional analysis of this form, so the main UI presents the adjective function without inventing separate “meanings” for ت or يّ.'],
-    },
   },
 
   wiqaa: {
@@ -272,10 +238,6 @@ export const MORPHOLOGY = {
       ar: 'فِعَال', reading: 'fiʿāl',
       ru: { title: 'Существительное', text: 'Переводит защитное действие в название того, что служит защитой.' },
       en: { title: 'Noun', text: 'Turns the protective action into a noun for what serves as protection.' },
-    },
-    technical: {
-      ru: ['Конечная корневая ي после долгого ā проявляется как ء в وِقَاء.'],
-      en: ['Final root ي appears as ء after long ā in وِقَاء.'],
     },
   },
 
@@ -304,10 +266,6 @@ export const MORPHOLOGY = {
       ru: { title: 'Масдар · существительное действия', text: 'Называет само действие защиты как понятие.' },
       en: { title: 'Verbal noun', text: 'Names the protective action as a noun.' },
     },
-    technical: {
-      ru: ['Здесь третья корневая ي остаётся видимой перед ـة.'],
-      en: ['Here the third root consonant ي remains visible before ـة.'],
-    },
   },
 
   tawaqqa: {
@@ -334,10 +292,6 @@ export const MORPHOLOGY = {
       ar: 'تَفَعَّلَ', reading: 'tafaʿʿala',
       ru: { title: 'Глагол V формы', text: 'В этом корне даёт линию «беречься / остерегаться / принимать предосторожности». Это значение всей формы, а не одного префикса تَـ.' },
       en: { title: 'Form V verb', text: 'In this root, it gives the line “guard oneself / be cautious / take precautions”. The meaning belongs to the whole form, not to prefix تَـ alone.' },
-    },
-    technical: {
-      ru: ['Добавляется начальная تَـ.', 'Вторая корневая ق удваивается как часть модели.', 'Конечная корневая ي проявляется как ىٰ.'],
-      en: ['Initial تَـ is added.', 'The second root consonant ق is geminated as part of the pattern.', 'Final root ي appears as ىٰ.'],
     },
   },
 }
