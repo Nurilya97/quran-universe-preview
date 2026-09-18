@@ -92,8 +92,8 @@ export const MORPHOLOGY = {
     },
     pattern: {
       ar: 'اِفْتَعَلَ', reading: 'iftaʿala',
-      ru: { title: 'Глагол VIII формы', text: 'В этом корне форма даёт смысловую линию «беречь себя / остерегаться / принимать защитную позицию». Это функция всей формы, а не отдельной буквы ت.' },
-      en: { title: 'Form VIII verb', text: 'In this root, the form gives the semantic line “guard oneself / be cautious / take a protective stance”. This comes from the whole form, not from the letter ت by itself.' },
+      ru: { title: 'Глагол VIII формы', text: 'ٱتَّقَىٰ (ittaqā) передаёт действие самого субъекта: беречь / защищать себя, остерегаться, ограждать себя от чего-либо. Это значение всей формы, а не отдельной буквы ت.' },
+      en: { title: 'Form VIII verb', text: 'ٱتَّقَىٰ (ittaqā) describes an action of the subject: to guard or protect oneself, be cautious, or guard oneself against something. This meaning belongs to the whole form, not to the letter ت by itself.' },
     },
   },
 
@@ -144,13 +144,13 @@ export const MORPHOLOGY = {
     ],
     derivedFrom: {
       ar: 'ٱتَّقَىٰ', reading: 'ittaqā', metaRu: 'глагол VIII формы', metaEn: 'Form VIII verb',
-      ru: 'تَقْوَى (taqwā) происходит от глагольной линии ٱتَّقَىٰ (ittaqā). Глагол называет действие: беречь себя, остерегаться, принимать защитную позицию. تَقْوَى называет уже само состояние или качество такой позиции.',
-      en: 'تَقْوَى (taqwā) comes from the verbal line of ٱتَّقَىٰ (ittaqā). The verb names the action: to guard oneself, be cautious, or take a protective stance. تَقْوَى names the resulting state or quality.',
+      ru: 'تَقْوَىٰ (taqwā) происходит от глагола ٱتَّقَىٰ (ittaqā), VIII формы. Этот глагол означает: беречь / защищать себя, остерегаться, ограждать себя от чего-либо. تَقْوَىٰ (taqwā) описывает это действие уже как состояние или качество человека.',
+      en: 'تَقْوَىٰ (taqwā) comes from the Form VIII verb ٱتَّقَىٰ (ittaqā). This verb means: to guard or protect oneself, be cautious, or guard oneself against something. تَقْوَىٰ (taqwā) describes that action as a state or quality of a person.',
     },
     pattern: {
       ar: 'اِفْتَعَلَ', reading: 'iftaʿala',
-      ru: { title: 'VIII форма глагола', text: 'Это показывает, от какого типа действия образовано تَقْوَى (taqwā): действие направлено на то, чтобы самому занять защитную, осторожную позицию. Поэтому слово описывает не просто «защиту» вообще, а внутреннее состояние осознанного остережения.' },
-      en: { title: 'Form VIII verb', text: 'This shows the kind of action behind تَقْوَى (taqwā): the subject takes a protective, cautious stance. The noun therefore points to an inner state of conscious guarding rather than protection in the abstract.' },
+      ru: { title: 'VIII форма глагола', text: 'Связь с ٱتَّقَىٰ (ittaqā) показывает, какое действие лежит в основе تَقْوَىٰ (taqwā): человек сам бережёт и ограждает себя, остерегается. В существительном это действие становится состоянием или устойчивым качеством человека.' },
+      en: { title: 'Form VIII verb', text: 'The link to ٱتَّقَىٰ (ittaqā) shows the action behind تَقْوَىٰ (taqwā): a person guards and protects oneself and is cautious. In the noun, that action becomes a state or enduring quality of the person.' },
     },
   },
 
