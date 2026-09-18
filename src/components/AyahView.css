@@ -897,3 +897,219 @@
     width: 340px;
   }
 }
+
+/* Whole-ayah interactive analysis */
+.analysis-verse-reference {
+  position: absolute;
+  left: 1250px;
+  top: 500px;
+  width: 420px;
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: none;
+}
+.analysis-verse-reference span {
+  display: block;
+  color: #dfe4e7;
+  font-size: 12px;
+  letter-spacing: .06em;
+}
+.analysis-verse-reference small {
+  display: block;
+  margin-top: 4px;
+  color: #657079;
+  font-size: 8.5px;
+}
+.analysis-ayah-text {
+  position: absolute;
+  inset: 0;
+}
+.analysis-arabic-word {
+  min-width: 126px;
+  min-height: 58px;
+  padding: 3px 7px;
+}
+.analysis-arabic-word > span {
+  font-size: 31px;
+  line-height: 1.55;
+}
+.analysis-arabic-word:hover > span,
+.analysis-arabic-word.is-selected > span {
+  transform: scale(1.04);
+}
+.analysis-arabic-word.is-entry > span {
+  color: #f0d4bf;
+  text-shadow: 0 0 8px #ff8a3d28;
+}
+.analysis-arabic-word.is-selected > span {
+  color: #ff8a3d;
+  text-shadow: 0 0 12px #ff8a3d70, 0 0 28px #ff8a3d2d;
+}
+.analysis-arabic-word.is-related:not(.is-selected) > span {
+  color: #dfd8ec;
+  text-shadow: 0 0 8px #c65cff20;
+}
+.analysis-arabic-word::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  transform: translateX(-50%);
+  background: #ffffff34;
+  transition: width .18s ease, background .18s ease;
+}
+.analysis-arabic-word:hover::after {
+  width: 38%;
+}
+.analysis-arabic-word.is-selected::after {
+  width: 58%;
+  background: #ff8a3d;
+  box-shadow: 0 0 8px #ff8a3d77;
+}
+
+.analysis-ray {
+  stroke-width: 1.15;
+  opacity: .82;
+}
+.analysis-syntax-link {
+  opacity: .7;
+}
+.analysis-close-all {
+  position: absolute;
+  z-index: 9;
+  width: 30px;
+  height: 30px;
+  transform: translate(-50%, -50%);
+  border: 1px solid #ffffff16;
+  border-radius: 50%;
+  background: #0a0e11e8;
+  color: #aab3b9;
+  font: inherit;
+  font-size: 18px;
+  line-height: 1;
+  backdrop-filter: blur(12px);
+}
+.analysis-close-all:hover {
+  color: #fff;
+  border-color: #ffffff2d;
+}
+
+.analysis-lens-node {
+  width: 360px;
+  min-height: 180px;
+  padding: 18px 20px 19px;
+  border-color: #ffffff14;
+  background: #090d10ee;
+  box-shadow: 0 18px 60px #0009;
+  text-align: left;
+}
+.analysis-lens-node > small {
+  font-size: 8.5px;
+  letter-spacing: .11em;
+}
+.analysis-lens-node > strong {
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+.analysis-lens-node > span {
+  margin-top: 4px;
+  font-size: 9px;
+}
+.analysis-lens-node > p,
+.analysis-detail-text,
+.analysis-translation-choice {
+  font-size: 10px;
+  line-height: 1.65;
+}
+.analysis-lens-node.syntax > p {
+  color: #9da6ad;
+  font-family: var(--ui-font), var(--arabic-font);
+  font-size: 9.8px;
+  line-height: 1.65;
+}
+.analysis-lens-node.syntax > p b {
+  color: #c7cdd1;
+  font-weight: 500;
+}
+.analysis-lens-node.semantic {
+  width: 440px;
+  min-height: 205px;
+  text-align: center;
+}
+.analysis-lens-node.semantic > strong {
+  font-size: 15px;
+}
+.analysis-detail-text {
+  margin-top: 9px !important;
+  color: #a0a9af !important;
+}
+.analysis-translation-choice {
+  margin-top: 10px !important;
+  padding-top: 10px;
+  border-top: 1px solid #ffffff0c;
+  color: #b9c1c6 !important;
+}
+
+.analysis-morph-parts {
+  display: grid;
+  gap: 7px;
+  margin-top: 13px;
+}
+.analysis-morph-parts > div {
+  display: grid;
+  grid-template-columns: 62px 62px 1fr;
+  align-items: baseline;
+  gap: 8px;
+  min-height: 30px;
+  padding: 5px 0;
+  border-top: 1px solid #ffffff09;
+}
+.analysis-morph-parts b {
+  color: #e7edf0;
+  font-family: var(--arabic-font);
+  font-size: 19px;
+  font-weight: 400;
+  text-align: right;
+}
+.analysis-morph-parts em {
+  color: #77828a;
+  font-size: 8px;
+  font-style: normal;
+}
+.analysis-morph-parts p {
+  margin: 0;
+  color: #9ca5ab;
+  font-size: 9px;
+  line-height: 1.45;
+}
+.analysis-orbit-button {
+  display: block;
+  margin: 14px auto 0;
+  min-height: 34px;
+  padding: 0 13px;
+  font-size: 8.8px;
+}
+
+@media (max-width: 760px) {
+  .analysis-verse-reference {
+    top: 500px;
+  }
+  .analysis-arabic-word {
+    min-width: 118px;
+  }
+  .analysis-arabic-word > span {
+    font-size: 30px;
+  }
+  .analysis-lens-node {
+    width: 340px;
+  }
+  .analysis-lens-node.semantic {
+    width: 400px;
+  }
+  .analysis-morph-parts > div {
+    grid-template-columns: 58px 58px 1fr;
+  }
+}
