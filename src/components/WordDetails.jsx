@@ -297,6 +297,12 @@ export function WordDetails({ word, panel, language, onPick }) {
     <p className="entry-status">{t.semanticStatus}</p>
     <p className="entry-lead">{content.meaning[language].lead}</p><p>{content.meaning[language].body}</p>
     <MeaningMap levels={content.meaningMap} language={language} />
+    {content.translationNotes?.[language]?.length && <section className="translation-notes">
+      {content.translationNotes[language].map((note, index) => <article className={'translation-note translation-note-' + note.tone} key={note.title + index}>
+        <h4>{note.title}</h4>
+        <p>{note.text}</p>
+      </article>)}
+    </section>}
     <p className="entry-note">{t.meaningNote}</p>
     <RelatedWords ids={content.related} language={language} onPick={onPick} />
     <SourceLinks ids={content.meaningSources} language={language} />
