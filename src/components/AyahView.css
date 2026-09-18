@@ -608,7 +608,7 @@
 }
 
 @media (max-width: 760px) {
-  .ayah-space-shell { inset-top: 54px; }
+  .ayah-space-shell { top: 54px; }
   .ayah-space-topbar {
     left: 10px;
     right: 10px;
@@ -657,4 +657,11 @@
 @media (max-width: 480px) {
   .ayah-space-modes button { font-size: 9.5px; }
   .ayah-space-reference small { display: none; }
+}
+
+.analysis-ayah {
+  top: 215px;
+  width: 2020px;
+  font-size: 34px;
+  line-height: 1.85;
 }
