@@ -285,7 +285,7 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
             <div className="quran-reference-grid">{verseItems.map(item => {
               const reference = item.sura + ':' + item.ayah
               const isPrototype = reference === '2:197'
-              return <button key={reference} onClick={() => onOpenAyah?.(item)}
+              return <button key={reference} onClick={() => onOpenAyah?.(item)} disabled={!isPrototype}
                 className={isPrototype ? 'has-prototype' : ''} aria-label={t.openVerse + ' ' + reference}>
                 <span>{reference}</span>
                 {isPrototype && <small>{language === 'ru' ? 'разбор' : 'study'}</small>}
