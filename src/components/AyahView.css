@@ -1626,3 +1626,235 @@
     width: calc(100vw - 28px);
   }
 }
+
+/* Three simultaneous callouts; each pages independently when content is long */
+.ayah-space-shell.has-word-focus .ayah-space-world {
+  filter: brightness(.48) saturate(.82);
+}
+.analysis-focus-overlay {
+  background: #02030442;
+}
+.analysis-focus-pager {
+  display: none !important;
+}
+.analysis-callout-page {
+  min-height: 0;
+}
+.analysis-callout-page > div > strong {
+  display: block;
+  margin-top: 7px;
+  color: #dde2e5;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+.analysis-callout-page > div > p {
+  margin: 8px 0 0;
+  color: #9da7ad;
+  font-size: 10px;
+  line-height: 1.65;
+}
+.analysis-callout-pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 11px;
+  padding-top: 8px;
+  border-top: 1px solid #ffffff0c;
+}
+.analysis-callout-pager button {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 28px;
+  border: 1px solid #ffffff10;
+  background: #ffffff04;
+  color: #c7ced2;
+  font: inherit;
+  font-size: 20px;
+  line-height: 1;
+}
+.analysis-callout-pager button:hover {
+  border-color: #ffffff22;
+  color: #fff;
+}
+.analysis-callout-pager span {
+  min-width: 34px;
+  color: #6f7a82;
+  font-size: 8.5px;
+  text-align: center;
+}
+.analysis-focus-word {
+  top: 50%;
+}
+.analysis-focus-word span {
+  font-size: clamp(58px, 6.7vw, 82px);
+}
+
+@media (max-width: 760px) {
+  .analysis-focus-overlay {
+    overflow: hidden;
+  }
+
+  .analysis-focus-space {
+    width: 100vw;
+    height: 100%;
+  }
+
+  .analysis-focus-word {
+    left: 50%;
+    top: 52%;
+  }
+
+  .analysis-focus-word span {
+    font-size: 72px;
+  }
+
+  .analysis-focus-word small {
+    font-size: 10px;
+  }
+
+  .analysis-focus-rays {
+    opacity: .58;
+  }
+
+  .analysis-focus-callout,
+  .analysis-focus-callout.is-active {
+    display: block !important;
+    width: min(66vw, 255px);
+    height: auto;
+    min-height: 126px;
+    max-height: 158px;
+    overflow: hidden;
+    padding: 13px 14px 12px;
+    transform: none !important;
+    text-align: left;
+  }
+
+  .analysis-focus-callout.morph {
+    left: 8px !important;
+    right: auto !important;
+    top: 62px !important;
+    bottom: auto !important;
+  }
+
+  .analysis-focus-callout.syntax {
+    left: auto !important;
+    right: 8px !important;
+    top: 215px !important;
+    bottom: auto !important;
+  }
+
+  .analysis-focus-callout.semantic {
+    left: 50% !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: 10px !important;
+    width: min(78vw, 300px);
+    min-height: 132px;
+    max-height: 174px;
+    transform: translateX(-50%) !important;
+    text-align: left;
+  }
+
+  .analysis-focus-callout > small {
+    font-size: 8px;
+  }
+
+  .analysis-callout-page > div > strong {
+    font-size: 12px;
+  }
+
+  .analysis-callout-page > div > p,
+  .analysis-focus-callout .analysis-detail-text,
+  .analysis-focus-callout .analysis-translation-choice,
+  .analysis-syntax-plain {
+    font-size: 10.5px !important;
+    line-height: 1.55;
+  }
+
+  .analysis-syntax-phrase {
+    margin-top: 7px;
+    padding: 6px 7px;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+
+  .analysis-morph-parts {
+    gap: 2px;
+    margin-top: 7px;
+  }
+
+  .analysis-morph-parts > div {
+    grid-template-columns: 52px 48px 1fr;
+    gap: 5px;
+    min-height: 24px;
+    padding: 2px 0;
+  }
+
+  .analysis-morph-parts b {
+    font-size: 17px;
+  }
+
+  .analysis-morph-parts em,
+  .analysis-morph-parts p {
+    font-size: 8.5px;
+    line-height: 1.3;
+  }
+
+  .analysis-callout-pager {
+    gap: 6px;
+    margin-top: 7px;
+    padding-top: 6px;
+  }
+
+  .analysis-callout-pager button {
+    width: 28px;
+    height: 25px;
+    font-size: 18px;
+  }
+
+  .analysis-callout-pager span {
+    font-size: 8px;
+  }
+
+  .analysis-focus-callout.semantic .analysis-orbit-button {
+    margin-top: 8px;
+    min-height: 29px;
+    font-size: 8px;
+  }
+
+  .analysis-focus-close {
+    top: 12px;
+    right: 12px;
+  }
+}
+
+@media (max-height: 680px) and (max-width: 760px) {
+  .analysis-focus-word {
+    top: 51%;
+  }
+
+  .analysis-focus-word span {
+    font-size: 66px;
+  }
+
+  .analysis-focus-callout.morph {
+    top: 52px !important;
+  }
+
+  .analysis-focus-callout.syntax {
+    top: 190px !important;
+  }
+
+  .analysis-focus-callout,
+  .analysis-focus-callout.is-active {
+    max-height: 142px;
+  }
+
+  .analysis-focus-callout.semantic {
+    max-height: 154px;
+    bottom: 7px !important;
+  }
+}
