@@ -343,3 +343,30 @@
   .ayah-blocks article { grid-template-columns: 30px 1fr; gap: 10px; }
   .ayah-context-card { top: 54px; margin: 0 0 10px; padding: 15px 16px; }
 }
+
+.ayah-current-construction > p {
+  margin: 10px 0 0;
+  color: #aab1b7;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.ayah-current-construction .ayah-block-words {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #ffffff0c;
+}
+.ayah-block-words button.is-selected {
+  color: #ff8a3d;
+  text-shadow: 0 0 10px #ff8a3d66;
+}
+.ayah-composition .ayah-blocks article {
+  position: relative;
+}
+.ayah-composition .ayah-blocks article:not(:last-child)::after {
+  content: '↓';
+  position: absolute;
+  left: 15px;
+  bottom: -7px;
+  color: #535c63;
+  font-size: 11px;
+}
