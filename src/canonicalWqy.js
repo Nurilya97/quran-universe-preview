@@ -25,8 +25,8 @@ export const WQY_PUBLIC_MODEL = {
     ],
     secondaryEvidence: [
       { rank: 4, id: 'classical_lexicons', ru: 'Классические арабские словари: подтверждают лексическое ядро и диапазон значений.', en: 'Classical Arabic lexicons: confirm the lexical nucleus and semantic range.' },
-      { rank: 5, id: 'translations', ru: 'Переводы: рассматриваются как варианты передачи смысла, а не как источник значения.', en: 'Translations: treated as renderings of meaning, not as the source of meaning.' },
-      { rank: 6, id: 'tafsir', ru: 'Тафсиры: самый низкий приоритет; это человеческие интерпретации конкретных аятов, а не определяющий источник значения слова.', en: 'Tafsir: lowest priority; these are human interpretations of particular verses, not the controlling source for a word’s meaning.' },
+      { rank: 5, id: 'translations', ru: 'Переводы: рассматриваются как варианты передачи уже установленного смысла и сопоставляются между собой.', en: 'Translations: treated as alternative renderings of an already established meaning and compared with one another.' },
+      { rank: 6, id: 'tafsir', ru: 'Тафсиры: самый низкий приоритет; это отдельный слой человеческих интерпретаций конкретных аятов.', en: 'Tafsir: lowest priority; these form a separate layer of human interpretation of particular verses.' },
     ],
     validationRule: {
       ru: 'Если смысловая модель не выдерживает другое кораническое употребление того же слова или его близкой формы, модель пересматривается.',
@@ -43,8 +43,8 @@ export const WQY_PUBLIC_MODEL = {
   },
   roleSafeguards: {
     directObject: {
-      ru: 'В конструкции اتقى + X прямой грамматический объект сам по себе не делает X источником опасности.',
-      en: 'In اتقى + X, the direct grammatical object does not by itself make X the source of danger.',
+      ru: 'В конструкции اتقى + X роль X определяется контекстом; прямое дополнение показывает грамматическую связь с действием.',
+      en: 'In اتقى + X, the role of X is resolved from context; the direct object marks its grammatical relation to the action.',
     },
     noGlobalOppositeRule: {
       ru: 'Нельзя вводить и обратное абсолютное правило: в контекстах суда встречается отсутствие защитника от Аллаха — например مِنَ اللَّهِ مِنْ وَاقٍ.',
@@ -56,15 +56,15 @@ export const WQY_PUBLIC_MODEL = {
     universalEquivalent: false,
     ru: {
       summary: 'У تقوى/اتقى нет одного протестированного перевода, который сохранял бы всю модель во всех контекстах.',
-      righteousness: '«Праведность» может передавать проявление или результат в отдельных контекстах, но не является полным определением механизма.',
+      righteousness: '«Праведность» может передавать проявление или результат в отдельных контекстах; полный механизм تَقْوَىٰ шире этого слова.',
       godFearing: '«Богобоязненность» не используется как нейтральный перевод по умолчанию: она сдвигает смысл к страху и может искажать роли.',
-      q2_194: 'Для 2:194 «остерегайтесь наказания Аллаха» — role-safe интерпретирующий вариант, а не буквальный лексический эквивалент.',
+      q2_194: 'Для 2:194 «остерегайтесь наказания Аллаха» — role-safe интерпретирующий вариант; буквальное лексическое ядро сохраняет направление защиты.',
     },
     en: {
       summary: 'No tested rendering preserves the whole تقوى/اتقى model in every context.',
-      righteousness: '“Righteousness” can represent a manifestation or outcome in some contexts, but not the full mechanism.',
+      righteousness: '“Righteousness” can represent a manifestation or outcome in some contexts; the full تَقْوَىٰ mechanism is broader.',
       godFearing: 'Fear-centered “God-fearing” language is not used as a neutral default because it can import a threat frame and distort semantic roles.',
-      q2_194: 'For 2:194, “be mindful of Allah” is the preferred tested short English rendering; it remains a contextually good partial, not a universal equivalent.',
+      q2_194: 'For 2:194, “be mindful of Allah” is the preferred tested short English rendering; it captures a contextually useful part of the broader semantic model.',
     },
   },
   reviewedContexts: {
