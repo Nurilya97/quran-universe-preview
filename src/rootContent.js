@@ -37,6 +37,37 @@ export const WORD_CONTENT = {
       ru: { lead: 'Защищать, оберегать кого-либо или что-либо.', body: 'Действие направлено на сохранение того, кого защищают, от вреда. Что именно оберегают и от чего — определяется дополнениями и контекстом.' },
       en: { lead: 'To protect or preserve someone or something.', body: 'The action keeps its object safe from harm. The surrounding words identify who or what is protected and what they are protected from.' },
     },
+    meaningMap: [
+      {
+        id: 'mechanism',
+        ru: { title: 'Механизм', description: 'وَقَىٰ (waqā) называет само действие защиты.', items: [
+          { term: 'Защищать / оберегать', definition: 'Создавать защиту между тем, что оберегают, и тем, что может причинить ему вред.' },
+        ] },
+        en: { title: 'Mechanism', description: 'وَقَىٰ (waqā) names the act of protection itself.', items: [
+          { term: 'To protect / guard', definition: 'To create protection between what is guarded and what could cause it harm.' },
+        ] },
+      },
+      {
+        id: 'component',
+        ru: { title: 'Составные части механизма', description: 'Контекст показывает, кто защищает, что защищают и от чего.', items: [
+          { term: 'Защищаемое', definition: 'Человек или объект, который сохраняют от вреда.' },
+          { term: 'Угроза или вред', definition: 'То, от чего направлено действие защиты; конкретное содержание определяется контекстом.' },
+        ] },
+        en: { title: 'Components of the mechanism', description: 'Context identifies who protects, what is protected, and what it is protected from.', items: [
+          { term: 'The protected object', definition: 'The person or thing being kept safe from harm.' },
+          { term: 'Threat or harm', definition: 'What the protective action is directed against; its specific content comes from context.' },
+        ] },
+      },
+      {
+        id: 'result',
+        ru: { title: 'Следствия', description: 'Результат действия وَقَىٰ (waqā) — сохранение защищаемого от вреда.', items: [
+          { term: 'Сохранение от вреда', definition: 'Вред не достигает того, что находится под защитой.' },
+        ] },
+        en: { title: 'Outcomes', description: 'The outcome of وَقَىٰ (waqā) is preservation of the protected object from harm.', items: [
+          { term: 'Preservation from harm', definition: 'Harm does not reach what is being protected.' },
+        ] },
+      },
+    ],
     structureSources: ['jawhari', 'corpus'], meaningSources: ['raghib', 'laneWqy'], related: ['wiqaya', 'wiqaa', 'waq'],
   },
   ittaqa: {
@@ -49,6 +80,39 @@ export const WORD_CONTENT = {
       ru: { lead: 'Занимать активную защитную позицию.', body: WQY_PUBLIC_MODEL.operativeMechanism.ru + ' ' + WQY_PUBLIC_MODEL.roleSafeguards.directObject.ru },
       en: { lead: 'To take an active, protection-oriented stance.', body: WQY_PUBLIC_MODEL.operativeMechanism.en + ' ' + WQY_PUBLIC_MODEL.roleSafeguards.directObject.en },
     },
+    meaningMap: [
+      {
+        id: 'mechanism',
+        ru: { title: 'Механизм', description: 'ٱتَّقَىٰ (ittaqā) переносит защитное действие на самого субъекта.', items: [
+          { term: 'Защитная позиция', definition: 'Человек сам занимает позицию, которая помогает ему уберечь себя от того, что определяется контекстом.' },
+          { term: 'Остережение', definition: 'Распознать то, от чего следует себя уберечь, и не приближаться к этому.' },
+        ] },
+        en: { title: 'Mechanism', description: 'ٱتَّقَىٰ (ittaqā) turns the protective action toward the subject themself.', items: [
+          { term: 'Protective stance', definition: 'The person takes a position that helps guard them from what the context identifies.' },
+          { term: 'Caution', definition: 'To recognise what should be guarded against and avoid approaching it.' },
+        ] },
+      },
+      {
+        id: 'component',
+        ru: { title: 'Составные части механизма', description: 'Для защитного выбора нужны распознавание границы и действие.', items: [
+          { term: 'Внимательность', definition: 'Замечать, где находится граница, риск или возможный вред.' },
+          { term: 'Саморегуляция', definition: 'Соотносить своё действие с распознанной границей и удерживать себя от её нарушения.' },
+        ] },
+        en: { title: 'Components of the mechanism', description: 'Protective choice requires recognising a boundary and acting on it.', items: [
+          { term: 'Attentiveness', definition: 'Noticing where a boundary, risk, or possible harm lies.' },
+          { term: 'Self-regulation', definition: 'Relating one’s action to the recognised boundary and restraining oneself from crossing it.' },
+        ] },
+      },
+      {
+        id: 'result',
+        ru: { title: 'Следствия', description: 'Защитная позиция направлена на то, чтобы человек не оказался в том, от чего он себя оберегает.', items: [
+          { term: 'Оберегание себя', definition: 'Человек удерживается от действия или положения, которое несёт вред или нарушение.' },
+        ] },
+        en: { title: 'Outcomes', description: 'The protective stance aims to keep the person from what they are guarding against.', items: [
+          { term: 'Self-protection', definition: 'The person is kept from an action or condition that brings harm or transgression.' },
+        ] },
+      },
+    ],
     structureSources: ['jawhari', 'laneTqy'], meaningSources: ['raghib', 'laneWqy'], related: ['taqwa', 'muttaqin', 'tuqat'],
   },
   taqwa: {
@@ -127,6 +191,26 @@ export const WORD_CONTENT = {
       ru: { lead: 'Остережение, принятие мер защиты.', body: 'Слово называет само действие или состояние предосторожности. Аль-Джаухари связывает его с تَقِيَّة и глаголом ٱتَّقَىٰ. Значение конкретного употребления следует рассматривать в его контексте.' },
       en: { lead: 'Taking precautions or guarding oneself.', body: 'The word names the act or state of precaution. Al-Jawhari links it with تَقِيَّة and ٱتَّقَىٰ. Each occurrence should be understood in its own context.' },
     },
+    meaningMap: [
+      {
+        id: 'mechanism',
+        ru: { title: 'Механизм', description: 'تُقَاة (tuqāt) называет само остережение или принятие защитной меры.', items: [
+          { term: 'Предосторожность', definition: 'Действие, предпринимаемое заранее, чтобы не допустить вреда или опасного последствия.' },
+        ] },
+        en: { title: 'Mechanism', description: 'تُقَاة (tuqāt) names the act of caution or taking a protective measure.', items: [
+          { term: 'Precaution', definition: 'An action taken in advance to prevent harm or a dangerous consequence.' },
+        ] },
+      },
+      {
+        id: 'manifestation',
+        ru: { title: 'Проявления', description: 'В конкретном контексте остережение выражается в определённой защитной мере.', items: [
+          { term: 'Защитная мера', definition: 'Конкретное действие, через которое человек старается уберечь себя в данной ситуации.' },
+        ] },
+        en: { title: 'Manifestations', description: 'In context, caution takes the form of a particular protective measure.', items: [
+          { term: 'Protective measure', definition: 'A concrete action through which a person seeks to guard themselves in a given situation.' },
+        ] },
+      },
+    ],
     structureSources: ['tuqatPattern', 'corpus'], meaningSources: ['jawhari', 'laneTqy'], related: ['ittaqa', 'taqwa'],
   },
   muttaqin: {
@@ -205,6 +289,26 @@ export const WORD_CONTENT = {
       ru: { lead: 'Защищающий, оберегающий; защитник.', body: 'Здесь действие защиты представлено через того, кто его осуществляет. В отличие от وِقَاء, акцент на защищающем, а не на средстве защиты.' },
       en: { lead: 'One who protects or guards; a protector.', body: 'The act of protection is expressed through whoever provides it. Unlike وِقَاء, the focus is on the protecting agent rather than the means of protection.' },
     },
+    meaningMap: [
+      {
+        id: 'mechanism',
+        ru: { title: 'Механизм', description: 'وَاقٍ (wāqin) переносит действие защиты на того, кто её осуществляет.', items: [
+          { term: 'Защитник / оберегающий', definition: 'Тот, от кого исходит действие защиты и кто препятствует вреду достичь защищаемого.' },
+        ] },
+        en: { title: 'Mechanism', description: 'وَاقٍ (wāqin) shifts the protective action to the one who performs it.', items: [
+          { term: 'Protector / guardian', definition: 'The one from whom protection comes and who prevents harm from reaching what is protected.' },
+        ] },
+      },
+      {
+        id: 'result',
+        ru: { title: 'Следствия', description: 'Наличие وَاقٍ (wāqin) означает наличие действующего источника защиты.', items: [
+          { term: 'Защищённость', definition: 'Защищаемое получает защиту благодаря тому, кто её осуществляет.' },
+        ] },
+        en: { title: 'Outcomes', description: 'The presence of a وَاقٍ (wāqin) means there is an acting source of protection.', items: [
+          { term: 'Protection', definition: 'The protected object receives protection through the one who provides it.' },
+        ] },
+      },
+    ],
     structureSources: ['corpus', 'jawhari'], meaningSources: ['raghib', 'laneWqy'], related: ['waqa', 'wiqaa'],
   },
   taqiyy: {
@@ -221,6 +325,28 @@ export const WORD_CONTENT = {
       ru: 'Особенность источника: корпус включает сюда تُقَاتِهِ из 3:102:7 и размечает его как существительное во множественном числе. Это иная словоформа, а не буквальное написание تَقِيّ. Счётчик сохраняет группировку корпуса.',
       en: 'Source distinction: the Corpus includes تُقَاتِهِ at 3:102:7 in this group and tags it as a plural noun. This is a different surface form, not the literal spelling تَقِيّ. The count preserves the Corpus grouping.',
     },
+    meaningMap: [
+      {
+        id: 'mechanism',
+        ru: { title: 'Механизм', description: 'تَقِيّ (taqiyy) описывает человека через устойчивое качество تَقْوَىٰ (taqwā).', items: [
+          { term: 'Носитель качества', definition: 'Человек, для которого осознанность перед Всевышним и защитная направленность стали устойчивой характеристикой.' },
+        ] },
+        en: { title: 'Mechanism', description: 'تَقِيّ (taqiyy) describes a person through the enduring quality of تَقْوَىٰ (taqwā).', items: [
+          { term: 'Bearer of the quality', definition: 'A person for whom awareness before the Most High and a protective orientation have become a stable characteristic.' },
+        ] },
+      },
+      {
+        id: 'manifestation',
+        ru: { title: 'Проявления', description: 'Качество становится видимым в выборе и поведении человека.', items: [
+          { term: 'Внимательность к границам', definition: 'Человек соотносит свои поступки с установленными Всевышним границами.' },
+          { term: 'Праведное поведение', definition: 'Поступки, соответствующие руководству, могут быть проявлением этого качества.' },
+        ] },
+        en: { title: 'Manifestations', description: 'The quality becomes visible in a person’s choices and conduct.', items: [
+          { term: 'Attention to boundaries', definition: 'The person relates their actions to the boundaries set by the Most High.' },
+          { term: 'Righteous conduct', definition: 'Actions aligned with guidance can manifest this quality.' },
+        ] },
+      },
+    ],
     structureSources: ['laneTqy'], meaningSources: ['laneTqy', 'jawhari'], related: ['taqwa', 'atqa', 'muttaqin'],
   },
   atqa: {
@@ -233,6 +359,26 @@ export const WORD_CONTENT = {
       ru: { lead: 'В большей степени обладающий تَقْوَى.', body: 'Сравнивается степень качества: большее остережение, оберегание себя и более последовательное удерживание установленных границ. Само основание сравнения задаёт контекст.' },
       en: { lead: 'Having a greater degree of تَقْوَى.', body: 'The form compares the degree of the quality: greater care in guarding oneself against wrongdoing. Context supplies the basis of comparison.' },
     },
+    meaningMap: [
+      {
+        id: 'mechanism',
+        ru: { title: 'Механизм', description: 'أَتْقَى (atqā) сравнивает степень تَقْوَىٰ (taqwā).', items: [
+          { term: 'Большая степень качества', definition: 'Та же осознанность и защитная направленность выражены сильнее или последовательнее; конкретное основание сравнения задаёт контекст.' },
+        ] },
+        en: { title: 'Mechanism', description: 'أَتْقَى (atqā) compares the degree of تَقْوَىٰ (taqwā).', items: [
+          { term: 'Greater degree of the quality', definition: 'The same awareness and protective orientation are expressed more strongly or consistently; context supplies the basis of comparison.' },
+        ] },
+      },
+      {
+        id: 'manifestation',
+        ru: { title: 'Проявления', description: 'Большая степень качества видна в более последовательном выборе.', items: [
+          { term: 'Более последовательное соблюдение границ', definition: 'Человек устойчивее соотносит свои поступки с руководством и границами Всевышнего.' },
+        ] },
+        en: { title: 'Manifestations', description: 'A greater degree of the quality is visible in more consistent choices.', items: [
+          { term: 'More consistent observance of boundaries', definition: 'The person more consistently relates conduct to the guidance and boundaries of the Most High.' },
+        ] },
+      },
+    ],
     structureSources: ['laneTqy', 'corpus'], meaningSources: ['laneTqy'], related: ['taqiyy', 'taqwa'],
   },
   wiqaa: {
@@ -245,6 +391,26 @@ export const WORD_CONTENT = {
       ru: { lead: 'Средство защиты, защитный покров; щит.', body: 'Аль-Джаухари определяет его через то, чем защищают что-либо. «Щит» здесь — понятный пример средства защиты, а не ограничение слова только военным предметом.' },
       en: { lead: 'A means of protection, a protective covering; a shield.', body: 'Al-Jawhari defines it through what is used to protect something. A shield is one example of a protective means; the word is not limited to a military object.' },
     },
+    meaningMap: [
+      {
+        id: 'mechanism',
+        ru: { title: 'Механизм', description: 'وِقَاء (wiqāʾ) называет то, что становится между защищаемым и вредом.', items: [
+          { term: 'Средство защиты', definition: 'Покров, барьер или другое средство, которое препятствует вреду достичь защищаемого.' },
+        ] },
+        en: { title: 'Mechanism', description: 'وِقَاء (wiqāʾ) names what stands between the protected object and harm.', items: [
+          { term: 'Means of protection', definition: 'A covering, barrier, or other means that prevents harm from reaching what is protected.' },
+        ] },
+      },
+      {
+        id: 'result',
+        ru: { title: 'Следствия', description: 'Функция وِقَاء (wiqāʾ) — обеспечить защищённость.', items: [
+          { term: 'Защитный покров', definition: 'Защищаемое получает барьер между собой и источником вреда.' },
+        ] },
+        en: { title: 'Outcomes', description: 'The function of وِقَاء (wiqāʾ) is to provide protection.', items: [
+          { term: 'Protective covering', definition: 'The protected object gains a barrier between itself and the source of harm.' },
+        ] },
+      },
+    ],
     structureSources: ['jawhari'], meaningSources: ['jawhari', 'raghib'], related: ['waqa', 'wiqaya', 'waq'],
   },
   wiqaya: {
@@ -257,6 +423,26 @@ export const WORD_CONTENT = {
       ru: { lead: 'Защита, предохранение, сохранение от вреда.', body: 'В определении ар-Рагиба главное — сохранение того, что защищают, от повреждения и вреда. В центре внимания действие защиты; в отдельных употреблениях — защитное средство.' },
       en: { lead: 'Protection, safeguarding, preservation from harm.', body: 'Al-Raghib’s definition focuses on keeping the protected object safe from damage and harm. The main focus is the act of protection, though some usages name a protective means.' },
     },
+    meaningMap: [
+      {
+        id: 'mechanism',
+        ru: { title: 'Механизм', description: 'وِقَايَة (wiqāya) называет защиту как процесс.', items: [
+          { term: 'Предохранение', definition: 'Действие, направленное на то, чтобы сохранить кого-либо или что-либо от повреждения и вреда.' },
+        ] },
+        en: { title: 'Mechanism', description: 'وِقَايَة (wiqāya) names protection as a process.', items: [
+          { term: 'Safeguarding', definition: 'An action directed toward preserving someone or something from damage and harm.' },
+        ] },
+      },
+      {
+        id: 'result',
+        ru: { title: 'Следствия', description: 'Успешная وِقَايَة (wiqāya) приводит к сохранению защищаемого.', items: [
+          { term: 'Сохранение от вреда', definition: 'То, что защищают, остаётся невредимым или менее подверженным вреду.' },
+        ] },
+        en: { title: 'Outcomes', description: 'Successful وِقَايَة (wiqāya) results in preservation of what is protected.', items: [
+          { term: 'Preservation from harm', definition: 'What is protected remains unharmed or less exposed to harm.' },
+        ] },
+      },
+    ],
     structureSources: ['jawhari', 'raghib'], meaningSources: ['raghib', 'laneWqy'], related: ['waqa', 'wiqaa'],
   },
   tawaqqa: {
@@ -269,6 +455,35 @@ export const WORD_CONTENT = {
       ru: { lead: 'Остерегаться, беречься, принимать предосторожности.', body: 'Lane объясняет глагол через осторожность и защиту от того, чего следует избегать. Аль-Джаухари отмечает близость تَوَقَّى и ٱتَّقَىٰ по значению; их словообразовательные модели различны.' },
       en: { lead: 'To beware, guard oneself, or take precautions.', body: 'Lane explains the verb through caution and guarding against something. Al-Jawhari notes the closeness in meaning between تَوَقَّى and ٱتَّقَىٰ; their derivational patterns differ.' },
     },
+    meaningMap: [
+      {
+        id: 'mechanism',
+        ru: { title: 'Механизм', description: 'تَوَقَّىٰ (tawaqqā) показывает защиту как практическое действие самого человека.', items: [
+          { term: 'Беречься / остерегаться', definition: 'Замечать возможный вред и сознательно выстраивать своё поведение так, чтобы его избежать.' },
+        ] },
+        en: { title: 'Mechanism', description: 'تَوَقَّىٰ (tawaqqā) presents protection as the person’s own practical action.', items: [
+          { term: 'To guard oneself / beware', definition: 'To notice possible harm and deliberately shape one’s behaviour to avoid it.' },
+        ] },
+      },
+      {
+        id: 'manifestation',
+        ru: { title: 'Проявления', description: 'Защитная позиция выражается в конкретных мерах предосторожности.', items: [
+          { term: 'Принятие мер', definition: 'Человек меняет действие, маршрут или поведение, чтобы снизить вероятность вреда.' },
+        ] },
+        en: { title: 'Manifestations', description: 'The protective stance is expressed through concrete precautions.', items: [
+          { term: 'Taking precautions', definition: 'The person changes an action, route, or behaviour to reduce the likelihood of harm.' },
+        ] },
+      },
+      {
+        id: 'result',
+        ru: { title: 'Следствия', description: 'Цель предосторожности — не допустить вреда.', items: [
+          { term: 'Избежание вреда', definition: 'Человек не попадает в ситуацию или действие, от которого стремился себя уберечь.' },
+        ] },
+        en: { title: 'Outcomes', description: 'The aim of precaution is to prevent harm.', items: [
+          { term: 'Avoidance of harm', definition: 'The person avoids the situation or action they were seeking to guard against.' },
+        ] },
+      },
+    ],
     structureSources: ['laneWqy', 'jawhari'], meaningSources: ['laneWqy', 'jawhari'], related: ['waqa', 'ittaqa'],
   },
 }
