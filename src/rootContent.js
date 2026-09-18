@@ -181,7 +181,33 @@ export const WORD_CONTENT = {
         ] },
       },
     ],
-    structureSources: ['laneTqy', 'jawhari'], meaningSources: ['raghib', 'laneTqy', 'baqarahMuttaqin'], related: ['ittaqa', 'taqiyy', 'muttaqin'],
+    translationNotes: {
+      ru: [
+        {
+          tone: 'warning',
+          title: 'Богобоязненность — неверный перевод',
+          text: 'Слово «богобоязненность» ставит боязнь и страх в центр значения. Это сужает تَقْوَىٰ (taqwā) и не передаёт её более широкий коранический смысл: осознанность перед Всевышним, вера и доверие Ему, различение, внимание к Его границам и защитный выбор.',
+        },
+        {
+          tone: 'positive',
+          title: 'Трепет — более близкий вариант',
+          text: '«Трепет» лучше передаёт почтительное осознание величия Всевышнего, уважение, внутреннюю собранность и серьёзность отношения к Нему — без сведения смысла تَقْوَىٰ (taqwā) только к страху.',
+        },
+      ],
+      en: [
+        {
+          tone: 'warning',
+          title: '“God-fearing” is an inaccurate rendering',
+          text: '“God-fearing” places fear at the centre of the meaning. This narrows تَقْوَىٰ (taqwā) and does not convey its broader Quranic sense: awareness before the Most High, faith and trust in Him, discernment, attention to His boundaries, and protective choice.',
+        },
+        {
+          tone: 'positive',
+          title: '“Awe” is a closer rendering',
+          text: '“Awe” better conveys reverent awareness of the greatness of the Most High, respect, inner attentiveness, and seriousness toward Him without reducing تَقْوَىٰ (taqwā) to fear alone.',
+        },
+      ],
+    },
+        structureSources: ['laneTqy', 'jawhari'], meaningSources: ['raghib', 'laneTqy', 'baqarahMuttaqin'], related: ['ittaqa', 'taqiyy', 'muttaqin'],
   },
   tuqat: {
     pattern: 'فُعَلَة', patternReading: 'fuʿala',
