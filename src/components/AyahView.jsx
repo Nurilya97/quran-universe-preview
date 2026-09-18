@@ -26,6 +26,10 @@ const VIEW_BOUNDS = {
   translations: { left: 300, right: 2200, top: 40, bottom: 1760 },
 }
 
+function finiteNumber(value, fallback) {
+  return Number.isFinite(value) ? value : fallback
+}
+
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value))
 }
@@ -270,6 +274,11 @@ export function AyahView({ reference, focusWordIndex, language, onBack }) {
   const pointers = useRef(new Map())
   const gesture = useRef(null)
   const viewportRef = useRef(null)
+  const cameraRef = useRef(camera)
+
+  useEffect(() => {
+    cameraRef.current = camera
+  }, [camera])
 
   useEffect(() => {
     setMode('analysis')
@@ -294,36 +303,56 @@ export function AyahView({ reference, focusWordIndex, language, onBack }) {
   ]
 
   function clampCamera(next, targetMode = mode) {
-    const scale = clamp(next.scale, .48, 1.08)
+    const current = cameraRef.current || { x: 0, y: 0, scale: defaultScale() }
+    const scale = clamp(finiteNumber(next.scale, current.scale), .48, 1.08)
     const viewport = viewportRef.current?.getBoundingClientRect()
-    if (!viewport) return { x: next.x, y: next.y, scale }
+    const rawX = finiteNumber(next.x, current.x)
+    const rawY = finiteNumber(next.y, current.y)
+
+    if (!viewport || viewport.width < 1 || viewport.height < 1) {
+      return { x: clamp(rawX, -120, 120), y: clamp(rawY, -150, 150), scale }
+    }
 
     const bounds = VIEW_BOUNDS[targetMode] || VIEW_BOUNDS.analysis
     const cx = viewport.width / 2
     const cy = viewport.height / 2
     const worldCx = WORLD.width / 2
     const worldCy = WORLD.height / 2
-    const safeX = Math.min(90, viewport.width * .22)
-    const safeY = Math.min(110, viewport.height * .22)
 
-    const minX = safeX - cx - (bounds.right - worldCx) * scale
-    const maxX = viewport.width - safeX - cx - (bounds.left - worldCx) * scale
-    const minY = safeY - cy - (bounds.bottom - worldCy) * scale
-    const maxY = viewport.height - safeY - cy - (bounds.top - worldCy) * scale
+    /* At overview zoom the diagram stays close to centre.
+       Zooming in gradually unlocks more panning, like a map. */
+    const zoomProgress = clamp((scale - .48) / .60, 0, 1)
+    const softLimitX = Math.min(viewport.width * .34, 88 + zoomProgress * 290)
+    const softLimitY = Math.min(viewport.height * .30, 105 + zoomProgress * 260)
 
-    const x = minX > maxX ? (minX + maxX) / 2 : clamp(next.x, minX, maxX)
-    const y = minY > maxY ? (minY + maxY) / 2 : clamp(next.y, minY, maxY)
+    const contentMinX = -cx - (bounds.right - worldCx) * scale
+    const contentMaxX = viewport.width - cx - (bounds.left - worldCx) * scale
+    const contentMinY = -cy - (bounds.bottom - worldCy) * scale
+    const contentMaxY = viewport.height - cy - (bounds.top - worldCy) * scale
+
+    const minX = Math.max(contentMinX, -softLimitX)
+    const maxX = Math.min(contentMaxX, softLimitX)
+    const minY = Math.max(contentMinY, -softLimitY)
+    const maxY = Math.min(contentMaxY, softLimitY)
+
+    const x = minX > maxX ? 0 : clamp(rawX, minX, maxX)
+    const y = minY > maxY ? 0 : clamp(rawY, minY, maxY)
 
     return { x, y, scale }
   }
 
   function resetCamera(targetMode = mode) {
     const scale = defaultScale()
-    setCamera(clampCamera({ x: 0, y: 0, scale }, targetMode))
+    const next = clampCamera({ x: 0, y: 0, scale }, targetMode)
+    cameraRef.current = next
+    setCamera(next)
   }
 
   function zoomBy(delta) {
-    setCamera(current => clampCamera({ ...current, scale: current.scale + delta }))
+    const current = cameraRef.current
+    const next = clampCamera({ ...current, scale: current.scale + delta })
+    cameraRef.current = next
+    setCamera(next)
   }
 
   function onWheel(event) {
@@ -335,11 +364,13 @@ export function AyahView({ reference, focusWordIndex, language, onBack }) {
     if (event.button !== undefined && event.button !== 0) return
     event.currentTarget.setPointerCapture?.(event.pointerId)
     pointers.current.set(event.pointerId, { x: event.clientX, y: event.clientY })
+    const currentCamera = cameraRef.current
     if (pointers.current.size === 1) {
-      gesture.current = { type: 'pan', x: event.clientX, y: event.clientY, cameraX: camera.x, cameraY: camera.y }
+      gesture.current = { type: 'pan', x: event.clientX, y: event.clientY, cameraX: currentCamera.x, cameraY: currentCamera.y }
     } else if (pointers.current.size === 2) {
       const [a, b] = [...pointers.current.values()]
-      gesture.current = { type: 'pinch', distance: Math.hypot(a.x - b.x, a.y - b.y), scale: camera.scale }
+      const distance = Math.hypot(a.x - b.x, a.y - b.y)
+      gesture.current = { type: 'pinch', distance, scale: currentCamera.scale }
     }
   }
 
@@ -350,18 +381,39 @@ export function AyahView({ reference, focusWordIndex, language, onBack }) {
     if (pointers.current.size === 2) {
       const [a, b] = [...pointers.current.values()]
       const distance = Math.hypot(a.x - b.x, a.y - b.y)
-      if (gesture.current?.type !== 'pinch') gesture.current = { type: 'pinch', distance, scale: camera.scale }
-      const nextScale = gesture.current.scale * (distance / (gesture.current.distance || distance))
-      setCamera(current => clampCamera({ ...current, scale: nextScale }))
+      const currentCamera = cameraRef.current
+
+      if (!Number.isFinite(distance) || distance < 8) return
+      if (gesture.current?.type !== 'pinch') {
+        gesture.current = { type: 'pinch', distance, scale: currentCamera.scale }
+      }
+
+      const baseDistance = gesture.current.distance
+      if (!Number.isFinite(baseDistance) || baseDistance < 8) return
+
+      const ratio = distance / baseDistance
+      if (!Number.isFinite(ratio) || ratio <= 0) return
+
+      const nextScale = gesture.current.scale * ratio
+      const next = clampCamera({ ...currentCamera, scale: nextScale })
+      cameraRef.current = next
+      setCamera(next)
       return
     }
 
     if (gesture.current?.type === 'pan') {
-      setCamera(current => clampCamera({
-        ...current,
-        x: gesture.current.cameraX + event.clientX - gesture.current.x,
-        y: gesture.current.cameraY + event.clientY - gesture.current.y,
-      }))
+      const dx = event.clientX - gesture.current.x
+      const dy = event.clientY - gesture.current.y
+      if (!Number.isFinite(dx) || !Number.isFinite(dy)) return
+
+      const currentCamera = cameraRef.current
+      const next = clampCamera({
+        ...currentCamera,
+        x: gesture.current.cameraX + dx,
+        y: gesture.current.cameraY + dy,
+      })
+      cameraRef.current = next
+      setCamera(next)
     }
   }
 
@@ -369,7 +421,8 @@ export function AyahView({ reference, focusWordIndex, language, onBack }) {
     pointers.current.delete(event.pointerId)
     if (pointers.current.size === 1) {
       const remaining = [...pointers.current.values()][0]
-      gesture.current = { type: 'pan', x: remaining.x, y: remaining.y, cameraX: camera.x, cameraY: camera.y }
+      const currentCamera = cameraRef.current
+      gesture.current = { type: 'pan', x: remaining.x, y: remaining.y, cameraX: currentCamera.x, cameraY: currentCamera.y }
     } else {
       gesture.current = null
     }
@@ -380,7 +433,9 @@ export function AyahView({ reference, focusWordIndex, language, onBack }) {
     setSelectedWord(null)
     const scale = defaultScale()
     requestAnimationFrame(() => {
-      setCamera(clampCamera({ x: 0, y: 0, scale }, nextMode))
+      const next = clampCamera({ x: 0, y: 0, scale }, nextMode)
+      cameraRef.current = next
+      setCamera(next)
     })
   }
 
