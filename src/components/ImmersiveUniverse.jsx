@@ -198,11 +198,15 @@ export function ImmersiveUniverse() {
       <Icon name={paused || reducedMotion ? 'play' : 'pause'} />
     </button>}
 
-    <dialog ref={dialog} className="detail-sheet" aria-labelledby="sheet-title" onCancel={(event) => { event.preventDefault(); closePanel() }}
+    <dialog ref={dialog} className="detail-sheet"
+      aria-labelledby={panel === 'structure' ? undefined : 'sheet-title'}
+      aria-label={panel === 'structure' ? t.structure : undefined}
+      onCancel={(event) => { event.preventDefault(); closePanel() }}
       onClick={(event) => { if (event.target === event.currentTarget) closePanel() }}>
       <div className="sheet-inner">
         <div className="sheet-handle" aria-hidden="true" />
-        <header className="sheet-header"><div><p className="eyebrow">{panel === 'forms' || panel === 'root' ? t.rootSpace : t.orbit}</p><h2 id="sheet-title">{panelTitle}</h2></div>
+        <header className={'sheet-header' + (panel === 'structure' ? ' sheet-header-compact' : '')}>
+          {panel !== 'structure' && <div><p className="eyebrow">{panel === 'forms' || panel === 'root' ? t.rootSpace : t.orbit}</p><h2 id="sheet-title">{panelTitle}</h2></div>}
           <button className="icon-button" autoFocus onClick={closePanel} aria-label={t.close}><Icon name="close" /></button>
         </header>
         {panel !== 'forms' && panel !== 'structure' && <div className="sheet-word-label"><p className="sheet-word" lang="ar" dir="rtl">{panel === 'root' ? 'و ق ي' : word.arabic}</p><small className="transliteration" lang="ar-Latn" dir="ltr">{panel === 'root' ? 'w-q-y' : word.reading}</small></div>}
