@@ -291,9 +291,6 @@ export function WordDetails({ word, panel, language, onPick }) {
     <p className="entry-status">{t.semanticStatus}</p>
     <p className="entry-lead">{content.meaning[language].lead}</p><p>{content.meaning[language].body}</p>
     <MeaningMap levels={content.meaningMap} language={language} />
-    {content.layers?.map((layer, index) => <section className="meaning-layer" key={index}><h3>{layer[language].title}</h3>
-      <p>{layer[language].text}</p><div className="context-links">{layer.refs.map(reference => <VerseLink key={reference} reference={reference} language={language} />)}</div></section>)}
-    <CanonicalNote wordId={word.id} language={language} />
     <p className="entry-note">{t.meaningNote}</p>
     <RelatedWords ids={content.related} language={language} onPick={onPick} />
     <SourceLinks ids={content.meaningSources} language={language} />
