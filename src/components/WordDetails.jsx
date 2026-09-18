@@ -1,8 +1,108 @@
+import { useState } from 'react'
 import { COPY, FORMS } from '../demo.js'
 import { CONTENT_SOURCES, ROOT_CONTENT, WORD_CONTENT } from '../rootContent.js'
 import { OCCURRENCES, ROOT_OCCURRENCE_COUNT, groupOccurrences } from '../occurrences.js'
 import { WQY_PUBLIC_MODEL } from '../canonicalWqy.js'
+import { MORPH_COPY, MORPHOLOGY } from '../morphologyWqy.js'
 import './WordDetails.css'
+
+
+function MorphLegend({ language }) {
+  const c = MORPH_COPY[language]
+  return <div className="morph-legend" aria-label={language === 'ru' ? 'Легенда цветовой формулы' : 'Colour formula legend'}>
+    {['root', 'pattern', 'inflection', 'change'].map(kind =>
+      <span key={kind} className={'morph-legend-' + kind}><i aria-hidden="true" />{c[kind]}</span>
+    )}
+  </div>
+}
+
+function MorphFormula({ profile, language }) {
+  const c = MORPH_COPY[language]
+  const [activeIndex, setActiveIndex] = useState(0)
+  const active = profile.segments[activeIndex] || profile.segments[0]
+  const activeCopy = active?.[language] || []
+
+  return <section className="morph-visual">
+    <h3 className="morph-section-title">{c.formula}</h3>
+    <div className="morph-word" lang="ar" dir="rtl" aria-label={profile.displayArabic}>
+      {profile.segments.map((segment, index) =>
+        <button key={index} type="button"
+          className={'morph-segment morph-' + segment.kind + (index === activeIndex ? ' is-active' : '')}
+          aria-pressed={index === activeIndex}
+          onClick={() => setActiveIndex(index)}>
+          {segment.text}
+        </button>
+      )}
+    </div>
+    <MorphLegend language={language} />
+    <p className="morph-tap-hint">{c.tapHint}</p>
+    {active && <div className={'morph-explain morph-explain-' + active.kind}>
+      <p className="morph-explain-token" lang="ar" dir="rtl">{active.text}</p>
+      <div><strong>{activeCopy[0]}</strong><p>{activeCopy[1]}</p></div>
+    </div>}
+  </section>
+}
+
+function DerivationPath({ profile, language }) {
+  const c = MORPH_COPY[language]
+  return <section className="morph-lineage">
+    <h3>{c.lineage}</h3>
+    <ol>{profile.lineage.map((step, index) =>
+      <li key={index}>
+        <span className="morph-lineage-node" aria-hidden="true" />
+        <div>
+          <span className="morph-lineage-arabic" lang="ar" dir="rtl">{step.ar}</span>
+          <small>{step[language]}</small>
+        </div>
+      </li>
+    )}</ol>
+  </section>
+}
+
+function PatternEffect({ profile, language }) {
+  const c = MORPH_COPY[language]
+  const [title, body] = profile.effect[language]
+  return <section className="morph-effect">
+    <p className="morph-effect-label">{c.patternEffect}</p>
+    <p className="morph-effect-pattern" lang="ar" dir="rtl">{title}</p>
+    <p>{body}</p>
+  </section>
+}
+
+function MorphologyStructure({ word, content, language, onPick }) {
+  const profile = MORPHOLOGY[word.id]
+  const c = MORPH_COPY[language]
+  if (!profile) return null
+
+  return <div className="entry-copy morphology-entry">
+    <MorphFormula profile={profile} language={language} />
+    <DerivationPath profile={profile} language={language} />
+    <PatternEffect profile={profile} language={language} />
+
+    {profile.variantAnalysis && <p className="entry-note annotation-note morph-variant-note">{c.noteVariants}</p>}
+
+    <details className="morph-transform" open={word.id === 'ittaqa' || word.id === 'muttaqin'}>
+      <summary>{c.transformations}</summary>
+      <ol>{profile.transformations[language].map((item, index) => <li key={index}>{item}</li>)}</ol>
+    </details>
+
+    <details className="morph-more">
+      <summary>{c.more}</summary>
+      <dl className="structure-list">
+        <div><dt>{COPY[language].root}</dt><dd lang="ar" dir="rtl">و ق ي</dd></div>
+        <div><dt>{COPY[language].wordType}</dt><dd>{COPY[language][word.type]}</dd></div>
+        <div><dt>{COPY[language].familyLabel}</dt><dd>{word.orbit}</dd></div>
+        <div><dt>{COPY[language].pattern}</dt><dd><span className="pattern-arabic" lang="ar" dir="rtl">{content.pattern}</span>
+          <small className="transliteration" lang="ar-Latn" dir="ltr">{content.patternReading}</small></dd></div>
+      </dl>
+      {content.structure[language].map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+      {word.lexicalOnly && <p className="entry-note">{COPY[language].lexicalNote}</p>}
+    </details>
+
+    <RelatedWords ids={content.related} language={language} onPick={onPick} />
+    <SourceLinks ids={content.structureSources} language={language} />
+  </div>
+}
 
 function SourceLinks({ ids, language }) {
   return <footer className="entry-sources"><h3>{COPY[language].sources}</h3>{ids.map(id => {
@@ -100,17 +200,7 @@ export function WordDetails({ word, panel, language, onPick }) {
       <SourceLinks ids={['corpus', ...(['taqiyy', 'tuqat'].includes(word.id) ? ['tuqatCorpus'] : [])]} language={language} />
     </div>
   }
-  if (panel === 'structure') return <div className="entry-copy">
-    <dl className="structure-list"><div><dt>{t.root}</dt><dd lang="ar" dir="rtl">و ق ي</dd></div>
-      <div><dt>{t.wordType}</dt><dd>{t[word.type]}</dd></div>
-      <div><dt>{t.familyLabel}</dt><dd>{word.orbit}</dd></div>
-      <div><dt>{t.pattern}</dt><dd><span className="pattern-arabic" lang="ar" dir="rtl">{content.pattern}</span>
-        <small className="transliteration" lang="ar-Latn" dir="ltr">{content.patternReading}</small></dd></div></dl>
-    <h3>{t.formation}</h3>{content.structure[language].map((paragraph, index) => <p key={index}>{paragraph}</p>)}
-    {word.lexicalOnly && <p className="entry-note">{t.lexicalNote}</p>}
-    <RelatedWords ids={content.related} language={language} onPick={onPick} />
-    <SourceLinks ids={content.structureSources} language={language} />
-  </div>
+  if (panel === 'structure') return <MorphologyStructure word={word} content={content} language={language} onPick={onPick} />
   if (panel === 'meaning') return <div className="entry-copy">
     <p className="entry-status">{t.semanticStatus}</p>
     <p className="entry-lead">{content.meaning[language].lead}</p><p>{content.meaning[language].body}</p>
