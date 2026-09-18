@@ -4,32 +4,32 @@
 .entry-copy .entry-lead { color: var(--paper); font-size: 20px; line-height: 1.5; margin-top: 10px; }
 .entry-copy .entry-status { font-size: 11px; letter-spacing: .025em; color: #9ea4aa; margin-bottom: 6px; }
 .entry-copy .entry-note { font-size: 13px; line-height: 1.7; }
-.entry-copy .annotation-note { padding-left: 14px; border-left: 1px solid var(--gold); }
+.entry-copy .annotation-note { padding-left: 14px; border-left: 1px solid var(--accent); }
 .entry-copy .occurrence-summary { font-size: 14px; color: var(--paper); }
-.occurrence-summary strong { font-weight: 500; color: var(--gold); }
+.occurrence-summary strong { font-weight: 500; color: var(--accent); }
 .entry-copy .structure-list > div { align-items: flex-start; }
 .entry-copy .structure-list dd { max-width: 62%; line-height: 1.5; }
 .entry-copy .pattern-arabic { display: block; font-size: 30px; line-height: 1.65; }
 .reference-groups { margin-top: 22px; }
 .reference-groups details { border-top: 1px solid var(--line); }
 .reference-groups summary { min-height: 48px; cursor: pointer; padding: 14px 0; font-size: 14px; color: var(--paper); }
-.reference-groups summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.reference-groups summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .reference-groups summary > span { float: right; padding-right: 4px; color: var(--muted); font-size: 12px; }
 .reference-groups ul { list-style: none; padding: 0 0 10px; margin: 0; }
 .reference-groups li { display: flex; align-items: center; gap: 12px; border-top: 1px solid #ffffff08; }
 .reference-groups a { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 8px 5px; color: var(--paper); text-decoration: none; font-size: 14px; }
 .reference-groups .word-reference { margin-left: auto; color: var(--muted); font-size: 12px; }
-.entry-copy a:hover { color: var(--gold); }
+.entry-copy a:hover { color: var(--accent); }
 .entry-copy a > span[aria-hidden] { font-size: 12px; color: var(--muted); }
 .entry-sources { border-top: 1px solid var(--line); margin-top: 26px; padding-top: 4px; }
-.entry-sources a { display: flex; gap: 10px; justify-content: space-between; align-items: center; min-height: 44px; color: var(--gold); font-size: 12px; line-height: 1.6; text-underline-offset: 4px; }
+.entry-sources a { display: flex; gap: 10px; justify-content: space-between; align-items: center; min-height: 44px; color: var(--accent); font-size: 12px; line-height: 1.6; text-underline-offset: 4px; }
 .related-words { margin-top: 26px; }
 .related-words > div { display: flex; flex-wrap: wrap; gap: 12px; }
 .related-words button { background: none; border: 0; border-bottom: 1px solid var(--line); padding: 8px; min-width: 78px; min-height: 62px; }
-.related-words button > [lang='ar'] { display: block; color: var(--gold); font-size: 23px; line-height: 1.8; }
+.related-words button > [lang='ar'] { display: block; color: var(--accent); font-size: 23px; line-height: 1.8; }
 .meaning-layer { margin: 25px 0; }
 .context-links { display: flex; flex-wrap: wrap; gap: 14px; }
-.context-links a { min-height: 44px; display: inline-flex; align-items: center; gap: 7px; color: var(--gold); font-size: 13px; text-underline-offset: 4px; }
+.context-links a { min-height: 44px; display: inline-flex; align-items: center; gap: 7px; color: var(--accent); font-size: 13px; text-underline-offset: 4px; }
 .root-core-trigger { border: 0; padding: 0; background: none; }
 .root-core-trigger:hover h1 { color: #eef1f3; }
 .root-core-trigger > span { display: block; color: var(--muted); font-size: 12px; }
@@ -123,7 +123,7 @@
 .morph-ending { color: var(--morph-ending); }
 .morph-particle { color: var(--morph-particle); }
 .morph-form { color: var(--morph-form); }
-.morph-reading { margin-top: 0; color: #918d84; font-size: 13px; }
+.morph-reading { margin-top: 0; color: #92989f; font-size: 13px; }
 .morph-arabic-pair {
   display: inline-flex;
   align-items: baseline;
@@ -131,7 +131,7 @@
   flex-wrap: wrap;
 }
 .morph-arabic-pair > .transliteration {
-  color: #918d84;
+  color: #92989f;
   font-size: 11px;
   line-height: 1.45;
 }
@@ -169,7 +169,7 @@
 .morph-fact-label,
 .morph-block-label {
   margin: 0 0 8px !important;
-  color: #9a968d !important;
+  color: #9ea4aa !important;
   font-size: 11px !important;
   line-height: 1.45 !important;
   letter-spacing: .035em;
@@ -299,7 +299,7 @@
 }
 .morph-evolution-word > small,
 .morph-evolution-meta {
-  color: #918d84;
+  color: #92989f;
   font-size: 11px;
   line-height: 1.5;
 }
