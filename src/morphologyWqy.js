@@ -159,8 +159,8 @@ export const MORPHOLOGY = {
       en: { title: 'Form VIII', text: '' },
     },
     formation: {
-      ru: 'تَقْوَىٰ (taqwā) происходит от глагола ٱتَّقَىٰ (ittaqā). ٱتَّقَىٰ означает: беречь / защищать себя, остерегаться, ограждать себя от чего-либо. تَقْوَىٰ описывает это действие как состояние или качество человека.',
-      en: 'تَقْوَىٰ (taqwā) comes from the verb ٱتَّقَىٰ (ittaqā). ٱتَّقَىٰ means: to guard or protect oneself, be cautious, or guard oneself against something. تَقْوَىٰ describes this action as a state or quality of a person.',
+      ru: 'تَقْوَىٰ (taqwā) происходит от глагола ٱتَّقَىٰ (ittaqā). ٱتَّقَىٰ означает: беречь / защищать себя, остерегаться, ограждать себя от чего-либо. تَقْوَىٰ описывает это действие как состояние или качество человека: осознанное остережение становится способом внутренней защиты.',
+      en: 'تَقْوَىٰ (taqwā) comes from the verb ٱتَّقَىٰ (ittaqā). ٱتَّقَىٰ means: to guard or protect oneself, be cautious, or guard oneself against something. تَقْوَىٰ describes this action as a state or quality of a person: conscious caution becomes a form of inner protection.',
     },
     evolution: [
       { ar: 'و ق ي', reading: 'w-q-y', metaRu: 'корень', metaEn: 'root' },
