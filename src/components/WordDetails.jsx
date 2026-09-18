@@ -21,12 +21,14 @@ function MorphFormula({ word, profile, language }) {
   return <section className="morph-analysis">
     <h3>{c.analysis}</h3>
     <div className="morph-word-wrap">
-      <div className="morph-word" lang="ar" dir="rtl" aria-label={profile.displayArabic}>
-        {profile.visualParts.map((part, index) =>
-          <span key={index} className={'morph-part morph-' + part.role}>{part.text}</span>
-        )}
+      <div className="morph-word-line">
+        <div className="morph-word" lang="ar" dir="rtl" aria-label={profile.displayArabic}>
+          {profile.visualParts.map((part, index) =>
+            <span key={index} className={'morph-part morph-' + part.role}>{part.text}</span>
+          )}
+        </div>
+        <small className="transliteration morph-reading" lang="ar-Latn" dir="ltr">{word.reading}</small>
       </div>
-      <small className="transliteration morph-reading" lang="ar-Latn" dir="ltr">{word.reading}</small>
     </div>
     <MorphLegend profile={profile} language={language} />
   </section>
@@ -37,7 +39,10 @@ function RootBreakdown({ language }) {
   return <section className="morph-fact morph-root-fact">
     <p className="morph-fact-label">{c.root}</p>
     <div className="morph-fact-main">
-      <span className="morph-fact-arabic morph-root" lang="ar" dir="rtl">و ق ي</span>
+      <div className="morph-arabic-pair">
+        <span className="morph-fact-arabic morph-root" lang="ar" dir="rtl">و ق ي</span>
+        <small className="transliteration" lang="ar-Latn" dir="ltr">w-q-y</small>
+      </div>
       <p>{WQY_PUBLIC_MODEL.rootNucleus[language]}</p>
     </div>
   </section>
@@ -52,8 +57,11 @@ function ComponentBreakdown({ components, language }) {
         {MORPH_ROLES[component.role][language]}
       </p>
       <div className="morph-fact-main">
-        <span className={'morph-fact-arabic morph-' + component.role} lang="ar" dir="rtl">{component.ar}</span>
-        <p>{component[language]}</p>
+        <div className="morph-arabic-pair">
+          <span className={'morph-fact-arabic morph-' + component.role} lang="ar" dir="rtl">{component.ar}</span>
+          {component.reading && <small className="transliteration" lang="ar-Latn" dir="ltr">{component.reading}</small>}
+        </div>
+        {component[language] && <p>{component[language]}</p>}
       </div>
     </div>)}
   </section>
@@ -65,7 +73,10 @@ function DerivedFrom({ source, language }) {
   return <section className="morph-derived">
     <p className="morph-block-label">{c.derivedFrom}</p>
     <div className="morph-derived-source">
-      <span lang="ar" dir="rtl">{source.ar}</span>
+      <div className="morph-arabic-pair">
+        <span lang="ar" dir="rtl">{source.ar}</span>
+        {source.reading && <small className="transliteration" lang="ar-Latn" dir="ltr">{source.reading}</small>}
+      </div>
       <small>{language === 'ru' ? source.metaRu : source.metaEn}</small>
     </div>
     <p>{source[language]}</p>
@@ -78,7 +89,10 @@ function PatternEffect({ pattern, language }) {
   return <section className="morph-pattern-effect">
     <p className="morph-block-label">{c.patternEffect}</p>
     <div className="morph-pattern-heading">
-      <span lang="ar" dir="rtl">{pattern.ar}</span>
+      <div className="morph-arabic-pair">
+        <span lang="ar" dir="rtl">{pattern.ar}</span>
+        {pattern.reading && <small className="transliteration" lang="ar-Latn" dir="ltr">{pattern.reading}</small>}
+      </div>
       <strong>{copy.title}</strong>
     </div>
     <p>{copy.text}</p>
@@ -97,10 +111,6 @@ function MorphologyStructure({ word, content, language, onPick }) {
     <DerivedFrom source={profile.derivedFrom} language={language} />
     <PatternEffect pattern={profile.pattern} language={language} />
 
-    {!!profile.technical?.[language]?.length && <details className="morph-technical">
-      <summary>{c.technical}</summary>
-      <ol>{profile.technical[language].map((item, index) => <li key={index}>{item}</li>)}</ol>
-    </details>}
 
     {word.lexicalOnly && <p className="entry-note">{COPY[language].lexicalNote}</p>}
     <RelatedWords ids={content.related} language={language} onPick={onPick} />
