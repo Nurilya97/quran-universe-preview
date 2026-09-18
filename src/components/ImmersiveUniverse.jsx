@@ -36,6 +36,7 @@ export function ImmersiveUniverse() {
   const dialog = useRef(null)
   const input = useRef(null)
   const destinationHeading = useRef(null)
+  const panelTrigger = useRef(null)
   const t = COPY[language]
 
   useEffect(() => {
@@ -57,6 +58,16 @@ export function ImmersiveUniverse() {
     }
     if (!panel && dialog.current?.open) dialog.current.close()
   }, [panel])
+
+  function openPanel(nextPanel) {
+    panelTrigger.current = document.activeElement
+    setPanel(nextPanel)
+  }
+
+  function closePanel() {
+    setPanel(null)
+    requestAnimationFrame(() => panelTrigger.current?.focus?.({ preventScroll: true }))
+  }
 
   function travel(destination, nextWord = word) {
     if (journey) return
@@ -156,7 +167,7 @@ export function ImmersiveUniverse() {
           <p className="word-reading transliteration" lang="ar-Latn" dir="ltr">{word.reading}</p>
         </div>
         {wordOrbitNodes.map(({ key, left, top }) => <button key={key} className={'orbit-node node-' + key}
-          style={{ left, top }} onClick={() => setPanel(key)} aria-haspopup="dialog">
+          style={{ left, top }} onClick={() => openPanel(key)} aria-haspopup="dialog">
           <span className="node-light" aria-hidden="true" /><span className="node-label">{t[key]}</span>
         </button>)}
       </div>
@@ -168,7 +179,7 @@ export function ImmersiveUniverse() {
       <div className="root-field">
         {ROOT_ORBITS.map((orbit) => <div key={orbit.id} className={'root-orbit root-orbit-' + orbit.id}
           style={{ '--diameter': orbit.radius * 2 + '%' }} aria-hidden="true"><span>{orbit.id}</span></div>)}
-        <div className="root-core"><button className="root-core-trigger" onClick={() => setPanel('root')} aria-label={t.aboutRoot} aria-haspopup="dialog"><h1 ref={destinationHeading} tabIndex={-1} lang="ar" dir="rtl">و ق ي</h1><span>{t.root}</span></button></div>
+        <div className="root-core"><button className="root-core-trigger" onClick={() => openPanel('root')} aria-label={t.aboutRoot} aria-haspopup="dialog"><h1 ref={destinationHeading} tabIndex={-1} lang="ar" dir="rtl">و ق ي</h1><span>{t.root}</span></button></div>
         {FORMS.map((form) => {
           const point = rootPosition(form)
           return <button key={form.id} className={'root-star' + (form.id === 'taqwa' ? ' root-star-featured' : '')}
@@ -179,7 +190,7 @@ export function ImmersiveUniverse() {
           <span className="form-type">{t[form.type + 'Short'] || t[form.type]}</span>
         </button>})}
       </div>
-      <button className="forms-button" onClick={() => setPanel('forms')} aria-haspopup="dialog"><Icon name="list" />{t.allForms}<span>{FORMS.length}</span></button>
+      <button className="forms-button" onClick={() => openPanel('forms')} aria-haspopup="dialog"><Icon name="list" />{t.allForms}<span>{FORMS.length}</span></button>
     </section>}
 
     {scene !== 'search' && !journey && <button className="motion-button icon-button" onClick={() => setPaused(!paused)}
@@ -187,12 +198,12 @@ export function ImmersiveUniverse() {
       <Icon name={paused || reducedMotion ? 'play' : 'pause'} />
     </button>}
 
-    <dialog ref={dialog} className="detail-sheet" aria-labelledby="sheet-title" onCancel={(event) => { event.preventDefault(); setPanel(null) }}
-      onClick={(event) => { if (event.target === event.currentTarget) setPanel(null) }}>
+    <dialog ref={dialog} className="detail-sheet" aria-labelledby="sheet-title" onCancel={(event) => { event.preventDefault(); closePanel() }}
+      onClick={(event) => { if (event.target === event.currentTarget) closePanel() }}>
       <div className="sheet-inner">
         <div className="sheet-handle" aria-hidden="true" />
         <header className="sheet-header"><div><p className="eyebrow">{panel === 'forms' || panel === 'root' ? t.rootSpace : t.orbit}</p><h2 id="sheet-title">{panelTitle}</h2></div>
-          <button className="icon-button" autoFocus onClick={() => setPanel(null)} aria-label={t.close}><Icon name="close" /></button>
+          <button className="icon-button" autoFocus onClick={closePanel} aria-label={t.close}><Icon name="close" /></button>
         </header>
         {panel !== 'forms' && <div className="sheet-word-label"><p className="sheet-word" lang="ar" dir="rtl">{panel === 'root' ? 'و ق ي' : word.arabic}</p><small className="transliteration" lang="ar-Latn" dir="ltr">{panel === 'root' ? 'w-q-y' : word.reading}</small></div>}
         {panel === 'root' && <RootDetails language={language} />}
