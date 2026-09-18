@@ -84,7 +84,7 @@ export function ImmersiveUniverse() {
   }
 
   function openWordFromAyah(token) {
-    let nextWord = findWord(token?.arabic || token?.ar || token?.tr || '')
+    let nextWord = token?.orbitId ? FORMS.find(form => form.id === token.orbitId) : findWord(token?.arabic || token?.ar || token?.tr || '')
     if (!nextWord && token?.root === 'و ق ي') {
       if ((token.tr || '').includes('taqw')) nextWord = FORMS.find(form => form.id === 'taqwa')
       else if ((token.tr || '').includes('ittaq')) nextWord = FORMS.find(form => form.id === 'ittaqa')
