@@ -176,6 +176,27 @@ function SourceLinks({ ids, language }) {
   })}</footer>
 }
 
+function MeaningMap({ levels, language }) {
+  if (!levels?.length) return null
+  return <section className="meaning-map">
+    {levels.map(level => {
+      const copy = level[language]
+      return <section className={'meaning-class meaning-class-' + level.id} key={level.id}>
+        <header>
+          <p className="meaning-class-label">{copy.title}</p>
+          <p className="meaning-class-description">{copy.description}</p>
+        </header>
+        <div className="meaning-term-list">
+          {copy.items.map((item, index) => <article className="meaning-term" key={item.term + index}>
+            <h4>{item.term}</h4>
+            <p>{item.definition}</p>
+          </article>)}
+        </div>
+      </section>
+    })}
+  </section>
+}
+
 function ModelStatus({ language }) {
   const ru = language === 'ru'
   const review = ru
@@ -269,6 +290,7 @@ export function WordDetails({ word, panel, language, onPick }) {
   if (panel === 'meaning') return <div className="entry-copy">
     <p className="entry-status">{t.semanticStatus}</p>
     <p className="entry-lead">{content.meaning[language].lead}</p><p>{content.meaning[language].body}</p>
+    <MeaningMap levels={content.meaningMap} language={language} />
     {content.layers?.map((layer, index) => <section className="meaning-layer" key={index}><h3>{layer[language].title}</h3>
       <p>{layer[language].text}</p><div className="context-links">{layer.refs.map(reference => <VerseLink key={reference} reference={reference} language={language} />)}</div></section>)}
     <CanonicalNote wordId={word.id} language={language} />
