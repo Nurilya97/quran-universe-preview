@@ -2,7 +2,7 @@
 .detail-sheet .sheet-header { position: sticky; top: 0; z-index: 2; background: #0a0e11; padding-bottom: 12px; border-bottom: 1px solid transparent; }
 .entry-copy p { font-size: 15px; line-height: 1.75; color: var(--muted); margin: 16px 0; }
 .entry-copy .entry-lead { color: var(--paper); font-size: 20px; line-height: 1.5; margin-top: 10px; }
-.entry-copy .entry-status { font-size: 11px; letter-spacing: .025em; color: #a29b88; margin-bottom: 6px; }
+.entry-copy .entry-status { font-size: 11px; letter-spacing: .025em; color: #9ea4aa; margin-bottom: 6px; }
 .entry-copy .entry-note { font-size: 13px; line-height: 1.7; }
 .entry-copy .annotation-note { padding-left: 14px; border-left: 1px solid var(--gold); }
 .entry-copy .occurrence-summary { font-size: 14px; color: var(--paper); }
@@ -31,7 +31,7 @@
 .context-links { display: flex; flex-wrap: wrap; gap: 14px; }
 .context-links a { min-height: 44px; display: inline-flex; align-items: center; gap: 7px; color: var(--gold); font-size: 13px; text-underline-offset: 4px; }
 .root-core-trigger { border: 0; padding: 0; background: none; }
-.root-core-trigger:hover h1 { color: #f1deae; }
+.root-core-trigger:hover h1 { color: #eef1f3; }
 .root-core-trigger > span { display: block; color: var(--muted); font-size: 12px; }
 @media (max-width: 600px) {
   .entry-copy .entry-lead { font-size: 19px; }
@@ -41,7 +41,7 @@
 
 .model-status {
   margin: 5px 0 14px !important;
-  color: #908a7d !important;
+  color: #92989f !important;
   font-size: 11px !important;
   line-height: 1.55 !important;
   letter-spacing: .01em;
@@ -49,7 +49,7 @@
 .canonical-note {
   margin: 26px 0;
   padding: 2px 0 2px 14px;
-  border-left: 1px solid #d1bb8c66;
+  border-left: 1px solid #d6d9de66;
 }
 .canonical-note h3 {
   margin-top: 0;
@@ -213,7 +213,7 @@
   line-height: 1.45;
 }
 .morph-derived-source > small {
-  color: #a6a197;
+  color: #a8adb3;
   font-size: 12px;
   line-height: 1.5;
 }
