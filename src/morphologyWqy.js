@@ -21,7 +21,7 @@ export const MORPH_COPY = {
   ru: {
     analysis: 'Разбор слова',
     root: 'Корень',
-    derivedFrom: 'Происходит от',
+    derivedFrom: 'Производное от',
     patternEffect: 'Что нам даёт форма',
     wordFormation: 'Словообразование',
     form: 'Форма',
@@ -30,7 +30,7 @@ export const MORPH_COPY = {
   en: {
     analysis: 'Word analysis',
     root: 'Root',
-    derivedFrom: 'Comes from',
+    derivedFrom: 'Derived from',
     patternEffect: 'What the form tells us',
     wordFormation: 'Word formation',
     form: 'Form',
@@ -79,6 +79,11 @@ export const MORPHOLOGY = {
       ru: { title: 'Действительное причастие · اسم الفاعل', text: 'Модель переводит действие на деятеля: وَقَىٰ (waqā) «защищать» → وَاقٍ (wāqin) «защищающий / защитник». Корневая идея защиты теперь выражена через того, кто эту защиту осуществляет.' },
       en: { title: 'Active participle · اسم الفاعل', text: 'The pattern shifts from the action to its doer: وَقَىٰ (waqā) “to protect” → وَاقٍ (wāqin) “one who protects / protector”. The root idea of protection is now expressed through the one who provides it.' },
     },
+    evolution: [
+      { ar: 'و ق ي', reading: 'w-q-y', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'وَقَىٰ', reading: 'waqā', metaRu: 'глагол I формы · защищать, оберегать', metaEn: 'Form I verb · to protect, guard' },
+      { ar: 'وَاقٍ', reading: 'wāqin', metaRu: 'действительное причастие · защищающий / защитник', metaEn: 'active participle · one who protects / protector' },
+    ],
   },
 
   ittaqa: {
@@ -105,6 +110,11 @@ export const MORPHOLOGY = {
       ru: { title: 'Глагол VIII формы', text: 'ٱتَّقَىٰ (ittaqā) передаёт действие самого субъекта: беречь / защищать себя, остерегаться, ограждать себя от чего-либо. Это помогает увидеть, как базовая идея защиты превращается в личную защитно-ориентированную позицию человека.' },
       en: { title: 'Form VIII verb', text: 'ٱتَّقَىٰ (ittaqā) describes an action of the subject: to guard or protect oneself, be cautious, or guard oneself against something. This shows how the root idea of protection becomes a person’s own protection-oriented stance.' },
     },
+    evolution: [
+      { ar: 'و ق ي', reading: 'w-q-y', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'وَقَىٰ', reading: 'waqā', metaRu: 'глагол I формы · защищать, оберегать', metaEn: 'Form I verb · to protect, guard' },
+      { ar: 'ٱتَّقَىٰ', reading: 'ittaqā', metaRu: 'глагол VIII формы · беречь / защищать себя, остерегаться', metaEn: 'Form VIII verb · guard/protect oneself, be cautious' },
+    ],
   },
 
   muttaqin: {
@@ -137,6 +147,13 @@ export const MORPHOLOGY = {
       ru: { title: 'Действительное причастие VIII формы', text: 'Форма مُفْتَعِل (muftaʿil) переводит действие на его носителя: مُتَّقٍ (muttaqī) — тот, кто практикует تَقْوَىٰ (taqwā) и становится носителем этого качества. То есть человек, для которого осознанное остережение и защита стали устойчивой практикой и характеристикой. Множественное число — مُتَّقِينَ (muttaqīn).' },
       en: { title: 'Form VIII active participle', text: 'The مُفْتَعِل (muftaʿil) pattern shifts the action to its bearer: مُتَّقٍ (muttaqī) is a person who practises تَقْوَىٰ (taqwā) and becomes characterised by it. In other words, conscious caution and protection become an enduring practice and quality. The plural is مُتَّقِينَ (muttaqīn).' },
     },
+    evolution: [
+      { ar: 'و ق ي', reading: 'w-q-y', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'وَقَىٰ', reading: 'waqā', metaRu: 'глагол I формы · защищать, оберегать', metaEn: 'Form I verb · to protect, guard' },
+      { ar: 'ٱتَّقَىٰ', reading: 'ittaqā', metaRu: 'глагол VIII формы · беречь / защищать себя, остерегаться', metaEn: 'Form VIII verb · guard/protect oneself, be cautious' },
+      { ar: 'مُتَّقٍ', reading: 'muttaqī', metaRu: 'действительное причастие VIII формы · носитель качества', metaEn: 'Form VIII active participle · bearer of the quality' },
+      { ar: 'مُتَّقِينَ', reading: 'muttaqīn', metaRu: 'множественное число · носители качества', metaEn: 'plural · bearers of the quality' },
+    ],
   },
 
   taqwa: {
@@ -192,6 +209,11 @@ export const MORPHOLOGY = {
       ru: { title: 'اسم التفضيل · сравнительная/превосходная степень', text: 'Модель выражает «более… / наиболее…» в зависимости от конструкции. Поэтому أَتْقَى (atqā) помогает сравнить степень تَقْوَىٰ (taqwā): та же защитная направленность может быть выражена сильнее или полнее.' },
       en: { title: 'اسم التفضيل · elative', text: 'The pattern expresses “more…” / “most…” depending on the construction. أَتْقَى (atqā) therefore compares the degree of تَقْوَىٰ (taqwā): the same protective orientation can be expressed to a greater degree.' },
     },
+    evolution: [
+      { ar: 'و ق ي', reading: 'w-q-y', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'تَقْوَىٰ / تَقِيّ', reading: 'taqwā / taqiyy', metaRu: 'семья качества', metaEn: 'quality family' },
+      { ar: 'أَتْقَى', reading: 'atqā', metaRu: 'большая степень качества', metaEn: 'greater degree of the quality' },
+    ],
   },
 
   tuqat: {
@@ -219,6 +241,11 @@ export const MORPHOLOGY = {
       ru: { title: 'Именная форма действия', text: 'Называет остережение / принятие мер защиты. То есть действие ٱتَّقَىٰ (ittaqā) можно представить как конкретную меру предосторожности или состояние осторожности.' },
       en: { title: 'Action noun', text: 'Names the act or state of precaution. In other words, the action of ٱتَّقَىٰ (ittaqā) can be expressed as a concrete precaution or a state of caution.' },
     },
+    evolution: [
+      { ar: 'و ق ي', reading: 'w-q-y', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'ٱتَّقَىٰ', reading: 'ittaqā', metaRu: 'глагол VIII формы · остерегаться / ограждать себя', metaEn: 'Form VIII verb · guard oneself / be cautious' },
+      { ar: 'تُقَاة', reading: 'tuqāt', metaRu: 'существительное действия · остережение / мера защиты', metaEn: 'action noun · precaution / protective measure' },
+    ],
   },
 
   taqiyy: {
@@ -239,6 +266,11 @@ export const MORPHOLOGY = {
       ru: { title: 'Прилагательное качества', text: 'Называет человека через устойчивое качество. تَقِيّ (taqiyy) — человек, которому свойственна تَقْوَىٰ (taqwā): осознанное остережение и оберегание себя проявляются как его характеристика.' },
       en: { title: 'Quality adjective', text: 'Describes a person through a characteristic quality. تَقِيّ (taqiyy) is a person characterised by تَقْوَىٰ (taqwā): conscious caution and self-guarding appear as a quality of the person.' },
     },
+    evolution: [
+      { ar: 'و ق ي', reading: 'w-q-y', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'ٱتَّقَىٰ / تَقْوَىٰ', reading: 'ittaqā / taqwā', metaRu: 'действие и качество этой семьи', metaEn: 'action and quality in this family' },
+      { ar: 'تَقِيّ', reading: 'taqiyy', metaRu: 'прилагательное · человек, характеризуемый этим качеством', metaEn: 'adjective · a person characterised by the quality' },
+    ],
   },
 
   wiqaa: {
@@ -259,6 +291,11 @@ export const MORPHOLOGY = {
       ru: { title: 'Существительное', text: 'Переводит защитное действие в название того, что служит защитой. В وِقَاء (wiqāʾ) корневая идея становится конкретным защитным средством или покровом; щит — один из понятных примеров.' },
       en: { title: 'Noun', text: 'Turns the protective action into a noun for what serves as protection. In وِقَاء (wiqāʾ), the root idea becomes a concrete protective means or covering; a shield is one clear example.' },
     },
+    evolution: [
+      { ar: 'و ق ي', reading: 'w-q-y', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'وَقَىٰ', reading: 'waqā', metaRu: 'глагол I формы · защищать, оберегать', metaEn: 'Form I verb · to protect, guard' },
+      { ar: 'وِقَاء', reading: 'wiqāʾ', metaRu: 'существительное · средство / покров защиты', metaEn: 'noun · means / covering of protection' },
+    ],
   },
 
   wiqaya: {
@@ -286,6 +323,11 @@ export const MORPHOLOGY = {
       ru: { title: 'Масдар · существительное действия', text: 'Называет само действие защиты как понятие. وِقَايَة (wiqāya) помогает увидеть корень как процесс: что-то сохраняют и оберегают так, чтобы вред его не достиг.' },
       en: { title: 'Verbal noun', text: 'Names the protective action as a noun. وِقَايَة (wiqāya) presents the root as a process: something is preserved and guarded so that harm does not reach it.' },
     },
+    evolution: [
+      { ar: 'و ق ي', reading: 'w-q-y', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'وَقَىٰ', reading: 'waqā', metaRu: 'глагол I формы · защищать, оберегать', metaEn: 'Form I verb · to protect, guard' },
+      { ar: 'وِقَايَة', reading: 'wiqāya', metaRu: 'масдар · защита / предохранение как процесс', metaEn: 'verbal noun · protection / safeguarding as a process' },
+    ],
   },
 
   tawaqqa: {
@@ -313,5 +355,10 @@ export const MORPHOLOGY = {
       ru: { title: 'Глагол V формы', text: 'В этом корне даёт линию «беречься / остерегаться / принимать предосторожности». تَوَقَّىٰ (tawaqqā) показывает защиту как практическое действие человека: он сам предпринимает меры, чтобы уберечь себя.' },
       en: { title: 'Form V verb', text: 'In this root, it gives the line “guard oneself / be cautious / take precautions”. تَوَقَّىٰ (tawaqqā) presents protection as practical personal action: a person takes measures to guard themselves.' },
     },
+    evolution: [
+      { ar: 'و ق ي', reading: 'w-q-y', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'وَقَىٰ', reading: 'waqā', metaRu: 'глагол I формы · защищать, оберегать', metaEn: 'Form I verb · to protect, guard' },
+      { ar: 'تَوَقَّىٰ', reading: 'tawaqqā', metaRu: 'глагол V формы · беречься / принимать предосторожности', metaEn: 'Form V verb · guard oneself / take precautions' },
+    ],
   },
 }
