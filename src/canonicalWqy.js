@@ -13,8 +13,8 @@ export const WQY_PUBLIC_MODEL = {
   scholarReviewed: false,
   root: 'و ق ي',
   rootNucleus: {
-    ru: 'Ограждать / защищать, не позволяя вреду достигнуть защищаемого.',
-    en: 'To protect / shield by preventing harm from reaching what is protected.',
+    ru: 'Фундаментальное значение корня — ограждать / защищать, не позволяя вреду достигнуть защищаемого. Корень объединяет в себе все смыслы этого направления: в производных словах это смысловое ядро раскрывается по-разному, но сохраняет общую линию защиты и оберегания.',
+    en: 'The fundamental meaning of the root is to protect / shield by preventing harm from reaching what is protected. The root brings together the meanings that develop along this direction: its derivatives unfold this semantic core in different ways while preserving the shared line of protection and guarding.',
   },
   operativeMechanism: {
     ru: 'اتقى описывает активную защитно-ориентированную позицию субъекта. Конкретный вред, последствие или граница определяются конструкцией и контекстом.',
