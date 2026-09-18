@@ -633,3 +633,14 @@
   .quran-reference-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .quran-reference-grid button { min-height: 46px; }
 }
+
+.quran-reference-grid button:disabled {
+  cursor: default;
+  color: #7f878d;
+  background: transparent;
+}
+.quran-reference-grid button:disabled:hover {
+  border-color: #ffffff0d;
+  background: transparent;
+  color: #7f878d;
+}
