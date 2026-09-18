@@ -88,7 +88,7 @@
   --morph-suffix: #d99782;
   --morph-ending: #bca0d4;
   --morph-particle: #8fbe95;
-  --morph-form: #c79377;
+  --morph-form: #7cff8b;
 }
 .morph-analysis { margin: 4px 0 26px; }
 .morph-analysis > h3 { margin-bottom: 9px !important; }
@@ -251,4 +251,34 @@
   .morph-pattern-heading .morph-arabic-pair > span { font-size: 25px; }
   .morph-derived-source { gap: 11px; }
   .morph-derived-source .morph-arabic-pair > span { font-size: 27px; }
+}
+
+
+/* Taqwa word-formation chain */
+.morph-formation {
+  margin: 22px 0 0;
+  padding-top: 19px;
+  border-top: 1px solid var(--line);
+}
+.morph-formation-pattern .morph-arabic-pair > span,
+.morph-formation-source .morph-arabic-pair > span {
+  color: var(--morph-prefix);
+}
+.morph-formation-pattern > strong {
+  color: var(--morph-prefix);
+}
+.morph-formation-arrow {
+  margin: 8px 0 6px 48px;
+  color: var(--morph-prefix);
+  font-size: 18px;
+  line-height: 1;
+  opacity: .8;
+}
+.morph-formation-source {
+  margin-top: 0;
+}
+.morph-formation > p:last-child {
+  margin: 9px 0 0 !important;
+  font-size: 14px !important;
+  line-height: 1.72 !important;
 }
