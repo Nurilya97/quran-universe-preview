@@ -77,8 +77,8 @@ export const WORD_CONTENT = {
       en: ['A Form VIII verb from و ق ي. The first root letter و changes and assimilates with the pattern’s ت, producing the doubled ت in ٱتَّقَىٰ.', 'The present form is يَتَّقِي (yattaqī). The regular verbal noun is اِتِّقَاء (ittiqāʾ). تَقْوَى is a related noun with its own pattern.'],
     },
     meaning: {
-      ru: { lead: 'Занимать активную защитную позицию.', body: WQY_PUBLIC_MODEL.operativeMechanism.ru + ' ' + WQY_PUBLIC_MODEL.roleSafeguards.directObject.ru },
-      en: { lead: 'To take an active, protection-oriented stance.', body: WQY_PUBLIC_MODEL.operativeMechanism.en + ' ' + WQY_PUBLIC_MODEL.roleSafeguards.directObject.en },
+      ru: { lead: 'Занимать активную защитную позицию.', body: WQY_PUBLIC_MODEL.operativeMechanism.ru },
+      en: { lead: 'To take an active, protection-oriented stance.', body: WQY_PUBLIC_MODEL.operativeMechanism.en },
     },
     meaningMap: [
       {
