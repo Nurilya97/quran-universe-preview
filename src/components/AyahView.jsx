@@ -106,29 +106,31 @@ function AnalysisDiagram({ ayah, focusWordIndex, language, selectedWord, onSelec
     : null
 
   return <div className="diagram-view analysis-diagram">
-    <div className="analysis-verse-reference">
-      <span>{ayah.reference}</span>
-      <small>{ayah.surah[language]}</small>
-    </div>
+    <div className="analysis-ayah-group">
+      <div className="analysis-ayah-continuous" lang="ar" dir="rtl">
+        {ayah.tokens.map((token, index) => {
+          const wordIndex = index + 1
+          const isEntry = wordIndex === focusWordIndex
+          const isSelected = wordIndex === selectedWord
+          const isRelated = selectedBlock && wordIndex >= selectedBlock.range[0] && wordIndex <= selectedBlock.range[1]
+          return <span key={wordIndex}>
+            <button
+              className={'analysis-inline-word' + (isEntry ? ' is-entry' : '') + (isSelected ? ' is-selected' : '') + (isRelated ? ' is-related' : '')}
+              onClick={(event) => {
+                event.stopPropagation()
+                onSelectWord(isSelected ? null : wordIndex)
+              }}
+              aria-pressed={isSelected}
+            >{token.ar}</button>
+            {index < ayah.tokens.length - 1 ? ' ' : ''}
+          </span>
+        })}
+      </div>
 
-    <div className="analysis-ayah-continuous" lang="ar" dir="rtl">
-      {ayah.tokens.map((token, index) => {
-        const wordIndex = index + 1
-        const isEntry = wordIndex === focusWordIndex
-        const isSelected = wordIndex === selectedWord
-        const isRelated = selectedBlock && wordIndex >= selectedBlock.range[0] && wordIndex <= selectedBlock.range[1]
-        return <span key={wordIndex}>
-          <button
-            className={'analysis-inline-word' + (isEntry ? ' is-entry' : '') + (isSelected ? ' is-selected' : '') + (isRelated ? ' is-related' : '')}
-            onClick={(event) => {
-              event.stopPropagation()
-              onSelectWord(isSelected ? null : wordIndex)
-            }}
-            aria-pressed={isSelected}
-          >{token.ar}</button>
-          {index < ayah.tokens.length - 1 ? ' ' : ''}
-        </span>
-      })}
+      <div className="analysis-verse-reference">
+        <span>{ayah.reference}</span>
+        <small>{ayah.surah[language]}</small>
+      </div>
     </div>
 
     {!selectedWord && <div className="analysis-tap-hint">
@@ -148,33 +150,34 @@ function CalloutPager({ page, count, onChange, language }) {
 
 function splitCalloutText(text, maxLength = 175) {
   if (!text) return []
-  const sentences = text.match(/[^.!?…]+[.!?…]?/g)?.map(part => part.trim()).filter(Boolean) || [text]
+
+  const words = text.trim().split(/\s+/).filter(Boolean)
+  if (!words.length) return []
+
   const pages = []
-  let current = ''
+  let current = []
 
-  for (const sentence of sentences) {
-    if (!current) {
-      if (sentence.length <= maxLength) current = sentence
-      else {
-        for (let i = 0; i < sentence.length; i += maxLength) pages.push(sentence.slice(i, i + maxLength).trim())
-      }
-      continue
-    }
-
-    if ((current + ' ' + sentence).length <= maxLength) {
-      current += ' ' + sentence
-    } else {
+  for (const word of words) {
+    const candidate = [...current, word].join(' ')
+    if (current.length && candidate.length > maxLength) {
       pages.push(current)
-      if (sentence.length <= maxLength) current = sentence
-      else {
-        for (let i = 0; i < sentence.length; i += maxLength) pages.push(sentence.slice(i, i + maxLength).trim())
-        current = ''
-      }
+      current = [word]
+    } else {
+      current.push(word)
+    }
+  }
+  if (current.length) pages.push(current)
+
+  // Keep the last page from becoming a fragment of one or two words.
+  if (pages.length > 1 && pages[pages.length - 1].length < 5) {
+    const last = pages[pages.length - 1]
+    const previous = pages[pages.length - 2]
+    while (last.length < 5 && previous.length > 5) {
+      last.unshift(previous.pop())
     }
   }
 
-  if (current) pages.push(current)
-  return pages
+  return pages.map(page => page.join(' '))
 }
 
 function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrbit }) {
@@ -610,7 +613,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     })
   }
 
-  return <section className="ayah-space-shell">
+  return <section className={'ayah-space-shell' + (mode === 'analysis' ? ' is-analysis' : '')}>
     <div className="ayah-space-topbar">
       <button className="ayah-back" onClick={onBack}><ArrowIcon /><span>{ru ? 'К слову' : 'Back'}</span></button>
       <div className="ayah-space-reference"><strong>{ayah.reference}</strong><small>{ayah.surah[language]}</small></div>
