@@ -392,3 +392,13 @@
 }
 .morph-analysis .morph-kasratan-mark b:first-child { top: .01em; }
 .morph-analysis .morph-kasratan-mark b:last-child { top: .105em; left: .035em; }
+
+
+/* Component indicators keep their category colour even though Arabic text below
+   the top analysis remains white. */
+.morph-components .morph-dot.morph-root { color: var(--morph-root); }
+.morph-components .morph-dot.morph-prefix { color: var(--morph-prefix); }
+.morph-components .morph-dot.morph-suffix { color: var(--morph-suffix); }
+.morph-components .morph-dot.morph-ending { color: var(--morph-ending); }
+.morph-components .morph-dot.morph-particle { color: var(--morph-particle); }
+.morph-components .morph-dot.morph-form { color: var(--morph-form); }
