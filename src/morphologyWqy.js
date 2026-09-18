@@ -1,316 +1,338 @@
-// Public-facing morphology teaching layer for the current و ق ي preview.
-// It explains derivation and inflection without making individual letters carry
-// meanings that belong to a whole Arabic pattern.
+// Quran Universe — public Word Structure teaching model for و ق ي.
+// UI taxonomy follows a simple morpheme-first model:
+// root (stored separately), prefix, suffix, ending, particle, and internal form/pattern.
+// Only roles actually present in a word are shown in the legend.
 //
-// Segment kinds:
-// root       — a root consonant visible in this surface form
-// pattern    — material belonging to a derivational pattern
-// inflection — number/case/indefiniteness marking added after derivation
-// change     — a surface segment created through morphophonological change
+// Important: "form" is not an extra morpheme with a standalone translation.
+// It marks visible material whose role belongs to the derivational pattern or to a
+// morphophonological change inside that pattern.
+
+export const MORPH_ROLES = {
+  root: { ru: 'Корень', en: 'Root' },
+  prefix: { ru: 'Префикс', en: 'Prefix' },
+  suffix: { ru: 'Суффикс', en: 'Suffix' },
+  ending: { ru: 'Окончание', en: 'Ending' },
+  particle: { ru: 'Частица', en: 'Particle' },
+  form: { ru: 'Форма', en: 'Form' },
+}
 
 export const MORPH_COPY = {
   ru: {
-    formula: 'Как собрано слово',
+    analysis: 'Разбор слова',
     root: 'Корень',
-    pattern: 'Шаблон',
-    inflection: 'Грамматика',
-    change: 'Изменение',
-    tapHint: 'Нажми на цветную часть, чтобы увидеть её роль.',
-    lineage: 'Откуда получилось слово',
+    derivedFrom: 'Образовано от',
     patternEffect: 'Что делает шаблон',
-    transformations: 'Как форма изменилась',
-    more: 'Технические детали',
-    current: 'Итоговая форма',
-    rootStep: 'корень',
-    patternStep: 'словообразовательная модель',
-    noteVariants: 'У этой формы есть несколько традиционных объяснений исторического образования. Здесь показан рабочий разбор; альтернативы не скрываются.',
+    technical: 'Технический разбор',
+    noSeparateMeaning: 'Отдельно не переводится: его функция появляется только внутри всей формы.',
   },
   en: {
-    formula: 'How the word is built',
+    analysis: 'Word analysis',
     root: 'Root',
-    pattern: 'Pattern',
-    inflection: 'Grammar',
-    change: 'Change',
-    tapHint: 'Tap a coloured part to see its role.',
-    lineage: 'Where the word comes from',
+    derivedFrom: 'Derived from',
     patternEffect: 'What the pattern does',
-    transformations: 'How the form changes',
-    more: 'Technical details',
-    current: 'Surface form',
-    rootStep: 'root',
-    patternStep: 'derivational pattern',
-    noteVariants: 'This form has more than one traditional account of its historical formation. The working analysis is shown without hiding alternatives.',
+    technical: 'Technical analysis',
+    noSeparateMeaning: 'It is not translated separately: its function exists only inside the whole form.',
   },
 }
 
 export const MORPHOLOGY = {
   waqa: {
     displayArabic: 'وَقَىٰ',
-    segments: [
-      { text: 'وَ', kind: 'root', ru: ['و — 1-я корневая', 'Первая буква корня و ق ي.'], en: ['و — 1st root consonant', 'The first consonant of the root و ق ي.'] },
-      { text: 'قَ', kind: 'root', ru: ['ق — 2-я корневая', 'Вторая буква корня.'], en: ['ق — 2nd root consonant', 'The second consonant of the root.'] },
-      { text: 'ىٰ', kind: 'change', ru: ['ي → ىٰ', 'Третья корневая — ي. В этой слабой конечной позиции она проявляется как ألف مقصورة ىٰ.'], en: ['ي → ىٰ', 'The third root consonant is ي. In this final weak position it appears as alif maqṣūra ىٰ.'] },
+    visualParts: [
+      { text: 'وَ', role: 'root' },
+      { text: 'قَ', role: 'root' },
+      { text: 'ىٰ', role: 'form' },
     ],
-    lineage: [
-      { ar: 'و ق ي', ru: 'корень: защита / ограждение', en: 'root: protection / shielding' },
-      { ar: 'فَعَلَ', ru: 'базовая модель трёхбуквенного глагола', en: 'basic triliteral verb pattern' },
-      { ar: 'وَقَىٰ', ru: 'глагол I формы', en: 'Form I verb' },
-    ],
-    effect: {
-      ru: ['فَعَلَ · I форма', 'Базовый глагол выражает само действие корня без дополнительной согласной словообразовательной рамки. Здесь: действие защиты / оберегания.'],
-      en: ['فَعَلَ · Form I', 'The basic verb expresses the root action without an added consonantal derivational frame. Here: the act of protecting / guarding.'],
+    components: [],
+    derivedFrom: null,
+    pattern: {
+      ar: 'فَعَلَ',
+      ru: { title: 'Глагол I формы', text: 'Передаёт базовое действие корня: защищать, оберегать.' },
+      en: { title: 'Form I verb', text: 'Expresses the basic root action: to protect, to guard.' },
     },
-    transformations: {
-      ru: ['Конечная ي — слабая корневая. В словарной форме وَقَىٰ она представлена как ىٰ.'],
-      en: ['Final ي is a weak root consonant. In the citation form وَقَىٰ it is represented as ىٰ.'],
+    technical: {
+      ru: ['Третья корневая — ي. В конечной слабой позиции словарной формы она проявляется как ىٰ.'],
+      en: ['The third root consonant is ي. In this final weak position of the citation form it appears as ىٰ.'],
     },
   },
 
   waq: {
     displayArabic: 'وَاقٍ',
-    segments: [
-      { text: 'وَ', kind: 'root', ru: ['و — корень', 'Первая корневая остаётся видимой.'], en: ['و — root', 'The first root consonant remains visible.'] },
-      { text: 'ا', kind: 'pattern', ru: ['ا — часть فَاعِل', 'Алиф стоит на характерном месте модели فَاعِل. Не алиф сам по себе, а вся модель образует اسم الفاعل.'], en: ['ا — part of فَاعِل', 'The alif occupies the characteristic slot of فَاعِل. The whole pattern—not the alif alone—forms the active participle.'] },
-      { text: 'ق', kind: 'root', ru: ['ق — корень', 'Вторая корневая.'], en: ['ق — root', 'The second root consonant.'] },
-      { text: 'ٍ', kind: 'inflection', ru: ['ـٍ — падеж + неопределённость', 'В وَاقٍ конечная корневая ي уже выпала; касратан маркирует неопределённую форму в رفع/جر.'], en: ['ـٍ — case + indefiniteness', 'In وَاقٍ the final root ي has dropped; kasratan marks the indefinite nominative/genitive surface form.'] },
+    visualParts: [
+      { text: 'وَ', role: 'root' },
+      { text: 'ا', role: 'form' },
+      { text: 'ق', role: 'root' },
+      { text: 'ٍ', role: 'ending' },
     ],
-    lineage: [
-      { ar: 'و ق ي', ru: 'корень', en: 'root' },
-      { ar: 'وَقَىٰ', ru: 'защищать / оберегать', en: 'to protect / guard' },
-      { ar: 'فَاعِل', ru: 'модель действительного причастия', en: 'active-participle pattern' },
-      { ar: 'وَاقِي', ru: 'основа: тот, кто защищает', en: 'stem: the one who protects' },
-      { ar: 'وَاقٍ', ru: 'поверхностная форма رفع/جر', en: 'surface nominative/genitive form' },
+    components: [
+      {
+        role: 'ending', ar: 'ـٍ',
+        ru: 'Касратан здесь маркирует неопределённую форму в رفع/جر. Это грамматика готового слова, а не его основное значение.',
+        en: 'Kasratan marks the indefinite nominative/genitive surface form here. It is grammar added to the word, not its lexical meaning.',
+      },
     ],
-    effect: {
-      ru: ['فَاعِل · اسم الفاعل', 'Переводит перспективу с действия на деятеля: وَقَىٰ «защищать» → وَاقٍ «защищающий / защитник».'],
-      en: ['فَاعِل · active participle', 'Shifts the perspective from the action to its doer: وَقَىٰ “to protect” → وَاقٍ “one who protects / protector”.'],
+    derivedFrom: {
+      ar: 'وَقَىٰ', metaRu: 'глагол I формы', metaEn: 'Form I verb',
+      ru: 'وَقَىٰ называет действие «защищать»; وَاقٍ называет того, кто это действие выполняет.',
+      en: 'وَقَىٰ names the action “to protect”; وَاقٍ names the one who performs it.',
     },
-    transformations: {
-      ru: ['Основа — وَاقِي. Как у имени المنقوص, в неопределённом رفع/جر конечная ي удаляется: وَاقِي → وَاقٍ.'],
-      en: ['The stem is وَاقِي. As a defective noun (اسم منقوص), final ي drops in the indefinite nominative/genitive: وَاقِي → وَاقٍ.'],
+    pattern: {
+      ar: 'فَاعِل',
+      ru: { title: 'Действительное причастие · اسم الفاعل', text: 'Модель переводит действие на деятеля: وَقَىٰ «защищать» → وَاقٍ «защищающий / защитник». Алиф — часть этой модели; сам по себе он не означает «деятель».' },
+      en: { title: 'Active participle · اسم الفاعل', text: 'The pattern shifts from the action to its doer: وَقَىٰ “to protect” → وَاقٍ “one who protects / protector”. The alif belongs to the pattern; it does not mean “doer” by itself.' },
+    },
+    technical: {
+      ru: ['Основа действительного причастия — وَاقِي.', 'В неопределённом رفع/جر у اسم منقوص конечная ي основы выпадает: وَاقِي → وَاقٍ.'],
+      en: ['The active-participle stem is وَاقِي.', 'In the indefinite nominative/genitive of an اسم منقوص, stem-final ي drops: وَاقِي → وَاقٍ.'],
     },
   },
 
   ittaqa: {
     displayArabic: 'ٱتَّقَىٰ',
-    segments: [
-      { text: 'ٱ', kind: 'pattern', ru: ['ٱ — вход в VIII форму', 'همزة الوصل — часть модели اِفْتَعَلَ; помогает начать сочетание согласных.'], en: ['ٱ — Form VIII onset', 'Hamzat al-waṣl belongs to the اِفْتَعَلَ pattern and supports the initial consonant cluster.'] },
-      { text: 'تَّ', kind: 'change', ru: ['و + ت → تّ', 'Здесь спрятаны два происхождения: корневая و была заменена на ت, а рядом уже стояла ت модели VIII. Две ت слились в تّ.'], en: ['و + ت → تّ', 'Two histories meet here: root و was replaced by ت, while Form VIII already contributed its own ت. The two ت merge as تّ.'] },
-      { text: 'قَ', kind: 'root', ru: ['ق — корень', 'Вторая корневая остаётся видимой.'], en: ['ق — root', 'The second root consonant remains visible.'] },
-      { text: 'ىٰ', kind: 'change', ru: ['ي → ىٰ', 'Третья корневая — ي; в конечной слабой позиции она проявляется как ىٰ.'], en: ['ي → ىٰ', 'The third root consonant is ي; in the final weak position it appears as ىٰ.'] },
+    visualParts: [
+      { text: 'ٱتَّ', role: 'form' },
+      { text: 'قَ', role: 'root' },
+      { text: 'ىٰ', role: 'form' },
     ],
-    lineage: [
-      { ar: 'و ق ي', ru: 'корень', en: 'root' },
-      { ar: 'وَقَىٰ', ru: 'I форма: защищать / оберегать', en: 'Form I: protect / guard' },
-      { ar: 'اِفْتَعَلَ', ru: 'шаблон VIII формы', en: 'Form VIII pattern' },
-      { ar: 'اِوْتَقَى', ru: 'форма до замены و', en: 'pre-substitution form' },
-      { ar: 'اِتْتَقَى', ru: 'و → ت', en: 'و → ت' },
-      { ar: 'اِتَّقَى', ru: 'две ت сливаются', en: 'the two ت merge' },
-    ],
-    effect: {
-      ru: ['اِفْتَعَلَ · VIII форма', 'У VIII формы нет одного универсального смысла для всех корней. В этом корне она переводит защитное действие в позицию самого субъекта: беречь себя, остерегаться, занимать защитно-ориентированную позицию.'],
-      en: ['اِفْتَعَلَ · Form VIII', 'Form VIII has no single universal meaning across all roots. In this root, it turns the protective action toward the subject’s own stance: guarding oneself, taking precaution, adopting a protection-oriented posture.'],
+    components: [],
+    derivedFrom: {
+      ar: 'وَقَىٰ', metaRu: 'глагол I формы', metaEn: 'Form I verb',
+      ru: 'Базовый глагол называет защиту. VIII форма перестраивает это действие так, что оно относится к позиции самого субъекта.',
+      en: 'The base verb names protection. Form VIII reshapes the action so that it concerns the subject’s own stance.',
     },
-    transformations: {
-      ru: ['اِوْتَقَى → اِتْتَقَى: начальная корневая و заменяется на ت перед ت الافتعال.', 'اِتْتَقَى → اِتَّقَى: две соседние ت ассимилируются и записываются с шаддой.', 'Конечная корневая ي в прошедшей форме проявляется как ىٰ.'],
-      en: ['اِوْتَقَى → اِتْتَقَى: initial root و is replaced by ت before the Form VIII ت.', 'اِتْتَقَى → اِتَّقَى: adjacent ت consonants assimilate and are written with shadda.', 'Final root ي appears as ىٰ in this perfect form.'],
+    pattern: {
+      ar: 'اِفْتَعَلَ',
+      ru: { title: 'Глагол VIII формы', text: 'В этом корне форма даёт смысловую линию «беречь себя / остерегаться / принимать защитную позицию». Это функция всей формы, а не отдельной буквы ت.' },
+      en: { title: 'Form VIII verb', text: 'In this root, the form gives the semantic line “guard oneself / be cautious / take a protective stance”. This comes from the whole form, not from the letter ت by itself.' },
+    },
+    technical: {
+      ru: ['اِوْتَقَى → اِتْتَقَى: начальная корневая و заменяется на ت перед ت формы VIII.', 'اِتْتَقَى → اِتَّقَى: две соседние ت сливаются и обозначаются шаддой.', 'Конечная корневая ي в этой форме проявляется как ىٰ.'],
+      en: ['اِوْتَقَى → اِتْتَقَى: initial root و is replaced by ت before the Form VIII ت.', 'اِتْتَقَى → اِتَّقَى: the adjacent ت consonants merge and are marked with shadda.', 'Final root ي appears here as ىٰ.'],
     },
   },
 
   muttaqin: {
     displayArabic: 'مُتَّقِينَ',
-    segments: [
-      { text: 'مُ', kind: 'pattern', ru: ['مُـ — часть اسم الفاعل', 'У производного глагола اسم الفاعل строится через مضارع: حرف المضارعة заменяется на م مضمومة. Мُـ — маркер внутри всей модели, не самостоятельное «значение обладателя».'], en: ['مُـ — part of the active participle', 'For derived verbs, the active participle is built from the imperfect: the imperfect prefix is replaced by م with ḍamma. مُـ is a marker inside the whole pattern, not an independent “possessor” meaning.'] },
-      { text: 'تَّ', kind: 'change', ru: ['و + ت → تّ', 'Та же замена и ассимиляция, что в ٱتَّقَىٰ: корневая و скрыта внутри удвоенной ت.'], en: ['و + ت → تّ', 'The same substitution and assimilation as in ٱتَّقَىٰ: root و is hidden inside the doubled ت.'] },
-      { text: 'قِ', kind: 'root', ru: ['ق — корень', 'Вторая корневая.'], en: ['ق — root', 'The second root consonant.'] },
-      { text: 'ينَ', kind: 'inflection', ru: ['ـينَ — множественное число + падеж', 'Это окончание мужского سالم-множественного в نصب/جر. Оно не создаёт значение «практикующий». Собственная конечная ي основы перед этим удаляется.'], en: ['ـينَ — plural + case', 'This is the sound masculine plural ending in the accusative/genitive. It does not create the “practitioner” meaning. The stem’s own final ي is deleted before this ending.'] },
+    visualParts: [
+      { text: 'مُ', role: 'prefix' },
+      { text: 'تَّ', role: 'form' },
+      { text: 'قِ', role: 'root' },
+      { text: 'ينَ', role: 'ending' },
     ],
-    lineage: [
-      { ar: 'و ق ي', ru: 'корень', en: 'root' },
-      { ar: 'ٱتَّقَىٰ', ru: 'глагол VIII формы', en: 'Form VIII verb' },
-      { ar: 'مُفْتَعِل', ru: 'модель действительного причастия VIII', en: 'Form VIII active-participle pattern' },
-      { ar: 'مُتَّقِي', ru: 'основа причастия', en: 'participle stem' },
-      { ar: 'مُتَّقٍ', ru: 'единственное число', en: 'singular' },
-      { ar: 'مُتَّقِينَ', ru: 'множественное, نصب/جر', en: 'plural, accusative/genitive' },
+    components: [
+      {
+        role: 'prefix', ar: 'مُـ',
+        ru: 'Часть образования действительного причастия от производного глагола. Само مُـ не означает «обладатель качества» без остальной модели.',
+        en: 'Part of active-participle formation from a derived verb. مُـ does not mean “possessor of the quality” independently of the whole pattern.',
+      },
+      {
+        role: 'ending', ar: 'ـينَ',
+        ru: 'Окончание мужского سالم-множественного в نصب/جر. Оно показывает число и падеж, но не создаёт лексическое значение слова.',
+        en: 'The sound masculine plural ending in the accusative/genitive. It marks number and case but does not create the lexical meaning.',
+      },
     ],
-    effect: {
-      ru: ['مُفْتَعِل · اسم الفاعل VIII', 'Переводит действие ٱتَّقَىٰ на его носителя: не «действие остережения», а человек, который эту позицию осуществляет / ею характеризуется.'],
-      en: ['مُفْتَعِل · Form VIII active participle', 'Moves from the action ٱتَّقَىٰ to its bearer: not “the act of guarding oneself,” but a person who enacts / is characterised by that stance.'],
+    derivedFrom: {
+      ar: 'ٱتَّقَىٰ', metaRu: 'глагол VIII формы', metaEn: 'Form VIII verb',
+      ru: 'Глагол называет действие/позицию; причастие называет человека, который это действие осуществляет или им характеризуется.',
+      en: 'The verb names the action/stance; the participle names a person who enacts it or is characterised by it.',
     },
-    transformations: {
-      ru: ['Внутри основы действует то же و → ت → تّ, что и в глаголе ٱتَّقَىٰ.', 'Единственная основа оканчивается на корневую ي: مُتَّقِي / مُتَّقٍ.', 'При سالم-множественном конечная ي основы удаляется; затем добавляется самостоятельное окончание ـونَ или ـينَ. Поэтому ي в مُتَّقِينَ — часть окончания ـينَ, а не видимая корневая ي.'],
-      en: ['The stem carries the same و → ت → تّ process as the verb ٱتَّقَىٰ.', 'The singular stem ends in the root ي: مُتَّقِي / مُتَّقٍ.', 'In the sound masculine plural, the stem-final ي is deleted and a separate ـونَ or ـينَ ending is added. Thus the visible ي in مُتَّقِينَ belongs to ـينَ, not to the visible root consonant.'],
+    pattern: {
+      ar: 'مُفْتَعِل',
+      ru: { title: 'Действительное причастие VIII формы', text: 'Переводит действие ٱتَّقَىٰ на его носителя. Сначала образуется مُتَّقٍ, а уже затем множественное مُتَّقِينَ.' },
+      en: { title: 'Form VIII active participle', text: 'Shifts the action ٱتَّقَىٰ to its bearer. First مُتَّقٍ is formed; the plural مُتَّقِينَ comes afterwards.' },
+    },
+    technical: {
+      ru: ['В основе действует то же و → ت → تّ, что и в ٱتَّقَىٰ.', 'Единственная основа содержит конечную корневую ي: مُتَّقِي / مُتَّقٍ.', 'При سالم-множественном эта ي основы удаляется, затем добавляется окончание ـونَ или ـينَ. Поэтому видимая ي в مُتَّقِينَ относится к окончанию ـينَ.'],
+      en: ['The stem carries the same و → ت → تّ process as ٱتَّقَىٰ.', 'The singular stem contains the final root ي: مُتَّقِي / مُتَّقٍ.', 'In the sound masculine plural, this stem-final ي is removed before ـونَ or ـينَ is added. The visible ي in مُتَّقِينَ therefore belongs to the ending ـينَ.'],
     },
   },
 
   taqwa: {
     displayArabic: 'تَقْوَى',
-    segments: [
-      { text: 'تَ', kind: 'change', ru: ['ت — историческое изменение', 'В традиционном разборе эта ت связана с преобразованием начальной корневой و в семье ٱتَّقَىٰ. Это не отдельный универсальный префикс со своим значением.'], en: ['ت — historical change', 'In the traditional analysis this ت is tied to the transformation of initial root و in the ٱتَّقَىٰ family. It is not an independent universal prefix with its own meaning.'] },
-      { text: 'قْ', kind: 'root', ru: ['ق — корень', 'Вторая корневая остаётся непосредственно видимой.'], en: ['ق — root', 'The second root consonant remains directly visible.'] },
-      { text: 'وَى', kind: 'change', ru: ['ـوَى — слабая финаль', 'Конечная часть отражает историческое формообразование слабого корня; разные традиционные разборы описывают этот переход не одинаково.'], en: ['ـوَى — weak ending', 'The ending reflects the historical formation of a weak root; traditional analyses do not all describe the transition identically.'] },
+    visualParts: [
+      { text: 'تَ', role: 'form' },
+      { text: 'قْ', role: 'root' },
+      { text: 'وَى', role: 'form' },
     ],
-    lineage: [
-      { ar: 'و ق ي', ru: 'корень', en: 'root' },
-      { ar: 'ٱتَّقَىٰ', ru: 'глагольная семья VIII', en: 'Form VIII verbal family' },
-      { ar: 'فَعْلَى', ru: 'один из традиционных разборов модели', en: 'one traditional pattern analysis' },
-      { ar: 'تَقْوَى', ru: 'существительное: качество / состояние / направленность', en: 'noun: quality / state / orientation' },
-    ],
-    effect: {
-      ru: ['Существительное в семье ٱتَّقَىٰ', 'Меняет грамматическую перспективу: ٱتَّقَىٰ называет действие/позицию субъекта, а تَقْوَى превращает эту смысловую линию в существительное, которое может называть качество, состояние или направленность.'],
-      en: ['A noun in the ٱتَّقَىٰ family', 'Changes the grammatical perspective: ٱتَّقَىٰ names an action/stance, while تَقْوَى packages that semantic line as a noun that can denote a quality, state, or orientation.'],
+    components: [],
+    derivedFrom: {
+      ar: 'ٱتَّقَىٰ', metaRu: 'словообразовательная семья VIII формы', metaEn: 'Form VIII derivational family',
+      ru: 'تَقْوَى — существительное из той же словообразовательной линии: глагол называет действие/позицию, существительное — качество, состояние или направленность.',
+      en: 'تَقْوَى is a noun in the same derivational line: the verb names an action/stance, while the noun names a quality, state, or orientation.',
     },
-    transformations: {
-      ru: ['Для تَقْوَى словари и грамматические источники дают несколько исторических объяснений образования.', 'Поэтому интерфейс показывает подтверждённую семейную связь и распространённый разбор فَعْلَى, но не выдаёт спорное побуквенное объяснение за единственно возможное.'],
-      en: ['Dictionaries and morphology sources give more than one historical account of تَقْوَى.', 'The interface therefore shows the established family relation and the common فَعْلَى analysis without presenting a disputed letter-by-letter history as uniquely certain.'],
+    pattern: {
+      ar: 'فَعْلَى',
+      ru: { title: 'Существительная модель', text: 'Модель оформляет смысловую линию как существительное. Начальная ت здесь не получает отдельного перевода: мы не приписываем одной букве значение, которое принадлежит всей форме.' },
+      en: { title: 'Nominal pattern', text: 'The pattern packages the semantic line as a noun. Initial ت is not given a separate translation: the meaning belongs to the whole form, not to one letter.' },
     },
-    variantAnalysis: true,
+    technical: {
+      ru: ['Корень остаётся و ق ي, даже если не все три корневые буквы буквально видны в современной поверхности слова.', 'Побуквенный исторический вывод начальной ت и финали ـوى описывается в традиционных источниках не полностью одинаково. Поэтому основной экран показывает корень и модель отдельно, не превращая спорный разбор в «значение букв».'],
+      en: ['The root remains و ق ي even though all three root consonants are not literally visible in the modern surface form.', 'Traditional sources do not give one fully identical letter-by-letter historical account of initial ت and final ـوى. The main UI therefore keeps root and pattern separate instead of turning a disputed analysis into “letter meanings”.'],
+    },
   },
 
   atqa: {
     displayArabic: 'أَتْقَى',
-    segments: [
-      { text: 'أَ', kind: 'pattern', ru: ['أَـ — модель أَفْعَل', 'Начальная أ — часть модели اسم التفضيل.'], en: ['أَـ — أَفْعَل pattern', 'Initial أ belongs to the elative pattern اسم التفضيل.'] },
-      { text: 'تْ', kind: 'change', ru: ['و → ت', 'Традиционный разбор связывает ت с заменой начальной корневой و; источники отмечают и альтернативное объяснение.'], en: ['و → ت', 'A traditional analysis links ت with replacement of initial root و; sources also record an alternative account.'] },
-      { text: 'قَ', kind: 'root', ru: ['ق — корень', 'Вторая корневая.'], en: ['ق — root', 'The second root consonant.'] },
-      { text: 'ى', kind: 'change', ru: ['ي → ى', 'Конечная корневая ي переходит в ى в этой слабой форме.'], en: ['ي → ى', 'Final root ي appears as ى in this weak form.'] },
+    visualParts: [
+      { text: 'أَتْ', role: 'form' },
+      { text: 'قَ', role: 'root' },
+      { text: 'ى', role: 'form' },
     ],
-    lineage: [
-      { ar: 'و ق ي', ru: 'корень', en: 'root' },
-      { ar: 'تَقْوَى / تَقِيّ', ru: 'семья качества', en: 'quality family' },
-      { ar: 'أَفْعَل', ru: 'модель اسم التفضيل', en: 'elative pattern' },
-      { ar: 'أَتْقَى', ru: 'более / наиболее обладающий качеством', en: 'having a greater / greatest degree of the quality' },
-    ],
-    effect: {
-      ru: ['أَفْعَل · اسم التفضيل', 'Не создаёт новый глагол IV формы. Эта модель сравнивает степень качества: «более… / наиболее…» в зависимости от конструкции.'],
-      en: ['أَفْعَل · elative', 'This is not a new Form IV verb. The pattern compares degree: “more…” / “most…” depending on construction.'],
+    components: [],
+    derivedFrom: {
+      ar: 'تَقْوَى / تَقِيّ', metaRu: 'семья качества корня و ق ي', metaEn: 'quality family of و ق ي',
+      ru: 'Это не глагол IV формы. Слово сравнивает степень качества внутри той же семьи.',
+      en: 'This is not a Form IV verb. The word compares degree within the same quality family.',
     },
-    transformations: {
-      ru: ['Источники сходятся, что это اسم التفضيل на модели أَفْعَل и корень остаётся و ق ي.', 'Побуквенная история начальной ت имеет более одного традиционного объяснения, поэтому она помечена как изменение, а не как простой аффикс.'],
-      en: ['Sources agree that this is an elative on أَفْعَل and that the root remains و ق ي.', 'The letter-by-letter history of initial ت has more than one traditional account, so it is marked as a change rather than a simple affix.'],
+    pattern: {
+      ar: 'أَفْعَل',
+      ru: { title: 'اسم التفضيل · сравнительная/превосходная степень', text: 'Модель выражает «более… / наиболее…» в зависимости от конструкции.' },
+      en: { title: 'اسم التفضيل · elative', text: 'The pattern expresses “more…” / “most…” depending on the construction.' },
     },
-    variantAnalysis: true,
+    technical: {
+      ru: ['Корень — و ق ي; конечная слабая ي проявляется как ى.', 'Поскольку исторический разбор начальной ت имеет несколько объяснений, основной экран не приписывает ей отдельной функции вне всей модели.'],
+      en: ['The root is و ق ي; final weak ي appears as ى.', 'Because the historical account of initial ت has more than one explanation, the main UI does not assign it a standalone function outside the whole pattern.'],
+    },
   },
 
   tuqat: {
     displayArabic: 'تُقَاة',
-    segments: [
-      { text: 'تُ', kind: 'change', ru: ['ت — семейное преобразование و', 'Традиционный разбор связывает начальную ت с преобразованием корневой و.'], en: ['ت — family transformation of و', 'Traditional analysis connects initial ت with transformation of root و.'] },
-      { text: 'قَ', kind: 'root', ru: ['ق — корень', 'Вторая корневая.'], en: ['ق — root', 'The second root consonant.'] },
-      { text: 'ا', kind: 'change', ru: ['ا — слабое изменение', 'Конечная корневая ي участвует в переходе к долгому ā в этой форме.'], en: ['ا — weak change', 'Final root ي participates in the shift to long ā in this form.'] },
-      { text: 'ة', kind: 'pattern', ru: ['ة — часть именной модели', 'Формирует именную/масдарную форму; значение создаётся моделью целиком.'], en: ['ة — part of the nominal pattern', 'It belongs to the nominal/verbal-noun formation; meaning comes from the whole pattern.'] },
+    visualParts: [
+      { text: 'تُ', role: 'form' },
+      { text: 'قَ', role: 'root' },
+      { text: 'ا', role: 'form' },
+      { text: 'ة', role: 'suffix' },
     ],
-    lineage: [
-      { ar: 'و ق ي', ru: 'корень', en: 'root' },
-      { ar: 'ٱتَّقَىٰ', ru: 'глагольная семья VIII', en: 'Form VIII verbal family' },
-      { ar: 'فُعَلَة', ru: 'традиционный разбор модели', en: 'traditional pattern analysis' },
-      { ar: 'تُقَاة', ru: 'существительное действия / предосторожности', en: 'verbal noun / precaution noun' },
+    components: [
+      {
+        role: 'suffix', ar: 'ـة',
+        ru: 'Часть именной формы. Здесь она не переводится сама по себе; значение создаёт всё словообразование.',
+        en: 'Part of the nominal formation. It is not translated by itself here; the derivation as a whole creates the word.',
+      },
     ],
-    effect: {
-      ru: ['Именная форма действия', 'Переводит глагольную смысловую линию в существительное: само остережение / принятие мер защиты.'],
-      en: ['Action noun', 'Packages the verbal semantic line as a noun: the act/state of precaution or guarding oneself.'],
+    derivedFrom: {
+      ar: 'ٱتَّقَىٰ', metaRu: 'семья глагола VIII формы', metaEn: 'Form VIII verbal family',
+      ru: 'Глагольная линия оформляется как существительное действия/предосторожности.',
+      en: 'The verbal line is packaged as a noun of action/precaution.',
     },
-    transformations: {
-      ru: ['Форма редкая, и источники обсуждают её образование по-разному.', 'В интерфейсе она остаётся отмеченной как традиционный разбор, а не как универсальное правило для всех слов семьи.'],
-      en: ['The form is rare and sources discuss its formation differently.', 'The interface marks this as a traditional analysis, not a universal rule for all words in the family.'],
+    pattern: {
+      ar: 'فُعَلَة',
+      ru: { title: 'Именная форма действия', text: 'Называет само остережение / принятие мер защиты, а не человека, который его совершает.' },
+      en: { title: 'Action noun', text: 'Names the act/state of precaution rather than the person who performs it.' },
     },
-    variantAnalysis: true,
+    technical: {
+      ru: ['Форма редкая; основной экран показывает подтверждённую семейную связь и именную функцию, а спорные побуквенные детали не выдаёт за универсальное правило.'],
+      en: ['The form is rare; the main UI shows the established family relation and nominal function without presenting disputed letter-level details as a universal rule.'],
+    },
   },
 
   taqiyy: {
     displayArabic: 'تَقِيّ',
-    segments: [
-      { text: 'تَ', kind: 'change', ru: ['ت — семейное преобразование', 'Отражает историческое развитие семьи و ق ي; не самостоятельный смысловой префикс.'], en: ['ت — family transformation', 'Reflects the historical development of the و ق ي family; it is not an independent semantic prefix.'] },
-      { text: 'قِ', kind: 'root', ru: ['ق — корень', 'Вторая корневая.'], en: ['ق — root', 'The second root consonant.'] },
-      { text: 'يّ', kind: 'change', ru: ['يّ — часть формы качества', 'Удвоенная ي относится к строению прилагательного; Lane приводит فَعِيل как один из разборов и обсуждает альтернативу.'], en: ['يّ — part of the adjective formation', 'The doubled ي belongs to the adjective’s formation; Lane gives فَعِيل as one analysis and discusses an alternative.'] },
+    visualParts: [
+      { text: 'تَ', role: 'form' },
+      { text: 'قِ', role: 'root' },
+      { text: 'يّ', role: 'form' },
     ],
-    lineage: [
-      { ar: 'و ق ي', ru: 'корень', en: 'root' },
-      { ar: 'تَقْوَى / ٱتَّقَىٰ', ru: 'словообразовательная семья', en: 'derivational family' },
-      { ar: 'فَعِيل', ru: 'один из разборов модели', en: 'one pattern analysis' },
-      { ar: 'تَقِيّ', ru: 'прилагательное: человек, характеризуемый качеством', en: 'adjective: a person characterised by the quality' },
-    ],
-    effect: {
-      ru: ['Прилагательное качества', 'Переводит смысловую линию на устойчивую характеристику человека: не действие как событие, а качество носителя.'],
-      en: ['Quality adjective', 'Shifts the semantic line to a characteristic of a person: not an event-like action, but a quality of its bearer.'],
+    components: [],
+    derivedFrom: {
+      ar: 'ٱتَّقَىٰ / تَقْوَى', metaRu: 'словообразовательная семья', metaEn: 'derivational family',
+      ru: 'Прилагательное переводит смысловую линию на характеристику человека.',
+      en: 'The adjective shifts the semantic line to a characteristic of a person.',
     },
-    transformations: {
-      ru: ['Для исторического образования تَقِيّ также существуют разные объяснения; поэтому побуквенная схема отмечена как рабочая, а не абсолютная.'],
-      en: ['The historical formation of تَقِيّ also has competing accounts, so the letter-by-letter map is shown as a working analysis rather than an absolute one.'],
+    pattern: {
+      ar: 'فَعِيل',
+      ru: { title: 'Прилагательное качества', text: 'Называет человека через устойчивое качество, а не действие как событие.' },
+      en: { title: 'Quality adjective', text: 'Describes a person through a characteristic quality rather than an action as an event.' },
     },
-    variantAnalysis: true,
+    technical: {
+      ru: ['فَعِيل — один из традиционных разборов этой формы; поэтому основной экран показывает функцию прилагательного и не строит отдельные «значения» из ت или يّ.'],
+      en: ['فَعِيل is one traditional analysis of this form, so the main UI presents the adjective function without inventing separate “meanings” for ت or يّ.'],
+    },
   },
 
   wiqaa: {
     displayArabic: 'وِقَاء',
-    segments: [
-      { text: 'وِ', kind: 'root', ru: ['و — корень', 'Первая корневая.'], en: ['و — root', 'The first root consonant.'] },
-      { text: 'قَ', kind: 'root', ru: ['ق — корень', 'Вторая корневая.'], en: ['ق — root', 'The second root consonant.'] },
-      { text: 'ا', kind: 'pattern', ru: ['ا — часть فِعَال', 'Долгий ā входит в именную модель.'], en: ['ا — part of فِعَال', 'Long ā belongs to the nominal pattern.'] },
-      { text: 'ء', kind: 'change', ru: ['ي → ء', 'Конечная корневая ي после долгого ā проявляется как همزة в وِقَاء.'], en: ['ي → ء', 'Final root ي appears as hamza after long ā in وِقَاء.'] },
+    visualParts: [
+      { text: 'وِقَ', role: 'root' },
+      { text: 'ا', role: 'form' },
+      { text: 'ء', role: 'form' },
     ],
-    lineage: [
-      { ar: 'و ق ي', ru: 'корень', en: 'root' },
-      { ar: 'وَقَىٰ', ru: 'защищать', en: 'to protect' },
-      { ar: 'فِعَال', ru: 'именная модель', en: 'nominal pattern' },
-      { ar: 'وِقَاء', ru: 'средство / покров защиты', en: 'means / covering of protection' },
-    ],
-    effect: {
-      ru: ['فِعَال · существительное', 'Переводит действие защиты в имя того, что служит защитой / покрытием.'],
-      en: ['فِعَال · noun', 'Packages the protective action as a noun for what serves as protection / covering.'],
+    components: [],
+    derivedFrom: {
+      ar: 'وَقَىٰ', metaRu: 'глагол I формы', metaEn: 'Form I verb',
+      ru: 'Из действия «защищать» образуется существительное для средства/покрова защиты.',
+      en: 'The action “to protect” yields a noun for a means or covering of protection.',
     },
-    transformations: {
-      ru: ['Конечная корневая ي меняет графическую форму рядом с долгим ā и проявляется как ء.'],
-      en: ['Final root ي changes its written form next to long ā and appears as ء.'],
+    pattern: {
+      ar: 'فِعَال',
+      ru: { title: 'Существительное', text: 'Переводит защитное действие в название того, что служит защитой.' },
+      en: { title: 'Noun', text: 'Turns the protective action into a noun for what serves as protection.' },
+    },
+    technical: {
+      ru: ['Конечная корневая ي после долгого ā проявляется как ء в وِقَاء.'],
+      en: ['Final root ي appears as ء after long ā in وِقَاء.'],
     },
   },
 
   wiqaya: {
     displayArabic: 'وِقَايَة',
-    segments: [
-      { text: 'وِ', kind: 'root', ru: ['و — корень', 'Первая корневая.'], en: ['و — root', 'The first root consonant.'] },
-      { text: 'قَ', kind: 'root', ru: ['ق — корень', 'Вторая корневая.'], en: ['ق — root', 'The second root consonant.'] },
-      { text: 'ا', kind: 'pattern', ru: ['ا — часть فِعَالَة', 'Входит в модель масдара.'], en: ['ا — part of فِعَالَة', 'Belongs to the verbal-noun pattern.'] },
-      { text: 'يَ', kind: 'root', ru: ['ي — корень', 'Третья корневая здесь сохраняется перед ة.'], en: ['ي — root', 'The third root consonant remains visible before ة.'] },
-      { text: 'ة', kind: 'pattern', ru: ['ة — часть فِعَالَة', 'Завершает модель существительного действия.'], en: ['ة — part of فِعَالَة', 'Completes the verbal-noun pattern.'] },
+    visualParts: [
+      { text: 'وِقَ', role: 'root' },
+      { text: 'ا', role: 'form' },
+      { text: 'يَ', role: 'root' },
+      { text: 'ة', role: 'suffix' },
     ],
-    lineage: [
-      { ar: 'و ق ي', ru: 'корень', en: 'root' },
-      { ar: 'وَقَىٰ', ru: 'защищать', en: 'to protect' },
-      { ar: 'فِعَالَة', ru: 'модель масдара', en: 'verbal-noun pattern' },
-      { ar: 'وِقَايَة', ru: 'защита / предохранение как действие', en: 'protection / safeguarding as an action' },
+    components: [
+      {
+        role: 'suffix', ar: 'ـة',
+        ru: 'Завершает именную модель فِعَالَة. Здесь это часть словообразования, а не самостоятельное слово.',
+        en: 'Completes the فِعَالَة nominal pattern. Here it is part of derivation, not an independent word.',
+      },
     ],
-    effect: {
-      ru: ['فِعَالَة · масдар', 'Превращает глагольное действие в существительное действия: «защищать» → «защита / предохранение».'],
-      en: ['فِعَالَة · verbal noun', 'Turns the verbal action into an action noun: “to protect” → “protection / safeguarding”.'],
+    derivedFrom: {
+      ar: 'وَقَىٰ', metaRu: 'глагол I формы', metaEn: 'Form I verb',
+      ru: 'Глагольное действие становится существительным действия: «защищать» → «защита / предохранение».',
+      en: 'The verbal action becomes an action noun: “to protect” → “protection / safeguarding”.',
     },
-    transformations: {
-      ru: ['В отличие от وَاقٍ, конечная корневая ي здесь остаётся видимой, потому что после неё идёт ة.'],
-      en: ['Unlike وَاقٍ, final root ي remains visible here because ة follows it.'],
+    pattern: {
+      ar: 'فِعَالَة',
+      ru: { title: 'Масдар · существительное действия', text: 'Называет само действие защиты как понятие.' },
+      en: { title: 'Verbal noun', text: 'Names the protective action as a noun.' },
+    },
+    technical: {
+      ru: ['Здесь третья корневая ي остаётся видимой перед ـة.'],
+      en: ['Here the third root consonant ي remains visible before ـة.'],
     },
   },
 
   tawaqqa: {
     displayArabic: 'تَوَقَّىٰ',
-    segments: [
-      { text: 'تَ', kind: 'pattern', ru: ['تَـ — часть V формы', 'Начальная ت добавлена моделью تَفَعَّلَ.'], en: ['تَـ — part of Form V', 'Initial ت is added by the تَفَعَّلَ pattern.'] },
-      { text: 'وَ', kind: 'root', ru: ['و — корень', 'Первая корневая здесь остаётся видимой.'], en: ['و — root', 'The first root consonant remains visible here.'] },
-      { text: 'قَّ', kind: 'change', ru: ['ق + удвоение', 'Вторая корневая ق удваивается как часть модели V формы.'], en: ['ق + gemination', 'The second root consonant ق is geminated as part of the Form V pattern.'] },
-      { text: 'ىٰ', kind: 'change', ru: ['ي → ىٰ', 'Конечная корневая ي проявляется как ىٰ.'], en: ['ي → ىٰ', 'Final root ي appears as ىٰ.'] },
+    visualParts: [
+      { text: 'تَ', role: 'prefix' },
+      { text: 'وَ', role: 'root' },
+      { text: 'قَّ', role: 'root' },
+      { text: 'ىٰ', role: 'form' },
     ],
-    lineage: [
-      { ar: 'و ق ي', ru: 'корень', en: 'root' },
-      { ar: 'وَقَىٰ', ru: 'I форма', en: 'Form I' },
-      { ar: 'تَفَعَّلَ', ru: 'модель V формы', en: 'Form V pattern' },
-      { ar: 'تَوَقَّىٰ', ru: 'беречься / принимать предосторожности', en: 'guard oneself / take precautions' },
+    components: [
+      {
+        role: 'prefix', ar: 'تَـ',
+        ru: 'Словообразовательный префикс V формы. Его функция раскрывается вместе со всей моделью تَفَعَّلَ.',
+        en: 'A derivational prefix of Form V. Its function is understood together with the whole تَفَعَّلَ pattern.',
+      },
     ],
-    effect: {
-      ru: ['تَفَعَّلَ · V форма', 'В этом корне форма направляет защитную линию на самого субъекта: беречься, остерегаться, принимать предосторожности. Это lexical realization, а не универсальное значение V формы для всех корней.'],
-      en: ['تَفَعَّلَ · Form V', 'In this root, the form directs the protective line toward the subject: guard oneself, beware, take precautions. This is a lexical realization, not a universal meaning of Form V across all roots.'],
+    derivedFrom: {
+      ar: 'وَقَىٰ', metaRu: 'глагол I формы', metaEn: 'Form I verb',
+      ru: 'V форма перестраивает базовое защитное действие в действие самого субъекта: беречься / принимать предосторожности.',
+      en: 'Form V reshapes the basic protective action into one carried out by the subject: guard oneself / take precautions.',
     },
-    transformations: {
-      ru: ['Добавляется начальная ت.', 'Вторая корневая ق удваивается.', 'Конечная ي слабого корня проявляется как ىٰ.'],
-      en: ['Initial ت is added.', 'The second root consonant ق is geminated.', 'Final root ي appears as ىٰ.'],
+    pattern: {
+      ar: 'تَفَعَّلَ',
+      ru: { title: 'Глагол V формы', text: 'В этом корне даёт линию «беречься / остерегаться / принимать предосторожности». Это значение всей формы, а не одного префикса تَـ.' },
+      en: { title: 'Form V verb', text: 'In this root, it gives the line “guard oneself / be cautious / take precautions”. The meaning belongs to the whole form, not to prefix تَـ alone.' },
+    },
+    technical: {
+      ru: ['Добавляется начальная تَـ.', 'Вторая корневая ق удваивается как часть модели.', 'Конечная корневая ي проявляется как ىٰ.'],
+      en: ['Initial تَـ is added.', 'The second root consonant ق is geminated as part of the pattern.', 'Final root ي appears as ىٰ.'],
     },
   },
 }
