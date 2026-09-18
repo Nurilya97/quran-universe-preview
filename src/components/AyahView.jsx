@@ -18,11 +18,11 @@ function ResetIcon() {
 const WORLD = { width: 2500, height: 1900 }
 const BLOCK_Y = [300, 620, 940, 1260, 1580]
 const WORD_GAP = 152
-const ANALYSIS_ROW_Y = [520, 850, 1180]
-const ANALYSIS_ROW_COUNTS = [10, 10, 9]
-const ANALYSIS_WORD_GAP = 180
+const ANALYSIS_ROW_Y = [650, 790, 930, 1070]
+const ANALYSIS_ROW_COUNTS = [8, 7, 7, 7]
+const ANALYSIS_WORD_GAP = 145
 const VIEW_BOUNDS = {
-  analysis: { left: 330, right: 2170, top: 250, bottom: 1510 },
+  analysis: { left: 650, right: 1850, top: 430, bottom: 1360 },
   composition: { left: 430, right: 2070, top: 40, bottom: 1840 },
   rhetoric: { left: 300, right: 2200, top: 40, bottom: 1780 },
   sound: { left: 300, right: 2200, top: 40, bottom: 1780 },
@@ -38,8 +38,8 @@ function clamp(value, min, max) {
 }
 
 function defaultScale() {
-  if (typeof window !== 'undefined' && window.innerWidth <= 760) return .52
-  return .72
+  if (typeof window !== 'undefined' && window.innerWidth <= 760) return .60
+  return .74
 }
 
 function phraseTokens(ayah, block) {
@@ -108,42 +108,36 @@ function AnalysisDiagram({ ayah, focusWordIndex, language, selectedWord, onSelec
   const selectedBlock = selectedWord
     ? ayah.blocks.find(block => selectedWord >= block.range[0] && selectedWord <= block.range[1])
     : null
+  const detail = selected?.analysis?.[language]
 
   const morphPos = selectedPos ? {
-    x: clamp(selectedPos.x - 330, 260, WORLD.width - 260),
-    y: clamp(selectedPos.y - 175, 310, WORLD.height - 260),
+    x: clamp(selectedPos.x - 240, 250, WORLD.width - 250),
+    y: clamp(selectedPos.y - 145, 360, WORLD.height - 240),
   } : null
   const syntaxPos = selectedPos ? {
-    x: clamp(selectedPos.x + 330, 260, WORLD.width - 260),
-    y: clamp(selectedPos.y - 175, 310, WORLD.height - 260),
+    x: clamp(selectedPos.x + 240, 250, WORLD.width - 250),
+    y: clamp(selectedPos.y - 145, 360, WORLD.height - 240),
   } : null
   const semanticPos = selectedPos ? {
-    x: clamp(selectedPos.x, 270, WORLD.width - 270),
-    y: clamp(selectedPos.y + 245, 360, WORLD.height - 250),
+    x: clamp(selectedPos.x, 300, WORLD.width - 300),
+    y: clamp(selectedPos.y + 215, 430, WORLD.height - 250),
   } : null
 
+  const morphology = detail?.morphology
+  const syntax = detail?.syntax
+  const meaning = detail?.meaning
+
   return <div className="diagram-view analysis-diagram">
-    <div className="analysis-prompt">
-      <small>{ru ? '2:197 · РАЗБОР' : '2:197 · ANALYSIS'}</small>
-      <strong>{ru ? 'Нажмите на слово' : 'Tap a word'}</strong>
-      <span>{ru ? 'Морфология · синтаксис · значение' : 'Morphology · syntax · meaning'}</span>
+    <div className="analysis-verse-reference">
+      <span>{ayah.reference}</span>
+      <small>{ayah.surah[language]}</small>
     </div>
 
     <svg className="diagram-lines analysis-core-lines" width={WORLD.width} height={WORLD.height} viewBox={`0 0 ${WORLD.width} ${WORLD.height}`} aria-hidden="true">
-      {ayah.tokens.slice(0, -1).map((_, i) => {
-        const a = positions.get(i + 1)
-        const b = positions.get(i + 2)
-        const sameRow = Math.abs(a.y - b.y) < 5
-        const d = sameRow
-          ? `M ${a.x - 46} ${a.y} L ${b.x + 46} ${b.y}`
-          : `M ${a.x - 42} ${a.y} C ${a.x - 150} ${a.y + 90}, ${b.x + 150} ${b.y - 90}, ${b.x + 42} ${b.y}`
-        return <path key={i} className="analysis-reading-thread" d={d} />
-      })}
-
       {selected && selectedPos && <>
-        <path className="analysis-ray morph" d={`M ${selectedPos.x} ${selectedPos.y} Q ${(selectedPos.x + morphPos.x) / 2} ${selectedPos.y - 80} ${morphPos.x} ${morphPos.y}`} />
-        <path className="analysis-ray syntax" d={`M ${selectedPos.x} ${selectedPos.y} Q ${(selectedPos.x + syntaxPos.x) / 2} ${selectedPos.y - 80} ${syntaxPos.x} ${syntaxPos.y}`} />
-        <path className="analysis-ray semantic" d={`M ${selectedPos.x} ${selectedPos.y} L ${semanticPos.x} ${semanticPos.y}`} />
+        <path className="analysis-ray morph" d={`M ${selectedPos.x} ${selectedPos.y} Q ${(selectedPos.x + morphPos.x) / 2} ${selectedPos.y - 55} ${morphPos.x} ${morphPos.y}`} />
+        <path className="analysis-ray syntax" d={`M ${selectedPos.x} ${selectedPos.y} Q ${(selectedPos.x + syntaxPos.x) / 2} ${selectedPos.y - 55} ${syntaxPos.x} ${syntaxPos.y}`} />
+        <path className="analysis-ray semantic" d={`M ${selectedPos.x} ${selectedPos.y + 6} L ${semanticPos.x} ${semanticPos.y}`} />
 
         {selectedBlock && phraseTokens(ayah, selectedBlock).map((_, i) => {
           const relatedIndex = selectedBlock.range[0] + i
@@ -151,67 +145,87 @@ function AnalysisDiagram({ ayah, focusWordIndex, language, selectedWord, onSelec
           const relatedPos = positions.get(relatedIndex)
           if (!relatedPos) return null
           const midX = (selectedPos.x + relatedPos.x) / 2
-          const midY = Math.min(selectedPos.y, relatedPos.y) - 55
-          return <path key={relatedIndex} className="analysis-syntax-link" d={`M ${selectedPos.x} ${selectedPos.y - 8} Q ${midX} ${midY} ${relatedPos.x} ${relatedPos.y - 8}`} />
+          const midY = Math.min(selectedPos.y, relatedPos.y) - 38
+          return <path key={relatedIndex} className="analysis-syntax-link" d={`M ${selectedPos.x} ${selectedPos.y - 6} Q ${midX} ${midY} ${relatedPos.x} ${relatedPos.y - 6}`} />
         })}
       </>}
     </svg>
 
-    {ayah.tokens.map((token, i) => {
-      const wordIndex = i + 1
-      const pos = positions.get(wordIndex)
-      const isEntry = wordIndex === focusWordIndex
-      const isSelected = wordIndex === selectedWord
-      const isRelated = selectedBlock && wordIndex >= selectedBlock.range[0] && wordIndex <= selectedBlock.range[1]
-      return <button
-        key={wordIndex}
-        className={'analysis-arabic-word' + (isEntry ? ' is-entry' : '') + (isSelected ? ' is-selected' : '') + (isRelated ? ' is-related' : '')}
-        style={{ left: pos.x, top: pos.y }}
-        onClick={(event) => {
-          event.stopPropagation()
-          onSelectWord(isSelected ? null : wordIndex)
-        }}
-        aria-pressed={isSelected}
-      >
-        <i aria-hidden="true" />
-        <span lang="ar" dir="rtl">{token.ar}</span>
-      </button>
-    })}
-
-    {selected && selectedPos && <>
-      <div className="analysis-lens-node morph" style={{ left: morphPos.x, top: morphPos.y }}>
-        <i aria-hidden="true" />
-        <small>{ru ? 'МОРФОЛОГИЯ' : 'MORPHOLOGY'}</small>
-        <strong>{ru ? selected.roleRu : selected.roleEn}</strong>
-        {selected.root && <p><span>{ru ? 'корень' : 'root'}</span><b lang="ar" dir="rtl">{selected.root}</b><em>{selected.rootReading}</em></p>}
-      </div>
-
-      <div className="analysis-lens-node syntax" style={{ left: syntaxPos.x, top: syntaxPos.y }}>
-        <i aria-hidden="true" />
-        <small>{ru ? 'СИНТАКСИС' : 'SYNTAX'}</small>
-        <strong>{selectedBlock ? selectedBlock[language].title : (ru ? 'Связь в аяте' : 'Relation in the ayah')}</strong>
-        {selectedBlock && <p lang="ar" dir="rtl">{phraseText(ayah, selectedBlock)}</p>}
-      </div>
-
-      <div className="analysis-lens-node semantic" style={{ left: semanticPos.x, top: semanticPos.y }}>
-        <i aria-hidden="true" />
-        <small>{ru ? 'ЗНАЧЕНИЕ В ЭТОМ АЯТЕ' : 'MEANING HERE'}</small>
-        <strong>{ru ? selected.ru : selected.en}</strong>
-        <span>{selected.tr}</span>
-        {(ru ? selected.noteRu : selected.noteEn) && <p>{ru ? selected.noteRu : selected.noteEn}</p>}
-        <button
-          className="analysis-orbit-button"
-          disabled={!selected.root}
+    <div className="analysis-ayah-text" lang="ar" dir="rtl">
+      {ayah.tokens.map((token, i) => {
+        const wordIndex = i + 1
+        const pos = positions.get(wordIndex)
+        const isEntry = wordIndex === focusWordIndex
+        const isSelected = wordIndex === selectedWord
+        const isRelated = selectedBlock && wordIndex >= selectedBlock.range[0] && wordIndex <= selectedBlock.range[1]
+        return <button
+          key={wordIndex}
+          className={'analysis-arabic-word' + (isEntry ? ' is-entry' : '') + (isSelected ? ' is-selected' : '') + (isRelated ? ' is-related' : '')}
+          style={{ left: pos.x, top: pos.y }}
           onClick={(event) => {
             event.stopPropagation()
-            if (selected.root) onOpenWordOrbit?.(selected)
+            onSelectWord(isSelected ? null : wordIndex)
+          }}
+          aria-pressed={isSelected}
+        >
+          <span>{token.ar}</span>
+        </button>
+      })}
+    </div>
+
+    {selected && selectedPos && <>
+      <button
+        className="analysis-close-all"
+        style={{ left: selectedPos.x + 92, top: selectedPos.y - 64 }}
+        onClick={(event) => { event.stopPropagation(); onSelectWord(null) }}
+        aria-label={ru ? 'Закрыть разбор слова' : 'Close word analysis'}
+      >×</button>
+
+      <section className="analysis-lens-node morph" style={{ left: morphPos.x, top: morphPos.y }}>
+        <small>{ru ? 'МОРФОЛОГИЯ' : 'MORPHOLOGY'}</small>
+        <strong lang="ar" dir="rtl">{selected.ar}</strong>
+        <span>{selected.tr}</span>
+        {morphology?.parts?.length
+          ? <div className="analysis-morph-parts">
+              {morphology.parts.map((part, index) => <div key={index}>
+                <b lang="ar" dir="rtl">{part.ar}</b>
+                <em>{part.tr}</em>
+                <p>{part.label}</p>
+              </div>)}
+            </div>
+          : <p>{ru ? selected.roleRu : selected.roleEn}</p>}
+        {morphology?.text && <p className="analysis-detail-text">{morphology.text}</p>}
+      </section>
+
+      <section className="analysis-lens-node syntax" style={{ left: syntaxPos.x, top: syntaxPos.y }}>
+        <small>{ru ? 'СИНТАКСИС' : 'SYNTAX'}</small>
+        <strong>{syntax?.title || (selectedBlock ? selectedBlock[language].title : (ru ? selected.roleRu : selected.roleEn))}</strong>
+        {syntax?.case && <p><b>{ru ? 'Положение:' : 'Position:'}</b> {syntax.case}</p>}
+        {syntax?.ending && <p><b>{ru ? 'Окончание:' : 'Ending:'}</b> {syntax.ending}</p>}
+        {syntax?.text
+          ? <p className="analysis-detail-text">{syntax.text}</p>
+          : selectedBlock && <p className="analysis-detail-text">{selectedBlock[language].text}</p>}
+      </section>
+
+      <section className="analysis-lens-node semantic" style={{ left: semanticPos.x, top: semanticPos.y }}>
+        <small>{ru ? 'ЗНАЧЕНИЕ В ЭТОМ АЯТЕ' : 'MEANING IN THIS AYAH'}</small>
+        <strong>{meaning?.gloss || (ru ? selected.ru : selected.en)}</strong>
+        <span>{selected.tr}</span>
+        <p className="analysis-detail-text">{meaning?.description || (ru ? selected.noteRu : selected.noteEn) || (ru ? selected.ru : selected.en)}</p>
+        {meaning?.translation && <p className="analysis-translation-choice">{meaning.translation}</p>}
+        <button
+          className="analysis-orbit-button"
+          disabled={!selected.orbitId}
+          onClick={(event) => {
+            event.stopPropagation()
+            if (selected.orbitId) onOpenWordOrbit?.(selected)
           }}
         >
-          {selected.root
+          {selected.orbitId
             ? (ru ? 'Перейти в орбиту слова →' : 'Open word orbit →')
-            : (ru ? 'Орбита слова · подключается' : 'Word orbit · coming next')}
+            : (ru ? 'Орбита слова · будет подключена' : 'Word orbit · coming next')}
         </button>
-      </div>
+      </section>
     </>}
   </div>
 }
