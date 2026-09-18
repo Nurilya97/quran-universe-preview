@@ -1,6 +1,7 @@
 import { COPY, FORMS } from '../demo.js'
 import { CONTENT_SOURCES, ROOT_CONTENT, WORD_CONTENT } from '../rootContent.js'
-import { OCCURRENCES, ROOT_OCCURRENCE_COUNT, groupOccurrences } from '../occurrences.js'\nimport { WQY_PUBLIC_MODEL } from '../canonicalWqy.js'
+import { OCCURRENCES, ROOT_OCCURRENCE_COUNT, groupOccurrences } from '../occurrences.js'
+import { WQY_PUBLIC_MODEL } from '../canonicalWqy.js'
 import './WordDetails.css'
 
 function SourceLinks({ ids, language }) {
