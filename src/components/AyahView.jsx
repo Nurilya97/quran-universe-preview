@@ -41,6 +41,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack }) {
 
   const tabs = [
     ['construction', language === 'ru' ? 'Конструкция' : 'Construction'],
+    ['composition', language === 'ru' ? 'Композиция' : 'Composition'],
     ['rhetoric', language === 'ru' ? 'Риторика' : 'Rhetoric'],
     ['sound', language === 'ru' ? 'Звучание' : 'Sound'],
     ['translations', language === 'ru' ? 'Переводы' : 'Translations'],
@@ -109,26 +110,41 @@ export function AyahView({ reference, focusWordIndex, language, onBack }) {
           {currentBlock && <p className="ayah-block-link">{language === 'ru' ? 'Часть конструкции' : 'Construction block'} · <strong>{currentBlock[language].title}</strong></p>}
         </section>
 
-        <section className="ayah-building">
+        {currentBlock && <section className="ayah-building ayah-current-construction">
           <header>
-            <p className="ayah-kicker">{language === 'ru' ? 'Как складывается аят' : 'How the verse is built'}</p>
-            <h2>{language === 'ru' ? 'Кирпичик за кирпичиком' : 'Block by block'}</h2>
+            <p className="ayah-kicker">{language === 'ru' ? 'Конструкция фрагмента' : 'Phrase construction'}</p>
+            <h2>{currentBlock[language].title}</h2>
           </header>
-          <div className="ayah-blocks">
-            {ayah.blocks.map((block, index) => <article key={block.id} className={currentBlock?.id === block.id ? 'is-active' : ''}>
-              <span className="ayah-block-number">{String(index + 1).padStart(2, '0')}</span>
-              <div>
-                <h3>{block[language].title}</h3>
-                <p>{block[language].text}</p>
-                <div className="ayah-block-words" lang="ar" dir="rtl">
-                  {ayah.tokens.slice(block.range[0] - 1, block.range[1]).map((token, i) => <button key={i}
-                    onClick={() => setSelectedWord(block.range[0] + i)}>{token.ar}</button>)}
-                </div>
-              </div>
-            </article>)}
+          <p>{currentBlock[language].text}</p>
+          <div className="ayah-block-words" lang="ar" dir="rtl">
+            {ayah.tokens.slice(currentBlock.range[0] - 1, currentBlock.range[1]).map((token, i) => {
+              const wordIndex = currentBlock.range[0] + i
+              return <button key={wordIndex} className={selectedWord === wordIndex ? 'is-selected' : ''}
+                onClick={() => setSelectedWord(wordIndex)}>{token.ar}</button>
+            })}
           </div>
-        </section>
+        </section>}
       </>}
+
+      {tab === 'composition' && <section className="ayah-building ayah-composition">
+        <header>
+          <p className="ayah-kicker">{language === 'ru' ? 'Композиция аята' : 'Verse composition'}</p>
+          <h2>{language === 'ru' ? 'Как крупные части выстраиваются в целое' : 'How the larger units form a whole'}</h2>
+        </header>
+        <div className="ayah-blocks">
+          {ayah.blocks.map((block, index) => <article key={block.id}>
+            <span className="ayah-block-number">{String(index + 1).padStart(2, '0')}</span>
+            <div>
+              <h3>{block[language].title}</h3>
+              <p>{block[language].text}</p>
+              <div className="ayah-block-words" lang="ar" dir="rtl">
+                {ayah.tokens.slice(block.range[0] - 1, block.range[1]).map((token, i) => <button key={i}
+                  onClick={() => { setSelectedWord(block.range[0] + i); setTab('construction') }}>{token.ar}</button>)}
+              </div>
+            </div>
+          </article>)}
+        </div>
+      </section>}
 
       {tab === 'rhetoric' && <section className="ayah-layer">
         <p className="ayah-kicker">{language === 'ru' ? 'Риторические приёмы' : 'Rhetorical devices'}</p>
