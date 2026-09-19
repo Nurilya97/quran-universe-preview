@@ -20,9 +20,6 @@ const WORD_GAP = 152
 const VIEW_BOUNDS = {
   analysis: { left: 650, right: 1850, top: 430, bottom: 1360 },
   composition: { left: 430, right: 2070, top: 40, bottom: 1840 },
-  rhetoric: { left: 300, right: 2200, top: 40, bottom: 1780 },
-  sound: { left: 300, right: 2200, top: 40, bottom: 1780 },
-  translations: { left: 300, right: 2200, top: 40, bottom: 1760 },
 }
 
 function finiteNumber(value, fallback) {
@@ -276,26 +273,9 @@ function CompositionDiagram({ ayah, focusWordIndex, language }) {
   </div>
 }
 
-function UnbuiltMode({ mode, language }) {
-  const ru = language === 'ru'
-  const labels = {
-    rhetoric: ru ? 'Риторика' : 'Rhetoric',
-    sound: ru ? 'Звучание' : 'Sound',
-    translations: ru ? 'Переводы' : 'Translations',
-  }
-  return <div className="diagram-view unbuilt-mode">
-    <div className="unbuilt-mode-note">
-      <small>{labels[mode]}</small>
-      <strong>{ru ? 'Раздел готовится' : 'Section in progress'}</strong>
-      <p>{ru ? 'Содержимое будет построено заново после утверждения логики этого слоя.' : 'This layer will be rebuilt after its interaction model is defined.'}</p>
-    </div>
-  </div>
-}
-
 function CanvasWorld({ ayah, mode, focusWordIndex, language, selectedWord, onSelectWord }) {
-  if (mode === 'analysis') return <AnalysisDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} selectedWord={selectedWord} onSelectWord={onSelectWord} />
   if (mode === 'composition') return <CompositionDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} />
-  return <UnbuiltMode mode={mode} language={language} />
+  return <AnalysisDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} selectedWord={selectedWord} onSelectWord={onSelectWord} />
 }
 
 export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWordOrbit }) {
@@ -304,6 +284,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
   const [contextOpen, setContextOpen] = useState(false)
   const [selectedWord, setSelectedWord] = useState(null)
   const [activeWordIndex, setActiveWordIndex] = useState(focusWordIndex || null)
+  const [hasInteracted, setHasInteracted] = useState(false)
   const [camera, setCamera] = useState(() => ({ x: 0, y: 0, scale: defaultScale() }))
   const pointers = useRef(new Map())
   const gesture = useRef(null)
@@ -319,6 +300,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     setContextOpen(false)
     setSelectedWord(null)
     setActiveWordIndex(focusWordIndex || null)
+    setHasInteracted(false)
     setCamera({ x: 0, y: 0, scale: defaultScale() })
     pointers.current.clear()
     gesture.current = null
@@ -332,9 +314,6 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
   const modes = [
     { id: 'analysis', label: ru ? 'Разбор' : 'Analysis', status: 'ready' },
     { id: 'composition', label: ru ? 'Композиция' : 'Composition', status: 'draft' },
-    { id: 'rhetoric', label: ru ? 'Риторика' : 'Rhetoric', status: 'empty' },
-    { id: 'sound', label: ru ? 'Звучание' : 'Sound', status: 'empty' },
-    { id: 'translations', label: ru ? 'Переводы' : 'Translations', status: 'empty' },
   ]
 
   function clampCamera(next, targetMode = mode) {
@@ -392,10 +371,12 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
 
   function onWheel(event) {
     event.preventDefault()
+    setHasInteracted(true)
     zoomBy(event.deltaY > 0 ? -.07 : .07)
   }
 
   function onPointerDown(event) {
+    setHasInteracted(true)
     // Word buttons must receive their click instead of the canvas capturing it.
     if (event.target.closest('button')) return
     if (event.button !== undefined && event.button !== 0) return
@@ -467,13 +448,17 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
 
   function selectWord(wordIndex) {
     setSelectedWord(wordIndex)
-    if (wordIndex) setActiveWordIndex(wordIndex)
+    if (wordIndex) {
+      setActiveWordIndex(wordIndex)
+      setHasInteracted(true)
+    }
   }
 
   function changeMode(nextMode) {
     setMode(nextMode)
     setSelectedWord(null)
     setContextOpen(false)
+    setHasInteracted(true)
     const scale = defaultScale()
     requestAnimationFrame(() => {
       const next = clampCamera({ x: 0, y: 0, scale }, nextMode)
@@ -501,6 +486,9 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     {contextOpen && <aside className="ayah-space-context">
       <header><span>{ru ? 'Контекст' : 'Context'}</span><button onClick={() => setContextOpen(false)}>×</button></header>
       <p>{ayah.context[language]}</p>
+      <a className="ayah-context-source" href={ayah.greentechUrl} target="_blank" rel="noopener noreferrer">
+        {ru ? 'Источник: Al Quran · Greentech' : 'Source: Al Quran · Greentech'} <ExternalIcon />
+      </a>
     </aside>}
 
     <div
@@ -530,15 +518,11 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     />}
 
     <div className="ayah-space-zoom">
-      <button onClick={() => zoomBy(.08)}>+</button>
+      <button onClick={() => { setHasInteracted(true); zoomBy(.08) }}>+</button>
       <span>{Math.round(camera.scale * 100)}%</span>
-      <button onClick={() => zoomBy(-.08)}>−</button>
+      <button onClick={() => { setHasInteracted(true); zoomBy(-.08) }}>−</button>
     </div>
 
-    <div className="ayah-space-hint">{ru ? 'Перемещайте схему · края удерживают вас внутри разбора · двойное нажатие возвращает центр' : 'Move the diagram · bounded edges keep the analysis in view · double tap resets'}</div>
-
-    <a className="ayah-space-source" href={ayah.greentechUrl} target="_blank" rel="noopener noreferrer">
-      Al Quran · Greentech <ExternalIcon />
-    </a>
+    {!hasInteracted && <div className="ayah-space-hint">{ru ? 'Перемещайте схему · нажмите слово, чтобы раскрыть его' : 'Move the diagram · tap a word to unfold it'}</div>}
   </section>
 }
