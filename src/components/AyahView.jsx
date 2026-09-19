@@ -346,7 +346,9 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
         <div className="analysis-callout-page">{semanticPages[pages.semantic]}</div>
         <CalloutPager page={pages.semantic} count={semanticPages.length} onChange={(value) => setPage('semantic', value)} language={language} />
       </section>
-      </> : <section className="analysis-relation-screen" onClick={(event) => event.stopPropagation()}>
+      </>}
+
+      {focusView === 'relation' && <section className="analysis-relation-screen" onClick={(event) => event.stopPropagation()}>
         <small className="analysis-relation-kicker">{ru ? 'СВЯЗЬ В АЯТЕ' : 'RELATION IN THE AYAH'}</small>
         <div className="analysis-relation-phrase" lang="ar" dir="rtl">
           {selectedBlock ? phraseText(ayah, selectedBlock) : selected.ar}
@@ -379,6 +381,91 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
         </div>}
       </section>}
 
+      {focusView === 'morphology' && <section className="analysis-morphology-screen" onClick={(event) => event.stopPropagation()}>
+        <div className="analysis-morphology-canvas">
+          <header className="analysis-morphology-hero">
+            <small>{ru ? 'МОРФОЛОГИЯ СЛОВА' : 'WORD MORPHOLOGY'}</small>
+            <span lang="ar" dir="rtl">{selected.ar}</span>
+            <em>{selected.tr}</em>
+            <strong>{meaning?.gloss || (ru ? selected.ru : selected.en)}</strong>
+          </header>
+
+          {isTaqwa ? <>
+            <svg className="analysis-morphology-branch first" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <marker id="morphArrowA" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" />
+                </marker>
+              </defs>
+              <path d="M500 4 C500 48 250 48 250 110" markerEnd="url(#morphArrowA)" />
+              <path d="M500 4 C500 48 750 48 750 110" markerEnd="url(#morphArrowA)" />
+            </svg>
+
+            <div className="analysis-morphology-level first-level">
+              <article className="analysis-morphology-node base">
+                <span lang="ar" dir="rtl">{morphologyParts[1]?.ar || 'تَقْوَىٰ'}</span>
+                <small>{morphologyParts[1]?.tr || 'taqwā'}</small>
+                <b>{ru ? 'Слово без артикля' : 'Word without the article'}</b>
+                <p>{ru
+                  ? 'تَقْوَىٰ (taqwā) — существительное. В этом аяте краткий контекстный перевод: «благочестие».'
+                  : 'تَقْوَىٰ (taqwā) is a noun. In this ayah, a concise contextual rendering is “piety”.'}</p>
+              </article>
+
+              <article className="analysis-morphology-node article">
+                <span lang="ar" dir="rtl">{morphologyParts[0]?.ar || 'ٱلـ'}</span>
+                <small>{morphologyParts[0]?.tr || 'al-'}</small>
+                <b>{ru ? 'Определённый артикль' : 'Definite article'}</b>
+                <p>{ru
+                  ? 'ٱلـ (al-) делает существительное определённым: указывает на конкретно обозначенное или уже определённое в контексте понятие.'
+                  : 'ٱلـ (al-) makes the noun definite: it points to something specifically identified or already determined in context.'}</p>
+              </article>
+            </div>
+
+            <svg className="analysis-morphology-branch second" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <marker id="morphArrowB" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" />
+                </marker>
+              </defs>
+              <path d="M250 4 C250 42 250 62 250 110" markerEnd="url(#morphArrowB)" />
+              <path d="M250 4 C250 50 750 46 750 110" markerEnd="url(#morphArrowB)" />
+            </svg>
+
+            <div className="analysis-morphology-level second-level">
+              <article className="analysis-morphology-node root">
+                <span lang="ar" dir="rtl">{morphologyParts[2]?.ar || selected.root}</span>
+                <small>{morphologyParts[2]?.tr || selected.rootReading}</small>
+                <b>{ru ? 'Корень' : 'Root'}</b>
+                <p>{ru
+                  ? 'و ق ي (w-q-y) несёт идею защиты и оберегания.'
+                  : 'و ق ي (w-q-y) carries the idea of protection and guarding.'}</p>
+              </article>
+
+              <article className="analysis-morphology-node pattern">
+                <span lang="ar" dir="rtl">{morphologyParts[3]?.ar || 'فَعْلَى'}</span>
+                <small>{morphologyParts[3]?.tr || 'faʿlā'}</small>
+                <b>{ru ? 'Именная модель' : 'Nominal pattern'}</b>
+                <p>{ru
+                  ? 'فَعْلَى (faʿlā) показывает словообразовательную модель, по которой построено تَقْوَىٰ (taqwā).'
+                  : 'فَعْلَى (faʿlā) shows the nominal pattern on which تَقْوَىٰ (taqwā) is formed.'}</p>
+              </article>
+            </div>
+
+            {morphology?.text && <div className="analysis-morphology-note">
+              <strong>{ru ? 'Как устроена форма' : 'How the form is built'}</strong>
+              <p>{morphology.text}</p>
+            </div>}
+          </> : <div className="analysis-morphology-generic">
+            {morphologyParts.map((part, index) => <article className="analysis-morphology-node" key={index}>
+              <span lang="ar" dir="rtl">{part.ar}</span>
+              <small>{part.tr}</small>
+              <b>{part.label}</b>
+            </article>)}
+            {morphology?.text && <div className="analysis-morphology-note"><p>{morphology.text}</p></div>}
+          </div>}
+        </div>
+      </section>}
+
       <nav className="analysis-focus-view-switch" onClick={(event) => event.stopPropagation()} aria-label={ru ? 'Вид разбора слова' : 'Word analysis view'}>
         <button
           className={focusView === 'word' ? 'is-active' : ''}
@@ -390,6 +477,11 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
           onClick={() => setFocusView('relation')}
           aria-pressed={focusView === 'relation'}
         >{ru ? 'Связь в аяте' : 'In the ayah'}</button>
+        <button
+          className={focusView === 'morphology' ? 'is-active' : ''}
+          onClick={() => setFocusView('morphology')}
+          aria-pressed={focusView === 'morphology'}
+        >{ru ? 'Морфология' : 'Morphology'}</button>
       </nav>
     </div>
   </div>
