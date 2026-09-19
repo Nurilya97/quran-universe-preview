@@ -515,9 +515,15 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
         <p>{ayah.context.revelation[language]}</p>
       </section>
 
-      <a className="ayah-context-source" href={ayah.greentechUrl} target="_blank" rel="noopener noreferrer">
-        Al Quran · Greentech <ExternalIcon />
-      </a>
+      <div className="ayah-context-sources">
+        <small>{ru ? 'Источники контекста' : 'Context sources'}</small>
+        {ayah.contextSources?.map((source) => <a key={source.url} href={source.url} target="_blank" rel="noopener noreferrer">
+          {source[language]} <ExternalIcon />
+        </a>)}
+        <a href={ayah.greentechUrl} target="_blank" rel="noopener noreferrer">
+          Al Quran · Greentech <ExternalIcon />
+        </a>
+      </div>
     </aside>}
 
     <div
