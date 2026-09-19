@@ -24,8 +24,7 @@
 .word-meaning-note { position: relative; margin: 48px 0 0 65px; padding-left: 44px; text-align: left; max-width: min(90%, 380px); }
 .word-meaning-note i { position: absolute; width: 36px; left: 0; top: 11px; height: 1px; background: #adcdb875; }
 .word-meaning-note i::before { content: ''; position: absolute; left: 0; top: -2px; width: 5px; height: 5px; border-radius: 50%; background: #b8d9c4; }
-.word-meaning-note > small { font-size: 14px; color: #92ad9f; }
-.word-meaning-note p { font-size: 21px; line-height: 1.6; margin: 5px 0 0; overflow-wrap: anywhere; }
+.word-meaning-note p { font-size: 21px; line-height: 1.6; margin: 0; overflow-wrap: anywhere; }
 .syntax-notebook {
   position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain;
   padding: 90px max(20px, calc((100% - 760px)/2)) 110px; touch-action: pan-y;
