@@ -4910,3 +4910,9 @@
     transform: rotate(20.5deg) !important;
   }
 }
+
+
+/* Focused word views own the lower UI: hide canvas zoom controls behind them. */
+.ayah-space-shell.has-word-focus .ayah-space-zoom {
+  display: none !important;
+}
