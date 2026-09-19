@@ -4955,22 +4955,38 @@
   opacity: .68;
 }
 
-/* Context owns provenance, keeping the canvas footer clean. */
-.ayah-context-source {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  min-height: 44px;
-  margin-top: 14px;
-  color: #a8c8b8;
-  font-size: 12px;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(168,200,184,.18);
+/* Context owns provenance, keeping research references close to the explanation. */
+.ayah-context-sources {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,.075);
+  display: grid;
+  gap: 6px;
 }
 
-.ayah-context-source:hover {
+.ayah-context-sources > small {
+  margin-bottom: 3px;
+  color: #6f7d82;
+  font-size: 10px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.ayah-context-sources a {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 7px;
+  min-height: 36px;
+  color: #9db7ac;
+  font-size: 12px;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.ayah-context-sources a:hover {
   color: #d8eee3;
-  border-bottom-color: rgba(168,200,184,.42);
+  border-bottom-color: rgba(168,200,184,.34);
 }
 
 /* Composition remains a draft, but follows the same readable hierarchy. */
