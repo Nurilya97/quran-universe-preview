@@ -3337,3 +3337,22 @@
     max-height: 104px !important;
   }
 }
+
+/* Bring Meaning closer to the word-orbit action while preserving a clear gap */
+@media (max-width: 760px) {
+  .analysis-focus-callout.semantic {
+    top: calc(51.5% + 118px) !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .analysis-focus-callout.semantic {
+    top: calc(52% + 112px) !important;
+  }
+}
+
+@media (max-height: 720px) and (max-width: 760px) {
+  .analysis-focus-callout.semantic {
+    top: calc(52% + 100px) !important;
+  }
+}
