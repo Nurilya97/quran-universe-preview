@@ -296,6 +296,19 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
   }, [camera])
 
   useEffect(() => {
+    const onKeyDown = (event) => {
+      if (event.key !== 'Escape') return
+      if (selectedWord) {
+        setSelectedWord(null)
+        return
+      }
+      if (contextOpen) setContextOpen(false)
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [selectedWord, contextOpen])
+
+  useEffect(() => {
     setMode('analysis')
     setContextOpen(false)
     setSelectedWord(null)
@@ -474,11 +487,12 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
       <button className={'ayah-context-trigger' + (contextOpen ? ' is-open' : '')} onClick={() => setContextOpen(v => !v)}><InfoIcon /><span>{ru ? 'Контекст' : 'Context'}</span></button>
     </div>
 
-    <nav className="ayah-space-modes" aria-label={ru ? 'Слои Ayah Space' : 'Ayah Space layers'}>
+    <nav className="ayah-space-modes" role="tablist" aria-label={ru ? 'Слои Ayah Space' : 'Ayah Space layers'}>
       {modes.map(item => <button
         key={item.id}
         className={'mode-' + item.status}
-        aria-pressed={mode === item.id}
+        role="tab"
+        aria-selected={mode === item.id}
         onClick={() => changeMode(item.id)}
       >{item.label}</button>)}
     </nav>
@@ -518,9 +532,9 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     />}
 
     <div className="ayah-space-zoom">
-      <button onClick={() => { setHasInteracted(true); zoomBy(.08) }}>+</button>
+      <button aria-label={ru ? 'Увеличить масштаб' : 'Zoom in'} onClick={() => { setHasInteracted(true); zoomBy(.08) }}>+</button>
       <span>{Math.round(camera.scale * 100)}%</span>
-      <button onClick={() => { setHasInteracted(true); zoomBy(-.08) }}>−</button>
+      <button aria-label={ru ? 'Уменьшить масштаб' : 'Zoom out'} onClick={() => { setHasInteracted(true); zoomBy(-.08) }}>−</button>
     </div>
 
     {!hasInteracted && <div className="ayah-space-hint">{ru ? 'Перемещайте схему · нажмите слово, чтобы раскрыть его' : 'Move the diagram · tap a word to unfold it'}</div>}
