@@ -18,6 +18,23 @@ export const AYAH_PROTOTYPES = {
         en: 'A specific report is connected to the words وَتَزَوَّدُوا, “take provisions.” Ibn ʿAbbas reported that some pilgrims from Yemen travelled for Hajj without sufficient provisions, saying that they relied on Allah, and then sought help from people after arriving. The instruction to take provisions, followed by “the best provision is al-taqwā,” was revealed in this connection. The report appears in Sahih al-Bukhari 1523 and is also cited by al-Wahidi in Asbab al-Nuzul.',
       },
     },
+    contextSources: [
+      {
+        ru: 'О суре · Quran.com',
+        en: 'Surah info · Quran.com',
+        url: 'https://quran.com/surah/2/info',
+      },
+      {
+        ru: 'Сахих аль-Бухари 1523',
+        en: 'Sahih al-Bukhari 1523',
+        url: 'https://quran.com/2:197/hadith',
+      },
+      {
+        ru: 'Аль-Вахиди · Асбаб ан-нузуль',
+        en: 'Al-Wahidi · Asbab al-Nuzul',
+        url: 'https://www.altafsir.com/Tafasir.asp?LanguageId=2&UserProfile=0&tAyahNo=197&tDisplay=yes&tMadhNo=1&tSoraNo=2&tTafsirNo=86',
+      },
+    ],
     tokens: [
       { ar: 'ٱلْحَجُّ', tr: 'al-ḥajju', ru: 'хадж', en: 'the Hajj', roleRu: 'существительное · именительный', roleEn: 'noun · nominative' },
       { ar: 'أَشْهُرٌ', tr: 'ashhurun', ru: 'месяцы', en: 'months', roleRu: 'существительное · мн. число', roleEn: 'noun · plural' },
