@@ -384,20 +384,16 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
       {focusView === 'morphology' && <section className="analysis-morphology-screen" onClick={(event) => event.stopPropagation()}>
         <div className="analysis-morphology-canvas">
           <header className="analysis-morphology-hero">
-            <small>{ru ? 'МОРФОЛОГИЯ СЛОВА' : 'WORD MORPHOLOGY'}</small>
             <span lang="ar" dir="rtl">{selected.ar}</span>
             <em>{selected.tr}</em>
           </header>
 
           {isTaqwa ? <>
             <svg className="analysis-morphology-branch first" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
-              <defs>
-                <marker id="morphArrowA" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                  <path d="M 0 0 L 10 5 L 0 10 z" />
-                </marker>
-              </defs>
-              <path d="M430 8 L250 110" markerEnd="url(#morphArrowA)" />
-              <path d="M570 8 L750 110" markerEnd="url(#morphArrowA)" />
+              <path d="M430 8 L250 104" />
+              <circle cx="250" cy="104" r="5" />
+              <path d="M570 8 L750 104" />
+              <circle cx="750" cy="104" r="5" />
             </svg>
 
             <div className="analysis-morphology-level first-level">
@@ -406,8 +402,8 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
                 <small>{morphologyParts[1]?.tr || 'taqwā'}</small>
                 <b>{ru ? 'Слово без артикля' : 'Word without the article'}</b>
                 <p>{ru
-                  ? 'تَقْوَىٰ (taqwā) — существительное. Именно к этому слову присоединяется определённый артикль ٱلـ (al-).'
-                  : 'تَقْوَىٰ (taqwā) is a noun. The definite article ٱلـ (al-) attaches directly to this word.'}</p>
+                  ? 'تَقْوَىٰ (taqwā) — существительное. Контекстный перевод в этом аяте: «благочестие».'
+                  : 'تَقْوَىٰ (taqwā) is a noun. A contextual rendering in this ayah is “piety”.'}</p>
               </article>
 
               <article className="analysis-morphology-node article">
@@ -421,13 +417,10 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
             </div>
 
             <svg className="analysis-morphology-branch second" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
-              <defs>
-                <marker id="morphArrowB" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                  <path d="M 0 0 L 10 5 L 0 10 z" />
-                </marker>
-              </defs>
-              <path d="M420 8 L250 110" markerEnd="url(#morphArrowB)" />
-              <path d="M580 8 L750 110" markerEnd="url(#morphArrowB)" />
+              <path d="M420 8 L250 104" />
+              <circle cx="250" cy="104" r="5" />
+              <path d="M580 8 L750 104" />
+              <circle cx="750" cy="104" r="5" />
             </svg>
 
             <div className="analysis-morphology-level second-level">
@@ -450,10 +443,12 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
               </article>
             </div>
 
-            {morphology?.text && <div className="analysis-morphology-note">
-              <strong>{ru ? 'Как устроена форма' : 'How the form is built'}</strong>
-              <p>{morphology.text}</p>
-            </div>}
+            <div className="analysis-morphology-note">
+              <strong>{ru ? 'Итог' : 'Summary'}</strong>
+              <p>{ru
+                ? 'ٱلتَّقْوَىٰ (al-taqwā) состоит из ٱلـ (al-) + تَقْوَىٰ (taqwā). تَقْوَىٰ (taqwā) — существительное, связанное с корнем و ق ي (w-q-y) «защищать / оберегать» и построенное по модели فَعْلَى (faʿlā). В контексте 2:197 его краткий перевод — «благочестие». Артикль ٱلـ (al-) присоединяется к تَقْوَىٰ (taqwā), потому что здесь существительное употреблено в определённой форме: речь идёт о конкретно обозначенном качестве в утверждении аята.'
+                : 'ٱلتَّقْوَىٰ (al-taqwā) is built from ٱلـ (al-) + تَقْوَىٰ (taqwā). تَقْوَىٰ (taqwā) is a noun related to the root و ق ي (w-q-y), “to protect / guard,” and follows the pattern فَعْلَى (faʿlā). In 2:197, a concise contextual rendering is “piety.” The article ٱلـ (al-) attaches because the noun is used here in a definite form: the statement points to a specifically identified quality.'}</p>
+            </div>
           </> : <div className="analysis-morphology-generic">
             {morphologyParts.map((part, index) => <article className="analysis-morphology-node" key={index}>
               <span lang="ar" dir="rtl">{part.ar}</span>
