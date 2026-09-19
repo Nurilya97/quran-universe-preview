@@ -5193,3 +5193,35 @@
     gap: 14px !important;
   }
 }
+
+
+/* Keep research tools separate from evidence used for the context copy. */
+.ayah-context-tools {
+  margin-top: 12px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.055);
+  display: grid;
+  gap: 6px;
+}
+.ayah-context-tools > small {
+  margin-bottom: 3px;
+  color: #6f7d82;
+  font-size: 10px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.ayah-context-tools a {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 7px;
+  min-height: 36px;
+  color: #9db7ac;
+  font-size: 12px;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.ayah-context-tools a:hover {
+  color: #d8eee3;
+  border-bottom-color: rgba(168,200,184,.34);
+}
