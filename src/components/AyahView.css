@@ -4369,32 +4369,31 @@
   }
 }
 
-/* Morphology note polish: underline note headings and keep connector endpoints as clean circles */
+/* Morphology connector endpoints: keep labels clean and dots perfectly circular */
 .analysis-morphology-node > b::after {
-  content: '' !important;
-  display: block !important;
-  width: 38px !important;
-  height: 1px !important;
-  margin: 7px auto 0 !important;
-  border-radius: 999px;
-  background: rgba(255,255,255,.22) !important;
+  display: none !important;
 }
 
 .analysis-morphology-branch .branch-line::after {
   width: 8px !important;
   height: 8px !important;
+  min-width: 8px;
+  min-height: 8px;
   right: -4px !important;
-  border: 1px solid rgba(255,255,255,.34);
-  border-radius: 50% !important;
+  border: 0 !important;
+  border-radius: 999px !important;
   box-sizing: border-box;
   background: #f5f8f9 !important;
-  box-shadow: 0 0 6px rgba(255,255,255,.13) !important;
+  box-shadow: 0 0 0 1px rgba(5,7,9,.72), 0 0 6px rgba(255,255,255,.12) !important;
+  clip-path: circle(50%);
 }
 
 @media (max-width: 420px) {
   .analysis-morphology-branch .branch-line::after {
     width: 7px !important;
     height: 7px !important;
+    min-width: 7px;
+    min-height: 7px;
     right: -3.5px !important;
   }
 }
