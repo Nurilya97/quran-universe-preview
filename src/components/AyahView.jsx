@@ -148,6 +148,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
   const selected = ayah.tokens[selectedWord - 1]
   if (!selected) return null
   const ru = language === 'ru'
+  const meaning = selected.analysis?.[language]?.meaning
   const morphology = selected.analysis?.[language]?.morphology
   const morphologyParts = morphology?.parts || []
   const isTaqwa = selected.orbitId === 'taqwa'
@@ -163,6 +164,16 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
           <i aria-hidden="true" />
           <small>{ru ? 'значение' : 'meaning'}</small>
           <p>{ru ? selected.ru : selected.en}</p>
+        </div>
+        <div className="word-meaning-explanation">
+          {(meaning?.description || (ru ? selected.noteRu : selected.noteEn)) && <section>
+            <h3>{ru ? 'Смысл в этом аяте' : 'Meaning in this ayah'}</h3>
+            <p>{meaning?.description || (ru ? selected.noteRu : selected.noteEn)}</p>
+          </section>}
+          {meaning?.translation && <section>
+            <h3>{ru ? 'Почему такой перевод' : 'Why this translation'}</h3>
+            <p>{meaning.translation}</p>
+          </section>}
         </div>
         {selected.orbitId && <button className="word-meaning-orbit" onClick={() => onOpenWordOrbit?.(selected)}>
           {ru ? 'Перейти в орбиту слова →' : 'Open word orbit →'}

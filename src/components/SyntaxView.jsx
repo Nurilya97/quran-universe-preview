@@ -1,5 +1,6 @@
 import { useId, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { getSyntaxPresentation } from '../syntaxPresentation.js'
+import { SYNTAX_TERMS, STEP_ROLES } from '../syntaxTerms.js'
 
 export function SyntaxView({ ayah, selectedWord, language }) {
   const ru = language === 'ru'
@@ -7,6 +8,7 @@ export function SyntaxView({ ayah, selectedWord, language }) {
   const covered = model && selectedWord >= model.range[0] && selectedWord <= model.range[1]
   const [explore, setExplore] = useState(false)
   const [stepIndex, setStepIndex] = useState(0)
+  const [selectedTerm, setSelectedTerm] = useState(null)
   const [geometry, setGeometry] = useState(null)
   const clauseRef = useRef(null)
   const wordRefs = useRef({})
@@ -14,6 +16,30 @@ export function SyntaxView({ ayah, selectedWord, language }) {
   const enabled = model && (covered || explore)
   const overview = enabled && stepIndex === model.steps.length
   const step = enabled && !overview ? model.steps[stepIndex] : null
+
+  const roles = enabled ? (overview ? [...STEP_ROLES.inna, ...STEP_ROLES.idafa, { word:26, term:'khabarInna' }] : STEP_ROLES[step.id]) : []
+  const term = SYNTAX_TERMS[selectedTerm]
+  const detailId = marker + '-term'
+  function changeStep(index) { setStepIndex(index); setSelectedTerm(null) }
+  function termButton(id, label) {
+    const item = SYNTAX_TERMS[id]
+    return <button type="button" key={id} className={'syntax-term tone-' + item.tone}
+      aria-expanded={selectedTerm === id} aria-controls={detailId}
+      onClick={() => setSelectedTerm(current => current === id ? null : id)}>{label || item.ar}</button>
+  }
+  function explainTerms(text) {
+    const aliases = Object.entries(SYNTAX_TERMS).flatMap(([id, item]) => item.aliases.map(alias => ({id, alias}))).sort((a,b) => b.alias.length - a.alias.length)
+    const pieces = []
+    let pos = 0
+    while (pos < text.length) {
+      const found = aliases.map(a => ({...a, at:text.indexOf(a.alias,pos)})).filter(a => a.at >= 0).sort((a,b) => a.at-b.at || b.alias.length-a.alias.length)[0]
+      if (!found) { pieces.push(text.slice(pos)); break }
+      pieces.push(text.slice(pos,found.at))
+      pieces.push(<span key={found.at}>{termButton(found.id,found.alias)}</span>)
+      pos = found.at + found.alias.length
+    }
+    return pieces
+  }
 
   useLayoutEffect(() => {
     const element = clauseRef.current
@@ -39,7 +65,7 @@ export function SyntaxView({ ayah, selectedWord, language }) {
 
   function chooseWord(index) {
     const next = model.steps.findIndex(s => s.to === index)
-    setStepIndex(next < 0 ? 0 : next)
+    changeStep(next < 0 ? 0 : next)
   }
   const plainWords = (from, to) => ayah.tokens.slice(from - 1, to).map((token, i) =>
     <span key={from + i} className={selectedWord === from + i ? 'syntax-entry' : ''}>{token.ar}{' '}</span>)
@@ -49,17 +75,21 @@ export function SyntaxView({ ayah, selectedWord, language }) {
       <span>{ru ? 'Синтаксис' : 'Syntax'}</span><small>{ayah.reference}</small>
     </header>
     <p className="syntax-reading-hint">{ru ? 'Как слова соединяются в предложение' : 'How words form a sentence'}</p>
-    <div className="syntax-verse" lang="ar" dir="rtl" aria-label={ru ? 'Аят целиком' : 'Full ayah'}>
+    <div className="syntax-verse" lang="ar" dir="rtl" aria-label={ru ? 'Разбираемая фраза' : 'Phrase under analysis'}>
       {enabled ? <>
-        <div className="syntax-verse-context">{plainWords(1, model.range[0] - 1)}</div>
         <div className="syntax-clause" ref={clauseRef}>
           <div className="syntax-clause-words">
             {ayah.tokens.slice(model.range[0] - 1, model.range[1]).map((token, i) => {
               const index = model.range[0] + i
               const active = overview || step?.active.includes(index)
-              return <button key={index} ref={el => { wordRefs.current[index] = el }}
+              const wordRoles = roles.filter(r => r.word === index)
+              const highlighted = term ? term.words.includes(index) : active
+              return <div key={index} className={'syntax-word-zone' + (highlighted ? ' is-highlighted' : '') + (term && !highlighted ? ' is-muted' : '') + ' tone-' + (wordRoles[0] ? SYNTAX_TERMS[wordRoles[0].term].tone : 'a')}>
+              <button ref={el => { wordRefs.current[index] = el }}
                 className={'syntax-word' + (active ? ' is-active' : '') + (index === selectedWord ? ' is-entry' : '')}
                 onClick={() => chooseWord(index)} aria-pressed={!!active}>{token.ar}</button>
+              <div className="syntax-word-roles">{wordRoles.map(r => termButton(r.term))}</div>
+              </div>
             })}
           </div>
           {geometry && <svg className={'syntax-connectors' + (overview ? ' is-overview' : '')}
@@ -77,37 +107,44 @@ export function SyntaxView({ ayah, selectedWord, language }) {
                 {s.group && <path className="syntax-group-line" d={`M ${geometry.points[24].right - 4} 0 H ${geometry.points[25].left + 4}`} />}
                 <path className="syntax-link" d={path} markerEnd={`url(#${marker})`} />
                 <path className="syntax-link-hit" d={path} role="button" tabIndex="0"
-                  aria-label={`${i + 1}. ${s.tr}`} onClick={() => setStepIndex(i)}
-                  onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setStepIndex(i) } }} />
+                  aria-label={`${i + 1}. ${s.tr}`} onClick={() => changeStep(i)}
+                  onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); changeStep(i) } }} />
                 {overview && <text x={(x + to.x) / 2} y={depth * .75 + 16} textAnchor="middle">{i + 1}</text>}
               </g>
             })}
           </svg>}
         </div>
-        <div className="syntax-verse-context syntax-verse-tail">{plainWords(model.range[1] + 1, ayah.tokens.length)}</div>
-      </> : <div className="syntax-verse-context">{plainWords(1, ayah.tokens.length)}</div>}
+      </> : <div className="syntax-verse-context">{plainWords(selectedWord, selectedWord)}</div>}
     </div>
 
     {enabled ? <>
       <nav className="syntax-step-nav" aria-label={ru ? 'Шаги синтаксического разбора' : 'Syntax steps'} dir="ltr">
-        <button disabled={stepIndex === 0} onClick={() => setStepIndex(i => i - 1)} aria-label={ru ? 'Предыдущий шаг' : 'Previous step'}>‹</button>
+        <button disabled={stepIndex === 0} onClick={() => changeStep(stepIndex - 1)} aria-label={ru ? 'Предыдущий шаг' : 'Previous step'}>‹</button>
         <span>{stepIndex + 1} / {model.steps.length + 1}</span>
-        <button disabled={overview} onClick={() => setStepIndex(i => i + 1)} aria-label={ru ? 'Следующий шаг' : 'Next step'}>›</button>
+        <button disabled={overview} onClick={() => changeStep(stepIndex + 1)} aria-label={ru ? 'Следующий шаг' : 'Next step'}>›</button>
       </nav>
       <div className="syntax-explanation" aria-live="polite" aria-atomic="true">
         {step ? <>
-          <h3 lang="ar" dir="rtl">{step.term}</h3>
-          <small>{step.tr}</small>
-          <p>{step[language]}</p>
+          <div className="syntax-active-terms">{[...new Set(roles.map(r => r.term))].map(id => <div key={id}>{termButton(id)}<small>{SYNTAX_TERMS[id].tr}</small></div>)}</div>
+          <p>{explainTerms(step[language])}</p>
         </> : <>
           <h3>{ru ? 'Конструкция целиком' : 'The complete clause'}</h3>
           <p>{ru ? 'Три связи собирают одно утверждение. Нажмите на линию или слово, чтобы вернуться к шагу.' : 'Three relationships form one statement. Tap a line or word to revisit a step.'}</p>
-          <div className="syntax-overview-key">{model.steps.map((s, i) => <button key={s.id} onClick={() => setStepIndex(i)}>{i + 1} · {s.tr}</button>)}</div>
+          <div className="syntax-overview-key">{model.steps.map((s, i) => <button key={s.id} onClick={() => changeStep(i)}>{i + 1} · {s.tr}</button>)}</div>
+        </>}
+      </div>
+      <p className="syntax-term-hint">{ru ? 'Нажмите на термин — его участок выделится, а ниже откроется пояснение.' : 'Tap a term to highlight its words and read the explanation below.'}</p>
+      <div id={detailId} className="syntax-term-detail" aria-live="polite">
+        {term && <>
+          <header><h3><span lang="ar" dir="rtl">{term.ar}</span><small>{term.tr}</small></h3>
+            <button aria-label={ru ? 'Закрыть пояснение термина' : 'Close term explanation'} onClick={() => setSelectedTerm(null)}>×</button></header>
+          <div className="syntax-term-example" lang="ar" dir="rtl">{term.words.map(i => ayah.tokens[i-1].ar).join(' ')}</div>
+          {term[language].map((text,i) => <p key={i}>{explainTerms(text)}</p>)}
         </>}
       </div>
       <p className="syntax-coverage">{ru ? 'Пока разобрана конструкция 2:197:23–26. Связи остальных слов ещё не добавлены.' : 'This analysis covers 2:197:23–26. Relationships for the remaining words have not been added yet.'}</p>
     </> : <div className="syntax-empty">
-      <p>{ru ? 'Для выбранного слова связи пока не подтверждены. Полный текст аята сохранён выше.' : 'Relationships for this word are not yet confirmed. The full ayah is shown above.'}</p>
+      <p>{ru ? 'Для выбранного слова связи пока не подтверждены.' : 'Relationships for this word are not yet confirmed.'}</p>
       {model && <button onClick={() => setExplore(true)}>{ru ? 'Посмотреть разбор конструкции с إِنَّ' : 'Explore the clause with إِنَّ'}</button>}
     </div>}
   </section>

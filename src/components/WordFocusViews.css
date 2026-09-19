@@ -64,3 +64,45 @@
 
 .word-focus-return { position: absolute; top: 18px; right: 20px; z-index: 21; width: 44px; height: 44px; background: none; border: 0; color: #aebfc3; font: 26px system-ui; cursor: pointer; }
 .word-focus-return:focus-visible { outline: 1px solid #b8d9c4; }
+/* Focus the syntax on its phrase and connect terminology to exact word zones. */
+.syntax-clause { margin-top: 48px; }
+.syntax-clause-words { align-items: stretch; }
+.syntax-word-zone { --term-color: #a6d0c2; flex: 1 1 0; min-width: 0; border-radius: 12px; padding: 8px 2px 4px; border-bottom: 1px solid transparent; transition: background .2s, opacity .2s; }
+.tone-a { --term-color: #a6d0c2; }
+.tone-b { --term-color: #dfc799; }
+.tone-c { --term-color: #c5b5de; }
+.syntax-word-zone.is-highlighted { background: color-mix(in srgb, var(--term-color) 8%, transparent); border-bottom-color: var(--term-color); }
+.syntax-word-zone.is-muted { opacity: .4; }
+.syntax-word-zone .syntax-word.is-active { color: var(--term-color); border: 0; }
+.syntax-word-roles { display:flex; flex-direction:column; align-items:center; min-height:44px; }
+.syntax-term { background: none; border:0; border-bottom:1px dotted var(--term-color, #a6d0c2); color:var(--term-color, #a6d0c2); font:inherit; padding:2px 0; cursor:pointer; }
+.syntax-term[aria-expanded="true"] { border-bottom-style:solid; text-shadow:0 0 14px currentColor; }
+.syntax-word-roles .syntax-term { font-size:14px; min-height:44px; line-height:1.8; }
+.syntax-active-terms { display:flex; flex-wrap:wrap; justify-content:center; gap:12px 24px; }
+.syntax-active-terms .syntax-term { font-family:'Noto Sans Arabic',sans-serif; font-size:23px; min-height:44px; }
+.syntax-active-terms small { display:block; font-size:14px; color:#95a9a4; margin-top:5px; }
+.syntax-term-hint { text-align:center; color:#96aaa5; font-size:14px; line-height:1.7; margin:22px auto; max-width:530px; }
+.syntax-term-detail { max-width:530px; margin:0 auto; scroll-margin-bottom:100px; }
+.syntax-term-detail:not(:empty) { border-top:1px solid #a6d0c23a; padding-top:18px; }
+.syntax-term-detail header { display:flex; justify-content:space-between; align-items:start; }
+.syntax-term-detail h3 { font:24px/1.8 'Noto Sans Arabic',sans-serif; margin:0; }
+.syntax-term-detail h3 small { display:block; font:14px/1.8 system-ui; color:#a0b6aa; }
+.syntax-term-detail header > button { background:none; border:0; color:#adbfba; min-width:44px; min-height:44px; font-size:24px; }
+.syntax-term-example { font:28px/2 'Noto Sans Arabic',sans-serif; text-align:center; color:#d4e6dd; margin:12px 0; }
+.syntax-term-detail p { font-size:16px; line-height:1.85; color:#bac7c8; }
+.word-meaning-view { display:block; padding-top:82px; }
+.word-meaning-hero { margin:10px auto 0; }
+.word-meaning-note { width:fit-content; margin:26px auto 0; }
+.word-meaning-explanation { max-width:560px; margin:36px auto 0; text-align:left; }
+.word-meaning-explanation section + section { margin-top:30px; }
+.word-meaning-explanation h3 { font-size:16px; font-weight:400; color:#b4cbbf; margin:0 0 12px; }
+.word-meaning-explanation p { font-size:16px; line-height:1.85; margin:0; color:#bdc8cd; }
+.word-meaning-orbit { margin-top:28px; }
+@media (max-width:760px) {
+  .syntax-notebook { padding-inline:16px; }
+  .syntax-clause { margin-top:30px; }
+  .syntax-word { font-size:24px; }
+  .syntax-word-zone { padding-inline:0; }
+  .syntax-word-roles .syntax-term { font-size:14px; }
+  .word-meaning-view { padding-inline:22px; }
+}
