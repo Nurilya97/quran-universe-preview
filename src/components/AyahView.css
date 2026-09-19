@@ -2974,17 +2974,14 @@
     font-size: 19px !important;
     line-height: 1.55 !important;
   }
-  .composition-summary,
   .sound-annotation,
   .translation-annotation {
     width: 560px !important;
   }
-  .composition-summary span,
   .sound-annotation span,
   .translation-annotation span {
     font-size: 16px !important;
   }
-  .composition-summary p,
   .sound-annotation p,
   .translation-annotation p {
     margin-top: 9px !important;
@@ -4989,17 +4986,6 @@
 .composition-constellation p {
   max-width: 590px;
   margin-top: 9px;
-  font-size: 12.5px;
-  line-height: 1.7;
-}
-
-.composition-summary span {
-  font-size: 10px;
-}
-
-.composition-summary p {
-  max-width: 720px;
-  margin-inline: auto;
   font-size: 12.5px;
   line-height: 1.7;
 }
