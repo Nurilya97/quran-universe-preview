@@ -9,6 +9,7 @@ export function SyntaxView({ ayah, selectedWord, language }) {
   const [explore, setExplore] = useState(false)
   const [stepIndex, setStepIndex] = useState(0)
   const [selectedTerm, setSelectedTerm] = useState(null)
+  const [termHintSeen, setTermHintSeen] = useState(false)
   const [geometry, setGeometry] = useState(null)
   const clauseRef = useRef(null)
   const wordRefs = useRef({})
@@ -19,6 +20,9 @@ export function SyntaxView({ ayah, selectedWord, language }) {
     ? (step.id === 'inna' ? ['inna', 'ismInna'] : step.id === 'idafa' ? ['idafa', 'mudaf', 'mudafIlayhi'] : ['khabarInna'])
     : []
   const term = SYNTAX_TERMS[selectedTerm]
+  const stepShortLabel = step
+    ? (step.id === 'inna' ? 'إِنَّ' : step.id === 'idafa' ? (ru ? 'Идафа' : 'Iḍāfa') : 'خبر إِنَّ')
+    : ''
   const detailId = marker + '-term'
   const wordTone = (index) => index === 25 ? 'b' : index === 26 ? 'c' : 'a'
   function changeStep(index) { setStepIndex(index); setSelectedTerm(null) }
@@ -26,7 +30,10 @@ export function SyntaxView({ ayah, selectedWord, language }) {
     const item = SYNTAX_TERMS[id]
     return <button type="button" key={id} className={'syntax-term tone-' + item.tone}
       aria-expanded={selectedTerm === id} aria-controls={detailId}
-      onClick={() => setSelectedTerm(current => current === id ? null : id)}>{label || item.ar}</button>
+      onClick={() => {
+        setTermHintSeen(true)
+        setSelectedTerm(current => current === id ? null : id)
+      }}>{label || item.ar}</button>
   }
   function explainTerms(text) {
     const aliases = Object.entries(SYNTAX_TERMS).flatMap(([id, item]) => item.aliases.map(alias => ({id, alias}))).sort((a,b) => b.alias.length - a.alias.length)
@@ -125,14 +132,14 @@ export function SyntaxView({ ayah, selectedWord, language }) {
     {enabled ? <>
       <nav className="syntax-step-nav" aria-label={ru ? 'Шаги синтаксического разбора' : 'Syntax steps'} dir="ltr">
         <button disabled={stepIndex === 0} onClick={() => changeStep(stepIndex - 1)} aria-label={ru ? 'Предыдущий шаг' : 'Previous step'}>‹</button>
-        <span>{stepIndex + 1} / {model.steps.length}</span>
+        <span>{stepIndex + 1} / {model.steps.length}{stepShortLabel ? <> · <b>{stepShortLabel}</b></> : null}</span>
         <button disabled={stepIndex === model.steps.length - 1} onClick={() => changeStep(stepIndex + 1)} aria-label={ru ? 'Следующий шаг' : 'Next step'}>›</button>
       </nav>
       {step && <>
         <div className="syntax-explanation" aria-live="polite" aria-atomic="true">
           <p>{explainTerms(step[language])}</p>
         </div>
-        <p className="syntax-term-hint">{ru ? 'Нажмите на термин — его участок выделится, а пояснение откроется ниже.' : 'Tap a term to highlight its words and read the explanation below.'}</p>
+        {!termHintSeen && <p className="syntax-term-hint">{ru ? 'Нажмите на термин — его участок выделится, а пояснение откроется ниже.' : 'Tap a term to highlight its words and read the explanation below.'}</p>}
         <div id={detailId} className="syntax-term-detail" aria-live="polite">
           {term && <>
             <header><h3><span lang="ar" dir="rtl">{term.ar}</span><small>{term.tr}</small></h3>
