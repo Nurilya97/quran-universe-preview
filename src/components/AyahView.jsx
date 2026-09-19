@@ -305,7 +305,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
 
   return <div className={'analysis-focus-overlay focus-view-' + focusView} onClick={onClose}>
     <div className="analysis-focus-space" onClick={onClose}>
-      {focusView === 'word' ? <>
+      {focusView === 'word' && <>
       <div className="analysis-focus-word">
         <span lang="ar" dir="rtl">{selected.ar}</span>
         <small>{selected.tr}</small>
