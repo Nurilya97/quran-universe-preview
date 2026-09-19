@@ -4874,3 +4874,39 @@
     left: 29.5% !important;
   }
 }
+
+
+/* Morphology stage flow v3: visibly separate origins beneath taqwa */
+.analysis-morphology-branch.second .branch-line.down {
+  left: 23% !important;
+}
+
+.analysis-morphology-branch.second .branch-line.to-pattern {
+  left: 34% !important;
+  width: 44% !important;
+  transform: rotate(20deg) !important;
+}
+
+@media (max-width: 760px) {
+  .analysis-morphology-branch.second .branch-line.down {
+    left: 23% !important;
+  }
+
+  .analysis-morphology-branch.second .branch-line.to-pattern {
+    left: 34% !important;
+    width: 44% !important;
+    transform: rotate(20deg) !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .analysis-morphology-branch.second .branch-line.down {
+    left: 22.5% !important;
+  }
+
+  .analysis-morphology-branch.second .branch-line.to-pattern {
+    left: 34.5% !important;
+    width: 43.5% !important;
+    transform: rotate(20.5deg) !important;
+  }
+}
