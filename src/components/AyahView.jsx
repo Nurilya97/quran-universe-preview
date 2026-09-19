@@ -148,6 +148,20 @@ function CalloutPager({ page, count, onChange, language }) {
   </div>
 }
 
+function CalloutScrollNudge({ language }) {
+  function nudgeDown(event) {
+    event.stopPropagation()
+    const page = event.currentTarget.parentElement?.querySelector('.analysis-callout-page')
+    page?.scrollBy?.({ top: 88, behavior: 'smooth' })
+  }
+
+  return <button
+    className="analysis-callout-scroll-nudge"
+    onClick={nudgeDown}
+    aria-label={language === 'ru' ? 'Прокрутить ниже' : 'Scroll down'}
+  >⌄</button>
+}
+
 function splitCalloutText(text, maxLength = 175) {
   if (!text) return []
 
@@ -190,11 +204,9 @@ function splitCalloutText(text, maxLength = 175) {
 
 function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrbit }) {
   const [pages, setPages] = useState({ morph: 0, syntax: 0, semantic: 0 })
-  const [collapsed, setCollapsed] = useState({ morph: false, syntax: false, semantic: false })
 
   useEffect(() => {
     setPages({ morph: 0, syntax: 0, semantic: 0 })
-    setCollapsed({ morph: false, syntax: false, semantic: false })
   }, [selectedWord])
 
   if (!selectedWord) return null
@@ -287,7 +299,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
     <p className="analysis-detail-text">{text}</p>
   </div>)
 
-  const semanticTranslationPages = splitCalloutText(meaning?.translation, 620).map((text, index) => <div key={'translation-' + index}>
+  const semanticTranslationPages = splitCalloutText(meaning?.translation, 320).map((text, index) => <div key={'translation-' + index}>
     <strong>{index === 0 ? (ru ? 'Почему такой перевод' : 'Why this translation') : (ru ? 'Продолжение' : 'Continued')}</strong>
     <p className="analysis-translation-choice">{text}</p>
   </div>)
@@ -299,10 +311,6 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
 
   function setPage(kind, value) {
     setPages(current => ({ ...current, [kind]: value }))
-  }
-
-  function toggleCallout(kind) {
-    setCollapsed(current => ({ ...current, [kind]: !current[kind] }))
   }
 
   return <div className="analysis-focus-overlay" onClick={onClose}>
@@ -321,45 +329,24 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
         <circle className="semantic-dot" cx="500" cy="565" r="4" />
       </svg>
 
-      <section className={'analysis-focus-callout morph' + (collapsed.morph ? ' is-collapsed' : '')} onClick={(event) => event.stopPropagation()}>
-        <div className="analysis-callout-head">
-          <small>{ru ? 'МОРФОЛОГИЯ' : 'MORPHOLOGY'}</small>
-          <button
-            className="analysis-callout-toggle"
-            onClick={() => toggleCallout('morph')}
-            aria-expanded={!collapsed.morph}
-            aria-label={collapsed.morph ? (ru ? 'Развернуть морфологию' : 'Expand morphology') : (ru ? 'Свернуть морфологию' : 'Collapse morphology')}
-          >{collapsed.morph ? '▾' : '▴'}</button>
-        </div>
+      <section className="analysis-focus-callout morph" onClick={(event) => event.stopPropagation()}>
+        <small>{ru ? 'МОРФОЛОГИЯ' : 'MORPHOLOGY'}</small>
         <div className="analysis-callout-page">{morphPages[pages.morph]}</div>
+        <CalloutScrollNudge language={language} />
         <CalloutPager page={pages.morph} count={morphPages.length} onChange={(value) => setPage('morph', value)} language={language} />
       </section>
 
-      <section className={'analysis-focus-callout syntax' + (collapsed.syntax ? ' is-collapsed' : '')} onClick={(event) => event.stopPropagation()}>
-        <div className="analysis-callout-head">
-          <small>{ru ? 'СИНТАКСИС' : 'SYNTAX'}</small>
-          <button
-            className="analysis-callout-toggle"
-            onClick={() => toggleCallout('syntax')}
-            aria-expanded={!collapsed.syntax}
-            aria-label={collapsed.syntax ? (ru ? 'Развернуть синтаксис' : 'Expand syntax') : (ru ? 'Свернуть синтаксис' : 'Collapse syntax')}
-          >{collapsed.syntax ? '▾' : '▴'}</button>
-        </div>
+      <section className="analysis-focus-callout syntax" onClick={(event) => event.stopPropagation()}>
+        <small>{ru ? 'СИНТАКСИС' : 'SYNTAX'}</small>
         <div className="analysis-callout-page">{syntaxPages[pages.syntax]}</div>
+        <CalloutScrollNudge language={language} />
         <CalloutPager page={pages.syntax} count={syntaxPages.length} onChange={(value) => setPage('syntax', value)} language={language} />
       </section>
 
-      <section className={'analysis-focus-callout semantic' + (collapsed.semantic ? ' is-collapsed' : '')} onClick={(event) => event.stopPropagation()}>
-        <div className="analysis-callout-head">
-          <small>{ru ? 'ЗНАЧЕНИЕ' : 'MEANING'}</small>
-          <button
-            className="analysis-callout-toggle"
-            onClick={() => toggleCallout('semantic')}
-            aria-expanded={!collapsed.semantic}
-            aria-label={collapsed.semantic ? (ru ? 'Развернуть значение' : 'Expand meaning') : (ru ? 'Свернуть значение' : 'Collapse meaning')}
-          >{collapsed.semantic ? '▾' : '▴'}</button>
-        </div>
+      <section className="analysis-focus-callout semantic" onClick={(event) => event.stopPropagation()}>
+        <small>{ru ? 'ЗНАЧЕНИЕ' : 'MEANING'}</small>
         <div className="analysis-callout-page">{semanticPages[pages.semantic]}</div>
+        <CalloutScrollNudge language={language} />
         <CalloutPager page={pages.semantic} count={semanticPages.length} onChange={(value) => setPage('semantic', value)} language={language} />
         {pages.semantic === semanticPages.length - 1 && <button
           className="analysis-orbit-button"
