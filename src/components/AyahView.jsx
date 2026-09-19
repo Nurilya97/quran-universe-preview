@@ -17,9 +17,6 @@ function ExternalIcon() {
 const WORLD = { width: 2500, height: 1900 }
 const BLOCK_Y = [300, 620, 940, 1260, 1580]
 const WORD_GAP = 152
-const ANALYSIS_ROW_Y = [650, 790, 930, 1070]
-const ANALYSIS_ROW_COUNTS = [8, 7, 7, 7]
-const ANALYSIS_WORD_GAP = 145
 const VIEW_BOUNDS = {
   analysis: { left: 650, right: 1850, top: 430, bottom: 1360 },
   composition: { left: 430, right: 2070, top: 40, bottom: 1840 },
@@ -47,22 +44,6 @@ function phraseTokens(ayah, block) {
 
 function phraseText(ayah, block) {
   return phraseTokens(ayah, block).map(token => token.ar).join(' ')
-}
-
-function analysisWordPosition(index) {
-  let remaining = index
-  for (let row = 0; row < ANALYSIS_ROW_COUNTS.length; row += 1) {
-    const count = ANALYSIS_ROW_COUNTS[row]
-    if (remaining <= count) {
-      const i = remaining - 1
-      return {
-        x: WORLD.width / 2 + ((count - 1) / 2 - i) * ANALYSIS_WORD_GAP,
-        y: ANALYSIS_ROW_Y[row],
-      }
-    }
-    remaining -= count
-  }
-  return { x: WORLD.width / 2, y: ANALYSIS_ROW_Y[ANALYSIS_ROW_Y.length - 1] }
 }
 
 function layoutBlock(block, blockIndex) {
@@ -492,6 +473,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
   function changeMode(nextMode) {
     setMode(nextMode)
     setSelectedWord(null)
+    setContextOpen(false)
     const scale = defaultScale()
     requestAnimationFrame(() => {
       const next = clampCamera({ x: 0, y: 0, scale }, nextMode)
