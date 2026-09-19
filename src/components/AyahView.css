@@ -3211,35 +3211,13 @@
   }
 }
 
-/* Minimal overflow affordance: keep the previous layout, allow a small downward read */
+/* Callout overflow: keep card geometry, allow direct touch scrolling */
 .analysis-focus-callout {
   position: absolute;
 }
 
-.analysis-callout-scroll-nudge {
-  position: absolute;
-  z-index: 9;
-  right: 10px;
-  bottom: 48px;
-  display: grid;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius: 50%;
-  background: rgba(9,13,16,.82);
-  color: #aeb8be;
-  font: inherit;
-  font-size: 18px;
-  line-height: 1;
-  box-shadow: 0 6px 18px rgba(0,0,0,.24);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.analysis-callout-scroll-nudge:active {
-  transform: translateY(1px);
-  color: #fff;
+.analysis-focus-callout.morph > small {
+  margin-bottom: 14px !important;
 }
 
 @media (max-width: 760px) {
@@ -3260,11 +3238,7 @@
     overflow-y: auto !important;
   }
 
-  .analysis-callout-scroll-nudge {
-    right: 9px;
-    bottom: 46px;
-    width: 27px;
-    height: 27px;
-    font-size: 17px;
+  .analysis-focus-callout.morph > small {
+    margin-bottom: 13px !important;
   }
 }
