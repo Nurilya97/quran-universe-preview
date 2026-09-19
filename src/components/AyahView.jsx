@@ -77,13 +77,13 @@ function AnalysisDiagram({ ayah, focusWordIndex, language, selectedWord, onSelec
         })}
       </div>
 
+      {!selectedWord && <div className="analysis-tap-hint">
+        {language === 'ru' ? 'Нажмите на любое слово предложения' : 'Tap any word in the sentence'}
+      </div>}
       <div className="analysis-verse-reference">
         <span>{ayah.reference}</span>
         <small>{ayah.surah[language]}</small>
       </div>
-      {!selectedWord && <div className="analysis-tap-hint">
-        {language === 'ru' ? 'Нажмите на любое слово' : 'Tap any word'}
-      </div>}
     </div>
   </div>
 }
