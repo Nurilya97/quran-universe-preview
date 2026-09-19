@@ -1,4 +1,4 @@
-import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { useId, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { getSyntaxPresentation } from '../syntaxPresentation.js'
 import { SYNTAX_TERMS } from '../syntaxTerms.js'
 
@@ -15,6 +15,9 @@ export function SyntaxView({ ayah, selectedWord, language }) {
   const marker = useId().replace(/:/g, '')
   const enabled = model && (covered || explore)
   const step = enabled ? model.steps[stepIndex] : null
+  const relationTerms = step
+    ? (step.id === 'inna' ? ['inna', 'ismInna'] : step.id === 'idafa' ? ['idafa', 'mudaf', 'mudafIlayhi'] : ['khabarInna'])
+    : []
   const term = SYNTAX_TERMS[selectedTerm]
   const detailId = marker + '-term'
   const wordTone = (index) => index === 25 ? 'b' : index === 26 ? 'c' : 'a'
@@ -22,7 +25,7 @@ export function SyntaxView({ ayah, selectedWord, language }) {
   function termButton(id, label) {
     const item = SYNTAX_TERMS[id]
     return <button type="button" key={id} className={'syntax-term tone-' + item.tone}
-      aria-expanded={selectedTerm === id} aria-controls={detailId} aria-haspopup="dialog"
+      aria-expanded={selectedTerm === id} aria-controls={detailId}
       onClick={() => setSelectedTerm(current => current === id ? null : id)}>{label || item.ar}</button>
   }
   function explainTerms(text) {
@@ -38,15 +41,6 @@ export function SyntaxView({ ayah, selectedWord, language }) {
     }
     return pieces
   }
-
-  useEffect(() => {
-    if (!selectedTerm) return
-    const close = (event) => {
-      if (event.key === 'Escape') setSelectedTerm(null)
-    }
-    window.addEventListener('keydown', close)
-    return () => window.removeEventListener('keydown', close)
-  }, [selectedTerm])
 
   useLayoutEffect(() => {
     const element = clauseRef.current
@@ -121,14 +115,8 @@ export function SyntaxView({ ayah, selectedWord, language }) {
               </g>
             })}
           </svg>}
-          {step?.notes?.[language] && <div className="syntax-word-notes" aria-label={ru ? 'Слова текущей связи' : 'Words in the current relationship'}>
-            {step.notes[language].map(note => {
-              const token = ayah.tokens[note.word - 1]
-              return <div key={note.word} className={'syntax-word-note tone-' + wordTone(note.word)}>
-                <div><span lang="ar" dir="rtl">{token.ar}</span><small>{token.tr}</small></div>
-                <p>{note.text}</p>
-              </div>
-            })}
+          {step && <div className="syntax-relation-labels" aria-label={ru ? 'Текущая грамматическая связь' : 'Current grammatical relationship'}>
+            {relationTerms.map(id => <div key={id}>{termButton(id)}<small>{SYNTAX_TERMS[id].tr}</small></div>)}
           </div>}
         </div>
       </> : <div className="syntax-verse-context">{plainWords(selectedWord, selectedWord)}</div>}
@@ -144,25 +132,22 @@ export function SyntaxView({ ayah, selectedWord, language }) {
         <div className="syntax-explanation" aria-live="polite" aria-atomic="true">
           <p>{explainTerms(step[language])}</p>
         </div>
-        <p className="syntax-term-hint">{ru ? 'Нажмите на грамматический термин — откроется пояснение.' : 'Tap a grammar term to open its explanation.'}</p>
-        {term && <div className="syntax-term-modal-layer" onClick={() => setSelectedTerm(null)}>
-          <aside id={detailId} className="syntax-term-modal" role="dialog" aria-modal="true"
-            aria-label={`${term.ar} — ${term.tr}`} onClick={event => event.stopPropagation()}>
+        <p className="syntax-term-hint">{ru ? 'Нажмите на термин — его участок выделится, а пояснение откроется ниже.' : 'Tap a term to highlight its words and read the explanation below.'}</p>
+        <div id={detailId} className="syntax-term-detail" aria-live="polite">
+          {term && <>
             <header><h3><span lang="ar" dir="rtl">{term.ar}</span><small>{term.tr}</small></h3>
               <button aria-label={ru ? 'Закрыть пояснение термина' : 'Close term explanation'} onClick={() => setSelectedTerm(null)}>×</button></header>
             <div className="syntax-term-example" lang="ar" dir="rtl">{term.words.map(i => ayah.tokens[i-1].ar).join(' ')}</div>
             <div className="syntax-term-example-tr">{term.words.map(i => ayah.tokens[i-1].tr).join(' · ')}</div>
-            <div className="syntax-term-modal-copy">
-              {term[language].map((text,i) => <p key={i}>{explainTerms(text)}</p>)}
-              {term.cases?.[language]?.length ? <section className="syntax-term-cases">
-                <h4>{ru ? `Когда слово становится ${term.tr}` : `When a word becomes ${term.tr}`}</h4>
-                <ul>
-                  {term.cases[language].map((item, i) => <li key={i}>{explainTerms(item)}</li>)}
-                </ul>
-              </section> : null}
-            </div>
-          </aside>
-        </div>}
+            {term[language].map((text,i) => <p key={i}>{explainTerms(text)}</p>)}
+            {term.cases?.[language]?.length ? <section className="syntax-term-cases">
+              <h4>{ru ? `Когда слово становится ${term.tr}` : `When a word becomes ${term.tr}`}</h4>
+              <ul>
+                {term.cases[language].map((item, i) => <li key={i}>{explainTerms(item)}</li>)}
+              </ul>
+            </section> : null}
+          </>}
+        </div>
         <p className="syntax-coverage">{ru ? 'Пока разобрана конструкция 2:197:23–26. Связи остальных слов ещё не добавлены.' : 'This analysis covers 2:197:23–26. Relationships for the remaining words have not been added yet.'}</p>
       </>}
     </> : <div className="syntax-empty">
