@@ -206,10 +206,6 @@ export const AYAH_PROTOTYPES = {
         en: { title: 'Direct address', text: 'The ending makes the theme personal: the general instruction becomes a direct address, linking taqwā with the conscious response of people of understanding.' },
       },
     ],
-    flow: {
-      ru: 'Композиция движется от внешних рамок хаджа к внутреннему состоянию человека: время → дисциплина поведения → добро → подготовка к пути → taqwā и прямое обращение к разумению.',
-      en: 'The composition moves from the outward frame of Hajj toward the person’s inner state: time → disciplined conduct → good action → preparation for the journey → taqwā and a direct appeal to understanding.',
-    },
   },
 }
 

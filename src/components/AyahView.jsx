@@ -283,10 +283,6 @@ function CompositionDiagram({ ayah, focusWordIndex, language }) {
       </section>
     })}
 
-    <div className="composition-summary" style={{ left: WORLD.width / 2, top: 1760 }}>
-      <span>{ru ? 'Ход аята' : 'Flow of the ayah'}</span>
-      <p>{ayah.flow[language]}</p>
-    </div>
   </div>
 }
 

@@ -494,25 +494,6 @@
   font-size: 9px;
   line-height: 1.55;
 }
-.composition-summary {
-  position: absolute;
-  width: 900px;
-  transform: translateX(-50%);
-  text-align: center;
-}
-.composition-summary span {
-  color: #626f77;
-  font-size: 8.5px;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-.composition-summary p {
-  margin: 7px 0 0;
-  color: #8d989f;
-  font-size: 10px;
-  line-height: 1.65;
-}
-
 .ayah-space-zoom {
   position: absolute;
   z-index: 30;
@@ -5227,17 +5208,21 @@
 }
 
 
-/* Ayah onboarding hint: intentionally separated from the verse reference. */
+/* Ayah onboarding hint: intentionally separated from the verse reference
+   and kept translucent so it reads as guidance rather than content. */
 .analysis-ayah-group .analysis-tap-hint {
   margin-top: 50px !important;
+  opacity: .58;
 }
 @media (max-width: 760px) {
   .analysis-ayah-group .analysis-tap-hint {
     margin-top: 50px !important;
+    opacity: .58;
   }
 }
 @media (max-width: 420px) {
   .analysis-ayah-group .analysis-tap-hint {
     margin-top: 50px !important;
+    opacity: .58;
   }
 }
