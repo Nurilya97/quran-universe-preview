@@ -4844,3 +4844,33 @@
     transform: rotate(18deg) !important;
   }
 }
+
+
+/* Morphology stage flow v2: two independent connectors leave taqwa from separate points */
+.analysis-morphology-branch.second .branch-line.down {
+  left: 23% !important;
+}
+
+.analysis-morphology-branch.second .branch-line.to-pattern {
+  left: 29% !important;
+}
+
+@media (max-width: 760px) {
+  .analysis-morphology-branch.second .branch-line.down {
+    left: 23% !important;
+  }
+
+  .analysis-morphology-branch.second .branch-line.to-pattern {
+    left: 29% !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .analysis-morphology-branch.second .branch-line.down {
+    left: 22.5% !important;
+  }
+
+  .analysis-morphology-branch.second .branch-line.to-pattern {
+    left: 29.5% !important;
+  }
+}
