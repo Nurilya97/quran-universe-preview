@@ -4211,3 +4211,23 @@
     font-size: 10.6px !important;
   }
 }
+
+/* Morphology diagram refinement: start with the word and use line + dot connectors */
+.analysis-morphology-hero > span {
+  margin-top: 0 !important;
+}
+
+.analysis-morphology-branch circle {
+  fill: rgba(247,250,251,.94);
+  filter: drop-shadow(0 0 4px rgba(255,255,255,.14));
+}
+
+.analysis-morphology-branch marker {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .analysis-morphology-hero > span {
+    margin-top: 0 !important;
+  }
+}
