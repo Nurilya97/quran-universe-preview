@@ -4147,14 +4147,14 @@
   }
 
   .analysis-morphology-branch.first {
-    height: 72px !important;
-    margin-top: 10px !important;
+    height: 68px !important;
+    margin: 8px 0 4px !important;
   }
 
   .analysis-morphology-branch.second {
-    width: 54% !important;
-    height: 68px !important;
-    margin-top: 12px !important;
+    width: 52% !important;
+    height: 62px !important;
+    margin: 10px auto 4px 0 !important;
   }
 
   .analysis-morphology-level.second-level {
@@ -4194,7 +4194,7 @@
   }
 
   .analysis-morphology-branch.second {
-    width: 58% !important;
+    width: 56% !important;
     height: 64px !important;
   }
 
@@ -4250,27 +4250,28 @@
   display: block !important;
   overflow: visible !important;
   pointer-events: none;
+  opacity: .2 !important;
 }
 
 .analysis-morphology-branch.first {
   width: 100% !important;
-  height: 84px !important;
-  margin: 12px 0 0 !important;
+  height: 74px !important;
+  margin: 10px 0 4px !important;
 }
 
 .analysis-morphology-branch.second {
-  width: 52% !important;
-  height: 78px !important;
-  margin: 14px auto 0 0 !important;
+  width: 48% !important;
+  height: 66px !important;
+  margin: 12px auto 4px 0 !important;
 }
 
 .analysis-morphology-branch .branch-line {
   position: absolute;
-  top: 4px;
+  top: 2px;
   display: block;
-  height: 1.35px;
-  background: rgba(247,250,251,.90);
-  box-shadow: 0 0 5px rgba(255,255,255,.07);
+  height: 1px;
+  background: #f7fafb;
+  box-shadow: none;
   transform-origin: 0 50%;
 }
 
@@ -4288,31 +4289,31 @@
 }
 
 .analysis-morphology-branch.first .branch-line {
-  width: clamp(94px, 21vw, 160px);
+  width: clamp(76px, 16vw, 118px);
 }
 
 .analysis-morphology-branch.first .branch-line.left {
-  left: 43%;
-  transform: rotate(150deg);
+  left: 44%;
+  transform: rotate(146deg);
 }
 
 .analysis-morphology-branch.first .branch-line.right {
-  left: 57%;
-  transform: rotate(30deg);
+  left: 56%;
+  transform: rotate(34deg);
 }
 
 .analysis-morphology-branch.second .branch-line {
-  width: clamp(74px, 12vw, 108px);
+  width: clamp(56px, 9vw, 82px);
 }
 
 .analysis-morphology-branch.second .branch-line.left {
-  left: 42%;
-  transform: rotate(136deg);
+  left: 43%;
+  transform: rotate(128deg);
 }
 
 .analysis-morphology-branch.second .branch-line.right {
-  left: 58%;
-  transform: rotate(44deg);
+  left: 57%;
+  transform: rotate(52deg);
 }
 
 @media (max-width: 760px) {
@@ -4322,17 +4323,17 @@
   }
 
   .analysis-morphology-branch.first .branch-line {
-    width: clamp(92px, 24vw, 118px);
+    width: clamp(70px, 18vw, 96px);
   }
 
   .analysis-morphology-branch.first .branch-line.left {
-    left: 43%;
-    transform: rotate(137deg);
+    left: 44%;
+    transform: rotate(138deg);
   }
 
   .analysis-morphology-branch.first .branch-line.right {
-    left: 57%;
-    transform: rotate(43deg);
+    left: 56%;
+    transform: rotate(42deg);
   }
 
   .analysis-morphology-branch.second {
@@ -4342,17 +4343,17 @@
   }
 
   .analysis-morphology-branch.second .branch-line {
-    width: clamp(70px, 19vw, 86px);
+    width: clamp(50px, 14vw, 72px);
   }
 
   .analysis-morphology-branch.second .branch-line.left {
-    left: 42%;
-    transform: rotate(122deg);
+    left: 43%;
+    transform: rotate(121deg);
   }
 
   .analysis-morphology-branch.second .branch-line.right {
-    left: 58%;
-    transform: rotate(58deg);
+    left: 57%;
+    transform: rotate(59deg);
   }
 }
 
@@ -4384,7 +4385,7 @@
   border-radius: 999px !important;
   box-sizing: border-box;
   background: #f5f8f9 !important;
-  box-shadow: 0 0 0 1px rgba(5,7,9,.72), 0 0 6px rgba(255,255,255,.12) !important;
+  box-shadow: none !important;
   clip-path: circle(50%);
 }
 
