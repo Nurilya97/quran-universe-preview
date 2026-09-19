@@ -220,3 +220,47 @@
     font-size: 12.5px;
   }
 }
+
+
+.syntax-term-cases {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(166,208,194,.18);
+}
+
+.syntax-term-cases h4 {
+  margin: 0 0 10px;
+  color: #dce9e3;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.syntax-term-cases ul {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 9px;
+}
+
+.syntax-term-cases li {
+  color: #bac7c8;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.syntax-term-cases li::marker {
+  color: #8fb6a6;
+}
+
+@media (max-width:760px) {
+  .syntax-term-cases {
+    margin-top: 16px;
+    padding-top: 14px;
+  }
+
+  .syntax-term-cases li {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+}
