@@ -75,7 +75,7 @@ export function SyntaxView({ ayah, selectedWord, language }) {
     <header className="syntax-heading">
       <span>{ru ? 'Синтаксис' : 'Syntax'}</span><small>{ayah.reference}</small>
     </header>
-    <p className="syntax-reading-hint">{ru ? 'Как слова соединяются в предложение' : 'How words form a sentence'}</p>
+    <p className="syntax-reading-hint">{ru ? 'Как слова связаны внутри этой фразы' : 'How the words relate inside this phrase'}</p>
     <div className="syntax-verse" lang="ar" dir="rtl" aria-label={ru ? 'Разбираемая фраза' : 'Phrase under analysis'}>
       {enabled ? <>
         <div className="syntax-clause" ref={clauseRef}>
@@ -143,7 +143,7 @@ export function SyntaxView({ ayah, selectedWord, language }) {
             </>}
             {term[language].map((text,i) => <p key={i}>{explainTerms(text)}</p>)}
             {term.cases?.[language]?.length ? <section className="syntax-term-cases">
-              <h4>{ru ? `Когда слово становится ${term.tr}` : `When a word becomes ${term.tr}`}</h4>
+              <h4>{ru ? `Когда имя бывает в состоянии ${term.tr}` : `When a noun is in the ${term.tr} state`}</h4>
               <ul>
                 {term.cases[language].map((item, i) => <li key={i}>{explainTerms(item)}</li>)}
               </ul>
