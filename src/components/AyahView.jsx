@@ -149,6 +149,11 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
   const morphology = selected.analysis?.[language]?.morphology
   const morphologyParts = morphology?.parts || []
   const isTaqwa = selected.orbitId === 'taqwa'
+  const focusViews = [
+    ['word', ru ? 'Значение' : 'Meaning'],
+    ['relation', ru ? 'Синтаксис' : 'Syntax'],
+    ['morphology', ru ? 'Морфология' : 'Morphology'],
+  ]
   return <div className={'analysis-focus-overlay focus-view-' + focusView} onClick={onClose}>
     <div className="analysis-focus-space" onClick={onClose}>
       <button className="word-focus-return" aria-label={ru ? 'Вернуться к аяту' : 'Return to ayah'} onClick={event => { event.stopPropagation(); onClose() }}>×</button>
@@ -265,21 +270,12 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
       </section>}
 
       <nav className="analysis-focus-view-switch" onClick={(event) => event.stopPropagation()} aria-label={ru ? 'Вид разбора слова' : 'Word analysis view'}>
-        <button
-          className={focusView === 'word' ? 'is-active' : ''}
-          onClick={() => setFocusView('word')}
-          aria-pressed={focusView === 'word'}
-        >{ru ? 'Значение' : 'Meaning'}</button>
-        <button
-          className={focusView === 'relation' ? 'is-active' : ''}
-          onClick={() => setFocusView('relation')}
-          aria-pressed={focusView === 'relation'}
-        >{ru ? 'Синтаксис' : 'Syntax'}</button>
-        <button
-          className={focusView === 'morphology' ? 'is-active' : ''}
-          onClick={() => setFocusView('morphology')}
-          aria-pressed={focusView === 'morphology'}
-        >{ru ? 'Морфология' : 'Morphology'}</button>
+        {focusViews.map(([id, label]) => <button
+          key={id}
+          className={focusView === id ? 'is-active' : ''}
+          onClick={() => setFocusView(id)}
+          aria-pressed={focusView === id}
+        >{label}</button>)}
       </nav>
     </div>
   </div>
