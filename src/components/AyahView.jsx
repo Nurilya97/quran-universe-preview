@@ -190,9 +190,11 @@ function splitCalloutText(text, maxLength = 175) {
 
 function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrbit }) {
   const [pages, setPages] = useState({ morph: 0, syntax: 0, semantic: 0 })
+  const [focusView, setFocusView] = useState('word')
 
   useEffect(() => {
     setPages({ morph: 0, syntax: 0, semantic: 0 })
+    setFocusView('word')
   }, [selectedWord])
 
   if (!selectedWord) return null
@@ -299,8 +301,11 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
     setPages(current => ({ ...current, [kind]: value }))
   }
 
-  return <div className="analysis-focus-overlay" onClick={onClose}>
+  const isTaqwa = selected.orbitId === 'taqwa'
+
+  return <div className={'analysis-focus-overlay focus-view-' + focusView} onClick={onClose}>
     <div className="analysis-focus-space" onClick={onClose}>
+      {focusView === 'word' ? <>
       <div className="analysis-focus-word">
         <span lang="ar" dir="rtl">{selected.ar}</span>
         <small>{selected.tr}</small>
@@ -340,8 +345,52 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
         <small>{ru ? 'ЗНАЧЕНИЕ' : 'MEANING'}</small>
         <div className="analysis-callout-page">{semanticPages[pages.semantic]}</div>
         <CalloutPager page={pages.semantic} count={semanticPages.length} onChange={(value) => setPage('semantic', value)} language={language} />
-
       </section>
+      </> : <section className="analysis-relation-screen" onClick={(event) => event.stopPropagation()}>
+        <small className="analysis-relation-kicker">{ru ? 'СВЯЗЬ В АЯТЕ' : 'RELATION IN THE AYAH'}</small>
+        <div className="analysis-relation-phrase" lang="ar" dir="rtl">
+          {selectedBlock ? phraseText(ayah, selectedBlock) : selected.ar}
+        </div>
+        <p className="analysis-relation-intro">{syntax?.plain}</p>
+
+        {isTaqwa ? <div className="analysis-relation-chain">
+          <div className="analysis-relation-node source">
+            <span lang="ar" dir="rtl">خَيْرَ ٱلزَّادِ</span>
+            <b>اسم إِنَّ <em>(ism inna)</em></b>
+            <p>{ru ? 'То, о чём говорится в утверждении.' : 'What the statement is about.'}</p>
+          </div>
+          <div className="analysis-relation-arrow" aria-hidden="true">→</div>
+          <div className="analysis-relation-node target">
+            <span lang="ar" dir="rtl">{selected.ar}</span>
+            <b>خبر إِنَّ <em>(khabar inna)</em></b>
+            <p>{ru ? 'То, что сообщает и завершает мысль.' : 'What completes the statement.'}</p>
+          </div>
+        </div> : <div className="analysis-relation-chain single">
+          <div className="analysis-relation-node target">
+            <span lang="ar" dir="rtl">{selected.ar}</span>
+            <b>{ru ? selected.roleRu : selected.roleEn}</b>
+            <p>{syntax?.title}</p>
+          </div>
+        </div>}
+
+        {syntax?.text && <div className="analysis-relation-detail">
+          <strong>{ru ? 'Как устроена конструкция' : 'How the construction works'}</strong>
+          <p>{syntax.text}</p>
+        </div>}
+      </section>}
+
+      <nav className="analysis-focus-view-switch" onClick={(event) => event.stopPropagation()} aria-label={ru ? 'Вид разбора слова' : 'Word analysis view'}>
+        <button
+          className={focusView === 'word' ? 'is-active' : ''}
+          onClick={() => setFocusView('word')}
+          aria-pressed={focusView === 'word'}
+        >{ru ? 'Слово' : 'Word'}</button>
+        <button
+          className={focusView === 'relation' ? 'is-active' : ''}
+          onClick={() => setFocusView('relation')}
+          aria-pressed={focusView === 'relation'}
+        >{ru ? 'Связь в аяте' : 'In the ayah'}</button>
+      </nav>
     </div>
   </div>
 }
