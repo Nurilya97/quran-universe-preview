@@ -415,8 +415,8 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
             </div>
 
             <div className="analysis-morphology-branch second" aria-hidden="true">
-              <i className="branch-line left" />
-              <i className="branch-line right" />
+              <i className="branch-line down" />
+              <i className="branch-line to-pattern" />
             </div>
 
             <div className="analysis-morphology-level second-level">
@@ -449,8 +449,8 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
                   ? <><b>Основа:</b> تَقْوَىٰ (taqwā) — существительное, связанное с корнем و ق ي (w-q-y) «защищать / оберегать» и моделью فَعْلَى (faʿlā).</>
                   : <><b>Base:</b> تَقْوَىٰ (taqwā) is a noun related to the root و ق ي (w-q-y), “to protect / guard,” and the pattern فَعْلَى (faʿlā).</>}</p>
                 <p>{ru
-                  ? <><b>Что меняется:</b> ٱلـ (al-) присоединяется к слову и делает его определённым.</>
-                  : <><b>What changes:</b> ٱلـ (al-) attaches to the word and makes it definite.</>}</p>
+                  ? <><b>Что добавилось:</b> ٱلـ (al-) присоединяется к слову и делает его определённым.</>
+                  : <><b>What is added:</b> ٱلـ (al-) attaches to the word and makes it definite.</>}</p>
                 <p>{ru
                   ? <><b>В аяте 2:197:</b> краткий контекстный перевод — «благочестие».</>
                   : <><b>In 2:197:</b> a concise contextual rendering is “piety.”</>}</p>
