@@ -387,7 +387,6 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
             <small>{ru ? 'МОРФОЛОГИЯ СЛОВА' : 'WORD MORPHOLOGY'}</small>
             <span lang="ar" dir="rtl">{selected.ar}</span>
             <em>{selected.tr}</em>
-            <strong>{meaning?.gloss || (ru ? selected.ru : selected.en)}</strong>
           </header>
 
           {isTaqwa ? <>
@@ -397,8 +396,8 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
                   <path d="M 0 0 L 10 5 L 0 10 z" />
                 </marker>
               </defs>
-              <path d="M500 4 C500 48 250 48 250 110" markerEnd="url(#morphArrowA)" />
-              <path d="M500 4 C500 48 750 48 750 110" markerEnd="url(#morphArrowA)" />
+              <path d="M430 8 L250 110" markerEnd="url(#morphArrowA)" />
+              <path d="M570 8 L750 110" markerEnd="url(#morphArrowA)" />
             </svg>
 
             <div className="analysis-morphology-level first-level">
@@ -407,8 +406,8 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
                 <small>{morphologyParts[1]?.tr || 'taqwā'}</small>
                 <b>{ru ? 'Слово без артикля' : 'Word without the article'}</b>
                 <p>{ru
-                  ? 'تَقْوَىٰ (taqwā) — существительное. В этом аяте краткий контекстный перевод: «благочестие».'
-                  : 'تَقْوَىٰ (taqwā) is a noun. In this ayah, a concise contextual rendering is “piety”.'}</p>
+                  ? 'تَقْوَىٰ (taqwā) — существительное. Именно к этому слову присоединяется определённый артикль ٱلـ (al-).'
+                  : 'تَقْوَىٰ (taqwā) is a noun. The definite article ٱلـ (al-) attaches directly to this word.'}</p>
               </article>
 
               <article className="analysis-morphology-node article">
@@ -427,8 +426,8 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
                   <path d="M 0 0 L 10 5 L 0 10 z" />
                 </marker>
               </defs>
-              <path d="M250 4 C250 42 250 62 250 110" markerEnd="url(#morphArrowB)" />
-              <path d="M250 4 C250 50 750 46 750 110" markerEnd="url(#morphArrowB)" />
+              <path d="M205 8 L120 110" markerEnd="url(#morphArrowB)" />
+              <path d="M295 8 L470 110" markerEnd="url(#morphArrowB)" />
             </svg>
 
             <div className="analysis-morphology-level second-level">
