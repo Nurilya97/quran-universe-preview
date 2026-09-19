@@ -3242,3 +3242,43 @@
     margin-bottom: 13px !important;
   }
 }
+
+/* Word-orbit action belongs to the selected word, not to Meaning */
+.analysis-focus-word {
+  pointer-events: none;
+}
+
+.analysis-center-orbit {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  margin-top: 14px;
+  padding: 0 15px;
+  border: 1px solid rgba(124,255,139,.24);
+  border-radius: 12px;
+  background: rgba(124,255,139,.07);
+  color: #c9f3ce;
+  font: inherit;
+  font-size: 10.5px;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(0,0,0,.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.analysis-center-orbit:hover {
+  background: rgba(124,255,139,.11);
+  color: #effff1;
+}
+
+@media (max-width: 760px) {
+  .analysis-center-orbit {
+    min-height: 36px;
+    margin-top: 12px;
+    padding: 0 13px;
+    font-size: 10px;
+    border-radius: 11px;
+  }
+}
