@@ -2639,3 +2639,265 @@
     bottom: 66px !important;
   }
 }
+
+/* Focused word UI — larger type, closer cards, softer luminous background */
+.ayah-space-shell.has-word-focus .ayah-space-viewport {
+  filter: blur(10px) brightness(.38) saturate(.62) !important;
+  transform: scale(1.035);
+}
+.ayah-space-shell.has-word-focus .ayah-space-world {
+  filter: none !important;
+}
+.ayah-space-shell.has-word-focus .analysis-ayah-continuous {
+  opacity: .16 !important;
+  filter: none !important;
+}
+.ayah-space-shell.has-word-focus .analysis-verse-reference {
+  opacity: .18 !important;
+  filter: none !important;
+}
+.analysis-focus-overlay {
+  background:
+    radial-gradient(circle at 50% 48%,
+      rgba(40, 51, 58, .18) 0%,
+      rgba(8, 12, 15, .62) 34%,
+      rgba(1, 2, 3, .78) 100%) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.analysis-focus-callout {
+  border-radius: 20px !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+  background:
+    linear-gradient(145deg, rgba(17, 22, 26, .96), rgba(6, 9, 11, .96)) !important;
+  box-shadow:
+    0 18px 55px rgba(0,0,0,.42),
+    inset 0 1px 0 rgba(255,255,255,.035) !important;
+}
+.analysis-focus-callout.morph {
+  box-shadow:
+    0 18px 55px rgba(0,0,0,.42),
+    0 0 28px rgba(89,242,255,.045),
+    inset 0 1px 0 rgba(255,255,255,.035) !important;
+}
+.analysis-focus-callout.syntax {
+  box-shadow:
+    0 18px 55px rgba(0,0,0,.42),
+    0 0 28px rgba(198,92,255,.045),
+    inset 0 1px 0 rgba(255,255,255,.035) !important;
+}
+.analysis-focus-callout.semantic {
+  box-shadow:
+    0 18px 55px rgba(0,0,0,.42),
+    0 0 28px rgba(124,255,139,.045),
+    inset 0 1px 0 rgba(255,255,255,.035) !important;
+}
+
+.analysis-focus-callout > small {
+  display: inline-flex !important;
+  align-items: center;
+  width: fit-content;
+  min-height: 24px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.045);
+  color: #c8d0d5 !important;
+  font-size: 10.5px !important;
+  letter-spacing: .09em !important;
+}
+.analysis-focus-callout.morph > small {
+  background: rgba(89,242,255,.075);
+  color: #b9f8fc !important;
+}
+.analysis-focus-callout.syntax > small {
+  background: rgba(198,92,255,.075);
+  color: #e0c5f1 !important;
+}
+.analysis-focus-callout.semantic > small {
+  background: rgba(124,255,139,.07);
+  color: #c6efcb !important;
+}
+
+.analysis-callout-page > div > strong {
+  margin-top: 12px !important;
+  color: #f0f3f5 !important;
+  font-size: 16px !important;
+  line-height: 1.4 !important;
+}
+.analysis-callout-page > div > p,
+.analysis-focus-callout .analysis-detail-text,
+.analysis-focus-callout .analysis-translation-choice,
+.analysis-syntax-plain {
+  color: #c1c8cd !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+.analysis-syntax-phrase {
+  font-size: 21px !important;
+  line-height: 1.7 !important;
+}
+.analysis-morph-parts b {
+  font-size: 21px !important;
+}
+.analysis-morph-parts em,
+.analysis-morph-parts p {
+  font-size: 11.5px !important;
+  line-height: 1.45 !important;
+}
+.analysis-callout-pager {
+  border-top-color: rgba(255,255,255,.08) !important;
+}
+.analysis-callout-pager button {
+  border-radius: 10px;
+  border-color: rgba(255,255,255,.1) !important;
+  background: rgba(255,255,255,.035) !important;
+}
+.analysis-callout-pager span {
+  color: #9ca7ad !important;
+  font-size: 10px !important;
+}
+.analysis-orbit-button {
+  border-radius: 12px;
+  font-size: 10.5px !important;
+}
+
+.analysis-focus-word span {
+  font-size: clamp(58px, 6.3vw, 72px) !important;
+  color: #fff !important;
+  text-shadow: 0 0 15px rgba(255,255,255,.36), 0 0 40px rgba(255,255,255,.13) !important;
+}
+.analysis-focus-word small {
+  margin-top: 7px !important;
+  color: #b7c0c5 !important;
+  font-size: 11.5px !important;
+}
+
+@media (max-width: 760px) {
+  .analysis-focus-word {
+    top: 49% !important;
+  }
+  .analysis-focus-word span {
+    font-size: 56px !important;
+  }
+
+  .analysis-focus-callout,
+  .analysis-focus-callout.is-active {
+    padding: 15px 16px 13px !important;
+    border-radius: 20px !important;
+  }
+
+  .analysis-focus-callout.morph,
+  .analysis-focus-callout.syntax {
+    top: 96px !important;
+    width: calc(50vw - 17px) !important;
+    height: 238px !important;
+    min-height: 238px !important;
+    max-height: 238px !important;
+  }
+  .analysis-focus-callout.morph {
+    left: 8px !important;
+  }
+  .analysis-focus-callout.syntax {
+    right: 8px !important;
+  }
+
+  .analysis-focus-callout.semantic {
+    bottom: 84px !important;
+    width: calc(100vw - 34px) !important;
+    min-height: 150px !important;
+    height: auto !important;
+    max-height: 228px !important;
+  }
+
+  .analysis-focus-callout > small {
+    min-height: 22px;
+    padding: 0 8px;
+    font-size: 10px !important;
+  }
+  .analysis-callout-page > div > strong {
+    font-size: 15px !important;
+  }
+  .analysis-callout-page > div > p,
+  .analysis-focus-callout .analysis-detail-text,
+  .analysis-focus-callout .analysis-translation-choice,
+  .analysis-syntax-plain {
+    font-size: 13.2px !important;
+    line-height: 1.58 !important;
+  }
+  .analysis-syntax-phrase {
+    font-size: 19px !important;
+  }
+  .analysis-morph-parts b {
+    font-size: 19px !important;
+  }
+  .analysis-morph-parts em,
+  .analysis-morph-parts p {
+    font-size: 10px !important;
+    line-height: 1.4 !important;
+  }
+
+  .analysis-morph-parts > div {
+    grid-template-columns: 46px 42px minmax(0,1fr) !important;
+    gap: 6px !important;
+  }
+
+  .analysis-focus-callout.semantic .analysis-callout-page {
+    max-height: 148px;
+    overflow: hidden !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .analysis-focus-word span {
+    font-size: 52px !important;
+  }
+
+  .analysis-focus-callout.morph,
+  .analysis-focus-callout.syntax {
+    top: 88px !important;
+    width: calc(50vw - 11px) !important;
+    height: 228px !important;
+    min-height: 228px !important;
+    max-height: 228px !important;
+    padding: 13px 12px 12px !important;
+  }
+
+  .analysis-focus-callout.semantic {
+    bottom: 76px !important;
+    width: calc(100vw - 28px) !important;
+    max-height: 220px !important;
+  }
+
+  .analysis-callout-page > div > strong {
+    font-size: 14.5px !important;
+  }
+  .analysis-callout-page > div > p,
+  .analysis-focus-callout .analysis-detail-text,
+  .analysis-focus-callout .analysis-translation-choice,
+  .analysis-syntax-plain {
+    font-size: 12.7px !important;
+    line-height: 1.55 !important;
+  }
+
+  .analysis-morph-parts > div {
+    grid-template-columns: 42px 38px minmax(0,1fr) !important;
+  }
+}
+
+@media (max-height: 720px) and (max-width: 760px) {
+  .analysis-focus-callout.morph,
+  .analysis-focus-callout.syntax {
+    top: 70px !important;
+    height: 210px !important;
+    min-height: 210px !important;
+    max-height: 210px !important;
+  }
+  .analysis-focus-callout.semantic {
+    bottom: 50px !important;
+    max-height: 198px !important;
+  }
+  .analysis-focus-word {
+    top: 49% !important;
+  }
+}
