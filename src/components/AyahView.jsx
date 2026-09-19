@@ -237,7 +237,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
     </div>] : []),
   ]
 
-  const syntaxPlainPages = splitCalloutText(syntax?.plain, 185).map((text, index) => <div key={'plain-' + index}>
+  const syntaxPlainPages = splitCalloutText(syntax?.plain, 250).map((text, index) => <div key={'plain-' + index}>
     <strong>{index === 0
       ? (ru ? 'Что делает слово в предложении' : 'What the word does in the sentence')
       : (ru ? 'Продолжение' : 'Continued')}</strong>
@@ -251,14 +251,14 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
       </div>]
     : []
 
-  const syntaxEndingPages = splitCalloutText(syntax?.ending, 175).map((text, index) => <div key={'ending-' + index}>
+  const syntaxEndingPages = splitCalloutText(syntax?.ending, 235).map((text, index) => <div key={'ending-' + index}>
     <strong>{index === 0
       ? (ru ? 'Почему такая огласовка' : 'Why this ending appears')
       : (ru ? 'Продолжение' : 'Continued')}</strong>
     <p><b>{ru ? 'Окончание / огласовка:' : 'Ending / vowel:'}</b> {text}</p>
   </div>)
 
-  const syntaxDetailPages = splitCalloutText(syntax?.text, 185).map((text, index) => <div key={'syntax-detail-' + index}>
+  const syntaxDetailPages = splitCalloutText(syntax?.text, 270).map((text, index) => <div key={'syntax-detail-' + index}>
     <strong>{index === 0
       ? (ru ? 'Как устроена конструкция' : 'How the construction works')
       : (ru ? 'Продолжение' : 'Continued')}</strong>
@@ -279,13 +279,13 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
 
   const semanticDescriptionPages = splitCalloutText(
     meaning?.description || (ru ? selected.noteRu : selected.noteEn),
-    185
+    330
   ).map((text, index) => <div key={'meaning-' + index}>
     <strong>{index === 0 ? (meaning?.gloss || (ru ? selected.ru : selected.en)) : (ru ? 'Продолжение значения' : 'Meaning continued')}</strong>
     <p className="analysis-detail-text">{text}</p>
   </div>)
 
-  const semanticTranslationPages = splitCalloutText(meaning?.translation, 180).map((text, index) => <div key={'translation-' + index}>
+  const semanticTranslationPages = splitCalloutText(meaning?.translation, 320).map((text, index) => <div key={'translation-' + index}>
     <strong>{index === 0 ? (ru ? 'Почему такой перевод' : 'Why this translation') : (ru ? 'Продолжение' : 'Continued')}</strong>
     <p className="analysis-translation-choice">{text}</p>
   </div>)
