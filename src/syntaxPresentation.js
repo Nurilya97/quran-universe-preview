@@ -13,16 +13,16 @@ export function getSyntaxPresentation(ayah) {
     steps: [
       { id: 'inna', from: 23, to: 24, active: [23, 24],
         term: 'إِنَّ · اسْم إِنَّ', tr: 'inna · ism inna',
-        ru: 'إِنَّ вводит усиленное утверждение. خَيْرَ — его именная часть (اسم إِنَّ), поэтому стоит в винительном падеже.',
-        en: 'إِنَّ introduces an emphatic statement. خَيْرَ is its nominal argument (ism inna), so it takes the accusative case.' },
+        ru: 'إِنَّ (inna) вводит усиленное утверждение. خَيْرَ (khayra) — его именная часть, اسم إِنَّ (ism inna). После إِنَّ это слово получает состояние manṣūb; здесь оно слышится и пишется с окончанием -a: khayra.',
+        en: 'إِنَّ (inna) introduces an emphatic statement. خَيْرَ (khayra) is its nominal argument, اسم إِنَّ (ism inna). After إِنَّ the word is in the manṣūb state; here that is heard and written with the final -a: khayra.' },
       { id: 'idafa', from: 24, to: 25, active: [24, 25],
         term: 'مُضَاف · مُضَاف إِلَيْهِ', tr: 'muḍāf · muḍāf ilayhi',
-        ru: 'ٱلزَّادِ уточняет خَيْرَ: «лучший запас». Вместе они образуют идафу. Второе слово стоит в родительном падеже.',
-        en: 'ٱلزَّادِ specifies خَيْرَ: “the best provision.” Together they form an iḍāfa; the second noun takes the genitive case.' },
+        ru: 'ٱلزَّادِ (al-zādi) уточняет خَيْرَ (khayra): вместе получается «лучший запас». Это идафа: خَيْرَ — muḍāf, а ٱلزَّادِ — muḍāf ilayhi. Второе слово получает состояние majrūr; здесь это видно по окончанию -i: al-zādi.',
+        en: 'ٱلزَّادِ (al-zādi) specifies خَيْرَ (khayra): together they mean “the best provision.” This is an iḍāfa: خَيْرَ is the muḍāf and ٱلزَّادِ is the muḍāf ilayhi. The second word is in the majrūr state; here it is visible in the final -i: al-zādi.' },
       { id: 'predicate', from: 24, to: 26, active: [24, 25, 26], group: [24, 25],
         term: 'خَبَر إِنَّ', tr: 'khabar inna',
-        ru: 'ٱلتَّقْوَىٰ завершает утверждение о «лучшем запасе»: сообщает, чем он является. Это خبر إِنَّ в именительном падеже; дамма на конечной ىٰ не видна.',
-        en: 'ٱلتَّقْوَىٰ completes the statement about “the best provision,” saying what it is. This is khabar inna, in the nominative; the final ىٰ does not display the ḍamma.' },
+        ru: 'ٱلتَّقْوَىٰ (al-taqwā) завершает утверждение о خَيْرَ ٱلزَّادِ (khayra al-zādi) — «лучшем запасе»: сообщает, чем он является. Здесь ٱلتَّقْوَىٰ выполняет роль خبر إِنَّ (khabar inna) и находится в состоянии marfūʿ. Из-за конечной ىٰ (alif maqṣūra) ожидаемая ḍamma не проявляется на письме.',
+        en: 'ٱلتَّقْوَىٰ (al-taqwā) completes the statement about خَيْرَ ٱلزَّادِ (khayra al-zādi), “the best provision,” by saying what it is. Here ٱلتَّقْوَىٰ functions as خبر إِنَّ (khabar inna) and is in the marfūʿ state. Because it ends in ىٰ (alif maqṣūra), the expected ḍamma is not visibly shown.' },
     ],
   }
 }
