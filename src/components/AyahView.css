@@ -4745,3 +4745,102 @@
     max-width: 205px !important;
   }
 }
+
+
+/* Morphology stage flow: taqwa -> root straight down, taqwa -> nominal pattern to the right */
+.analysis-morphology-branch.second {
+  width: 100% !important;
+  height: 84px !important;
+  margin: 12px 0 4px !important;
+}
+
+.analysis-morphology-level.second-level {
+  width: 100% !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr) !important;
+  gap: 16px !important;
+  margin-right: 0 !important;
+}
+
+.analysis-morphology-node.root {
+  transform: translateX(5px);
+}
+
+.analysis-morphology-node.pattern {
+  transform: translateX(10px);
+}
+
+.analysis-morphology-branch.second .branch-line {
+  top: 0 !important;
+  left: 25% !important;
+  transform-origin: 0 50% !important;
+}
+
+.analysis-morphology-branch.second .branch-line.down {
+  width: 82px !important;
+  transform: rotate(90deg) !important;
+}
+
+.analysis-morphology-branch.second .branch-line.to-pattern {
+  width: 51% !important;
+  transform: rotate(12deg) !important;
+}
+
+@media (max-width: 760px) {
+  .analysis-morphology-branch.second {
+    width: 100% !important;
+    height: 72px !important;
+    margin: 10px 0 4px !important;
+  }
+
+  .analysis-morphology-level.second-level {
+    width: 100% !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr) !important;
+    gap: 14px !important;
+  }
+
+  .analysis-morphology-node.root {
+    transform: translateX(5px);
+  }
+
+  .analysis-morphology-node.pattern {
+    transform: translateX(10px);
+  }
+
+  .analysis-morphology-branch.second .branch-line.down {
+    width: 64px !important;
+    transform: rotate(90deg) !important;
+  }
+
+  .analysis-morphology-branch.second .branch-line.to-pattern {
+    width: 51% !important;
+    transform: rotate(18deg) !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .analysis-morphology-branch.second {
+    height: 68px !important;
+  }
+
+  .analysis-morphology-level.second-level {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.14fr) !important;
+    gap: 12px !important;
+  }
+
+  .analysis-morphology-node.root {
+    transform: translateX(4px);
+  }
+
+  .analysis-morphology-node.pattern {
+    transform: translateX(10px);
+  }
+
+  .analysis-morphology-branch.second .branch-line.down {
+    width: 60px !important;
+  }
+
+  .analysis-morphology-branch.second .branch-line.to-pattern {
+    width: 52% !important;
+    transform: rotate(18deg) !important;
+  }
+}
