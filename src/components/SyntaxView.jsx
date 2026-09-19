@@ -129,25 +129,22 @@ export function SyntaxView({ ayah, selectedWord, language }) {
         <span>{stepIndex + 1} / {model.steps.length + 1}</span>
         <button disabled={overview} onClick={() => changeStep(stepIndex + 1)} aria-label={ru ? 'Следующий шаг' : 'Next step'}>›</button>
       </nav>
-      <div className="syntax-explanation" aria-live="polite" aria-atomic="true">
-        {step ? <>
+      {step && <>
+        <div className="syntax-explanation" aria-live="polite" aria-atomic="true">
           <p>{explainTerms(step[language])}</p>
-        </> : <>
-          <h3>{ru ? 'Конструкция целиком' : 'The complete clause'}</h3>
-          <p>{ru ? 'Три связи собирают одно утверждение. Нажмите на линию или слово, чтобы вернуться к шагу.' : 'Three relationships form one statement. Tap a line or word to revisit a step.'}</p>
-          <div className="syntax-overview-key">{model.steps.map((s, i) => <button key={s.id} onClick={() => changeStep(i)}>{i + 1} · {s.tr}</button>)}</div>
-        </>}
-      </div>
-      <p className="syntax-term-hint">{ru ? 'Нажмите на термин — его участок выделится, а ниже откроется пояснение.' : 'Tap a term to highlight its words and read the explanation below.'}</p>
-      <div id={detailId} className="syntax-term-detail" aria-live="polite">
-        {term && <>
-          <header><h3><span lang="ar" dir="rtl">{term.ar}</span><small>{term.tr}</small></h3>
-            <button aria-label={ru ? 'Закрыть пояснение термина' : 'Close term explanation'} onClick={() => setSelectedTerm(null)}>×</button></header>
-          <div className="syntax-term-example" lang="ar" dir="rtl">{term.words.map(i => ayah.tokens[i-1].ar).join(' ')}</div>
-          {term[language].map((text,i) => <p key={i}>{explainTerms(text)}</p>)}
-        </>}
-      </div>
-      <p className="syntax-coverage">{ru ? 'Пока разобрана конструкция 2:197:23–26. Связи остальных слов ещё не добавлены.' : 'This analysis covers 2:197:23–26. Relationships for the remaining words have not been added yet.'}</p>
+        </div>
+        <p className="syntax-term-hint">{ru ? 'Нажмите на термин — его участок выделится, а ниже откроется пояснение.' : 'Tap a term to highlight its words and read the explanation below.'}</p>
+        <div id={detailId} className="syntax-term-detail" aria-live="polite">
+          {term && <>
+            <header><h3><span lang="ar" dir="rtl">{term.ar}</span><small>{term.tr}</small></h3>
+              <button aria-label={ru ? 'Закрыть пояснение термина' : 'Close term explanation'} onClick={() => setSelectedTerm(null)}>×</button></header>
+            <div className="syntax-term-example" lang="ar" dir="rtl">{term.words.map(i => ayah.tokens[i-1].ar).join(' ')}</div>
+            <div className="syntax-term-example-tr">{term.words.map(i => ayah.tokens[i-1].tr).join(' · ')}</div>
+            {term[language].map((text,i) => <p key={i}>{explainTerms(text)}</p>)}
+          </>}
+        </div>
+        <p className="syntax-coverage">{ru ? 'Пока разобрана конструкция 2:197:23–26. Связи остальных слов ещё не добавлены.' : 'This analysis covers 2:197:23–26. Relationships for the remaining words have not been added yet.'}</p>
+      </>}
     </> : <div className="syntax-empty">
       <p>{ru ? 'Для выбранного слова связи пока не подтверждены.' : 'Relationships for this word are not yet confirmed.'}</p>
       {model && <button onClick={() => setExplore(true)}>{ru ? 'Посмотреть разбор конструкции с إِنَّ' : 'Explore the clause with إِنَّ'}</button>}
