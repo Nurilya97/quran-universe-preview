@@ -139,6 +139,12 @@ export function SyntaxView({ ayah, selectedWord, language }) {
             <div className="syntax-term-example" lang="ar" dir="rtl">{term.words.map(i => ayah.tokens[i-1].ar).join(' ')}</div>
             <div className="syntax-term-example-tr">{term.words.map(i => ayah.tokens[i-1].tr).join(' · ')}</div>
             {term[language].map((text,i) => <p key={i}>{explainTerms(text)}</p>)}
+            {term.cases?.[language]?.length ? <section className="syntax-term-cases">
+              <h4>{ru ? `Когда слово становится ${term.tr}` : `When a word becomes ${term.tr}`}</h4>
+              <ul>
+                {term.cases[language].map((item, i) => <li key={i}>{explainTerms(item)}</li>)}
+              </ul>
+            </section> : null}
           </>}
         </div>
         <p className="syntax-coverage">{ru ? 'Пока разобрана конструкция 2:197:23–26. Связи остальных слов ещё не добавлены.' : 'This analysis covers 2:197:23–26. Relationships for the remaining words have not been added yet.'}</p>
