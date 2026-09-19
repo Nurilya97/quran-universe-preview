@@ -3437,3 +3437,14 @@
       0 0 15px rgba(121,246,255,.28);
   }
 }
+
+/* Give the Ayah Space entry underline more breathing room under Arabic glyphs */
+.analysis-ayah-continuous .analysis-inline-word.is-entry {
+  text-underline-offset: 11px !important;
+}
+
+@media (max-width: 760px) {
+  .analysis-ayah-continuous .analysis-inline-word.is-entry {
+    text-underline-offset: 10px !important;
+  }
+}
