@@ -10,7 +10,7 @@ export const AYAH_PROTOTYPES = {
         en: 'Al-Baqarah is a Madinan surah of 286 ayahs. It joins faith and spiritual formation with practical guidance for communal life, including worship, responsibility, family, social, and financial matters.',
       },
       passage: {
-        ru: 'Аят 2:197 находится внутри последовательности 2:196–203 о хадже и умре. 2:196 вводит правила завершения паломничества; 2:197 определяет время хаджа и границы поведения паломника, напоминает, что Аллах знает каждое совершённое добро, а затем переводит практическое наставление к تَقْوَىٰ (taqwā). Следующие аяты продолжают путь паломника через Арафат, Муздалифу, поминание Аллаха и завершение обрядов.',
+        ru: 'Аят 2:197 находится внутри последовательности 2:196–203 о хадже и умре. 2:196 вводит правила завершения паломничества; 2:197 определяет время хаджа и границы поведения паломника, напоминает, что Аллах знает каждое совершённое добро, а затем связывает практическое наставление с تَقْوَىٰ (taqwā). Следующие аяты продолжают путь паломника через Арафат, Муздалифу, поминание Аллаха и завершение обрядов.',
         en: 'Ayah 2:197 sits within the Hajj and Umrah passage 2:196–203. Ayah 2:196 introduces rulings for completing pilgrimage; 2:197 defines the Hajj period and the pilgrim’s boundaries of conduct, reminds the listener that Allah knows every good deed, and then turns a practical instruction toward تَقْوَىٰ (taqwā). The following ayahs continue through Arafat, Muzdalifah, remembrance of Allah, and completion of the rites.',
       },
       revelation: {
@@ -36,13 +36,13 @@ export const AYAH_PROTOTYPES = {
       },
     ],
     tokens: [
-      { ar: 'ٱلْحَجُّ', tr: 'al-ḥajju', ru: 'хадж', en: 'the Hajj', roleRu: 'существительное · именительный', roleEn: 'noun · nominative' },
+      { ar: 'ٱلْحَجُّ', tr: 'al-ḥajju', ru: 'хадж', en: 'the Hajj', roleRu: 'существительное · marfūʿ', roleEn: 'noun · nominative' },
       { ar: 'أَشْهُرٌ', tr: 'ashhurun', ru: 'месяцы', en: 'months', roleRu: 'существительное · мн. число', roleEn: 'noun · plural' },
       { ar: 'مَّعْلُومَاتٌ', tr: 'maʿlūmātun', ru: 'известные / установленные', en: 'known / appointed', roleRu: 'прилагательное', roleEn: 'adjective' },
       { ar: 'فَمَن', tr: 'faman', ru: 'и тот, кто', en: 'then whoever', roleRu: 'فاء + условное местоимение', roleEn: 'resumption + conditional noun' },
       { ar: 'فَرَضَ', tr: 'faraḍa', ru: 'взял на себя / обязался', en: 'undertakes / commits', roleRu: 'глагол · прошедшее время', roleEn: 'perfect verb' },
       { ar: 'فِيهِنَّ', tr: 'fīhinna', ru: 'в них', en: 'in them', roleRu: 'предлог + местоимение', roleEn: 'preposition + pronoun' },
-      { ar: 'ٱلْحَجَّ', tr: 'al-ḥajja', ru: 'хадж', en: 'the Hajj', roleRu: 'существительное · винительный', roleEn: 'noun · accusative' },
+      { ar: 'ٱلْحَجَّ', tr: 'al-ḥajja', ru: 'хадж', en: 'the Hajj', roleRu: 'существительное · manṣūb', roleEn: 'noun · accusative' },
       { ar: 'فَلَا', tr: 'falā', ru: 'тогда нет / пусть не будет', en: 'then no', roleRu: 'فاء результата + отрицательная частица', roleEn: 'result particle + negation' },
       { ar: 'رَفَثَ', tr: 'rafatha', ru: 'интимной близости / непристойной речи', en: 'sexual relations / indecent speech', roleRu: 'существительное', roleEn: 'noun' },
       { ar: 'وَلَا', tr: 'walā', ru: 'и нет / и пусть не будет', en: 'and no', roleRu: 'союз + отрицательная частица', roleEn: 'conjunction + negation' },
@@ -50,7 +50,7 @@ export const AYAH_PROTOTYPES = {
       { ar: 'وَلَا', tr: 'walā', ru: 'и нет / и пусть не будет', en: 'and no', roleRu: 'союз + отрицательная частица', roleEn: 'conjunction + negation' },
       { ar: 'جِدَالَ', tr: 'jidāla', ru: 'спора', en: 'disputing', roleRu: 'существительное', roleEn: 'noun' },
       { ar: 'فِي', tr: 'fī', ru: 'во время / в', en: 'during / in', roleRu: 'предлог', roleEn: 'preposition' },
-      { ar: 'ٱلْحَجِّ', tr: 'al-ḥajji', ru: 'хаджа', en: 'the Hajj', roleRu: 'существительное · родительный', roleEn: 'noun · genitive' },
+      { ar: 'ٱلْحَجِّ', tr: 'al-ḥajji', ru: 'хаджа', en: 'the Hajj', roleRu: 'существительное · majrūr', roleEn: 'noun · genitive' },
       { ar: 'وَمَا', tr: 'wamā', ru: 'и что бы ни', en: 'and whatever', roleRu: 'واو + условное местоимение', roleEn: 'resumption + conditional noun' },
       { ar: 'تَفْعَلُوا۟', tr: 'tafʿalū', ru: 'вы делаете', en: 'you do', roleRu: 'глагол · 2 л. мн. ч.', roleEn: 'verb · 2nd person plural' },
       { ar: 'مِنْ', tr: 'min', ru: 'из / какого-либо', en: 'of / any', roleRu: 'предлог', roleEn: 'preposition' },
@@ -63,9 +63,9 @@ export const AYAH_PROTOTYPES = {
       { ar: 'ٱلزَّادِ', tr: 'al-zādi', ru: 'запас / провизия', en: 'provision', roleRu: 'существительное', roleEn: 'noun' },
       {
         ar: 'ٱلتَّقْوَىٰ', tr: 'al-taqwā', ru: 'благочестие', en: 'piety',
-        roleRu: 'существительное · именительный падеж', roleEn: 'noun · nominative',
+        roleRu: 'существительное · marfūʿ', roleEn: 'noun · nominative',
         root: 'و ق ي', rootReading: 'w-q-y', orbitId: 'taqwa',
-        noteRu: 'تَقْوَىٰ (taqwā) называет качество человека, связанное с осознанным остережением и защитой себя перед Всевышним.',
+        noteRu: 'تَقْوَىٰ (taqwā) называет качество, связанное с осознанным остережением перед Аллахом и стремлением оберегать себя от нарушения установленных Им границ.',
         noteEn: 'تَقْوَىٰ (taqwā) names a quality connected with conscious caution and guarding oneself before Allah.',
         analysis: {
           ru: {
@@ -76,19 +76,19 @@ export const AYAH_PROTOTYPES = {
                 { ar: 'و ق ي', tr: 'w-q-y', label: 'корень: защита / оберегание' },
                 { ar: 'فَعْلَى', tr: 'faʿlā', label: 'именная модель' },
               ],
-              text: 'В аяте слово стоит с артиклем ٱلـ. Внутри تَقْوَىٰ (taqwā) сохраняется словообразовательная связь с корнем و ق ي (w-q-y) и глаголом ٱتَّقَىٰ (ittaqā). Конечная ىٰ — alif maqṣūra.',
+              text: 'В аяте ٱلتَّقْوَىٰ (al-taqwā) состоит из определённого артикля ٱلـ и существительного تَقْوَىٰ (taqwā). Слово связано с корнем و ق ي (w-q-y) «защищать / оберегать» и с глаголом VIII формы ٱتَّقَىٰ (ittaqā). Конечная ىٰ — alif maqṣūra.',
             },
             syntax: {
               plain: 'Здесь работает конструкция с إِنَّ (inna). Сначала называется то, о чём говорится: خَيْرَ ٱلزَّادِ (khayra al-zādi) — «лучший запас». Затем следует ٱلتَّقْوَىٰ (al-taqwā), которое завершает мысль: именно это слово сообщает, чем является названный запас. Поэтому ٱلتَّقْوَىٰ (al-taqwā) выполняет роль خبر إِنَّ (khabar inna).',
               title: 'خبر إِنَّ (khabar inna) — часть, которая завершает утверждение после إِنَّ (inna)',
-              case: 'مرفوع (marfūʿ) — именительный падеж. Для خبر إِنَّ (khabar inna) это ожидаемая форма.',
+              case: 'مرفوع (marfūʿ) — грамматическое состояние, ожидаемое для خبر إِنَّ (khabar inna).',
               ending: 'Обычно مرفوع (marfūʿ) отмечается ḍamma. Но تَقْوَىٰ (taqwā) заканчивается на ىٰ (alif maqṣūra), поэтому ḍamma здесь не видна и отдельно не произносится. Такая скрытая огласовка называется ضمة مقدرة (ḍamma muqaddara).',
-              text: 'Если разобрать фразу по шагам: فَ (fa-) связывает её с предыдущей мыслью; إِنَّ (inna) вводит и усиливает утверждение; خَيْرَ (khayra) — اسم إِنَّ (ism inna), поэтому стоит в винительном падеже, и одновременно является مُضاف (muḍāf); ٱلزَّادِ (al-zādi) — مُضاف إليه (muḍāf ilayh), поэтому стоит в родительном падеже; ٱلتَّقْوَىٰ (al-taqwā) — خبر إِنَّ (khabar inna), поэтому грамматически مرفوع (marfūʿ).',
+              text: 'Если разобрать фразу по шагам: فَ (fa-) связывает её с предыдущей мыслью; إِنَّ (inna) вводит и усиливает утверждение; خَيْرَ (khayra) — اسم إِنَّ (ism inna), поэтому находится в состоянии manṣūb, и одновременно является مُضاف (muḍāf); ٱلزَّادِ (al-zādi) — مُضاف إليه (muḍāf ilayh), поэтому находится в состоянии majrūr; ٱلتَّقْوَىٰ (al-taqwā) — خبر إِنَّ (khabar inna), поэтому находится в состоянии marfūʿ.',
             },
             meaning: {
-              gloss: 'Благочестие',
-              description: 'В этом аяте تَقْوَىٰ (taqwā) передаётся словом «благочестие». Под благочестием здесь понимается внутреннее качество человека: осознанность перед Аллахом, осторожность в выборе и стремление удерживать установленные границы. Корень و ق ي (w-q-y) несёт идею защиты и оберегания, а форма ٱتَّقَىٰ (ittaqā) показывает активную защитную позицию человека.',
-              translation: '«Благочестие» передаёт внутреннюю направленность تَقْوَىٰ (taqwā): состояние, которое удерживает человека в осознанности перед Аллахом и влияет на его выбор. «Праведность» описывает проявление такого качества в поступках — следование правильному, соблюдение установленных границ и выбор добра. Следующее وَٱتَّقُونِ (wa-ittaqūni) связывает названное качество с действием: осознанным остережением и обереганием себя перед Всевышним.',
+              gloss: 'Благочестие / праведность',
+              description: 'В этом аяте تَقْوَىٰ (taqwā) хорошо передают слова «благочестие» и «праведность». Оба значения включают внимательность человека к своим поступкам: стремление выбирать правильное и соблюдать установленные Аллахом границы. В taqwā к этому особенно добавляются осознанность и почтительность перед Всевышним. Корень و ق ي (w-q-y) сохраняет идею защиты и оберегания.',
+              translation: '«Благочестие» и «праведность» здесь не противопоставляются: оба слова хорошо передают تَقْوَىٰ (taqwā), поскольку благочестие и праведность включают внимательность к собственным поступкам и стремление действовать правильно. Особый оттенок taqwā — осознанность и почтительность перед Всевышним вместе с идеей оберегания себя. Следующее وَٱتَّقُونِ (wa-ittaqūni) показывает то же смысловое поле уже как прямое действие.',
             },
           },
           en: {
@@ -109,9 +109,9 @@ export const AYAH_PROTOTYPES = {
               text: 'Step by step: فَ (fa-) links the clause to what comes before; إِنَّ (inna) introduces and emphasizes the statement; خَيْرَ (khayra) is اسم إِنَّ (ism inna), so it is accusative, and it also functions as مُضاف (muḍāf); ٱلزَّادِ (al-zādi) is مُضاف إليه (muḍāf ilayh), so it is genitive; ٱلتَّقْوَىٰ (al-taqwā) is خبر إِنَّ (khabar inna), so it is grammatically مرفوع (marfūʿ).',
             },
             meaning: {
-              gloss: 'Piety',
+              gloss: 'Piety / righteousness',
               description: 'In this ayah, تَقْوَىٰ (taqwā) is rendered as “piety.” Here, piety describes an inward quality: awareness before Allah, care in one’s choices, and an effort to remain within the relevant boundaries. The root و ق ي (w-q-y) carries the idea of protection and guarding, while ٱتَّقَىٰ (ittaqā) expresses an active protective stance.',
-              translation: '“Piety” foregrounds the inward orientation of تَقْوَىٰ (taqwā): a state that shapes a person’s choices through awareness before Allah. “Righteousness” describes how that quality appears in conduct—choosing what is right, respecting the relevant boundaries, and doing good. The following وَٱتَّقُونِ (wa-ittaqūni) connects the quality with action: conscious caution and guarding oneself before Allah.',
+              translation: '“Piety” and “righteousness” both work here because تَقْوَىٰ (taqwā) concerns a person’s orientation and conduct together: attention to one’s choices, respect for Allah’s boundaries, and right action. Its distinctive shade includes conscious awareness and reverence before Allah together with the root idea of guarding oneself. The following وَٱتَّقُونِ (wa-ittaqūni) expresses the same field as a direct command.',
             },
           },
         },
@@ -128,10 +128,10 @@ export const AYAH_PROTOTYPES = {
               parts: [
                 { ar: 'وَ', tr: 'wa-', label: 'союз «и»' },
                 { ar: 'ٱتَّقُوا', tr: 'ittaqū', label: 'повелительная форма, 2 л. мн. ч.' },
-                { ar: 'نِ', tr: '-ni', label: 'объект «Меня»; yā местоимения графически опущена' },
+                { ar: 'نِ', tr: '-ni', label: 'nūn al-wiqāya; yā местоимения «Меня» графически опущена' },
                 { ar: 'و ق ي', tr: 'w-q-y', label: 'корень' },
               ],
-              text: 'Глагольная основа относится к VIII форме ٱتَّقَىٰ (ittaqā). Внутри формы корневая و ассимилируется с ت модели и даёт удвоенную تّ.',
+              text: 'Глагольная основа относится к VIII форме ٱتَّقَىٰ (ittaqā). Внутри формы корневая و ассимилируется с ت модели и даёт удвоенную تّ. Конечная نِ содержит nūn al-wiqāya; объект «Меня» выражен yā местоимения, которая в этой коранической записи опущена.',
             },
             syntax: {
               plain: 'Простыми словами: это прямое повеление группе людей — «остерегайтесь Меня / берегите себя передо Мной».',
@@ -151,10 +151,10 @@ export const AYAH_PROTOTYPES = {
               parts: [
                 { ar: 'وَ', tr: 'wa-', label: 'conjunction “and”' },
                 { ar: 'ٱتَّقُوا', tr: 'ittaqū', label: '2nd person plural imperative' },
-                { ar: 'نِ', tr: '-ni', label: 'object “Me”; pronominal yā is orthographically omitted' },
+                { ar: 'نِ', tr: '-ni', label: 'nūn al-wiqāya; the pronominal yā “Me” is orthographically omitted' },
                 { ar: 'و ق ي', tr: 'w-q-y', label: 'root' },
               ],
-              text: 'The verbal base belongs to Form VIII ٱتَّقَىٰ (ittaqā). Within the form, the root و assimilates with the pattern’s ت, producing doubled تّ.',
+              text: 'The verbal base belongs to Form VIII ٱتَّقَىٰ (ittaqā). Within the form, the root و assimilates with the pattern’s ت, producing doubled تّ. The final نِ contains nūn al-wiqāya; the object “Me” is expressed by a pronominal yā that is omitted in this Quranic spelling.',
             },
             syntax: {
               plain: 'In simple terms: this is a direct command to a group — “guard yourselves before Me.”',
@@ -184,7 +184,7 @@ export const AYAH_PROTOTYPES = {
       {
         id: 'limits',
         range: [4, 15],
-        ru: { title: 'Границы для вступившего в хадж', text: 'Для того, кто вступил в хадж, названы три границы: رَفَث (rafath), فُسُوق (fusūq) и جِدَال (jidāl) во время хаджа.' },
+        ru: { title: 'Границы поведения во время хаджа', text: 'Для того, кто вступил в хадж, названы три границы: رَفَث (rafath), فُسُوق (fusūq) и جِدَال (jidāl).' },
         en: { title: 'Boundaries for the pilgrim', text: 'For one who enters Hajj, three boundaries are named: رَفَث (rafath), فُسُوق (fusūq), and جِدَال (jidāl) during Hajj.' },
       },
       {
@@ -202,7 +202,7 @@ export const AYAH_PROTOTYPES = {
       {
         id: 'address',
         range: [27, 29],
-        ru: { title: 'Прямое обращение', text: 'وَٱتَّقُونِ (wa-ittaqūni) переводит мысль в прямое повеление и обращается к أُولِي ٱلْأَلْبَاب (ulī al-albāb) — обладающим разумением.' },
+        ru: { title: 'Прямое обращение', text: 'После упоминания تَقْوَىٰ (taqwā) следует прямое повеление وَٱتَّقُونِ (wa-ittaqūni), обращённое к أُولِي ٱلْأَلْبَاب (ulī al-albāb) — обладающим разумением.' },
         en: { title: 'Direct address', text: 'وَٱتَّقُونِ (wa-ittaqūni) turns the thought into a direct command addressed to أُولِي ٱلْأَلْبَاب (ulī al-albāb), people of understanding.' },
       },
     ],

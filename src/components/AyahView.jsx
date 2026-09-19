@@ -101,16 +101,17 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
   const isTaqwa = selected.orbitId === 'taqwa'
   const focusViews = [
     ['word', ru ? 'Значение' : 'Meaning'],
-    ['relation', ru ? 'Синтаксис' : 'Syntax'],
     ['morphology', ru ? 'Морфология' : 'Morphology'],
+    ['relation', ru ? 'Синтаксис' : 'Syntax'],
   ]
   return <div className={'analysis-focus-overlay focus-view-' + focusView} onClick={onClose}>
     <div className="analysis-focus-space" onClick={onClose}>
-      <button className="word-focus-return" aria-label={ru ? 'Вернуться к аяту' : 'Return to ayah'} onClick={event => { event.stopPropagation(); onClose() }}>×</button>
+      <button className="word-focus-return" aria-label={ru ? 'Вернуться к аяту' : 'Return to ayah'} onClick={event => { event.stopPropagation(); onClose() }}><ArrowIcon /></button>
       {focusView === 'word' && <section className="word-meaning-view" onClick={event => event.stopPropagation()}>
         <div className="word-meaning-hero">
           <span lang="ar" dir="rtl">{selected.ar}</span>
           <small>{selected.tr}</small>
+          {meaning?.gloss && <strong className="word-meaning-gloss">{meaning.gloss}</strong>}
         </div>
         <div className="word-meaning-explanation">
           {(meaning?.description || (ru ? selected.noteRu : selected.noteEn)) && <section>
@@ -147,8 +148,8 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
                 <small>{morphologyParts[1]?.tr || 'taqwā'}</small>
                 <b>{ru ? 'Слово без артикля' : 'Word without the article'}</b>
                 <p>{ru
-                  ? 'تَقْوَىٰ (taqwā) — существительное. Контекстный перевод в этом аяте: «благочестие».'
-                  : 'تَقْوَىٰ (taqwā) is a noun. A contextual rendering in this ayah is “piety”.'}</p>
+                  ? 'تَقْوَىٰ (taqwā) — существительное. Контекстный перевод в этом аяте: «благочестие / праведность».'
+                  : 'تَقْوَىٰ (taqwā) is a noun. Contextual renderings here include “piety” and “righteousness”.'}</p>
               </article>
 
               <article className="analysis-morphology-node article">
@@ -162,11 +163,12 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
             </div>
 
             <svg className="analysis-morphology-tree second" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M25 2 C25 22 25 28 25 59" />
-              <path d="M25 2 C25 22 75 24 75 59" />
+              <path d="M25 2 C25 22 16.7 28 16.7 59" />
+              <path d="M25 2 C25 22 50 24 50 59" />
+              <path d="M25 2 C25 22 83.3 24 83.3 59" />
             </svg>
 
-            <div className="analysis-morphology-level second-level">
+            <div className="analysis-morphology-level second-level has-three">
               <article className="analysis-morphology-node root">
                 <span lang="ar" dir="rtl">{morphologyParts[2]?.ar || selected.root}</span>
                 <small>{morphologyParts[2]?.tr || selected.rootReading}</small>
@@ -174,6 +176,15 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
                 <p>{ru
                   ? 'و ق ي (w-q-y) несёт идею защиты и оберегания.'
                   : 'و ق ي (w-q-y) carries the idea of protection and guarding.'}</p>
+              </article>
+
+              <article className="analysis-morphology-node verb">
+                <span lang="ar" dir="rtl">ٱتَّقَىٰ</span>
+                <small>ittaqā</small>
+                <b>{ru ? 'Связанная глагольная форма · VIII' : 'Related verbal form · Form VIII'}</b>
+                <p>{ru
+                  ? 'Глагол VIII формы от того же корня: остерегаться, оберегать себя. Он делает активный оттенок корневой идеи особенно заметным.'
+                  : 'A Form VIII verb from the same root: to be wary and guard oneself. It makes the active shade of the root especially visible.'}</p>
               </article>
 
               <article className="analysis-morphology-node pattern">
@@ -192,14 +203,20 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
               </div>
               <div className="analysis-morphology-summary-list">
                 <p>{ru
-                  ? <><b>Основа:</b> تَقْوَىٰ (taqwā) — существительное, связанное с корнем و ق ي (w-q-y) «защищать / оберегать» и моделью فَعْلَى (faʿlā).</>
-                  : <><b>Base:</b> تَقْوَىٰ (taqwā) is a noun related to the root و ق ي (w-q-y), “to protect / guard,” and the pattern فَعْلَى (faʿlā).</>}</p>
+                  ? <><b>Основа:</b> تَقْوَىٰ (taqwā) — существительное из словообразовательного гнезда корня و ق ي (w-q-y) «защищать / оберегать».</>
+                  : <><b>Base:</b> تَقْوَىٰ (taqwā) belongs to the derivational family of the root و ق ي (w-q-y), “to protect / guard.”</>}</p>
+                <p>{ru
+                  ? <><b>Связанная форма:</b> ٱتَّقَىٰ (ittaqā), VIII форма, показывает активное действие — остерегаться и оберегать себя.</>
+                  : <><b>Related form:</b> ٱتَّقَىٰ (ittaqā), Form VIII, shows the active sense of guarding oneself.</>}</p>
+                <p>{ru
+                  ? <><b>Модель:</b> فَعْلَى (faʿlā) показывает именную словообразовательную форму تَقْوَىٰ (taqwā).</>
+                  : <><b>Pattern:</b> فَعْلَى (faʿlā) shows the nominal pattern of تَقْوَىٰ (taqwā).</>}</p>
                 <p>{ru
                   ? <><b>Что добавилось:</b> ٱلـ (al-) присоединяется к слову и делает его определённым.</>
                   : <><b>What is added:</b> ٱلـ (al-) attaches to the word and makes it definite.</>}</p>
                 <p>{ru
-                  ? <><b>В аяте 2:197:</b> краткий контекстный перевод — «благочестие».</>
-                  : <><b>In 2:197:</b> a concise contextual rendering is “piety.”</>}</p>
+                  ? <><b>В аяте 2:197:</b> краткий контекстный перевод — «благочестие / праведность».</>
+                  : <><b>In 2:197:</b> concise contextual renderings include “piety / righteousness.”</>}</p>
               </div>
             </div>
           </> : <div className="analysis-morphology-generic">
@@ -514,6 +531,10 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
         {ayah.contextSources?.map((source) => <a key={source.url} href={source.url} target="_blank" rel="noopener noreferrer">
           {source[language]} <ExternalIcon />
         </a>)}
+      </div>
+
+      <div className="ayah-context-tools">
+        <small>{ru ? 'Исследовать аят' : 'Explore the ayah'}</small>
         <a href={ayah.greentechUrl} target="_blank" rel="noopener noreferrer">
           Al Quran · Greentech <ExternalIcon />
         </a>
