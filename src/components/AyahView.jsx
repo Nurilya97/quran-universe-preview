@@ -13,9 +13,6 @@ function InfoIcon() {
 function ExternalIcon() {
   return <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14 4h6v6m0-6L10 14M10 5H5v14h14v-5" /></svg>
 }
-function ResetIcon() {
-  return <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="1.45" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 7v5h5M6.6 17.2A8 8 0 1 0 5 9" /></svg>
-}
 
 const WORLD = { width: 2500, height: 1900 }
 const BLOCK_Y = [300, 620, 940, 1260, 1580]
@@ -626,7 +623,6 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
       <button onClick={() => zoomBy(.08)}>+</button>
       <span>{Math.round(camera.scale * 100)}%</span>
       <button onClick={() => zoomBy(-.08)}>−</button>
-      <button onClick={resetCamera}><ResetIcon /></button>
     </div>
 
     <div className="ayah-space-hint">{ru ? 'Перемещайте схему · края удерживают вас внутри разбора · двойное нажатие возвращает центр' : 'Move the diagram · bounded edges keep the analysis in view · double tap resets'}</div>
