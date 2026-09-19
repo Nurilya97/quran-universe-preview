@@ -190,7 +190,7 @@ export const AYAH_PROTOTYPES = {
       {
         id: 'knowledge',
         range: [16, 21],
-        ru: { title: 'Аллах знает каждое добро', text: 'Затем фокус смещается от ограничений к добру: аят напоминает, что нравственная сторона паломничества состоит не только в отказе от запретного, но и в совершении добра.' },
+        ru: { title: 'Аллах знает каждое добро', text: 'Затем фокус смещается от ограничений к добру: нравственная сторона паломничества включает и дисциплину поведения, и активное совершение добра.' },
         en: { title: 'Allah knows every good deed', text: 'The focus then moves from restraint to good action: the moral dimension of pilgrimage includes doing good, not merely avoiding what is prohibited.' },
       },
       {
