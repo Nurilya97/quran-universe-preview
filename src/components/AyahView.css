@@ -4405,12 +4405,12 @@
 }
 
 .analysis-morphology-branch .branch-line {
-  background: rgba(247,250,251,.20) !important;
+  background: rgba(247,250,251,.14) !important;
   box-shadow: none !important;
 }
 
 .analysis-morphology-branch .branch-line::after {
-  background: rgba(245,248,249,.20) !important;
+  background: rgba(245,248,249,.14) !important;
   box-shadow: none !important;
 }
 
@@ -4469,5 +4469,109 @@
 
   .analysis-morphology-branch.second .branch-line {
     width: 44px !important;
+  }
+}
+
+
+/* Morphology mobile readability pass */
+.analysis-morphology-node > small {
+  font-size: 11px !important;
+  line-height: 1.35 !important;
+}
+
+.analysis-morphology-node > b {
+  font-size: 12.5px !important;
+  line-height: 1.35 !important;
+  font-weight: 650 !important;
+}
+
+.analysis-morphology-node > p {
+  font-size: 13px !important;
+  line-height: 1.68 !important;
+}
+
+.analysis-morphology-note > strong {
+  font-size: 15px !important;
+  line-height: 1.35 !important;
+  font-weight: 650 !important;
+}
+
+.analysis-morphology-note > p {
+  max-width: 560px;
+  margin: 10px auto 0 !important;
+  color: #b4bdc2 !important;
+  font-size: 13.5px !important;
+  line-height: 1.72 !important;
+}
+
+@media (max-width: 760px) {
+  .analysis-morphology-node > span {
+    font-size: 30px !important;
+  }
+
+  .analysis-morphology-node > small {
+    font-size: 11.5px !important;
+  }
+
+  .analysis-morphology-node > b {
+    margin-top: 10px !important;
+    font-size: 12.5px !important;
+  }
+
+  .analysis-morphology-node > p {
+    max-width: 220px;
+    margin-top: 8px !important;
+    font-size: 12.5px !important;
+    line-height: 1.66 !important;
+  }
+
+  .analysis-morphology-note {
+    width: 90% !important;
+    margin-top: 24px !important;
+    padding-top: 18px !important;
+  }
+
+  .analysis-morphology-note > strong {
+    font-size: 15px !important;
+  }
+
+  .analysis-morphology-note > p {
+    max-width: 520px;
+    font-size: 13px !important;
+    line-height: 1.72 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .analysis-morphology-node > span {
+    font-size: 29px !important;
+  }
+
+  .analysis-morphology-node > small {
+    font-size: 11px !important;
+  }
+
+  .analysis-morphology-node > b {
+    font-size: 12px !important;
+  }
+
+  .analysis-morphology-node > p {
+    max-width: 180px;
+    font-size: 12.2px !important;
+    line-height: 1.65 !important;
+  }
+
+  .analysis-morphology-note {
+    width: 92% !important;
+  }
+
+  .analysis-morphology-note > strong {
+    font-size: 15px !important;
+  }
+
+  .analysis-morphology-note > p {
+    max-width: 330px;
+    font-size: 13px !important;
+    line-height: 1.7 !important;
   }
 }
