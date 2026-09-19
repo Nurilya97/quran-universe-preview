@@ -101,16 +101,17 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
   const isTaqwa = selected.orbitId === 'taqwa'
   const focusViews = [
     ['word', ru ? 'Значение' : 'Meaning'],
-    ['relation', ru ? 'Синтаксис' : 'Syntax'],
     ['morphology', ru ? 'Морфология' : 'Morphology'],
+    ['relation', ru ? 'Синтаксис' : 'Syntax'],
   ]
   return <div className={'analysis-focus-overlay focus-view-' + focusView} onClick={onClose}>
     <div className="analysis-focus-space" onClick={onClose}>
-      <button className="word-focus-return" aria-label={ru ? 'Вернуться к аяту' : 'Return to ayah'} onClick={event => { event.stopPropagation(); onClose() }}>×</button>
+      <button className="word-focus-return" aria-label={ru ? 'Вернуться к аяту' : 'Return to ayah'} onClick={event => { event.stopPropagation(); onClose() }}><ArrowIcon /></button>
       {focusView === 'word' && <section className="word-meaning-view" onClick={event => event.stopPropagation()}>
         <div className="word-meaning-hero">
           <span lang="ar" dir="rtl">{selected.ar}</span>
           <small>{selected.tr}</small>
+          {meaning?.gloss && <strong className="word-meaning-gloss">{meaning.gloss}</strong>}
         </div>
         <div className="word-meaning-explanation">
           {(meaning?.description || (ru ? selected.noteRu : selected.noteEn)) && <section>
@@ -161,9 +162,22 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
               </article>
             </div>
 
+            <svg className="analysis-morphology-tree derivation" viewBox="0 0 100 54" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M25 2 C25 20 50 20 50 51" />
+            </svg>
+
+            <article className="analysis-morphology-node verb">
+              <span lang="ar" dir="rtl">ٱتَّقَىٰ</span>
+              <small>ittaqā</small>
+              <b>{ru ? 'Связанная глагольная форма · VIII' : 'Related verbal form · Form VIII'}</b>
+              <p>{ru
+                ? 'ٱتَّقَىٰ (ittaqā) — глагол VIII формы от корня و ق ي (w-q-y). Он показывает активный оттенок: остерегаться, оберегать себя.'
+                : 'ٱتَّقَىٰ (ittaqā) is a Form VIII verb from the root و ق ي (w-q-y), expressing an active sense of taking care or guarding oneself.'}</p>
+            </article>
+
             <svg className="analysis-morphology-tree second" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M25 2 C25 22 25 28 25 59" />
-              <path d="M25 2 C25 22 75 24 75 59" />
+              <path d="M50 2 C50 22 25 28 25 59" />
+              <path d="M50 2 C50 22 75 24 75 59" />
             </svg>
 
             <div className="analysis-morphology-level second-level">
@@ -192,8 +206,14 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
               </div>
               <div className="analysis-morphology-summary-list">
                 <p>{ru
-                  ? <><b>Основа:</b> تَقْوَىٰ (taqwā) — существительное, связанное с корнем و ق ي (w-q-y) «защищать / оберегать» и моделью فَعْلَى (faʿlā).</>
-                  : <><b>Base:</b> تَقْوَىٰ (taqwā) is a noun related to the root و ق ي (w-q-y), “to protect / guard,” and the pattern فَعْلَى (faʿlā).</>}</p>
+                  ? <><b>Основа:</b> تَقْوَىٰ (taqwā) — существительное из словообразовательного гнезда корня و ق ي (w-q-y) «защищать / оберегать».</>
+                  : <><b>Base:</b> تَقْوَىٰ (taqwā) belongs to the derivational family of the root و ق ي (w-q-y), “to protect / guard.”</>}</p>
+                <p>{ru
+                  ? <><b>Связанная форма:</b> ٱتَّقَىٰ (ittaqā), VIII форма, показывает активное действие — остерегаться и оберегать себя.</>
+                  : <><b>Related form:</b> ٱتَّقَىٰ (ittaqā), Form VIII, shows the active sense of guarding oneself.</>}</p>
+                <p>{ru
+                  ? <><b>Модель:</b> فَعْلَى (faʿlā) показывает именную словообразовательную форму تَقْوَىٰ (taqwā).</>
+                  : <><b>Pattern:</b> فَعْلَى (faʿlā) shows the nominal pattern of تَقْوَىٰ (taqwā).</>}</p>
                 <p>{ru
                   ? <><b>Что добавилось:</b> ٱلـ (al-) присоединяется к слову и делает его определённым.</>
                   : <><b>What is added:</b> ٱلـ (al-) attaches to the word and makes it definite.</>}</p>
@@ -514,6 +534,10 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
         {ayah.contextSources?.map((source) => <a key={source.url} href={source.url} target="_blank" rel="noopener noreferrer">
           {source[language]} <ExternalIcon />
         </a>)}
+      </div>
+
+      <div className="ayah-context-tools">
+        <small>{ru ? 'Исследовать аят' : 'Explore the ayah'}</small>
         <a href={ayah.greentechUrl} target="_blank" rel="noopener noreferrer">
           Al Quran · Greentech <ExternalIcon />
         </a>
