@@ -2901,3 +2901,274 @@
     top: 49% !important;
   }
 }
+
+/* Mobile UX readability pass across the whole Ayah Space */
+@media (max-width: 760px) {
+  /* Fixed interface: readable labels + 44px touch targets */
+  .ayah-back,
+  .ayah-context-trigger {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 14px;
+  }
+
+  .ayah-space-modes {
+    top: 58px !important;
+    max-width: calc(100vw - 20px) !important;
+    min-height: 48px;
+    padding: 4px !important;
+    gap: 3px;
+    border-radius: 17px;
+    background: rgba(9,13,16,.86) !important;
+    box-shadow: 0 12px 34px rgba(0,0,0,.28);
+    scrollbar-width: none;
+  }
+  .ayah-space-modes::-webkit-scrollbar { display: none; }
+
+  .ayah-space-modes button {
+    min-height: 40px !important;
+    padding: 0 13px !important;
+    border-radius: 13px;
+    font-size: 13px !important;
+    white-space: nowrap;
+  }
+
+  .ayah-space-modes button[aria-pressed='true'] {
+    background:
+      linear-gradient(145deg, rgba(255,255,255,.105), rgba(255,255,255,.04)) !important;
+    color: #f3f6f7 !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.07),
+      0 0 22px rgba(170,205,225,.06);
+  }
+
+  .ayah-space-context {
+    top: 114px !important;
+    padding: 18px 18px 20px !important;
+    border-radius: 18px;
+  }
+  .ayah-space-context header span {
+    font-size: 13px !important;
+  }
+  .ayah-space-context p {
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+  }
+
+  .ayah-space-zoom {
+    border-radius: 14px;
+  }
+  .ayah-space-zoom button {
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 18px !important;
+  }
+  .ayah-space-zoom span {
+    min-width: 48px;
+    font-size: 11px !important;
+  }
+
+  .ayah-space-hint {
+    max-width: 190px !important;
+    font-size: 10.5px !important;
+    line-height: 1.45;
+  }
+
+  /* Main analysis ayah: fit within phone width while staying legible */
+  .analysis-ayah-group {
+    width: 560px !important;
+    top: 770px !important;
+  }
+  .analysis-ayah-group .analysis-ayah-continuous {
+    font-size: 38px !important;
+    line-height: 1.78 !important;
+  }
+  .analysis-ayah-group .analysis-verse-reference {
+    margin-top: 8px !important;
+  }
+  .analysis-ayah-group .analysis-verse-reference span {
+    font-size: 22px !important;
+    color: #e2e7ea !important;
+  }
+  .analysis-ayah-group .analysis-verse-reference small {
+    font-size: 16px !important;
+    color: #8d989f !important;
+  }
+  .analysis-tap-hint {
+    font-size: 16px !important;
+    color: #7c878e !important;
+  }
+
+  /* Shared verse ribbon in Composition / Rhetoric / Sound / Translations */
+  .diagram-ayah-ribbon {
+    width: 560px !important;
+  }
+  .diagram-ayah-ribbon > small {
+    margin-bottom: 11px !important;
+    font-size: 16px !important;
+  }
+  .diagram-ayah-ribbon > div {
+    font-size: 34px !important;
+    line-height: 1.7 !important;
+  }
+
+  /* Composition */
+  .composition-constellation {
+    width: 560px !important;
+  }
+  .composition-constellation > small {
+    font-size: 15px !important;
+  }
+  .composition-constellation h3 {
+    margin: 6px 0 9px !important;
+    font-size: 22px !important;
+    line-height: 1.35;
+  }
+  .composition-constellation > div {
+    font-size: 32px !important;
+    line-height: 1.55 !important;
+  }
+  .composition-constellation p {
+    max-width: 530px !important;
+    margin-top: 9px !important;
+    font-size: 19px !important;
+    line-height: 1.55 !important;
+  }
+  .composition-summary,
+  .sound-annotation,
+  .translation-annotation {
+    width: 560px !important;
+  }
+  .composition-summary span,
+  .sound-annotation span,
+  .translation-annotation span {
+    font-size: 16px !important;
+  }
+  .composition-summary p,
+  .sound-annotation p,
+  .translation-annotation p {
+    margin-top: 9px !important;
+    font-size: 19px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Rhetoric + shared constellation words */
+  .skeleton-word {
+    width: 150px !important;
+  }
+  .skeleton-word span {
+    font-size: 30px !important;
+  }
+  .rhetoric-annotation {
+    width: 520px !important;
+  }
+  .rhetoric-annotation h3 {
+    font-size: 22px !important;
+    line-height: 1.35 !important;
+  }
+  .rhetoric-annotation p {
+    margin-top: 8px !important;
+    font-size: 18px !important;
+    line-height: 1.55 !important;
+  }
+  .diagram-view-caption {
+    width: 560px !important;
+    font-size: 17px !important;
+    line-height: 1.5;
+  }
+
+  /* Focus callouts: no eaten letters, more content per page */
+  .analysis-focus-callout {
+    box-sizing: border-box;
+  }
+
+  .analysis-focus-callout.morph,
+  .analysis-focus-callout.syntax {
+    height: auto !important;
+    min-height: 238px !important;
+    max-height: 286px !important;
+  }
+
+  .analysis-focus-callout .analysis-callout-page {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    scrollbar-width: none;
+  }
+  .analysis-focus-callout .analysis-callout-page::-webkit-scrollbar {
+    display: none;
+  }
+
+  .analysis-morph-parts > div {
+    grid-template-columns: 48px minmax(0,1fr) !important;
+    grid-template-rows: auto auto;
+    align-items: start !important;
+    gap: 3px 7px !important;
+    min-height: 0 !important;
+    padding: 7px 0 !important;
+  }
+  .analysis-morph-parts b {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 20px !important;
+    text-align: right;
+  }
+  .analysis-morph-parts em {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    font-size: 10.5px !important;
+    overflow-wrap: normal !important;
+  }
+  .analysis-morph-parts p {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin: 0 !important;
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+  }
+
+  .analysis-focus-callout.semantic {
+    bottom: 78px !important;
+    width: calc(100vw - 28px) !important;
+    height: auto !important;
+    min-height: 158px !important;
+    max-height: none !important;
+    padding-bottom: 16px !important;
+  }
+  .analysis-focus-callout.semantic .analysis-callout-page {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  .analysis-focus-callout.semantic .analysis-orbit-button {
+    position: static !important;
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    min-height: 38px !important;
+    margin: 12px auto 0 !important;
+    padding: 0 14px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .ayah-space-modes button {
+    font-size: 12.5px !important;
+    padding: 0 11px !important;
+  }
+
+  .analysis-ayah-group {
+    width: 535px !important;
+  }
+
+  .analysis-focus-callout.morph,
+  .analysis-focus-callout.syntax {
+    max-height: 276px !important;
+  }
+
+  .analysis-focus-callout.semantic {
+    bottom: 70px !important;
+    width: calc(100vw - 24px) !important;
+  }
+}
