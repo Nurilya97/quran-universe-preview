@@ -97,7 +97,32 @@
 .word-meaning-explanation section + section { margin-top:30px; }
 .word-meaning-explanation h3 { font-size:16px; font-weight:400; color:#b4cbbf; margin:0 0 12px; }
 .word-meaning-explanation p { font-size:16px; line-height:1.85; margin:0; color:#bdc8cd; }
-.word-meaning-orbit { margin-top:28px; }
+.word-meaning-orbit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  margin-top: 34px;
+  padding: 0 18px;
+  border: 1px solid rgba(166,208,194,.42);
+  border-radius: 12px;
+  background: rgba(166,208,194,.10);
+  color: #d9eee4;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  box-shadow: 0 10px 28px rgba(0,0,0,.22);
+  cursor: pointer;
+}
+.word-meaning-orbit:hover {
+  background: rgba(166,208,194,.16);
+  border-color: rgba(166,208,194,.62);
+  color: #f4fff9;
+}
+.word-meaning-orbit:active {
+  transform: translateY(1px);
+}
 @media (max-width:760px) {
   .syntax-notebook { padding-inline:16px; }
   .syntax-clause { margin-top:30px; }
@@ -105,6 +130,12 @@
   .syntax-word-zone { padding-inline:0; }
   .syntax-word-roles .syntax-term { font-size:14px; }
   .word-meaning-view { padding-inline:22px; }
+  .word-meaning-orbit {
+    width: min(100%, 320px);
+    min-height: 48px;
+    margin-top: 30px;
+    font-size: 14px;
+  }
 }
 
 
