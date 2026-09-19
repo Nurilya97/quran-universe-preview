@@ -4398,3 +4398,76 @@
     right: -3.5px !important;
   }
 }
+
+/* Mobile morphology connector correction: keep connectors clear of word labels and 80% transparent */
+.analysis-morphology-branch {
+  opacity: 1 !important;
+}
+
+.analysis-morphology-branch .branch-line {
+  background: rgba(247,250,251,.20) !important;
+  box-shadow: none !important;
+}
+
+.analysis-morphology-branch .branch-line::after {
+  background: rgba(245,248,249,.20) !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 760px) {
+  .analysis-morphology-branch.first {
+    height: 72px !important;
+  }
+
+  .analysis-morphology-branch.first .branch-line {
+    width: 64px !important;
+  }
+
+  .analysis-morphology-branch.first .branch-line.left {
+    left: 44% !important;
+    transform: rotate(138deg) !important;
+  }
+
+  .analysis-morphology-branch.first .branch-line.right {
+    left: 56% !important;
+    transform: rotate(42deg) !important;
+  }
+
+  .analysis-morphology-branch.second {
+    width: 52% !important;
+    height: 64px !important;
+  }
+
+  .analysis-morphology-branch.second .branch-line {
+    width: 48px !important;
+  }
+
+  .analysis-morphology-branch.second .branch-line.left {
+    left: 43% !important;
+    transform: rotate(121deg) !important;
+  }
+
+  .analysis-morphology-branch.second .branch-line.right {
+    left: 57% !important;
+    transform: rotate(59deg) !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .analysis-morphology-branch.first {
+    height: 70px !important;
+  }
+
+  .analysis-morphology-branch.first .branch-line {
+    width: 58px !important;
+  }
+
+  .analysis-morphology-branch.second {
+    width: 56% !important;
+    height: 60px !important;
+  }
+
+  .analysis-morphology-branch.second .branch-line {
+    width: 44px !important;
+  }
+}
