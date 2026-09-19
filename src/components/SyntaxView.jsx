@@ -92,7 +92,7 @@ export function SyntaxView({ ayah, selectedWord, language }) {
             })}
           </div>
           {geometry && step && <svg className="syntax-connectors"
-            viewBox={`0 0 ${geometry.width} 112`} style={{ height: 112 }} role="group"
+            viewBox={`0 0 ${geometry.width} 88`} style={{ height: 88 }} role="group"
             aria-label={ru ? 'Грамматическая связь между словами' : 'Grammatical relationship between words'} dir="ltr">
             <defs><marker id={marker} markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1L6 3.5L1 6" fill="none" stroke="currentColor" strokeWidth="1" /></marker></defs>
             {[step].map(s => {
@@ -103,7 +103,7 @@ export function SyntaxView({ ayah, selectedWord, language }) {
               const groupLeft = groupPoints.length ? Math.min(...groupPoints.map(point => point.left)) : null
               const groupRight = groupPoints.length ? Math.max(...groupPoints.map(point => point.right)) : null
               const x = groupPoints.length ? (groupLeft + groupRight) / 2 : from.x
-              const depth = 46
+              const depth = 34
               const path = `M ${x} 8 C ${x} ${depth}, ${to.x} ${depth}, ${to.x} 8`
               return <g key={s.id}>
                 {groupPoints.length > 1 && <path className="syntax-group-line" d={`M ${groupLeft + 4} 4 H ${groupRight - 4}`} />}
@@ -137,8 +137,10 @@ export function SyntaxView({ ayah, selectedWord, language }) {
           {term && <>
             <header><h3><span lang="ar" dir="rtl">{term.ar}</span><small>{term.tr}</small></h3>
               <button aria-label={ru ? 'Закрыть пояснение термина' : 'Close term explanation'} onClick={() => setSelectedTerm(null)}>×</button></header>
-            <div className="syntax-term-example" lang="ar" dir="rtl">{term.words.map(i => ayah.tokens[i-1].ar).join(' ')}</div>
-            <div className="syntax-term-example-tr">{term.words.map(i => ayah.tokens[i-1].tr).join(' · ')}</div>
+            {selectedTerm !== 'khabarInna' && <>
+              <div className="syntax-term-example" lang="ar" dir="rtl">{term.words.map(i => ayah.tokens[i-1].ar).join(' ')}</div>
+              <div className="syntax-term-example-tr">{term.words.map(i => ayah.tokens[i-1].tr).join(' · ')}</div>
+            </>}
             {term[language].map((text,i) => <p key={i}>{explainTerms(text)}</p>)}
             {term.cases?.[language]?.length ? <section className="syntax-term-cases">
               <h4>{ru ? `Когда слово становится ${term.tr}` : `When a word becomes ${term.tr}`}</h4>
