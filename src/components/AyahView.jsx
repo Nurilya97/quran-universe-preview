@@ -39,10 +39,6 @@ function phraseTokens(ayah, block) {
   return ayah.tokens.slice(block.range[0] - 1, block.range[1])
 }
 
-function phraseText(ayah, block) {
-  return phraseTokens(ayah, block).map(token => token.ar).join(' ')
-}
-
 function layoutBlock(block, blockIndex) {
   const count = block.range[1] - block.range[0] + 1
   const centerX = WORLD.width / 2
@@ -396,7 +392,6 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
   }
 
   function onPointerDown(event) {
-    setHasInteracted(true)
     // Word buttons must receive their click instead of the canvas capturing it.
     if (event.target.closest('button')) return
     if (event.button !== undefined && event.button !== 0) return
@@ -477,7 +472,6 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     setMode(nextMode)
     setSelectedWord(null)
     setContextOpen(false)
-    setHasInteracted(true)
     const scale = defaultScale()
     requestAnimationFrame(() => {
       const next = clampCamera({ x: 0, y: 0, scale }, nextMode)
