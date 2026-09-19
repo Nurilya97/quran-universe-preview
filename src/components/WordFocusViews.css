@@ -61,3 +61,6 @@
   .word-meaning-note { margin-left: 20px; }
 }
 @media (prefers-reduced-motion: reduce) { .syntax-word { transition: none; } }
+
+.word-focus-return { position: absolute; top: 18px; right: 20px; z-index: 21; width: 44px; height: 44px; background: none; border: 0; color: #aebfc3; font: 26px system-ui; cursor: pointer; }
+.word-focus-return:focus-visible { outline: 1px solid #b8d9c4; }

@@ -153,6 +153,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
   const isTaqwa = selected.orbitId === 'taqwa'
   return <div className={'analysis-focus-overlay focus-view-' + focusView} onClick={onClose}>
     <div className="analysis-focus-space" onClick={onClose}>
+      {focusView !== 'morphology' && <button className="word-focus-return" aria-label={ru ? 'Вернуться к аяту' : 'Return to ayah'} onClick={event => { event.stopPropagation(); onClose() }}>×</button>}
       {focusView === 'word' && <section className="word-meaning-view" onClick={event => event.stopPropagation()}>
         <div className="word-meaning-hero">
           <span lang="ar" dir="rtl">{selected.ar}</span>
@@ -484,6 +485,8 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
   }
 
   function onPointerDown(event) {
+    // Word buttons must receive their click instead of the canvas capturing it.
+    if (event.target.closest('button')) return
     if (event.button !== undefined && event.button !== 0) return
     event.currentTarget.setPointerCapture?.(event.pointerId)
     pointers.current.set(event.pointerId, { x: event.clientX, y: event.clientY })
