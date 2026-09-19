@@ -172,3 +172,20 @@
     outline-color: color-mix(in srgb, var(--term-color) 42%, transparent);
   }
 }
+
+
+.syntax-term-example-tr {
+  margin: -8px 0 14px;
+  color: #93a6a1;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+  direction: ltr;
+}
+
+@media (max-width:760px) {
+  .syntax-term-example-tr {
+    margin-top: -6px;
+    font-size: 12.5px;
+  }
+}
