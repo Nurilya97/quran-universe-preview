@@ -389,12 +389,10 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
           </header>
 
           {isTaqwa ? <>
-            <svg className="analysis-morphology-branch first" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M430 8 L250 104" />
-              <circle cx="250" cy="104" r="5" />
-              <path d="M570 8 L750 104" />
-              <circle cx="750" cy="104" r="5" />
-            </svg>
+            <div className="analysis-morphology-branch first" aria-hidden="true">
+              <i className="branch-line left" />
+              <i className="branch-line right" />
+            </div>
 
             <div className="analysis-morphology-level first-level">
               <article className="analysis-morphology-node base">
@@ -416,12 +414,10 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
               </article>
             </div>
 
-            <svg className="analysis-morphology-branch second" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M420 8 L250 104" />
-              <circle cx="250" cy="104" r="5" />
-              <path d="M580 8 L750 104" />
-              <circle cx="750" cy="104" r="5" />
-            </svg>
+            <div className="analysis-morphology-branch second" aria-hidden="true">
+              <i className="branch-line left" />
+              <i className="branch-line right" />
+            </div>
 
             <div className="analysis-morphology-level second-level">
               <article className="analysis-morphology-node root">
