@@ -151,33 +151,41 @@ function CalloutPager({ page, count, onChange, language }) {
 function splitCalloutText(text, maxLength = 175) {
   if (!text) return []
 
-  const words = text.trim().split(/\s+/).filter(Boolean)
-  if (!words.length) return []
+  const sentences = text
+    .match(/[^.!?…]+(?:[.!?…]+|$)/g)
+    ?.map(sentence => sentence.trim())
+    .filter(Boolean) || [text.trim()]
 
   const pages = []
-  let current = []
+  let current = ''
 
-  for (const word of words) {
-    const candidate = [...current, word].join(' ')
-    if (current.length && candidate.length > maxLength) {
-      pages.push(current)
-      current = [word]
+  for (const sentence of sentences) {
+    if (!current) {
+      current = sentence
+      continue
+    }
+
+    const combined = current + ' ' + sentence
+    if (combined.length <= maxLength) {
+      current = combined
     } else {
-      current.push(word)
-    }
-  }
-  if (current.length) pages.push(current)
-
-  // Keep the last page from becoming a fragment of one or two words.
-  if (pages.length > 1 && pages[pages.length - 1].length < 5) {
-    const last = pages[pages.length - 1]
-    const previous = pages[pages.length - 2]
-    while (last.length < 5 && previous.length > 5) {
-      last.unshift(previous.pop())
+      pages.push(current)
+      current = sentence
     }
   }
 
-  return pages.map(page => page.join(' '))
+  if (current) pages.push(current)
+
+  // A very short final sentence reads better with the previous page.
+  if (
+    pages.length > 1 &&
+    pages[pages.length - 1].split(/\s+/).length <= 4 &&
+    (pages[pages.length - 2] + ' ' + pages[pages.length - 1]).length <= maxLength * 1.35
+  ) {
+    pages[pages.length - 2] += ' ' + pages.pop()
+  }
+
+  return pages
 }
 
 function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrbit }) {
@@ -229,21 +237,37 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
     </div>] : []),
   ]
 
-  const syntaxEndingPages = splitCalloutText(syntax?.ending, 150).map((text, index) => <div key={'ending-' + index}>
-    <strong>{ru ? 'Почему такая огласовка' : 'Why this ending appears'}</strong>
+  const syntaxPlainPages = splitCalloutText(syntax?.plain, 185).map((text, index) => <div key={'plain-' + index}>
+    <strong>{index === 0
+      ? (ru ? 'Что делает слово в предложении' : 'What the word does in the sentence')
+      : (ru ? 'Продолжение' : 'Continued')}</strong>
+    <p className="analysis-syntax-plain">{text}</p>
+  </div>)
+
+  const syntaxPhrasePage = selectedBlock
+    ? [<div key="phrase">
+        <strong>{ru ? 'Фраза в аяте' : 'Phrase in the ayah'}</strong>
+        <div className="analysis-syntax-phrase" lang="ar" dir="rtl">{phraseText(ayah, selectedBlock)}</div>
+      </div>]
+    : []
+
+  const syntaxEndingPages = splitCalloutText(syntax?.ending, 175).map((text, index) => <div key={'ending-' + index}>
+    <strong>{index === 0
+      ? (ru ? 'Почему такая огласовка' : 'Why this ending appears')
+      : (ru ? 'Продолжение' : 'Continued')}</strong>
     <p><b>{ru ? 'Окончание / огласовка:' : 'Ending / vowel:'}</b> {text}</p>
   </div>)
-  const syntaxDetailPages = splitCalloutText(syntax?.text, 165).map((text, index) => <div key={'syntax-detail-' + index}>
-    <strong>{ru ? 'Как устроена конструкция' : 'How the construction works'}</strong>
+
+  const syntaxDetailPages = splitCalloutText(syntax?.text, 185).map((text, index) => <div key={'syntax-detail-' + index}>
+    <strong>{index === 0
+      ? (ru ? 'Как устроена конструкция' : 'How the construction works')
+      : (ru ? 'Продолжение' : 'Continued')}</strong>
     <p className="analysis-detail-text">{text}</p>
   </div>)
 
   const syntaxPages = [
-    <div key="plain">
-      <strong>{ru ? 'Что делает слово в предложении' : 'What the word does in the sentence'}</strong>
-      {syntax?.plain && <p className="analysis-syntax-plain">{syntax.plain}</p>}
-      <div className="analysis-syntax-phrase" lang="ar" dir="rtl">{selectedBlock ? phraseText(ayah, selectedBlock) : selected.ar}</div>
-    </div>,
+    ...(syntaxPlainPages.length ? syntaxPlainPages : [<div key="plain-fallback"><strong>{ru ? 'Что делает слово в предложении' : 'What the word does in the sentence'}</strong></div>]),
+    ...syntaxPhrasePage,
     <div key="role">
       <strong>{ru ? 'Роль и положение' : 'Role and position'}</strong>
       {syntax?.title && <p><b>{ru ? 'Роль:' : 'Role:'}</b> {syntax.title}</p>}
@@ -255,13 +279,13 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
 
   const semanticDescriptionPages = splitCalloutText(
     meaning?.description || (ru ? selected.noteRu : selected.noteEn),
-    110
+    185
   ).map((text, index) => <div key={'meaning-' + index}>
     <strong>{index === 0 ? (meaning?.gloss || (ru ? selected.ru : selected.en)) : (ru ? 'Продолжение значения' : 'Meaning continued')}</strong>
     <p className="analysis-detail-text">{text}</p>
   </div>)
 
-  const semanticTranslationPages = splitCalloutText(meaning?.translation, 105).map((text, index) => <div key={'translation-' + index}>
+  const semanticTranslationPages = splitCalloutText(meaning?.translation, 180).map((text, index) => <div key={'translation-' + index}>
     <strong>{index === 0 ? (ru ? 'Почему такой перевод' : 'Why this translation') : (ru ? 'Продолжение' : 'Continued')}</strong>
     <p className="analysis-translation-choice">{text}</p>
   </div>)
@@ -613,7 +637,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     })
   }
 
-  return <section className={'ayah-space-shell' + (mode === 'analysis' ? ' is-analysis' : '')}>
+  return <section className={'ayah-space-shell' + (mode === 'analysis' ? ' is-analysis' : '') + (selectedWord && mode === 'analysis' ? ' has-word-focus' : '')}>
     <div className="ayah-space-topbar">
       <button className="ayah-back" onClick={onBack}><ArrowIcon /><span>{ru ? 'К слову' : 'Back'}</span></button>
       <div className="ayah-space-reference"><strong>{ayah.reference}</strong><small>{ayah.surah[language]}</small></div>
