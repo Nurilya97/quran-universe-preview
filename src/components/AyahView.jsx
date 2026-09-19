@@ -441,9 +441,20 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
 
             <div className="analysis-morphology-note">
               <strong>{ru ? 'Итог' : 'Summary'}</strong>
-              <p>{ru
-                ? 'ٱلتَّقْوَىٰ (al-taqwā) = ٱلـ (al-) + تَقْوَىٰ (taqwā). تَقْوَىٰ — существительное, связанное с корнем و ق ي (w-q-y) «защищать / оберегать» и построенное по модели فَعْلَى (faʿlā). Артикль ٱلـ делает слово определённым. В контексте 2:197 краткий перевод — «благочестие».'
-                : 'ٱلتَّقْوَىٰ (al-taqwā) = ٱلـ (al-) + تَقْوَىٰ (taqwā). تَقْوَىٰ is a noun related to the root و ق ي (w-q-y), “to protect / guard,” and follows the pattern فَعْلَى (faʿlā). The article ٱلـ makes the word definite. In 2:197, a concise contextual rendering is “piety.”'}</p>
+              <div className="analysis-morphology-summary-formula" lang="ar" dir="rtl">
+                ٱلتَّقْوَىٰ = ٱلـ + تَقْوَىٰ
+              </div>
+              <div className="analysis-morphology-summary-list">
+                <p>{ru
+                  ? <><b>Основа:</b> تَقْوَىٰ (taqwā) — существительное, связанное с корнем و ق ي (w-q-y) «защищать / оберегать» и моделью فَعْلَى (faʿlā).</>
+                  : <><b>Base:</b> تَقْوَىٰ (taqwā) is a noun related to the root و ق ي (w-q-y), “to protect / guard,” and the pattern فَعْلَى (faʿlā).</>}</p>
+                <p>{ru
+                  ? <><b>Что меняется:</b> ٱلـ (al-) присоединяется к слову и делает его определённым.</>
+                  : <><b>What changes:</b> ٱلـ (al-) attaches to the word and makes it definite.</>}</p>
+                <p>{ru
+                  ? <><b>В аяте 2:197:</b> краткий контекстный перевод — «благочестие».</>
+                  : <><b>In 2:197:</b> a concise contextual rendering is “piety.”</>}</p>
+              </div>
             </div>
           </> : <div className="analysis-morphology-generic">
             {morphologyParts.map((part, index) => <article className="analysis-morphology-node" key={index}>
