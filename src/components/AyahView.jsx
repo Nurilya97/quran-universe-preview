@@ -426,8 +426,8 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
                   <path d="M 0 0 L 10 5 L 0 10 z" />
                 </marker>
               </defs>
-              <path d="M205 8 L120 110" markerEnd="url(#morphArrowB)" />
-              <path d="M295 8 L470 110" markerEnd="url(#morphArrowB)" />
+              <path d="M420 8 L250 110" markerEnd="url(#morphArrowB)" />
+              <path d="M580 8 L750 110" markerEnd="url(#morphArrowB)" />
             </svg>
 
             <div className="analysis-morphology-level second-level">
