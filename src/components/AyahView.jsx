@@ -81,11 +81,10 @@ function AnalysisDiagram({ ayah, focusWordIndex, language, selectedWord, onSelec
         <span>{ayah.reference}</span>
         <small>{ayah.surah[language]}</small>
       </div>
+      {!selectedWord && <div className="analysis-tap-hint">
+        {language === 'ru' ? 'Нажмите на любое слово' : 'Tap any word'}
+      </div>}
     </div>
-
-    {!selectedWord && <div className="analysis-tap-hint">
-      {language === 'ru' ? 'Нажмите на любое слово' : 'Tap any word'}
-    </div>}
   </div>
 }
 
@@ -140,9 +139,6 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
             <svg className="analysis-morphology-tree first" viewBox="0 0 100 58" preserveAspectRatio="none" aria-hidden="true">
               <path d="M50 2 C50 22 25 20 25 55" />
               <path d="M50 2 C50 22 75 20 75 55" />
-              <circle cx="50" cy="2" r="1.35" />
-              <circle cx="25" cy="55" r="1.35" />
-              <circle cx="75" cy="55" r="1.35" />
             </svg>
 
             <div className="analysis-morphology-level first-level">
@@ -168,9 +164,6 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
             <svg className="analysis-morphology-tree second" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true">
               <path d="M25 2 C25 22 25 28 25 59" />
               <path d="M25 2 C25 22 75 24 75 59" />
-              <circle cx="25" cy="2" r="1.35" />
-              <circle cx="25" cy="59" r="1.35" />
-              <circle cx="75" cy="59" r="1.35" />
             </svg>
 
             <div className="analysis-morphology-level second-level">
