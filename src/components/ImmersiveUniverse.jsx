@@ -221,10 +221,6 @@ export function ImmersiveUniverse() {
       <button className="forms-button" onClick={() => openPanel('forms')} aria-haspopup="dialog"><Icon name="list" />{t.allForms}<span>{FORMS.length}</span></button>
     </section>}
 
-    {scene !== 'search' && !journey && <button className="motion-button icon-button" onClick={() => setPaused(!paused)}
-      aria-label={paused ? t.resume : t.pause} aria-pressed={paused || reducedMotion} disabled={reducedMotion} title={paused ? t.resume : t.pause}>
-      <Icon name={paused || reducedMotion ? 'play' : 'pause'} />
-    </button>}
 
     <dialog ref={dialog} className={'detail-sheet' + (panel === 'structure' ? ' structure-sheet' : '')}
       aria-labelledby={panel === 'structure' ? undefined : 'sheet-title'}
