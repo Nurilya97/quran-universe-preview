@@ -3172,3 +3172,41 @@
     width: calc(100vw - 24px) !important;
   }
 }
+
+/* Focus spacing refinement: keep central word clear of the upper cards */
+.analysis-focus-close {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  .analysis-focus-callout.morph,
+  .analysis-focus-callout.syntax {
+    top: 56px !important;
+  }
+
+  .analysis-focus-word {
+    top: 51.5% !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .analysis-focus-callout.morph,
+  .analysis-focus-callout.syntax {
+    top: 50px !important;
+  }
+
+  .analysis-focus-word {
+    top: 52% !important;
+  }
+}
+
+@media (max-height: 720px) and (max-width: 760px) {
+  .analysis-focus-callout.morph,
+  .analysis-focus-callout.syntax {
+    top: 42px !important;
+  }
+
+  .analysis-focus-word {
+    top: 52% !important;
+  }
+}
