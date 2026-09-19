@@ -14,10 +14,9 @@ export function SyntaxView({ ayah, selectedWord, language }) {
   const wordRefs = useRef({})
   const marker = useId().replace(/:/g, '')
   const enabled = model && (covered || explore)
-  const overview = enabled && stepIndex === model.steps.length
-  const step = enabled && !overview ? model.steps[stepIndex] : null
+  const step = enabled ? model.steps[stepIndex] : null
 
-  const roles = enabled ? (overview ? [...STEP_ROLES.inna, ...STEP_ROLES.idafa, { word:26, term:'khabarInna' }] : STEP_ROLES[step.id]) : []
+  const roles = enabled && step ? STEP_ROLES[step.id] : []
   const relationTerms = step
     ? (step.id === 'inna' ? ['inna', 'ismInna'] : step.id === 'idafa' ? ['idafa', 'mudaf', 'mudafIlayhi'] : ['khabarInna'])
     : []
@@ -84,7 +83,7 @@ export function SyntaxView({ ayah, selectedWord, language }) {
           <div className="syntax-clause-words">
             {ayah.tokens.slice(model.range[0] - 1, model.range[1]).map((token, i) => {
               const index = model.range[0] + i
-              const active = overview || step?.active.includes(index)
+              const active = step?.active.includes(index)
               const wordRoles = roles.filter(r => r.word === index)
               const highlighted = term ? term.words.includes(index) : active
               return <div key={index} className={'syntax-word-zone' + (highlighted ? ' is-highlighted' : '') + (term && !highlighted ? ' is-muted' : '') + ' tone-' + (wordRoles[0] ? SYNTAX_TERMS[wordRoles[0].term].tone : 'a')}>
@@ -95,16 +94,16 @@ export function SyntaxView({ ayah, selectedWord, language }) {
               </div>
             })}
           </div>
-          {geometry && <svg className={'syntax-connectors' + (overview ? ' is-overview' : '')}
+          {geometry && step && <svg className="syntax-connectors"
             viewBox={`0 0 ${geometry.width} 124`} style={{ height: 124 }} role="group"
             aria-label={ru ? 'Грамматические связи' : 'Grammatical relationships'} dir="ltr">
             <defs><marker id={marker} markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1L6 3.5L1 6" fill="none" stroke="currentColor" strokeWidth="1" /></marker></defs>
-            {(overview ? model.steps : [step]).map(s => {
+            {[step].map(s => {
               const i = model.steps.indexOf(s)
               const from = geometry.points[s.from], to = geometry.points[s.to]
               if (!from || !to) return null
               const x = s.group ? (geometry.points[s.group[0]].right + geometry.points[s.group[1]].left) / 2 : from.x
-              const depth = overview ? 30 + i * 33 : 48
+              const depth = 48
               const path = `M ${x} 3 C ${x} ${depth}, ${to.x} ${depth}, ${to.x} 3`
               return <g key={s.id}>
                 {s.group && <path className="syntax-group-line" d={`M ${geometry.points[24].right - 4} 0 H ${geometry.points[25].left + 4}`} />}
@@ -112,7 +111,6 @@ export function SyntaxView({ ayah, selectedWord, language }) {
                 <path className="syntax-link-hit" d={path} role="button" tabIndex="0"
                   aria-label={`${i + 1}. ${s.tr}`} onClick={() => changeStep(i)}
                   onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); changeStep(i) } }} />
-                {overview && <text x={(x + to.x) / 2} y={depth * .75 + 16} textAnchor="middle">{i + 1}</text>}
               </g>
             })}
           </svg>}
@@ -126,8 +124,8 @@ export function SyntaxView({ ayah, selectedWord, language }) {
     {enabled ? <>
       <nav className="syntax-step-nav" aria-label={ru ? 'Шаги синтаксического разбора' : 'Syntax steps'} dir="ltr">
         <button disabled={stepIndex === 0} onClick={() => changeStep(stepIndex - 1)} aria-label={ru ? 'Предыдущий шаг' : 'Previous step'}>‹</button>
-        <span>{stepIndex + 1} / {model.steps.length + 1}</span>
-        <button disabled={overview} onClick={() => changeStep(stepIndex + 1)} aria-label={ru ? 'Следующий шаг' : 'Next step'}>›</button>
+        <span>{stepIndex + 1} / {model.steps.length}</span>
+        <button disabled={stepIndex === model.steps.length - 1} onClick={() => changeStep(stepIndex + 1)} aria-label={ru ? 'Следующий шаг' : 'Next step'}>›</button>
       </nav>
       {step && <>
         <div className="syntax-explanation" aria-live="polite" aria-atomic="true">
