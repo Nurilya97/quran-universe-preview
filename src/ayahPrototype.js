@@ -52,11 +52,11 @@ export const AYAH_PROTOTYPES = {
               text: 'В аяте слово стоит с артиклем ٱلـ. Внутри تَقْوَىٰ (taqwā) сохраняется словообразовательная связь с корнем و ق ي (w-q-y) и глаголом ٱتَّقَىٰ (ittaqā). Конечная ىٰ — alif maqṣūra.',
             },
             syntax: {
-              plain: 'После فَإِنَّ (fa-inna) конструкция делится на две основные части. خَيْرَ ٱلزَّادِ (khayra al-zādi) — اسم إِنَّ (ism inna), то, о чём идёт речь; ٱلتَّقْوَىٰ (al-taqwā) — خبر إِنَّ (khabar inna), то, что об этом сообщается.',
-              title: 'خبر إِنَّ (khabar inna) — сказуемая часть конструкции с إِنَّ (inna)',
-              case: 'مرفوع (marfūʿ) — именительный падеж.',
-              ending: 'Слово заканчивается на ىٰ (alif maqṣūra), поэтому ḍamma здесь не проявляется на письме и в произношении как отдельная огласовка. Это ضمة مقدرة (ḍamma muqaddara) — подразумеваемая ḍamma.',
-              text: 'Полный разбор: فَ (fa-) связывает фразу с предыдущей частью аята; إِنَّ (inna) усиливает утверждение; خَيْرَ (khayra) — اسم إِنَّ (ism inna) и مُضاف (muḍāf); ٱلزَّادِ (al-zādi) — مُضاف إليه (muḍāf ilayh) в родительном падеже; ٱلتَّقْوَىٰ (al-taqwā) — خبر إِنَّ (khabar inna), поэтому оно مرفوع (marfūʿ).',
+              plain: 'Здесь работает конструкция с إِنَّ (inna). Сначала называется то, о чём говорится: خَيْرَ ٱلزَّادِ (khayra al-zādi) — «лучший запас». Затем يأتي ٱلتَّقْوَىٰ (al-taqwā) и завершает мысль: именно это слово сообщает, чем является названный запас. Поэтому ٱلتَّقْوَىٰ (al-taqwā) выполняет роль خبر إِنَّ (khabar inna).',
+              title: 'خبر إِنَّ (khabar inna) — часть, которая завершает утверждение после إِنَّ (inna)',
+              case: 'مرفوع (marfūʿ) — именительный падеж. Для خبر إِنَّ (khabar inna) это ожидаемая форма.',
+              ending: 'Обычно مرفوع (marfūʿ) отмечается ḍamma. Но تَقْوَىٰ (taqwā) заканчивается на ىٰ (alif maqṣūra), поэтому ḍamma здесь не видна и отдельно не произносится. Такая скрытая огласовка называется ضمة مقدرة (ḍamma muqaddara).',
+              text: 'Если разобрать фразу по шагам: فَ (fa-) связывает её с предыдущей мыслью; إِنَّ (inna) вводит и усиливает утверждение; خَيْرَ (khayra) — اسم إِنَّ (ism inna), поэтому стоит в винительном падеже, и одновременно является مُضاف (muḍāf); ٱلزَّادِ (al-zādi) — مُضاف إليه (muḍāf ilayh), поэтому стоит в родительном падеже; ٱلتَّقْوَىٰ (al-taqwā) — خبر إِنَّ (khabar inna), поэтому грамматически مرفوع (marfūʿ).',
             },
             meaning: {
               gloss: 'Благочестие',
@@ -75,11 +75,11 @@ export const AYAH_PROTOTYPES = {
               text: 'In the ayah the word carries the definite article ٱلـ. تَقْوَىٰ (taqwā) remains derivationally linked to the root و ق ي (w-q-y) and the verb ٱتَّقَىٰ (ittaqā). The final ىٰ is alif maqṣūra.',
             },
             syntax: {
-              plain: 'After فَإِنَّ (fa-inna), the construction has two main parts. خَيْرَ ٱلزَّادِ (khayra al-zādi) is اسم إِنَّ (ism inna), the element being spoken about; ٱلتَّقْوَىٰ (al-taqwā) is خبر إِنَّ (khabar inna), the predicate that completes the statement.',
-              title: 'خبر إِنَّ (khabar inna) — the predicate of the إِنَّ (inna) construction',
-              case: 'مرفوع (marfūʿ) — nominative.',
-              ending: 'The word ends in ىٰ (alif maqṣūra), so the ḍamma is not visibly or separately pronounced. This is ضمة مقدرة (ḍamma muqaddara), an understood nominative ḍamma.',
-              text: 'Full parse: فَ (fa-) links the clause to what precedes; إِنَّ (inna) adds emphasis; خَيْرَ (khayra) is اسم إِنَّ (ism inna) and مُضاف (muḍāf); ٱلزَّادِ (al-zādi) is مُضاف إليه (muḍāf ilayh) in the genitive; ٱلتَّقْوَىٰ (al-taqwā) is خبر إِنَّ (khabar inna), so it is مرفوع (marfūʿ).',
+              plain: 'This clause uses the إِنَّ (inna) construction. First comes what the statement is about: خَيْرَ ٱلزَّادِ (khayra al-zādi), “the best provision.” Then ٱلتَّقْوَىٰ (al-taqwā) completes the thought by telling us what that provision is. That makes ٱلتَّقْوَىٰ (al-taqwā) the خبر إِنَّ (khabar inna).',
+              title: 'خبر إِنَّ (khabar inna) — the part that completes the statement after إِنَّ (inna)',
+              case: 'مرفوع (marfūʿ) — nominative, the expected case for خبر إِنَّ (khabar inna).',
+              ending: 'A nominative noun normally shows ḍamma, but تَقْوَىٰ (taqwā) ends in ىٰ (alif maqṣūra), so that ḍamma cannot appear visibly or be pronounced separately. It is called ضمة مقدرة (ḍamma muqaddara), an understood ḍamma.',
+              text: 'Step by step: فَ (fa-) links the clause to what comes before; إِنَّ (inna) introduces and emphasizes the statement; خَيْرَ (khayra) is اسم إِنَّ (ism inna), so it is accusative, and it also functions as مُضاف (muḍāf); ٱلزَّادِ (al-zādi) is مُضاف إليه (muḍāf ilayh), so it is genitive; ٱلتَّقْوَىٰ (al-taqwā) is خبر إِنَّ (khabar inna), so it is grammatically مرفوع (marfūʿ).',
             },
             meaning: {
               gloss: 'Piety',
