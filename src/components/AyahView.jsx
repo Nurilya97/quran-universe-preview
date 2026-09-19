@@ -148,20 +148,6 @@ function CalloutPager({ page, count, onChange, language }) {
   </div>
 }
 
-function CalloutScrollNudge({ language }) {
-  function nudgeDown(event) {
-    event.stopPropagation()
-    const page = event.currentTarget.parentElement?.querySelector('.analysis-callout-page')
-    page?.scrollBy?.({ top: 88, behavior: 'smooth' })
-  }
-
-  return <button
-    className="analysis-callout-scroll-nudge"
-    onClick={nudgeDown}
-    aria-label={language === 'ru' ? 'Прокрутить ниже' : 'Scroll down'}
-  >⌄</button>
-}
-
 function splitCalloutText(text, maxLength = 175) {
   if (!text) return []
 
@@ -332,21 +318,18 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
       <section className="analysis-focus-callout morph" onClick={(event) => event.stopPropagation()}>
         <small>{ru ? 'МОРФОЛОГИЯ' : 'MORPHOLOGY'}</small>
         <div className="analysis-callout-page">{morphPages[pages.morph]}</div>
-        <CalloutScrollNudge language={language} />
         <CalloutPager page={pages.morph} count={morphPages.length} onChange={(value) => setPage('morph', value)} language={language} />
       </section>
 
       <section className="analysis-focus-callout syntax" onClick={(event) => event.stopPropagation()}>
         <small>{ru ? 'СИНТАКСИС' : 'SYNTAX'}</small>
         <div className="analysis-callout-page">{syntaxPages[pages.syntax]}</div>
-        <CalloutScrollNudge language={language} />
         <CalloutPager page={pages.syntax} count={syntaxPages.length} onChange={(value) => setPage('syntax', value)} language={language} />
       </section>
 
       <section className="analysis-focus-callout semantic" onClick={(event) => event.stopPropagation()}>
         <small>{ru ? 'ЗНАЧЕНИЕ' : 'MEANING'}</small>
         <div className="analysis-callout-page">{semanticPages[pages.semantic]}</div>
-        <CalloutScrollNudge language={language} />
         <CalloutPager page={pages.semantic} count={semanticPages.length} onChange={(value) => setPage('semantic', value)} language={language} />
         {pages.semantic === semanticPages.length - 1 && <button
           className="analysis-orbit-button"
