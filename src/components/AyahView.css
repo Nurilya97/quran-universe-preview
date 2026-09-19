@@ -4231,3 +4231,140 @@
     margin-top: 0 !important;
   }
 }
+
+/* Final notebook morphology connectors: clean lines ending in true circular dots */
+.analysis-morphology-hero > small {
+  display: none !important;
+}
+
+.analysis-morphology-hero > span {
+  margin-top: 2px !important;
+}
+
+.analysis-morphology-node > b::after {
+  display: none !important;
+}
+
+.analysis-morphology-branch {
+  position: relative !important;
+  display: block !important;
+  overflow: visible !important;
+  pointer-events: none;
+}
+
+.analysis-morphology-branch.first {
+  width: 100% !important;
+  height: 84px !important;
+  margin: 12px 0 0 !important;
+}
+
+.analysis-morphology-branch.second {
+  width: 52% !important;
+  height: 78px !important;
+  margin: 14px auto 0 0 !important;
+}
+
+.analysis-morphology-branch .branch-line {
+  position: absolute;
+  top: 4px;
+  display: block;
+  height: 1.35px;
+  background: rgba(247,250,251,.90);
+  box-shadow: 0 0 5px rgba(255,255,255,.07);
+  transform-origin: 0 50%;
+}
+
+.analysis-morphology-branch .branch-line::after {
+  content: '';
+  position: absolute;
+  right: -3.5px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f7fafb;
+  box-shadow: 0 0 7px rgba(255,255,255,.16);
+  transform: translateY(-50%);
+}
+
+.analysis-morphology-branch.first .branch-line {
+  width: clamp(94px, 21vw, 160px);
+}
+
+.analysis-morphology-branch.first .branch-line.left {
+  left: 43%;
+  transform: rotate(150deg);
+}
+
+.analysis-morphology-branch.first .branch-line.right {
+  left: 57%;
+  transform: rotate(30deg);
+}
+
+.analysis-morphology-branch.second .branch-line {
+  width: clamp(74px, 12vw, 108px);
+}
+
+.analysis-morphology-branch.second .branch-line.left {
+  left: 42%;
+  transform: rotate(136deg);
+}
+
+.analysis-morphology-branch.second .branch-line.right {
+  left: 58%;
+  transform: rotate(44deg);
+}
+
+@media (max-width: 760px) {
+  .analysis-morphology-branch.first {
+    height: 72px !important;
+    margin-top: 10px !important;
+  }
+
+  .analysis-morphology-branch.first .branch-line {
+    width: clamp(92px, 24vw, 118px);
+  }
+
+  .analysis-morphology-branch.first .branch-line.left {
+    left: 43%;
+    transform: rotate(137deg);
+  }
+
+  .analysis-morphology-branch.first .branch-line.right {
+    left: 57%;
+    transform: rotate(43deg);
+  }
+
+  .analysis-morphology-branch.second {
+    width: 54% !important;
+    height: 68px !important;
+    margin-top: 12px !important;
+  }
+
+  .analysis-morphology-branch.second .branch-line {
+    width: clamp(70px, 19vw, 86px);
+  }
+
+  .analysis-morphology-branch.second .branch-line.left {
+    left: 42%;
+    transform: rotate(122deg);
+  }
+
+  .analysis-morphology-branch.second .branch-line.right {
+    left: 58%;
+    transform: rotate(58deg);
+  }
+}
+
+@media (max-width: 420px) {
+  .analysis-morphology-branch.first .branch-line::after,
+  .analysis-morphology-branch.second .branch-line::after {
+    width: 6px;
+    height: 6px;
+    right: -3px;
+  }
+
+  .analysis-morphology-branch.second {
+    width: 58% !important;
+  }
+}
