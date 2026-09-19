@@ -408,32 +408,6 @@
   font-size: 8px;
 }
 
-.skeleton-word {
-  position: absolute;
-  width: 130px;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-.skeleton-word > i {
-  display: block;
-  width: 5px;
-  height: 5px;
-  margin: 0 auto 7px;
-  border-radius: 50%;
-  background: #bdcbd5;
-  box-shadow: 0 0 8px #cbe4f25c;
-}
-.skeleton-word span {
-  color: #cbd2d6;
-  font-family: var(--arabic-font);
-  font-size: 20px;
-}
-.skeleton-word.is-entry > i {
-  background: #ff8a3d;
-  box-shadow: 0 0 11px #ff8a3d8c;
-}
-.skeleton-word.is-entry span { color: #ff8a3d; }
-
 .composition-spine {
   fill: none;
   stroke: #c6d8e23d;
@@ -482,78 +456,25 @@
   font-size: 9px;
   line-height: 1.55;
 }
-.composition-summary,
-.sound-annotation,
-.translation-annotation {
+.composition-summary {
   position: absolute;
   width: 900px;
   transform: translateX(-50%);
   text-align: center;
 }
-.composition-summary span,
-.sound-annotation span,
-.translation-annotation span {
+.composition-summary span {
   color: #626f77;
   font-size: 8.5px;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
-.composition-summary p,
-.sound-annotation p,
-.translation-annotation p {
+.composition-summary p {
   margin: 7px 0 0;
   color: #8d989f;
   font-size: 10px;
   line-height: 1.65;
 }
 
-.rhetoric-arc {
-  fill: none;
-  stroke: #bba9eb66;
-  stroke-width: 1.15;
-  stroke-dasharray: 5 7;
-}
-.rhetoric-annotation {
-  position: absolute;
-  width: 340px;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-.rhetoric-annotation > i {
-  display: block;
-  width: 6px;
-  height: 6px;
-  margin: 0 auto 8px;
-  border-radius: 50%;
-  background: #c3b4eb;
-  box-shadow: 0 0 12px #c9b8ef79;
-}
-.rhetoric-annotation h3 {
-  margin: 0;
-  color: #d7d1e4;
-  font-size: 12px;
-  font-weight: 500;
-}
-.rhetoric-annotation p {
-  margin: 6px 0 0;
-  color: #847f90;
-  font-size: 9px;
-  line-height: 1.55;
-}
-.diagram-view-caption {
-  position: absolute;
-  width: 760px;
-  transform: translateX(-50%);
-  color: #66717a;
-  font-size: 9px;
-  text-align: center;
-}
-
-.sound-wave-line {
-  fill: none;
-  stroke: #82c7dc45;
-  stroke-width: 1.1;
-}
 .ayah-space-zoom {
   position: absolute;
   z-index: 30;
