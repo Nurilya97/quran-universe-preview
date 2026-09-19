@@ -442,8 +442,8 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
             <div className="analysis-morphology-note">
               <strong>{ru ? 'Итог' : 'Summary'}</strong>
               <p>{ru
-                ? 'ٱلتَّقْوَىٰ (al-taqwā) состоит из ٱلـ (al-) + تَقْوَىٰ (taqwā). تَقْوَىٰ (taqwā) — существительное, связанное с корнем و ق ي (w-q-y) «защищать / оберегать» и построенное по модели فَعْلَى (faʿlā). В контексте 2:197 его краткий перевод — «благочестие». Артикль ٱلـ (al-) присоединяется к تَقْوَىٰ (taqwā), потому что здесь существительное употреблено в определённой форме: речь идёт о конкретно обозначенном качестве в утверждении аята.'
-                : 'ٱلتَّقْوَىٰ (al-taqwā) is built from ٱلـ (al-) + تَقْوَىٰ (taqwā). تَقْوَىٰ (taqwā) is a noun related to the root و ق ي (w-q-y), “to protect / guard,” and follows the pattern فَعْلَى (faʿlā). In 2:197, a concise contextual rendering is “piety.” The article ٱلـ (al-) attaches because the noun is used here in a definite form: the statement points to a specifically identified quality.'}</p>
+                ? 'ٱلتَّقْوَىٰ (al-taqwā) = ٱلـ (al-) + تَقْوَىٰ (taqwā). تَقْوَىٰ — существительное, связанное с корнем و ق ي (w-q-y) «защищать / оберегать» и построенное по модели فَعْلَى (faʿlā). Артикль ٱلـ делает слово определённым. В контексте 2:197 краткий перевод — «благочестие».'
+                : 'ٱلتَّقْوَىٰ (al-taqwā) = ٱلـ (al-) + تَقْوَىٰ (taqwā). تَقْوَىٰ is a noun related to the root و ق ي (w-q-y), “to protect / guard,” and follows the pattern فَعْلَى (faʿlā). The article ٱلـ makes the word definite. In 2:197, a concise contextual rendering is “piety.”'}</p>
             </div>
           </> : <div className="analysis-morphology-generic">
             {morphologyParts.map((part, index) => <article className="analysis-morphology-node" key={index}>
