@@ -21,6 +21,15 @@
 }
 .word-meaning-hero > span { display: block; font-family: 'Noto Sans Arabic', sans-serif; font-size: clamp(44px, 9vw, 76px); line-height: 1.8; }
 .word-meaning-hero > small { display: block; font-size: 16px; color: #9caab1; }
+.word-meaning-gloss {
+  display: block;
+  margin-top: 9px;
+  color: #dce9e3;
+  font-size: 18px;
+  font-weight: 520;
+  line-height: 1.45;
+  letter-spacing: .005em;
+}
 .word-meaning-note { position: relative; margin: 48px 0 0 65px; padding-left: 44px; text-align: left; max-width: min(90%, 380px); }
 .word-meaning-note i { position: absolute; width: 36px; left: 0; top: 11px; height: 1px; background: #adcdb875; }
 .word-meaning-note i::before { content: ''; position: absolute; left: 0; top: -2px; width: 5px; height: 5px; border-radius: 50%; background: #b8d9c4; }
@@ -50,6 +59,7 @@
 .syntax-step-nav button { border: 0; background: none; color: #dbe7e2; width: 44px; height: 44px; font: 28px system-ui; cursor: pointer; }
 .syntax-step-nav button:disabled { opacity: .25; cursor: default; }
 .syntax-step-nav span { color: #96a7a7; font-size: 14px; font-variant-numeric: tabular-nums; }
+.syntax-step-nav span b { color: #c8d8d2; font-weight: 520; }
 .syntax-explanation { text-align: center; max-width: var(--focus-readable); margin: 0 auto; }
 .syntax-explanation h3 { font-size: 23px; font-weight: 400; line-height: 1.8; margin: 0; }
 .syntax-explanation h3[lang="ar"] { font-family: 'Noto Sans Arabic', sans-serif; }
@@ -375,5 +385,36 @@
   }
   .syntax-step-nav {
     margin-top: 6px;
+  }
+}
+
+
+/* Morphology derivation bridge: keep the related Form VIII verb inside the same visual grammar. */
+.analysis-morphology-tree.derivation {
+  height: 54px;
+  margin: 9px 0 2px;
+}
+.analysis-morphology-node.verb {
+  width: min(78%, 410px);
+  margin: 0 auto;
+  text-align: center;
+}
+.analysis-morphology-node.verb > span {
+  font-size: 34px !important;
+}
+.analysis-morphology-node.verb > p {
+  max-width: 390px !important;
+  margin-inline: auto !important;
+}
+@media (max-width:760px) {
+  .analysis-morphology-node.verb {
+    width: min(88%, 390px);
+  }
+  .analysis-morphology-tree.derivation {
+    height: 48px;
+    margin-top: 6px;
+  }
+  .analysis-morphology-node.verb > span {
+    font-size: 31px !important;
   }
 }
