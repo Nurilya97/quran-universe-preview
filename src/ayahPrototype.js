@@ -206,6 +206,66 @@ export const AYAH_PROTOTYPES = {
         en: { title: 'Direct address', text: 'The ending makes the theme personal: the general instruction becomes a direct address, linking taqwā with the conscious response of people of understanding.' },
       },
     ],
+    rhetoric: [
+      {
+        id: 'rhetoric-frame',
+        range: [1, 3],
+        focusWords: [1, 2, 3],
+        ru: { title: 'Рамка перед действием', text: 'Сначала задаётся время хаджа — и только затем аят переходит к выбору и поведению человека.', detail: 'Начало создаёт рамку: прежде чем перечислять поступки, аят помещает их внутрь установленного времени поклонения.' },
+        en: { title: 'A frame before action', text: 'The Hajj period is established before the ayah moves to a person’s choices and conduct.', detail: 'The opening creates a frame: before particular actions are named, conduct is placed inside an appointed period of worship.' },
+      },
+      {
+        id: 'rhetoric-three-limits',
+        range: [4, 15],
+        focusWords: [8, 10, 12],
+        ru: { title: 'Тройная последовательность ограничений', text: 'Три границы выстраиваются одна за другой через فَلَا … وَلَا … وَلَا.', detail: 'Повтор отрицательной конструкции собирает разные виды поведения в одну последовательность. Здесь приём виден как структура, отдельно от синтаксического разбора слов.' },
+        en: { title: 'A three-part sequence of limits', text: 'Three boundaries are placed in sequence through فَلَا … وَلَا … وَلَا.', detail: 'The repeated negative construction gathers distinct forms of conduct into one ordered sequence, separate from word-by-word syntax.' },
+      },
+      {
+        id: 'rhetoric-turn-good',
+        range: [16, 21],
+        focusWords: [16, 17, 19, 20],
+        ru: { title: 'Поворот от ограничения к добру', text: 'После того, чего не должно быть, внимание переключается на добро, которое человек делает.', detail: 'Композиционно направление меняется: нравственная рамка не заканчивается запретами, а переходит к положительному действию и знанию Аллаха о нём.' },
+        en: { title: 'A turn from restraint to good', text: 'After naming what must be avoided, attention turns to the good a person does.', detail: 'The direction changes: the moral frame does not end with prohibitions, but moves toward positive action and Allah’s knowledge of it.' },
+      },
+      {
+        id: 'rhetoric-provision-image',
+        range: [22, 26],
+        focusWords: [22, 24, 25, 26],
+        ru: { title: 'Запас как смысловой мост', text: 'Физическая подготовка к дороге становится мостом к «лучшему запасу» — taqwā.', detail: 'Практическое повеление взять запас переходит во внутренний план. وَتَزَوَّدُوا и ٱلزَّادِ работают как лексический и композиционный мост.' },
+        en: { title: 'Provision as a semantic bridge', text: 'Physical preparation for the journey becomes a bridge to the “best provision” — taqwā.', detail: 'A practical instruction to take provisions moves into an inward plane. وَتَزَوَّدُوا and ٱلزَّادِ form a lexical and compositional bridge.' },
+      },
+      {
+        id: 'rhetoric-quality-command',
+        range: [26, 29],
+        focusWords: [26, 27, 28, 29],
+        ru: { title: 'От качества — к прямому повелению', text: 'تَقْوَىٰ названа как лучший запас, а затем тот же корень возвращается в وَٱتَّقُونِ как действие.', detail: 'Финал не оставляет taqwā абстрактным понятием: существительное сменяется повелительным глаголом, затем появляется прямое обращение к أُولِي ٱلْأَلْبَاب.' },
+        en: { title: 'From a quality to a direct command', text: 'تَقْوَىٰ is named as the best provision, then the same root returns in وَٱتَّقُونِ as action.', detail: 'The ending does not leave taqwā abstract: the noun is followed by an imperative from the same root and then direct address to أُولِي ٱلْأَلْبَاب.' },
+      },
+    ],
+    sound: [
+      {
+        id: 'sound-negative-pulse',
+        range: [8, 13],
+        focusWords: [8, 10, 12],
+        ru: { title: 'فَلَا · وَلَا · وَلَا', text: 'Одинаковое لَا возвращается трижды и делает последовательность ограничений слышимой.', detail: 'Это наблюдаемая звуковая форма: повтор لَا и близкая структура трёх звеньев создают отчётливое локальное повторение. Самостоятельное символическое значение звуку здесь не приписывается.' },
+        en: { title: 'فَلَا · وَلَا · وَلَا', text: 'The same لَا returns three times, making the sequence of limits audible.', detail: 'This is an observable sound pattern: repeated لَا and the similar structure of the three units create a clear local recurrence without assigning sound an independent symbolic meaning.' },
+      },
+      {
+        id: 'sound-zad-echo',
+        range: [22, 25],
+        focusWords: [22, 25],
+        ru: { title: 'تَزَوَّدُوا ↔ ٱلزَّادِ', text: 'Две формы корня ز و د стоят рядом и создают смысловое и звуковое эхо.', detail: 'وَتَزَوَّدُوا и ٱلزَّادِ возвращают один и тот же корневой материал в разных формах. В этом слое связь показывается именно как повторяемый звуковой мотив.' },
+        en: { title: 'تَزَوَّدُوا ↔ ٱلزَّادِ', text: 'Two forms from the root ز و د sit close together, creating semantic and sound echo.', detail: 'وَتَزَوَّدُوا and ٱلزَّادِ reuse the same root material in different forms. This layer presents the relationship specifically as a recurring sound motif.' },
+      },
+      {
+        id: 'sound-taqwa-echo',
+        range: [26, 27],
+        focusWords: [26, 27],
+        ru: { title: 'ٱلتَّقْوَىٰ ↔ وَٱتَّقُونِ', text: 'Корень و ق ي звучит сначала в существительном, затем сразу в повелительном глаголе.', detail: 'Переход от ٱلتَّقْوَىٰ к وَٱتَّقُونِ можно увидеть морфологически и услышать как возвращение родственного звукового материала. Позже к этой связи можно привязать воспроизведение чтения.' },
+        en: { title: 'ٱلتَّقْوَىٰ ↔ وَٱتَّقُونِ', text: 'The root و ق ي is heard first in a noun and immediately again in an imperative verb.', detail: 'The move from ٱلتَّقْوَىٰ to وَٱتَّقُونِ can be seen morphologically and heard as related sound material returning. Recitation playback can later be attached to this relationship.' },
+      },
+    ],
   },
 }
 

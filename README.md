@@ -31,9 +31,15 @@ The current Ayah Space prototype has two top-level modes:
   opened into Meaning, Morphology and Syntax. Syntax currently covers the
   verified phrase `فَإِنَّ خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ` and grammar terms open
   inline explanations without repeating a large example word.
-- **Composition / Композиция** — a freely pannable and zoomable thematic map
-  of the ayah. Each segment contains a short interpretive comment; there is no
-  duplicate full translation or separate “Flow of the ayah” summary.
+- **Composition / Композиция** — a freely pannable and zoomable map of the
+  ayah with three internal layers that preserve the same spatial context:
+  **Themes / Темы**, **Rhetoric / Риторика**, and **Sound / Звучание**.
+  Rhetoric exposes structural language moves such as repetition, transition,
+  semantic bridging and direct address. Sound currently maps only directly
+  observable recurrences, keeping them separate from interpretive claims.
+  Nodes are interactive and open a short explanation in place.
+- The Sound layer is structured for later recitation playback and reciter
+  selection, but no audio source is bound yet.
 
 The contextual research panel separates evidence sources from external
 research tools.
