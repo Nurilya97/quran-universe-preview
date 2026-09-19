@@ -18,6 +18,9 @@ export function SyntaxView({ ayah, selectedWord, language }) {
   const step = enabled && !overview ? model.steps[stepIndex] : null
 
   const roles = enabled ? (overview ? [...STEP_ROLES.inna, ...STEP_ROLES.idafa, { word:26, term:'khabarInna' }] : STEP_ROLES[step.id]) : []
+  const relationTerms = step
+    ? (step.id === 'inna' ? ['inna', 'ismInna'] : step.id === 'idafa' ? ['idafa', 'mudaf', 'mudafIlayhi'] : ['khabarInna'])
+    : []
   const term = SYNTAX_TERMS[selectedTerm]
   const detailId = marker + '-term'
   function changeStep(index) { setStepIndex(index); setSelectedTerm(null) }
@@ -113,6 +116,9 @@ export function SyntaxView({ ayah, selectedWord, language }) {
               </g>
             })}
           </svg>}
+          {step && <div className="syntax-relation-labels" aria-label={ru ? 'Текущая грамматическая связь' : 'Current grammatical relationship'}>
+            {relationTerms.map(id => <div key={id}>{termButton(id)}<small>{SYNTAX_TERMS[id].tr}</small></div>)}
+          </div>}
         </div>
       </> : <div className="syntax-verse-context">{plainWords(selectedWord, selectedWord)}</div>}
     </div>
@@ -125,7 +131,6 @@ export function SyntaxView({ ayah, selectedWord, language }) {
       </nav>
       <div className="syntax-explanation" aria-live="polite" aria-atomic="true">
         {step ? <>
-          <div className="syntax-active-terms">{[...new Set(roles.map(r => r.term))].map(id => <div key={id}>{termButton(id)}<small>{SYNTAX_TERMS[id].tr}</small></div>)}</div>
           <p>{explainTerms(step[language])}</p>
         </> : <>
           <h3>{ru ? 'Конструкция целиком' : 'The complete clause'}</h3>
