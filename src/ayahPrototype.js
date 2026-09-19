@@ -10,8 +10,8 @@ export const AYAH_PROTOTYPES = {
         en: 'Al-Baqarah is a Madinan surah of 286 ayahs. It joins faith and spiritual formation with practical guidance for communal life, including worship, responsibility, family, social, and financial matters.',
       },
       passage: {
-        ru: 'Аят 2:197 находится внутри последовательности 2:196–203 о хадже и умре. 2:196 вводит правила завершения паломничества; 2:197 говорит о времени хаджа, границах поведения, знании Аллаха о добре и запасе; следующие аяты продолжают путь паломника через Арафат, Муздалифу, поминание Аллаха и завершение обрядов.',
-        en: 'Ayah 2:197 sits within the Hajj and Umrah passage 2:196–203. Ayah 2:196 introduces rulings for completing pilgrimage; 2:197 addresses the Hajj period, conduct, Allah’s knowledge of good, and provision; the following ayahs continue through Arafat, Muzdalifah, remembrance of Allah, and completion of the rites.',
+        ru: 'Аят 2:197 находится внутри последовательности 2:196–203 о хадже и умре. 2:196 вводит правила завершения паломничества; 2:197 определяет время хаджа и границы поведения паломника, напоминает, что Аллах знает каждое совершённое добро, а затем переводит практическое наставление к تَقْوَىٰ (taqwā). Следующие аяты продолжают путь паломника через Арафат, Муздалифу, поминание Аллаха и завершение обрядов.',
+        en: 'Ayah 2:197 sits within the Hajj and Umrah passage 2:196–203. Ayah 2:196 introduces rulings for completing pilgrimage; 2:197 defines the Hajj period and the pilgrim’s boundaries of conduct, reminds the listener that Allah knows every good deed, and then turns a practical instruction toward تَقْوَىٰ (taqwā). The following ayahs continue through Arafat, Muzdalifah, remembrance of Allah, and completion of the rites.',
       },
       revelation: {
         ru: 'Для слов وَتَزَوَّدُوا «берите припасы» передаётся конкретная история. Ибн ʿАббас сообщил, что некоторые паломники из Йемена отправлялись в хадж без достаточного запаса, говоря, что уповают на Аллаха, а по прибытии обращались к людям за помощью. В связи с этим были ниспосланы слова о том, чтобы брать припасы, и о том, что лучший запас — ٱلتَّقْوَىٰ (al-taqwā). Сообщение приводится в Сахих аль-Бухари 1523; его также приводит аль-Вахиди в «Асбаб ан-нузуль».',
@@ -87,8 +87,8 @@ export const AYAH_PROTOTYPES = {
             },
             meaning: {
               gloss: 'Благочестие',
-              description: '«Благочестие» здесь — краткий контекстный перевод تَقْوَىٰ (taqwā). Корень و ق ي (w-q-y) несёт идею защиты и оберегания, а форма ٱتَّقَىٰ (ittaqā) описывает активную защитную позицию человека. В 2:197 تَقْوَىٰ (taqwā) выступает как качество, которое направляет выбор и помогает удерживать установленные границы.',
-              translation: 'В этом аяте «благочестие» хорошо передаёт качество, которое человек берёт с собой как внутренний ориентир. «Праведность» помогает увидеть его проявление в поступках. Сразу после этого звучит وَٱتَّقُونِ (wa-ittaqūni), поэтому пояснение сохраняет связь تَقْوَىٰ (taqwā) с осознанным остережением и обереганием себя перед Всевышним.',
+              description: 'В этом аяте تَقْوَىٰ (taqwā) передаётся словом «благочестие». Под благочестием здесь понимается внутреннее качество человека: осознанность перед Аллахом, осторожность в выборе и стремление удерживать установленные границы. Корень و ق ي (w-q-y) несёт идею защиты и оберегания, а форма ٱتَّقَىٰ (ittaqā) показывает активную защитную позицию человека.',
+              translation: '«Благочестие» передаёт внутреннюю направленность تَقْوَىٰ (taqwā): состояние, которое удерживает человека в осознанности перед Аллахом и влияет на его выбор. «Праведность» описывает проявление такого качества в поступках — следование правильному, соблюдение установленных границ и выбор добра. Следующее وَٱتَّقُونِ (wa-ittaqūni) связывает названное качество с действием: осознанным остережением и обереганием себя перед Всевышним.',
             },
           },
           en: {
@@ -110,8 +110,8 @@ export const AYAH_PROTOTYPES = {
             },
             meaning: {
               gloss: 'Piety',
-              description: '“Piety” is a concise contextual rendering of تَقْوَىٰ (taqwā) here. The root و ق ي (w-q-y) carries the idea of protection and guarding, while ٱتَّقَىٰ (ittaqā) describes an active protective stance. In 2:197, تَقْوَىٰ (taqwā) functions as a quality that guides choice and helps a person keep the relevant boundaries.',
-              translation: 'In this ayah, “piety” works well as a short rendering for the inward quality a person carries as a guide. “Righteousness” helps show how that quality appears in conduct. The following وَٱتَّقُونِ (wa-ittaqūni) keeps the explanation connected to the protective and caution-oriented sense of تَقْوَىٰ (taqwā).',
+              description: 'In this ayah, تَقْوَىٰ (taqwā) is rendered as “piety.” Here, piety describes an inward quality: awareness before Allah, care in one’s choices, and an effort to remain within the relevant boundaries. The root و ق ي (w-q-y) carries the idea of protection and guarding, while ٱتَّقَىٰ (ittaqā) expresses an active protective stance.',
+              translation: '“Piety” foregrounds the inward orientation of تَقْوَىٰ (taqwā): a state that shapes a person’s choices through awareness before Allah. “Righteousness” describes how that quality appears in conduct—choosing what is right, respecting the relevant boundaries, and doing good. The following وَٱتَّقُونِ (wa-ittaqūni) connects the quality with action: conscious caution and guarding oneself before Allah.',
             },
           },
         },
