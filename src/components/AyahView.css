@@ -3282,3 +3282,58 @@
     border-radius: 11px;
   }
 }
+
+/* Focus spacing: keep all three callouts clear of the selected word */
+@media (max-width: 760px) {
+  .analysis-focus-callout.morph,
+  .analysis-focus-callout.syntax {
+    top: 40px !important;
+  }
+
+  .analysis-focus-callout.semantic {
+    top: calc(51.5% + 155px) !important;
+    bottom: auto !important;
+    height: auto !important;
+    max-height: 220px !important;
+  }
+
+  .analysis-focus-callout.semantic .analysis-callout-page {
+    max-height: 148px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .analysis-focus-callout.morph,
+  .analysis-focus-callout.syntax {
+    top: 34px !important;
+  }
+
+  .analysis-focus-callout.semantic {
+    top: calc(52% + 148px) !important;
+    bottom: auto !important;
+    max-height: 208px !important;
+  }
+
+  .analysis-focus-callout.semantic .analysis-callout-page {
+    max-height: 138px !important;
+  }
+}
+
+@media (max-height: 720px) and (max-width: 760px) {
+  .analysis-focus-callout.morph,
+  .analysis-focus-callout.syntax {
+    top: 24px !important;
+  }
+
+  .analysis-focus-callout.semantic {
+    top: calc(52% + 126px) !important;
+    bottom: auto !important;
+    max-height: 168px !important;
+  }
+
+  .analysis-focus-callout.semantic .analysis-callout-page {
+    max-height: 104px !important;
+  }
+}
