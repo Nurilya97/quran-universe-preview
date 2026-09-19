@@ -4405,12 +4405,12 @@
 }
 
 .analysis-morphology-branch .branch-line {
-  background: rgba(247,250,251,.14) !important;
+  background: rgba(247,250,251,.10) !important;
   box-shadow: none !important;
 }
 
 .analysis-morphology-branch .branch-line::after {
-  background: rgba(245,248,249,.14) !important;
+  background: rgba(245,248,249,.10) !important;
   box-shadow: none !important;
 }
 
@@ -4573,5 +4573,134 @@
     max-width: 330px;
     font-size: 13px !important;
     line-height: 1.7 !important;
+  }
+}
+
+
+/* Morphology mobile UX pass v2 — stronger readable hierarchy */
+@media (max-width: 760px) {
+  .analysis-morphology-canvas {
+    padding-bottom: 132px !important;
+  }
+
+  .analysis-morphology-level.second-level {
+    width: 82% !important;
+    margin-right: auto !important;
+  }
+
+  .analysis-morphology-branch.second {
+    width: 76% !important;
+  }
+
+  .analysis-morphology-node > span {
+    font-size: 32px !important;
+    line-height: 1.42 !important;
+  }
+
+  .analysis-morphology-node > small {
+    margin-top: 3px !important;
+    font-size: 12.5px !important;
+    line-height: 1.4 !important;
+  }
+
+  .analysis-morphology-node > b {
+    margin-top: 11px !important;
+    font-size: 14px !important;
+    line-height: 1.35 !important;
+    font-weight: 680 !important;
+  }
+
+  .analysis-morphology-node > p {
+    max-width: 245px !important;
+    margin-top: 9px !important;
+    color: #b8c0c5 !important;
+    font-size: 14.5px !important;
+    line-height: 1.68 !important;
+  }
+
+  .analysis-morphology-note {
+    width: min(92%, 560px) !important;
+    margin-top: 32px !important;
+    padding-top: 22px !important;
+  }
+
+  .analysis-morphology-note > strong {
+    font-size: 18px !important;
+    line-height: 1.3 !important;
+    font-weight: 680 !important;
+  }
+
+  .analysis-morphology-summary-formula {
+    margin-top: 14px;
+    color: #f2f5f6;
+    font-family: var(--arabic-font), 'Traditional Arabic', serif;
+    font-size: 22px;
+    line-height: 1.65;
+    text-align: center;
+  }
+
+  .analysis-morphology-summary-list {
+    width: min(100%, 470px);
+    margin: 14px auto 0;
+    display: grid;
+    gap: 10px;
+    text-align: left;
+  }
+
+  .analysis-morphology-summary-list p {
+    margin: 0 !important;
+    color: #b8c0c5 !important;
+    font-size: 14.5px !important;
+    line-height: 1.68 !important;
+  }
+
+  .analysis-morphology-summary-list b {
+    color: #eef2f4;
+    font-weight: 650;
+  }
+}
+
+@media (max-width: 420px) {
+  .analysis-morphology-level.second-level {
+    width: 86% !important;
+  }
+
+  .analysis-morphology-branch.second {
+    width: 80% !important;
+  }
+
+  .analysis-morphology-node > span {
+    font-size: 31px !important;
+  }
+
+  .analysis-morphology-node > small {
+    font-size: 12px !important;
+  }
+
+  .analysis-morphology-node > b {
+    font-size: 13.5px !important;
+  }
+
+  .analysis-morphology-node > p {
+    max-width: 190px !important;
+    font-size: 14px !important;
+    line-height: 1.66 !important;
+  }
+
+  .analysis-morphology-note {
+    width: 94% !important;
+  }
+
+  .analysis-morphology-note > strong {
+    font-size: 18px !important;
+  }
+
+  .analysis-morphology-summary-formula {
+    font-size: 21px;
+  }
+
+  .analysis-morphology-summary-list p {
+    font-size: 14px !important;
+    line-height: 1.68 !important;
   }
 }
