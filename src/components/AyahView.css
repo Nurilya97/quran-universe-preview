@@ -5083,13 +5083,13 @@
 }
 
 
-/* Current Ayah Space onboarding: echo the cyan entry underline and keep it close to the ayah. */
+/* Current Ayah Space onboarding: keep the cyan cue visibly separated below the ayah reference. */
 .analysis-tap-hint {
   position: static !important;
   left: auto !important;
   top: auto !important;
   width: auto !important;
-  margin-top: 11px;
+  margin-top: 22px;
   transform: none !important;
   color: rgba(121,246,255,.95) !important;
   font-size: 14px !important;
@@ -5157,7 +5157,7 @@
 
 @media (max-width:760px) {
   .analysis-tap-hint {
-    margin-top: 10px;
+    margin-top: 20px;
     font-size: 15px !important;
     text-shadow: 0 0 12px rgba(121,246,255,.18) !important;
   }
@@ -5184,7 +5184,7 @@
 
 @media (max-width:420px) {
   .analysis-tap-hint {
-    margin-top: 9px;
+    margin-top: 18px;
     font-size: 14px !important;
   }
 
