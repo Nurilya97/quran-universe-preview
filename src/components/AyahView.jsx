@@ -54,15 +54,6 @@ function layoutBlock(block, blockIndex) {
   }))
 }
 
-function FullAyahRibbon({ ayah, focusWordIndex, language }) {
-  return <div className="diagram-ayah-ribbon">
-    <small>{language === 'ru' ? 'Аят целиком' : 'Full ayah'}</small>
-    <div lang="ar" dir="rtl">
-      {ayah.tokens.map((token, i) => <span key={i} className={focusWordIndex === i + 1 ? 'is-entry' : ''}>{token.ar}</span>)}
-    </div>
-  </div>
-}
-
 function AnalysisDiagram({ ayah, focusWordIndex, language, selectedWord, onSelectWord }) {
   const selectedBlock = selectedWord
     ? ayah.blocks.find(block => selectedWord >= block.range[0] && selectedWord <= block.range[1])
@@ -97,7 +88,7 @@ function AnalysisDiagram({ ayah, focusWordIndex, language, selectedWord, onSelec
     </div>
 
     {!selectedWord && <div className="analysis-tap-hint">
-      {language === 'ru' ? 'Нажмите на любое слово, чтобы раскрыть его' : 'Tap any word to unfold it'}
+      {language === 'ru' ? 'Нажмите на любое слово' : 'Tap any word'}
     </div>}
   </div>
 }
@@ -128,7 +119,6 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
         </div>
         <div className="word-meaning-note">
           <i aria-hidden="true" />
-          <small>{ru ? 'значение' : 'meaning'}</small>
           <p>{ru ? selected.ru : selected.en}</p>
         </div>
         <div className="word-meaning-explanation">
@@ -247,25 +237,45 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
 
 function CompositionDiagram({ ayah, focusWordIndex, language }) {
   const ru = language === 'ru'
+  const sourceY = 790
+
   return <div className="diagram-view composition-diagram">
-    <FullAyahRibbon ayah={ayah} focusWordIndex={focusWordIndex} language={language} />
-    <svg className="diagram-lines" width={WORLD.width} height={WORLD.height} viewBox={`0 0 ${WORLD.width} ${WORLD.height}`} aria-hidden="true">
+    <svg className="diagram-lines composition-lines" width={WORLD.width} height={WORLD.height} viewBox={`0 0 ${WORLD.width} ${WORLD.height}`} aria-hidden="true">
       {ayah.blocks.map((block, blockIndex) => {
         const points = layoutBlock(block, blockIndex)
         const center = { x: WORLD.width / 2, y: points[0].y }
-        return <g key={block.id}>
-          <path className="composition-spine" d={`M ${center.x} ${center.y - 60} L ${center.x} ${center.y + 60}`} />
-          {blockIndex < ayah.blocks.length - 1 && <path className="composition-spine" d={`M ${center.x} ${center.y + 60} L ${center.x} ${BLOCK_Y[blockIndex + 1] - 60}`} />}
+        return <g key={block.id} style={{ '--composition-line-delay': `${160 + blockIndex * 70}ms` }}>
+          <path className="composition-spine" d={`M ${center.x} ${center.y - 58} L ${center.x} ${center.y + 58}`} />
+          {blockIndex < ayah.blocks.length - 1 && <path className="composition-spine" d={`M ${center.x} ${center.y + 58} L ${center.x} ${BLOCK_Y[blockIndex + 1] - 58}`} />}
         </g>
       })}
     </svg>
-    {ayah.blocks.map((block, index) => <div key={block.id} className={'composition-constellation' + (focusWordIndex >= block.range[0] && focusWordIndex <= block.range[1] ? ' has-entry' : '')} style={{ left: WORLD.width / 2, top: BLOCK_Y[index] }}>
-      <i />
-      <small>{String(index + 1).padStart(2, '0')}</small>
-      <h3>{block[language].title}</h3>
-      <div lang="ar" dir="rtl">{phraseText(ayah, block)}</div>
-      <p>{block[language].text}</p>
-    </div>)}
+
+    {ayah.blocks.map((block, index) => {
+      const isActiveBlock = focusWordIndex >= block.range[0] && focusWordIndex <= block.range[1]
+      return <section
+        key={block.id}
+        className={'composition-constellation' + (isActiveBlock ? ' has-entry' : '')}
+        style={{
+          left: WORLD.width / 2,
+          top: BLOCK_Y[index],
+          '--composition-from-y': `${sourceY - BLOCK_Y[index]}px`,
+          '--composition-delay': `${index * 62}ms`,
+        }}
+      >
+        <i aria-hidden="true" />
+        <small>{String(index + 1).padStart(2, '0')}</small>
+        <h3>{block[language].title}</h3>
+        <div className="composition-phrase" lang="ar" dir="rtl">
+          {phraseTokens(ayah, block).map((token, tokenIndex) => {
+            const wordIndex = block.range[0] + tokenIndex
+            return <span key={wordIndex} className={wordIndex === focusWordIndex ? 'is-entry' : ''}>{token.ar}</span>
+          })}
+        </div>
+        <p>{block[language].text}</p>
+      </section>
+    })}
+
     <div className="composition-summary" style={{ left: WORLD.width / 2, top: 1760 }}>
       <span>{ru ? 'Ход аята' : 'Flow of the ayah'}</span>
       <p>{ayah.flow[language]}</p>
@@ -284,7 +294,6 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
   const [contextOpen, setContextOpen] = useState(false)
   const [selectedWord, setSelectedWord] = useState(null)
   const [activeWordIndex, setActiveWordIndex] = useState(focusWordIndex || null)
-  const [hasInteracted, setHasInteracted] = useState(false)
   const [camera, setCamera] = useState(() => ({ x: 0, y: 0, scale: defaultScale() }))
   const pointers = useRef(new Map())
   const gesture = useRef(null)
@@ -313,7 +322,6 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     setContextOpen(false)
     setSelectedWord(null)
     setActiveWordIndex(focusWordIndex || null)
-    setHasInteracted(false)
     setCamera({ x: 0, y: 0, scale: defaultScale() })
     pointers.current.clear()
     gesture.current = null
@@ -384,7 +392,6 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
 
   function onWheel(event) {
     event.preventDefault()
-    setHasInteracted(true)
     zoomBy(event.deltaY > 0 ? -.07 : .07)
   }
 
@@ -463,7 +470,6 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     setSelectedWord(wordIndex)
     if (wordIndex) {
       setActiveWordIndex(wordIndex)
-      setHasInteracted(true)
     }
   }
 
@@ -498,10 +504,25 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     </nav>
 
     {contextOpen && <aside className="ayah-space-context">
-      <header><span>{ru ? 'Контекст' : 'Context'}</span><button onClick={() => setContextOpen(false)}>×</button></header>
-      <p>{ayah.context[language]}</p>
+      <header><span>{ru ? 'Контекст' : 'Context'}</span><button aria-label={ru ? 'Закрыть контекст' : 'Close context'} onClick={() => setContextOpen(false)}>×</button></header>
+
+      <section className="ayah-context-section">
+        <small>{ru ? 'О суре' : 'About the surah'}</small>
+        <p>{ayah.context.surah[language]}</p>
+      </section>
+
+      <section className="ayah-context-section">
+        <small>{ru ? 'Место аята в суре' : 'Place in the surah'}</small>
+        <p>{ayah.context.passage[language]}</p>
+      </section>
+
+      <section className="ayah-context-section is-revelation">
+        <small>{ru ? 'История ниспослания' : 'Revelation context'}</small>
+        <p>{ayah.context.revelation[language]}</p>
+      </section>
+
       <a className="ayah-context-source" href={ayah.greentechUrl} target="_blank" rel="noopener noreferrer">
-        {ru ? 'Источник: Al Quran · Greentech' : 'Source: Al Quran · Greentech'} <ExternalIcon />
+        Al Quran · Greentech <ExternalIcon />
       </a>
     </aside>}
 
@@ -532,11 +553,10 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     />}
 
     <div className="ayah-space-zoom">
-      <button aria-label={ru ? 'Увеличить масштаб' : 'Zoom in'} onClick={() => { setHasInteracted(true); zoomBy(.08) }}>+</button>
+      <button aria-label={ru ? 'Увеличить масштаб' : 'Zoom in'} onClick={() => zoomBy(.08)}>+</button>
       <span>{Math.round(camera.scale * 100)}%</span>
-      <button aria-label={ru ? 'Уменьшить масштаб' : 'Zoom out'} onClick={() => { setHasInteracted(true); zoomBy(-.08) }}>−</button>
+      <button aria-label={ru ? 'Уменьшить масштаб' : 'Zoom out'} onClick={() => zoomBy(-.08)}>−</button>
     </div>
 
-    {!hasInteracted && <div className="ayah-space-hint">{ru ? 'Перемещайте схему · нажмите слово, чтобы раскрыть его' : 'Move the diagram · tap a word to unfold it'}</div>}
   </section>
 }
