@@ -10,7 +10,7 @@ export const AYAH_PROTOTYPES = {
         en: 'Al-Baqarah is a Madinan surah of 286 ayahs. It joins faith and spiritual formation with practical guidance for communal life, including worship, responsibility, family, social, and financial matters.',
       },
       passage: {
-        ru: 'Аят 2:197 находится внутри последовательности 2:196–203 о хадже и умре. 2:196 вводит правила завершения паломничества; 2:197 определяет время хаджа и границы поведения паломника, напоминает, что Аллах знает каждое совершённое добро, а затем переводит практическое наставление к تَقْوَىٰ (taqwā). Следующие аяты продолжают путь паломника через Арафат, Муздалифу, поминание Аллаха и завершение обрядов.',
+        ru: 'Аят 2:197 находится внутри последовательности 2:196–203 о хадже и умре. 2:196 вводит правила завершения паломничества; 2:197 определяет время хаджа и границы поведения паломника, напоминает, что Аллах знает каждое совершённое добро, а затем связывает практическое наставление с تَقْوَىٰ (taqwā). Следующие аяты продолжают путь паломника через Арафат, Муздалифу, поминание Аллаха и завершение обрядов.',
         en: 'Ayah 2:197 sits within the Hajj and Umrah passage 2:196–203. Ayah 2:196 introduces rulings for completing pilgrimage; 2:197 defines the Hajj period and the pilgrim’s boundaries of conduct, reminds the listener that Allah knows every good deed, and then turns a practical instruction toward تَقْوَىٰ (taqwā). The following ayahs continue through Arafat, Muzdalifah, remembrance of Allah, and completion of the rites.',
       },
       revelation: {
@@ -65,7 +65,7 @@ export const AYAH_PROTOTYPES = {
         ar: 'ٱلتَّقْوَىٰ', tr: 'al-taqwā', ru: 'благочестие', en: 'piety',
         roleRu: 'существительное · именительный падеж', roleEn: 'noun · nominative',
         root: 'و ق ي', rootReading: 'w-q-y', orbitId: 'taqwa',
-        noteRu: 'تَقْوَىٰ (taqwā) называет качество человека, связанное с осознанным остережением и защитой себя перед Всевышним.',
+        noteRu: 'تَقْوَىٰ (taqwā) называет качество, связанное с осознанным остережением перед Аллахом и стремлением оберегать себя от нарушения установленных Им границ.',
         noteEn: 'تَقْوَىٰ (taqwā) names a quality connected with conscious caution and guarding oneself before Allah.',
         analysis: {
           ru: {
@@ -76,7 +76,7 @@ export const AYAH_PROTOTYPES = {
                 { ar: 'و ق ي', tr: 'w-q-y', label: 'корень: защита / оберегание' },
                 { ar: 'فَعْلَى', tr: 'faʿlā', label: 'именная модель' },
               ],
-              text: 'В аяте слово стоит с артиклем ٱلـ. Внутри تَقْوَىٰ (taqwā) сохраняется словообразовательная связь с корнем و ق ي (w-q-y) и глаголом ٱتَّقَىٰ (ittaqā). Конечная ىٰ — alif maqṣūra.',
+              text: 'В аяте ٱلتَّقْوَىٰ (al-taqwā) состоит из определённого артикля ٱلـ и существительного تَقْوَىٰ (taqwā). Слово связано с корнем و ق ي (w-q-y) «защищать / оберегать» и с глаголом VIII формы ٱتَّقَىٰ (ittaqā). Конечная ىٰ — alif maqṣūra.',
             },
             syntax: {
               plain: 'Здесь работает конструкция с إِنَّ (inna). Сначала называется то, о чём говорится: خَيْرَ ٱلزَّادِ (khayra al-zādi) — «лучший запас». Затем следует ٱلتَّقْوَىٰ (al-taqwā), которое завершает мысль: именно это слово сообщает, чем является названный запас. Поэтому ٱلتَّقْوَىٰ (al-taqwā) выполняет роль خبر إِنَّ (khabar inna).',
@@ -87,8 +87,8 @@ export const AYAH_PROTOTYPES = {
             },
             meaning: {
               gloss: 'Благочестие',
-              description: 'В этом аяте تَقْوَىٰ (taqwā) передаётся словом «благочестие». Под благочестием здесь понимается внутреннее качество человека: осознанность перед Аллахом, осторожность в выборе и стремление удерживать установленные границы. Корень و ق ي (w-q-y) несёт идею защиты и оберегания, а форма ٱتَّقَىٰ (ittaqā) показывает активную защитную позицию человека.',
-              translation: '«Благочестие» передаёт внутреннюю направленность تَقْوَىٰ (taqwā): состояние, которое удерживает человека в осознанности перед Аллахом и влияет на его выбор. «Праведность» описывает проявление такого качества в поступках — следование правильному, соблюдение установленных границ и выбор добра. Следующее وَٱتَّقُونِ (wa-ittaqūni) связывает названное качество с действием: осознанным остережением и обереганием себя перед Всевышним.',
+              description: 'В этом аяте تَقْوَىٰ (taqwā) передаётся словом «благочестие» как кратким контекстным переводом. Само понятие шире одного русского слова: корень و ق ي (w-q-y) связан с защитой и обереганием, а в религиозном употреблении taqwā включает осознанное остережение перед Аллахом и удержание себя от нарушения установленных Им границ.',
+              translation: '«Благочестие» — допустимый краткий перевод تَقْوَىٰ (taqwā), но он не исчерпывает значение слова. «Праведность» также встречается в переводах, однако это более широкое русское понятие и его не стоит подавать как точный синоним taqwā. Здесь смысл лучше раскрывать через осознанное остережение перед Аллахом и оберегание себя от нарушения Его границ. Следующее وَٱتَّقُونِ (wa-ittaqūni) переводит это значение из названного качества в прямое действие.',
             },
           },
           en: {
@@ -128,10 +128,10 @@ export const AYAH_PROTOTYPES = {
               parts: [
                 { ar: 'وَ', tr: 'wa-', label: 'союз «и»' },
                 { ar: 'ٱتَّقُوا', tr: 'ittaqū', label: 'повелительная форма, 2 л. мн. ч.' },
-                { ar: 'نِ', tr: '-ni', label: 'объект «Меня»; yā местоимения графически опущена' },
+                { ar: 'نِ', tr: '-ni', label: 'nūn al-wiqāya; yā местоимения «Меня» графически опущена' },
                 { ar: 'و ق ي', tr: 'w-q-y', label: 'корень' },
               ],
-              text: 'Глагольная основа относится к VIII форме ٱتَّقَىٰ (ittaqā). Внутри формы корневая و ассимилируется с ت модели и даёт удвоенную تّ.',
+              text: 'Глагольная основа относится к VIII форме ٱتَّقَىٰ (ittaqā). Внутри формы корневая و ассимилируется с ت модели и даёт удвоенную تّ. Конечная نِ содержит nūn al-wiqāya; объект «Меня» выражен yā местоимения, которая в этой коранической записи опущена.',
             },
             syntax: {
               plain: 'Простыми словами: это прямое повеление группе людей — «остерегайтесь Меня / берегите себя передо Мной».',
@@ -151,10 +151,10 @@ export const AYAH_PROTOTYPES = {
               parts: [
                 { ar: 'وَ', tr: 'wa-', label: 'conjunction “and”' },
                 { ar: 'ٱتَّقُوا', tr: 'ittaqū', label: '2nd person plural imperative' },
-                { ar: 'نِ', tr: '-ni', label: 'object “Me”; pronominal yā is orthographically omitted' },
+                { ar: 'نِ', tr: '-ni', label: 'nūn al-wiqāya; the pronominal yā “Me” is orthographically omitted' },
                 { ar: 'و ق ي', tr: 'w-q-y', label: 'root' },
               ],
-              text: 'The verbal base belongs to Form VIII ٱتَّقَىٰ (ittaqā). Within the form, the root و assimilates with the pattern’s ت, producing doubled تّ.',
+              text: 'The verbal base belongs to Form VIII ٱتَّقَىٰ (ittaqā). Within the form, the root و assimilates with the pattern’s ت, producing doubled تّ. The final نِ contains nūn al-wiqāya; the object “Me” is expressed by a pronominal yā that is omitted in this Quranic spelling.',
             },
             syntax: {
               plain: 'In simple terms: this is a direct command to a group — “guard yourselves before Me.”',
@@ -184,7 +184,7 @@ export const AYAH_PROTOTYPES = {
       {
         id: 'limits',
         range: [4, 15],
-        ru: { title: 'Границы для вступившего в хадж', text: 'Для того, кто вступил в хадж, названы три границы: رَفَث (rafath), فُسُوق (fusūq) и جِدَال (jidāl) во время хаджа.' },
+        ru: { title: 'Границы поведения во время хаджа', text: 'Для того, кто вступил в хадж, названы три границы: رَفَث (rafath), فُسُوق (fusūq) и جِدَال (jidāl).' },
         en: { title: 'Boundaries for the pilgrim', text: 'For one who enters Hajj, three boundaries are named: رَفَث (rafath), فُسُوق (fusūq), and جِدَال (jidāl) during Hajj.' },
       },
       {
@@ -202,7 +202,7 @@ export const AYAH_PROTOTYPES = {
       {
         id: 'address',
         range: [27, 29],
-        ru: { title: 'Прямое обращение', text: 'وَٱتَّقُونِ (wa-ittaqūni) переводит мысль в прямое повеление и обращается к أُولِي ٱلْأَلْبَاب (ulī al-albāb) — обладающим разумением.' },
+        ru: { title: 'Прямое обращение', text: 'После упоминания تَقْوَىٰ (taqwā) следует прямое повеление وَٱتَّقُونِ (wa-ittaqūni), обращённое к أُولِي ٱلْأَلْبَاب (ulī al-albāb) — обладающим разумением.' },
         en: { title: 'Direct address', text: 'وَٱتَّقُونِ (wa-ittaqūni) turns the thought into a direct command addressed to أُولِي ٱلْأَلْبَاب (ulī al-albāb), people of understanding.' },
       },
     ],
