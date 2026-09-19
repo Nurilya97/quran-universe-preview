@@ -149,7 +149,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
                 <b>{ru ? 'Слово без артикля' : 'Word without the article'}</b>
                 <p>{ru
                   ? 'تَقْوَىٰ (taqwā) — существительное. Контекстный перевод в этом аяте: «благочестие / праведность».'
-                  : 'تَقْوَىٰ (taqwā) is a noun. A contextual rendering in this ayah is “piety”.'}</p>
+                  : 'تَقْوَىٰ (taqwā) is a noun. Contextual renderings here include “piety” and “righteousness”.'}</p>
               </article>
 
               <article className="analysis-morphology-node article">
@@ -162,25 +162,13 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
               </article>
             </div>
 
-            <svg className="analysis-morphology-tree derivation" viewBox="0 0 100 54" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M25 2 C25 20 50 20 50 51" />
-            </svg>
-
-            <article className="analysis-morphology-node verb">
-              <span lang="ar" dir="rtl">ٱتَّقَىٰ</span>
-              <small>ittaqā</small>
-              <b>{ru ? 'Связанная глагольная форма · VIII' : 'Related verbal form · Form VIII'}</b>
-              <p>{ru
-                ? 'ٱتَّقَىٰ (ittaqā) — глагол VIII формы от корня و ق ي (w-q-y). Он показывает активный оттенок: остерегаться, оберегать себя.'
-                : 'ٱتَّقَىٰ (ittaqā) is a Form VIII verb from the root و ق ي (w-q-y), expressing an active sense of taking care or guarding oneself.'}</p>
-            </article>
-
             <svg className="analysis-morphology-tree second" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M50 2 C50 22 25 28 25 59" />
-              <path d="M50 2 C50 22 75 24 75 59" />
+              <path d="M25 2 C25 22 16.7 28 16.7 59" />
+              <path d="M25 2 C25 22 50 24 50 59" />
+              <path d="M25 2 C25 22 83.3 24 83.3 59" />
             </svg>
 
-            <div className="analysis-morphology-level second-level">
+            <div className="analysis-morphology-level second-level has-three">
               <article className="analysis-morphology-node root">
                 <span lang="ar" dir="rtl">{morphologyParts[2]?.ar || selected.root}</span>
                 <small>{morphologyParts[2]?.tr || selected.rootReading}</small>
@@ -188,6 +176,15 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
                 <p>{ru
                   ? 'و ق ي (w-q-y) несёт идею защиты и оберегания.'
                   : 'و ق ي (w-q-y) carries the idea of protection and guarding.'}</p>
+              </article>
+
+              <article className="analysis-morphology-node verb">
+                <span lang="ar" dir="rtl">ٱتَّقَىٰ</span>
+                <small>ittaqā</small>
+                <b>{ru ? 'Связанная глагольная форма · VIII' : 'Related verbal form · Form VIII'}</b>
+                <p>{ru
+                  ? 'Глагол VIII формы от того же корня: остерегаться, оберегать себя. Он делает активный оттенок корневой идеи особенно заметным.'
+                  : 'A Form VIII verb from the same root: to be wary and guard oneself. It makes the active shade of the root especially visible.'}</p>
               </article>
 
               <article className="analysis-morphology-node pattern">
@@ -219,7 +216,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
                   : <><b>What is added:</b> ٱلـ (al-) attaches to the word and makes it definite.</>}</p>
                 <p>{ru
                   ? <><b>В аяте 2:197:</b> краткий контекстный перевод — «благочестие / праведность».</>
-                  : <><b>In 2:197:</b> a concise contextual rendering is “piety.”</>}</p>
+                  : <><b>In 2:197:</b> concise contextual renderings include “piety / righteousness.”</>}</p>
               </div>
             </div>
           </> : <div className="analysis-morphology-generic">
