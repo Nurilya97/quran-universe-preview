@@ -5081,3 +5081,121 @@
     filter: none;
   }
 }
+
+
+/* Current Ayah Space onboarding: echo the cyan entry underline and keep it close to the ayah. */
+.analysis-tap-hint {
+  top: 1088px !important;
+  width: 560px !important;
+  color: rgba(121,246,255,.96) !important;
+  font-size: 14px !important;
+  font-weight: 520;
+  letter-spacing: .035em;
+  text-shadow:
+    0 0 8px rgba(121,246,255,.42),
+    0 0 20px rgba(121,246,255,.22);
+}
+
+/* Context headings are reading anchors, not metadata labels. */
+.ayah-context-section > small {
+  color: #d7e7df !important;
+  font-size: 13px !important;
+  font-weight: 650 !important;
+  line-height: 1.45;
+  letter-spacing: .005em !important;
+  text-transform: none;
+}
+
+.ayah-context-section p {
+  margin-top: 9px;
+}
+
+/* Canonical morphology tree: one continuous visual grammar from word to parts. */
+.analysis-morphology-tree {
+  display: block;
+  width: 100%;
+  height: 66px;
+  margin: 8px 0 5px;
+  overflow: visible;
+  pointer-events: none;
+  opacity: .48;
+}
+
+.analysis-morphology-tree.second {
+  height: 72px;
+  margin-top: 10px;
+}
+
+.analysis-morphology-tree path {
+  fill: none;
+  stroke: rgba(221,238,232,.86);
+  stroke-width: 1.15;
+  vector-effect: non-scaling-stroke;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 4px rgba(170,222,206,.10));
+}
+
+.analysis-morphology-tree circle {
+  fill: #dbece5;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 0 5px rgba(190,232,218,.20));
+}
+
+.analysis-morphology-level.first-level,
+.analysis-morphology-level.second-level {
+  width: 100% !important;
+  margin: 0 !important;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important;
+  gap: clamp(18px, 4vw, 44px) !important;
+}
+
+.analysis-morphology-node.root,
+.analysis-morphology-node.pattern {
+  transform: none !important;
+}
+
+.analysis-morphology-note {
+  margin-top: 28px !important;
+}
+
+@media (max-width:760px) {
+  .analysis-tap-hint {
+    top: 1115px !important;
+    width: 520px !important;
+    font-size: 17px !important;
+    text-shadow:
+      0 0 8px rgba(121,246,255,.46),
+      0 0 18px rgba(121,246,255,.25);
+  }
+
+  .ayah-context-section > small {
+    font-size: 13.5px !important;
+  }
+
+  .analysis-morphology-tree {
+    height: 58px;
+    margin: 5px 0 3px;
+  }
+
+  .analysis-morphology-tree.second {
+    height: 64px;
+    margin-top: 8px;
+  }
+
+  .analysis-morphology-level.first-level,
+  .analysis-morphology-level.second-level {
+    gap: 18px !important;
+  }
+}
+
+@media (max-width:420px) {
+  .analysis-tap-hint {
+    top: 1125px !important;
+    font-size: 16.5px !important;
+  }
+
+  .analysis-morphology-level.first-level,
+  .analysis-morphology-level.second-level {
+    gap: 14px !important;
+  }
+}
