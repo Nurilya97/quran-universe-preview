@@ -304,6 +304,15 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
       <div className="analysis-focus-word">
         <span lang="ar" dir="rtl">{selected.ar}</span>
         <small>{selected.tr}</small>
+        {selected.orbitId && <button
+          className="analysis-center-orbit"
+          onClick={(event) => {
+            event.stopPropagation()
+            onOpenWordOrbit?.(selected)
+          }}
+        >
+          {ru ? 'Перейти в орбиту слова →' : 'Open word orbit →'}
+        </button>}
       </div>
 
       <svg className="analysis-focus-rays" viewBox="0 0 1000 720" aria-hidden="true">
@@ -331,15 +340,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
         <small>{ru ? 'ЗНАЧЕНИЕ' : 'MEANING'}</small>
         <div className="analysis-callout-page">{semanticPages[pages.semantic]}</div>
         <CalloutPager page={pages.semantic} count={semanticPages.length} onChange={(value) => setPage('semantic', value)} language={language} />
-        {pages.semantic === semanticPages.length - 1 && <button
-          className="analysis-orbit-button"
-          disabled={!selected.orbitId}
-          onClick={() => selected.orbitId && onOpenWordOrbit?.(selected)}
-        >
-          {selected.orbitId
-            ? (ru ? 'Перейти в орбиту слова →' : 'Open word orbit →')
-            : (ru ? 'Орбита слова · будет подключена' : 'Word orbit · coming next')}
-        </button>}
+
       </section>
     </div>
   </div>
