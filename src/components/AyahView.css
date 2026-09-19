@@ -2497,3 +2497,79 @@
     width: 535px;
   }
 }
+
+/* Readability pass: visible ayah reference + balanced callout pages */
+.analysis-ayah-group .analysis-verse-reference {
+  margin-top: 8px;
+}
+
+.analysis-ayah-group .analysis-verse-reference span {
+  color: #d7dde1;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: .025em;
+}
+
+.analysis-ayah-group .analysis-verse-reference small {
+  margin-left: 8px;
+  color: #77828a;
+  font-size: 10px;
+}
+
+.analysis-focus-callout .analysis-callout-page {
+  overflow: hidden;
+}
+
+@media (max-width: 760px) {
+  .analysis-ayah-group .analysis-verse-reference {
+    margin-top: 7px;
+  }
+
+  .analysis-ayah-group .analysis-verse-reference span {
+    font-size: 15px;
+  }
+
+  .analysis-ayah-group .analysis-verse-reference small {
+    font-size: 9.5px;
+  }
+
+  /* Top callouts keep a stable footprint; their pages are now split by meaning units. */
+  .analysis-focus-callout.morph,
+  .analysis-focus-callout.syntax {
+    height: 222px !important;
+    min-height: 222px !important;
+    max-height: 222px !important;
+  }
+
+  /* The lower callout follows its current page instead of reserving empty space. */
+  .analysis-focus-callout.semantic {
+    height: auto !important;
+    min-height: 132px !important;
+    max-height: none !important;
+    padding-bottom: 12px !important;
+  }
+
+  .analysis-focus-callout.semantic .analysis-callout-page {
+    flex: 0 0 auto;
+    overflow: visible;
+  }
+
+  .analysis-focus-callout.semantic .analysis-callout-pager {
+    margin-top: 9px;
+  }
+}
+
+@media (max-width: 420px) {
+  .analysis-focus-callout.morph,
+  .analysis-focus-callout.syntax {
+    height: 214px !important;
+    min-height: 214px !important;
+    max-height: 214px !important;
+  }
+
+  .analysis-focus-callout.semantic {
+    min-height: 126px !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+}
