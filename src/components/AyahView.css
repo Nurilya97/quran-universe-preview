@@ -2573,3 +2573,69 @@
     max-height: none !important;
   }
 }
+
+/* Mobile typography and spacing polish */
+@media (max-width: 760px) {
+  .analysis-focus-callout > small {
+    font-size: 9px !important;
+    letter-spacing: .105em;
+  }
+
+  .analysis-callout-page > div > strong {
+    font-size: 13.5px !important;
+    line-height: 1.38 !important;
+  }
+
+  .analysis-callout-page > div > p,
+  .analysis-focus-callout .analysis-detail-text,
+  .analysis-focus-callout .analysis-translation-choice,
+  .analysis-syntax-plain {
+    font-size: 11.2px !important;
+    line-height: 1.58 !important;
+  }
+
+  .analysis-syntax-phrase {
+    font-size: 18px !important;
+    line-height: 1.6 !important;
+  }
+
+  .analysis-morph-parts b {
+    font-size: 18px !important;
+  }
+
+  .analysis-morph-parts em,
+  .analysis-morph-parts p {
+    font-size: 9.2px !important;
+    line-height: 1.36 !important;
+  }
+
+  .analysis-callout-pager span {
+    font-size: 8.8px !important;
+  }
+
+  .analysis-orbit-button {
+    font-size: 8.8px !important;
+  }
+
+  .analysis-focus-callout.semantic {
+    bottom: 72px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .analysis-callout-page > div > strong {
+    font-size: 13px !important;
+  }
+
+  .analysis-callout-page > div > p,
+  .analysis-focus-callout .analysis-detail-text,
+  .analysis-focus-callout .analysis-translation-choice,
+  .analysis-syntax-plain {
+    font-size: 10.8px !important;
+    line-height: 1.55 !important;
+  }
+
+  .analysis-focus-callout.semantic {
+    bottom: 66px !important;
+  }
+}
