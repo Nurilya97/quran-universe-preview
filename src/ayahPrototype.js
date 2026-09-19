@@ -179,29 +179,9 @@ export const AYAH_PROTOTYPES = {
         en: { title: 'Direct imperative and addressee', text: 'The ending becomes direct address: وَٱتَّقُونِ (wa-ittaqūni), followed by the addressees أُولِي ٱلْأَلْبَاب (ulī al-albāb).' },
       },
     ],
-    rhetoric: {
-      ru: [
-        { title: 'Тройной параллелизм', text: 'فَلَا رَفَثَ وَلَا فُسُوقَ وَلَا جِدَالَ — три ограничения построены одной повторяющейся схемой.' },
-        { title: 'Лексическая связка', text: 'وَتَزَوَّدُوا (wa-tazawwadū) и ٱلزَّاد (al-zād) происходят из одной словообразовательной семьи ز و د (z-w-d), связывая действие «запасаться» с самим «запасом».' },
-        { title: 'Переход внутри высказывания', text: 'После وَتَزَوَّدُوا (wa-tazawwadū) и ٱلزَّاد (al-zād) появляется تَقْوَىٰ (taqwā), а затем следует прямое وَٱتَّقُونِ (wa-ittaqūni). Риторический эффект этого перехода нужно оценивать уже после грамматического разбора конструкции.' },
-      ],
-      en: [
-        { title: 'Three-part parallelism', text: 'فَلَا رَفَثَ وَلَا فُسُوقَ وَلَا جِدَالَ — three restrictions follow the same repeated pattern.' },
-        { title: 'Lexical linkage', text: 'وَتَزَوَّدُوا (wa-tazawwadū) and ٱلزَّاد (al-zād) belong to the same ز و د (z-w-d) derivational family, linking the act of taking provision with “provision” itself.' },
-        { title: 'Transition within the statement', text: 'After وَتَزَوَّدُوا (wa-tazawwadū) and ٱلزَّاد (al-zād), تَقْوَىٰ (taqwā) appears, followed by the direct وَٱتَّقُونِ (wa-ittaqūni). The rhetorical effect of this transition is assessed only after the grammatical construction is clear.' },
-      ],
-    },
     flow: {
       ru: 'Ход аята: время хаджа → ограничения для вступившего в хадж → любое добро известно Аллаху → повеление запастись → пояснение через خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ → прямое وَٱتَّقُونِ (wa-ittaqūni) и обращение к أُولِي ٱلْأَلْبَاب (ulī al-albāb).',
       en: 'Flow of the verse: the time of Hajj → restrictions for one who undertakes Hajj → every good action is known by Allah → command to take provision → explanation through خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ → direct وَٱتَّقُونِ (wa-ittaqūni) and address to أُولِي ٱلْأَلْبَاب (ulī al-albāb).',
-    },
-    sound: {
-      ru: 'Здесь будет отдельный проверяемый слой: tajwīd, madd, waqf и звуковые повторы. Факт чтения и интерпретация его возможного эффекта будут показаны раздельно.',
-      en: 'This will be a separate verifiable layer: tajwīd, madd, waqf, and sound recurrence. Recitation facts and interpretation of their possible effect will be shown separately.',
-    },
-    translations: {
-      ru: 'Сравнение переводов будет дополнительным слоем после разбора арабского текста. Основной экран сначала показывает, из чего складывается смысл самого аята.',
-      en: 'Translation comparison will be an optional layer after analysis of the Arabic text. The main view first shows how the verse’s meaning is built from the Arabic itself.',
     },
   },
 }
