@@ -214,7 +214,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
         return <div key={'parts-' + pageIndex}>
           <strong>{pageIndex === 0
             ? (ru ? 'Из чего состоит слово' : 'How the word is built')
-            : (ru ? 'Продолжение разбора' : 'Word structure continued')}</strong>
+            : (ru ? 'Корень и модель' : 'Root and pattern')}</strong>
           <div className="analysis-morph-parts">
             {pageParts.map((part, index) => <div key={index}>
               <b lang="ar" dir="rtl">{part.ar}</b>
