@@ -82,7 +82,7 @@ function AnalysisDiagram({ ayah, focusWordIndex, language, selectedWord, onSelec
         <small>{ayah.surah[language]}</small>
       </div>
       {!selectedWord && <div className="analysis-tap-hint">
-        {language === 'ru' ? 'Нажмите на любое слово предложения' : 'Tap any word in the sentence'}
+        {language === 'ru' ? 'Нажмите на любое слово' : 'Tap any word'}
       </div>}
     </div>
   </div>
@@ -346,13 +346,17 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
 
   function clampCamera(next, targetMode = mode) {
     const current = cameraRef.current || { x: 0, y: 0, scale: defaultScale() }
-    const scale = clamp(finiteNumber(next.scale, current.scale), .48, 1.08)
+    const isComposition = targetMode === 'composition'
+    const minScale = isComposition ? .42 : .48
+    const maxScale = isComposition ? 1.45 : 1.08
+    const scale = clamp(finiteNumber(next.scale, current.scale), minScale, maxScale)
     const viewport = viewportRef.current?.getBoundingClientRect()
     const rawX = finiteNumber(next.x, current.x)
     const rawY = finiteNumber(next.y, current.y)
 
     if (!viewport || viewport.width < 1 || viewport.height < 1) {
-      return { x: clamp(rawX, -120, 120), y: clamp(rawY, -150, 150), scale }
+      const fallbackLimit = isComposition ? 900 : 150
+      return { x: clamp(rawX, -fallbackLimit, fallbackLimit), y: clamp(rawY, -fallbackLimit, fallbackLimit), scale }
     }
 
     const bounds = VIEW_BOUNDS[targetMode] || VIEW_BOUNDS.analysis
@@ -361,16 +365,25 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     const worldCx = WORLD.width / 2
     const worldCy = WORLD.height / 2
 
-    /* At overview zoom the diagram stays close to centre.
-       Zooming in gradually unlocks more panning, like a map. */
-    const zoomProgress = clamp((scale - .48) / .60, 0, 1)
-    const softLimitX = Math.min(viewport.width * .46, 120 + zoomProgress * 380)
-    const softLimitY = Math.min(viewport.height * .38, 120 + zoomProgress * 300)
-
     const contentMinX = -cx - (bounds.right - worldCx) * scale
     const contentMaxX = viewport.width - cx - (bounds.left - worldCx) * scale
     const contentMinY = -cy - (bounds.bottom - worldCy) * scale
     const contentMaxY = viewport.height - cy - (bounds.top - worldCy) * scale
+
+    if (isComposition) {
+      /* Composition behaves like a map: every edge of the thematic structure
+         can be brought into view without the analysis layer's centre lock. */
+      return {
+        x: clamp(rawX, contentMinX, contentMaxX),
+        y: clamp(rawY, contentMinY, contentMaxY),
+        scale,
+      }
+    }
+
+    /* Analysis stays gently anchored around the verse. */
+    const zoomProgress = clamp((scale - .48) / .60, 0, 1)
+    const softLimitX = Math.min(viewport.width * .46, 120 + zoomProgress * 380)
+    const softLimitY = Math.min(viewport.height * .38, 120 + zoomProgress * 300)
 
     const minX = Math.max(contentMinX, -softLimitX)
     const maxX = Math.min(contentMaxX, softLimitX)

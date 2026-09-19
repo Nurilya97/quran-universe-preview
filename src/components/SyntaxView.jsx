@@ -144,7 +144,7 @@ export function SyntaxView({ ayah, selectedWord, language }) {
           {term && <>
             <header><h3><span lang="ar" dir="rtl">{term.ar}</span><small>{term.tr}</small></h3>
               <button aria-label={ru ? 'Закрыть пояснение термина' : 'Close term explanation'} onClick={() => setSelectedTerm(null)}>×</button></header>
-            {selectedTerm !== 'khabarInna' && <>
+            {!['khabarInna', 'accusative', 'genitive', 'nominative'].includes(selectedTerm) && <>
               <div className="syntax-term-example" lang="ar" dir="rtl">{term.words.map(i => ayah.tokens[i-1].ar).join(' ')}</div>
               <div className="syntax-term-example-tr">{term.words.map(i => ayah.tokens[i-1].tr).join(' · ')}</div>
             </>}

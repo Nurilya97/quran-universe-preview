@@ -5225,3 +5225,19 @@
   color: #d8eee3;
   border-bottom-color: rgba(168,200,184,.34);
 }
+
+
+/* Ayah onboarding hint: intentionally separated from the verse reference. */
+.analysis-ayah-group .analysis-tap-hint {
+  margin-top: 50px !important;
+}
+@media (max-width: 760px) {
+  .analysis-ayah-group .analysis-tap-hint {
+    margin-top: 50px !important;
+  }
+}
+@media (max-width: 420px) {
+  .analysis-ayah-group .analysis-tap-hint {
+    margin-top: 50px !important;
+  }
+}
