@@ -3356,3 +3356,54 @@
     top: calc(52% + 100px) !important;
   }
 }
+
+/* Keep the Meaning pager inside the card and bring the card slightly closer */
+@media (max-width: 760px) {
+  .analysis-focus-callout.semantic {
+    top: calc(51.5% + 110px) !important;
+    display: flex !important;
+    flex-direction: column;
+    height: 210px !important;
+    min-height: 210px !important;
+    max-height: 210px !important;
+    overflow: hidden !important;
+    box-sizing: border-box;
+  }
+
+  .analysis-focus-callout.semantic > small {
+    flex: 0 0 auto;
+  }
+
+  .analysis-focus-callout.semantic .analysis-callout-page {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  .analysis-focus-callout.semantic .analysis-callout-pager {
+    position: relative;
+    flex: 0 0 auto !important;
+    margin-top: 7px !important;
+    padding-top: 6px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .analysis-focus-callout.semantic {
+    top: calc(52% + 104px) !important;
+    height: 202px !important;
+    min-height: 202px !important;
+    max-height: 202px !important;
+  }
+}
+
+@media (max-height: 720px) and (max-width: 760px) {
+  .analysis-focus-callout.semantic {
+    top: calc(52% + 94px) !important;
+    height: 166px !important;
+    min-height: 166px !important;
+    max-height: 166px !important;
+  }
+}
