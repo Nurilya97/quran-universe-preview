@@ -4405,12 +4405,12 @@
 }
 
 .analysis-morphology-branch .branch-line {
-  background: rgba(247,250,251,.10) !important;
+  background: rgba(247,250,251,.50) !important;
   box-shadow: none !important;
 }
 
 .analysis-morphology-branch .branch-line::after {
-  background: rgba(245,248,249,.10) !important;
+  background: rgba(245,248,249,.50) !important;
   box-shadow: none !important;
 }
 
@@ -4702,5 +4702,46 @@
   .analysis-morphology-summary-list p {
     font-size: 14px !important;
     line-height: 1.68 !important;
+  }
+}
+
+
+/* User refinement: 50% morphology connectors, wider nominal-pattern column, no halo behind Word view */
+.analysis-focus-overlay.focus-view-word .analysis-focus-word::before {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 760px) {
+  .analysis-morphology-level.second-level {
+    width: 92% !important;
+    grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr) !important;
+    gap: 16px !important;
+  }
+
+  .analysis-morphology-node.pattern {
+    transform: translateX(8px);
+  }
+
+  .analysis-morphology-node.pattern > p {
+    max-width: 230px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .analysis-morphology-level.second-level {
+    width: 94% !important;
+    grid-template-columns: minmax(0, .84fr) minmax(0, 1.16fr) !important;
+    gap: 14px !important;
+  }
+
+  .analysis-morphology-node.pattern {
+    transform: translateX(10px);
+  }
+
+  .analysis-morphology-node.pattern > p {
+    max-width: 205px !important;
   }
 }
