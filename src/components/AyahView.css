@@ -3723,3 +3723,319 @@
     font-size: 24px;
   }
 }
+
+/* Dedicated morphology view: a scrollable structural diagram of the selected word */
+.analysis-morphology-screen {
+  position: absolute;
+  z-index: 11;
+  inset: 18px 12px 58px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.analysis-morphology-screen::-webkit-scrollbar {
+  display: none;
+}
+
+.analysis-morphology-canvas {
+  width: min(760px, calc(100vw - 24px));
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 22px 10px 52px;
+}
+
+.analysis-morphology-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.analysis-morphology-hero > small {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 10px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 999px;
+  background: rgba(255,255,255,.035);
+  color: #aeb8be;
+  font-size: 9px;
+  letter-spacing: .12em;
+}
+
+.analysis-morphology-hero > span {
+  margin-top: 16px;
+  color: #fff;
+  font-family: var(--arabic-font), 'Traditional Arabic', serif;
+  font-size: 54px;
+  line-height: 1.3;
+  text-shadow: 0 0 14px rgba(255,255,255,.22), 0 0 36px rgba(255,255,255,.08);
+}
+
+.analysis-morphology-hero > em {
+  margin-top: 2px;
+  color: #909ba2;
+  font-size: 12px;
+  font-style: normal;
+}
+
+.analysis-morphology-hero > strong {
+  margin-top: 5px;
+  color: #e9eef0;
+  font-size: 17px;
+  font-weight: 550;
+}
+
+.analysis-morphology-branch {
+  display: block;
+  width: 100%;
+  height: 78px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.analysis-morphology-branch.first {
+  margin-top: 10px;
+}
+
+.analysis-morphology-branch.second {
+  margin-top: 4px;
+}
+
+.analysis-morphology-branch path {
+  fill: none;
+  stroke: rgba(245,249,250,.82);
+  stroke-width: 1.45;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,.08));
+}
+
+.analysis-morphology-branch marker path {
+  fill: rgba(245,249,250,.88);
+  stroke: none;
+  filter: none;
+}
+
+.analysis-morphology-level {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  gap: 14px;
+  align-items: stretch;
+}
+
+.analysis-morphology-node {
+  min-width: 0;
+  padding: 18px 16px 16px;
+  border: 1px solid rgba(255,255,255,.105);
+  border-radius: 19px;
+  background:
+    linear-gradient(145deg, rgba(17,22,26,.92), rgba(6,9,11,.94));
+  box-shadow:
+    0 18px 48px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.03);
+  text-align: left;
+}
+
+.analysis-morphology-node > span {
+  display: block;
+  color: #fff;
+  font-family: var(--arabic-font), 'Traditional Arabic', serif;
+  font-size: 31px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.analysis-morphology-node > small {
+  display: block;
+  margin-top: 1px;
+  color: #7f8a91;
+  font-size: 10px;
+  text-align: center;
+}
+
+.analysis-morphology-node > b {
+  display: block;
+  width: fit-content;
+  margin: 13px 0 0;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.055);
+  color: #e5eaec;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.analysis-morphology-node > p {
+  margin: 10px 0 0;
+  color: #aeb7bc;
+  font-size: 12px;
+  line-height: 1.58;
+}
+
+.analysis-morphology-node.article > b {
+  background: rgba(255,255,255,.065);
+}
+
+.analysis-morphology-node.root > b,
+.analysis-morphology-node.pattern > b {
+  background: rgba(255,255,255,.05);
+}
+
+.analysis-morphology-note {
+  margin: 18px auto 0;
+  padding: 16px 18px;
+  border: 1px solid rgba(255,255,255,.075);
+  border-radius: 17px;
+  background: rgba(8,12,14,.70);
+  text-align: left;
+}
+
+.analysis-morphology-note > strong {
+  color: #eef2f4;
+  font-size: 12px;
+}
+
+.analysis-morphology-note > p {
+  margin: 7px 0 0;
+  color: #a7b0b5;
+  font-size: 11.5px;
+  line-height: 1.62;
+}
+
+.analysis-morphology-generic {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.analysis-morphology-generic .analysis-morphology-note {
+  grid-column: 1 / -1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 760px) {
+  .analysis-morphology-screen {
+    inset: 12px 8px 54px;
+  }
+
+  .analysis-morphology-canvas {
+    width: calc(100vw - 16px);
+    padding: 16px 4px 46px;
+  }
+
+  .analysis-morphology-hero > small {
+    min-height: 22px;
+    font-size: 8.5px;
+  }
+
+  .analysis-morphology-hero > span {
+    margin-top: 13px;
+    font-size: 47px;
+  }
+
+  .analysis-morphology-hero > em {
+    font-size: 11px;
+  }
+
+  .analysis-morphology-hero > strong {
+    margin-top: 4px;
+    font-size: 15px;
+  }
+
+  .analysis-morphology-branch {
+    height: 70px;
+  }
+
+  .analysis-morphology-level {
+    gap: 10px;
+  }
+
+  .analysis-morphology-node {
+    padding: 14px 12px 13px;
+    border-radius: 17px;
+  }
+
+  .analysis-morphology-node > span {
+    font-size: 27px;
+  }
+
+  .analysis-morphology-node > small {
+    font-size: 9.5px;
+  }
+
+  .analysis-morphology-node > b {
+    margin-top: 10px;
+    padding: 4px 7px;
+    font-size: 9.5px;
+  }
+
+  .analysis-morphology-node > p {
+    margin-top: 8px;
+    font-size: 11.2px;
+    line-height: 1.54;
+  }
+
+  .analysis-morphology-note {
+    margin-top: 14px;
+    padding: 14px 15px;
+  }
+
+  .analysis-morphology-note > strong {
+    font-size: 11.5px;
+  }
+
+  .analysis-morphology-note > p {
+    font-size: 11px;
+  }
+
+  .analysis-focus-view-switch {
+    max-width: calc(100vw - 18px);
+  }
+
+  .analysis-focus-view-switch button {
+    padding: 0 9px;
+  }
+}
+
+@media (max-width: 420px) {
+  .analysis-morphology-canvas {
+    padding-top: 12px;
+  }
+
+  .analysis-morphology-hero > span {
+    font-size: 44px;
+  }
+
+  .analysis-morphology-branch {
+    height: 66px;
+  }
+
+  .analysis-morphology-level {
+    gap: 8px;
+  }
+
+  .analysis-morphology-node {
+    padding: 13px 10px 12px;
+    border-radius: 16px;
+  }
+
+  .analysis-morphology-node > span {
+    font-size: 25px;
+  }
+
+  .analysis-morphology-node > p {
+    font-size: 10.7px;
+    line-height: 1.5;
+  }
+
+  .analysis-focus-view-switch button {
+    padding: 0 8px;
+    font-size: 8.7px;
+  }
+}
