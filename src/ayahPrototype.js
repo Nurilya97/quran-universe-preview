@@ -5,8 +5,18 @@ export const AYAH_PROTOTYPES = {
     focusRoot: 'و ق ي',
     greentechUrl: 'https://quran.gtaf.org/',
     context: {
-      ru: 'Аят находится внутри блока о хадже (2:196–203). В 2:197 названы известные месяцы хаджа, ограничения для вступившего в хадж, доброе действие, запас в путь, تَقْوَىٰ (taqwā) и прямое обращение к أُولِي ٱلْأَلْبَاب (ulī al-albāb).',
-      en: 'The verse sits inside the Hajj passage (2:196–203). In 2:197 it names the known months of Hajj, restrictions for one who undertakes Hajj, good action, provision for the journey, تَقْوَىٰ (taqwā), and a direct address to أُولِي ٱلْأَلْبَاب (ulī al-albāb).',
+      surah: {
+        ru: 'Аль-Бакара — мединская сура из 286 аятов. В ней вера и духовное воспитание соединяются с практическими установлениями для жизни общины: поклонением, ответственностью, семейными, общественными и финансовыми нормами.',
+        en: 'Al-Baqarah is a Madinan surah of 286 ayahs. It joins faith and spiritual formation with practical guidance for communal life, including worship, responsibility, family, social, and financial matters.',
+      },
+      passage: {
+        ru: 'Аят 2:197 находится внутри последовательности 2:196–203 о хадже и умре. 2:196 вводит правила завершения паломничества; 2:197 говорит о времени хаджа, границах поведения, знании Аллаха о добре и запасе; следующие аяты продолжают путь паломника через Арафат, Муздалифу, поминание Аллаха и завершение обрядов.',
+        en: 'Ayah 2:197 sits within the Hajj and Umrah passage 2:196–203. Ayah 2:196 introduces rulings for completing pilgrimage; 2:197 addresses the Hajj period, conduct, Allah’s knowledge of good, and provision; the following ayahs continue through Arafat, Muzdalifah, remembrance of Allah, and completion of the rites.',
+      },
+      revelation: {
+        ru: 'Для слов وَتَزَوَّدُوا «берите припасы» передаётся конкретная история. Ибн ʿАббас сообщил, что некоторые паломники из Йемена отправлялись в хадж без достаточного запаса, говоря, что уповают на Аллаха, а по прибытии обращались к людям за помощью. В связи с этим были ниспосланы слова о том, чтобы брать припасы, и о том, что лучший запас — ٱلتَّقْوَىٰ (al-taqwā). Сообщение приводится в Сахих аль-Бухари 1523; его также приводит аль-Вахиди в «Асбаб ан-нузуль».',
+        en: 'A specific report is connected to the words وَتَزَوَّدُوا, “take provisions.” Ibn ʿAbbas reported that some pilgrims from Yemen travelled for Hajj without sufficient provisions, saying that they relied on Allah, and then sought help from people after arriving. The instruction to take provisions, followed by “the best provision is al-taqwā,” was revealed in this connection. The report appears in Sahih al-Bukhari 1523 and is also cited by al-Wahidi in Asbab al-Nuzul.',
+      },
     },
     tokens: [
       { ar: 'ٱلْحَجُّ', tr: 'al-ḥajju', ru: 'хадж', en: 'the Hajj', roleRu: 'существительное · именительный', roleEn: 'noun · nominative' },
@@ -151,37 +161,37 @@ export const AYAH_PROTOTYPES = {
       {
         id: 'time',
         range: [1, 3],
-        ru: { title: 'Время хаджа', text: 'Аят открывается утверждением: хадж связан с известными месяцами.' },
-        en: { title: 'The time of Hajj', text: 'The verse opens with a statement: Hajj belongs to known months.' },
+        ru: { title: 'Известные месяцы хаджа', text: 'ٱلْحَجُّ أَشْهُرٌ مَّعْلُومَاتٌ — хадж связан с известными, установленными месяцами.' },
+        en: { title: 'The known months of Hajj', text: 'ٱلْحَجُّ أَشْهُرٌ مَّعْلُومَاتٌ — Hajj is tied to known, appointed months.' },
       },
       {
-        id: 'condition',
+        id: 'limits',
         range: [4, 15],
-        ru: { title: 'Условие → ограничения', text: 'فَمَن (faman) вводит условную конструкцию. После принятия хаджа следуют три параллельных ограничения: رَفَث (rafath), فُسُوق (fusūq), جِدَال (jidāl).' },
-        en: { title: 'Condition → restrictions', text: 'فَمَن (faman) opens a conditional construction. After committing to Hajj, three parallel restrictions follow: رَفَث (rafath), فُسُوق (fusūq), and جِدَال (jidāl).' },
+        ru: { title: 'Границы для вступившего в хадж', text: 'Для того, кто вступил в хадж, названы три границы: رَفَث (rafath), فُسُوق (fusūq) и جِدَال (jidāl) во время хаджа.' },
+        en: { title: 'Boundaries for the pilgrim', text: 'For one who enters Hajj, three boundaries are named: رَفَث (rafath), فُسُوق (fusūq), and جِدَال (jidāl) during Hajj.' },
       },
       {
-        id: 'good',
+        id: 'knowledge',
         range: [16, 21],
-        ru: { title: 'Переход к добру', text: 'После ограничений направление меняется: любое совершённое добро известно Аллаху.' },
-        en: { title: 'Turn toward good', text: 'After the restrictions, the direction changes: whatever good is done is known by Allah.' },
+        ru: { title: 'Аллах знает каждое добро', text: 'وَمَا تَفْعَلُوا مِنْ خَيْرٍ يَعْلَمْهُ ٱللَّهُ — какое бы добро вы ни совершили, Аллах знает его.' },
+        en: { title: 'Allah knows every good deed', text: 'وَمَا تَفْعَلُوا مِنْ خَيْرٍ يَعْلَمْهُ ٱللَّهُ — whatever good you do, Allah knows it.' },
       },
       {
         id: 'provision',
         range: [22, 26],
-        ru: { title: 'Повеление запастись → пояснение', text: 'وَتَزَوَّدُوا (wa-tazawwadū) даёт повеление «запасайтесь». Затем فَإِنَّ (fa-inna) вводит пояснение, а خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ связывает «лучший», «запас» и تَقْوَىٰ (taqwā) в одну именную конструкцию.' },
-        en: { title: 'Command to take provision → explanation', text: 'وَتَزَوَّدُوا (wa-tazawwadū) gives the command “take provision.” Then فَإِنَّ (fa-inna) introduces an explanation, while خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ links “best,” “provision,” and تَقْوَىٰ (taqwā) in one nominal construction.' },
+        ru: { title: 'Запас в путь → лучший запас', text: 'Сначала звучит повеление وَتَزَوَّدُوا (wa-tazawwadū) — «берите припасы». Затем назван лучший запас: ٱلتَّقْوَىٰ (al-taqwā).' },
+        en: { title: 'Provision for the journey → the best provision', text: 'First comes the command وَتَزَوَّدُوا (wa-tazawwadū), “take provisions.” Then the best provision is named: ٱلتَّقْوَىٰ (al-taqwā).' },
       },
       {
         id: 'address',
         range: [27, 29],
-        ru: { title: 'Прямое повеление и адресат', text: 'Финал становится прямым обращением: وَٱتَّقُونِ (wa-ittaqūni), затем адресаты названы أُولِي ٱلْأَلْبَاب (ulī al-albāb).' },
-        en: { title: 'Direct imperative and addressee', text: 'The ending becomes direct address: وَٱتَّقُونِ (wa-ittaqūni), followed by the addressees أُولِي ٱلْأَلْبَاب (ulī al-albāb).' },
+        ru: { title: 'Прямое обращение', text: 'وَٱتَّقُونِ (wa-ittaqūni) переводит мысль в прямое повеление и обращается к أُولِي ٱلْأَلْبَاب (ulī al-albāb) — обладающим разумением.' },
+        en: { title: 'Direct address', text: 'وَٱتَّقُونِ (wa-ittaqūni) turns the thought into a direct command addressed to أُولِي ٱلْأَلْبَاب (ulī al-albāb), people of understanding.' },
       },
     ],
     flow: {
-      ru: 'Ход аята: время хаджа → ограничения для вступившего в хадж → любое добро известно Аллаху → повеление запастись → пояснение через خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ → прямое وَٱتَّقُونِ (wa-ittaqūni) и обращение к أُولِي ٱلْأَلْبَاب (ulī al-albāb).',
-      en: 'Flow of the verse: the time of Hajj → restrictions for one who undertakes Hajj → every good action is known by Allah → command to take provision → explanation through خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ → direct وَٱتَّقُونِ (wa-ittaqūni) and address to أُولِي ٱلْأَلْبَاب (ulī al-albāb).',
+      ru: 'Известные месяцы хаджа → границы поведения → Аллах знает каждое добро → взять припасы, а лучший запас — ٱلتَّقْوَىٰ → прямое обращение к обладающим разумением.',
+      en: 'The known Hajj months → boundaries of conduct → Allah knows every good deed → take provisions, while the best provision is ٱلتَّقْوَىٰ → direct address to people of understanding.',
     },
   },
 }
