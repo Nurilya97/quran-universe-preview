@@ -151,7 +151,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
   const isTaqwa = selected.orbitId === 'taqwa'
   return <div className={'analysis-focus-overlay focus-view-' + focusView} onClick={onClose}>
     <div className="analysis-focus-space" onClick={onClose}>
-      {focusView !== 'morphology' && <button className="word-focus-return" aria-label={ru ? 'Вернуться к аяту' : 'Return to ayah'} onClick={event => { event.stopPropagation(); onClose() }}>×</button>}
+      <button className="word-focus-return" aria-label={ru ? 'Вернуться к аяту' : 'Return to ayah'} onClick={event => { event.stopPropagation(); onClose() }}>×</button>
       {focusView === 'word' && <section className="word-meaning-view" onClick={event => event.stopPropagation()}>
         <div className="word-meaning-hero">
           <span lang="ar" dir="rtl">{selected.ar}</span>
