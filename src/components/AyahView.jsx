@@ -148,7 +148,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
                 <small>{morphologyParts[1]?.tr || 'taqwā'}</small>
                 <b>{ru ? 'Слово без артикля' : 'Word without the article'}</b>
                 <p>{ru
-                  ? 'تَقْوَىٰ (taqwā) — существительное. Контекстный перевод в этом аяте: «благочестие».'
+                  ? 'تَقْوَىٰ (taqwā) — существительное. Контекстный перевод в этом аяте: «благочестие / праведность».'
                   : 'تَقْوَىٰ (taqwā) is a noun. A contextual rendering in this ayah is “piety”.'}</p>
               </article>
 
@@ -218,7 +218,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
                   ? <><b>Что добавилось:</b> ٱلـ (al-) присоединяется к слову и делает его определённым.</>
                   : <><b>What is added:</b> ٱلـ (al-) attaches to the word and makes it definite.</>}</p>
                 <p>{ru
-                  ? <><b>В аяте 2:197:</b> краткий контекстный перевод — «благочестие».</>
+                  ? <><b>В аяте 2:197:</b> краткий контекстный перевод — «благочестие / праведность».</>
                   : <><b>In 2:197:</b> a concise contextual rendering is “piety.”</>}</p>
               </div>
             </div>
