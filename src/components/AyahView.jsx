@@ -113,10 +113,6 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
           <span lang="ar" dir="rtl">{selected.ar}</span>
           <small>{selected.tr}</small>
         </div>
-        <div className="word-meaning-note">
-          <i aria-hidden="true" />
-          <p>{ru ? selected.ru : selected.en}</p>
-        </div>
         <div className="word-meaning-explanation">
           {(meaning?.description || (ru ? selected.noteRu : selected.noteEn)) && <section>
             <h3>{ru ? 'Смысл в этом аяте' : 'Meaning in this ayah'}</h3>
@@ -141,10 +137,13 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
           </header>
 
           {isTaqwa ? <>
-            <div className="analysis-morphology-branch first" aria-hidden="true">
-              <i className="branch-line left" />
-              <i className="branch-line right" />
-            </div>
+            <svg className="analysis-morphology-tree first" viewBox="0 0 100 58" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M50 2 C50 22 25 20 25 55" />
+              <path d="M50 2 C50 22 75 20 75 55" />
+              <circle cx="50" cy="2" r="1.35" />
+              <circle cx="25" cy="55" r="1.35" />
+              <circle cx="75" cy="55" r="1.35" />
+            </svg>
 
             <div className="analysis-morphology-level first-level">
               <article className="analysis-morphology-node base">
@@ -166,10 +165,13 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
               </article>
             </div>
 
-            <div className="analysis-morphology-branch second" aria-hidden="true">
-              <i className="branch-line down" />
-              <i className="branch-line to-pattern" />
-            </div>
+            <svg className="analysis-morphology-tree second" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M25 2 C25 22 25 28 25 59" />
+              <path d="M25 2 C25 22 75 24 75 59" />
+              <circle cx="25" cy="2" r="1.35" />
+              <circle cx="25" cy="59" r="1.35" />
+              <circle cx="75" cy="59" r="1.35" />
+            </svg>
 
             <div className="analysis-morphology-level second-level">
               <article className="analysis-morphology-node root">
@@ -192,7 +194,6 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
             </div>
 
             <div className="analysis-morphology-note">
-              <strong>{ru ? 'Итог' : 'Summary'}</strong>
               <div className="analysis-morphology-summary-formula" lang="ar" dir="rtl">
                 ٱلتَّقْوَىٰ = ٱلـ + تَقْوَىٰ
               </div>
@@ -501,17 +502,17 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
       <header><span>{ru ? 'Контекст' : 'Context'}</span><button aria-label={ru ? 'Закрыть контекст' : 'Close context'} onClick={() => setContextOpen(false)}>×</button></header>
 
       <section className="ayah-context-section">
-        <small>{ru ? 'О суре' : 'About the surah'}</small>
+        <small>{ru ? `О суре ${ayah.surah.ru}` : `About Surah ${ayah.surah.en}`}</small>
         <p>{ayah.context.surah[language]}</p>
       </section>
 
       <section className="ayah-context-section">
-        <small>{ru ? 'Место аята в суре' : 'Place in the surah'}</small>
+        <small>{ru ? 'Связь аята с окружающим отрывком' : 'How the ayah fits the surrounding passage'}</small>
         <p>{ayah.context.passage[language]}</p>
       </section>
 
       <section className="ayah-context-section is-revelation">
-        <small>{ru ? 'История ниспослания' : 'Revelation context'}</small>
+        <small>{ru ? 'Известная история ниспослания' : 'Known revelation context'}</small>
         <p>{ayah.context.revelation[language]}</p>
       </section>
 
