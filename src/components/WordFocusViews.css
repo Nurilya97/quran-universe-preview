@@ -349,3 +349,31 @@
     margin-top: 28px;
   }
 }
+
+/* Bring the interactive grammar explanation closer to the phrase and its arrows. */
+.syntax-connectors {
+  margin-bottom: -10px;
+}
+.syntax-relation-labels {
+  margin-top: -8px;
+  min-height: 44px;
+}
+.syntax-step-nav {
+  margin: 8px 0 2px;
+}
+.syntax-explanation p {
+  margin: 10px 0 12px;
+}
+.syntax-term-hint {
+  margin: 10px auto 12px;
+}
+
+@media (max-width:760px) {
+  .syntax-relation-labels {
+    margin-top: -10px;
+    min-height: 42px;
+  }
+  .syntax-step-nav {
+    margin-top: 6px;
+  }
+}
