@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { COPY, FORMS } from '../demo.js'
 import { CONTENT_SOURCES, ROOT_CONTENT, WORD_CONTENT } from '../rootContent.js'
 import { OCCURRENCES, ROOT_OCCURRENCE_COUNT, groupOccurrences } from '../occurrences.js'
@@ -297,10 +298,42 @@ function MorphBoard({ word, profile, language }) {
 
 function MorphologyStructure({ word, content, language, onPick }) {
   const profile = MORPHOLOGY[word.id]
+  const [structureView, setStructureView] = useState('neon')
   if (!profile) return null
+  const ru = language === 'ru'
+  const isBoard = structureView === 'board'
 
-  return <div className="entry-copy morphology-entry morphology-entry-board">
-    <MorphBoard word={word} profile={profile} language={language} />
+  return <div className={'entry-copy morphology-entry ' + (isBoard ? 'morphology-entry-board' : 'morphology-entry-neon')}>
+    <nav className="morph-view-tabs" aria-label={ru ? 'Вид строения слова' : 'Word structure view'}>
+      <button
+        type="button"
+        className={!isBoard ? 'is-active' : ''}
+        aria-pressed={!isBoard}
+        onClick={() => setStructureView('neon')}
+      >{ru ? 'Разбор' : 'Analysis'}</button>
+      <button
+        type="button"
+        className={isBoard ? 'is-active' : ''}
+        aria-pressed={isBoard}
+        onClick={() => setStructureView('board')}
+      >{ru ? 'Схема' : 'Diagram'}</button>
+    </nav>
+
+    {!isBoard ? <div className="morph-view-neon">
+      <MorphFormula word={word} profile={profile} language={language} />
+      <RootBreakdown language={language} />
+      <ComponentBreakdown components={profile.components} language={language} />
+      {word.id === 'taqwa' && <TaqwaForm profile={profile} language={language} />}
+      {word.id === 'taqwa'
+        ? <WordFormation profile={profile} language={language} />
+        : <>
+            <DerivedFrom source={profile.derivedFrom} language={language} />
+            <PatternEffect pattern={profile.pattern} language={language} />
+          </>}
+    </div> : <div className="morph-view-board">
+      <MorphBoard word={word} profile={profile} language={language} />
+    </div>}
+
     {word.lexicalOnly && <p className="entry-note">{COPY[language].lexicalNote}</p>}
     <RelatedWords ids={content.related} language={language} onPick={onPick} />
     <SourceLinks ids={content.structureSources} language={language} />

@@ -1121,3 +1121,92 @@ details.morph-board-callout[open] .morph-board-callout-body {
     transition: none;
   }
 }
+
+
+/* Word Structure inner views: the approved neon analysis is primary;
+   the newer visual board remains available as a second view. */
+.morph-view-tabs {
+  position: relative;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0 0 22px;
+  padding: 3px;
+  border: 1px solid #ffffff12;
+  border-radius: 999px;
+  background: #05080a99;
+}
+.morph-view-tabs button {
+  min-height: 38px;
+  padding: 0 15px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #8f989f;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1;
+}
+.morph-view-tabs button.is-active {
+  background: #ffffff09;
+  color: #edf5f1;
+  box-shadow: inset 0 0 0 1px #7cff8b2e, 0 0 18px #7cff8b0d;
+}
+.morph-view-tabs button.is-active::after {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 1px;
+  margin: 5px auto -6px;
+  background: #7cff8b;
+  box-shadow: 0 0 8px #7cff8b8a;
+}
+.morph-view-neon {
+  --morph-root: #aeb5bd;
+  --morph-prefix: #7cff8b;
+  --morph-suffix: #ff7a59;
+  --morph-ending: #c65cff;
+  --morph-particle: #59f2ff;
+  --morph-form: #f7f8fa;
+}
+
+/* When the restored analysis is selected, return the original compact
+   Word Structure sheet rather than forcing the later board workspace. */
+.structure-sheet:has(.morphology-entry-neon) {
+  width: min(440px, calc(100vw - 56px));
+  max-height: calc(100dvh - 130px);
+  background: #0a0e11;
+}
+.structure-sheet:has(.morphology-entry-neon) .sheet-inner {
+  padding: 26px;
+}
+.structure-sheet:has(.morphology-entry-neon) .sheet-header-compact {
+  top: 26px;
+  right: 26px;
+}
+.structure-sheet:has(.morphology-entry-neon) .morph-view-tabs {
+  margin-right: 44px;
+}
+
+@media (max-width: 600px) {
+  .morph-view-tabs {
+    margin-bottom: 18px;
+  }
+  .morph-view-tabs button {
+    min-height: 40px;
+    padding: 0 14px;
+    font-size: 12.5px;
+  }
+  .structure-sheet:has(.morphology-entry-neon) {
+    width: calc(100vw - 24px);
+    max-height: calc(100dvh - 42px);
+  }
+  .structure-sheet:has(.morphology-entry-neon) .sheet-inner {
+    padding: 22px 20px 28px;
+  }
+  .structure-sheet:has(.morphology-entry-neon) .sheet-header-compact {
+    top: 20px;
+    right: 18px;
+  }
+}
