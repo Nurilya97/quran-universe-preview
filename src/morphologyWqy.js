@@ -376,5 +376,77 @@ export const MORPHOLOGY = {
       { ar: 'وَقَىٰ', reading: 'waqā', metaRu: 'глагол I формы · защищать, оберегать', metaEn: 'Form I verb · to protect, guard' },
       { ar: 'تَوَقَّىٰ', reading: 'tawaqqā', metaRu: 'глагол V формы · беречься / принимать предосторожности', metaEn: 'Form V verb · guard oneself / take precautions' },
     ],
+  },,
+
+  lubb: {
+    displayArabic: 'لُبّ',
+    visualParts: [
+      { text: 'لُ', role: 'root' },
+      { text: 'بّ', role: 'root' },
+    ],
+    components: [],
+    derivedFrom: null,
+    pattern: {
+      ar: 'فُعْل', reading: 'fuʿl',
+      ru: { title: 'Именная форма', text: 'لُبّ (lubb) — словарная форма корня ل ب ب. Шадда на ب показывает соединение второй и третьей одинаковых корневых букв.' },
+      en: { title: 'Nominal form', text: 'لُبّ (lubb) is the dictionary form of the root ل ب ب. The shadda on ب represents the joining of the second and third identical root letters.' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'لُبّ', reading: 'lubb', metaRu: 'единственное число · сердцевина / разумение', metaEn: 'singular noun · core / understanding' },
+    ],
   },
+
+  albab: {
+    displayArabic: 'أَلْبَاب',
+    visualParts: [
+      { text: 'أَ', role: 'form' },
+      { text: 'لْ', role: 'root' },
+      { text: 'بَ', role: 'root' },
+      { text: 'ا', role: 'form' },
+      { text: 'ب', role: 'root' },
+    ],
+    components: [],
+    derivedFrom: {
+      ar: 'لُبّ', reading: 'lubb', metaRu: 'единственное число', metaEn: 'singular noun',
+      ru: 'لُبّ (lubb) называет сердцевину, чистую или лучшую часть, а применительно к человеку — разумение. أَلْبَاب (albāb) — его ломаное множественное число.',
+      en: 'لُبّ (lubb) names a core, pure or choicest part, and by extension human understanding. أَلْبَاب (albāb) is its broken plural.',
+    },
+    pattern: {
+      ar: 'أَفْعَال', reading: 'afʿāl',
+      ru: { title: 'Ломаное множественное число', text: 'Модель أَفْعَال (afʿāl) образует множественное أَلْبَاب (albāb) от لُبّ (lubb). Начальная أ и внутренний ا принадлежат модели, а корневые буквы остаются ل ب ب.' },
+      en: { title: 'Broken plural', text: 'The أَفْعَال (afʿāl) pattern forms أَلْبَاب (albāb), the plural of لُبّ (lubb). Initial أ and internal ا belong to the pattern, while the root letters remain ل ب ب.' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'لُبّ', reading: 'lubb', metaRu: 'единственное число · сердцевина / разумение', metaEn: 'singular noun · core / understanding' },
+      { ar: 'أَلْبَاب', reading: 'albāb', metaRu: 'ломаное множественное · глубокое разумение', metaEn: 'broken plural · deep understanding' },
+    ],
+  },
+
+  labib: {
+    displayArabic: 'لَبِيب',
+    visualParts: [
+      { text: 'لَ', role: 'root' },
+      { text: 'بِ', role: 'root' },
+      { text: 'ي', role: 'form' },
+      { text: 'ب', role: 'root' },
+    ],
+    components: [],
+    derivedFrom: {
+      ar: 'لُبّ', reading: 'lubb', metaRu: 'именная корневая семья', metaEn: 'nominal root family',
+      ru: 'لَبِيب (labīb) переносит смысл لُبّ на характеристику человека: это человек, обладающий разумением.',
+      en: 'لَبِيب (labīb) applies the sense of لُبّ to a person: someone possessing understanding.',
+    },
+    pattern: {
+      ar: 'فَعِيل', reading: 'faʿīl',
+      ru: { title: 'Прилагательное качества', text: 'Модель فَعِيل формирует характеристику носителя качества: لَبِيب — разумный, обладающий пониманием.' },
+      en: { title: 'Quality adjective', text: 'The فَعِيل pattern forms a quality adjective: لَبِيب is a person possessing understanding or intelligence.' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'لُبّ', reading: 'lubb', metaRu: 'сердцевина / разумение', metaEn: 'core / understanding' },
+      { ar: 'لَبِيب', reading: 'labīb', metaRu: 'прилагательное · обладающий разумением', metaEn: 'adjective · possessing understanding' },
+    ],
+  }
 }
