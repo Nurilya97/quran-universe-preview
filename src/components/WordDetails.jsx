@@ -349,10 +349,10 @@ function MorphologyStructure({ word, content, language, onPick }) {
 }
 
 
-function RootDerivativeInventory({ groups }) {
+function RootDerivativeInventory({ groups, language }) {
   if (!groups?.length) return null
   return <section className="root-derivatives">
-    <h3>Производные</h3>
+    <h3>{language === 'ru' ? 'Производные' : 'Derivatives'}</h3>
     {groups.map(group => <section className="root-derivative-group" key={group.title}>
       <h4>{group.title}</h4>
       <div className="root-derivative-grid">
@@ -459,7 +459,7 @@ export function RootDetails({ language, rootKey = 'wqy' }) {
   return <div className="entry-copy"><p className="entry-status">{t.semanticStatus}</p><ModelStatus language={language} rootKey={rootKey} />
     <p className="entry-lead">{content[language].lead}</p><p>{content[language].body}</p>
     <p className="occurrence-summary">{t.occurrenceCount}: <strong>{count}</strong></p>
-    {isLbb && <RootDerivativeInventory groups={content.derivatives?.[language]} />}
+    {isLbb && <RootDerivativeInventory groups={content.derivatives?.[language]} language={language} />}
     {!isLbb && <><p className="entry-note">{t.rootScope}</p><p className="entry-note">{t.formsNote}</p></>}
     <SourceLinks ids={isLbb ? content.sources : [...content.sources, 'corpus']} language={language} />
   </div>
