@@ -376,7 +376,7 @@ export const MORPHOLOGY = {
       { ar: 'وَقَىٰ', reading: 'waqā', metaRu: 'глагол I формы · защищать, оберегать', metaEn: 'Form I verb · to protect, guard' },
       { ar: 'تَوَقَّىٰ', reading: 'tawaqqā', metaRu: 'глагол V формы · беречься / принимать предосторожности', metaEn: 'Form V verb · guard oneself / take precautions' },
     ],
-  },,
+  },
 
   lubb: {
     displayArabic: 'لُبّ',
