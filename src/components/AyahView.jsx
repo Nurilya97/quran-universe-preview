@@ -182,7 +182,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
                 <b>{ru ? 'Связанная глагольная форма · VIII' : 'Related verbal form · Form VIII'}</b>
                 <p>{ru
                   ? 'Глагол VIII формы от того же корня передаёт активное оберегание себя и внимательность к границам. Он делает деятельный оттенок корневой идеи особенно заметным.'
-                  : 'A Form VIII verb from the same root: to be wary and guard oneself. It makes the active shade of the root especially visible.'}</p>
+                  : 'A Form VIII verb from the same root: to remain attentive and guard oneself within the relevant boundaries. It makes the active shade of the root especially visible.'}</p>
               </article>
 
               <article className="analysis-morphology-node pattern">
