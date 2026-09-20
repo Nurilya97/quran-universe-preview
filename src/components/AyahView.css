@@ -6634,3 +6634,260 @@
     gap: 14px !important;
   }
 }
+
+
+/* Mobile-safe semantic flows: no fixed block coordinates, no overlap. */
+.composition-flow {
+  position: absolute;
+  width: 760px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+  padding-bottom: 120px;
+}
+
+.composition-flow .composition-thread,
+.composition-flow .composition-constellation {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  width: 100% !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+.composition-flow .composition-thread {
+  margin: 0 auto 6px;
+}
+
+.composition-flow .composition-constellation {
+  text-align: center;
+  overflow: visible;
+}
+
+.composition-flow .composition-constellation > i {
+  position: relative;
+  display: block;
+  margin: 0 auto 8px;
+}
+
+.composition-flow .composition-constellation + .composition-constellation::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -48px;
+  width: 1px;
+  height: 30px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, rgba(190,210,216,.06), rgba(190,210,216,.26));
+}
+
+.composition-flow .composition-constellation > small {
+  font-size: 12px !important;
+}
+
+.composition-flow .composition-constellation h3 {
+  max-width: 710px;
+  margin: 8px auto 0 !important;
+  font-size: 28px !important;
+}
+
+.composition-flow .composition-phrase {
+  max-width: 720px;
+  margin: 11px auto 0 !important;
+  font-size: 40px !important;
+}
+
+.composition-explanation {
+  max-width: 690px;
+  margin: 14px auto 0;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.065);
+}
+
+.composition-transition {
+  max-width: 660px !important;
+  margin: 0 auto !important;
+  color: #c0cdce !important;
+  font-size: 22px !important;
+  font-weight: 520 !important;
+  line-height: 1.58 !important;
+}
+
+.composition-transition::before {
+  content: none !important;
+}
+
+.composition-copy {
+  max-width: 670px !important;
+  margin: 11px auto 0 !important;
+  color: #95a2a6 !important;
+  font-size: 21px !important;
+  line-height: 1.62 !important;
+}
+
+/* Rhetoric stays in flow and fits the mobile viewport at the default 60% scale. */
+.rhetoric-flow {
+  width: 760px !important;
+  gap: 68px !important;
+  padding-bottom: 180px !important;
+}
+
+.rhetoric-flow .rhetoric-insight {
+  padding-bottom: 2px;
+}
+
+.rhetoric-flow .rhetoric-passage-lens {
+  margin-top: 8px !important;
+  padding-bottom: 50px;
+}
+
+@media (max-width:760px) {
+  .composition-flow {
+    width: 570px;
+    gap: 76px;
+    padding-bottom: 150px;
+  }
+
+  .composition-flow .composition-thread {
+    width: 100% !important;
+  }
+
+  .composition-thread > small {
+    font-size: 12px !important;
+  }
+
+  .composition-thread > p {
+    max-width: 540px !important;
+    font-size: 23px !important;
+    line-height: 1.58 !important;
+  }
+
+  .composition-flow .composition-constellation > small {
+    font-size: 12px !important;
+  }
+
+  .composition-flow .composition-constellation h3 {
+    max-width: 550px;
+    font-size: 30px !important;
+    line-height: 1.34 !important;
+  }
+
+  .composition-flow .composition-phrase {
+    max-width: 550px;
+    font-size: 42px !important;
+    line-height: 1.52 !important;
+  }
+
+  .composition-explanation {
+    max-width: 540px;
+    margin-top: 15px;
+    padding-top: 15px;
+  }
+
+  .composition-transition {
+    max-width: 525px !important;
+    font-size: 23px !important;
+    line-height: 1.56 !important;
+  }
+
+  .composition-copy {
+    max-width: 525px !important;
+    font-size: 22px !important;
+    line-height: 1.62 !important;
+  }
+
+  .rhetoric-flow {
+    width: 570px !important;
+    gap: 74px !important;
+    padding-bottom: 220px !important;
+  }
+
+  .rhetoric-thread > p {
+    max-width: 545px !important;
+    font-size: 23px !important;
+  }
+
+  .rhetoric-insight > h3 {
+    max-width: 550px !important;
+    font-size: 30px !important;
+  }
+
+  .rhetoric-phrase {
+    max-width: 550px;
+    margin-inline: auto;
+    font-size: 41px !important;
+  }
+
+  .rhetoric-story {
+    max-width: 550px !important;
+  }
+
+  .rhetoric-story > p.is-story {
+    max-width: 535px !important;
+    font-size: 23px !important;
+  }
+
+  .rhetoric-reading {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    max-width: 535px;
+    margin-inline: auto;
+  }
+
+  .rhetoric-reading p,
+  .rhetoric-story > .rhetoric-sound {
+    font-size: 21px !important;
+  }
+
+  .rhetoric-passage-lens {
+    width: 570px !important;
+  }
+
+  .rhetoric-passage-lens > h3 {
+    max-width: 540px;
+    margin-inline: auto;
+    font-size: 29px !important;
+  }
+
+  .rhetoric-passage-lens > p,
+  .rhetoric-passage-thread {
+    max-width: 535px !important;
+    font-size: 21px !important;
+  }
+
+  .rhetoric-ending-row {
+    gap: 12px !important;
+  }
+
+  .rhetoric-ending-row > div {
+    min-width: 0 !important;
+    flex: 1 1 0;
+    padding-inline: 8px !important;
+  }
+}
+
+@media (max-width:420px) {
+  .composition-flow,
+  .rhetoric-flow {
+    width: 550px !important;
+  }
+
+  .composition-thread > p,
+  .rhetoric-thread > p {
+    max-width: 525px !important;
+  }
+
+  .composition-flow .composition-constellation h3,
+  .composition-flow .composition-phrase,
+  .composition-explanation,
+  .rhetoric-insight > h3,
+  .rhetoric-phrase,
+  .rhetoric-story,
+  .rhetoric-passage-lens > h3,
+  .rhetoric-passage-lens > p,
+  .rhetoric-passage-thread {
+    max-width: 520px !important;
+  }
+}
