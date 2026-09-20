@@ -370,6 +370,7 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
       <small>{ru ? 'СВЯЗЬ С СОСЕДНИМИ АЯТАМИ' : 'LINK TO THE SURROUNDING AYAHS'}</small>
       <h3>{lens[language].title}</h3>
       <p>{lens[language].text}</p>
+      {lens[language].thread && <p className="rhetoric-passage-thread"><b>{ru ? 'Смысловая арка' : 'Semantic arc'}</b>{lens[language].thread}</p>}
       <div className="rhetoric-ending-row">
         {lens.anchors.map(item => <div key={item.ref} className={item.active ? 'is-active' : ''}>
           <span>{item.ref}</span>
