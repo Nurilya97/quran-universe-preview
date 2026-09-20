@@ -225,8 +225,8 @@ export const AYAH_PROTOTYPES = {
         id: 'rhetoric-turn-good',
         range: [16, 21],
         focusWords: [16, 17, 19, 20],
-        ru: { title: 'Поворот от ограничения к добру', text: 'После того, чего не должно быть, внимание переключается на добро, которое человек делает.', detail: 'Композиционно направление меняется: нравственная рамка не заканчивается запретами, а переходит к положительному действию и знанию Аллаха о нём.' },
-        en: { title: 'A turn from restraint to good', text: 'After naming what must be avoided, attention turns to the good a person does.', detail: 'The direction changes: the moral frame does not end with prohibitions, but moves toward positive action and Allah’s knowledge of it.' },
+        ru: { title: 'От границ — к знанию Аллаха', text: 'После перечисления границ аят напоминает: какое бы добро человек ни совершил, Аллах знает его.', detail: 'Композиционно фокус переходит от названных ограничений к осознанию знания Аллаха о каждом добре. Центр этой фразы — يَعْلَمْهُ ٱللَّهُ: «Аллах знает его».' },
+        en: { title: 'From boundaries to Allah’s knowledge', text: 'After the boundaries are named, the ayah reminds the listener that whatever good a person does, Allah knows it.', detail: 'The compositional focus moves from the stated limits to awareness of Allah’s knowledge of every good deed. The clause centers on يَعْلَمْهُ ٱللَّهُ: “Allah knows it.”' },
       },
       {
         id: 'rhetoric-provision-image',
