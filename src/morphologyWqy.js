@@ -393,7 +393,7 @@ export const MORPHOLOGY = {
     },
     evolution: [
       { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
-      { ar: 'لُبّ', reading: 'lubb', metaRu: 'единственное число · сердцевина / разумение', metaEn: 'singular noun · core / understanding' },
+      { ar: 'لُبّ', reading: 'lubb', metaRu: 'единственное число · сердцевина / суть / разумение', metaEn: 'singular noun · core / essence / understanding' },
     ],
   },
 
@@ -409,8 +409,8 @@ export const MORPHOLOGY = {
     components: [],
     derivedFrom: {
       ar: 'لُبّ', reading: 'lubb', metaRu: 'единственное число', metaEn: 'singular noun',
-      ru: 'لُبّ (lubb) называет сердцевину, чистую или лучшую часть, а применительно к человеку — разумение. أَلْبَاب (albāb) — его ломаное множественное число.',
-      en: 'لُبّ (lubb) names a core, pure or choicest part, and by extension human understanding. أَلْبَاب (albāb) is its broken plural.',
+      ru: 'لُبّ (lubb) называет сердцевину, чистую или отборную часть; применительно к человеку — способность доходить до сути. أَلْبَاب (albāb) — его ломаное множественное число.',
+      en: 'لُبّ (lubb) names a core, pure or choicest part; when applied to a person, the capacity to reach the essence. أَلْبَاب (albāb) is its broken plural.',
     },
     pattern: {
       ar: 'أَفْعَال', reading: 'afʿāl',
@@ -419,8 +419,8 @@ export const MORPHOLOGY = {
     },
     evolution: [
       { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
-      { ar: 'لُبّ', reading: 'lubb', metaRu: 'единственное число · сердцевина / разумение', metaEn: 'singular noun · core / understanding' },
-      { ar: 'أَلْبَاب', reading: 'albāb', metaRu: 'ломаное множественное · глубокое разумение', metaEn: 'broken plural · deep understanding' },
+      { ar: 'لُبّ', reading: 'lubb', metaRu: 'единственное число · сердцевина / суть', metaEn: 'singular noun · core / essence' },
+      { ar: 'أَلْبَاب', reading: 'albāb', metaRu: 'ломаное множественное · разумение, доходящее до сути', metaEn: 'broken plural · understanding that reaches the essence' },
     ],
   },
 
@@ -435,18 +435,18 @@ export const MORPHOLOGY = {
     components: [],
     derivedFrom: {
       ar: 'لُبّ', reading: 'lubb', metaRu: 'именная корневая семья', metaEn: 'nominal root family',
-      ru: 'لَبِيب (labīb) переносит смысл لُبّ на характеристику человека: это человек, обладающий разумением.',
-      en: 'لَبِيب (labīb) applies the sense of لُبّ to a person: someone possessing understanding.',
+      ru: 'لَبِيب (labīb) характеризует человека как обладателя لُبّ: того, кто способен пройти внешнее и дойти до сути.',
+      en: 'لَبِيب (labīb) characterises a person as a possessor of لُبّ: someone able to pass beyond the outward layer and reach the essence.',
     },
     pattern: {
       ar: 'فَعِيل', reading: 'faʿīl',
-      ru: { title: 'Прилагательное качества', text: 'Модель فَعِيل формирует характеристику носителя качества: لَبِيب — разумный, обладающий пониманием.' },
-      en: { title: 'Quality adjective', text: 'The فَعِيل pattern forms a quality adjective: لَبِيب is a person possessing understanding or intelligence.' },
+      ru: { title: 'Прилагательное качества', text: 'Модель فَعِيل формирует характеристику носителя качества: لَبِيب — человек, обладающий لُبّ, то есть способностью доходить до сути.' },
+      en: { title: 'Quality adjective', text: 'The فَعِيل pattern forms a quality adjective: لَبِيب is a person possessing لُبّ, the capacity to reach the essence.' },
     },
     evolution: [
       { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
       { ar: 'لُبّ', reading: 'lubb', metaRu: 'сердцевина / разумение', metaEn: 'core / understanding' },
-      { ar: 'لَبِيب', reading: 'labīb', metaRu: 'прилагательное · обладающий разумением', metaEn: 'adjective · possessing understanding' },
+      { ar: 'لَبِيب', reading: 'labīb', metaRu: 'прилагательное · обладающий لُبّ', metaEn: 'adjective · possessing لُبّ' },
     ],
   }
 }
