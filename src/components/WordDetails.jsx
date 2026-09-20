@@ -349,22 +349,6 @@ function MorphologyStructure({ word, content, language, onPick }) {
 }
 
 
-function RootDerivativeInventory({ groups, language }) {
-  if (!groups?.length) return null
-  return <section className="root-derivatives">
-    <h3>{language === 'ru' ? 'Производные' : 'Derivatives'}</h3>
-    {groups.map(group => <section className="root-derivative-group" key={group.title}>
-      <h4>{group.title}</h4>
-      <div className="root-derivative-grid">
-        {group.items.map((item, index) => <article className="root-derivative-item" key={item.term + index}>
-          <b lang="ar" dir="rtl">{item.term}</b>
-          <p>{item.definition}</p>
-        </article>)}
-      </div>
-    </section>)}
-  </section>
-}
-
 function SourceLinks({ ids, language }) {
   return <footer className="entry-sources"><h3>{COPY[language].sources}</h3>{ids.map(id => {
     const source = CONTENT_SOURCES[id]
@@ -456,18 +440,33 @@ export function RootDetails({ language, rootKey = 'wqy' }) {
   const isLbb = rootKey === 'lbb'
   const content = isLbb ? LBB_ROOT_CONTENT : ROOT_CONTENT
   const count = isLbb ? rootOccurrenceCount('lbb') : ROOT_OCCURRENCE_COUNT
+  if (isLbb) return <div className="entry-copy">
+    <p className="entry-lead">{content[language].lead}</p><p>{content[language].body}</p>
+    <p className="occurrence-summary">{t.occurrenceCount}: <strong>{count}</strong></p>
+    <SourceLinks ids={content.sources} language={language} />
+  </div>
   return <div className="entry-copy"><p className="entry-status">{t.semanticStatus}</p><ModelStatus language={language} rootKey={rootKey} />
     <p className="entry-lead">{content[language].lead}</p><p>{content[language].body}</p>
     <p className="occurrence-summary">{t.occurrenceCount}: <strong>{count}</strong></p>
-    {isLbb && <RootDerivativeInventory groups={content.derivatives?.[language]} language={language} />}
-    {!isLbb && <><p className="entry-note">{t.rootScope}</p><p className="entry-note">{t.formsNote}</p></>}
-    <SourceLinks ids={isLbb ? content.sources : [...content.sources, 'corpus']} language={language} />
+    <p className="entry-note">{t.rootScope}</p><p className="entry-note">{t.formsNote}</p>
+    <SourceLinks ids={[...content.sources, 'corpus']} language={language} />
   </div>
 }
 
 export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
   const t = COPY[language]
-  const content = word.rootKey === 'lbb' ? LBB_WORD_CONTENT[word.id] : WORD_CONTENT[word.id]
+  const storedContent = word.rootKey === 'lbb' ? LBB_WORD_CONTENT[word.id] : WORD_CONTENT[word.id]
+  const content = storedContent || (word.rootKey === 'lbb' ? {
+    meaning: {
+      ru: { lead: word.definitionRu || 'Словарная форма корня ل ب ب.', body: '' },
+      en: { lead: word.definitionEn || 'A lexical form of the root ل ب ب.', body: '' },
+    },
+    meaningMap: [],
+    structureSources: ['laneLbb', 'arabicLexiconLbb'],
+    meaningSources: ['laneLbb', 'arabicLexiconLbb'],
+    related: [],
+  } : null)
+  if (!content) return null
   if (panel === 'quran') {
     const occurrences = OCCURRENCES[word.id] || []
     const groups = groupOccurrences(word.id)
@@ -502,7 +501,14 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
       </a>
     </div>
   }
-  if (panel === 'structure') return <MorphologyStructure word={word} content={content} language={language} onPick={onPick} />
+  if (panel === 'structure') {
+    if (!MORPHOLOGY[word.id] && word.rootKey === 'lbb') return <div className="entry-copy">
+      <p className="entry-lead">{word.arabic} <span className="transliteration" lang="ar-Latn" dir="ltr">{word.reading}</span></p>
+      <p>{language === 'ru' ? word.definitionRu : word.definitionEn}</p>
+      <SourceLinks ids={content.structureSources} language={language} />
+    </div>
+    return <MorphologyStructure word={word} content={content} language={language} onPick={onPick} />
+  }
   if (panel === 'meaning') return <div className="entry-copy">
     <p className="entry-status">{t.semanticStatus}</p>
     <p className="entry-lead">{content.meaning[language].lead}</p><p>{content.meaning[language].body}</p>
