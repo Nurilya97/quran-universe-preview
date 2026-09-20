@@ -191,83 +191,98 @@ function AyahMorphologyView({ selected, morphology, profile, language }) {
   </section>
 }
 
+// APPROVED AL-TAQWA BASELINE — do not change without an explicit user request.
 function TaqwaMorphologyLegacy({ selected, morphology, language }) {
   const ru = language === 'ru'
   const morphologyParts = morphology?.parts || []
 
-  return <section className="analysis-morphology-screen" onClick={(event) => event.stopPropagation()}>
+  return <section className="analysis-morphology-screen approved-taqwa-baseline" onClick={(event) => event.stopPropagation()}>
     <div className="analysis-morphology-canvas">
       <header className="analysis-morphology-hero">
         <span lang="ar" dir="rtl">{selected.ar}</span>
         <em>{selected.tr}</em>
       </header>
 
-      <svg className="analysis-morphology-tree first" viewBox="0 0 100 58" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M50 2 C50 22 25 20 25 55" />
-        <path d="M50 2 C50 22 75 20 75 55" />
-      </svg>
+            <svg className="analysis-morphology-tree first" viewBox="0 0 100 58" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M50 2 V18 M25 18 H75 M25 18 V55 M75 18 V55" />
+            </svg>
 
-      <div className="analysis-morphology-level first-level">
-        <article className="analysis-morphology-node base">
-          <span lang="ar" dir="rtl">{morphologyParts[1]?.ar || 'تَقْوَىٰ'}</span>
-          <small>{morphologyParts[1]?.tr || 'taqwā'}</small>
-          <b>{ru ? 'Слово без артикля' : 'Word without the article'}</b>
-          <p>{ru
-            ? 'تَقْوَىٰ (taqwā) — существительное. Контекстный перевод в этом аяте: «благочестие».'
-            : 'تَقْوَىٰ (taqwā) is a noun. A contextual rendering in this ayah is “piety”.'}</p>
-        </article>
+            <div className="analysis-morphology-level first-level">
+              <article className="analysis-morphology-node base">
+                <span lang="ar" dir="rtl">{morphologyParts[1]?.ar || 'تَقْوَىٰ'}</span>
+                <small>{morphologyParts[1]?.tr || 'taqwā'}</small>
+                <b>{ru ? 'Слово без артикля' : 'Word without the article'}</b>
+                <p>{ru
+                  ? 'تَقْوَىٰ (taqwā) — существительное. Контекстный перевод в этом аяте: «благочестие / праведность».'
+                  : 'تَقْوَىٰ (taqwā) is a noun. Contextual renderings here include “piety” and “righteousness”.'}</p>
+              </article>
 
-        <article className="analysis-morphology-node article">
-          <span lang="ar" dir="rtl">{morphologyParts[0]?.ar || 'ٱلـ'}</span>
-          <small>{morphologyParts[0]?.tr || 'al-'}</small>
-          <b>{ru ? 'Определённый артикль' : 'Definite article'}</b>
-          <p>{ru
-            ? 'ٱلـ (al-) делает существительное определённым: указывает на конкретно обозначенное или уже определённое в контексте понятие.'
-            : 'ٱلـ (al-) makes the noun definite: it points to something specifically identified or already determined in context.'}</p>
-        </article>
-      </div>
+              <article className="analysis-morphology-node article">
+                <span lang="ar" dir="rtl">{morphologyParts[0]?.ar || 'ٱلـ'}</span>
+                <small>{morphologyParts[0]?.tr || 'al-'}</small>
+                <b>{ru ? 'Определённый артикль' : 'Definite article'}</b>
+                <p>{ru
+                  ? 'ٱلـ (al-) делает существительное определённым: указывает на конкретно обозначенное или уже определённое в контексте понятие.'
+                  : 'ٱلـ (al-) makes the noun definite: it points to something specifically identified or already determined in context.'}</p>
+              </article>
+            </div>
 
-      <svg className="analysis-morphology-tree second" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M25 2 C25 22 25 28 25 59" />
-        <path d="M25 2 C25 22 75 24 75 59" />
-      </svg>
+            <svg className="analysis-morphology-tree second" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M25 2 V18 M16.7 18 H83.3 M16.7 18 V59 M50 18 V59 M83.3 18 V59" />
+            </svg>
 
-      <div className="analysis-morphology-level second-level">
-        <article className="analysis-morphology-node root">
-          <span lang="ar" dir="rtl">{morphologyParts[2]?.ar || selected.root}</span>
-          <small>{morphologyParts[2]?.tr || selected.rootReading}</small>
-          <b>{ru ? 'Корень' : 'Root'}</b>
-          <p>{ru
-            ? 'و ق ي (w-q-y) несёт идею защиты и оберегания.'
-            : 'و ق ي (w-q-y) carries the idea of protection and guarding.'}</p>
-        </article>
+            <div className="analysis-morphology-level second-level has-three">
+              <article className="analysis-morphology-node root">
+                <span lang="ar" dir="rtl">{morphologyParts[2]?.ar || selected.root}</span>
+                <small>{morphologyParts[2]?.tr || selected.rootReading}</small>
+                <b>{ru ? 'Корень' : 'Root'}</b>
+                <p>{ru
+                  ? 'و ق ي (w-q-y) несёт идею защиты и оберегания.'
+                  : 'و ق ي (w-q-y) carries the idea of protection and guarding.'}</p>
+              </article>
 
-        <article className="analysis-morphology-node pattern">
-          <span lang="ar" dir="rtl">{morphologyParts[3]?.ar || 'فَعْلَى'}</span>
-          <small>{morphologyParts[3]?.tr || 'faʿlā'}</small>
-          <b>{ru ? 'Именная модель' : 'Nominal pattern'}</b>
-          <p>{ru
-            ? 'فَعْلَى (faʿlā) показывает словообразовательную модель, по которой построено تَقْوَىٰ (taqwā).'
-            : 'فَعْلَى (faʿlā) shows the nominal pattern on which تَقْوَىٰ (taqwā) is formed.'}</p>
-        </article>
-      </div>
+              <article className="analysis-morphology-node verb">
+                <span lang="ar" dir="rtl">ٱتَّقَىٰ</span>
+                <small>ittaqā</small>
+                <b>{ru ? 'Связанная глагольная форма · VIII' : 'Related verbal form · Form VIII'}</b>
+                <p>{ru
+                  ? 'Глагол VIII формы от того же корня передаёт активное оберегание себя и внимательность к границам. Он делает деятельный оттенок корневой идеи особенно заметным.'
+                  : 'A Form VIII verb from the same root: to remain attentive and guard oneself within the relevant boundaries. It makes the active shade of the root especially visible.'}</p>
+              </article>
 
-      <div className="analysis-morphology-note">
-        <div className="analysis-morphology-summary-formula" lang="ar" dir="rtl">
-          ٱلتَّقْوَىٰ = ٱلـ + تَقْوَىٰ
-        </div>
-        <div className="analysis-morphology-summary-list">
-          <p>{ru
-            ? <><b>Основа:</b> تَقْوَىٰ (taqwā) — существительное, связанное с корнем و ق ي (w-q-y) «защищать / оберегать» и моделью فَعْلَى (faʿlā).</>
-            : <><b>Base:</b> تَقْوَىٰ (taqwā) is a noun related to the root و ق ي (w-q-y), “to protect / guard,” and the pattern فَعْلَى (faʿlā).</>}</p>
-          <p>{ru
-            ? <><b>Что добавилось:</b> ٱلـ (al-) присоединяется к слову и делает его определённым.</>
-            : <><b>What is added:</b> ٱلـ (al-) attaches to the word and makes it definite.</>}</p>
-          <p>{ru
-            ? <><b>В аяте 2:197:</b> краткий контекстный перевод — «благочестие».</>
-            : <><b>In 2:197:</b> a concise contextual rendering is “piety.”</>}</p>
-        </div>
-      </div>
+              <article className="analysis-morphology-node pattern">
+                <span lang="ar" dir="rtl">{morphologyParts[3]?.ar || 'فَعْلَى'}</span>
+                <small>{morphologyParts[3]?.tr || 'faʿlā'}</small>
+                <b>{ru ? 'Именная модель' : 'Nominal pattern'}</b>
+                <p>{ru
+                  ? 'فَعْلَى (faʿlā) показывает словообразовательную модель, по которой построено تَقْوَىٰ (taqwā).'
+                  : 'فَعْلَى (faʿlā) shows the nominal pattern on which تَقْوَىٰ (taqwā) is formed.'}</p>
+              </article>
+            </div>
+
+            <div className="analysis-morphology-note">
+              <div className="analysis-morphology-summary-formula" lang="ar" dir="rtl">
+                ٱلتَّقْوَىٰ = ٱلـ + تَقْوَىٰ
+              </div>
+              <div className="analysis-morphology-summary-list">
+                <p>{ru
+                  ? <><b>Основа:</b> تَقْوَىٰ (taqwā) — существительное из словообразовательного гнезда корня و ق ي (w-q-y) «защищать / оберегать».</>
+                  : <><b>Base:</b> تَقْوَىٰ (taqwā) belongs to the derivational family of the root و ق ي (w-q-y), “to protect / guard.”</>}</p>
+                <p>{ru
+                  ? <><b>Связанная форма:</b> ٱتَّقَىٰ (ittaqā), VIII форма, показывает активное оберегание себя и внимательность к границам.</>
+                  : <><b>Related form:</b> ٱتَّقَىٰ (ittaqā), Form VIII, shows the active sense of guarding oneself.</>}</p>
+                <p>{ru
+                  ? <><b>Модель:</b> فَعْلَى (faʿlā) показывает именную словообразовательную форму تَقْوَىٰ (taqwā).</>
+                  : <><b>Pattern:</b> فَعْلَى (faʿlā) shows the nominal pattern of تَقْوَىٰ (taqwā).</>}</p>
+                <p>{ru
+                  ? <><b>Что добавилось:</b> ٱلـ (al-) присоединяется к слову и делает его определённым.</>
+                  : <><b>What is added:</b> ٱلـ (al-) attaches to the word and makes it definite.</>}</p>
+                <p>{ru
+                  ? <><b>В аяте 2:197:</b> краткий контекстный перевод — «благочестие / праведность».</>
+                  : <><b>In 2:197:</b> concise contextual renderings include “piety / righteousness.”</>}</p>
+              </div>
+            </div>
+          
     </div>
   </section>
 }
