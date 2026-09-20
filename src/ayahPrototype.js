@@ -65,8 +65,8 @@ export const AYAH_PROTOTYPES = {
         ar: 'ٱلتَّقْوَىٰ', tr: 'al-taqwā', ru: 'благочестие', en: 'piety',
         roleRu: 'существительное · marfūʿ', roleEn: 'noun · nominative',
         root: 'و ق ي', rootReading: 'w-q-y', orbitId: 'taqwa',
-        noteRu: 'تَقْوَىٰ (taqwā) называет качество, связанное с осознанным остережением перед Аллахом и стремлением оберегать себя от нарушения установленных Им границ.',
-        noteEn: 'تَقْوَىٰ (taqwā) names a quality connected with conscious caution and guarding oneself before Allah.',
+        noteRu: 'تَقْوَىٰ (taqwā) называет качество осознанности перед Аллахом: человек помнит об установленных Им границах и оберегает себя от их нарушения.',
+        noteEn: 'تَقْوَىٰ (taqwā) names conscious awareness before Allah: remembering His boundaries and guarding oneself from crossing them.',
         analysis: {
           ru: {
             morphology: {
@@ -117,7 +117,7 @@ export const AYAH_PROTOTYPES = {
         },
       },
       {
-        ar: 'وَٱتَّقُونِ', tr: 'wa-ittaqūni', ru: 'и остерегайтесь Меня / берегите себя передо Мной', en: 'and guard yourselves before Me',
+        ar: 'وَٱتَّقُونِ', tr: 'wa-ittaqūni', ru: 'и сохраняйте осознанность передо Мной', en: 'and remain consciously mindful before Me',
         roleRu: 'союз + повелительный глагол VIII формы + местоименный объект', roleEn: 'conjunction + Form VIII imperative + object pronoun',
         root: 'و ق ي', rootReading: 'w-q-y', orbitId: 'ittaqa',
         noteRu: 'وَٱتَّقُونِ (wa-ittaqūni) — прямое повеление адресатам, образованное от ٱتَّقَىٰ (ittaqā).',
@@ -134,16 +134,16 @@ export const AYAH_PROTOTYPES = {
               text: 'Глагольная основа относится к VIII форме ٱتَّقَىٰ (ittaqā). Внутри формы корневая و ассимилируется с ت модели и даёт удвоенную تّ. Конечная نِ содержит nūn al-wiqāya; объект «Меня» выражен yā местоимения, которая в этой коранической записи опущена.',
             },
             syntax: {
-              plain: 'Простыми словами: это прямое повеление группе людей — «остерегайтесь Меня / берегите себя передо Мной».',
+              plain: 'Простыми словами: это прямое повеление группе людей — сохранять осознанность перед Аллахом и оберегать себя от нарушения установленных Им границ.',
               title: 'فعل أمر (fiʿl amr) — повелительный глагол',
               case: 'و الجماعة — присоединённое местоимение в позиции подлежащего.',
               ending: 'Объектное местоимение 1-го лица «Меня» связано с глаголом; в коранической записи yā местоимения опущена.',
               text: 'وَ связывает это повеление с предыдущей частью аята. Глагол обращён к множественному адресату, а объектом выступает говорящий — «Меня».',
             },
             meaning: {
-              gloss: 'Остерегайтесь Меня / берегите себя передо Мной',
-              description: 'Повеление переводит تَقْوَىٰ (taqwā) из названного качества в действие: адресатам велено занять защитную, осторожную позицию в отношении Всевышнего.',
-              translation: 'Русский вариант зависит от того, какой оттенок выводится вперёд: «остерегайтесь Меня» сохраняет идею осторожности; «берегите себя передо Мной» яснее показывает защитное ядро корня. В полном разборе оба оттенка остаются видимыми.',
+              gloss: 'Сохраняйте осознанность передо Мной',
+              description: 'Повеление переводит تَقْوَىٰ (taqwā) из названного качества в действие: адресатам велено сохранять осознанность перед Аллахом и оберегать себя от нарушения Его границ.',
+              translation: 'Здесь важно не создавать впечатление страха перед Аллахом. В контексте аята повеление продолжает тему تَقْوَىٰ (taqwā): осознавать себя перед Аллахом и оберегать свои поступки от выхода за установленные Им границы.',
             },
           },
           en: {
@@ -157,16 +157,16 @@ export const AYAH_PROTOTYPES = {
               text: 'The verbal base belongs to Form VIII ٱتَّقَىٰ (ittaqā). Within the form, the root و assimilates with the pattern’s ت, producing doubled تّ. The final نِ contains nūn al-wiqāya; the object “Me” is expressed by a pronominal yā that is omitted in this Quranic spelling.',
             },
             syntax: {
-              plain: 'In simple terms: this is a direct command to a group — “guard yourselves before Me.”',
+              plain: 'In simple terms: this is a direct command to remain consciously mindful before Allah and guard oneself from crossing His boundaries.',
               title: 'فعل أمر (fiʿl amr) — imperative verb',
               case: 'The plural wāw functions as the subject pronoun.',
               ending: 'The first-person object pronoun “Me” is attached to the verb; its yā is omitted in the Quranic spelling.',
               text: 'وَ links the command to the preceding discourse. The verb addresses a plural audience and takes the speaker as its object.',
             },
             meaning: {
-              gloss: 'Guard yourselves before Me',
-              description: 'The command turns تَقْوَىٰ (taqwā) from a named quality into an action: the addressees are told to take a protective, cautious stance before Allah.',
-              translation: 'Different renderings foreground different facets: “be wary of Me” stresses caution, while “guard yourselves before Me” keeps the protective root more visible.',
+              gloss: 'Remain consciously mindful before Me',
+              description: 'The command turns تَقْوَىٰ (taqwā) from a named quality into action: the addressees are told to remain consciously mindful before Allah and guard themselves from crossing His boundaries.',
+              translation: 'The rendering should not suggest fear of Allah as the core meaning. In this context the command continues the field of تَقْوَىٰ (taqwā): conscious awareness before Allah together with guarding one’s conduct within His boundaries.',
             },
           },
         },
@@ -240,11 +240,11 @@ export const AYAH_PROTOTYPES = {
         range: [27, 29],
         ru: {
           title: 'Тaqwā превращается в прямое требование',
-          text: 'وَٱتَّقُونِ возвращает тот же корень و ق ي уже как повеление: «остерегайтесь Меня / берегите себя передо Мной». Затем يَا أُولِي ٱلْأَلْبَابِ обращается к людям разумения — финал требует не просто услышать правило, а понять его внутреннюю логику.',
+          text: 'وَٱتَّقُونِ возвращает тот же корень و ق ي уже как повеление: сохранять осознанность перед Аллахом и оберегать себя от нарушения Его границ. Затем يَا أُولِي ٱلْأَلْبَابِ обращается к людям разумения — финал требует не просто услышать правило, а понять его внутреннюю логику.',
         },
         en: {
           title: 'Taqwā becomes a direct demand',
-          text: 'وَٱتَّقُونِ brings the same root و ق ي back as an imperative: “be wary of Me / guard yourselves before Me.” يَا أُولِي ٱلْأَلْبَابِ then addresses people of understanding, ending with a call to grasp the inner logic rather than merely hear a rule.',
+          text: 'وَٱتَّقُونِ brings the same root و ق ي back as an imperative: remain consciously mindful before Allah and guard oneself from crossing His boundaries. يَا أُولِي ٱلْأَلْبَابِ then addresses people of understanding, ending with a call to grasp the inner logic rather than merely hear a rule.',
         },
       },
     ],
