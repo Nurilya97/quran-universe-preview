@@ -289,11 +289,7 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
         const copy = item[language]
         const focusWords = item.focusWords || []
         return <section key={item.id} className="rhetoric-insight">
-          <div className="rhetoric-step">
-            <span>{copy.step}</span>
-            <small>{copy.label}</small>
-          </div>
-          <h3>{copy.title}</h3>
+          <h3><span className="rhetoric-title-step">{copy.step}</span>{copy.title}</h3>
           <div className="rhetoric-phrase" lang="ar" dir="rtl">
             {phraseTokens(ayah, item).map((token, tokenIndex) => {
               const wordIndex = item.range[0] + tokenIndex
