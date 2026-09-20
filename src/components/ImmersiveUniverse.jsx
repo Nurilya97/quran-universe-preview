@@ -220,7 +220,7 @@ export function ImmersiveUniverse() {
       <div className="root-intro"><p className="eyebrow">{t.families}</p></div>
       <div className="root-field">
         {currentRootOrbits.map((orbit) => <div key={orbit.id} className={'root-orbit root-orbit-' + orbit.id}
-          style={{ '--diameter': orbit.radius * 2 + '%' }} aria-hidden="true"><span>{orbit.id}</span></div>)}
+          style={{ '--diameter': orbit.radius * 2 + '%' }} aria-hidden="true"><span>{orbit.mark || orbit.id}</span></div>)}
         <div className="root-core"><button className="root-core-trigger" onClick={() => openPanel('root')} aria-label={t.aboutRoot} aria-haspopup="dialog"><h1 ref={destinationHeading} tabIndex={-1} lang="ar" dir="rtl">{currentRoot.arabic}</h1><span>{t.root}</span></button></div>
         {currentRootForms.map((form) => {
           const point = rootPosition(form, currentRootOrbits)
