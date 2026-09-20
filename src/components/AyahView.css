@@ -7063,3 +7063,241 @@
   font-weight: 520;
   line-height: 1;
 }
+
+
+/* Taqwa meaning — show the semantic movement explicitly. */
+.word-meaning-manifestation {
+  margin-top: 6px;
+}
+
+.meaning-semantic-flow {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);
+  align-items: center;
+  gap: 12px;
+  max-width: 720px;
+  margin: 16px auto 14px;
+}
+
+.meaning-flow-stage {
+  min-width: 0;
+  padding: 9px 8px 12px;
+  border-bottom: 1px solid rgba(255,255,255,.075);
+  text-align: center;
+}
+
+.meaning-flow-stage > span {
+  display: block;
+  color: #eef5f1;
+  font-family: var(--arabic-font), 'Traditional Arabic', serif;
+  font-size: 27px;
+  line-height: 1.45;
+}
+
+.meaning-flow-stage > small {
+  display: block;
+  margin-top: 1px;
+  color: #78878b;
+  font-size: 11px;
+}
+
+.meaning-flow-stage > b,
+.meaning-flow-stage > strong {
+  display: block;
+  margin-top: 7px;
+  color: #b8c7c2;
+  font-size: 13px;
+  font-weight: 560;
+  line-height: 1.45;
+}
+
+.meaning-flow-stage.manifestation > strong {
+  color: #d8e9df;
+  font-size: 18px;
+}
+
+.meaning-flow-arrow {
+  color: rgba(135,228,205,.68);
+  font-size: 24px;
+  line-height: 1;
+  text-shadow: 0 0 12px rgba(105,230,201,.12);
+}
+
+.word-meaning-manifestation > p {
+  max-width: 690px;
+  margin: 0 auto;
+}
+
+/* Taqwa morphology — directional derivational map. */
+.analysis-morphology-derivation {
+  width: 100%;
+  margin-top: 22px;
+}
+
+.analysis-morphology-derivation .derivation-root {
+  width: min(360px, 74%);
+  margin: 0 auto;
+}
+
+.morph-flow-arrow {
+  display: block;
+  margin: 9px auto 4px;
+  color: rgba(130,236,208,.72);
+  font-size: 28px;
+  line-height: 1;
+  text-align: center;
+  text-shadow: 0 0 12px rgba(102,231,199,.12);
+}
+
+.morph-flow-caption {
+  color: #718086;
+  font-size: 10px;
+  letter-spacing: .05em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.morph-family-arrows {
+  display: flex;
+  justify-content: space-around;
+  width: 58%;
+  margin: 3px auto 2px;
+  color: rgba(130,236,208,.58);
+  font-size: 24px;
+  line-height: 1;
+}
+
+.analysis-morphology-family {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: clamp(18px,4vw,42px);
+  margin-top: 2px;
+}
+
+.analysis-morphology-build {
+  display: grid;
+  grid-template-columns: minmax(0,.72fr) auto minmax(0,1fr) auto minmax(0,1.18fr);
+  align-items: center;
+  gap: 9px;
+  margin-top: 8px;
+}
+
+.analysis-morphology-node.compact {
+  padding: 13px 11px 12px;
+}
+
+.analysis-morphology-node.compact > span {
+  font-size: 28px;
+}
+
+.analysis-morphology-node.compact > b {
+  margin: 9px auto 0;
+  font-size: 9px;
+}
+
+.morph-build-sign,
+.morph-build-arrow {
+  color: rgba(143,226,207,.72);
+  font-size: 23px;
+  line-height: 1;
+  text-align: center;
+}
+
+.analysis-morphology-node.final {
+  border-color: rgba(133,228,205,.18);
+  background: linear-gradient(145deg, rgba(15,31,28,.88), rgba(6,12,12,.95));
+}
+
+@media (max-width:760px) {
+  .meaning-semantic-flow {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    max-width: 535px;
+  }
+
+  .meaning-flow-arrow {
+    transform: rotate(90deg);
+    font-size: 20px;
+  }
+
+  .meaning-flow-stage {
+    padding-block: 7px 10px;
+  }
+
+  .meaning-flow-stage > span {
+    font-size: 30px;
+  }
+
+  .meaning-flow-stage > b,
+  .meaning-flow-stage > strong {
+    font-size: 16px;
+  }
+
+  .analysis-morphology-derivation .derivation-root {
+    width: min(460px, 92%);
+  }
+
+  .analysis-morphology-family {
+    gap: 14px;
+  }
+
+  .morph-family-arrows {
+    width: 64%;
+  }
+
+  .analysis-morphology-build {
+    grid-template-columns: minmax(0,.72fr) auto minmax(0,1fr) auto minmax(0,1.08fr);
+    gap: 6px;
+  }
+
+  .analysis-morphology-node.compact {
+    padding: 11px 7px 10px;
+  }
+
+  .analysis-morphology-node.compact > span {
+    font-size: 25px;
+  }
+
+  .analysis-morphology-node.compact > small {
+    font-size: 9px;
+  }
+
+  .analysis-morphology-node.compact > b {
+    padding: 4px 6px;
+    font-size: 8px;
+  }
+
+  .morph-build-sign,
+  .morph-build-arrow {
+    font-size: 19px;
+  }
+}
+
+@media (max-width:420px) {
+  .analysis-morphology-family {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .morph-family-arrows {
+    display: none;
+  }
+
+  .analysis-morphology-family::before {
+    content: '↓';
+    display: block;
+    color: rgba(130,236,208,.62);
+    font-size: 23px;
+    line-height: 1;
+    text-align: center;
+  }
+
+  .analysis-morphology-build {
+    grid-template-columns: minmax(0,.7fr) auto minmax(0,.94fr) auto minmax(0,1.06fr);
+    gap: 4px;
+  }
+
+  .analysis-morphology-node.compact > span {
+    font-size: 22px;
+  }
+}
