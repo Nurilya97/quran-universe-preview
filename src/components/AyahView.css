@@ -5470,3 +5470,79 @@
   stroke-linejoin: round !important;
   filter: none !important;
 }
+
+
+/* Morphology tree v6: the three lower branches align exactly with root / verb / pattern. */
+.analysis-morphology-level.second-level.has-three {
+  width: 100% !important;
+  margin: 0 !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(14px, 2.4vw, 26px) !important;
+  align-items: start !important;
+}
+
+.analysis-morphology-level.second-level.has-three .analysis-morphology-node {
+  min-width: 0;
+  transform: none !important;
+}
+
+.analysis-morphology-level.second-level.has-three .analysis-morphology-node > p {
+  max-width: 220px !important;
+}
+
+@media (max-width:760px) {
+  .analysis-morphology-level.second-level.has-three {
+    width: 100% !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .analysis-morphology-level.second-level.has-three .analysis-morphology-node {
+    padding-inline: 3px !important;
+  }
+
+  .analysis-morphology-level.second-level.has-three .analysis-morphology-node > span {
+    font-size: 27px !important;
+    line-height: 1.35 !important;
+  }
+
+  .analysis-morphology-level.second-level.has-three .analysis-morphology-node > small {
+    font-size: 10.5px !important;
+  }
+
+  .analysis-morphology-level.second-level.has-three .analysis-morphology-node > b {
+    margin-top: 8px !important;
+    font-size: 11.5px !important;
+    line-height: 1.35 !important;
+  }
+
+  .analysis-morphology-level.second-level.has-three .analysis-morphology-node > p {
+    max-width: none !important;
+    margin-top: 7px !important;
+    font-size: 11.8px !important;
+    line-height: 1.55 !important;
+  }
+}
+
+@media (max-width:420px) {
+  .analysis-morphology-level.second-level.has-three {
+    gap: 7px !important;
+  }
+
+  .analysis-morphology-level.second-level.has-three .analysis-morphology-node > span {
+    font-size: 25px !important;
+  }
+
+  .analysis-morphology-level.second-level.has-three .analysis-morphology-node > small {
+    font-size: 10px !important;
+  }
+
+  .analysis-morphology-level.second-level.has-three .analysis-morphology-node > b {
+    font-size: 10.8px !important;
+  }
+
+  .analysis-morphology-level.second-level.has-three .analysis-morphology-node > p {
+    font-size: 11.2px !important;
+    line-height: 1.5 !important;
+  }
+}
