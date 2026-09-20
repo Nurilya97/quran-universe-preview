@@ -90,67 +90,80 @@ export function ImmersiveUniverse() {
     const viewport = rootViewport.current
     if (scene !== 'root' || journey || rootKey !== 'lbb' || !viewport) return
 
-    const distance = (a, b) => Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY)
+    const pointers = new Map()
     const clamp = value => Math.max(.55, Math.min(1.35, Number(value.toFixed(3))))
+    const pointDistance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y)
 
-    const onTouchStart = event => {
-      if (event.touches.length >= 2) {
-        const [a, b] = event.touches
-        rootGesture.current = {
-          mode: 'pinch',
-          startDistance: distance(a, b),
-          startZoom: rootZoomRef.current,
-          lastX: 0,
-          lastY: 0,
-        }
-      } else if (event.touches.length === 1) {
-        const touch = event.touches[0]
+    const beginPinch = () => {
+      const [a, b] = Array.from(pointers.values())
+      if (!a || !b) return
+      rootGesture.current = {
+        mode: 'pinch',
+        startDistance: pointDistance(a, b),
+        startZoom: rootZoomRef.current,
+        lastX: 0,
+        lastY: 0,
+      }
+    }
+
+    const onPointerDown = event => {
+      if (event.pointerType !== 'touch') return
+      pointers.set(event.pointerId, { x: event.clientX, y: event.clientY })
+
+      if (pointers.size >= 2) {
+        beginPinch()
+      } else {
         rootGesture.current = {
           mode: 'pan',
           startDistance: 0,
           startZoom: rootZoomRef.current,
-          lastX: touch.clientX,
-          lastY: touch.clientY,
+          lastX: event.clientX,
+          lastY: event.clientY,
         }
       }
     }
 
-    const onTouchMove = event => {
-      if (event.touches.length >= 2) {
+    const onPointerMove = event => {
+      if (event.pointerType !== 'touch' || !pointers.has(event.pointerId)) return
+      pointers.set(event.pointerId, { x: event.clientX, y: event.clientY })
+
+      if (pointers.size >= 2) {
         event.preventDefault()
-        const [a, b] = event.touches
-        const gesture = rootGesture.current
-        const baseDistance = gesture.mode === 'pinch' && gesture.startDistance ? gesture.startDistance : distance(a, b)
-        const baseZoom = gesture.mode === 'pinch' ? gesture.startZoom : rootZoomRef.current
-        if (gesture.mode !== 'pinch') {
-          rootGesture.current = { mode: 'pinch', startDistance: baseDistance, startZoom: baseZoom, lastX: 0, lastY: 0 }
+        const [a, b] = Array.from(pointers.values())
+        if (rootGesture.current.mode !== 'pinch' || !rootGesture.current.startDistance) {
+          beginPinch()
           return
         }
-        const next = clamp(baseZoom * (distance(a, b) / baseDistance))
+        const next = clamp(rootGesture.current.startZoom * (pointDistance(a, b) / rootGesture.current.startDistance))
         rootZoomRef.current = next
         setRootZoom(next)
         return
       }
 
-      if (event.touches.length === 1) {
+      if (pointers.size === 1 && rootGesture.current.mode === 'pan') {
         event.preventDefault()
-        const touch = event.touches[0]
-        const gesture = rootGesture.current
-        if (gesture.mode !== 'pan') {
-          rootGesture.current = { mode: 'pan', startDistance: 0, startZoom: rootZoomRef.current, lastX: touch.clientX, lastY: touch.clientY }
-          return
-        }
-        viewport.scrollLeft -= touch.clientX - gesture.lastX
-        viewport.scrollTop -= touch.clientY - gesture.lastY
-        rootGesture.current.lastX = touch.clientX
-        rootGesture.current.lastY = touch.clientY
+        viewport.scrollLeft -= event.clientX - rootGesture.current.lastX
+        viewport.scrollTop -= event.clientY - rootGesture.current.lastY
+        rootGesture.current.lastX = event.clientX
+        rootGesture.current.lastY = event.clientY
       }
     }
 
-    const onTouchEnd = event => {
-      if (event.touches.length === 1) {
-        const touch = event.touches[0]
-        rootGesture.current = { mode: 'pan', startDistance: 0, startZoom: rootZoomRef.current, lastX: touch.clientX, lastY: touch.clientY }
+    const onPointerEnd = event => {
+      if (event.pointerType !== 'touch') return
+      pointers.delete(event.pointerId)
+
+      if (pointers.size >= 2) {
+        beginPinch()
+      } else if (pointers.size === 1) {
+        const remaining = Array.from(pointers.values())[0]
+        rootGesture.current = {
+          mode: 'pan',
+          startDistance: 0,
+          startZoom: rootZoomRef.current,
+          lastX: remaining.x,
+          lastY: remaining.y,
+        }
       } else {
         rootGesture.current.mode = null
       }
@@ -165,17 +178,17 @@ export function ImmersiveUniverse() {
       setRootZoom(next)
     }
 
-    viewport.addEventListener('touchstart', onTouchStart, { passive: false })
-    viewport.addEventListener('touchmove', onTouchMove, { passive: false })
-    viewport.addEventListener('touchend', onTouchEnd, { passive: false })
-    viewport.addEventListener('touchcancel', onTouchEnd, { passive: false })
+    viewport.addEventListener('pointerdown', onPointerDown, { passive: false })
+    viewport.addEventListener('pointermove', onPointerMove, { passive: false })
+    viewport.addEventListener('pointerup', onPointerEnd, { passive: false })
+    viewport.addEventListener('pointercancel', onPointerEnd, { passive: false })
     viewport.addEventListener('wheel', onWheel, { passive: false })
 
     return () => {
-      viewport.removeEventListener('touchstart', onTouchStart)
-      viewport.removeEventListener('touchmove', onTouchMove)
-      viewport.removeEventListener('touchend', onTouchEnd)
-      viewport.removeEventListener('touchcancel', onTouchEnd)
+      viewport.removeEventListener('pointerdown', onPointerDown)
+      viewport.removeEventListener('pointermove', onPointerMove)
+      viewport.removeEventListener('pointerup', onPointerEnd)
+      viewport.removeEventListener('pointercancel', onPointerEnd)
       viewport.removeEventListener('wheel', onWheel)
     }
   }, [scene, journey, rootKey])
