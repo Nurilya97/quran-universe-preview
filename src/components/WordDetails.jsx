@@ -348,6 +348,23 @@ function MorphologyStructure({ word, content, language, onPick }) {
   </div>
 }
 
+
+function RootDerivativeInventory({ groups }) {
+  if (!groups?.length) return null
+  return <section className="root-derivatives">
+    <h3>Производные</h3>
+    {groups.map(group => <section className="root-derivative-group" key={group.title}>
+      <h4>{group.title}</h4>
+      <div className="root-derivative-grid">
+        {group.items.map((item, index) => <article className="root-derivative-item" key={item.term + index}>
+          <b lang="ar" dir="rtl">{item.term}</b>
+          <p>{item.definition}</p>
+        </article>)}
+      </div>
+    </section>)}
+  </section>
+}
+
 function SourceLinks({ ids, language }) {
   return <footer className="entry-sources"><h3>{COPY[language].sources}</h3>{ids.map(id => {
     const source = CONTENT_SOURCES[id]
@@ -439,15 +456,11 @@ export function RootDetails({ language, rootKey = 'wqy' }) {
   const isLbb = rootKey === 'lbb'
   const content = isLbb ? LBB_ROOT_CONTENT : ROOT_CONTENT
   const count = isLbb ? rootOccurrenceCount('lbb') : ROOT_OCCURRENCE_COUNT
-  const scope = isLbb
-    ? (language === 'ru'
-      ? 'В Коране корень ل ب ب отмечен 16 раз, и все вхождения представлены существительным أَلْبَاب. На орбите дополнительно показаны словарные формы لُبّ и لَبِيب для понимания семьи.'
-      : 'In the Quran the root ل ب ب is recorded 16 times, all as the noun أَلْبَاب. The orbit also shows dictionary forms لُبّ and لَبِيب to make the lexical family visible.')
-    : t.rootScope
   return <div className="entry-copy"><p className="entry-status">{t.semanticStatus}</p><ModelStatus language={language} rootKey={rootKey} />
     <p className="entry-lead">{content[language].lead}</p><p>{content[language].body}</p>
     <p className="occurrence-summary">{t.occurrenceCount}: <strong>{count}</strong></p>
-    <p className="entry-note">{scope}</p><p className="entry-note">{t.formsNote}</p>
+    {isLbb && <RootDerivativeInventory groups={content.derivatives?.[language]} />}
+    {!isLbb && <><p className="entry-note">{t.rootScope}</p><p className="entry-note">{t.formsNote}</p></>}
     <SourceLinks ids={isLbb ? content.sources : [...content.sources, 'corpus']} language={language} />
   </div>
 }
