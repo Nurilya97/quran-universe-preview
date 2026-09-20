@@ -7322,17 +7322,13 @@
 .approved-taqwa-baseline .analysis-morphology-tree.canva-tree path {
   fill: none !important;
   stroke: rgba(186, 204, 198, .58) !important;
-  stroke-width: .72 !important;
+  stroke-width: 3px !important;
   stroke-linecap: round !important;
   stroke-linejoin: round !important;
   vector-effect: non-scaling-stroke !important;
   filter: none !important;
 }
 
-.approved-taqwa-baseline .analysis-morphology-tree.canva-tree .tree-arrow {
-  stroke: rgba(186, 204, 198, .68) !important;
-  stroke-width: .78 !important;
-}
 
 @media (max-width: 760px) {
   .approved-taqwa-baseline .analysis-morphology-tree.canva-tree {
