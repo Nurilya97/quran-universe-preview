@@ -7301,3 +7301,57 @@
     font-size: 22px;
   }
 }
+
+
+/* Approved al-taqwa morphology connectors — clean Canva-style orthogonal lines.
+   Scoped so older connector experiments cannot affect the approved prototype. */
+.approved-taqwa-baseline .analysis-morphology-tree.canva-tree {
+  display: block !important;
+  width: 100% !important;
+  height: 58px !important;
+  margin: 4px 0 5px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+}
+
+.approved-taqwa-baseline .analysis-morphology-tree.canva-tree.second {
+  height: 62px !important;
+  margin-top: 6px !important;
+}
+
+.approved-taqwa-baseline .analysis-morphology-tree.canva-tree path {
+  fill: none !important;
+  stroke: rgba(186, 204, 198, .58) !important;
+  stroke-width: .72 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  vector-effect: non-scaling-stroke !important;
+  filter: none !important;
+}
+
+.approved-taqwa-baseline .analysis-morphology-tree.canva-tree .tree-arrow {
+  stroke: rgba(186, 204, 198, .68) !important;
+  stroke-width: .78 !important;
+}
+
+@media (max-width: 760px) {
+  .approved-taqwa-baseline .analysis-morphology-tree.canva-tree {
+    height: 52px !important;
+    margin: 3px 0 4px !important;
+  }
+
+  .approved-taqwa-baseline .analysis-morphology-tree.canva-tree.second {
+    height: 56px !important;
+    margin-top: 5px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .approved-taqwa-baseline .analysis-morphology-tree.canva-tree {
+    height: 49px !important;
+  }
+
+  .approved-taqwa-baseline .analysis-morphology-tree.canva-tree.second {
+    height: 53px !important;
+  }
+}
