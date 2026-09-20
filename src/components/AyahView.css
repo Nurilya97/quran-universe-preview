@@ -6335,3 +6335,21 @@
     width: 680px;
   }
 }
+
+
+.rhetoric-passage-thread {
+  max-width: 730px !important;
+  margin-top: 12px !important;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,.055);
+  color: #9aa8aa !important;
+}
+
+.rhetoric-passage-thread b {
+  display: block;
+  margin-bottom: 4px;
+  color: #c1ccca;
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: .025em;
+}
