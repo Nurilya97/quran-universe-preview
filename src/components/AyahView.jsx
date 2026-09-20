@@ -308,9 +308,9 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
             {phraseTokens(ayah, item).map(token => token.tr).join(' ')}
           </div>
           <div className="rhetoric-proof">
-            <p><b>{ru ? 'Конструкция' : 'Construction'}</b>{copy.evidence}</p>
-            <p><b>{ru ? 'Связь' : 'Connection'}</b>{copy.mechanism}</p>
-            <p><b>{ru ? 'Эффект' : 'Effect'}</b>{copy.effect}</p>
+            <p><b>{ru ? 'Что здесь видно' : 'What we see here'}</b>{copy.evidence}</p>
+            <p><b>{ru ? 'Как это связано' : 'How it connects'}</b>{copy.mechanism}</p>
+            <p><b>{ru ? 'Что это показывает' : 'What this shows'}</b>{copy.effect}</p>
           </div>
         </section>
       })}
