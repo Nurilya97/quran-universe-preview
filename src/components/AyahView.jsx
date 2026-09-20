@@ -260,7 +260,6 @@ function compositionY(index, count, layer = 'themes', activeIndex = -1) {
 }
 
 function CompositionDiagram({ ayah, focusWordIndex, language, layer }) {
-  const [activeNode, setActiveNode] = useState(null)
   const ru = language === 'ru'
   const sourceY = 790
   const items = layer === 'rhetoric'
@@ -269,14 +268,11 @@ function CompositionDiagram({ ayah, focusWordIndex, language, layer }) {
       ? (ayah.sound || [])
       : ayah.blocks
 
-  useEffect(() => { setActiveNode(null) }, [layer])
-  const activeIndex = activeNode ? items.findIndex(item => item.id === activeNode) : -1
-
-  return <div className={'diagram-view composition-diagram layer-' + layer + (activeNode ? ' has-active-node' : '')}>
+  return <div className={'diagram-view composition-diagram layer-' + layer}>
     <svg className="diagram-lines composition-lines" width={WORLD.width} height={WORLD.height} viewBox={`0 0 ${WORLD.width} ${WORLD.height}`} aria-hidden="true">
       {items.map((item, index) => {
-        const y = compositionY(index, items.length, layer, activeIndex)
-        const nextY = index < items.length - 1 ? compositionY(index + 1, items.length, layer, activeIndex) : null
+        const y = compositionY(index, items.length, layer)
+        const nextY = index < items.length - 1 ? compositionY(index + 1, items.length, layer) : null
         return <g key={item.id} style={{ '--composition-line-delay': `${160 + index * 70}ms` }}>
           <path className="composition-spine" d={`M ${WORLD.width / 2} ${y - 58} L ${WORLD.width / 2} ${y + 58}`} />
           {nextY && <path className="composition-spine" d={`M ${WORLD.width / 2} ${y + 58} L ${WORLD.width / 2} ${nextY - 58}`} />}
@@ -285,34 +281,19 @@ function CompositionDiagram({ ayah, focusWordIndex, language, layer }) {
     </svg>
 
     {items.map((item, index) => {
-      const y = compositionY(index, items.length, layer, activeIndex)
+      const y = compositionY(index, items.length, layer)
       const isEntry = focusWordIndex >= item.range[0] && focusWordIndex <= item.range[1]
-      const isActive = activeNode === item.id
       const focusWords = item.focusWords || []
       const copy = item[language]
-      const clickable = Boolean(copy?.detail)
-      const activate = () => {
-        if (!clickable) return
-        setActiveNode(current => current === item.id ? null : item.id)
-      }
 
       return <section
         key={item.id}
-        className={'composition-constellation' + (isEntry ? ' has-entry' : '') + (isActive ? ' is-active-node' : '') + (clickable ? ' is-interactive' : '')}
+        className={'composition-constellation' + (isEntry ? ' has-entry' : '')}
         style={{
           left: WORLD.width / 2,
           top: y,
           '--composition-from-y': `${sourceY - y}px`,
           '--composition-delay': `${index * 62}ms`,
-        }}
-        role={clickable ? 'button' : undefined}
-        tabIndex={clickable ? 0 : undefined}
-        aria-expanded={clickable ? isActive : undefined}
-        onClick={activate}
-        onKeyDown={event => {
-          if (!clickable || (event.key !== 'Enter' && event.key !== ' ')) return
-          event.preventDefault()
-          activate()
         }}
       >
         <i aria-hidden="true" />
@@ -335,17 +316,8 @@ function CompositionDiagram({ ayah, focusWordIndex, language, layer }) {
           })}
         </div>
         <p>{copy.text}</p>
-        {clickable && <span className="composition-open-cue" aria-hidden="true">{isActive ? '−' : '+'}</span>}
-        {isActive && copy.detail && <div className="composition-node-detail" onClick={event => event.stopPropagation()}>{copy.detail}</div>}
       </section>
     })}
-
-    {layer === 'sound' && <div className="sound-layer-footer" style={{ left: WORLD.width / 2, top: compositionY(items.length - 1, items.length, layer, activeIndex) + 245 }}>
-      <span>{ru ? 'Аудио — следующим этапом' : 'Audio — next step'}</span>
-      <p>{ru
-        ? 'Здесь будет выбор чтеца и прослушивание аята; сейчас слой показывает только проверяемые звуковые связи в тексте.'
-        : 'Reciter selection and ayah playback will live here; for now the layer shows only directly observable sound relationships in the text.'}</p>
-    </div>}
   </div>
 }
 
