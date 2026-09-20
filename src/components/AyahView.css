@@ -6006,3 +6006,332 @@
     gap: 14px 18px;
   }
 }
+
+
+/* Composition v3 — one continuous argument, not isolated cards. */
+.composition-thread,
+.rhetoric-thread {
+  position: absolute;
+  width: min(760px, 82vw);
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.composition-thread > small,
+.rhetoric-thread > small {
+  display: block;
+  color: #728087;
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.composition-thread > p,
+.rhetoric-thread > p {
+  max-width: 700px;
+  margin: 8px auto 0;
+  color: #aab5b8;
+  font-size: 12.5px;
+  line-height: 1.72;
+}
+
+.composition-constellation {
+  overflow: visible;
+}
+
+.composition-bridge {
+  position: absolute;
+  left: 50%;
+  width: 560px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.composition-bridge::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 20px;
+  margin: 0 auto 8px;
+  background: linear-gradient(to bottom, rgba(196,215,222,.05), rgba(196,215,222,.28));
+}
+
+.composition-bridge span {
+  display: block;
+  max-width: 520px;
+  margin: 0 auto;
+  color: #718087;
+  font-size: 9.5px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+/* Rhetoric v3 — follow the logic first, name the mechanism second. */
+.rhetoric-thread {
+  pointer-events: none;
+}
+
+.rhetoric-insight {
+  width: 760px !important;
+  text-align: center;
+}
+
+.rhetoric-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.rhetoric-step > span {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(202,177,211,.17);
+  border-radius: 50%;
+  color: #b89cc1;
+  font-size: 9px;
+  line-height: 1;
+}
+
+.rhetoric-step > small {
+  color: #9d8aa5;
+  font-size: 9px;
+  font-weight: 650;
+  line-height: 1.4;
+  letter-spacing: .075em;
+  text-transform: uppercase;
+}
+
+.rhetoric-insight > h3 {
+  max-width: 680px;
+  margin: 8px auto 0 !important;
+  font-size: 18px !important;
+  line-height: 1.42;
+}
+
+.rhetoric-phrase {
+  margin-top: 9px !important;
+  font-size: 24px !important;
+  line-height: 1.6 !important;
+}
+
+.rhetoric-story {
+  max-width: 700px;
+  margin: 12px auto 0;
+  padding-top: 13px;
+  border-top: 1px solid rgba(255,255,255,.07);
+}
+
+.rhetoric-story > p.is-story {
+  max-width: 660px;
+  margin: 0 auto;
+  color: #b0b9b9;
+  font-size: 12px;
+  line-height: 1.72;
+  text-align: center;
+}
+
+.rhetoric-reading {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 24px;
+  margin-top: 12px;
+  text-align: left;
+}
+
+.rhetoric-reading p,
+.rhetoric-story > .rhetoric-sound {
+  margin: 0;
+  color: #899799;
+  font-size: 10.5px;
+  line-height: 1.68;
+}
+
+.rhetoric-reading b,
+.rhetoric-story > .rhetoric-sound b {
+  display: block;
+  margin-bottom: 4px;
+  color: #c6d0cd;
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: .025em;
+}
+
+.rhetoric-story > .rhetoric-sound {
+  max-width: 560px;
+  margin: 9px auto 0;
+  color: #81989b;
+  text-align: center;
+}
+
+.rhetoric-story > .rhetoric-sound b {
+  color: #9fc2c5;
+}
+
+.rhetoric-passage-lens {
+  position: absolute;
+  width: 820px;
+  transform: translateX(-50%);
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  text-align: center;
+}
+
+.rhetoric-passage-lens > small {
+  color: #75858a;
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.rhetoric-passage-lens > h3 {
+  margin: 8px 0 0;
+  color: #dbe2e1;
+  font-size: 17px;
+  font-weight: 540;
+}
+
+.rhetoric-passage-lens > p {
+  max-width: 730px;
+  margin: 9px auto 0;
+  color: #929fa1;
+  font-size: 11.5px;
+  line-height: 1.72;
+}
+
+.rhetoric-ending-row {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 15px;
+}
+
+.rhetoric-ending-row > div {
+  min-width: 135px;
+  padding: 9px 12px 10px;
+  border-top: 1px solid rgba(255,255,255,.07);
+}
+
+.rhetoric-ending-row > div.is-active {
+  border-top-color: rgba(194,165,210,.34);
+}
+
+.rhetoric-ending-row span {
+  display: block;
+  color: #667479;
+  font-size: 8.5px;
+}
+
+.rhetoric-ending-row b {
+  display: block;
+  margin-top: 5px;
+  color: #bac5c6;
+  font: 22px/1.45 var(--arabic-font);
+  font-weight: 400;
+}
+
+.rhetoric-ending-row > div.is-active b {
+  color: #e5dbea;
+}
+
+.rhetoric-passage-sound {
+  margin-top: 12px !important;
+  color: #7f9195 !important;
+}
+
+.rhetoric-passage-sound b {
+  display: inline;
+  margin-right: 6px;
+  color: #9fb2b4;
+  font-weight: 650;
+}
+
+.rhetoric-passage-lens .rhetoric-source-note {
+  position: static !important;
+  width: auto !important;
+  transform: none !important;
+  margin: 12px auto 0;
+  color: #566468;
+  font-size: 8.5px;
+  line-height: 1.5;
+}
+
+@media (max-width:760px) {
+  .composition-thread,
+  .rhetoric-thread {
+    width: min(760px, 90vw);
+  }
+
+  .composition-thread > p,
+  .rhetoric-thread > p {
+    max-width: 620px;
+    font-size: 12px;
+  }
+
+  .composition-bridge {
+    width: 520px;
+  }
+
+  .composition-bridge span {
+    max-width: 480px;
+    font-size: 9.5px;
+  }
+
+  .rhetoric-insight {
+    width: 690px !important;
+  }
+
+  .rhetoric-insight > h3 {
+    font-size: 17px !important;
+  }
+
+  .rhetoric-phrase {
+    font-size: 22px !important;
+  }
+
+  .rhetoric-story > p.is-story {
+    max-width: 620px;
+    font-size: 11.7px;
+  }
+
+  .rhetoric-reading {
+    gap: 18px;
+  }
+
+  .rhetoric-reading p,
+  .rhetoric-story > .rhetoric-sound {
+    font-size: 10.3px;
+  }
+
+  .rhetoric-passage-lens {
+    width: 740px;
+  }
+}
+
+@media (max-width:420px) {
+  .composition-thread > p,
+  .rhetoric-thread > p {
+    font-size: 11.5px;
+  }
+
+  .composition-bridge {
+    width: 480px;
+  }
+
+  .rhetoric-insight {
+    width: 650px !important;
+  }
+
+  .rhetoric-reading {
+    gap: 15px;
+  }
+
+  .rhetoric-passage-lens {
+    width: 680px;
+  }
+}
