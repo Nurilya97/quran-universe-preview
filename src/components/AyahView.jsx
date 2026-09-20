@@ -191,6 +191,79 @@ function AyahMorphologyView({ selected, morphology, profile, language }) {
   </section>
 }
 
+function TaqwaMorphologyLegacy({ selected, morphology, profile, language }) {
+  const ru = language === 'ru'
+  const morphologyParts = morphology?.parts || []
+
+  return <section className="analysis-morphology-screen" onClick={(event) => event.stopPropagation()}>
+    <div className="analysis-morphology-canvas">
+      <header className="analysis-morphology-hero">
+        <span lang="ar" dir="rtl">{selected.ar}</span>
+        <em>{selected.tr}</em>
+      </header>
+
+      {profile?.evolution?.length ? <div className="analysis-morphology-evolution">
+        {profile.evolution.map((item, index) => {
+          const isLast = index === profile.evolution.length - 1
+          const detail = isLast
+            ? (profile.transformation?.[language] || profile.derivedFrom?.[language])
+            : null
+          return <div className="analysis-morphology-evolution-step" key={item.ar + ':' + index}>
+            {index > 0 && <div className="morph-derivation-connector">
+              <svg viewBox="0 0 28 44" aria-hidden="true">
+                <path d="M14 2V34" />
+                <path d="M8 28L14 35L20 28" />
+              </svg>
+              <small>{ru ? item.metaRu : item.metaEn}</small>
+            </div>}
+            <article className={'analysis-morphology-node evolution-node' + (index === 0 ? ' root' : '') + (isLast ? ' current-lemma' : '')}>
+              <span lang="ar" dir="rtl">{item.ar}</span>
+              <small>{item.reading}</small>
+              <b>{ru ? item.metaRu : item.metaEn}</b>
+              {detail && <p>{detail}</p>}
+            </article>
+          </div>
+        })}
+
+        {profile.evolution.at(-1)?.ar !== selected.ar && <>
+          <div className="morph-derivation-connector surface-form">
+            <svg viewBox="0 0 28 44" aria-hidden="true">
+              <path d="M14 2V34" />
+              <path d="M8 28L14 35L20 28" />
+            </svg>
+            <small>{ru ? 'Форма, которая стоит в аяте' : 'The form used in the ayah'}</small>
+          </div>
+          <article className="analysis-morphology-node evolution-node final-form">
+            <span lang="ar" dir="rtl">{selected.ar}</span>
+            <small>{selected.tr}</small>
+            <b>{ru ? 'Форма в аяте' : 'Ayah form'}</b>
+          </article>
+        </>}
+
+        {morphologyParts.length > 0 && <section className="analysis-morphology-parts">
+          <h3>{ru ? 'Из чего состоит эта форма' : 'What this form contains'}</h3>
+          <div className="analysis-morphology-parts-grid">
+            {morphologyParts.map((part, index) => <article className="analysis-morphology-node compact" key={part.ar + ':' + index}>
+              <span lang="ar" dir="rtl">{part.ar}</span>
+              <small>{part.tr}</small>
+              <b>{part.label}</b>
+            </article>)}
+          </div>
+        </section>}
+
+        {morphology?.text && <div className="analysis-morphology-note"><p>{morphology.text}</p></div>}
+      </div> : <div className="analysis-morphology-generic">
+        {morphologyParts.map((part, index) => <article className="analysis-morphology-node" key={index}>
+          <span lang="ar" dir="rtl">{part.ar}</span>
+          <small>{part.tr}</small>
+          <b>{part.label}</b>
+        </article>)}
+        {morphology?.text && <div className="analysis-morphology-note"><p>{morphology.text}</p></div>}
+      </div>}
+    </div>
+  </section>
+}
+
 function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrbit }) {
   const [focusView, setFocusView] = useState('word')
   useEffect(() => { setFocusView('word') }, [selectedWord])
@@ -254,12 +327,21 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
       </section>}
       {focusView === 'relation' && <SyntaxView key={ayah.reference + ':' + selectedWord} ayah={ayah} selectedWord={selectedWord} language={language} />}
 
-      {focusView === 'morphology' && morphologyModel && <AyahMorphologyView
-        selected={selected}
-        morphology={morphology}
-        profile={morphologyModel}
-        language={language}
-      />}
+      {focusView === 'morphology' && morphologyModel && (
+        selected.orbitId === 'taqwa'
+          ? <TaqwaMorphologyLegacy
+              selected={selected}
+              morphology={morphology}
+              profile={morphologyModel}
+              language={language}
+            />
+          : <AyahMorphologyView
+              selected={selected}
+              morphology={morphology}
+              profile={morphologyModel}
+              language={language}
+            />
+      )}
 
       <nav className="analysis-focus-view-switch" onClick={(event) => event.stopPropagation()} aria-label={ru ? 'Вид разбора слова' : 'Word analysis view'}>
         {focusViews.map(([id, label]) => <button
