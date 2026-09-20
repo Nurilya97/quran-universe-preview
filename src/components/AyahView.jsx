@@ -19,8 +19,8 @@ const BLOCK_Y = [300, 620, 940, 1260, 1580]
 const WORD_GAP = 152
 const VIEW_BOUNDS = {
   analysis: { left: 650, right: 1850, top: 430, bottom: 1360 },
-  composition: { left: 430, right: 2070, top: 40, bottom: 1840 },
-  rhetoric: { left: 430, right: 2070, top: 80, bottom: 1840 },
+  composition: { left: 430, right: 2070, top: 40, bottom: 2750 },
+  rhetoric: { left: 430, right: 2070, top: 60, bottom: 4700 },
 }
 
 function finiteNumber(value, fallback) {
@@ -240,70 +240,41 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
   </div>
 }
 
-function compositionY(index, count) {
-  if (count === BLOCK_Y.length) return BLOCK_Y[index]
-  if (count <= 1) return 940
-  const top = 360
-  const bottom = 1450
-  return top + ((bottom - top) * index) / (count - 1)
-}
-
-function rhetoricY(index, count) {
-  if (count <= 1) return 820
-  const top = 330
-  const bottom = 1320
-  return top + ((bottom - top) * index) / (count - 1)
-}
-
 function CompositionDiagram({ ayah, focusWordIndex, language }) {
-  const sourceY = 790
   const items = ayah.blocks
 
   return <div className="diagram-view composition-diagram layer-themes">
-    <div className="composition-thread" style={{ left: WORLD.width / 2, top: 105 }}>
-      <small>{language === 'ru' ? 'НИТЬ АЯТА' : 'AYAH THREAD'}</small>
-      <p>{ayah.compositionThread?.[language]}</p>
-    </div>
+    <div className="composition-flow" style={{ left: WORLD.width / 2, top: 150 }}>
+      <div className="composition-thread">
+        <small>{language === 'ru' ? 'НИТЬ АЯТА' : 'AYAH THREAD'}</small>
+        <p>{ayah.compositionThread?.[language]}</p>
+      </div>
 
-    <svg className="diagram-lines composition-lines" width={WORLD.width} height={WORLD.height} viewBox={`0 0 ${WORLD.width} ${WORLD.height}`} aria-hidden="true">
       {items.map((item, index) => {
-        const y = compositionY(index, items.length)
-        const nextY = index < items.length - 1 ? compositionY(index + 1, items.length) : null
-        return <g key={item.id} style={{ '--composition-line-delay': `${160 + index * 70}ms` }}>
-          <path className="composition-spine" d={`M ${WORLD.width / 2} ${y - 58} L ${WORLD.width / 2} ${y + 58}`} />
-          {nextY && <path className="composition-spine" d={`M ${WORLD.width / 2} ${y + 58} L ${WORLD.width / 2} ${nextY - 58}`} />}
-        </g>
+        const isEntry = focusWordIndex >= item.range[0] && focusWordIndex <= item.range[1]
+        const copy = item[language]
+        const previousBridge = index > 0 ? items[index - 1]?.[language]?.bridge : null
+
+        return <section
+          key={item.id}
+          className={'composition-constellation' + (isEntry ? ' has-entry' : '')}
+        >
+          <i aria-hidden="true" />
+          <small>{String(index + 1).padStart(2, '0')}</small>
+          <h3>{copy.title}</h3>
+          <div className="composition-phrase" lang="ar" dir="rtl">
+            {phraseTokens(ayah, item).map((token, tokenIndex) => {
+              const wordIndex = item.range[0] + tokenIndex
+              return <span key={wordIndex} className={wordIndex === focusWordIndex ? 'is-entry' : ''}>{token.ar}</span>
+            })}
+          </div>
+          <div className="composition-explanation">
+            {previousBridge && <p className="composition-transition">{previousBridge}</p>}
+            <p className="composition-copy">{copy.text}</p>
+          </div>
+        </section>
       })}
-    </svg>
-
-    {items.map((item, index) => {
-      const y = compositionY(index, items.length)
-      const isEntry = focusWordIndex >= item.range[0] && focusWordIndex <= item.range[1]
-      const copy = item[language]
-
-      return <section
-        key={item.id}
-        className={'composition-constellation' + (isEntry ? ' has-entry' : '')}
-        style={{
-          left: WORLD.width / 2,
-          top: y,
-          '--composition-from-y': `${sourceY - y}px`,
-          '--composition-delay': `${index * 62}ms`,
-        }}
-      >
-        <i aria-hidden="true" />
-        <small>{String(index + 1).padStart(2, '0')}</small>
-        <h3>{copy.title}</h3>
-        <div className="composition-phrase" lang="ar" dir="rtl">
-          {phraseTokens(ayah, item).map((token, tokenIndex) => {
-            const wordIndex = item.range[0] + tokenIndex
-            return <span key={wordIndex} className={wordIndex === focusWordIndex ? 'is-entry' : ''}>{token.ar}</span>
-          })}
-        </div>
-        {index > 0 && items[index - 1]?.[language]?.bridge && <p className="composition-transition">{items[index - 1][language].bridge}</p>}
-        <p className="composition-copy">{copy.text}</p>
-      </section>
-    })}
+    </div>
   </div>
 }
 
