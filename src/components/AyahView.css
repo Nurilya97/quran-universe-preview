@@ -6894,76 +6894,14 @@
 
 
 /* Rhetoric v4 — evidence first, composition narrative removed. */
-.rhetoric-primer {
-  width: 100%;
-  padding: 22px 24px 24px;
-  border: 1px solid rgba(190, 214, 207, .10);
-  border-radius: 20px;
-  background: rgba(11, 16, 18, .64);
-  text-align: center;
-}
 
-.rhetoric-primer > small {
-  display: block;
-  color: #7e9094;
-  font-size: 12px;
-  font-weight: 650;
-  letter-spacing: .10em;
-}
 
-.rhetoric-primer > h3 {
-  margin: 8px 0 0;
-  color: #e2e8e6;
-  font-size: 28px;
-  font-weight: 560;
-  line-height: 1.35;
-}
 
-.rhetoric-primer > p {
-  max-width: 700px;
-  margin: 10px auto 0;
-  color: #aeb9b8;
-  font-size: 19px;
-  line-height: 1.65;
-}
 
-.rhetoric-fa-roles {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: 10px 14px;
-  max-width: 700px;
-  margin: 18px auto 0;
-}
 
-.rhetoric-fa-roles > div {
-  display: grid;
-  grid-template-columns: 112px 1fr;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 12px;
-  border-top: 1px solid rgba(255,255,255,.07);
-  text-align: left;
-}
 
-.rhetoric-fa-roles b {
-  color: #d7c6dd;
-  font: 20px/1.35 var(--arabic-font);
-  font-weight: 500;
-  text-align: right;
-}
 
-.rhetoric-fa-roles span {
-  color: #8fa0a2;
-  font-size: 15px;
-  line-height: 1.5;
-}
 
-.rhetoric-primer-current {
-  margin-top: 17px !important;
-  padding-top: 15px;
-  border-top: 1px solid rgba(255,255,255,.07);
-  color: #c1cbca !important;
-}
 
 .rhetoric-proof {
   display: grid;
@@ -7021,39 +6959,13 @@
 }
 
 @media (max-width:760px) {
-  .rhetoric-primer {
-    padding: 20px 18px 22px;
-  }
-
-  .rhetoric-primer > h3 {
-    font-size: 30px;
-  }
-
-  .rhetoric-primer > p {
-    max-width: 540px;
-    font-size: 22px;
-  }
-
-  .rhetoric-fa-roles {
-    grid-template-columns: 1fr;
-    max-width: 535px;
-    gap: 7px;
-  }
-
-  .rhetoric-fa-roles > div {
-    grid-template-columns: 126px 1fr;
-    gap: 12px;
-    padding: 10px 8px;
-  }
-
-  .rhetoric-fa-roles b {
-    font-size: 22px;
-  }
-
-  .rhetoric-fa-roles span {
-    font-size: 18px;
-  }
-
+  
+  
+  
+  
+  
+  
+  
   .rhetoric-proof {
     grid-template-columns: 1fr;
     gap: 14px;
@@ -7081,9 +6993,7 @@
     max-width: 520px;
   }
 
-  .rhetoric-fa-roles {
-    max-width: 520px;
-  }
+  
 }
 
 
@@ -7106,10 +7016,4 @@
 }
 
 
-.rhetoric-fa-roles b em {
-  margin-left: 5px;
-  color: #9aa9a7;
-  font: 500 13px/1.35 system-ui, sans-serif;
-  font-style: normal;
-  letter-spacing: .01em;
-}
+
