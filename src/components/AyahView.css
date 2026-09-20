@@ -7085,3 +7085,22 @@
     max-width: 520px;
   }
 }
+
+
+/* Rhetoric source stays secondary to the explanation itself. */
+.rhetoric-source-note a {
+  color: #657579;
+  font-size: 12px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(101,117,121,.24);
+}
+
+.rhetoric-source-note a:hover {
+  color: #9baaad;
+  border-bottom-color: rgba(155,170,173,.42);
+}
+
+/* Sound is only analyzed at passage-ending level, never per rhetoric block. */
+.rhetoric-insight > .rhetoric-sound {
+  display: none !important;
+}
