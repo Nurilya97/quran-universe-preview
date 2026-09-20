@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { getAyahPrototype } from '../ayahPrototype.js'
+import { MORPHOLOGY } from '../morphologyWqy.js'
 import './AyahView.css'
 import { SyntaxView } from './SyntaxView.jsx'
 import './WordFocusViews.css'
@@ -99,7 +100,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
   const meaning = selected.analysis?.[language]?.meaning
   const morphology = selected.analysis?.[language]?.morphology
   const morphologyParts = morphology?.parts || []
-  const isTaqwa = selected.orbitId === 'taqwa'
+  const morphologyModel = selected.orbitId ? MORPHOLOGY[selected.orbitId] : null
   const focusViews = [
     ['word', ru ? 'Значение' : 'Meaning'],
     ['morphology', ru ? 'Морфология' : 'Morphology'],
@@ -159,86 +160,57 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
             <em>{selected.tr}</em>
           </header>
 
-          {isTaqwa ? <>
-            <div className="analysis-morphology-derivation">
-              <article className="analysis-morphology-node root derivation-root">
-                <span lang="ar" dir="rtl">{morphologyParts[2]?.ar || selected.root}</span>
-                <small>{morphologyParts[2]?.tr || selected.rootReading}</small>
-                <b>{ru ? 'Корень' : 'Root'}</b>
-                <p>{ru
-                  ? 'و ق ي (w-q-y) несёт идею защиты и оберегания.'
-                  : 'و ق ي (w-q-y) carries the idea of protection and guarding.'}</p>
+          {morphologyModel?.evolution?.length ? <div className="analysis-morphology-evolution">
+            {morphologyModel.evolution.map((item, index) => {
+              const isLast = index === morphologyModel.evolution.length - 1
+              const detail = isLast
+                ? (morphologyModel.transformation?.[language] || morphologyModel.derivedFrom?.[language])
+                : null
+              return <div className="analysis-morphology-evolution-step" key={item.ar + ':' + index}>
+                {index > 0 && <div className="morph-derivation-connector">
+                  <svg viewBox="0 0 28 44" aria-hidden="true">
+                    <path d="M14 2V34" />
+                    <path d="M8 28L14 35L20 28" />
+                  </svg>
+                  <small>{ru ? item.metaRu : item.metaEn}</small>
+                </div>}
+                <article className={'analysis-morphology-node evolution-node' + (index === 0 ? ' root' : '') + (isLast ? ' current-lemma' : '')}>
+                  <span lang="ar" dir="rtl">{item.ar}</span>
+                  <small>{item.reading}</small>
+                  <b>{ru ? item.metaRu : item.metaEn}</b>
+                  {detail && <p>{detail}</p>}
+                </article>
+              </div>
+            })}
+
+            {morphologyModel.evolution.at(-1)?.ar !== selected.ar && <>
+              <div className="morph-derivation-connector surface-form">
+                <svg viewBox="0 0 28 44" aria-hidden="true">
+                  <path d="M14 2V34" />
+                  <path d="M8 28L14 35L20 28" />
+                </svg>
+                <small>{ru ? 'Форма, которая стоит в аяте' : 'The form used in the ayah'}</small>
+              </div>
+              <article className="analysis-morphology-node evolution-node final-form">
+                <span lang="ar" dir="rtl">{selected.ar}</span>
+                <small>{selected.tr}</small>
+                <b>{ru ? 'Форма в аяте' : 'Ayah form'}</b>
               </article>
+            </>}
 
-              <div className="morph-flow-arrow down" aria-hidden="true">↓</div>
-              <div className="morph-flow-caption">{ru ? 'Словообразовательное гнездо корня' : 'Derivational family of the root'}</div>
-              <div className="morph-family-arrows" aria-hidden="true"><span>↙</span><span>↘</span></div>
-
-              <div className="analysis-morphology-family">
-                <article className="analysis-morphology-node verb">
-                  <span lang="ar" dir="rtl">ٱتَّقَىٰ</span>
-                  <small>ittaqā</small>
-                  <b>{ru ? 'Глагольная форма VIII' : 'Verbal Form VIII'}</b>
-                  <p>{ru
-                    ? 'Связанная форма этого корня: активное оберегание себя и внимательность к границам.'
-                    : 'A related form of this root: an active stance of guarding oneself and remaining attentive to boundaries.'}</p>
-                </article>
-
-                <article className="analysis-morphology-node base derivation-noun">
-                  <span lang="ar" dir="rtl">{morphologyParts[1]?.ar || 'تَقْوَىٰ'}</span>
-                  <small>{morphologyParts[1]?.tr || 'taqwā'}</small>
-                  <b>{ru ? 'Существительное · فَعْلَى' : 'Noun · فَعْلَى'}</b>
-                  <p>{ru
-                    ? 'تَقْوَىٰ (taqwā) относится к тому же словообразовательному гнезду. В этом аяте оно называет внутреннюю осознанность перед Аллахом; её поведенческое проявление — благочестие.'
-                    : 'تَقْوَىٰ (taqwā) belongs to the same derivational family. In this ayah it names inward awareness of Allah; its behavioral manifestation is piety.'}</p>
-                </article>
+            {morphologyParts.length > 0 && <section className="analysis-morphology-parts">
+              <h3>{ru ? 'Из чего состоит эта форма' : 'What this form contains'}</h3>
+              <div className="analysis-morphology-parts-grid">
+                {morphologyParts.map((part, index) => <article className="analysis-morphology-node compact" key={part.ar + ':' + index}>
+                  <span lang="ar" dir="rtl">{part.ar}</span>
+                  <small>{part.tr}</small>
+                  <b>{part.label}</b>
+                </article>)}
               </div>
+            </section>}
 
-              <div className="morph-flow-arrow down" aria-hidden="true">↓</div>
-              <div className="morph-flow-caption">{ru ? 'Форма, которая стоит в аяте' : 'The form used in the ayah'}</div>
-
-              <div className="analysis-morphology-build">
-                <article className="analysis-morphology-node article compact">
-                  <span lang="ar" dir="rtl">{morphologyParts[0]?.ar || 'ٱلـ'}</span>
-                  <small>{morphologyParts[0]?.tr || 'al-'}</small>
-                  <b>{ru ? 'Артикль' : 'Article'}</b>
-                </article>
-
-                <span className="morph-build-sign" aria-hidden="true">+</span>
-
-                <article className="analysis-morphology-node base compact">
-                  <span lang="ar" dir="rtl">تَقْوَىٰ</span>
-                  <small>taqwā</small>
-                  <b>{ru ? 'Существительное' : 'Noun'}</b>
-                </article>
-
-                <span className="morph-build-arrow" aria-hidden="true">→</span>
-
-                <article className="analysis-morphology-node final compact">
-                  <span lang="ar" dir="rtl">ٱلتَّقْوَىٰ</span>
-                  <small>al-taqwā</small>
-                  <b>{ru ? 'Итоговая форма' : 'Final form'}</b>
-                </article>
-              </div>
-            </div>
-
-            <div className="analysis-morphology-note">
-              <div className="analysis-morphology-summary-list">
-                <p>{ru
-                  ? <><b>Корень:</b> و ق ي (w-q-y) — защитное/оберегающее смысловое ядро.</>
-                  : <><b>Root:</b> و ق ي (w-q-y) — the protective/guarding semantic core.</>}</p>
-                <p>{ru
-                  ? <><b>Связанная форма:</b> ٱتَّقَىٰ (ittaqā), VIII форма, показывает активную позицию оберегания себя.</>
-                  : <><b>Related form:</b> ٱتَّقَىٰ (ittaqā), Form VIII, shows the active stance of guarding oneself.</>}</p>
-                <p>{ru
-                  ? <><b>Существительное:</b> تَقْوَىٰ (taqwā), модель فَعْلَى (faʿlā), называет внутреннее качество.</>
-                  : <><b>Noun:</b> تَقْوَىٰ (taqwā), pattern فَعْلَى (faʿlā), names the inward quality.</>}</p>
-                <p>{ru
-                  ? <><b>Форма аята:</b> ٱلـ (al-) + تَقْوَىٰ (taqwā) → ٱلتَّقْوَىٰ (al-taqwā).</>
-                  : <><b>Ayah form:</b> ٱلـ (al-) + تَقْوَىٰ (taqwā) → ٱلتَّقْوَىٰ (al-taqwā).</>}</p>
-              </div>
-            </div>
-          </> : <div className="analysis-morphology-generic">
+            {morphology?.text && <div className="analysis-morphology-note"><p>{morphology.text}</p></div>}
+          </div> : <div className="analysis-morphology-generic">
             {morphologyParts.map((part, index) => <article className="analysis-morphology-node" key={index}>
               <span lang="ar" dir="rtl">{part.ar}</span>
               <small>{part.tr}</small>
