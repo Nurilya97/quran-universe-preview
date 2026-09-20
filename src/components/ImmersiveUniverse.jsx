@@ -245,9 +245,9 @@ export function ImmersiveUniverse() {
         <span><b>I · II · IV · V · X</b><small>{t.formNumberLegend}</small></span>
       </div>}
       {currentRoot.id === 'lbb' && <div className="root-zoom-controls" role="group" aria-label={language === 'ru' ? 'Масштаб пространства корня' : 'Root-space zoom'}>
-        <button type="button" onClick={() => zoomRoot(.1)} disabled={rootZoom >= 1.35} aria-label={language === 'ru' ? 'Приблизить' : 'Zoom in'}><Icon name="plus" /></button>
+        <button type="button" className="root-zoom-button" onClick={() => zoomRoot(-.1)} disabled={rootZoom <= .55} aria-label={language === 'ru' ? 'Отдалить' : 'Zoom out'}>−</button>
         <button type="button" className="root-zoom-level" onClick={() => setRootZoom(1)} aria-label={language === 'ru' ? 'Сбросить масштаб' : 'Reset zoom'}>{Math.round(rootZoom * 100)}%</button>
-        <button type="button" onClick={() => zoomRoot(-.1)} disabled={rootZoom <= .55} aria-label={language === 'ru' ? 'Отдалить' : 'Zoom out'}><Icon name="minus" /></button>
+        <button type="button" className="root-zoom-button" onClick={() => zoomRoot(.1)} disabled={rootZoom >= 1.35} aria-label={language === 'ru' ? 'Приблизить' : 'Zoom in'}>+</button>
       </div>}
       <div className="root-viewport" ref={rootViewport} tabIndex={currentRoot.id === 'lbb' ? 0 : undefined} aria-label={t.rootSpace}>
       <div className="root-canvas">
