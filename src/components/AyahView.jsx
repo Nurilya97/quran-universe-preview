@@ -203,7 +203,7 @@ function TaqwaMorphologyLegacy({ selected, morphology, language }) {
         <em>{selected.tr}</em>
       </header>
 
-            <svg className="analysis-morphology-tree first canva-tree" viewBox="0 0 100 58" preserveAspectRatio="none" aria-hidden="true">
+            <svg className="analysis-morphology-tree first plain-tree" viewBox="0 0 100 58" preserveAspectRatio="none" aria-hidden="true">
               <path className="tree-stem" d="M50 2 V17" />
               <path className="tree-bar" d="M25 17 H75" />
               <path className="tree-branch" d="M25 17 V51" />
@@ -230,7 +230,7 @@ function TaqwaMorphologyLegacy({ selected, morphology, language }) {
               </article>
             </div>
 
-            <svg className="analysis-morphology-tree second canva-tree" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true">
+            <svg className="analysis-morphology-tree second plain-tree" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true">
               <path className="tree-stem" d="M25 2 V17" />
               <path className="tree-bar" d="M16.7 17 H83.3" />
               <path className="tree-branch" d="M16.7 17 V55" />
