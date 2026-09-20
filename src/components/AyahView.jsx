@@ -181,7 +181,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
                 <small>ittaqā</small>
                 <b>{ru ? 'Связанная глагольная форма · VIII' : 'Related verbal form · Form VIII'}</b>
                 <p>{ru
-                  ? 'Глагол VIII формы от того же корня: остерегаться, оберегать себя. Он делает активный оттенок корневой идеи особенно заметным.'
+                  ? 'Глагол VIII формы от того же корня передаёт активное оберегание себя и внимательность к границам. Он делает деятельный оттенок корневой идеи особенно заметным.'
                   : 'A Form VIII verb from the same root: to be wary and guard oneself. It makes the active shade of the root especially visible.'}</p>
               </article>
 
@@ -204,7 +204,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
                   ? <><b>Основа:</b> تَقْوَىٰ (taqwā) — существительное из словообразовательного гнезда корня و ق ي (w-q-y) «защищать / оберегать».</>
                   : <><b>Base:</b> تَقْوَىٰ (taqwā) belongs to the derivational family of the root و ق ي (w-q-y), “to protect / guard.”</>}</p>
                 <p>{ru
-                  ? <><b>Связанная форма:</b> ٱتَّقَىٰ (ittaqā), VIII форма, показывает активное действие — остерегаться и оберегать себя.</>
+                  ? <><b>Связанная форма:</b> ٱتَّقَىٰ (ittaqā), VIII форма, показывает активное оберегание себя и внимательность к границам.</>
                   : <><b>Related form:</b> ٱتَّقَىٰ (ittaqā), Form VIII, shows the active sense of guarding oneself.</>}</p>
                 <p>{ru
                   ? <><b>Модель:</b> فَعْلَى (faʿlā) показывает именную словообразовательную форму تَقْوَىٰ (taqwā).</>
@@ -300,22 +300,9 @@ function CompositionDiagram({ ayah, focusWordIndex, language }) {
             return <span key={wordIndex} className={wordIndex === focusWordIndex ? 'is-entry' : ''}>{token.ar}</span>
           })}
         </div>
-        <p>{copy.text}</p>
+        {index > 0 && items[index - 1]?.[language]?.bridge && <p className="composition-transition">{items[index - 1][language].bridge}</p>}
+        <p className="composition-copy">{copy.text}</p>
       </section>
-    })}
-
-    {items.slice(0, -1).map((item, index) => {
-      const currentY = compositionY(index, items.length)
-      const nextY = compositionY(index + 1, items.length)
-      const copy = item[language]
-      if (!copy.bridge) return null
-      return <div
-        key={item.id + '-bridge'}
-        className="composition-bridge"
-        style={{ left: WORLD.width / 2, top: (currentY + nextY) / 2 }}
-      >
-        <span>{copy.bridge}</span>
-      </div>
     })}
   </div>
 }
@@ -326,64 +313,61 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
   const lens = ayah.passageLens
 
   return <div className="diagram-view rhetoric-diagram">
-    <div className="rhetoric-thread" style={{ left: WORLD.width / 2, top: 110 }}>
-      <small>{ru ? 'ОДНА МЫСЛЬ, ЧЕТЫРЕ ПОВОРОТА' : 'ONE THOUGHT, FOUR TURNS'}</small>
-      <p>{ayah.compositionThread?.[language]}</p>
-    </div>
+    <div className="rhetoric-flow" style={{ left: WORLD.width / 2, top: 150 }}>
+      <div className="rhetoric-thread">
+        <small>{ru ? 'ОДНА МЫСЛЬ, ЧЕТЫРЕ ПОВОРОТА' : 'ONE THOUGHT, FOUR TURNS'}</small>
+        <p>{ayah.compositionThread?.[language]}</p>
+      </div>
 
-    {items.map((item, index) => {
-      const y = rhetoricY(index, items.length)
-      const copy = item[language]
-      const focusWords = item.focusWords || []
-      return <section
-        key={item.id}
-        className="rhetoric-insight"
-        style={{ left: WORLD.width / 2, top: y }}
-      >
-        <div className="rhetoric-step">
-          <span>{copy.step}</span>
-          <small>{copy.label}</small>
-        </div>
-        <h3>{copy.title}</h3>
-        <div className="rhetoric-phrase" lang="ar" dir="rtl">
-          {phraseTokens(ayah, item).map((token, tokenIndex) => {
-            const wordIndex = item.range[0] + tokenIndex
-            const classes = [
-              focusWords.includes(wordIndex) ? 'is-focus' : '',
-              wordIndex === focusWordIndex ? 'is-entry' : '',
-            ].filter(Boolean).join(' ')
-            return <span key={wordIndex} className={classes}>{token.ar}</span>
-          })}
-        </div>
-        <div className="rhetoric-story">
-          <p className="is-story">{copy.story}</p>
-          <div className="rhetoric-reading">
-            <p><b>{ru ? 'Как это устроено' : 'How it works'}</b>{copy.mechanism}</p>
-            <p><b>{ru ? 'Что меняется в понимании' : 'What changes in the reading'}</b>{copy.effect}</p>
+      {items.map((item) => {
+        const copy = item[language]
+        const focusWords = item.focusWords || []
+        return <section key={item.id} className="rhetoric-insight">
+          <div className="rhetoric-step">
+            <span>{copy.step}</span>
+            <small>{copy.label}</small>
           </div>
-          {copy.sound && <p className="rhetoric-sound"><b>{ru ? 'На слух' : 'When heard'}</b>{copy.sound}</p>}
-        </div>
-      </section>
-    })}
+          <h3>{copy.title}</h3>
+          <div className="rhetoric-phrase" lang="ar" dir="rtl">
+            {phraseTokens(ayah, item).map((token, tokenIndex) => {
+              const wordIndex = item.range[0] + tokenIndex
+              const classes = [
+                focusWords.includes(wordIndex) ? 'is-focus' : '',
+                wordIndex === focusWordIndex ? 'is-entry' : '',
+              ].filter(Boolean).join(' ')
+              return <span key={wordIndex} className={classes}>{token.ar}</span>
+            })}
+          </div>
+          <div className="rhetoric-story">
+            <p className="is-story">{copy.story}</p>
+            <div className="rhetoric-reading">
+              <p><b>{ru ? 'Как это устроено' : 'How it works'}</b>{copy.mechanism}</p>
+              <p><b>{ru ? 'Что меняется в понимании' : 'What changes in the reading'}</b>{copy.effect}</p>
+            </div>
+            {copy.sound && <p className="rhetoric-sound"><b>{ru ? 'На слух' : 'When heard'}</b>{copy.sound}</p>}
+          </div>
+        </section>
+      })}
 
-    {lens && <section className="rhetoric-passage-lens" style={{ left: WORLD.width / 2, top: 1515 }}>
-      <small>{ru ? 'СВЯЗЬ С СОСЕДНИМИ АЯТАМИ' : 'LINK TO THE SURROUNDING AYAHS'}</small>
-      <h3>{lens[language].title}</h3>
-      <p>{lens[language].text}</p>
-      {lens[language].thread && <p className="rhetoric-passage-thread"><b>{ru ? 'Смысловая арка' : 'Semantic arc'}</b>{lens[language].thread}</p>}
-      <div className="rhetoric-ending-row">
-        {lens.anchors.map(item => <div key={item.ref} className={item.active ? 'is-active' : ''}>
-          <span>{item.ref}</span>
-          <b lang="ar" dir="rtl">{item.ar}</b>
-        </div>)}
-      </div>
-      <p className="rhetoric-passage-sound"><b>{ru ? 'Звучание блока' : 'Sound across the passage'}</b>{lens[language].sound}</p>
-      <div className="rhetoric-source-note">
-        {ru
-          ? 'Грамматические функции частиц: Quranic Arabic Corpus. Связь 2:196–203: текст аятов и Tafsir al-Mukhtasar.'
-          : 'Particle functions: Quranic Arabic Corpus. 2:196–203 passage context: ayah text and Tafsir al-Mukhtasar.'}
-      </div>
-    </section>}
+      {lens && <section className="rhetoric-passage-lens">
+        <small>{ru ? 'СВЯЗЬ С СОСЕДНИМИ АЯТАМИ' : 'LINK TO THE SURROUNDING AYAHS'}</small>
+        <h3>{lens[language].title}</h3>
+        <p>{lens[language].text}</p>
+        {lens[language].thread && <p className="rhetoric-passage-thread"><b>{ru ? 'Смысловая арка' : 'Semantic arc'}</b>{lens[language].thread}</p>}
+        <div className="rhetoric-ending-row">
+          {lens.anchors.map(item => <div key={item.ref} className={item.active ? 'is-active' : ''}>
+            <span>{item.ref}</span>
+            <b lang="ar" dir="rtl">{item.ar}</b>
+          </div>)}
+        </div>
+        <p className="rhetoric-passage-sound"><b>{ru ? 'Звучание блока' : 'Sound across the passage'}</b>{lens[language].sound}</p>
+        <div className="rhetoric-source-note">
+          {ru
+            ? 'Грамматические функции частиц сверены с Quranic Arabic Corpus; межаятная часть использует только наблюдения, совместимые с принятой в проекте системой значений.'
+            : 'Particle functions are checked against the Quranic Arabic Corpus; passage-level observations are limited to points compatible with the project’s established semantic framework.'}
+        </div>
+      </section>}
+    </div>
   </div>
 }
 
