@@ -513,18 +513,117 @@ export const WORD_CONTENT = {
 
 export const LBB_ROOT_CONTENT = {
   ru: {
-    lead: 'ل ب ب (l-b-b) — внутренняя, чистая сердцевина; применительно к человеку — чистое и глубокое разумение.',
-    body: 'В словарях для ل ب ب зафиксированы значения сердцевины и чистой части вещи, разума и разумения, верхней части груди и места ожерелья, нагрудного ремня, захвата за одежду у груди, а также пребывания и удерживания на месте.',
+    lead: 'ل ب ب (l-b-b) — сердцевина, определяющая внутренняя точка.',
+    body: 'Фундаментальный механизм корня раскрывается как движение к этой точке: не остановиться на внешнем или промежуточном, дойти до самой сути и удержаться при ней до конца. Поэтому одна и та же семья охватывает буквальную сердцевину, способность доходить до сути в понимании, попадание в определённую точку, а также пребывание при месте или деле без отхода от него.',
   },
   en: {
-    lead: 'ل ب ب (l-b-b) — the inner, pure core; when applied to a person, purified and deep understanding.',
-    body: 'Lexicons record for ل ب ب senses of an inner core or pure part, understanding and intellect, the upper chest and necklace area, a breast-girth, grasping clothing at the chest, and remaining or keeping to a place.',
+    lead: 'ل ب ب (l-b-b) — the core, the defining inner point.',
+    body: 'The root’s fundamental mechanism unfolds as movement toward that point: not stopping at the outer or intermediate layer, reaching the essence itself, and remaining with it to completion. The same family therefore covers a literal core, the ability to reach the essence in understanding, contact with a precise point, and staying with a place or matter without leaving it.',
   },
   rootNucleus: {
-    ru: 'Чистая внутренняя сердцевина → глубокое, очищенное разумение.',
-    en: 'Pure inner core → deep, purified understanding.',
+    ru: 'Сердцевина / суть → дойти до неё, не остановившись раньше → удержаться при ней до конца.',
+    en: 'Core / essence → reach it without stopping short → remain with it through completion.',
   },
   sources: ['lisanLbb', 'jawhariLbb', 'laneLbb', 'arabicLexiconLbb', 'raghibLbb', 'lbbCorpus'],
+}
+
+export const LBB_DERIVATION_NOTES = {
+  lubb: {
+    connectionRu: 'Это статический образ корня: внутренняя сердцевина, ядро и чистая или отборная часть вещи. В интеллектуальном употреблении тот же образ переносится на способность человека дойти до самой сути.',
+    connectionEn: 'This is the root’s static image: the inner core, kernel, and pure or choicest part of a thing. In intellectual usage the same image is applied to the human capacity to reach the essence itself.',
+  },
+  albab: {
+    connectionRu: 'أَلْبَاب — множественное от لُبّ в интеллектуальной линии. Здесь сердцевина становится образом разумения, которое проходит внешнее и примеси, различает определяющую суть и не отходит от неё.',
+    connectionEn: 'أَلْبَاب is the plural of لُبّ in the intellectual line. Here the core becomes an image of understanding that passes through outward layers and admixtures, discerns the defining essence, and does not leave it.',
+  },
+  labib: {
+    connectionRu: 'لَبِيب — человек, обладающий لُبّ. Поэтому это не просто общий ярлык «умный»: слово характеризует того, кто способен пройти внешнее и добраться до сути.',
+    connectionEn: 'لَبِيب is a person who possesses لُبّ. It is therefore more than a generic label “intelligent”: it characterises someone able to pass beyond the outward layer and reach the essence.',
+  },
+  labba: {
+    connectionRu: 'I форма показывает базовый механизм корня в действии. В засвидетельствованных употреблениях она может вести к сердцевине миндаля, к точке لَبَّة, к прямому положению напротив или к пребыванию при месте. Общая линия — дойти до определяющей точки, а не остановиться раньше.',
+    connectionEn: 'Form I shows the root’s basic mechanism in action. Its attested usages can reach the kernel of an almond, the point called لَبَّة, a position directly opposite, or remaining at a place. The shared line is reaching the defining point rather than stopping short.',
+    formRu: 'I форма не добавляет отдельного приставочного механизма: здесь непосредственно проявляется действие самого корня.',
+    formEn: 'Form I adds no separate prefixed mechanism here: it directly realises the action of the root itself.',
+  },
+  labbaba: {
+    connectionRu: 'Во II форме корневой механизм осуществляется на объекте: у зерна формируется لُبّ, а в телесной линии действие направляется на одежду в области لَبَب / لَبَّة.',
+    connectionEn: 'In Form II the root mechanism is made operative on an object: grain develops a لُبّ, while in the bodily line the action is directed to clothing at the لَبَب / لَبَّة area.',
+    formRu: 'II форма فَعَّلَ здесь делает корневой смысл реализованным в объекте: сформировать сердцевину либо воздействовать через определяющую грудную точку.',
+    formEn: 'Form II فَعَّلَ makes the root meaning operative in an object here: forming a core or acting through the defining chest point.',
+  },
+  alabba: {
+    connectionRu: 'В этой форме повторяется достигнутое состояние корня: у зерна появляется внутренняя часть; при месте или деле субъект остаётся и не отходит. Это не нейтральное «быть где-то», а закрепиться при достигнутой точке.',
+    connectionEn: 'This form repeatedly presents the root as an achieved state: grain develops an inner part; at a place or matter the subject remains and does not leave. It is not merely neutral “being somewhere” but staying with the reached point.',
+    formRu: 'IV форма أَفْعَلَ в засвидетельствованных значениях этой семьи показывает вхождение в состояние, где результат корня уже достигнут.',
+    formEn: 'In the attested senses of this family, Form IV أَفْعَلَ presents entry into a state in which the root’s result has been reached.',
+  },
+  talabbaba: {
+    connectionRu: 'Человек собирает одежду на себе в области груди, подпоясывается и готовится. То есть он сам приводит себя в собранное и закреплённое состояние.',
+    connectionEn: 'A person gathers the clothing on their own body at the chest, girds themself, and prepares. The subject thus brings themself into a gathered and secured state.',
+    formRu: 'V форма تَفَعَّلَ разворачивает действие II формы на самого субъекта: не «собрать другого», а «собраться самому».',
+    formEn: 'Form V تَفَعَّلَ turns the Form II action onto the subject: not “gather another” but “gather oneself.”',
+  },
+  istalabba: {
+    connectionRu: 'Здесь объектом проверки становится чей-либо لُبّ: насколько человек действительно способен понимать и доходить до сути.',
+    connectionEn: 'Here the object of examination is a person’s لُبّ: how far they truly possess understanding capable of reaching the essence.',
+    formRu: 'X форма اِسْتَفْعَلَ здесь направлена на выявление / испытание того, что выражает корень: проверить لُبّ человека.',
+    formEn: 'Form X اِسْتَفْعَلَ here seeks to reveal or test what the root expresses: to examine a person’s لُبّ.',
+  },
+  labab: {
+    connectionRu: 'لَبَب называет верхнюю грудную область и нагрудный ремень. Название ремня связано с местом груди, где он проходит. Его функция — удерживать седло от смещения — дополнительно созвучна корневому механизму удержания, но не выдаётся здесь за доказанную историческую причину названия.',
+    connectionEn: 'لَبَب names the upper chest area and a breast-girth. The strap is named through the chest area where it lies. Its function of keeping the saddle from shifting also resonates with the root’s holding mechanism, but is not presented here as the historically proven reason for the name.',
+  },
+  labbaChest: {
+    connectionRu: 'لَبَّة — конкретная точка верхней груди между ключицами. В глагольной линии لَبَّهُ действие направляется именно в эту определённую точку, а не просто «куда-то в грудь».',
+    connectionEn: 'لَبَّة is a specific point of the upper chest between the collarbones. In the verbal line لَبَّهُ the action is directed to that precise point, not merely “somewhere on the chest.”',
+  },
+  talbib: {
+    connectionRu: 'تَلْبِيب связан с одеждой именно в области لَبَب: собрать её там или схватить человека за эту часть одежды. Связь с корнем проходит через определяющую грудную точку.',
+    connectionEn: 'تَلْبِيب concerns clothing specifically at the لَبَب area: gathering it there or seizing a person by that part of the garment. Its connection to the root runs through the defining chest point.',
+    formRu: 'تَلْبِيب — масдар II формы لَبَّبَ: он называет само осуществление этого действия.',
+    formEn: 'تَلْبِيب is the verbal noun of Form II لَبَّبَ, naming the action itself.',
+  },
+  libaba: {
+    connectionRu: 'Одежда называется через область, на которой она собирается и лежит: верх груди и плечи. Здесь связь проходит через физический لَبَب / لَبَّة.',
+    connectionEn: 'The garment is named through the area where it is gathered and worn: the upper chest and shoulders. The connection here runs through the physical لَبَب / لَبَّة.',
+  },
+  labiba: {
+    connectionRu: 'Это название одежды из той же телесной линии. Точную внутреннюю мотивацию названия ещё нужно отдельно проверить; пока фиксируем только подтверждённую связь с грудной областью.',
+    connectionEn: 'This is a garment name from the same bodily line. Its precise internal naming motivation still needs separate verification; for now only the attested connection with the chest area is retained.',
+  },
+  malbub: {
+    connectionRu: 'Словарное значение связано непосредственно с لَبَب как нагрудным ремнём: مَلْبُوب — животное, на котором этот ремень закреплён.',
+    connectionEn: 'The lexical meaning connects directly to لَبَب as the breast-girth: مَلْبُوب is an animal on which that strap is fitted.',
+  },
+  mulabb: {
+    connectionRu: 'Связь прозрачна через предмет لَبَب: слово характеризует животное, снабжённое этим нагрудным ремнём.',
+    connectionEn: 'The connection is transparent through the object لَبَب: the word describes an animal fitted with this breast-girth.',
+  },
+  mulbab: {
+    connectionRu: 'Связь прозрачна через предмет لَبَب: слово характеризует животное, снабжённое этим нагрудным ремнём.',
+    connectionEn: 'The connection is transparent through the object لَبَب: the word describes an animal fitted with this breast-girth.',
+  },
+  ulbub: {
+    connectionRu: 'Съедобная внутренняя часть плода или косточки непосредственно сохраняет буквальный образ لُبّ — внутреннего ядра.',
+    connectionEn: 'The edible inner part of a fruit or stone directly preserves the literal image of لُبّ — the inner kernel.',
+  },
+  labbNoun: {
+    connectionRu: 'В линии пребывания корень показывает не просто длительность, а لزوم: держаться при чём-либо и не отходить от него. Это та же завершённость движения: дойти и остаться при достигнутом.',
+    connectionEn: 'In the staying-line the root expresses more than duration: لزوم, keeping to something and not leaving it. It is the same completed movement: reaching and remaining with what has been reached.',
+  },
+  lubab: {
+    connectionRu: 'لُبَاب усиливает статический образ сердцевины: чистая, отборная, самая существенная часть вещи.',
+    connectionEn: 'لُبَاب sharpens the static core-image: the pure, choicest, most essential part of a thing.',
+  },
+  lababa: {
+    connectionRu: 'В линии разумения لَبَابَة называет качество обладания لُبّ. Другое словарное значение, связанное с пастбищем, пока не соединяем с этим механизмом без дополнительной проверки.',
+    connectionEn: 'In the understanding-line لَبَابَة names the quality of possessing لُبّ. A separate dictionary sense connected with pasture is not yet joined to this mechanism without further verification.',
+  },
+  lababPasture: {
+    connectionRu: 'Это употребление пока не встроено в общий пазл без остатка. Его сохраняем как подтверждённое словарное значение и отдельно проверяем мотивацию, вместо того чтобы придумывать связь.',
+    connectionEn: 'This usage has not yet been integrated into the overall semantic puzzle without remainder. It is retained as an attested dictionary sense while its motivation is investigated separately rather than invented.',
+  },
 }
 
 export const LBB_WORD_CONTENT = {
@@ -537,84 +636,52 @@ export const LBB_WORD_CONTENT = {
       ],
       en: [
         'أَلْبَاب (albāb) is the broken plural of لُبّ (lubb).',
-        'Its plural pattern is أَفْعَال (afʿāl). The root letters remain ل ب ب; initial أ and the internal ا belong to the plural pattern.',
+        'Its plural pattern is أَفْعَال (afʿāl). The root letters remain ل ب ب; initial أ and internal ا belong to the plural pattern.',
       ],
     },
     meaning: {
       ru: {
-        lead: 'أَلْبَاب (albāb) — множественное от لُبّ: глубокое, очищенное разумение.',
-        body: 'Образ начинается с внутренней сердцевины вещи — её чистой и лучшей части. Применительно к человеку لُبّ становится обозначением разума, способного видеть суть без помех и примесей. Поэтому أُولِي ٱلْأَلْبَابِ можно читать как «обладатели глубокого разумения»: люди, способные дойти от внешней формы к внутреннему смыслу.',
+        lead: 'أَلْبَاب (albāb) — разумение, которое доходит до сути и не остаётся на внешнем.',
+        body: 'Единственное لُبّ буквально называет сердцевину, ядро и чистую или отборную часть. В человеческой линии этот образ становится внутренней способностью пройти внешнее, частное или отвлекающее, распознать определяющую суть и удержать её так, чтобы понимание влияло на выбор.',
       },
       en: {
-        lead: 'أَلْبَاب (albāb) is the plural of لُبّ: deep, purified understanding.',
-        body: 'The image begins with the inner core of a thing — its pure and choicest part. Applied to a person, لُبّ denotes understanding able to reach the essence without obscuring impurities. Thus أُولِي ٱلْأَلْبَابِ can be read as “possessors of deep understanding”: people able to move from outward form to inward meaning.',
+        lead: 'أَلْبَاب (albāb) — understanding that reaches the essence rather than remaining at the surface.',
+        body: 'The singular لُبّ literally names a core, kernel, and pure or choicest part. In the human line this image becomes an inward capacity to pass through the outward, partial, or distracting layer, recognise the defining essence, and retain it so that understanding shapes choice.',
       },
     },
     meaningMap: [
       {
         id: 'mechanism',
-        ru: { title: 'Смысловое ядро', description: 'В центре этой линии — внутренняя, чистая часть вещи. Отсюда развивается значение внутренней способности видеть суть.', items: [
-          { term: 'لُبّ · lubb', definition: 'Сердцевина, ядро, внутренняя мякоть; также чистая или отборная часть чего-либо.', connector: 'переносится на внутреннюю способность человека' },
-          { term: 'Разумение', definition: 'Внутренняя способность понимать, различать и доходить до сути, не оставаясь на внешней оболочке.' },
+        ru: { title: 'Фундаментальный механизм', description: 'Кораническое значение сохраняет физический образ сердцевины.', items: [
+          { term: 'Сердцевина — لُبّ', definition: 'Не внешний слой, а внутренняя, чистая и определяющая часть вещи.', connector: 'пройти внешнее' },
+          { term: 'Дойти до сути', definition: 'Не остановиться на первом впечатлении, отдельном фрагменте или оболочке, а распознать то, что определяет вещь.', connector: 'не отойти от найденного' },
+          { term: 'Удержаться при сути', definition: 'Сохранить распознанное как ориентир для последующего понимания и выбора.' },
         ] },
-        en: { title: 'Semantic core', description: 'At the centre of this line is the inner, pure part of a thing. From there the sense extends to an inward human faculty that reaches the essence.', items: [
-          { term: 'لُبّ · lubb', definition: 'Core, kernel, inner pulp; also the pure or choicest part of something.', connector: 'extends to the human inward faculty' },
-          { term: 'Understanding', definition: 'The inward capacity to understand, discern, and reach the essence rather than remain at the outer surface.' },
-        ] },
-      },
-      {
-        id: 'component',
-        ru: { title: 'Производные основной смысловой линии', description: 'Эти формы удерживают связь с сердцевиной, чистой сутью и разумением.', items: [
-          { term: 'لُبَاب · lubāb', definition: 'Чистая суть, отборная часть, самое существенное в вещи.' },
-          { term: 'لَبَّ / لَبِبَ · labba / labiba', definition: 'Стать обладателем لُبّ — быть разумным, проницательным.' },
-          { term: 'لَبَابَة · labāba', definition: 'Разумность, проницательность; состояние обладания لُبّ.' },
-          { term: 'لَبِيب · labīb', definition: 'Разумный, проницательный человек, обладающий لُبّ.' },
-          { term: 'أَلِبَّاء · alibbāʾ', definition: 'Множественное от لَبِيب: разумные, проницательные люди.' },
-          { term: 'أَلْبَاب · albāb', definition: 'Множественное от لُبّ. В Коране именно эта форма представляет корень ل ب ب.' },
-        ] },
-        en: { title: 'Derivatives in the main semantic line', description: 'These forms preserve the connection with the inner core, pure essence, and understanding.', items: [
-          { term: 'لُبَاب · lubāb', definition: 'Pure essence, choicest part, what is most essential in a thing.' },
-          { term: 'لَبَّ / لَبِبَ · labba / labiba', definition: 'To become possessed of لُبّ — to be intelligent or discerning.' },
-          { term: 'لَبَابَة · labāba', definition: 'Intelligence or discernment; the state of possessing لُبّ.' },
-          { term: 'لَبِيب · labīb', definition: 'An intelligent, discerning person possessing لُبّ.' },
-          { term: 'أَلِبَّاء · alibbāʾ', definition: 'Plural of لَبِيب: intelligent or discerning people.' },
-          { term: 'أَلْبَاب · albāb', definition: 'Plural of لُبّ. In the Quran, this is the form in which the root ل ب ب appears.' },
-        ] },
-      },
-      {
-        id: 'branch',
-        ru: { title: 'Другие словарные ветви', description: 'В том же корневом гнезде словари фиксируют и другие линии. Их полезно видеть, но не следует автоматически переносить их значения на أَلْبَاب.', items: [
-          { term: 'لَبَب / لَبَّة', definition: 'Область верхней части груди, горла или места ожерелья.' },
-          { term: 'تَلْبِيب / لَبَّبَ', definition: 'Собрать одежду у груди или схватить человека за ворот / переднюю часть одежды.' },
-          { term: 'أَلَبَّ / لَبَّ بالمكان', definition: 'Оставаться, пребывать, держаться места.' },
-          { term: 'تَلَبَّبَ', definition: 'Подпоясаться, собраться, приготовиться; в ряде употреблений — привести одежду в собранное положение у груди.' },
-        ] },
-        en: { title: 'Other lexical branches', description: 'The same root entry also records other lexical lines. They are useful to see, but their meanings should not automatically be transferred to أَلْبَاب.', items: [
-          { term: 'لَبَب / لَبَّة', definition: 'The upper chest, throat area, or the place where a necklace rests.' },
-          { term: 'تَلْبِيب / لَبَّبَ', definition: 'To gather clothing at the chest or seize someone by the collar/front of the garment.' },
-          { term: 'أَلَبَّ / لَبَّ بالمكان', definition: 'To remain, stay, or keep to a place.' },
-          { term: 'تَلَبَّبَ', definition: 'To gird oneself, gather oneself, or make ready; in some uses, to arrange clothing closely around the chest.' },
+        en: { title: 'Fundamental mechanism', description: 'The Quranic sense preserves the physical image of the core.', items: [
+          { term: 'Core — لُبّ', definition: 'Not the outer layer but the inner, pure, defining part of a thing.', connector: 'pass beyond the outward layer' },
+          { term: 'Reach the essence', definition: 'Do not stop at first impression, a partial fragment, or the shell; recognise what defines the thing.', connector: 'do not leave what was found' },
+          { term: 'Remain with the essence', definition: 'Keep what was recognised as an orientation for later understanding and choice.' },
         ] },
       },
       {
         id: 'manifestation',
-        ru: { title: 'Кораническое раскрытие أَلْبَاب', description: 'В Коране أَلْبَاب встречается 16 раз и появляется рядом с напоминанием, размышлением, различением и распознаванием знамений.', items: [
-          { term: 'تَذَكُّر · напоминание', definition: 'Способность воспринять напоминание и удержать его смысл.' },
-          { term: 'تَدَبُّر · размышление', definition: 'Способность рассмотреть сказанное глубже и проследить его внутреннюю логику.' },
-          { term: 'Распознавание знамений', definition: 'Увидеть в наблюдаемом не только внешнее событие, но и значение, на которое оно указывает.' },
-          { term: 'Различение и выбор', definition: 'Сопоставить услышанное, распознать существенное и последовать лучшему.' },
+        ru: { title: 'Кораническая проверка', description: 'Все 16 коранических употреблений корня представлены формой أَلْبَاب; контексты повторяют один и тот же тип работы с сутью.', items: [
+          { term: 'Внешнее → существенное', definition: '5:100 противопоставляет впечатляющее количество الخبيث его действительному качеству; 2:179 требует увидеть жизнь внутри механизма القصاص.' },
+          { term: 'Событие → урок', definition: '12:111 ведёт от рассказа о событиях к عِبْرَة; 39:21 — от наблюдаемого жизненного цикла растения к ذِكْرَى.' },
+          { term: 'Текст → внутренний смысл', definition: '38:29 связывает تدبّر аятов с تذكّر أولو الألباب; 3:7 не позволяет неоднозначной части оторваться от целого.' },
+          { term: 'Различение → следование', definition: '39:18 описывает тех, кто слушает сказанное, распознаёт أحسنه и затем следует ему.' },
         ] },
-        en: { title: 'Quranic unfolding of أَلْبَاب', description: 'أَلْبَاب occurs 16 times in the Quran and repeatedly appears with remembrance, reflection, discernment, and recognition of signs.', items: [
-          { term: 'تَذَكُّر · remembrance', definition: 'The capacity to receive a reminder and retain its meaning.' },
-          { term: 'تَدَبُّر · reflection', definition: 'The capacity to examine what is said more deeply and follow its inner logic.' },
-          { term: 'Recognising signs', definition: 'Seeing not only the outward event but also the meaning toward which it points.' },
-          { term: 'Discernment and choice', definition: 'Comparing what is heard, recognising what is essential, and following what is best.' },
+        en: { title: 'Quranic validation', description: 'All 16 Quranic occurrences of the root are represented by أَلْبَاب; their contexts repeatedly show the same kind of movement toward essence.', items: [
+          { term: 'Outward appearance → what matters', definition: '5:100 contrasts the impressive quantity of الخبيث with its actual quality; 2:179 requires seeing life within the mechanism of القصاص.' },
+          { term: 'Event → lesson', definition: '12:111 moves from narrated events to عِبْرَة; 39:21 from the visible life-cycle of a plant to ذِكْرَى.' },
+          { term: 'Text → inward meaning', definition: '38:29 links تدبّر of the verses with تذكّر by أولو الألباب; 3:7 prevents an ambiguous part from being detached from the whole.' },
+          { term: 'Discernment → following', definition: '39:18 describes those who listen, recognise أحسنه, and then follow it.' },
         ] },
       },
     ],
     distinction: {
-      ru: '«Разум» передаёт общий уровень, но словарная семья ل ب ب добавляет образ внутренней чистой сердцевины и способности доходить до сути. Поэтому для أَلْبَاب в Quran Universe мы сохраняем более точное «глубокое разумение».',
-      en: '“Intellect” conveys the broad level, while the ل ب ب lexical family adds the image of an inner pure core and the capacity to reach the essence. Quran Universe therefore keeps the more specific “deep understanding” for أَلْبَاب.',
+      ru: 'Ар-Рагиб формулирует различие так: каждый لُبّ является عقل, но не каждый عقل является لُبّ; لُبّ — разумение, очищенное от примесей. Поэтому «разум» слишком широко, а «глубокое разумение» ближе, если помнить сам механизм: пройти к сути и удержаться при ней.',
+      en: 'Al-Raghib states the distinction this way: every لُبّ is عقل, but not every عقل is لُبّ; لُبّ is understanding purified from admixtures. “Intellect” is therefore too broad, while “deep understanding” is closer when the mechanism is retained: reaching the essence and remaining with it.',
     },
     structureSources: ['lisanLbb', 'jawhariLbb', 'laneLbb', 'arabicLexiconLbb', 'lbbCorpus'],
     meaningSources: ['lisanLbb', 'jawhariLbb', 'laneLbb', 'arabicLexiconLbb', 'raghibLbb', 'lbbCorpus'],
@@ -632,8 +699,8 @@ export const LBB_WORD_CONTENT = {
       en: ['لُبّ (lubb) is the singular dictionary form whose plural is أَلْبَاب (albāb).'],
     },
     meaning: {
-      ru: { lead: 'Сердцевина, чистая или лучшая часть; применительно к человеку — разумение.', body: 'Физическое значение внутреннего ядра переходит в обозначение внутренней способности человека понимать и различать.' },
-      en: { lead: 'Core, kernel, pure or choicest part; applied to a person, understanding.', body: 'The physical sense of an inner kernel extends to the inward human capacity for understanding and discernment.' },
+      ru: { lead: 'Сердцевина, ядро, чистая или отборная часть.', body: 'Это исходный физический образ семьи. Применительно к человеку он становится способностью не останавливаться на оболочке, а доходить до определяющей сути и держаться её.' },
+      en: { lead: 'Core, kernel, pure or choicest part.', body: 'This is the family’s primary physical image. Applied to a person, it becomes the capacity not to stop at the shell but to reach the defining essence and remain with it.' },
     },
     meaningMap: [],
     structureSources: ['lisanLbb', 'jawhariLbb', 'laneLbb', 'arabicLexiconLbb'],
@@ -644,12 +711,12 @@ export const LBB_WORD_CONTENT = {
   labib: {
     pattern: 'فَعِيل', patternReading: 'faʿīl',
     structure: {
-      ru: ['لَبِيب (labīb) — прилагательное от той же корневой семьи: человек, обладающий разумением.'],
-      en: ['لَبِيب (labīb) is an adjective from the same root family: a person possessing understanding.'],
+      ru: ['لَبِيب (labīb) — прилагательное качества от корневой семьи ل ب ب: человек, обладающий لُبّ.'],
+      en: ['لَبِيب (labīb) is a quality adjective from the ل ب ب family: a person possessing لُبّ.'],
     },
     meaning: {
-      ru: { lead: 'Разумный, обладающий глубоким пониманием.', body: 'Прилагательное переносит смысл لُبّ на человека: он характеризуется разумением, проницательностью и способностью видеть суть.' },
-      en: { lead: 'Intelligent, possessing understanding.', body: 'The adjective applies the sense of لُبّ to a person: someone characterised by understanding, discernment, and the ability to grasp the essence.' },
+      ru: { lead: 'Проницательный, обладающий لُبّ.', body: 'لَبِيب характеризует человека через фундаментальный образ корня: он способен пройти внешнее, увидеть определяющую суть и не потерять её за второстепенным.' },
+      en: { lead: 'Discerning, possessing لُبّ.', body: 'لَبِيب characterises a person through the root’s fundamental image: able to pass beyond the outward layer, see the defining essence, and not lose it behind what is secondary.' },
     },
     meaningMap: [],
     structureSources: ['lisanLbb', 'jawhariLbb', 'laneLbb', 'arabicLexiconLbb'],
