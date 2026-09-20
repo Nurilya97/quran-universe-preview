@@ -106,14 +106,10 @@ export function SyntaxView({ ayah, selectedWord, language }) {
               const i = model.steps.indexOf(s)
               const from = geometry.points[s.from], to = geometry.points[s.to]
               if (!from || !to) return null
-              const groupPoints = s.group?.map(word => geometry.points[word]).filter(Boolean) || []
-              const groupLeft = groupPoints.length ? Math.min(...groupPoints.map(point => point.left)) : null
-              const groupRight = groupPoints.length ? Math.max(...groupPoints.map(point => point.right)) : null
-              const x = groupPoints.length ? (groupLeft + groupRight) / 2 : from.x
-              const depth = 34
-              const path = `M ${x} 8 C ${x} ${depth}, ${to.x} ${depth}, ${to.x} 8`
+              const x = from.x
+              const midX = (x + to.x) / 2
+              const path = `M ${x} 8 Q ${midX} 34 ${to.x} 8`
               return <g key={s.id}>
-                {groupPoints.length > 1 && <path className="syntax-group-line" d={`M ${groupLeft + 9} 4 Q ${groupLeft + 4} 4 ${groupLeft + 4} 9 M ${groupLeft + 4} 4 H ${groupRight - 4} M ${groupRight - 4} 4 Q ${groupRight + 1} 4 ${groupRight + 1} 9`} />
                 <path className="syntax-link" d={path} markerEnd={`url(#${marker})`} />
                 <path className="syntax-link-hit" d={path} role="button" tabIndex="0"
                   aria-label={`${i + 1}. ${s.tr}`} onClick={() => changeStep(i)}
