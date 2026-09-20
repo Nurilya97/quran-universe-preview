@@ -349,6 +349,33 @@ function MorphologyStructure({ word, content, language, onPick }) {
 }
 
 
+function LbbRootRelation({ word, language }) {
+  if (word?.rootKey !== 'lbb') return null
+  const ru = language === 'ru'
+  const copy = {
+    core: ru
+      ? 'Эта форма относится к линии لُبّ: внутренняя сердцевина / ядро → чистая или лучшая часть → применительно к человеку разумение и проницательность.'
+      : 'This form belongs to the لُبّ line: inner core / kernel → pure or choicest part → when applied to a person, understanding and discernment.',
+    chest: ru
+      ? 'Здесь работает физическая ветвь لَبَب / لَبَّة: верхняя часть груди между ключицами и место нагрудного ремня или ожерелья. Поэтому слова этой ветви называют предмет, одежду или действие именно в этой зоне груди.'
+      : 'Here the physical branch لَبَب / لَبَّة is active: the upper chest between the collarbones and the place of a breast-girth or necklace. Words in this branch name an object, garment, or action at that part of the chest.',
+    stay: ru
+      ? 'Это отдельная словарная ветвь لَبَّ / أَلَبَّ со значением «оставаться, пребывать, держаться». Её не следует автоматически выводить из значения «сердцевина»: словари фиксируют её как самостоятельную линию употребления.'
+      : 'This is a separate lexical branch of لَبَّ / أَلَبَّ meaning “to remain, stay, keep to.” It should not automatically be derived from “core”; the lexicons record it as its own usage-line.',
+    rq: ru
+      ? 'Это редуплицированная четырёхбуквенная ветвь, которую словари индексируют рядом с этим гнездом. Прямая смысловая связь с لُبّ «сердцевина / разум» не очевидна, поэтому здесь она не придумывается.'
+      : 'This is a reduplicated quadriliteral branch indexed by the lexicons with this family. A direct semantic bridge to لُبّ “core / understanding” is not evident, so none is invented here.',
+    mixed: ru
+      ? 'I форма многозначна и соединяет несколько засвидетельствованных употреблений этого гнезда: линию لُبّ «разум / ядро», физическую область لَبَّة «верх груди», а также другие старые употребления. Поэтому значения показаны раздельно.'
+      : 'Form I is polysemous and contains several attested usages in this lexical family: the لُبّ “understanding / kernel” line, the physical لَبَّة “upper chest” line, and other older usages. The senses are therefore kept separate.',
+  }
+  const text = copy[word.semanticBranch] || copy.mixed
+  return <section className="meaning-distinction">
+    <p className="meaning-distinction-label">{ru ? 'Связь с корнем' : 'Connection to the root'}</p>
+    <p>{text}</p>
+  </section>
+}
+
 function SourceLinks({ ids, language }) {
   return <footer className="entry-sources"><h3>{COPY[language].sources}</h3>{ids.map(id => {
     const source = CONTENT_SOURCES[id]
@@ -469,6 +496,7 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
   if (!content) return null
   if (panel === 'quran') {
     const occurrences = OCCURRENCES[word.id] || []
+    if (!occurrences.length) return null
     const groups = groupOccurrences(word.id)
     const verses = new Set(occurrences.map(item => item.sura + ':' + item.ayah)).size
     return <div className="entry-copy quran-occurrences">
@@ -511,7 +539,8 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
   }
   if (panel === 'meaning') return <div className="entry-copy">
     <p className="entry-status">{t.semanticStatus}</p>
-    <p className="entry-lead">{content.meaning[language].lead}</p><p>{content.meaning[language].body}</p>
+    <p className="entry-lead">{content.meaning[language].lead}</p>{content.meaning[language].body && <p>{content.meaning[language].body}</p>}
+    <LbbRootRelation word={word} language={language} />
     {content.distinction?.[language] && <section className="meaning-distinction">
       <p className="meaning-distinction-label">{language === 'ru' ? 'Чем отличается' : 'How it differs'}</p>
       <p>{content.distinction[language]}</p>
