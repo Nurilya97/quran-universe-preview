@@ -148,9 +148,8 @@ export function ImmersiveUniverse() {
   const searchRoot = findRoot(query) || rootForWord(searchWord)
   const className = 'universe scene-' + scene + (journey ? ' is-travelling' : '') + (paused || reducedMotion ? ' is-still' : '')
 
-  const wordHasQuranOccurrences = (OCCURRENCES[word.id]?.length || 0) > 0
   const wordOrbitNodes = [
-    ...(wordHasQuranOccurrences ? [{ key: 'quran', left: '30%', top: '25%' }] : []),
+    { key: 'quran', left: '30%', top: '25%' },
     { key: 'structure', left: '84%', top: '48%' },
     { key: 'meaning', left: '35%', top: '77%' },
   ]
@@ -219,7 +218,13 @@ export function ImmersiveUniverse() {
     {scene === 'ayah' && !journey && ayahFocus && <AyahView reference={ayahFocus.reference} focusWordIndex={ayahFocus.wordIndex} language={language} onBack={closeAyah} onOpenWordOrbit={openWordFromAyah} />}
 
     {scene === 'root' && !journey && <section className={'root-stage stage-reveal root-stage-' + currentRoot.id} aria-label={t.rootSpace}>
-      <div className="root-intro"><p className="eyebrow">{t.families}</p></div>
+      <div className="root-intro">
+        <p className="eyebrow">{t.families}</p>
+        <div className="root-legend" aria-label={t.rootLegend}>
+          <span><i className="root-legend-quran" aria-hidden="true" />{t.quranColorLegend}</span>
+          <span><b>I · II · IV · V · X</b>{t.formNumberLegend}</span>
+        </div>
+      </div>
       <div className="root-field">
         {currentRootOrbits.map((orbit) => <div key={orbit.id} className={'root-orbit root-orbit-' + orbit.id}
           style={{ '--diameter': orbit.radius * 2 + '%' }} aria-hidden="true"><span>{orbit.mark || orbit.id}</span></div>)}
@@ -227,7 +232,7 @@ export function ImmersiveUniverse() {
         {currentRootForms.map((form) => {
           const point = rootPosition(form, currentRootOrbits)
           const quranic = (OCCURRENCES[form.id]?.length || 0) > 0
-          return <button key={form.id} className={'root-star' + (form.id === 'taqwa' || form.id === 'albab' ? ' root-star-featured' : '') + (quranic ? ' root-star-quranic' : '')}
+          return <button key={form.id} className={'root-star' + (form.id === 'taqwa' ? ' root-star-featured' : '') + (quranic ? ' root-star-quranic' : '')}
           data-orbit={form.orbit} aria-label={form.arabic + ' · ' + t[form.type] + ' · ' + t.familyLabel + ' ' + form.orbit}
           style={{ '--x': point.x + '%', '--y': point.y + '%' }} onClick={() => travel('word', form)}>
           <span className="star-point" aria-hidden="true" /><span className="arabic" lang="ar" dir="rtl">{form.arabic}</span>
