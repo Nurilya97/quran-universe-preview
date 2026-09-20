@@ -417,6 +417,7 @@
 }
 .meaning-class-mechanism { --meaning-color: #7cff8b; }
 .meaning-class-component { --meaning-color: #59f2ff; }
+.meaning-class-branch { --meaning-color: #e6bd76; }
 .meaning-class-manifestation { --meaning-color: #c65cff; }
 .meaning-class-result { --meaning-color: #ff7a59; }
 .meaning-class:last-child {
