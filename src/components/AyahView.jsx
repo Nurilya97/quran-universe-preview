@@ -403,6 +403,104 @@ function WaIttaquniMorphology({ selected, morphology, profile, language }) {
   </section>
 }
 
+
+/* LBB word morphology follows the approved al-taqwa visual grammar.
+   The approved al-taqwa component itself remains untouched. */
+function AlAlbabMorphology({ selected, morphology, profile, language }) {
+  const ru = language === 'ru'
+  const parts = morphology?.parts || []
+
+  return <section className="analysis-morphology-screen approved-ayah-word-template" onClick={(event) => event.stopPropagation()}>
+    <div className="analysis-morphology-canvas">
+      <header className="analysis-morphology-hero">
+        <span lang="ar" dir="rtl">{selected.ar}</span>
+        <em>{selected.tr}</em>
+      </header>
+
+      <svg className="analysis-morphology-tree first plain-tree" viewBox="0 0 100 58" preserveAspectRatio="none" aria-hidden="true">
+        <path className="tree-stem" d="M50 2 V17" />
+        <path className="tree-bar" d="M25 17 H75" />
+        <path className="tree-branch" d="M25 17 V51" />
+        <path className="tree-branch" d="M75 17 V51" />
+      </svg>
+
+      <div className="analysis-morphology-level first-level">
+        <article className="analysis-morphology-node base">
+          <span lang="ar" dir="rtl">أَلْبَابِ</span>
+          <small>albābi</small>
+          <b>{ru ? 'Слово без артикля' : 'Word without the article'}</b>
+          <p>{ru
+            ? 'أَلْبَاب (albāb) — ломаное множественное от لُبّ (lubb). Конечная kasra в форме аята показывает состояние majrūr.'
+            : 'أَلْبَاب (albāb) is the broken plural of لُبّ (lubb). The final kasrah in the ayah form marks the genitive state.'}</p>
+        </article>
+
+        <article className="analysis-morphology-node article">
+          <span lang="ar" dir="rtl">{parts[0]?.ar || 'ٱلـ'}</span>
+          <small>{parts[0]?.tr || 'al-'}</small>
+          <b>{ru ? 'Определённый артикль' : 'Definite article'}</b>
+          <p>{ru
+            ? 'ٱلـ (al-) делает существительное определённым.'
+            : 'ٱلـ (al-) makes the noun definite.'}</p>
+        </article>
+      </div>
+
+      <svg className="analysis-morphology-tree second plain-tree" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true">
+        <path className="tree-stem" d="M25 2 V17" />
+        <path className="tree-bar" d="M16.7 17 H83.3" />
+        <path className="tree-branch" d="M16.7 17 V55" />
+        <path className="tree-branch" d="M50 17 V55" />
+        <path className="tree-branch" d="M83.3 17 V55" />
+      </svg>
+
+      <div className="analysis-morphology-level second-level has-three">
+        <article className="analysis-morphology-node root">
+          <span lang="ar" dir="rtl">{parts[2]?.ar || selected.root}</span>
+          <small>{parts[2]?.tr || selected.rootReading}</small>
+          <b>{ru ? 'Корень' : 'Root'}</b>
+          <p>{ru
+            ? 'ل ب ب (l-b-b) несёт образ внутренней, чистой или отборной сердцевины.'
+            : 'ل ب ب (l-b-b) carries the image of an inner, pure, or choicest core.'}</p>
+        </article>
+
+        <article className="analysis-morphology-node singular">
+          <span lang="ar" dir="rtl">{parts[3]?.ar || 'لُبّ'}</span>
+          <small>{parts[3]?.tr || 'lubb'}</small>
+          <b>{ru ? 'Единственное число' : 'Singular noun'}</b>
+          <p>{ru
+            ? 'لُبّ (lubb) — сердцевина, чистая или лучшая часть; применительно к человеку — глубокое разумение.'
+            : 'لُبّ (lubb) is the core, pure or choicest part; applied to a person, deep understanding.'}</p>
+        </article>
+
+        <article className="analysis-morphology-node pattern">
+          <span lang="ar" dir="rtl">{parts[4]?.ar || profile?.pattern?.ar || 'أَفْعَال'}</span>
+          <small>{parts[4]?.tr || profile?.pattern?.reading || 'afʿāl'}</small>
+          <b>{ru ? 'Модель множественного числа' : 'Broken-plural pattern'}</b>
+          <p>{ru
+            ? 'أَفْعَال (afʿāl) — модель, по которой от لُبّ (lubb) образовано множественное أَلْبَاب (albāb).'
+            : 'أَفْعَال (afʿāl) is the pattern by which plural أَلْبَاب (albāb) is formed from لُبّ (lubb).'}</p>
+        </article>
+      </div>
+
+      <div className="analysis-morphology-note">
+        <div className="analysis-morphology-summary-formula" lang="ar" dir="rtl">
+          ٱلْأَلْبَابِ = ٱلـ + أَلْبَابِ
+        </div>
+        <div className="analysis-morphology-summary-list">
+          <p>{ru
+            ? <><b>Основа:</b> أَلْبَاب (albāb) — ломаное множественное от لُبّ (lubb), корень ل ب ب.</>
+            : <><b>Base:</b> أَلْبَاب (albāb) is the broken plural of لُبّ (lubb), from the root ل ب ب.</>}</p>
+          <p>{ru
+            ? <><b>Модель:</b> أَفْعَال (afʿāl) образует множественное число.</>
+            : <><b>Pattern:</b> أَفْعَال (afʿāl) forms the broken plural.</>}</p>
+          <p>{ru
+            ? <><b>В форме аята:</b> ٱلـ делает слово определённым, а конечная kasra показывает majrūr в идафе أُولِي ٱلْأَلْبَابِ.</>
+            : <><b>In the ayah form:</b> ٱلـ makes the noun definite, while the final kasrah marks the genitive state in the iḍāfa أُولِي ٱلْأَلْبَابِ.</>}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+}
+
 function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrbit }) {
   const [focusView, setFocusView] = useState('word')
   useEffect(() => { setFocusView('word') }, [selectedWord])
@@ -459,7 +557,14 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
                 profile={morphologyModel}
                 language={language}
               />
-            : <AyahMorphologyView
+            : selected.orbitId === 'albab'
+              ? <AlAlbabMorphology
+                  selected={selected}
+                  morphology={morphology}
+                  profile={morphologyModel}
+                  language={language}
+                />
+              : <AyahMorphologyView
                 selected={selected}
                 morphology={morphology}
                 profile={morphologyModel}
