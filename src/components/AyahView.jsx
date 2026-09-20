@@ -309,7 +309,6 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
             <p><b>{ru ? 'Связь' : 'Connection'}</b>{copy.mechanism}</p>
             <p><b>{ru ? 'Эффект' : 'Effect'}</b>{copy.effect}</p>
           </div>
-          {copy.sound && <p className="rhetoric-sound"><b>{ru ? 'На слух' : 'When heard'}</b>{copy.sound}</p>}
         </section>
       })}
 
@@ -329,9 +328,9 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
         {lens[language].thread && <p className="rhetoric-passage-thread"><b>{ru ? 'Смысловая связь внутри блока' : 'Semantic link inside the block'}</b>{lens[language].thread}</p>}
 
         <div className="rhetoric-source-note">
-          {ru
-            ? 'Функции частиц сверены с Quranic Arabic Corpus. Звуковая перекличка показана как наблюдаемая особенность текста, без утверждения, что все аяты блока имеют одну рифму.'
-            : 'Particle functions are checked against the Quranic Arabic Corpus. The sound correspondence is shown as an observable textual feature, without claiming that every ayah in the passage shares one rhyme.'}
+          <a href="https://corpus.quran.com/treebank.jsp?chapter=2&verse=197" target="_blank" rel="noopener noreferrer">
+            {ru ? 'Грамматическая сверка ↗' : 'Grammar reference ↗'}
+          </a>
         </div>
       </section>}
     </div>
