@@ -7017,3 +7017,22 @@
 
 
 
+
+
+.rhetoric-transliteration {
+  max-width: 700px;
+  margin: 5px auto 0;
+  color: #829094;
+  font-size: 14px;
+  line-height: 1.45;
+  letter-spacing: .01em;
+  text-align: center;
+}
+
+@media (max-width:760px) {
+  .rhetoric-transliteration {
+    max-width: 535px;
+    font-size: 17px;
+    line-height: 1.5;
+  }
+}
