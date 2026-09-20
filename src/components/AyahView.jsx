@@ -249,9 +249,9 @@ function compositionY(index, count) {
 }
 
 function rhetoricY(index, count) {
-  if (count <= 1) return 940
+  if (count <= 1) return 820
   const top = 330
-  const bottom = 1640
+  const bottom = 1320
   return top + ((bottom - top) * index) / (count - 1)
 }
 
@@ -260,6 +260,11 @@ function CompositionDiagram({ ayah, focusWordIndex, language }) {
   const items = ayah.blocks
 
   return <div className="diagram-view composition-diagram layer-themes">
+    <div className="composition-thread" style={{ left: WORLD.width / 2, top: 105 }}>
+      <small>{language === 'ru' ? 'НИТЬ АЯТА' : 'AYAH THREAD'}</small>
+      <p>{ayah.compositionThread?.[language]}</p>
+    </div>
+
     <svg className="diagram-lines composition-lines" width={WORLD.width} height={WORLD.height} viewBox={`0 0 ${WORLD.width} ${WORLD.height}`} aria-hidden="true">
       {items.map((item, index) => {
         const y = compositionY(index, items.length)
@@ -296,6 +301,12 @@ function CompositionDiagram({ ayah, focusWordIndex, language }) {
           })}
         </div>
         <p>{copy.text}</p>
+        {copy.bridge && index < items.length - 1 && <div
+          className="composition-bridge"
+          style={{ top: (compositionY(index + 1, items.length) - y) / 2 + 98 }}
+        >
+          <span>{copy.bridge}</span>
+        </div>}
       </section>
     })}
   </div>
@@ -304,8 +315,14 @@ function CompositionDiagram({ ayah, focusWordIndex, language }) {
 function RhetoricDiagram({ ayah, focusWordIndex, language }) {
   const ru = language === 'ru'
   const items = ayah.rhetoric || []
+  const lens = ayah.passageLens
 
   return <div className="diagram-view rhetoric-diagram">
+    <div className="rhetoric-thread" style={{ left: WORLD.width / 2, top: 110 }}>
+      <small>{ru ? 'ОДНА МЫСЛЬ, ЧЕТЫРЕ ПОВОРОТА' : 'ONE THOUGHT, FOUR TURNS'}</small>
+      <p>{ayah.compositionThread?.[language]}</p>
+    </div>
+
     {items.map((item, index) => {
       const y = rhetoricY(index, items.length)
       const copy = item[language]
@@ -315,7 +332,10 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
         className="rhetoric-insight"
         style={{ left: WORLD.width / 2, top: y }}
       >
-        <small>{copy.label}</small>
+        <div className="rhetoric-step">
+          <span>{copy.step}</span>
+          <small>{copy.label}</small>
+        </div>
         <h3>{copy.title}</h3>
         <div className="rhetoric-phrase" lang="ar" dir="rtl">
           {phraseTokens(ayah, item).map((token, tokenIndex) => {
@@ -327,18 +347,34 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
             return <span key={wordIndex} className={classes}>{token.ar}</span>
           })}
         </div>
-        <div className="rhetoric-explanation">
-          <p><b>{ru ? 'Что происходит' : 'What happens'}</b>{copy.what}</p>
-          <p><b>{ru ? 'Что это даёт' : 'What it does'}</b>{copy.effect}</p>
+        <div className="rhetoric-story">
+          <p className="is-story">{copy.story}</p>
+          <div className="rhetoric-reading">
+            <p><b>{ru ? 'Как это устроено' : 'How it works'}</b>{copy.mechanism}</p>
+            <p><b>{ru ? 'Что меняется в понимании' : 'What changes in the reading'}</b>{copy.effect}</p>
+          </div>
           {copy.sound && <p className="rhetoric-sound"><b>{ru ? 'На слух' : 'When heard'}</b>{copy.sound}</p>}
         </div>
       </section>
     })}
-    <div className="rhetoric-source-note" style={{ left: WORLD.width / 2, top: 1810 }}>
-      {ru
-        ? 'Грамматические функции частиц сверены с Quranic Arabic Corpus и иʿrāб-разбором Quranpedia.'
-        : 'Particle functions are checked against the Quranic Arabic Corpus and Quranpedia iʿrāb analysis.'}
-    </div>
+
+    {lens && <section className="rhetoric-passage-lens" style={{ left: WORLD.width / 2, top: 1515 }}>
+      <small>{ru ? 'СВЯЗЬ С СОСЕДНИМИ АЯТАМИ' : 'LINK TO THE SURROUNDING AYAHS'}</small>
+      <h3>{lens[language].title}</h3>
+      <p>{lens[language].text}</p>
+      <div className="rhetoric-ending-row">
+        {lens.anchors.map(item => <div key={item.ref} className={item.active ? 'is-active' : ''}>
+          <span>{item.ref}</span>
+          <b lang="ar" dir="rtl">{item.ar}</b>
+        </div>)}
+      </div>
+      <p className="rhetoric-passage-sound"><b>{ru ? 'Звучание блока' : 'Sound across the passage'}</b>{lens[language].sound}</p>
+      <div className="rhetoric-source-note">
+        {ru
+          ? 'Грамматические функции частиц: Quranic Arabic Corpus. Связь 2:196–203: текст аятов и Tafsir al-Mukhtasar.'
+          : 'Particle functions: Quranic Arabic Corpus. 2:196–203 passage context: ayah text and Tafsir al-Mukhtasar.'}
+      </div>
+    </section>}
   </div>
 }
 
