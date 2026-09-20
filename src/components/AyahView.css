@@ -7322,7 +7322,7 @@
 .approved-taqwa-baseline .analysis-morphology-tree.plain-tree path {
   fill: none !important;
   stroke: rgba(186, 204, 198, .58) !important;
-  stroke-width: 2px !important;
+  stroke-width: 1px !important;
   stroke-linecap: butt !important;
   stroke-linejoin: miter !important;
   marker-start: none !important;
