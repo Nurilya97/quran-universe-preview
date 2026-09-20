@@ -301,13 +301,21 @@ function CompositionDiagram({ ayah, focusWordIndex, language }) {
           })}
         </div>
         <p>{copy.text}</p>
-        {copy.bridge && index < items.length - 1 && <div
-          className="composition-bridge"
-          style={{ top: (compositionY(index + 1, items.length) - y) / 2 + 98 }}
-        >
-          <span>{copy.bridge}</span>
-        </div>}
       </section>
+    })}
+
+    {items.slice(0, -1).map((item, index) => {
+      const currentY = compositionY(index, items.length)
+      const nextY = compositionY(index + 1, items.length)
+      const copy = item[language]
+      if (!copy.bridge) return null
+      return <div
+        key={item.id + '-bridge'}
+        className="composition-bridge"
+        style={{ left: WORLD.width / 2, top: (currentY + nextY) / 2 }}
+      >
+        <span>{copy.bridge}</span>
+      </div>
     })}
   </div>
 }
