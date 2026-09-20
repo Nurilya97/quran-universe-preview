@@ -5546,3 +5546,50 @@
     line-height: 1.5 !important;
   }
 }
+
+
+/* Rhetoric and Sound are plain composition layers: no reveal UI, no overlap behavior. */
+.composition-diagram.layer-rhetoric .composition-constellation,
+.composition-diagram.layer-sound .composition-constellation {
+  width: 660px !important;
+  cursor: default !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+.composition-diagram.layer-rhetoric .composition-constellation > p,
+.composition-diagram.layer-sound .composition-constellation > p {
+  max-width: 590px !important;
+  margin: 9px auto 0 !important;
+  color: #89969c !important;
+  font-size: 12.5px !important;
+  line-height: 1.7 !important;
+}
+
+.composition-diagram.layer-sound .composition-phrase span {
+  opacity: .82 !important;
+}
+
+.composition-diagram.layer-sound .composition-phrase span.is-pattern {
+  opacity: 1 !important;
+}
+
+.composition-open-cue,
+.composition-node-detail,
+.sound-layer-footer {
+  display: none !important;
+}
+
+@media (max-width:760px) {
+  .composition-diagram.layer-rhetoric .composition-constellation,
+  .composition-diagram.layer-sound .composition-constellation {
+    width: min(620px, 90vw) !important;
+  }
+
+  .composition-diagram.layer-rhetoric .composition-constellation > p,
+  .composition-diagram.layer-sound .composition-constellation > p {
+    max-width: min(560px, 84vw) !important;
+    font-size: 12px !important;
+    line-height: 1.68 !important;
+  }
+}
