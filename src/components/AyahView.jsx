@@ -282,22 +282,9 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
   const ru = language === 'ru'
   const items = ayah.rhetoric || []
   const lens = ayah.passageLens
-  const connectors = ayah.rhetoricConnectors?.[language]
 
   return <div className="diagram-view rhetoric-diagram">
     <div className="rhetoric-flow" style={{ left: WORLD.width / 2, top: 150 }}>
-      {connectors && <section className="rhetoric-primer rhetoric-connectors">
-        <small>{ru ? 'СНАЧАЛА ЗАКРЕПИМ ДВА СОЕДИНИТЕЛЯ' : 'FIRST, KEEP TWO CONNECTORS DISTINCT'}</small>
-        <h3>{connectors.title}</h3>
-        <div className="rhetoric-fa-roles">
-          {[connectors.fa, connectors.wa].map((item) => <div key={item.ar}>
-            <b lang="ar" dir="rtl">{item.ar} <em>{item.tr}</em></b>
-            <span>{item.text}</span>
-          </div>)}
-        </div>
-        <p className="rhetoric-primer-current">{connectors.note}</p>
-      </section>}
-
       {items.map((item) => {
         const copy = item[language]
         const focusWords = item.focusWords || []
