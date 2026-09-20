@@ -12,12 +12,11 @@ export const ROOT_ORBITS = [
   { id: 'VIII', radius: 45.5, label: 'familyVIII' },
 ]
 export const LBB_ROOT_ORBITS = [
-  { id: 'LBBI', mark: 'I', radius: 44, label: 'familyLbbI' },
+  { id: 'LBBI', mark: 'I', radius: 29, label: 'familyLbbI' },
   { id: 'LBBII', mark: 'II', radius: 35, label: 'familyLbbII' },
-  { id: 'LBBIV', mark: 'IV', radius: 29, label: 'familyLbbIV' },
-  { id: 'LBBV', mark: 'V', radius: 23, label: 'familyLbbV' },
-  { id: 'LBBX', mark: 'X', radius: 17, label: 'familyLbbX' },
-  { id: 'LBBRQ', mark: 'R.Q. I', radius: 50, label: 'familyLbbRQ' },
+  { id: 'LBBIV', mark: 'IV', radius: 40, label: 'familyLbbIV' },
+  { id: 'LBBV', mark: 'V', radius: 44, label: 'familyLbbV' },
+  { id: 'LBBX', mark: 'X', radius: 48, label: 'familyLbbX' },
 ]
 export const ROOT_DEMOS = {
   wqy: { id: 'wqy', arabic: 'و ق ي', reading: 'w-q-y', orbits: ROOT_ORBITS },
@@ -42,7 +41,7 @@ export const FORMS = [
   { id: 'alabba', arabic: 'أَلَبَّ', reading: 'alabba', orbit: 'LBBIV', type: 'verbIV', angle: 90, source: 'arabicLexiconLbb', rootKey: 'lbb', lexicalOnly: true, semanticBranch: 'stay', definitionRu: 'Оставаться, пребывать, держаться места или дела.', definitionEn: 'To remain, stay, or keep to a place or matter.' },
   { id: 'talabbaba', arabic: 'تَلَبَّبَ', reading: 'talabbaba', orbit: 'LBBV', type: 'verbV', angle: 270, source: 'arabicLexiconLbb', rootKey: 'lbb', lexicalOnly: true, semanticBranch: 'chest', definitionRu: 'Подтянуть и собрать одежду на себе, подпоясаться, приготовиться к действию или бою.', definitionEn: 'To gather and tuck up one’s clothing, gird oneself, and make ready for action or fighting.' },
   { id: 'istalabba', arabic: 'اِسْتَلَبَّ', reading: 'istalabba', orbit: 'LBBX', type: 'verbX', angle: 180, source: 'arabicLexiconLbb', rootKey: 'lbb', lexicalOnly: true, semanticBranch: 'core', definitionRu: 'Испытать чей-либо لُبّ — проверить его разум, понимание или проницательность.', definitionEn: 'To test a person’s لُبّ — their understanding, intelligence, or discernment.' },
-  { id: 'lablabaVerb', arabic: 'لَبْلَبَ', reading: 'lablaba', orbit: 'LBBRQ', type: 'verbRQ', angle: 0, source: 'arabicLexiconLbb', rootKey: 'lbb', lexicalOnly: true, semanticBranch: 'rq', definitionRu: 'Редуплицированная четырёхбуквенная форма; в словарях для этой ветви фиксируются отдельные употребления.', definitionEn: 'A reduplicated quadriliteral form; lexicons record separate usages for this branch.' },
+  { id: 'lablabaVerb', arabic: 'لَبْلَبَ', reading: 'lablaba', orbit: 'LBBRQ', type: 'verbRQ', angle: 0, source: 'arabicLexiconLbb', rootKey: 'lbb', relatedOnly: true, lexicalOnly: true, semanticBranch: 'rq', definitionRu: 'Редуплицированная четырёхбуквенная форма; в словарях для этой ветви фиксируются отдельные употребления.', definitionEn: 'A reduplicated quadriliteral form; lexicons record separate usages for this branch.' },
 
   // Main nominal entries
   { id: 'lubb', arabic: 'لُبّ', reading: 'lubb', orbit: 'LBBI', type: 'noun', angle: 24, source: 'laneLbb', rootKey: 'lbb', lexicalOnly: true, semanticBranch: 'core', definitionRu: 'Сердцевина, ядро, внутренняя мякоть; чистая или лучшая часть; у человека — разум, понимание.', definitionEn: 'Core, kernel, inner pulp; pure or choicest part; in a person, understanding or intellect.' },
@@ -65,11 +64,11 @@ export const FORMS = [
 
   // Other entries indexed in the classical lexical family
   { id: 'talbib', arabic: 'تَلْبِيب', reading: 'talbīb', orbit: 'LBBII', type: 'noun', angle: 225, source: 'laneLbb', rootKey: 'lbb', lexicalOnly: true, semanticBranch: 'chest', definitionRu: 'Тَلْبِيب: часть одежды у верхней груди; выражение أَخَذَ بِتَلْبِيبِهِ означает схватить человека за эту часть одежды у груди / за ворот и потянуть.', definitionEn: 'تَلْبِيب: the portion of clothing at the upper chest; أَخَذَ بِتَلْبِيبِهِ means to seize a person by that part of the garment / collar and pull.' },
-  { id: 'lablab', arabic: 'لَبْلَب', reading: 'lablab', orbit: 'LBBRQ', type: 'adjective', angle: 60, source: 'laneLbb', rootKey: 'lbb', lexicalOnly: true, semanticBranch: 'rq', definitionRu: 'لَبْلَب / لُبْلُب: добрый и благожелательный к своей семье и соседям.', definitionEn: 'لَبْلَب / لُبْلُب: kind and beneficent to one’s family and neighbours.' },
-  { id: 'bilabalib', arabic: 'بِلَبَالِبِ', reading: 'bilabālibi', orbit: 'LBBRQ', type: 'lexicalForm', angle: 120, source: 'laneLbb', rootKey: 'lbb', lexicalOnly: true, semanticBranch: 'rq', definitionRu: 'Бِلَبَالِبِ — в выражении о самой глубокой сердечной привязанности; لَبَالِب также обозначает смешанный шум овец или коз.', definitionEn: 'بِلَبَالِبِ occurs in an expression of the tenderest heartfelt affection; لَبَالِب also denotes the confused cries of sheep or goats.' },
-  { id: 'lablabaNoun', arabic: 'لَبْلَبَة', reading: 'lablaba', orbit: 'LBBRQ', type: 'noun', angle: 180, source: 'laneLbb', rootKey: 'lbb', lexicalOnly: true, semanticBranch: 'rq', definitionRu: 'Звукоподражательное слово для крика козла во время гона.', definitionEn: 'An imitative word for the cry of a he-goat at rutting-time.' },
-  { id: 'lablabPlant', arabic: 'لَبْلَاب', reading: 'lablāb', orbit: 'LBBRQ', type: 'noun', angle: 240, source: 'laneLbb', rootKey: 'lbb', lexicalOnly: true, semanticBranch: 'rq', definitionRu: 'لَبْلَاب: название вьющегося растения.', definitionEn: 'لَبْلَاب: a name for a climbing plant.' },
-  { id: 'lawlab', arabic: 'لَوْلَب', reading: 'lawlab', orbit: 'LBBRQ', type: 'lexicalForm', angle: 300, source: 'laneLbb', rootKey: 'lbb', lexicalOnly: true, semanticBranch: 'rq', definitionRu: 'لَوْلَب: отдельная словарная форма, на которую статья этого гнезда даёт перекрёстную ссылку.', definitionEn: 'لَوْلَب: a separate lexical form cross-referenced from this lexical family.' },
+  { id: 'lablab', arabic: 'لَبْلَب', reading: 'lablab', orbit: 'LBBRQ', type: 'adjective', angle: 60, source: 'laneLbb', rootKey: 'lbb', relatedOnly: true, lexicalOnly: true, semanticBranch: 'rq', definitionRu: 'لَبْلَب / لُبْلُب: добрый и благожелательный к своей семье и соседям.', definitionEn: 'لَبْلَب / لُبْلُب: kind and beneficent to one’s family and neighbours.' },
+  { id: 'bilabalib', arabic: 'بِلَبَالِبِ', reading: 'bilabālibi', orbit: 'LBBRQ', type: 'lexicalForm', angle: 120, source: 'laneLbb', rootKey: 'lbb', relatedOnly: true, lexicalOnly: true, semanticBranch: 'rq', definitionRu: 'Бِلَبَالِبِ — в выражении о самой глубокой сердечной привязанности; لَبَالِب также обозначает смешанный шум овец или коз.', definitionEn: 'بِلَبَالِبِ occurs in an expression of the tenderest heartfelt affection; لَبَالِب also denotes the confused cries of sheep or goats.' },
+  { id: 'lablabaNoun', arabic: 'لَبْلَبَة', reading: 'lablaba', orbit: 'LBBRQ', type: 'noun', angle: 180, source: 'laneLbb', rootKey: 'lbb', relatedOnly: true, lexicalOnly: true, semanticBranch: 'rq', definitionRu: 'Звукоподражательное слово для крика козла во время гона.', definitionEn: 'An imitative word for the cry of a he-goat at rutting-time.' },
+  { id: 'lablabPlant', arabic: 'لَبْلَاب', reading: 'lablāb', orbit: 'LBBRQ', type: 'noun', angle: 240, source: 'laneLbb', rootKey: 'lbb', relatedOnly: true, lexicalOnly: true, semanticBranch: 'rq', definitionRu: 'لَبْلَاب: название вьющегося растения.', definitionEn: 'لَبْلَاب: a name for a climbing plant.' },
+  { id: 'lawlab', arabic: 'لَوْلَب', reading: 'lawlab', orbit: 'LBBRQ', type: 'lexicalForm', angle: 300, source: 'laneLbb', rootKey: 'lbb', relatedOnly: true, lexicalOnly: true, semanticBranch: 'rq', definitionRu: 'لَوْلَب: отдельная словарная форма, на которую статья этого гнезда даёт перекрёстную ссылку.', definitionEn: 'لَوْلَب: a separate lexical form cross-referenced from this lexical family.' },
 ]
 
 export function rootPosition(form, orbits = ROOT_ORBITS) {
@@ -81,7 +80,7 @@ export function rootForWord(word) {
   return ROOT_DEMOS[word?.rootKey || 'wqy'] || ROOT_DEMOS.wqy
 }
 export function formsForRoot(rootKey = 'wqy') {
-  return FORMS.filter(form => (form.rootKey || 'wqy') === rootKey)
+  return FORMS.filter(form => (form.rootKey || 'wqy') === rootKey && !form.relatedOnly)
 }
 export const COPY = {
   ru: {
