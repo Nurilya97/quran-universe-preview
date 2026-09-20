@@ -12,6 +12,9 @@ export const CONTENT_SOURCES = {
   tuqatPattern: { url: 'https://www.greattafsirs.com/Tafsir_Library.aspx?AyahNo=28&MadhabNo=1&SoraNo=3&TafsirNo=5', ru: 'Аль-Куртуби · языковой разбор تُقَاة, 3:28', en: 'Al-Qurtubi · linguistic analysis of تُقَاة, 3:28' },
   tuqatCorpus: { url: 'https://corpus.quran.com/wordmorphology.jsp?location=(3:102:7)', ru: 'Разметка слова تُقَاتِهِ · 3:102:7', en: 'Annotation of تُقَاتِهِ · 3:102:7' },
   baqarahMuttaqin: { url: 'https://quran.com/2/2-5', ru: 'Аль-Бакара 2:2–5 · описание المُتَّقِينَ', en: 'Al-Baqarah 2:2–5 · description of المُتَّقِينَ' },
+  lbbCorpus: { url: 'https://corpus.quran.com/qurandictionary.jsp?q=lbb', ru: 'Quranic Arabic Corpus · корень ل ب ب', en: 'Quranic Arabic Corpus · root ل ب ب' },
+  laneLbb: { url: 'https://www.laneslexicon.com/word/%D9%84%D8%A8/n37427', ru: 'Lane · لُبّ — сердцевина, чистая часть, разум', en: 'Lane · لُبّ — core, choice part, understanding' },
+  raghibLbb: { url: 'https://www.hodaalquran.com/article/11285', ru: 'Ар-Рагиб · «Аль-Муфрадат», لب', en: 'Al-Raghib · Al-Mufradat, لب' },
 }
 
 export const ROOT_CONTENT = {
@@ -501,5 +504,117 @@ export const WORD_CONTENT = {
       en: 'تَوَقَّىٰ (tawaqqā) is lexically very close to ٱتَّقَىٰ (ittaqā). Meaning presents them as closely related forms, while Word Structure explains their different patterns.',
     },
     structureSources: ['laneWqy', 'jawhari'], meaningSources: ['laneWqy', 'jawhari'], related: ['waqa', 'ittaqa'],
+  },
+}
+
+
+export const LBB_ROOT_CONTENT = {
+  ru: {
+    lead: 'ل ب ب (l-b-b) — внутренняя, чистая сердцевина; применительно к человеку — чистое и глубокое разумение.',
+    body: 'Lane приводит لُبّ (lubb) как внутренность или ядро вещи, её чистую и лучшую часть, а затем — как разум и понимание человека. Ар-Рагиб определяет لُبّ как «разум, очищенный от примесей» и подчёркивает, что это более специальное понятие, чем просто عقل (ʿaql). В Коране этот корень представлен формой أَلْبَاب (albāb).',
+  },
+  en: {
+    lead: 'ل ب ب (l-b-b) — the inner, pure core; when applied to a person, purified and deep understanding.',
+    body: 'Lane gives لُبّ (lubb) as the inside or kernel of a thing, its pure or choicest part, and by extension human understanding or intellect. Al-Raghib defines لُبّ as intellect purified from impurities and treats it as more specific than عقل (ʿaql). In the Quran this root appears in the form أَلْبَاب (albāb).',
+  },
+  rootNucleus: {
+    ru: 'Чистая внутренняя сердцевина → глубокое, очищенное разумение.',
+    en: 'Pure inner core → deep, purified understanding.',
+  },
+  sources: ['laneLbb', 'raghibLbb', 'lbbCorpus'],
+}
+
+export const LBB_WORD_CONTENT = {
+  albab: {
+    pattern: 'أَفْعَال', patternReading: 'afʿāl',
+    structure: {
+      ru: [
+        'أَلْبَاب (albāb) — ломаное множественное число от لُبّ (lubb).',
+        'Модель множественного числа — أَفْعَال (afʿāl). Корневые буквы остаются ل ب ب; начальная أ и внутренний ا принадлежат модели множественного числа.',
+      ],
+      en: [
+        'أَلْبَاب (albāb) is the broken plural of لُبّ (lubb).',
+        'Its plural pattern is أَفْعَال (afʿāl). The root letters remain ل ب ب; initial أ and the internal ا belong to the plural pattern.',
+      ],
+    },
+    meaning: {
+      ru: {
+        lead: 'أَلْبَاب (albāb) — множественное от لُبّ: глубокое, очищенное разумение.',
+        body: 'Образ начинается с внутренней сердцевины вещи — её чистой и лучшей части. Применительно к человеку لُبّ становится обозначением разума, способного видеть суть без помех и примесей. Поэтому أُولِي ٱلْأَلْبَابِ можно читать как «обладатели глубокого разумения»: люди, способные дойти от внешней формы к внутреннему смыслу.',
+      },
+      en: {
+        lead: 'أَلْبَاب (albāb) is the plural of لُبّ: deep, purified understanding.',
+        body: 'The image begins with the inner core of a thing — its pure and choicest part. Applied to a person, لُبّ denotes understanding able to reach the essence without obscuring impurities. Thus أُولِي ٱلْأَلْبَابِ can be read as “possessors of deep understanding”: people able to move from outward form to inward meaning.',
+      },
+    },
+    meaningMap: [
+      {
+        id: 'mechanism',
+        ru: { title: 'Смысловое ядро', description: 'От физической сердцевины значение переносится к внутренней способности понимания.', items: [
+          { term: 'Сердцевина / ядро', definition: 'Внутренняя, чистая или отборная часть вещи.' },
+          { term: 'Глубокое разумение', definition: 'Способность видеть суть и удерживать смысл, а не останавливаться на внешней оболочке.' },
+        ] },
+        en: { title: 'Semantic core', description: 'The physical image of an inner kernel extends to the inward faculty of understanding.', items: [
+          { term: 'Core / kernel', definition: 'The inner, pure, or choicest part of a thing.' },
+          { term: 'Deep understanding', definition: 'The capacity to grasp the essence rather than stop at the outer shell.' },
+        ] },
+      },
+      {
+        id: 'manifestation',
+        ru: { title: 'Проявления в кораническом употреблении', description: 'Форма أَلْبَاب многократно появляется рядом с напоминанием, размышлением и распознаванием знамений.', items: [
+          { term: 'Размышление', definition: 'Умение рассматривать знамения и извлекать из них смысл.' },
+          { term: 'Напоминание', definition: 'Способность воспринять напоминание и удержать его внутренний смысл.' },
+          { term: 'Различение', definition: 'Умение распознать существенное и сделать осознанный вывод.' },
+        ] },
+        en: { title: 'Quranic manifestations', description: 'أَلْبَاب repeatedly occurs alongside remembrance, reflection, and recognition of signs.', items: [
+          { term: 'Reflection', definition: 'Considering signs and drawing meaning from them.' },
+          { term: 'Remembrance', definition: 'Receiving a reminder and retaining its inward significance.' },
+          { term: 'Discernment', definition: 'Recognising what is essential and reaching a considered conclusion.' },
+        ] },
+      },
+    ],
+    distinction: {
+      ru: '«Разум» — допустимый общий перевод, но لُبّ уже по смыслу: словари связывают его с чистой, отборной сердцевиной и с разумением, очищенным от помех.',
+      en: '“Intellect” is a valid broad rendering, but لُبّ is more specific: the lexicons connect it with the pure, choicest core and with understanding purified from obstruction.',
+    },
+    structureSources: ['laneLbb', 'lbbCorpus'],
+    meaningSources: ['laneLbb', 'raghibLbb', 'lbbCorpus'],
+    related: ['lubb', 'labib'],
+    occurrenceNote: {
+      ru: 'Quranic Arabic Corpus отмечает 16 вхождений корня ل ب ب; все они представлены существительным أَلْبَاب.',
+      en: 'The Quranic Arabic Corpus records 16 occurrences of the root ل ب ب, all represented by the noun أَلْبَاب.',
+    },
+  },
+
+  lubb: {
+    pattern: 'فُعْل', patternReading: 'fuʿl',
+    structure: {
+      ru: ['لُبّ (lubb) — словарная форма единственного числа, от которой образовано множественное أَلْبَاب (albāb).'],
+      en: ['لُبّ (lubb) is the singular dictionary form whose plural is أَلْبَاب (albāb).'],
+    },
+    meaning: {
+      ru: { lead: 'Сердцевина, чистая или лучшая часть; применительно к человеку — разумение.', body: 'Lane связывает физическое значение внутреннего ядра с переносным значением понимания и интеллекта.' },
+      en: { lead: 'Core, kernel, pure or choicest part; applied to a person, understanding.', body: 'Lane links the physical sense of an inner kernel with the figurative sense of understanding and intellect.' },
+    },
+    meaningMap: [],
+    structureSources: ['laneLbb'],
+    meaningSources: ['laneLbb', 'raghibLbb'],
+    related: ['albab', 'labib'],
+  },
+
+  labib: {
+    pattern: 'فَعِيل', patternReading: 'faʿīl',
+    structure: {
+      ru: ['لَبِيب (labīb) — прилагательное от той же корневой семьи: человек, обладающий разумением.'],
+      en: ['لَبِيب (labīb) is an adjective from the same root family: a person possessing understanding.'],
+    },
+    meaning: {
+      ru: { lead: 'Разумный, обладающий глубоким пониманием.', body: 'Lane определяет لَبِيب как человека понимания или интеллекта.' },
+      en: { lead: 'Intelligent, possessing understanding.', body: 'Lane defines لَبِيب as a person of understanding or intelligence.' },
+    },
+    meaningMap: [],
+    structureSources: ['laneLbb'],
+    meaningSources: ['laneLbb'],
+    related: ['lubb', 'albab'],
   },
 }
