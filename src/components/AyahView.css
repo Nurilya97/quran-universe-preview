@@ -5396,3 +5396,77 @@
     height: 60px !important;
   }
 }
+
+
+/* Composition detail layout v2: opening a rhetoric/sound node creates physical space. */
+.composition-constellation {
+  transition:
+    top .34s cubic-bezier(.2,.72,.2,1),
+    opacity .22s ease,
+    filter .22s ease;
+}
+
+.composition-lines .composition-spine {
+  transition: d .34s cubic-bezier(.2,.72,.2,1), opacity .22s ease;
+}
+
+.composition-diagram.has-active-node .composition-constellation.is-interactive:not(.is-active-node) {
+  opacity: .72 !important;
+  filter: saturate(.86) !important;
+}
+
+.composition-constellation.is-active-node {
+  z-index: 6;
+}
+
+.composition-node-detail {
+  width: min(560px, 78vw) !important;
+  margin-top: 14px !important;
+  padding: 14px 18px 2px !important;
+  border-top-color: rgba(255,255,255,.11) !important;
+  color: #aeb9bd !important;
+  font-size: 11.5px !important;
+  line-height: 1.72 !important;
+}
+
+.composition-diagram.layer-rhetoric .composition-constellation,
+.composition-diagram.layer-sound .composition-constellation {
+  width: 660px;
+}
+
+.composition-diagram.layer-rhetoric .composition-constellation > p,
+.composition-diagram.layer-sound .composition-constellation > p {
+  max-width: 580px;
+  margin-inline: auto;
+}
+
+.sound-layer-footer {
+  transition: top .34s cubic-bezier(.2,.72,.2,1);
+}
+
+@media (max-width:760px) {
+  .composition-node-detail {
+    width: min(520px, 84vw) !important;
+    padding: 13px 12px 2px !important;
+    font-size: 12px !important;
+  }
+
+  .composition-diagram.layer-rhetoric .composition-constellation,
+  .composition-diagram.layer-sound .composition-constellation {
+    width: min(620px, 90vw);
+  }
+}
+
+
+/* Morphology connectors v5: clean editorial tree, no glow or ornamental endpoints. */
+.analysis-morphology-tree {
+  opacity: .5 !important;
+}
+
+.analysis-morphology-tree path {
+  stroke: rgba(184, 209, 200, .74) !important;
+  stroke-width: .82 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  filter: none !important;
+}
