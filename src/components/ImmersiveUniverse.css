@@ -75,6 +75,37 @@ h1:focus { outline: none; }
 .orbit-node:hover .node-light, .orbit-node:focus-visible .node-light { box-shadow: 0 0 12px 4px #e5e8ec77, 0 0 45px 15px #d6d9de20; }
 .scene-label { position: absolute; bottom: 27px; left: 50%; transform: translateX(-50%); margin: 0; color: #9ea4aa; font-size: 12px; letter-spacing: .06em; white-space: nowrap; }
 .root-intro { position: absolute; left: 36px; top: 108px; }
+
+.root-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  max-width: min(760px, calc(100vw - 72px));
+  margin-top: 10px;
+  color: #9ea4aa;
+  font-size: 11px;
+  line-height: 1.45;
+}
+.root-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.root-legend b {
+  color: #c9ced3;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .03em;
+}
+.root-legend-quran {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: #83dfc1;
+  box-shadow: 0 0 8px 2px #83dfc155;
+}
+
 .root-field { position: absolute; width: min(710px, calc(100vw - 80px), calc(100dvh - 190px)); aspect-ratio: 1; left: 50%; top: 53%; transform: translate(-50%, -50%); }
 .root-orbit { position: absolute; left: 50%; top: 50%; width: var(--diameter); aspect-ratio: 1; border: 1px solid #d6d9de38; border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; box-shadow: 0 0 25px #d6d9de04, inset 0 0 25px #d6d9de04; }
 .root-orbit-V { border-color: #c3cbd330; }
@@ -161,7 +192,9 @@ h1:focus { outline: none; }
   .node-meaning { left: 25%; top: 82%; }
   .node-label { font-size: 15px; }
   .node-caption { font-size: 12px; }
-  .root-intro { left: max(22px, env(safe-area-inset-left)); top: max(88px, calc(env(safe-area-inset-top) + 68px)); }
+  .root-intro { left: max(22px, env(safe-area-inset-left)); top: max(88px, calc(env(safe-area-inset-top) + 68px)); right: max(18px, env(safe-area-inset-right)); }
+  .root-legend { max-width: 100%; gap: 5px 12px; margin-top: 7px; font-size: 9.5px; }
+  .root-legend b { font-size: 9.5px; }
   .root-field { top: 51%; width: min(calc(100vw - 48px), calc(100dvh - 210px)); }
   .root-core h1 { font-size: 30px; }
   .root-core > span { font-size: 11px; }
