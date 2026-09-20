@@ -208,8 +208,6 @@ function TaqwaMorphologyLegacy({ selected, morphology, language }) {
               <path className="tree-bar" d="M25 17 H75" />
               <path className="tree-branch" d="M25 17 V51" />
               <path className="tree-branch" d="M75 17 V51" />
-              <path className="tree-arrow" d="M23.2 48.2 L25 51 L26.8 48.2" />
-              <path className="tree-arrow" d="M73.2 48.2 L75 51 L76.8 48.2" />
             </svg>
 
             <div className="analysis-morphology-level first-level">
@@ -238,9 +236,6 @@ function TaqwaMorphologyLegacy({ selected, morphology, language }) {
               <path className="tree-branch" d="M16.7 17 V55" />
               <path className="tree-branch" d="M50 17 V55" />
               <path className="tree-branch" d="M83.3 17 V55" />
-              <path className="tree-arrow" d="M14.9 52.2 L16.7 55 L18.5 52.2" />
-              <path className="tree-arrow" d="M48.2 52.2 L50 55 L51.8 52.2" />
-              <path className="tree-arrow" d="M81.5 52.2 L83.3 55 L85.1 52.2" />
             </svg>
 
             <div className="analysis-morphology-level second-level has-three">
