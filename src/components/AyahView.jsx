@@ -282,13 +282,22 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
   const ru = language === 'ru'
   const items = ayah.rhetoric || []
   const lens = ayah.passageLens
+  const primer = ayah.rhetoricPrimer?.[language]
 
   return <div className="diagram-view rhetoric-diagram">
     <div className="rhetoric-flow" style={{ left: WORLD.width / 2, top: 150 }}>
-      <div className="rhetoric-thread">
-        <small>{ru ? 'ОДНА МЫСЛЬ, ЧЕТЫРЕ ПОВОРОТА' : 'ONE THOUGHT, FOUR TURNS'}</small>
-        <p>{ayah.compositionThread?.[language]}</p>
-      </div>
+      {primer && <section className="rhetoric-primer">
+        <small>{ru ? 'КЛЮЧ К РАЗБОРУ' : 'READING KEY'}</small>
+        <h3>{primer.title}</h3>
+        <p>{primer.text}</p>
+        <div className="rhetoric-fa-roles">
+          {primer.roles.map((role) => <div key={role.ar}>
+            <b lang="ar" dir="rtl">{role.ar}</b>
+            <span>{role.text}</span>
+          </div>)}
+        </div>
+        <p className="rhetoric-primer-current">{primer.current}</p>
+      </section>}
 
       {items.map((item) => {
         const copy = item[language]
@@ -309,33 +318,34 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
               return <span key={wordIndex} className={classes}>{token.ar}</span>
             })}
           </div>
-          <div className="rhetoric-story">
-            <p className="is-story">{copy.story}</p>
-            <div className="rhetoric-reading">
-              <p><b>{ru ? 'Как это устроено' : 'How it works'}</b>{copy.mechanism}</p>
-              <p><b>{ru ? 'Что меняется в понимании' : 'What changes in the reading'}</b>{copy.effect}</p>
-            </div>
-            {copy.sound && <p className="rhetoric-sound"><b>{ru ? 'На слух' : 'When heard'}</b>{copy.sound}</p>}
+          <div className="rhetoric-proof">
+            <p><b>{ru ? 'Грамматическая опора' : 'Grammatical evidence'}</b>{copy.evidence}</p>
+            <p><b>{ru ? 'Как работает связь' : 'How the link works'}</b>{copy.mechanism}</p>
+            <p><b>{ru ? 'Что это меняет' : 'What this changes'}</b>{copy.effect}</p>
           </div>
+          {copy.sound && <p className="rhetoric-sound"><b>{ru ? 'На слух' : 'When heard'}</b>{copy.sound}</p>}
         </section>
       })}
 
       {lens && <section className="rhetoric-passage-lens">
-        <small>{ru ? 'СВЯЗЬ С СОСЕДНИМИ АЯТАМИ' : 'LINK TO THE SURROUNDING AYAHS'}</small>
+        <small>{ru ? 'СМЫСЛОВОЙ БЛОК' : 'MEANING-BLOCK'}</small>
         <h3>{lens[language].title}</h3>
         <p>{lens[language].text}</p>
-        {lens[language].thread && <p className="rhetoric-passage-thread"><b>{ru ? 'Смысловая арка' : 'Semantic arc'}</b>{lens[language].thread}</p>}
+
         <div className="rhetoric-ending-row">
           {lens.anchors.map(item => <div key={item.ref} className={item.active ? 'is-active' : ''}>
             <span>{item.ref}</span>
             <b lang="ar" dir="rtl">{item.ar}</b>
           </div>)}
         </div>
-        <p className="rhetoric-passage-sound"><b>{ru ? 'Звучание блока' : 'Sound across the passage'}</b>{lens[language].sound}</p>
+
+        <p className="rhetoric-passage-sound"><b>{ru ? 'Звучание' : 'Sound'}</b>{lens[language].sound}</p>
+        {lens[language].thread && <p className="rhetoric-passage-thread"><b>{ru ? 'Смысловая связь внутри блока' : 'Semantic link inside the block'}</b>{lens[language].thread}</p>}
+
         <div className="rhetoric-source-note">
           {ru
-            ? 'Грамматические функции частиц сверены с Quranic Arabic Corpus; межаятная часть использует только наблюдения, совместимые с принятой в проекте системой значений.'
-            : 'Particle functions are checked against the Quranic Arabic Corpus; passage-level observations are limited to points compatible with the project’s established semantic framework.'}
+            ? 'Функции частиц сверены с Quranic Arabic Corpus. Звуковая перекличка показана как наблюдаемая особенность текста, без утверждения, что все аяты блока имеют одну рифму.'
+            : 'Particle functions are checked against the Quranic Arabic Corpus. The sound correspondence is shown as an observable textual feature, without claiming that every ayah in the passage shares one rhyme.'}
         </div>
       </section>}
     </div>
