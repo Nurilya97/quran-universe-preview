@@ -216,7 +216,7 @@ export function ImmersiveUniverse() {
 
     {scene === 'ayah' && !journey && ayahFocus && <AyahView reference={ayahFocus.reference} focusWordIndex={ayahFocus.wordIndex} language={language} onBack={closeAyah} onOpenWordOrbit={openWordFromAyah} />}
 
-    {scene === 'root' && !journey && <section className="root-stage stage-reveal" aria-label={t.rootSpace}>
+    {scene === 'root' && !journey && <section className={'root-stage stage-reveal root-stage-' + currentRoot.id} aria-label={t.rootSpace}>
       <div className="root-intro"><p className="eyebrow">{t.families}</p></div>
       <div className="root-field">
         {currentRootOrbits.map((orbit) => <div key={orbit.id} className={'root-orbit root-orbit-' + orbit.id}
@@ -224,7 +224,7 @@ export function ImmersiveUniverse() {
         <div className="root-core"><button className="root-core-trigger" onClick={() => openPanel('root')} aria-label={t.aboutRoot} aria-haspopup="dialog"><h1 ref={destinationHeading} tabIndex={-1} lang="ar" dir="rtl">{currentRoot.arabic}</h1><span>{t.root}</span></button></div>
         {currentRootForms.map((form) => {
           const point = rootPosition(form, currentRootOrbits)
-          return <button key={form.id} className={'root-star' + (form.id === 'taqwa' ? ' root-star-featured' : '')}
+          return <button key={form.id} className={'root-star' + (form.id === 'taqwa' || form.id === 'albab' ? ' root-star-featured' : '')}
           data-orbit={form.orbit} aria-label={form.arabic + ' · ' + t[form.type] + ' · ' + t.familyLabel + ' ' + form.orbit}
           style={{ '--x': point.x + '%', '--y': point.y + '%' }} onClick={() => travel('word', form)}>
           <span className="star-point" aria-hidden="true" /><span className="arabic" lang="ar" dir="rtl">{form.arabic}</span>
