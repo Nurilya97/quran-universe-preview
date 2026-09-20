@@ -252,11 +252,13 @@ export const AYAH_PROTOTYPES = {
       ru: {
         title: 'Где 2:197 находится в более длинной мысли',
         text: 'Аяты 2:196–203 образуют связный блок о хадже: правила и границы паломничества → движение через Арафат и Муздалифу → поминание и просьба о прощении → завершение обрядов, дуа и расчёт → возвращение к taqwā и напоминанию о встрече с Аллахом.',
+        thread: 'Внутри блока повторяется ещё одна смысловая связка. 2:196 завершается وَاتَّقُوا ٱللَّهَ وَٱعْلَمُوا… (wa-ttaqū Allāha wa-ʿlamū…), в 2:197 стоят يَعْلَمْهُ ٱللَّهُ (yaʿlamhu Allāh), затем ٱلتَّقْوَىٰ (al-taqwā) и وَٱتَّقُونِ (wa-ittaqūni), а 2:203 снова возвращает لِمَنِ ٱتَّقَىٰ … وَاتَّقُوا ٱللَّهَ وَٱعْلَمُوا…. Тема taqwā поэтому проходит через хадж-блок рядом с напоминанием о знании и ответственности перед Аллахом.',
         sound: 'Внутри этого блока есть заметное созвучие окончаний: 2:196 заканчивается ٱلْعِقَابِ (al-ʿiqāb), 2:197 — ٱلْأَلْبَابِ (al-albāb), 2:202 — ٱلْحِسَابِ (al-ḥisāb). Это не рифма каждого аята блока, а повторяющиеся точки с окончанием -āb внутри одной тематической последовательности.',
       },
       en: {
         title: 'Where 2:197 sits in the larger movement',
         text: 'Ayahs 2:196–203 form a connected Hajj passage: pilgrimage rules and boundaries → movement through Arafat and Muzdalifah → remembrance and seeking forgiveness → completion of the rites, supplication and account → a return to taqwā and the reminder of gathering before Allah.',
+        thread: 'Another relationship repeats across the passage. 2:196 closes with وَاتَّقُوا ٱللَّهَ وَٱعْلَمُوا… (wa-ttaqū Allāha wa-ʿlamū…), 2:197 contains يَعْلَمْهُ ٱللَّهُ (yaʿlamhu Allāh), then ٱلتَّقْوَىٰ (al-taqwā) and وَٱتَّقُونِ (wa-ittaqūni), while 2:203 returns to لِمَنِ ٱتَّقَىٰ … وَاتَّقُوا ٱللَّهَ وَٱعْلَمُوا…. Taqwā therefore recurs through the Hajj passage alongside reminders of knowledge and accountability before Allah.',
         sound: 'Within this passage a recurring ending is audible at several anchor points: 2:196 ends with ٱلْعِقَابِ (al-ʿiqāb), 2:197 with ٱلْأَلْبَابِ (al-albāb), and 2:202 with ٱلْحِسَابِ (al-ḥisāb). This is not the rhyme of every ayah in the passage, but a recurring -āb echo inside one thematic sequence.',
       },
       anchors: [
