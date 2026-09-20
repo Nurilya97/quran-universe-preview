@@ -218,13 +218,11 @@ export function ImmersiveUniverse() {
     {scene === 'ayah' && !journey && ayahFocus && <AyahView reference={ayahFocus.reference} focusWordIndex={ayahFocus.wordIndex} language={language} onBack={closeAyah} onOpenWordOrbit={openWordFromAyah} />}
 
     {scene === 'root' && !journey && <section className={'root-stage stage-reveal root-stage-' + currentRoot.id} aria-label={t.rootSpace}>
-      <div className="root-intro">
-        <p className="eyebrow">{t.families}</p>
-        <div className="root-legend" aria-label={t.rootLegend}>
-          <span><i className="root-legend-quran" aria-hidden="true" />{t.quranColorLegend}</span>
-          <span><b>I · II · IV · V · X</b>{t.formNumberLegend}</span>
-        </div>
-      </div>
+      <div className="root-intro"><p className="eyebrow">{t.families}</p></div>
+      {currentRoot.id === 'lbb' && <div className="root-legend" aria-label={t.rootLegend}>
+        <span><i className="root-legend-quran" aria-hidden="true" />{t.quranColorLegend}</span>
+        <span><b>I · II · IV · V · X</b><small>{t.formNumberLegend}</small></span>
+      </div>}
       <div className="root-field">
         {currentRootOrbits.map((orbit) => <div key={orbit.id} className={'root-orbit root-orbit-' + orbit.id}
           style={{ '--diameter': orbit.radius * 2 + '%' }} aria-hidden="true"><span>{orbit.mark || orbit.id}</span></div>)}
