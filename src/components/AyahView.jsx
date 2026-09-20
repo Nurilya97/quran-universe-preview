@@ -203,8 +203,13 @@ function TaqwaMorphologyLegacy({ selected, morphology, language }) {
         <em>{selected.tr}</em>
       </header>
 
-            <svg className="analysis-morphology-tree first" viewBox="0 0 100 58" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M50 2 V18 M25 18 H75 M25 18 V55 M75 18 V55" />
+            <svg className="analysis-morphology-tree first canva-tree" viewBox="0 0 100 58" preserveAspectRatio="none" aria-hidden="true">
+              <path className="tree-stem" d="M50 2 V17" />
+              <path className="tree-bar" d="M25 17 H75" />
+              <path className="tree-branch" d="M25 17 V51" />
+              <path className="tree-branch" d="M75 17 V51" />
+              <path className="tree-arrow" d="M23.2 48.2 L25 51 L26.8 48.2" />
+              <path className="tree-arrow" d="M73.2 48.2 L75 51 L76.8 48.2" />
             </svg>
 
             <div className="analysis-morphology-level first-level">
@@ -227,8 +232,15 @@ function TaqwaMorphologyLegacy({ selected, morphology, language }) {
               </article>
             </div>
 
-            <svg className="analysis-morphology-tree second" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M25 2 V18 M16.7 18 H83.3 M16.7 18 V59 M50 18 V59 M83.3 18 V59" />
+            <svg className="analysis-morphology-tree second canva-tree" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true">
+              <path className="tree-stem" d="M25 2 V17" />
+              <path className="tree-bar" d="M16.7 17 H83.3" />
+              <path className="tree-branch" d="M16.7 17 V55" />
+              <path className="tree-branch" d="M50 17 V55" />
+              <path className="tree-branch" d="M83.3 17 V55" />
+              <path className="tree-arrow" d="M14.9 52.2 L16.7 55 L18.5 52.2" />
+              <path className="tree-arrow" d="M48.2 52.2 L50 55 L51.8 52.2" />
+              <path className="tree-arrow" d="M81.5 52.2 L83.3 55 L85.1 52.2" />
             </svg>
 
             <div className="analysis-morphology-level second-level has-three">
@@ -316,28 +328,6 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
           {(meaning?.description || (ru ? selected.noteRu : selected.noteEn)) && <section>
             <h3>{ru ? 'Смысл в этом аяте' : 'Meaning in this ayah'}</h3>
             <p>{meaning?.description || (ru ? selected.noteRu : selected.noteEn)}</p>
-          </section>}
-          {meaning?.manifestation && <section className="word-meaning-manifestation">
-            <h3>{ru ? 'Как смысл проявляется' : 'How the meaning manifests'}</h3>
-            <div className="meaning-semantic-flow">
-              <div className="meaning-flow-stage">
-                <span lang="ar" dir="rtl">{selected.root || 'و ق ي'}</span>
-                <small>{selected.rootReading || 'w-q-y'}</small>
-                <b>{ru ? 'оберегание / защита' : 'guarding / protection'}</b>
-              </div>
-              <span className="meaning-flow-arrow" aria-hidden="true">→</span>
-              <div className="meaning-flow-stage">
-                <span lang="ar" dir="rtl">تَقْوَىٰ</span>
-                <small>taqwā</small>
-                <b>{meaning.gloss}</b>
-              </div>
-              <span className="meaning-flow-arrow" aria-hidden="true">→</span>
-              <div className="meaning-flow-stage manifestation">
-                <strong>{meaning.manifestation}</strong>
-                <small>{ru ? 'проявление' : 'manifestation'}</small>
-              </div>
-            </div>
-            {meaning.manifestationDefinition && <p>{meaning.manifestationDefinition}</p>}
           </section>}
           {meaning?.translation && <section>
             <h3>{ru ? 'Почему такой перевод' : 'Why this translation'}</h3>
