@@ -33,7 +33,7 @@ jobs:
           npm run build
           cp dist/spatial.html "dist/build-${GITHUB_SHA::8}.html"
           cp dist/spatial.html dist/latest.html
-          mv dist/spatial.html dist/index.html
+          cp dist/spatial.html dist/index.html
           cat > dist/404.html <<'EOF'
           <!doctype html>
           <html lang="en">
