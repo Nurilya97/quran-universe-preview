@@ -278,7 +278,7 @@ export const AYAH_PROTOTYPES = {
           title: 'Время хаджа',
           evidence: 'ٱلْحَجُّ al-ḥajju («хадж»), أَشْهُرٌ ashhurun («месяцы»), مَّعْلُومَاتٌ maʿlūmātun («известные / установленные») задают временной порядок хаджа: он совершается в определённые, известные месяцы.',
           mechanism: 'Время здесь входит в саму структуру поклонения. Подготовка к хаджу начинается с признания установленного для него периода: человек соотносит свои действия с определённым Аллахом порядком.',
-          effect: 'Этот блок показывает первый уровень подготовки к хаджу: знать его установленное время и войти в поклонение в соответствии с этим порядком.'
+          effect: 'Этот блок показывает первый уровень подготовки к хаджу: знать его установленное время и войти в поклонение в соответствии с этим порядком.',
         },
         en: {
           step: '01',
@@ -286,7 +286,7 @@ export const AYAH_PROTOTYPES = {
           title: 'The time of Hajj',
           evidence: 'ٱلْحَجُّ al-ḥajju (“Hajj”), أَشْهُرٌ ashhurun (“months”), and مَّعْلُومَاتٌ maʿlūmātun (“known / appointed”) establish the temporal order of Hajj: it is performed in defined, known months.',
           mechanism: 'Time is part of the structure of the worship itself. Preparing for Hajj begins by recognizing its appointed period and aligning one’s actions with the order set by Allah.',
-          effect: 'This block shows the first level of preparation for Hajj: knowing its appointed time and entering the worship in accordance with that order.'
+          effect: 'This block shows the first level of preparation for Hajj: knowing its appointed time and entering the worship in accordance with that order.',
         },
       },
       {
@@ -298,16 +298,16 @@ export const AYAH_PROTOTYPES = {
           label: 'УСЛОВИЕ → ЕДИНАЯ ЦЕПОЧКА',
           title: 'Причина → следствие',
           evidence: 'مَنْ man означает «тот, кто» и открывает условие: человек взял на себя хадж. Затем идёт فَلَا fa-lā. Здесь فَ fa показывает связь «условие → следствие»: если человек вступил в хадж, то из этого следуют определённые границы поведения.',
-          mechanism: 'Следствие раскрывается сразу в трёх границах: во время хаджа человек должен не допускать رَفَث rafath — интимной близости или непристойной речи, فُسُوق fusūq — неповиновения и греховного выхода, и جِدَال jidāl — спора. Первое ограничение открывается через فَلَا fa-lā, а два следующих соединяются с ним через وَلَا wa-lā. Союз وَ wa связывает эти утверждения и собирает их в единый смысловой блок.'
-          effect: 'Получается единая причинно-следственная логика: вступление в хадж становится причиной особого режима поведения, а серия فَلَا fa-lā … وَلَا wa-lā … وَلَا wa-lā раскрывает его как следствие. فَ fa задаёт связь «вступил в хадж → отсюда следуют границы», а وَ wa объединяет все три ограничения в одну систему.'
+          mechanism: 'Следствие раскрывается сразу в трёх границах: во время хаджа человек должен не допускать رَفَث rafath — интимной близости или непристойной речи, فُسُوق fusūq — неповиновения и греховного выхода, и جِدَال jidāl — спора. Первое ограничение открывается через فَلَا fa-lā, а два следующих соединяются с ним через وَلَا wa-lā. Союз وَ wa связывает эти утверждения и собирает их в единый смысловой блок.',
+          effect: 'Получается единая причинно-следственная логика: вступление в хадж становится причиной особого режима поведения, а серия فَلَا fa-lā … وَلَا wa-lā … وَلَا wa-lā раскрывает его как следствие. فَ fa задаёт связь «вступил в хадж → отсюда следуют границы», а وَ wa объединяет все три ограничения в одну систему.',
         },
         en: {
           step: '02',
           label: 'CONDITION → ONE CHAIN',
           title: 'Cause → consequence',
           evidence: 'مَنْ man means “whoever” and opens the condition: a person has undertaken Hajj. Then comes فَلَا fa-lā. Here فَ fa marks the relation “condition → consequence”: if a person enters Hajj, particular boundaries of conduct follow from that commitment.',
-          mechanism: 'The consequence is expressed through three boundaries: during Hajj the person must avoid رَفَث rafath—sexual intimacy or indecent speech, فُسُوق fusūq—disobedient or sinful conduct, and جِدَال jidāl—disputing. The first opens with فَلَا fa-lā, while the next two are joined through وَلَا wa-lā. وَ wa links the statements and gathers them into one semantic unit.'
-          effect: 'The logic is therefore one cause-and-consequence relation: undertaking Hajj brings a particular mode of conduct into force, and the فَلَا fa-lā … وَلَا wa-lā … وَلَا wa-lā series unfolds as its consequence. فَ fa establishes the link “entered Hajj → these boundaries follow,” while وَ wa joins all three limits into one system.'
+          mechanism: 'The consequence is expressed through three boundaries: during Hajj the person must avoid رَفَث rafath—sexual intimacy or indecent speech, فُسُوق fusūq—disobedient or sinful conduct, and جِدَال jidāl—disputing. The first opens with فَلَا fa-lā, while the next two are joined through وَلَا wa-lā. وَ wa links the statements and gathers them into one semantic unit.',
+          effect: 'The logic is therefore one cause-and-consequence relation: undertaking Hajj brings a particular mode of conduct into force, and the فَلَا fa-lā … وَلَا wa-lā … وَلَا wa-lā series unfolds as its consequence. فَ fa establishes the link “entered Hajj → these boundaries follow,” while وَ wa joins all three limits into one system.',
         },
       },
       {
@@ -319,16 +319,16 @@ export const AYAH_PROTOTYPES = {
           label: 'ДЕЙСТВИЕ → ЗНАНИЕ',
           title: 'Действие → знание',
           evidence: 'Фраза وَمَا تَفْعَلُوا wa-mā tafʿalū означает «и что бы вы ни сделали». Затем يَعْلَمْهُ ٱللَّهُ yaʿlamhu Allāh — «Аллах знает это».',
-          mechanism: 'Начальная وَ wa связывает это утверждение с предыдущими границами и продолжает одну смысловую линию аята. Внутри самой фразы действие человека сразу получает продолжение — знание Аллаха о нём: وَمَا تَفْعَلُوا wa-mā tafʿalū → يَعْلَمْهُ ٱللَّهُ yaʿlamhu Allāh.'
-          effect: 'Так аят показывает, что важны не только внешние границы хаджа: любое совершённое добро известно Аллаху. Поведение паломника связывается с внутренней осознанностью того, перед Кем он действует.'
+          mechanism: 'Начальная وَ wa связывает это утверждение с предыдущими границами и продолжает одну смысловую линию аята. Внутри самой фразы действие человека сразу получает продолжение — знание Аллаха о нём: وَمَا تَفْعَلُوا wa-mā tafʿalū → يَعْلَمْهُ ٱللَّهُ yaʿlamhu Allāh.',
+          effect: 'Так аят показывает, что важны не только внешние границы хаджа: любое совершённое добро известно Аллаху. Поведение паломника связывается с внутренней осознанностью того, перед Кем он действует.',
         },
         en: {
           step: '03',
           label: 'ACTION → KNOWLEDGE',
           title: 'Action → knowledge',
           evidence: 'The phrase وَمَا تَفْعَلُوا wa-mā tafʿalū means “whatever you do.” It is followed by يَعْلَمْهُ ٱللَّهُ yaʿlamhu Allāh — “Allah knows it.”',
-          mechanism: 'The opening وَ wa connects this statement to the preceding boundaries and keeps the ayah moving as one semantic line. Within the phrase itself, human action immediately continues into Allah’s knowledge of it: وَمَا تَفْعَلُوا wa-mā tafʿalū → يَعْلَمْهُ ٱللَّهُ yaʿlamhu Allāh.'
-          effect: 'The ayah thus shows that Hajj is not only about outward boundaries: every good act is known to Allah. The pilgrim’s conduct is tied to inward awareness of the One before whom the person acts.'
+          mechanism: 'The opening وَ wa connects this statement to the preceding boundaries and keeps the ayah moving as one semantic line. Within the phrase itself, human action immediately continues into Allah’s knowledge of it: وَمَا تَفْعَلُوا wa-mā tafʿalū → يَعْلَمْهُ ٱللَّهُ yaʿlamhu Allāh.',
+          effect: 'The ayah thus shows that Hajj is not only about outward boundaries: every good act is known to Allah. The pilgrim’s conduct is tied to inward awareness of the One before whom the person acts.',
         },
       },
       {
@@ -340,7 +340,7 @@ export const AYAH_PROTOTYPES = {
           label: 'ПОДГОТОВКА → ВНУТРЕННЯЯ ОПОРА',
           title: 'Внешний → внутренний запас',
           evidence: 'وَتَزَوَّدُوا wa-tazawwadū — «берите припасы / подготовьтесь к пути». Сразу после этого идёт فَإِنَّ fa-inna: здесь فَ fa связывает повеление с его объяснением — запасайтесь, ведь лучший запас связан с تَقْوَىٰ taqwā.',
-          mechanism: 'Здесь فَ fa связывает повеление с его причиной и объяснением: запасайтесь, ведь лучший запас — تَقْوَىٰ taqwā. Эта связь усиливается повтором корня ز و د z-w-d в وَتَزَوَّدُوا wa-tazawwadū и ٱلزَّادِ al-zād: сначала человек готовит запас для пути, затем аят объясняет, какой запас для этого пути важнее всего.'
+          mechanism: 'Здесь فَ fa связывает повеление с его причиной и объяснением: запасайтесь, ведь лучший запас — تَقْوَىٰ taqwā. Эта связь усиливается повтором корня ز و د z-w-d в وَتَزَوَّدُوا wa-tazawwadū и ٱلزَّادِ al-zād: сначала человек готовит запас для пути, затем аят объясняет, какой запас для этого пути важнее всего.',
           effect: 'Из-за этого تَقْوَىٰ taqwā не появляется внезапно. Аят сначала говорит о подготовке к реальному пути, а затем показывает внутренний «запас», который помогает пройти этот путь правильно.',
         },
         en: {
@@ -348,7 +348,7 @@ export const AYAH_PROTOTYPES = {
           label: 'PREPARATION → INNER SUPPORT',
           title: 'Outer → inner provision',
           evidence: 'وَتَزَوَّدُوا wa-tazawwadū means “take provisions / prepare for the journey.” It is immediately followed by فَإِنَّ fa-inna: here فَ fa links the command to its explanation—take provision, for the best provision is tied to تَقْوَىٰ taqwā.',
-          mechanism: 'Here فَ fa links the command to its reason and explanation: take provision, for the best provision is تَقْوَىٰ taqwā. This relation is reinforced by the repeated root ز و د z-w-d in وَتَزَوَّدُوا wa-tazawwadū and ٱلزَّادِ al-zād: first the person prepares provision for the journey, then the ayah explains which provision matters most.'
+          mechanism: 'Here فَ fa links the command to its reason and explanation: take provision, for the best provision is تَقْوَىٰ taqwā. This relation is reinforced by the repeated root ز و د z-w-d in وَتَزَوَّدُوا wa-tazawwadū and ٱلزَّادِ al-zād: first the person prepares provision for the journey, then the ayah explains which provision matters most.',
           effect: 'That is why تَقْوَىٰ taqwā does not appear abruptly. The ayah first speaks about preparing for the physical journey, then points to the inward provision that helps a person travel it rightly.',
         },
       },
@@ -360,17 +360,17 @@ export const AYAH_PROTOTYPES = {
           step: '05',
           label: 'КАЧЕСТВО → ДЕЙСТВИЕ → ОБРАЩЕНИЕ',
           title: 'Суть подготовки',
-          evidence: 'Сначала ٱلتَّقْوَىٰ al-taqwā названа лучшим «запасом». Следом идёт وَٱتَّقُونِ wa-ittaqūni — прямое повеление из того же корня و ق ي w-q-y. Затем يَا yā обращает итог аята к أُولِي ٱلْأَلْبَابِ ulī al-albāb — «обладающим разумением».'
-          mechanism: 'Обращение к «обладающим разумением» завершает всю логику аята. Разумение здесь нужно, чтобы увидеть связь между внешней подготовкой и внутренней сутью хаджа: установленное время, границы поведения, добро, известное Аллаху, обычные припасы и лучший внутренний запас — taqwā.'
-          effect: 'Весь аят показывает, как на самом деле готовиться к хаджу и что в этой подготовке выделено как важное: соблюдать установленный порядок, удерживать границы, совершать добро, помнить, что оно известно Аллаху, взять необходимый запас — и понять, что лучшим запасом названа taqwā. «Обладающий разумением» видит за отдельными правилами эту общую систему и её внутренний смысл.'
+          evidence: 'Сначала ٱلتَّقْوَىٰ al-taqwā названа лучшим «запасом». Следом идёт وَٱتَّقُونِ wa-ittaqūni — прямое повеление из того же корня و ق ي w-q-y. Затем يَا yā обращает итог аята к أُولِي ٱلْأَلْبَابِ ulī al-albāb — «обладающим разумением».',
+          mechanism: 'Обращение к «обладающим разумением» завершает всю логику аята. Разумение здесь нужно, чтобы увидеть связь между внешней подготовкой и внутренней сутью хаджа: установленное время, границы поведения, добро, известное Аллаху, обычные припасы и лучший внутренний запас — taqwā.',
+          effect: 'Весь аят показывает, как на самом деле готовиться к хаджу и что в этой подготовке выделено как важное: соблюдать установленный порядок, удерживать границы, совершать добро, помнить, что оно известно Аллаху, взять необходимый запас — и понять, что лучшим запасом названа taqwā. «Обладающий разумением» видит за отдельными правилами эту общую систему и её внутренний смысл.',
         },
         en: {
           step: '05',
           label: 'QUALITY → ACTION → DIRECT ADDRESS',
           title: 'The heart of preparation',
-          evidence: 'First ٱلتَّقْوَىٰ al-taqwā is named as the best “provision.” It is followed by وَٱتَّقُونِ wa-ittaqūni, a direct imperative from the same root و ق ي w-q-y. Then يَا yā directs the conclusion to أُولِي ٱلْأَلْبَابِ ulī al-albāb, “people of understanding.”'
-          mechanism: 'The address to “people of understanding” closes the logic of the whole ayah. Understanding is needed to see the relationship between outward preparation and the inward meaning of Hajj: appointed time, boundaries of conduct, good known to Allah, physical provisions, and the best inward provision—taqwā.'
-          effect: 'The whole ayah shows how Hajj is truly prepared for and what is highlighted within that preparation: respect the appointed order, hold the boundaries, do good while knowing Allah knows it, take necessary provision, and recognize that the best provision is taqwā. A “person of understanding” sees this whole system and the inward principle that holds it together.'
+          evidence: 'First ٱلتَّقْوَىٰ al-taqwā is named as the best “provision.” It is followed by وَٱتَّقُونِ wa-ittaqūni, a direct imperative from the same root و ق ي w-q-y. Then يَا yā directs the conclusion to أُولِي ٱلْأَلْبَابِ ulī al-albāb, “people of understanding.”',
+          mechanism: 'The address to “people of understanding” closes the logic of the whole ayah. Understanding is needed to see the relationship between outward preparation and the inward meaning of Hajj: appointed time, boundaries of conduct, good known to Allah, physical provisions, and the best inward provision—taqwā.',
+          effect: 'The whole ayah shows how Hajj is truly prepared for and what is highlighted within that preparation: respect the appointed order, hold the boundaries, do good while knowing Allah knows it, take necessary provision, and recognize that the best provision is taqwā. A “person of understanding” sees this whole system and the inward principle that holds it together.',
         },
       },
     ],
