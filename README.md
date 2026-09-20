@@ -25,6 +25,11 @@ panel has two internal views:
 
 ### Ayah Space — 2:197
 
+Focused-word analysis now keeps the three word-level views connected rather than treating them as isolated cards:
+
+- **Morphology** shows a directional derivation chain with arrows (root → documented derived forms → the surface form used in the ayah), followed by the visible parts of that surface form.
+- **Syntax** opens only the verified phrase relevant to the selected word. The current prototype covers both `فَإِنَّ خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ` (2:197:23–26) and the closing `وَٱتَّقُونِ يَـٰٓأُو۟لِي ٱلْأَلْبَـٰبِ` (2:197:27–29). Relation arrows and clickable grammatical terms connect the explanation back to the exact words.
+
 The current Ayah Space prototype has three top-level modes:
 
 - **Analysis / Разбор** — the ayah remains the central object. A word can be
