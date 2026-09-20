@@ -202,9 +202,10 @@ function TaqwaMorphologyLegacy({ selected, morphology, language }) {
         <em>{selected.tr}</em>
       </header>
 
-      <svg className="analysis-morphology-tree first" viewBox="0 0 100 58" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M50 2 V18 M25 18 H75 M25 18 V55 M75 18 V55" />
-      </svg>
+      <div className="analysis-morphology-branch first" aria-hidden="true">
+        <i className="branch-line left" />
+        <i className="branch-line right" />
+      </div>
 
       <div className="analysis-morphology-level first-level">
         <article className="analysis-morphology-node base">
@@ -212,8 +213,8 @@ function TaqwaMorphologyLegacy({ selected, morphology, language }) {
           <small>{morphologyParts[1]?.tr || 'taqwā'}</small>
           <b>{ru ? 'Слово без артикля' : 'Word without the article'}</b>
           <p>{ru
-            ? 'تَقْوَىٰ (taqwā) — существительное. Контекстный перевод в этом аяте: «благочестие / праведность».'
-            : 'تَقْوَىٰ (taqwā) is a noun. Contextual renderings here include “piety” and “righteousness”.'}</p>
+            ? 'تَقْوَىٰ (taqwā) — существительное. Контекстный перевод в этом аяте: «благочестие».'
+            : 'تَقْوَىٰ (taqwā) is a noun. A contextual rendering in this ayah is “piety”.'}</p>
         </article>
 
         <article className="analysis-morphology-node article">
@@ -226,11 +227,12 @@ function TaqwaMorphologyLegacy({ selected, morphology, language }) {
         </article>
       </div>
 
-      <svg className="analysis-morphology-tree second" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M25 2 V18 M16.7 18 H83.3 M16.7 18 V59 M50 18 V59 M83.3 18 V59" />
-      </svg>
+      <div className="analysis-morphology-branch second" aria-hidden="true">
+        <i className="branch-line down" />
+        <i className="branch-line to-pattern" />
+      </div>
 
-      <div className="analysis-morphology-level second-level has-three">
+      <div className="analysis-morphology-level second-level">
         <article className="analysis-morphology-node root">
           <span lang="ar" dir="rtl">{morphologyParts[2]?.ar || selected.root}</span>
           <small>{morphologyParts[2]?.tr || selected.rootReading}</small>
@@ -238,15 +240,6 @@ function TaqwaMorphologyLegacy({ selected, morphology, language }) {
           <p>{ru
             ? 'و ق ي (w-q-y) несёт идею защиты и оберегания.'
             : 'و ق ي (w-q-y) carries the idea of protection and guarding.'}</p>
-        </article>
-
-        <article className="analysis-morphology-node verb">
-          <span lang="ar" dir="rtl">ٱتَّقَىٰ</span>
-          <small>ittaqā</small>
-          <b>{ru ? 'Связанная глагольная форма · VIII' : 'Related verbal form · Form VIII'}</b>
-          <p>{ru
-            ? 'Глагол VIII формы от того же корня передаёт активное оберегание себя и внимательность к границам. Он делает деятельный оттенок корневой идеи особенно заметным.'
-            : 'A Form VIII verb from the same root: to remain attentive and guard oneself within the relevant boundaries. It makes the active shade of the root especially visible.'}</p>
         </article>
 
         <article className="analysis-morphology-node pattern">
@@ -260,25 +253,20 @@ function TaqwaMorphologyLegacy({ selected, morphology, language }) {
       </div>
 
       <div className="analysis-morphology-note">
+        <strong>{ru ? 'Итог' : 'Summary'}</strong>
         <div className="analysis-morphology-summary-formula" lang="ar" dir="rtl">
           ٱلتَّقْوَىٰ = ٱلـ + تَقْوَىٰ
         </div>
         <div className="analysis-morphology-summary-list">
           <p>{ru
-            ? <><b>Основа:</b> تَقْوَىٰ (taqwā) — существительное из словообразовательного гнезда корня و ق ي (w-q-y) «защищать / оберегать».</>
-            : <><b>Base:</b> تَقْوَىٰ (taqwā) belongs to the derivational family of the root و ق ي (w-q-y), “to protect / guard.”</>}</p>
-          <p>{ru
-            ? <><b>Связанная форма:</b> ٱتَّقَىٰ (ittaqā), VIII форма, показывает активное оберегание себя и внимательность к границам.</>
-            : <><b>Related form:</b> ٱتَّقَىٰ (ittaqā), Form VIII, shows the active sense of guarding oneself.</>}</p>
-          <p>{ru
-            ? <><b>Модель:</b> فَعْلَى (faʿlā) показывает именную словообразовательную форму تَقْوَىٰ (taqwā).</>
-            : <><b>Pattern:</b> فَعْلَى (faʿlā) shows the nominal pattern of تَقْوَىٰ (taqwā).</>}</p>
+            ? <><b>Основа:</b> تَقْوَىٰ (taqwā) — существительное, связанное с корнем و ق ي (w-q-y) «защищать / оберегать» и моделью فَعْلَى (faʿlā).</>
+            : <><b>Base:</b> تَقْوَىٰ (taqwā) is a noun related to the root و ق ي (w-q-y), “to protect / guard,” and the pattern فَعْلَى (faʿlā).</>}</p>
           <p>{ru
             ? <><b>Что добавилось:</b> ٱلـ (al-) присоединяется к слову и делает его определённым.</>
             : <><b>What is added:</b> ٱلـ (al-) attaches to the word and makes it definite.</>}</p>
           <p>{ru
-            ? <><b>В аяте 2:197:</b> краткий контекстный перевод — «благочестие / праведность».</>
-            : <><b>In 2:197:</b> concise contextual renderings include “piety / righteousness.”</>}</p>
+            ? <><b>В аяте 2:197:</b> краткий контекстный перевод — «благочестие».</>
+            : <><b>In 2:197:</b> a concise contextual rendering is “piety.”</>}</p>
         </div>
       </div>
     </div>
