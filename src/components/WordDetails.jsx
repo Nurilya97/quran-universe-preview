@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { COPY, FORMS } from '../demo.js'
-import { CONTENT_SOURCES, ROOT_CONTENT, WORD_CONTENT } from '../rootContent.js'
-import { OCCURRENCES, ROOT_OCCURRENCE_COUNT, groupOccurrences } from '../occurrences.js'
+import { CONTENT_SOURCES, ROOT_CONTENT, WORD_CONTENT, LBB_ROOT_CONTENT, LBB_WORD_CONTENT } from '../rootContent.js'
+import { OCCURRENCES, ROOT_OCCURRENCE_COUNT, rootOccurrenceCount, groupOccurrences } from '../occurrences.js'
 import { WQY_PUBLIC_MODEL } from '../canonicalWqy.js'
 import { MORPH_COPY, MORPH_ROLES, MORPHOLOGY } from '../morphologyWqy.js'
 import './WordDetails.css'
@@ -46,16 +46,20 @@ function MorphFormula({ word, profile, language }) {
   </section>
 }
 
-function RootBreakdown({ language }) {
+function RootBreakdown({ language, word }) {
   const c = MORPH_COPY[language]
+  const isLbb = word?.rootKey === 'lbb'
+  const rootArabic = isLbb ? 'ل ب ب' : 'و ق ي'
+  const rootReading = isLbb ? 'l-b-b' : 'w-q-y'
+  const nucleus = isLbb ? LBB_ROOT_CONTENT.rootNucleus[language] : WQY_PUBLIC_MODEL.rootNucleus[language]
   return <section className="morph-fact morph-root-fact">
     <p className="morph-fact-label">{c.root}</p>
     <div className="morph-fact-main">
       <div className="morph-arabic-pair">
-        <span className="morph-fact-arabic morph-root" lang="ar" dir="rtl">و ق ي</span>
-        <small className="transliteration" lang="ar-Latn" dir="ltr">w-q-y</small>
+        <span className="morph-fact-arabic morph-root" lang="ar" dir="rtl">{rootArabic}</span>
+        <small className="transliteration" lang="ar-Latn" dir="ltr">{rootReading}</small>
       </div>
-      <p>{WQY_PUBLIC_MODEL.rootNucleus[language]}</p>
+      <p>{nucleus}</p>
     </div>
   </section>
 }
@@ -192,7 +196,10 @@ function MorphBoardCallout({ label, ar, reading, text, tone = 'quiet', expandabl
 function MorphBoard({ word, profile, language }) {
   const c = MORPH_COPY[language]
   const ru = language === 'ru'
-  const rootStep = { ar: 'و ق ي', reading: 'w-q-y', metaRu: 'корень', metaEn: 'root' }
+  const isLbb = word?.rootKey === 'lbb'
+  const rootStep = isLbb
+    ? { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' }
+    : { ar: 'و ق ي', reading: 'w-q-y', metaRu: 'корень', metaEn: 'root' }
   const rawSteps = profile.evolution?.length
     ? profile.evolution
     : [rootStep, {
@@ -201,7 +208,8 @@ function MorphBoard({ word, profile, language }) {
         metaRu: profile.pattern?.ru?.title || 'слово',
         metaEn: profile.pattern?.en?.title || 'word',
       }]
-  const steps = rawSteps[0]?.ar?.replace(/\s/g, '') === 'وقي' ? rawSteps : [rootStep, ...rawSteps]
+  const expectedRoot = rootStep.ar.replace(/\s/g, '')
+  const steps = rawSteps[0]?.ar?.replace(/\s/g, '') === expectedRoot ? rawSteps : [rootStep, ...rawSteps]
   const lastIndex = steps.length - 1
   const patternCopy = profile.pattern?.[language]
   const patternText = patternCopy?.text || ''
@@ -236,7 +244,7 @@ function MorphBoard({ word, profile, language }) {
 
               {isRoot && <MorphBoardCallout
                 label={ru ? 'Смысловое ядро' : 'Root nucleus'}
-                text={WQY_PUBLIC_MODEL.rootNucleus[language]}
+                text={isLbb ? LBB_ROOT_CONTENT.rootNucleus[language] : WQY_PUBLIC_MODEL.rootNucleus[language]}
               />}
 
               {isSource && derivedText && <MorphBoardCallout
@@ -321,7 +329,7 @@ function MorphologyStructure({ word, content, language, onPick }) {
 
     {!isBoard ? <div className="morph-view-neon">
       <MorphFormula word={word} profile={profile} language={language} />
-      <RootBreakdown language={language} />
+      <RootBreakdown language={language} word={word} />
       <ComponentBreakdown components={profile.components} language={language} />
       {word.id === 'taqwa' && <TaqwaForm profile={profile} language={language} />}
       {word.id === 'taqwa'
@@ -374,12 +382,12 @@ function MeaningMap({ levels, language }) {
   </section>
 }
 
-function ModelStatus({ language }) {
+function ModelStatus({ language, rootKey = 'wqy' }) {
   const ru = language === 'ru'
   const review = ru
     ? 'Рабочая модель · проверено человеком · экспертная проверка впереди'
     : 'Working model · human reviewed · scholar review pending'
-  return <p className="model-status" title={WQY_PUBLIC_MODEL.modelVersion}>{review}</p>
+  return <p className="model-status" title={rootKey === 'wqy' ? WQY_PUBLIC_MODEL.modelVersion : undefined}>{review}</p>
 }
 
 function CanonicalNote({ wordId, language }) {
@@ -426,25 +434,35 @@ function RelatedWords({ ids, language, onPick }) {
   })}</div></section>
 }
 
-export function RootDetails({ language }) {
+export function RootDetails({ language, rootKey = 'wqy' }) {
   const t = COPY[language]
-  return <div className="entry-copy"><p className="entry-status">{t.semanticStatus}</p><ModelStatus language={language} />
-    <p className="entry-lead">{ROOT_CONTENT[language].lead}</p><p>{ROOT_CONTENT[language].body}</p>
-    <p className="occurrence-summary">{t.occurrenceCount}: <strong>{ROOT_OCCURRENCE_COUNT}</strong></p>
-    <p className="entry-note">{t.rootScope}</p><p className="entry-note">{t.formsNote}</p>
-    <SourceLinks ids={[...ROOT_CONTENT.sources, 'corpus']} language={language} />
+  const isLbb = rootKey === 'lbb'
+  const content = isLbb ? LBB_ROOT_CONTENT : ROOT_CONTENT
+  const count = isLbb ? rootOccurrenceCount('lbb') : ROOT_OCCURRENCE_COUNT
+  const scope = isLbb
+    ? (language === 'ru'
+      ? 'В Коране корень ل ب ب отмечен 16 раз, и все вхождения представлены существительным أَلْبَاب. На орбите дополнительно показаны словарные формы لُبّ и لَبِيب для понимания семьи.'
+      : 'In the Quran the root ل ب ب is recorded 16 times, all as the noun أَلْبَاب. The orbit also shows dictionary forms لُبّ and لَبِيب to make the lexical family visible.')
+    : t.rootScope
+  return <div className="entry-copy"><p className="entry-status">{t.semanticStatus}</p><ModelStatus language={language} rootKey={rootKey} />
+    <p className="entry-lead">{content[language].lead}</p><p>{content[language].body}</p>
+    <p className="occurrence-summary">{t.occurrenceCount}: <strong>{count}</strong></p>
+    <p className="entry-note">{scope}</p><p className="entry-note">{t.formsNote}</p>
+    <SourceLinks ids={isLbb ? content.sources : [...content.sources, 'corpus']} language={language} />
   </div>
 }
 
 export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
   const t = COPY[language]
-  const content = WORD_CONTENT[word.id]
+  const content = word.rootKey === 'lbb' ? LBB_WORD_CONTENT[word.id] : WORD_CONTENT[word.id]
   if (panel === 'quran') {
     const occurrences = OCCURRENCES[word.id] || []
     const groups = groupOccurrences(word.id)
     const verses = new Set(occurrences.map(item => item.sura + ':' + item.ayah)).size
     return <div className="entry-copy quran-occurrences">
-      {word.lexicalOnly ? <p>{t.lexicalQuran}</p> : <>
+      {word.lexicalOnly ? <p>{word.rootKey === 'lbb'
+        ? (language === 'ru' ? 'Это словарная форма для понимания корневой семьи; отдельное кораническое вхождение этой формы здесь не заявлено.' : 'This dictionary form is shown to explain the root family; no separate Quranic occurrence of this form is claimed here.')
+        : t.lexicalQuran}</p> : <>
         <h3>{t.references}</h3>
         <p className="occurrence-summary">{t.occurrenceCount}: <strong>{occurrences.length}</strong><span> · </span>{t.verseCount}: <strong>{verses}</strong></p>
         {content.occurrenceNote && <p className="entry-note annotation-note">{content.occurrenceNote[language]}</p>}
