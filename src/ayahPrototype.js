@@ -88,9 +88,9 @@ export const AYAH_PROTOTYPES = {
             meaning: {
               gloss: 'Осознанность перед Аллахом',
               manifestation: 'Благочестие',
-              manifestationDefinition: 'Русское слово «благочестие» означает соблюдение религиозных предписаний. Поэтому здесь оно показывает поведенческое проявление taqwā: внутреннее состояние становится видимым в том, как человек соблюдает установленные Аллахом границы.',
+              manifestationDefinition: 'Благочестие — религиозно-нравственное качество, которое проявляется в почтительном отношении к вере и в поведении, согласованном с её предписаниями. В этом аяте оно показывает внешний, поведенческий слой taqwā: внутренняя осознанность перед Аллахом становится видимой в том, как человек соблюдает установленные Им границы.',
               description: 'تَقْوَىٰ (taqwā) в этом аяте называет внутреннюю осознанность перед Аллахом, которая направляет поступки и помогает человеку оберегать себя от выхода за установленные Им границы. Корень و ق ي (w-q-y) сохраняет защитную идею «ограждать / оберегать».',
-              translation: '«Благочестие» уместно здесь как проявление taqwā, но не как её полная дефиниция. Оно описывает то, как внутренняя осознанность и защитно-ориентированная позиция становятся видимыми в религиозном поведении. Следующее وَٱتَّقُونِ (wa-ittaqūni) возвращает то же смысловое поле уже как прямое действие.',
+              translation: 'В этом аяте «благочестие» передаёт проявление taqwā на уровне поведения: внутренняя осознанность перед Аллахом и оберегание себя в Его границах становятся видимыми в поступках. Следующее وَٱتَّقُونِ (wa-ittaqūni) переводит то же смысловое поле из названного качества в прямое действие.',
             },
           },
           en: {
@@ -113,15 +113,15 @@ export const AYAH_PROTOTYPES = {
             meaning: {
               gloss: 'Conscious awareness before Allah',
               manifestation: 'Piety',
-              manifestationDefinition: '“Piety” names religious devotion as it is expressed in conduct. Here it is shown as a manifestation of taqwā rather than a complete definition of the concept.',
+              manifestationDefinition: '“Piety” is a religious and moral quality expressed through reverence, devotion, and conduct shaped by religious guidance. In this ayah it represents the outward behavioral manifestation of taqwā.',
               description: 'In this ayah, تَقْوَىٰ (taqwā) names an inward conscious awareness before Allah that guides conduct and helps a person guard against crossing His boundaries. The root و ق ي (w-q-y) retains the protective idea of guarding or shielding.',
-              translation: '“Piety” is useful here as a manifestation of taqwā, not as a complete definition. It describes how the inward awareness and protective orientation become visible in religious conduct. The following وَٱتَّقُونِ (wa-ittaqūni) returns the same semantic field as a direct command.',
+              translation: 'Here “piety” expresses the behavioral manifestation of taqwā: inward awareness of Allah and self-guarding within His boundaries become visible in conduct. The following وَٱتَّقُونِ (wa-ittaqūni) turns the same semantic field from a named quality into a direct command.',
             },
           },
         },
       },
       {
-        ar: 'وَٱتَّقُونِ', tr: 'wa-ittaqūni', ru: 'и сохраняйте осознанность передо Мной', en: 'and remain consciously mindful before Me',
+        ar: 'وَٱتَّقُونِ', tr: 'wa-ittaqūni', ru: 'и сохраняйте осознанность передо Мной', en: 'and remain mindful of Me',
         roleRu: 'союз + повелительный глагол VIII формы + подлежащее + объект 1-го лица', roleEn: 'conjunction + Form VIII imperative + subject pronoun + 1st-person object',
         root: 'و ق ي', rootReading: 'w-q-y', orbitId: 'ittaqa',
         noteRu: 'وَٱتَّقُونِ (wa-ittaqūni) возвращает тот же корень و ق ي уже как прямое повеление множественному адресату.',
@@ -138,7 +138,7 @@ export const AYAH_PROTOTYPES = {
               text: 'Структура читается как وَ + ٱتَّقُوا + نِ. Глагол ٱتَّقُوا (ittaqū) — повелительная форма от ٱتَّقَىٰ (ittaqā), VIII формы корня و ق ي (w-q-y). В этой форме начальная корневая و преобразуется и сливается с ت, поэтому появляется удвоенная تّ. Полная объектная форма подразумевает ٱتَّقُونِي (ittaqūnī): ن — nūn al-wiqāya, а yā местоимения «Меня» в коранической записи опущена; её след сохраняется в касре نِ.',
             },
             syntax: {
-              plain: 'Это прямое повеление группе людей. Действие направлено к Аллаху как к объекту обращения: «Меня». Сам грамматический объект не означает автоматически, что Аллах представлен источником опасности; смысловую роль определяет контекст.',
+              plain: 'Это прямое повеление группе людей. Действие направлено к Аллаху как к объекту обращения: «Меня». В контексте аята эта направленность выражает осознанность перед Аллахом и сохранение поведения внутри установленных Им границ.',
               title: 'فعل أمر (fiʿl amr) — прямое повеление',
               case: 'Глагол повелительного наклонения построен на حذف النون; واو الجماعة выступает подлежащим — «вы».',
               ending: 'نون الوقاية отделяет глагол от местоимения 1-го лица; yā «Меня» опущена, а kasra в نِ указывает на неё.',
@@ -147,7 +147,7 @@ export const AYAH_PROTOTYPES = {
             meaning: {
               gloss: 'Сохраняйте осознанность передо Мной',
               description: 'Здесь تَقْوَىٰ (taqwā) перестаёт быть только названным качеством и становится действием. После того как она названа лучшим запасом, адресатам прямо велено сохранять эту осознанность перед Аллахом и оберегать своё поведение в установленных Им границах.',
-              translation: 'Форма буквально направляет действие к Аллаху — «Меня», но это не требует переводить её через страх или представлять Аллаха опасностью, от которой нужно защищаться. В контексте хаджа речь уже шла о границах поведения, добре, известном Аллаху, и taqwā как внутреннем запасе. Поэтому «сохраняйте осознанность передо Мной» раскрывает здесь направление действия и его защитно-поведенческий смысл.',
+              translation: 'Форма направляет действие непосредственно к Аллаху — «Меня». В контексте хаджа уже установлены границы поведения, добро связано со знанием Аллаха, а taqwā названа лучшим внутренним запасом. Поэтому «сохраняйте осознанность передо Мной» передаёт направление действия и связывает внутреннюю осознанность с поведением в установленных Им границах.',
             },
           },
           en: {
@@ -161,16 +161,16 @@ export const AYAH_PROTOTYPES = {
               text: 'The structure is وَ + ٱتَّقُوا + نِ. ٱتَّقُوا (ittaqū) is the plural imperative of Form VIII ٱتَّقَىٰ (ittaqā), from the root و ق ي (w-q-y). In this form, the initial root و is transformed and assimilates with ت, producing doubled تّ. The full object form underlying the expression is ٱتَّقُونِي (ittaqūnī): ن is nūn al-wiqāya, while the pronominal yā “Me” is omitted in the Quranic spelling and its trace remains in the kasrah of نِ.',
             },
             syntax: {
-              plain: 'This is a direct command to a plural audience. The action is grammatically directed to Allah as the first-person object “Me.” That grammatical object does not by itself make Allah the conceptual source of danger; the semantic role is resolved from context.',
+              plain: 'This is a direct command to a plural audience. The action is grammatically directed to Allah as the first-person object “Me.” In this ayah, that direction expresses mindfulness of Allah together with conduct guarded within His boundaries.',
               title: 'فعل أمر (fiʿl amr) — direct imperative',
               case: 'The imperative is built with deletion of nūn; the plural wāw is the subject, “you.”',
               ending: 'Nūn al-wiqāya separates the verb from the first-person pronoun; the yā “Me” is omitted, while the kasrah on نِ points to it.',
               text: 'The opening وَ links the command to the preceding statement about تَقْوَىٰ as the best provision. The same root idea is first named as the noun تَقْوَىٰ and then immediately returns as the action وَٱتَّقُونِ.',
             },
             meaning: {
-              gloss: 'Remain consciously mindful before Me',
-              description: 'Here تَقْوَىٰ (taqwā) moves from a named quality into action. After it is called the best provision, the addressees are directly commanded to maintain that awareness before Allah and guard their conduct within His boundaries.',
-              translation: 'The form grammatically directs the action toward Allah as “Me,” but that does not require a fear-centered rendering or make Allah the danger from which the subject protects themself. In the Hajj context, the ayah has already established boundaries of conduct, good known to Allah, and taqwā as inward provision. “Remain consciously mindful before Me” therefore preserves the direction of the command while unpacking its protective and behavioral force.',
+              gloss: 'Remain mindful of Me',
+              description: 'Here تَقْوَىٰ (taqwā) moves from a named quality into action. After it is called the best provision, the addressees are directly commanded to remain mindful of Allah and to guard their conduct within His boundaries.',
+              translation: 'The form directs the action toward Allah as “Me.” Within the Hajj sequence, boundaries of conduct have already been established, good has been linked to Allah’s knowledge, and taqwā has been named the best inward provision. “Remain mindful of Me” expresses that direct orientation naturally in English, while the surrounding explanation preserves its guarding and behavioral dimension.',
             },
           },
         },
