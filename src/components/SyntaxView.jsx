@@ -101,7 +101,7 @@ export function SyntaxView({ ayah, selectedWord, language }) {
           {geometry && step && <svg className="syntax-connectors"
             viewBox={`0 0 ${geometry.width} 88`} style={{ height: 88 }} role="group"
             aria-label={ru ? 'Грамматическая связь между словами' : 'Grammatical relationship between words'} dir="ltr">
-            <defs><marker id={marker} markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M1 1L6 3.5L1 6" fill="none" stroke="currentColor" strokeWidth="1" /></marker></defs>
+            <defs><marker id={marker} markerWidth="6" markerHeight="6" refX="5.2" refY="3" orient="auto"><path d="M1 1.2L5 3L1 4.8" fill="none" stroke="currentColor" strokeWidth=".9" strokeLinecap="round" strokeLinejoin="round" /></marker></defs>
             {[step].map(s => {
               const i = model.steps.indexOf(s)
               const from = geometry.points[s.from], to = geometry.points[s.to]
@@ -113,8 +113,7 @@ export function SyntaxView({ ayah, selectedWord, language }) {
               const depth = 34
               const path = `M ${x} 8 C ${x} ${depth}, ${to.x} ${depth}, ${to.x} 8`
               return <g key={s.id}>
-                {groupPoints.length > 1 && <path className="syntax-group-line" d={`M ${groupLeft + 4} 4 H ${groupRight - 4}`} />}
-                <circle className="syntax-link-anchor" cx={x} cy="8" r="2.4" />
+                {groupPoints.length > 1 && <path className="syntax-group-line" d={`M ${groupLeft + 9} 4 Q ${groupLeft + 4} 4 ${groupLeft + 4} 9 M ${groupLeft + 4} 4 H ${groupRight - 4} M ${groupRight - 4} 4 Q ${groupRight + 1} 4 ${groupRight + 1} 9`} />
                 <path className="syntax-link" d={path} markerEnd={`url(#${marker})`} />
                 <path className="syntax-link-hit" d={path} role="button" tabIndex="0"
                   aria-label={`${i + 1}. ${s.tr}`} onClick={() => changeStep(i)}
