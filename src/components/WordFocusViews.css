@@ -473,3 +473,195 @@
     margin-bottom: -8px !important;
   }
 }
+
+
+/* Ayah morphology: make derivation explicit instead of showing isolated cards. */
+.analysis-morphology-evolution {
+  width: 100%;
+  max-width: 640px;
+  margin: 22px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.analysis-morphology-evolution-step {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.analysis-morphology-evolution .analysis-morphology-node.evolution-node {
+  width: min(100%, 470px);
+  box-sizing: border-box;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.analysis-morphology-evolution .analysis-morphology-node.evolution-node > b {
+  margin-inline: auto;
+}
+
+.analysis-morphology-evolution .analysis-morphology-node.evolution-node > p {
+  max-width: 390px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.analysis-morphology-evolution .evolution-node.root {
+  border-color: rgba(89,242,255,.19);
+}
+
+.analysis-morphology-evolution .evolution-node.current-lemma {
+  border-color: rgba(198,92,255,.22);
+}
+
+.analysis-morphology-evolution .evolution-node.final-form {
+  border-color: rgba(124,255,139,.24);
+  background: linear-gradient(145deg, rgba(13,29,25,.90), rgba(6,12,12,.96));
+  box-shadow:
+    0 18px 48px rgba(0,0,0,.28),
+    0 0 24px rgba(105,230,201,.055),
+    inset 0 1px 0 rgba(255,255,255,.03);
+}
+
+.morph-derivation-connector {
+  display: grid;
+  justify-items: center;
+  gap: 1px;
+  margin: 3px 0 5px;
+  color: rgba(130,236,208,.82);
+  pointer-events: none;
+}
+
+.morph-derivation-connector svg {
+  display: block;
+  width: 30px;
+  height: 44px;
+  overflow: visible;
+}
+
+.morph-derivation-connector path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.morph-derivation-connector small {
+  max-width: 390px;
+  margin-top: -2px;
+  color: #80908c;
+  font-size: 10px;
+  line-height: 1.45;
+  letter-spacing: .025em;
+  text-align: center;
+}
+
+.morph-derivation-connector.surface-form {
+  margin-top: 5px;
+}
+
+.analysis-morphology-parts {
+  width: 100%;
+  margin-top: 26px;
+}
+
+.analysis-morphology-parts > h3 {
+  margin: 0 0 11px;
+  color: #a9bbb5;
+  font-size: 12px;
+  font-weight: 520;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.analysis-morphology-parts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 10px;
+}
+
+.analysis-morphology-parts-grid .analysis-morphology-node.compact {
+  min-height: 112px;
+  padding: 12px 10px 11px;
+  text-align: center;
+}
+
+.analysis-morphology-parts-grid .analysis-morphology-node.compact > b {
+  margin-inline: auto;
+}
+
+/* A single-word syntax step has no artificial self-arrow; keep its labels close. */
+.syntax-clause.no-connector .syntax-relation-labels {
+  margin-top: 8px;
+}
+
+@media (max-width:760px) {
+  .analysis-morphology-evolution {
+    max-width: 540px;
+    margin-top: 18px;
+  }
+
+  .analysis-morphology-evolution .analysis-morphology-node.evolution-node {
+    width: min(100%, 440px);
+    padding: 15px 13px 14px;
+  }
+
+  .analysis-morphology-evolution .analysis-morphology-node.evolution-node > span {
+    font-size: 30px;
+  }
+
+  .morph-derivation-connector {
+    margin-block: 1px 4px;
+  }
+
+  .morph-derivation-connector svg {
+    height: 40px;
+  }
+
+  .analysis-morphology-parts {
+    margin-top: 22px;
+  }
+
+  .analysis-morphology-parts-grid {
+    gap: 8px;
+  }
+
+  .syntax-clause.no-connector .syntax-relation-labels {
+    margin-top: 6px;
+  }
+}
+
+@media (max-width:420px) {
+  .analysis-morphology-evolution .analysis-morphology-node.evolution-node {
+    width: 96%;
+  }
+
+  .morph-derivation-connector small {
+    max-width: 285px;
+    font-size: 9.5px;
+  }
+
+  .analysis-morphology-parts-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 7px;
+  }
+
+  .analysis-morphology-parts-grid .analysis-morphology-node.compact {
+    min-height: 104px;
+    padding-inline: 7px;
+  }
+
+  .analysis-morphology-parts-grid .analysis-morphology-node.compact > span {
+    font-size: 23px;
+  }
+
+  .analysis-morphology-parts-grid .analysis-morphology-node.compact > b {
+    padding-inline: 5px;
+    font-size: 8.5px;
+  }
+}
