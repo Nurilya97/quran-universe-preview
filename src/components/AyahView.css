@@ -7305,7 +7305,7 @@
 
 /* Approved al-taqwa morphology connectors — clean Canva-style orthogonal lines.
    Scoped so older connector experiments cannot affect the approved prototype. */
-.approved-taqwa-baseline .analysis-morphology-tree.canva-tree {
+.approved-taqwa-baseline .analysis-morphology-tree.plain-tree {
   display: block !important;
   width: 100% !important;
   height: 58px !important;
@@ -7314,40 +7314,43 @@
   overflow: visible !important;
 }
 
-.approved-taqwa-baseline .analysis-morphology-tree.canva-tree.second {
+.approved-taqwa-baseline .analysis-morphology-tree.plain-tree.second {
   height: 62px !important;
   margin-top: 6px !important;
 }
 
-.approved-taqwa-baseline .analysis-morphology-tree.canva-tree path {
+.approved-taqwa-baseline .analysis-morphology-tree.plain-tree path {
   fill: none !important;
   stroke: rgba(186, 204, 198, .58) !important;
   stroke-width: 3px !important;
-  stroke-linecap: round !important;
-  stroke-linejoin: round !important;
+  stroke-linecap: butt !important;
+  stroke-linejoin: miter !important;
+  marker-start: none !important;
+  marker-mid: none !important;
+  marker-end: none !important;
   vector-effect: non-scaling-stroke !important;
   filter: none !important;
 }
 
 
 @media (max-width: 760px) {
-  .approved-taqwa-baseline .analysis-morphology-tree.canva-tree {
+  .approved-taqwa-baseline .analysis-morphology-tree.plain-tree {
     height: 52px !important;
     margin: 3px 0 4px !important;
   }
 
-  .approved-taqwa-baseline .analysis-morphology-tree.canva-tree.second {
+  .approved-taqwa-baseline .analysis-morphology-tree.plain-tree.second {
     height: 56px !important;
     margin-top: 5px !important;
   }
 }
 
 @media (max-width: 420px) {
-  .approved-taqwa-baseline .analysis-morphology-tree.canva-tree {
+  .approved-taqwa-baseline .analysis-morphology-tree.plain-tree {
     height: 49px !important;
   }
 
-  .approved-taqwa-baseline .analysis-morphology-tree.canva-tree.second {
+  .approved-taqwa-baseline .analysis-morphology-tree.plain-tree.second {
     height: 53px !important;
   }
 }
