@@ -289,9 +289,7 @@ function CompositionDiagram({ ayah, focusWordIndex, language, layer }) {
         <small>
           {layer === 'themes'
             ? String(index + 1).padStart(2, '0')
-            : layer === 'rhetoric'
-              ? (ru ? 'РИТОРИКА' : 'RHETORIC')
-              : (ru ? 'ЗВУЧАНИЕ' : 'SOUND')}
+            : (copy.label || '')}
         </small>
         <h3>{copy.title}</h3>
         <div className="composition-phrase" lang="ar" dir="rtl">
@@ -310,7 +308,48 @@ function CompositionDiagram({ ayah, focusWordIndex, language, layer }) {
   </div>
 }
 
+function SoundDiagram({ ayah, language }) {
+  const sound = ayah.sound
+  if (!sound) return null
+  const ru = language === 'ru'
+
+  return <div className="diagram-view sound-space">
+    <section className="sound-context-block">
+      <small>{ru ? 'ЗВУКОВОЙ КОНТЕКСТ' : 'SOUND CONTEXT'}</small>
+      <h3>{ru ? 'Хадж · аяты 2:196–203' : 'Hajj · ayahs 2:196–203'}</h3>
+      <p>{sound.passage[language]}</p>
+      <div className="sound-ending-row" aria-label={ru ? 'Созвучные окончания в отрывке' : 'Related endings in the passage'}>
+        {sound.endings.map(item => <div key={item.ref} className={item.active ? 'is-active' : ''}>
+          <span>{item.ref}</span>
+          <b lang="ar" dir="rtl">{item.ar}</b>
+        </div>)}
+      </div>
+    </section>
+
+    <section className="sound-pause-block">
+      <small>{ru ? 'ПАУЗЫ ВНУТРИ АЯТА' : 'PAUSE STRUCTURE'}</small>
+      <div className="sound-pause-strip">
+        {sound.pauses.map((item, index) => <div key={index}>
+          <span>{item[language]}</span>
+          <p lang="ar" dir="rtl">{phraseTokens(ayah, item).map(token => token.ar).join(' ')}</p>
+        </div>)}
+      </div>
+    </section>
+
+    <section className="sound-observations">
+      <small>{ru ? 'СЛЫШИМЫЕ ПОВТОРЫ' : 'AUDIBLE RECURRENCES'}</small>
+      <div className="sound-observation-grid">
+        {sound.observations.map((item, index) => <article key={index}>
+          <h3 lang="ar" dir="rtl">{item.ar}</h3>
+          <p>{item[language]}</p>
+        </article>)}
+      </div>
+    </section>
+  </div>
+}
+
 function CanvasWorld({ ayah, mode, focusWordIndex, language, selectedWord, onSelectWord, compositionLayer }) {
+  if (mode === 'composition' && compositionLayer === 'sound') return <SoundDiagram ayah={ayah} language={language} />
   if (mode === 'composition') return <CompositionDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} layer={compositionLayer} />
   return <AnalysisDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} selectedWord={selectedWord} onSelectWord={onSelectWord} />
 }
