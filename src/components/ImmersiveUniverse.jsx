@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Cosmos } from './Cosmos.jsx'
-import { COPY, FORMS, ROOT_ORBITS, findWord, resolveQuery, rootPosition } from '../demo.js'
+import { COPY, FORMS, ROOT_DEMOS, findWord, findRoot, formsForRoot, resolveQuery, rootForWord, rootPosition } from '../demo.js'
 import { RootDetails, WordDetails } from './WordDetails.jsx'
 import { AyahView } from './AyahView.jsx'
 import './ImmersiveUniverse.css'
@@ -27,6 +27,7 @@ export function ImmersiveUniverse() {
   const [scene, setScene] = useState('search')
   const [journey, setJourney] = useState(null)
   const [word, setWord] = useState(FORMS[2])
+  const [rootKey, setRootKey] = useState('wqy')
   const [query, setQuery] = useState('')
   const [focused, setFocused] = useState(false)
   const [error, setError] = useState(false)
@@ -40,6 +41,9 @@ export function ImmersiveUniverse() {
   const destinationHeading = useRef(null)
   const panelTrigger = useRef(null)
   const t = COPY[language]
+  const currentRoot = ROOT_DEMOS[rootKey] || ROOT_DEMOS.wqy
+  const currentRootForms = formsForRoot(currentRoot.id)
+  const currentRootOrbits = currentRoot.orbits
 
   useEffect(() => {
     document.documentElement.lang = language
@@ -91,6 +95,7 @@ export function ImmersiveUniverse() {
     }
     if (!nextWord) return
     setAyahFocus(null)
+    setRootKey(rootForWord(nextWord).id)
     travel('word', nextWord)
   }
 
@@ -101,6 +106,7 @@ export function ImmersiveUniverse() {
     setError(false)
     input.current?.blur()
     setWord(nextWord)
+    if (destination === 'word') setRootKey(rootForWord(nextWord).id)
     const duration = paused || reducedMotion ? 180 : destination === 'root' ? 1350 : 1700
     setJourney({ started: performance.now(), duration, direction: destination === 'root' ? -1 : 1, destination })
     setScene(destination)
@@ -125,12 +131,20 @@ export function ImmersiveUniverse() {
   function submit(event) {
     event.preventDefault()
     const destination = resolveQuery(query)
-    if (destination) travel(destination, findWord(query) || FORMS[2])
-    else setError(true)
+    const rootMatch = findRoot(query)
+    const wordMatch = findWord(query)
+    if (destination === 'root' && rootMatch) {
+      setRootKey(rootMatch.id)
+      travel('root')
+    } else if (destination === 'word' && wordMatch) {
+      setRootKey(rootForWord(wordMatch).id)
+      travel('word', wordMatch)
+    } else setError(true)
   }
 
   const panelTitle = panel === 'forms' ? t.allForms : panel === 'root' ? t.aboutRoot : panel ? t[panel] : ''
   const searchWord = findWord(query) || FORMS[2]
+  const searchRoot = findRoot(query) || rootForWord(searchWord)
   const className = 'universe scene-' + scene + (journey ? ' is-travelling' : '') + (paused || reducedMotion ? ' is-still' : '')
 
   const wordOrbitNodes = [
@@ -171,8 +185,8 @@ export function ImmersiveUniverse() {
           <button className="search-result" onClick={() => travel('word', searchWord)}>
             <span className="word-label"><span className="arabic" lang="ar" dir="rtl">{searchWord.arabic}</span><small className="transliteration" lang="ar-Latn" dir="ltr">{searchWord.reading}</small></span><span>{t.word}</span><Icon name="arrow" />
           </button>
-          <button className="search-result" onClick={() => travel('root')}>
-            <span lang="ar" dir="rtl">و ق ي</span><span>{t.root}</span><Icon name="arrow" />
+          <button className="search-result" onClick={() => { setRootKey(searchRoot.id); travel('root') }}>
+            <span lang="ar" dir="rtl">{searchRoot.arabic}</span><span>{t.root}</span><Icon name="arrow" />
           </button>
         </div>}
       </div>
@@ -180,12 +194,12 @@ export function ImmersiveUniverse() {
 
     {journey && <div className="journey" role="status">
       <span className="sr-only">{t.travel}</span>
-      <span lang="ar" dir="rtl">{scene === 'root' ? 'و ق ي' : word.arabic}</span>
+      <span lang="ar" dir="rtl">{scene === 'root' ? currentRoot.arabic : word.arabic}</span>
     </div>}
 
     {scene === 'word' && !journey && <section className="word-stage stage-reveal" aria-label={t.orbit}>
       <button className="root-return" onClick={() => travel('root')} aria-label={t.returnRoot}>
-        <Icon name="back" /><span>{t.root}</span><span lang="ar" dir="rtl">و ق ي</span>
+        <Icon name="back" /><span>{t.root}</span><span lang="ar" dir="rtl">{currentRoot.arabic}</span>
       </button>
       <div className="orbit-field">
         <div className="word-core">
@@ -205,11 +219,11 @@ export function ImmersiveUniverse() {
     {scene === 'root' && !journey && <section className="root-stage stage-reveal" aria-label={t.rootSpace}>
       <div className="root-intro"><p className="eyebrow">{t.families}</p></div>
       <div className="root-field">
-        {ROOT_ORBITS.map((orbit) => <div key={orbit.id} className={'root-orbit root-orbit-' + orbit.id}
+        {currentRootOrbits.map((orbit) => <div key={orbit.id} className={'root-orbit root-orbit-' + orbit.id}
           style={{ '--diameter': orbit.radius * 2 + '%' }} aria-hidden="true"><span>{orbit.id}</span></div>)}
-        <div className="root-core"><button className="root-core-trigger" onClick={() => openPanel('root')} aria-label={t.aboutRoot} aria-haspopup="dialog"><h1 ref={destinationHeading} tabIndex={-1} lang="ar" dir="rtl">و ق ي</h1><span>{t.root}</span></button></div>
-        {FORMS.map((form) => {
-          const point = rootPosition(form)
+        <div className="root-core"><button className="root-core-trigger" onClick={() => openPanel('root')} aria-label={t.aboutRoot} aria-haspopup="dialog"><h1 ref={destinationHeading} tabIndex={-1} lang="ar" dir="rtl">{currentRoot.arabic}</h1><span>{t.root}</span></button></div>
+        {currentRootForms.map((form) => {
+          const point = rootPosition(form, currentRootOrbits)
           return <button key={form.id} className={'root-star' + (form.id === 'taqwa' ? ' root-star-featured' : '')}
           data-orbit={form.orbit} aria-label={form.arabic + ' · ' + t[form.type] + ' · ' + t.familyLabel + ' ' + form.orbit}
           style={{ '--x': point.x + '%', '--y': point.y + '%' }} onClick={() => travel('word', form)}>
@@ -218,7 +232,7 @@ export function ImmersiveUniverse() {
           <span className="form-type">{t[form.type + 'Short'] || t[form.type]}</span>
         </button>})}
       </div>
-      <button className="forms-button" onClick={() => openPanel('forms')} aria-haspopup="dialog"><Icon name="list" />{t.allForms}<span>{FORMS.length}</span></button>
+      <button className="forms-button" onClick={() => openPanel('forms')} aria-haspopup="dialog"><Icon name="list" />{t.allForms}<span>{currentRootForms.length}</span></button>
     </section>}
 
 
@@ -233,11 +247,11 @@ export function ImmersiveUniverse() {
           {panel !== 'structure' && <div><p className="eyebrow">{panel === 'forms' || panel === 'root' ? t.rootSpace : t.orbit}</p><h2 id="sheet-title">{panelTitle}</h2></div>}
           <button className="icon-button" autoFocus onClick={closePanel} aria-label={t.close}><Icon name="close" /></button>
         </header>
-        {panel !== 'forms' && panel !== 'structure' && <div className="sheet-word-label"><p className="sheet-word" lang="ar" dir="rtl">{panel === 'root' ? 'و ق ي' : word.arabic}</p><small className="transliteration" lang="ar-Latn" dir="ltr">{panel === 'root' ? 'w-q-y' : word.reading}</small></div>}
-        {panel === 'root' && <RootDetails language={language} />}
+        {panel !== 'forms' && panel !== 'structure' && <div className="sheet-word-label"><p className="sheet-word" lang="ar" dir="rtl">{panel === 'root' ? currentRoot.arabic : word.arabic}</p><small className="transliteration" lang="ar-Latn" dir="ltr">{panel === 'root' ? currentRoot.reading : word.reading}</small></div>}
+        {panel === 'root' && <RootDetails language={language} rootKey={currentRoot.id} />}
         {['quran', 'structure', 'meaning'].includes(panel) && <WordDetails key={word.id + panel} word={word} panel={panel} language={language} onPick={form => travel('word', form)} onOpenAyah={openAyah} />}
-        {panel === 'forms' && <>{ROOT_ORBITS.map((family) => <section className="form-family" key={family.id}>
-          <h3>{t[family.label]}</h3>{FORMS.filter((form) => form.orbit === family.id).map((form) => <button key={form.id} onClick={() => travel('word', form)}>
+        {panel === 'forms' && <>{currentRootOrbits.map((family) => <section className="form-family" key={family.id}>
+          <h3>{t[family.label]}</h3>{currentRootForms.filter((form) => form.orbit === family.id).map((form) => <button key={form.id} onClick={() => travel('word', form)}>
             <span className="word-label"><span className="arabic" lang="ar" dir="rtl">{form.arabic}</span><small className="transliteration" lang="ar-Latn" dir="ltr">{form.reading}</small></span><span>{t[form.type]}{form.lexicalOnly && <small className="lexical-tag">{t.lexical}</small>}</span><Icon name="arrow" /></button>)}
         </section>)}<p className="sheet-note">{t.formsNote}</p></>}
       </div>
