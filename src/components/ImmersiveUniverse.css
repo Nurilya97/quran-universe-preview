@@ -273,8 +273,8 @@ h1:focus { outline: none; }
   font-size: 8px;
 }
 .root-stage-lbb .root-orbit > span {
-  left: 50%;
-  top: 0;
+  left: 0;
+  top: 50%;
   transform: translate(-50%, -50%);
   font-size: 9px;
   padding: 3px 5px;
@@ -296,21 +296,21 @@ h1:focus { outline: none; }
 @media (max-width: 720px) {
   .root-stage-lbb .root-field {
     top: 51%;
-    width: min(calc(100vw - 26px), calc(100dvh - 190px));
+    width: min(calc(100vw - 48px), calc(100dvh - 220px));
   }
   .root-stage-lbb .root-star {
-    min-width: 40px;
-    min-height: 38px;
+    min-width: 36px;
+    min-height: 36px;
     padding: 3px 0 2px;
   }
   .root-stage-lbb .root-star .arabic {
-    font-size: 15.5px;
+    font-size: 15px;
   }
   .root-stage-lbb .root-star-featured .arabic {
     font-size: 21px;
   }
   .root-stage-lbb .root-star .transliteration {
-    font-size: 7px;
+    font-size: 6.8px;
   }
   .root-stage-lbb .root-orbit > span {
     font-size: 7.5px;
