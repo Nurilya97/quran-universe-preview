@@ -12,10 +12,10 @@ export const ROOT_ORBITS = [
   { id: 'VIII', radius: 45.5, label: 'familyVIII' },
 ]
 export const LBB_ROOT_ORBITS = [
-  { id: 'LBBV', radius: 21, label: 'familyLbbVerbs' },
-  { id: 'LBBN1', radius: 31, label: 'familyLbbNouns' },
-  { id: 'LBBN2', radius: 40, label: 'familyLbbNounsMore' },
-  { id: 'LBBX', radius: 48, label: 'familyLbbLexical' },
+  { id: 'LBBV', mark: 'Vb', radius: 21, label: 'familyLbbVerbs' },
+  { id: 'LBBN1', mark: 'N', radius: 31, label: 'familyLbbNouns' },
+  { id: 'LBBN2', mark: 'N₂', radius: 40, label: 'familyLbbNounsMore' },
+  { id: 'LBBX', mark: 'Lex', radius: 48, label: 'familyLbbLexical' },
 ]
 export const ROOT_DEMOS = {
   wqy: { id: 'wqy', arabic: 'و ق ي', reading: 'w-q-y', orbits: ROOT_ORBITS },
