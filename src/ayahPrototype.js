@@ -267,36 +267,6 @@ export const AYAH_PROTOTYPES = {
         { ref: '2:202', ar: 'ٱلْحِسَابِ' },
       ],
     },
-    rhetoricConnectors: {
-      ru: {
-        title: 'Два соединителя, которые важно различать',
-        fa: {
-          ar: 'فَ',
-          tr: 'fa',
-          text: '«и тогда / вслед за этим». Связывает следующий шаг с предыдущим теснее. В зависимости от конструкции может показывать непосредственное следование, результат или переход к тому, что вытекает из предыдущего.',
-        },
-        wa: {
-          ar: 'وَ',
-          tr: 'wa',
-          text: '«и». Присоединяет следующий элемент или мысль, но сама по себе не делает их результатом предыдущего.',
-        },
-        note: 'Дальше эти частицы будут показаны уже без повторного перевода: важно следить не за отдельным словом, а за тем, какую связь оно создаёт внутри конструкции.',
-      },
-      en: {
-        title: 'Two connectors to keep distinct',
-        fa: {
-          ar: 'فَ',
-          tr: 'fa',
-          text: '“and then / consequently.” It links the next step more tightly to what precedes. Depending on the construction, it can mark close sequence, result, or a move into what follows from the previous statement.',
-        },
-        wa: {
-          ar: 'وَ',
-          tr: 'wa',
-          text: '“and.” It joins the next element or statement, but does not by itself make it a result of what precedes.',
-        },
-        note: 'From this point on, the particles appear without repeated translations so the focus stays on the relationship they create inside each construction.',
-      },
-    },
     rhetoric: [
       {
         id: 'rhetoric-frame',
@@ -308,7 +278,7 @@ export const AYAH_PROTOTYPES = {
           title: 'Хадж помещён в известные месяцы',
           evidence: 'Фраза ٱلْحَجُّ أَشْهُرٌ مَّعْلُومَاتٌ построена как именная конструкция: ٱلْحَجُّ задаёт тему высказывания, أَشْهُرٌ сообщает о ней, а مَّعْلُومَاتٌ характеризует эти месяцы.',
           mechanism: 'Фраза сначала устанавливает рамку как данность. Здесь ещё нет повеления и нет условия: слушателю задают устойчивую исходную точку, от которой дальше будет развиваться правило.',
-          effect: 'Поэтому следующее فَمَنْ воспринимается как ответвление от уже установленной рамки: сначала названо время хаджа, затем речь переходит к человеку, который входит в это время и принимает на себя хадж.',
+          effect: 'Поэтому следующее فَمَنْ воспринимается как ответвление от уже установленной рамки. Начальная فَ (fa) — связующая частица: здесь она переводит речь к следующему, тесно связанному шагу — от установленного времени к человеку, который входит в это время и принимает на себя хадж.',
         },
         en: {
           step: '01',
@@ -316,7 +286,7 @@ export const AYAH_PROTOTYPES = {
           title: 'Hajj is placed within known months',
           evidence: 'The phrase ٱلْحَجُّ أَشْهُرٌ مَّعْلُومَاتٌ is a nominal construction: ٱلْحَجُّ sets the topic, أَشْهُرٌ predicates it, and مَّعْلُومَاتٌ qualifies those months.',
           mechanism: 'The clause first establishes a frame as a given state. There is no command or condition yet; the listener receives the stable starting point from which the ruling will develop.',
-          effect: 'The following فَمَنْ therefore branches from an already-established frame: first the time of Hajj is stated, then the discourse turns to the person who enters that time and undertakes Hajj.',
+          effect: 'The following فَمَنْ therefore branches from an already-established frame. Its opening فَ (fa) is a connective particle: here it moves the discourse into the next closely related step, from the appointed time to the person who enters it and undertakes Hajj.',
         },
       },
       {
@@ -327,16 +297,16 @@ export const AYAH_PROTOTYPES = {
           step: '02',
           label: 'УСЛОВИЕ → ЕДИНАЯ ЦЕПОЧКА',
           title: 'Вступление в хадж связывается с тремя границами',
-          evidence: 'مَنْ вводит условие. В فَلَا частица فَ открывает ответ на это условие. Следующие وَلَا и وَلَا присоединяются уже через وَ.',
-          mechanism: 'Здесь видно различие двух соединителей. وَ просто добавляет следующий элемент. فَ связывает условие и его ответ теснее: مَنْ فَرَضَ → فَلَا. После этого وَ добавляет ещё два ограничения внутрь уже открытой рамки ответа.',
+          evidence: 'مَنْ вводит условие. В فَلَا частица فَ открывает ответ на это условие. Следующие وَلَا и وَلَا присоединяются через وَ (wa) — «и»: она соединяет следующий элемент, но сама по себе не делает его следствием предыдущего.',
+          mechanism: 'Здесь особенно видно различие двух соединителей. وَ просто присоединяет следующий элемент. فَ связывает предыдущую конструкцию со следующим шагом теснее; в فَلَا она конкретно вводит результат условия: مَنْ فَرَضَ → فَلَا. После этого وَ добавляет ещё два ограничения внутрь уже открытой рамки ответа.',
           effect: 'Поэтому одна فَ задаёт грамматическую рамку всей серии فَلَا … وَلَا … وَلَا. Три ограничения читаются не как отдельные запреты, а как один связанный набор последствий вступления в состояние хаджа.',
         },
         en: {
           step: '02',
           label: 'CONDITION → ONE CHAIN',
           title: 'Entering Hajj is tied to three boundaries',
-          evidence: 'مَنْ introduces a condition. In فَلَا, فَ opens the response to that condition. The following وَلَا and وَلَا are then joined through وَ.',
-          mechanism: 'The contrast between the two connectors is visible here. وَ simply adds another element. فَ binds condition and response more tightly: مَنْ فَرَضَ → فَلَا. وَ then adds the second and third limits inside that already-opened result frame.',
+          evidence: 'مَنْ introduces a condition. In فَلَا, فَ opens the response to that condition. The following وَلَا and وَلَا are joined through وَ (wa), “and”: it joins the next element but does not by itself make it a result of what precedes.',
+          mechanism: 'The contrast between the two connectors is especially clear here. وَ simply joins the next element. فَ links the preceding construction to the next step more tightly; in فَلَا it specifically introduces the result of the condition: مَنْ فَرَضَ → فَلَا. وَ then adds the second and third limits inside that already-opened result frame.',
           effect: 'One فَ therefore sets the grammatical frame for the whole فَلَا … وَلَا … وَلَا series. The three limits are read as one connected set of consequences of entering Hajj rather than as unrelated prohibitions.',
         },
       },
