@@ -58,7 +58,7 @@ export const AYAH_PROTOTYPES = {
       { ar: 'يَعْلَمْهُ', tr: 'yaʿlamhu', ru: 'Он знает это', en: 'He knows it', roleRu: 'глагол + объектное местоимение', roleEn: 'verb + object pronoun' },
       { ar: 'ٱللَّهُ', tr: 'Allāhu', ru: 'Аллах', en: 'Allah', roleRu: 'имя собственное · подлежащее', roleEn: 'proper noun · subject' },
       { ar: 'وَتَزَوَّدُوا۟', tr: 'wa-tazawwadū', ru: 'и запасайтесь', en: 'and take provision', roleRu: 'повелительный глагол · V порода', roleEn: 'imperative · Form V' },
-      { ar: 'فَإِنَّ', tr: 'fa-inna', ru: 'ведь / поистине', en: 'for indeed', roleRu: 'فاء + частица усиления', roleEn: 'resumption + emphatic particle' },
+      { ar: 'فَإِنَّ', tr: 'fa-inna', ru: 'ведь / поистине', en: 'for indeed', roleRu: 'فاء استئنافية + частица усиления إِنَّ', roleEn: 'resumption particle + emphatic إِنَّ' },
       { ar: 'خَيْرَ', tr: 'khayra', ru: 'лучший', en: 'the best', roleRu: 'существительное сравнения', roleEn: 'elative noun' },
       { ar: 'ٱلزَّادِ', tr: 'al-zādi', ru: 'запас / провизия', en: 'provision', roleRu: 'существительное', roleEn: 'noun' },
       {
