@@ -341,7 +341,13 @@ h1:focus { outline: none; }
   position: relative; width: max(100%, calc(var(--lbb-field) * 1.6));
   height: max(100%, calc(var(--lbb-field) * 1.6));
 }
-.root-stage-lbb .root-field { width: var(--lbb-field); top: 50%; }
+.root-stage-lbb .root-field {
+  width: var(--lbb-field);
+  top: 50%;
+  transform: translate(-50%, -50%) scale(var(--root-zoom, 1));
+  transform-origin: center;
+  transition: transform .22s ease;
+}
 .root-stage-lbb .root-orbit-inner { border-style: dashed; border-color: #d6d9de26; }
 .root-stage-lbb .root-orbit > span {
   left: -34px; top: calc(50% - 42px); font-size: 11px;
@@ -349,15 +355,64 @@ h1:focus { outline: none; }
 }
 .root-stage-lbb .root-star { min-width: 60px; }
 .root-stage-lbb .root-star .transliteration { font-size: 9px; }
-.root-pan-hint {
-  position: absolute; top: 72px; left: 20px; right: 20px;
-  margin: 0; text-align: center; color: var(--muted); font-size: 11px;
+.root-zoom-controls {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  right: max(14px, env(safe-area-inset-right));
+  transform: translateY(-50%);
+  display: grid;
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid #d6d9de1f;
+  border-radius: 8px;
+  background: #050709c7;
+  backdrop-filter: blur(8px);
+}
+.root-zoom-controls button {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  background: #d6d9de0b;
+  color: #d9dde1;
+}
+.root-zoom-controls button:hover,
+.root-zoom-controls button:focus-visible {
+  background: #d6d9de18;
+}
+.root-zoom-controls button:disabled {
+  opacity: .28;
+}
+.root-zoom-controls .root-zoom-level {
+  width: 40px;
+  height: 28px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: .02em;
 }
 @media (max-width: 720px) {
   .root-stage-lbb .root-canvas { --lbb-field: 800px; }
   .root-stage-lbb .root-star { min-width: 52px; min-height: 44px; }
   .root-stage-lbb .root-star .transliteration { font-size: 8px; }
   .root-stage-lbb .root-orbit > span { font-size: 10px; }
-  .root-pan-hint { top: 84px; font-size: 10px; }
-  .root-stage-lbb .root-viewport { inset: 116px 0 100px; }
+  .root-stage-lbb .root-viewport { inset: 104px 0 100px; }
+  .root-zoom-controls {
+    right: max(10px, env(safe-area-inset-right));
+    gap: 4px;
+    padding: 4px;
+  }
+  .root-zoom-controls button {
+    width: 36px;
+    height: 36px;
+  }
+  .root-zoom-controls .root-zoom-level {
+    width: 36px;
+    height: 24px;
+    font-size: 8px;
+  }
 }
