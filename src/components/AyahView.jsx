@@ -239,24 +239,13 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
   </div>
 }
 
-function compositionY(index, count, layer = 'themes', activeIndex = -1) {
-  let base
-  if (layer === 'themes' && count === BLOCK_Y.length) {
-    base = BLOCK_Y[index]
-  } else if (count <= 1) {
-    base = 940
-  } else {
-    const top = layer === 'sound' ? 430 : 360
-    const bottom = layer === 'sound' ? 1320 : 1450
-    base = top + ((bottom - top) * index) / (count - 1)
-  }
+function compositionY(index, count, layer = 'themes') {
+  if (layer === 'themes' && count === BLOCK_Y.length) return BLOCK_Y[index]
+  if (count <= 1) return 940
 
-  if (activeIndex < 0 || layer === 'themes') return base
-
-  const expansion = layer === 'sound' ? 88 : 92
-  if (index < activeIndex) return base - expansion
-  if (index > activeIndex) return base + expansion
-  return base
+  const top = layer === 'sound' ? 430 : 360
+  const bottom = layer === 'sound' ? 1320 : 1450
+  return top + ((bottom - top) * index) / (count - 1)
 }
 
 function CompositionDiagram({ ayah, focusWordIndex, language, layer }) {
