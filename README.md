@@ -62,6 +62,14 @@ Quran Universe research layer. External corpora, tafsir and translations can
 support verification, but they do not silently override the project's approved
 semantic model.
 
+Root research follows the project method in
+[`ROOT_SEMANTIC_METHOD.md`](./ROOT_SEMANTIC_METHOD.md): reconstruct the
+fundamental semantic mechanism that explains the derivatives, distinguish
+attested facts from systemically supported connections and historical
+etymology, compare apparent synonyms, and test the proposed model against the
+Quranic corpus rather than presenting dictionary glosses as a disconnected
+list.
+
 For `و ق ي / تَقْوَىٰ`, the preview follows the current project model and
 does not reduce the concept to fear-centred wording. Reader-facing rhetoric
 must distinguish direct textual observation, grammatical mechanism and
