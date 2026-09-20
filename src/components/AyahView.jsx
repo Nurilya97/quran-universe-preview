@@ -20,7 +20,7 @@ const WORD_GAP = 152
 const VIEW_BOUNDS = {
   analysis: { left: 650, right: 1850, top: 430, bottom: 1360 },
   composition: { left: 430, right: 2070, top: 40, bottom: 2750 },
-  rhetoric: { left: 430, right: 2070, top: 60, bottom: 4700 },
+  rhetoric: { left: 430, right: 2070, top: 60, bottom: 6800 },
 }
 
 function finiteNumber(value, fallback) {
@@ -282,23 +282,9 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
   const ru = language === 'ru'
   const items = ayah.rhetoric || []
   const lens = ayah.passageLens
-  const primer = ayah.rhetoricPrimer?.[language]
 
   return <div className="diagram-view rhetoric-diagram">
     <div className="rhetoric-flow" style={{ left: WORLD.width / 2, top: 150 }}>
-      {primer && <section className="rhetoric-primer">
-        <small>{ru ? 'КЛЮЧ К РАЗБОРУ' : 'READING KEY'}</small>
-        <h3>{primer.title}</h3>
-        <p>{primer.text}</p>
-        <div className="rhetoric-fa-roles">
-          {primer.roles.map((role) => <div key={role.ar}>
-            <b lang="ar" dir="rtl">{role.ar}</b>
-            <span>{role.text}</span>
-          </div>)}
-        </div>
-        <p className="rhetoric-primer-current">{primer.current}</p>
-      </section>}
-
       {items.map((item) => {
         const copy = item[language]
         const focusWords = item.focusWords || []
@@ -319,9 +305,9 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
             })}
           </div>
           <div className="rhetoric-proof">
-            <p><b>{ru ? 'Грамматическая опора' : 'Grammatical evidence'}</b>{copy.evidence}</p>
-            <p><b>{ru ? 'Как работает связь' : 'How the link works'}</b>{copy.mechanism}</p>
-            <p><b>{ru ? 'Что это меняет' : 'What this changes'}</b>{copy.effect}</p>
+            <p><b>{ru ? 'Конструкция' : 'Construction'}</b>{copy.evidence}</p>
+            <p><b>{ru ? 'Связь' : 'Connection'}</b>{copy.mechanism}</p>
+            <p><b>{ru ? 'Эффект' : 'Effect'}</b>{copy.effect}</p>
           </div>
           {copy.sound && <p className="rhetoric-sound"><b>{ru ? 'На слух' : 'When heard'}</b>{copy.sound}</p>}
         </section>
