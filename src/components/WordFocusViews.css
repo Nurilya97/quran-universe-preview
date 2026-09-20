@@ -434,3 +434,42 @@
     line-height: 1.58 !important;
   }
 }
+
+
+/* Syntax connectors v2: restrained relationship arcs, no technical diagram feel. */
+.syntax-connectors {
+  height: 92px !important;
+  margin-top: -1px !important;
+  margin-bottom: -6px !important;
+  color: rgba(190, 218, 207, .82) !important;
+}
+
+.syntax-link {
+  stroke-width: .9 !important;
+  opacity: .66 !important;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: none;
+}
+
+.syntax-group-line {
+  stroke-width: .8 !important;
+  opacity: .42 !important;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.syntax-link-hit {
+  stroke-width: 20 !important;
+}
+
+.syntax-link-anchor {
+  display: none !important;
+}
+
+@media (max-width:760px) {
+  .syntax-connectors {
+    height: 84px !important;
+    margin-bottom: -8px !important;
+  }
+}
