@@ -11,24 +11,40 @@ export const ROOT_ORBITS = [
   { id: 'V', radius: 34.5, label: 'familyV' },
   { id: 'VIII', radius: 45.5, label: 'familyVIII' },
 ]
+export const LBB_ROOT_ORBITS = [
+  { id: 'N', radius: 35, label: 'familyLbbN' },
+]
+export const ROOT_DEMOS = {
+  wqy: { id: 'wqy', arabic: 'و ق ي', reading: 'w-q-y', orbits: ROOT_ORBITS },
+  lbb: { id: 'lbb', arabic: 'ل ب ب', reading: 'l-b-b', orbits: LBB_ROOT_ORBITS },
+}
 export const FORMS = [
-  { id: 'waqa', arabic: 'وَقَىٰ', reading: 'waqā', orbit: 'I', type: 'verbI', angle: 225, source: 'corpus' },
-  { id: 'ittaqa', arabic: 'ٱتَّقَىٰ', reading: 'ittaqā', orbit: 'VIII', type: 'verbVIII', angle: 210, source: 'corpus' },
-  { id: 'taqwa', arabic: 'تَقْوَى', reading: 'taqwā', orbit: 'VIII', type: 'noun', angle: 270, source: 'taqwa' },
-  { id: 'tuqat', arabic: 'تُقَاة', reading: 'tuqāt', orbit: 'VIII', type: 'verbalNoun', angle: 330, source: 'lexicon' },
-  { id: 'muttaqin', arabic: 'مُتَّقِين', reading: 'muttaqīn', orbit: 'VIII', type: 'participle', angle: 30, source: 'corpus' },
-  { id: 'waq', arabic: 'وَاق', reading: 'wāq', orbit: 'I', type: 'participle', angle: 45, source: 'corpus' },
-  { id: 'taqiyy', arabic: 'تَقِيّ', reading: 'taqiyy', orbit: 'VIII', type: 'adjective', angle: 90, source: 'lexicon' },
-  { id: 'atqa', arabic: 'أَتْقَى', reading: 'atqā', orbit: 'VIII', type: 'elative', angle: 150, source: 'corpus' },
-  { id: 'wiqaa', arabic: 'وِقَاء', reading: 'wiqāʾ', orbit: 'I', type: 'noun', angle: 315, source: 'lexicon', lexicalOnly: true, gloss: 'shield' },
-  { id: 'wiqaya', arabic: 'وِقَايَة', reading: 'wiqāya', orbit: 'I', type: 'verbalNoun', angle: 135, source: 'lexicon', lexicalOnly: true },
-  { id: 'tawaqqa', arabic: 'تَوَقَّىٰ', reading: 'tawaqqā', orbit: 'V', type: 'verbV', angle: 0, source: 'lexicon', lexicalOnly: true },
+  { id: 'waqa', arabic: 'وَقَىٰ', reading: 'waqā', orbit: 'I', type: 'verbI', angle: 225, source: 'corpus', rootKey: 'wqy' },
+  { id: 'ittaqa', arabic: 'ٱتَّقَىٰ', reading: 'ittaqā', orbit: 'VIII', type: 'verbVIII', angle: 210, source: 'corpus', rootKey: 'wqy' },
+  { id: 'taqwa', arabic: 'تَقْوَى', reading: 'taqwā', orbit: 'VIII', type: 'noun', angle: 270, source: 'taqwa', rootKey: 'wqy' },
+  { id: 'tuqat', arabic: 'تُقَاة', reading: 'tuqāt', orbit: 'VIII', type: 'verbalNoun', angle: 330, source: 'lexicon', rootKey: 'wqy' },
+  { id: 'muttaqin', arabic: 'مُتَّقِين', reading: 'muttaqīn', orbit: 'VIII', type: 'participle', angle: 30, source: 'corpus', rootKey: 'wqy' },
+  { id: 'waq', arabic: 'وَاق', reading: 'wāq', orbit: 'I', type: 'participle', angle: 45, source: 'corpus', rootKey: 'wqy' },
+  { id: 'taqiyy', arabic: 'تَقِيّ', reading: 'taqiyy', orbit: 'VIII', type: 'adjective', angle: 90, source: 'lexicon', rootKey: 'wqy' },
+  { id: 'atqa', arabic: 'أَتْقَى', reading: 'atqā', orbit: 'VIII', type: 'elative', angle: 150, source: 'corpus', rootKey: 'wqy' },
+  { id: 'wiqaa', arabic: 'وِقَاء', reading: 'wiqāʾ', orbit: 'I', type: 'noun', angle: 315, source: 'lexicon', rootKey: 'wqy', lexicalOnly: true, gloss: 'shield' },
+  { id: 'wiqaya', arabic: 'وِقَايَة', reading: 'wiqāya', orbit: 'I', type: 'verbalNoun', angle: 135, source: 'lexicon', rootKey: 'wqy', lexicalOnly: true },
+  { id: 'tawaqqa', arabic: 'تَوَقَّىٰ', reading: 'tawaqqā', orbit: 'V', type: 'verbV', angle: 0, source: 'lexicon', rootKey: 'wqy', lexicalOnly: true },
+  { id: 'lubb', arabic: 'لُبّ', reading: 'lubb', orbit: 'N', type: 'noun', angle: 205, source: 'laneLbb', rootKey: 'lbb', lexicalOnly: true },
+  { id: 'albab', arabic: 'أَلْبَاب', reading: 'albāb', orbit: 'N', type: 'noun', angle: 325, source: 'lbbCorpus', rootKey: 'lbb' },
+  { id: 'labib', arabic: 'لَبِيب', reading: 'labīb', orbit: 'N', type: 'adjective', angle: 85, source: 'laneLbb', rootKey: 'lbb', lexicalOnly: true },
 ]
 
-export function rootPosition(form) {
-  const radius = ROOT_ORBITS.find((orbit) => orbit.id === form.orbit).radius
+export function rootPosition(form, orbits = ROOT_ORBITS) {
+  const radius = (orbits.find((orbit) => orbit.id === form.orbit) || orbits[0]).radius
   const radians = form.angle * Math.PI / 180
   return { x: 50 + Math.cos(radians) * radius, y: 50 + Math.sin(radians) * radius }
+}
+export function rootForWord(word) {
+  return ROOT_DEMOS[word?.rootKey || 'wqy'] || ROOT_DEMOS.wqy
+}
+export function formsForRoot(rootKey = 'wqy') {
+  return FORMS.filter(form => (form.rootKey || 'wqy') === rootKey)
 }
 export const COPY = {
   ru: {
@@ -36,7 +52,7 @@ export const COPY = {
     language: 'Язык интерфейса', home: 'К поиску', enter: 'Перейти',
     available: 'Доступно в демо', word: 'Слово', root: 'Корень', rootSpace: 'Пространство корня',
     orbit: 'Орбита слова', travel: 'Приближение к', returnRoot: 'Отдалиться к корню',
-    noResult: 'Доступен корень و ق ي и 11 показанных форм. Введите арабское слово или его латинскую транскрипцию.',
+    noResult: 'Сейчас доступны корни و ق ي и ل ب ب. Введите арабское слово, корень или латинскую транскрипцию.',
     quran: 'Коран', structure: 'Строение слова', meaning: 'Значение',
     quranCaption: 'Вхождения', structureCaption: 'Форма и корень', meaningCaption: 'Смысловая памятка',
     close: 'Закрыть', references: 'Вхождения в Коране', referenceNote: 'Выберите аят, чтобы открыть его отдельное пространство и увидеть исследуемое слово внутри всей конструкции.',
@@ -48,7 +64,7 @@ export const COPY = {
     lexicalQuran: 'Этой словарной формы нет среди восьми групп данного корня в Кораническом арабском корпусе. Вхождения для неё не приписаны другим словам.',
     linkedPassage: 'Связанное употребление', tuqatCrossReference: 'Сравните تُقَاتِهِ в 3:102:7. Корпус относит это употребление к группе تَقِيّ; здесь оно показано отдельно и не добавлено к счётчику.',
     allForms: 'Формы в демо', formsNote: 'Каждая орбита объединяет глагол и связанную именную семью. Номер породы относится к глаголу; существительное может иметь собственную модель. Это подборка, не полное древо корня.',
-    familyI: 'I порода · семья وَقَىٰ', familyV: 'V порода · семья تَوَقَّىٰ', familyVIII: 'VIII порода · семья ٱتَّقَىٰ',
+    familyI: 'I порода · семья وَقَىٰ', familyV: 'V порода · семья تَوَقَّىٰ', familyVIII: 'VIII порода · семья ٱتَّقَىٰ', familyLbbN: 'Именная семья · لُبّ / أَلْبَاب',
     families: 'Словообразовательные семьи', familyLabel: 'Семья', allOrbits: 'Все орбиты',
     lexical: 'Словарная форма', lexicalNote: 'Словарная форма. Кораническое вхождение этой формы в демо не заявлено.',
     source: 'Источник', sourceCorpus: 'Коранический арабский корпус', sourceLexicon: 'Арабский словарь', sourceAlmaany: 'Словарь «Аль-Маани»',
@@ -63,7 +79,7 @@ export const COPY = {
     language: 'Interface language', home: 'Back to search', enter: 'Explore',
     available: 'Available in this demo', word: 'Word', root: 'Root', rootSpace: 'Root space',
     orbit: 'Word orbit', travel: 'Approaching', returnRoot: 'Zoom out to root',
-    noResult: 'The root و ق ي and its 11 displayed forms are available. Enter an Arabic word or its Latin transliteration.',
+    noResult: 'The roots و ق ي and ل ب ب are available. Enter an Arabic word, root, or Latin transliteration.',
     quran: 'Quran', structure: 'Word structure', meaning: 'Meaning',
     quranCaption: 'Occurrences', structureCaption: 'Form and root', meaningCaption: 'Semantic note',
     close: 'Close', references: 'Quranic occurrences', referenceNote: 'Choose an ayah to open its own workspace and see the focus word inside the full construction.',
@@ -75,7 +91,7 @@ export const COPY = {
     lexicalQuran: 'This dictionary form is not among the eight groups listed for this root in the Quranic Arabic Corpus. Occurrences have not been borrowed from other words.',
     linkedPassage: 'Related usage', tuqatCrossReference: 'Compare تُقَاتِهِ at 3:102:7. The Corpus places it in the تَقِيّ group; it is shown separately here and is not added to the count.',
     allForms: 'Demo forms', formsNote: 'Each orbit groups a verb with its related nominal family. The form number describes the verb; a noun may have its own pattern. This is a selection, not a complete root tree.',
-    familyI: 'Form I · وَقَىٰ family', familyV: 'Form V · تَوَقَّىٰ family', familyVIII: 'Form VIII · ٱتَّقَىٰ family',
+    familyI: 'Form I · وَقَىٰ family', familyV: 'Form V · تَوَقَّىٰ family', familyVIII: 'Form VIII · ٱتَّقَىٰ family', familyLbbN: 'Nominal family · لُبّ / أَلْبَاب',
     families: 'Derivational families', familyLabel: 'Family', allOrbits: 'All orbits',
     lexical: 'Dictionary form', lexicalNote: 'A dictionary form. No Quranic occurrence of this form is claimed in this demo.',
     source: 'Source', sourceCorpus: 'Quranic Arabic Corpus', sourceLexicon: 'Arabic Lexicon', sourceAlmaany: 'Almaany dictionary',
@@ -93,11 +109,17 @@ const latinKey = (value) => value.normalize('NFD').replace(/[\u0300-\u036fʾ’'
 export function findWord(value) {
   const q = normalizeQuery(value)
   if (['таква', 'такуа'].includes(q)) return FORMS.find(form => form.id === 'taqwa')
+  if (['альбаб', 'албаб'].includes(q)) return FORMS.find(form => form.id === 'albab')
   return FORMS.find(form => normalizeQuery(form.arabic) === q || latinKey(form.reading) === latinKey(q))
 }
-export function resolveQuery(value) {
+export function findRoot(value) {
   const q = normalizeQuery(value)
-  if (['وقي', 'wqy'].includes(q)) return 'root'
+  if (['وقي', 'wqy'].includes(q)) return ROOT_DEMOS.wqy
+  if (['لبب', 'lbb'].includes(q)) return ROOT_DEMOS.lbb
+  return null
+}
+export function resolveQuery(value) {
+  if (findRoot(value)) return 'root'
   if (findWord(value)) return 'word'
   return null
 }
