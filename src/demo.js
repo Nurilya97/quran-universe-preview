@@ -12,11 +12,11 @@ export const ROOT_ORBITS = [
   { id: 'VIII', radius: 45.5, label: 'familyVIII' },
 ]
 export const LBB_ROOT_ORBITS = [
-  { id: 'LBBI', mark: 'I', radius: 32, label: 'familyLbbI' },
-  { id: 'LBBII', mark: 'II', radius: 38.5, label: 'familyLbbII' },
-  { id: 'LBBIV', mark: 'IV', radius: 42.5, label: 'familyLbbIV' },
-  { id: 'LBBV', mark: 'V', radius: 46, label: 'familyLbbV' },
-  { id: 'LBBX', mark: 'X', radius: 49, label: 'familyLbbX' },
+  { id: 'LBBI', mark: 'I', radius: 29, innerRadius: 20, label: 'familyLbbI' },
+  { id: 'LBBII', mark: 'II', radius: 38, label: 'familyLbbII' },
+  { id: 'LBBIV', mark: 'IV', radius: 47, label: 'familyLbbIV' },
+  { id: 'LBBV', mark: 'V', radius: 56, label: 'familyLbbV' },
+  { id: 'LBBX', mark: 'X', radius: 65, label: 'familyLbbX' },
 ]
 export const ROOT_DEMOS = {
   wqy: { id: 'wqy', arabic: 'و ق ي', reading: 'w-q-y', orbits: ROOT_ORBITS },
@@ -74,7 +74,9 @@ export const FORMS = [
 export function rootPosition(form, orbits = ROOT_ORBITS) {
   // A form's family orbit is the source of truth for its radial position.
   // Individual nodes may choose an angle, but must never drift between rings.
-  const orbitRadius = (orbits.find((orbit) => orbit.id === form.orbit) || orbits[0]).radius
+  const orbit = orbits.find((orbit) => orbit.id === form.orbit) || orbits[0]
+  // Both tracks belong to family I; legacy radius selects a track, never another family.
+  const orbitRadius = orbit.innerRadius && form.radius === 23 ? orbit.innerRadius : orbit.radius
   const radians = form.angle * Math.PI / 180
   return { x: 50 + Math.cos(radians) * orbitRadius, y: 50 + Math.sin(radians) * orbitRadius }
 }
@@ -171,3 +173,4 @@ export function resolveQuery(value) {
   if (findWord(value)) return 'word'
   return null
 }
+

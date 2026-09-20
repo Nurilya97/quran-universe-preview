@@ -41,6 +41,7 @@ export function ImmersiveUniverse() {
   const input = useRef(null)
   const destinationHeading = useRef(null)
   const panelTrigger = useRef(null)
+  const rootViewport = useRef(null)
   const t = COPY[language]
   const currentRoot = ROOT_DEMOS[rootKey] || ROOT_DEMOS.wqy
   const currentRootForms = formsForRoot(currentRoot.id)
@@ -65,6 +66,19 @@ export function ImmersiveUniverse() {
     }
     if (!panel && dialog.current?.open) dialog.current.close()
   }, [panel])
+
+  useEffect(() => {
+    const viewport = rootViewport.current
+    if (scene !== 'root' || journey || rootKey !== 'lbb' || !viewport) return
+    const center = () => {
+      viewport.scrollLeft = (viewport.scrollWidth - viewport.clientWidth) / 2
+      viewport.scrollTop = (viewport.scrollHeight - viewport.clientHeight) / 2
+    }
+    center()
+    const observer = new ResizeObserver(center)
+    observer.observe(viewport)
+    return () => observer.disconnect()
+  }, [scene, journey, rootKey])
 
   function openPanel(nextPanel) {
     panelTrigger.current = document.activeElement
@@ -223,7 +237,11 @@ export function ImmersiveUniverse() {
         <span><i className="root-legend-quran" aria-hidden="true" />{t.quranColorLegend}</span>
         <span><b>I · II · IV · V · X</b><small>{t.formNumberLegend}</small></span>
       </div>}
+      {currentRoot.id === 'lbb' && <p className="root-pan-hint">{language === 'ru' ? 'Прокручивайте пространство · I — две дорожки одной семьи' : 'Scroll to explore · I — two tracks, one family'}</p>}
+      <div className="root-viewport" ref={rootViewport} tabIndex={currentRoot.id === 'lbb' ? 0 : undefined} aria-label={t.rootSpace}>
+      <div className="root-canvas">
       <div className="root-field">
+        {currentRootOrbits.filter(orbit => orbit.innerRadius).map(orbit => <div key={orbit.id + '-inner'} className="root-orbit root-orbit-inner" style={{ '--diameter': orbit.innerRadius * 2 + '%' }} aria-hidden="true" />)}
         {currentRootOrbits.map((orbit) => <div key={orbit.id} className={'root-orbit root-orbit-' + orbit.id}
           style={{ '--diameter': orbit.radius * 2 + '%' }} aria-hidden="true"><span>{orbit.mark || orbit.id}</span></div>)}
         <div className="root-core"><button className="root-core-trigger" onClick={() => openPanel('root')} aria-label={t.aboutRoot} aria-haspopup="dialog"><h1 ref={destinationHeading} tabIndex={-1} lang="ar" dir="rtl">{currentRoot.arabic}</h1><span>{t.root}</span></button></div>
@@ -238,6 +256,7 @@ export function ImmersiveUniverse() {
           <span className="form-type">{t[form.type + 'Short'] || t[form.type]}</span>
         </button>})}
       </div>
+      </div></div>
       <button className="forms-button" onClick={() => openPanel('forms')} aria-haspopup="dialog"><Icon name="list" />{t.allForms}<span>{currentRootForms.length}</span></button>
     </section>}
 
@@ -264,3 +283,4 @@ export function ImmersiveUniverse() {
     </dialog>
   </main>
 }
+

@@ -328,3 +328,36 @@ h1:focus { outline: none; }
     font-size: 9px;
   }
 }
+
+
+/* Expanded l-b-b field. Other root layouts retain their original geometry. */
+.root-stage-lbb .root-viewport {
+  position: absolute; inset: 108px 0 88px; overflow: auto;
+  overscroll-behavior: contain; touch-action: pan-x pan-y;
+  scrollbar-width: thin; scrollbar-color: #777b8240 transparent;
+}
+.root-stage-lbb .root-canvas {
+  --lbb-field: 900px;
+  position: relative; width: max(100%, calc(var(--lbb-field) * 1.6));
+  height: max(100%, calc(var(--lbb-field) * 1.6));
+}
+.root-stage-lbb .root-field { width: var(--lbb-field); top: 50%; }
+.root-stage-lbb .root-orbit-inner { border-style: dashed; border-color: #d6d9de26; }
+.root-stage-lbb .root-orbit > span {
+  left: -34px; top: calc(50% - 42px); font-size: 11px;
+  background: transparent; padding: 4px;
+}
+.root-stage-lbb .root-star { min-width: 60px; }
+.root-stage-lbb .root-star .transliteration { font-size: 9px; }
+.root-pan-hint {
+  position: absolute; top: 72px; left: 20px; right: 20px;
+  margin: 0; text-align: center; color: var(--muted); font-size: 11px;
+}
+@media (max-width: 720px) {
+  .root-stage-lbb .root-canvas { --lbb-field: 800px; }
+  .root-stage-lbb .root-star { min-width: 52px; min-height: 44px; }
+  .root-stage-lbb .root-star .transliteration { font-size: 8px; }
+  .root-stage-lbb .root-orbit > span { font-size: 10px; }
+  .root-pan-hint { top: 84px; font-size: 10px; }
+  .root-stage-lbb .root-viewport { inset: 116px 0 100px; }
+}
