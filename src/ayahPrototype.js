@@ -196,8 +196,8 @@ export const AYAH_PROTOTYPES = {
       {
         id: 'provision',
         range: [22, 26],
-        ru: { title: 'Запас в путь → лучший запас', text: 'Образ дорожного запаса соединяет внешнюю подготовку к пути с внутренней: практическая предусмотрительность становится переходом к теме taqwā как главного внутреннего ресурса.' },
-        en: { title: 'Provision for the journey → the best provision', text: 'The image of travel provision links outward preparation with inward preparation: practical foresight becomes a bridge to taqwā as the central inner resource.' },
+        ru: { title: 'Практическое наставление → تَقْوَىٰ', text: 'После напоминания о знании Аллаха звучит وَتَزَوَّدُوا (wa-tazawwadū) — повеление подготовиться к пути. Сразу за ним فَإِنَّ خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ переводит акцент к تَقْوَىٰ (taqwā).' },
+        en: { title: 'Practical instruction → تَقْوَىٰ', text: 'After the reminder of Allah’s knowledge comes وَتَزَوَّدُوا (wa-tazawwadū), a command to prepare for the journey. It is immediately followed by فَإِنَّ خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ, shifting the emphasis to تَقْوَىٰ (taqwā).' },
       },
       {
         id: 'address',
@@ -208,64 +208,101 @@ export const AYAH_PROTOTYPES = {
     ],
     rhetoric: [
       {
-        id: 'rhetoric-frame',
-        range: [1, 3],
-        focusWords: [1, 2, 3],
-        ru: { title: 'Рамка перед действием', text: 'Сначала задаётся время хаджа — и только затем аят переходит к выбору и поведению человека.', detail: 'Начало создаёт рамку: прежде чем перечислять поступки, аят помещает их внутрь установленного времени поклонения.' },
-        en: { title: 'A frame before action', text: 'The Hajj period is established before the ayah moves to a person’s choices and conduct.', detail: 'The opening creates a frame: before particular actions are named, conduct is placed inside an appointed period of worship.' },
-      },
-      {
         id: 'rhetoric-three-limits',
-        range: [4, 15],
-        focusWords: [8, 10, 12],
-        ru: { title: 'Тройная последовательность ограничений', text: 'Три границы выстраиваются одна за другой через فَلَا … وَلَا … وَلَا.', detail: 'Повтор отрицательной конструкции собирает разные виды поведения в одну последовательность. Здесь приём виден как структура, отдельно от синтаксического разбора слов.' },
-        en: { title: 'A three-part sequence of limits', text: 'Three boundaries are placed in sequence through فَلَا … وَلَا … وَلَا.', detail: 'The repeated negative construction gathers distinct forms of conduct into one ordered sequence, separate from word-by-word syntax.' },
-      },
-      {
-        id: 'rhetoric-turn-good',
-        range: [16, 21],
-        focusWords: [16, 17, 19, 20],
-        ru: { title: 'От границ — к знанию Аллаха', text: 'После перечисления границ аят напоминает: какое бы добро человек ни совершил, Аллах знает его.', detail: 'Композиционно фокус переходит от названных ограничений к осознанию знания Аллаха о каждом добре. Центр этой фразы — يَعْلَمْهُ ٱللَّهُ: «Аллах знает его».' },
-        en: { title: 'From boundaries to Allah’s knowledge', text: 'After the boundaries are named, the ayah reminds the listener that whatever good a person does, Allah knows it.', detail: 'The compositional focus moves from the stated limits to awareness of Allah’s knowledge of every good deed. The clause centers on يَعْلَمْهُ ٱللَّهُ: “Allah knows it.”' },
-      },
-      {
-        id: 'rhetoric-provision-image',
-        range: [22, 26],
-        focusWords: [22, 24, 25, 26],
-        ru: { title: 'Запас как смысловой мост', text: 'Физическая подготовка к дороге становится мостом к «лучшему запасу» — taqwā.', detail: 'Практическое повеление взять запас переходит во внутренний план. وَتَزَوَّدُوا и ٱلزَّادِ работают как лексический и композиционный мост.' },
-        en: { title: 'Provision as a semantic bridge', text: 'Physical preparation for the journey becomes a bridge to the “best provision” — taqwā.', detail: 'A practical instruction to take provisions moves into an inward plane. وَتَزَوَّدُوا and ٱلزَّادِ form a lexical and compositional bridge.' },
-      },
-      {
-        id: 'rhetoric-quality-command',
-        range: [26, 29],
-        focusWords: [26, 27, 28, 29],
-        ru: { title: 'От качества — к прямому повелению', text: 'تَقْوَىٰ названа как лучший запас, а затем тот же корень возвращается в وَٱتَّقُونِ как действие.', detail: 'Финал не оставляет taqwā абстрактным понятием: существительное сменяется повелительным глаголом, затем появляется прямое обращение к أُولِي ٱلْأَلْبَاب.' },
-        en: { title: 'From a quality to a direct command', text: 'تَقْوَىٰ is named as the best provision, then the same root returns in وَٱتَّقُونِ as action.', detail: 'The ending does not leave taqwā abstract: the noun is followed by an imperative from the same root and then direct address to أُولِي ٱلْأَلْبَاب.' },
-      },
-    ],
-    sound: [
-      {
-        id: 'sound-negative-pulse',
         range: [8, 13],
         focusWords: [8, 10, 12],
-        ru: { title: 'فَلَا · وَلَا · وَلَا', text: 'Одинаковое لَا возвращается трижды и делает последовательность ограничений слышимой.', detail: 'Это наблюдаемая звуковая форма: повтор لَا и близкая структура трёх звеньев создают отчётливое локальное повторение. Самостоятельное символическое значение звуку здесь не приписывается.' },
-        en: { title: 'فَلَا · وَلَا · وَلَا', text: 'The same لَا returns three times, making the sequence of limits audible.', detail: 'This is an observable sound pattern: repeated لَا and the similar structure of the three units create a clear local recurrence without assigning sound an independent symbolic meaning.' },
+        ru: {
+          label: 'ПОВТОР · ПАРАЛЛЕЛЬНАЯ КОНСТРУКЦИЯ',
+          title: 'فَلَا … وَلَا … وَلَا',
+          text: 'لَا повторяется перед رَفَث (rafath), فُسُوق (fusūq) и جِدَال (jidāl). Одинаковая форма выстраивает три ограничения как равные звенья одной серии и делает последовательность особенно отчётливой на слух.'
+        },
+        en: {
+          label: 'REPETITION · PARALLEL CONSTRUCTION',
+          title: 'فَلَا … وَلَا … وَلَا',
+          text: 'لَا is repeated before رَفَث (rafath), فُسُوق (fusūq), and جِدَال (jidāl). The repeated frame gives the three limits equal structural weight and makes the sequence especially clear when heard.'
+        },
       },
       {
-        id: 'sound-zad-echo',
-        range: [22, 25],
+        id: 'rhetoric-generality',
+        range: [16, 21],
+        focusWords: [16, 19, 20, 21],
+        ru: {
+          label: 'ОБОБЩАЮЩАЯ КОНСТРУКЦИЯ',
+          title: 'وَمَا تَفْعَلُوا مِنْ خَيْرٍ',
+          text: 'Связка مَا … مِنْ خَيْرٍ охватывает любое совершённое добро. Затем يَعْلَمْهُ ٱللَّهُ (yaʿlamhu Allāh) завершает фразу утверждением о знании Аллаха — именно к нему приходит весь оборот.'
+        },
+        en: {
+          label: 'GENERALIZING CONSTRUCTION',
+          title: 'وَمَا تَفْعَلُوا مِنْ خَيْرٍ',
+          text: 'The pattern مَا … مِنْ خَيْرٍ opens the scope to whatever good is done. يَعْلَمْهُ ٱللَّهُ (yaʿlamhu Allāh) then closes the clause with the statement of Allah’s knowledge.'
+        },
+      },
+      {
+        id: 'rhetoric-zad-derivation',
+        range: [22, 26],
         focusWords: [22, 25],
-        ru: { title: 'تَزَوَّدُوا ↔ ٱلزَّادِ', text: 'Две формы корня ز و د стоят рядом и создают смысловое и звуковое эхо.', detail: 'وَتَزَوَّدُوا и ٱلزَّادِ возвращают один и тот же корневой материал в разных формах. В этом слое связь показывается именно как повторяемый звуковой мотив.' },
-        en: { title: 'تَزَوَّدُوا ↔ ٱلزَّادِ', text: 'Two forms from the root ز و د sit close together, creating semantic and sound echo.', detail: 'وَتَزَوَّدُوا and ٱلزَّادِ reuse the same root material in different forms. This layer presents the relationship specifically as a recurring sound motif.' },
+        ru: {
+          label: 'КОРНЕВОЙ ПОВТОР · اشْتِقَاق',
+          title: 'وَتَزَوَّدُوا ↔ ٱلزَّادِ',
+          text: 'وَتَزَوَّدُوا (wa-tazawwadū) и ٱلزَّادِ (al-zād) возвращают корень ز و د в двух формах. Повтор связывает само повеление подготовиться с последующим высказыванием о «лучшем زَاد» и удерживает обе части в одной смысловой цепочке.'
+        },
+        en: {
+          label: 'DERIVATIONAL ECHO · اشْتِقَاق',
+          title: 'وَتَزَوَّدُوا ↔ ٱلزَّادِ',
+          text: 'وَتَزَوَّدُوا (wa-tazawwadū) and ٱلزَّادِ (al-zād) bring the root ز و د back in two forms. The derivational echo binds the command to prepare with the following statement about the “best zād.”'
+        },
       },
       {
-        id: 'sound-taqwa-echo',
-        range: [26, 27],
-        focusWords: [26, 27],
-        ru: { title: 'ٱلتَّقْوَىٰ ↔ وَٱتَّقُونِ', text: 'Корень و ق ي звучит сначала в существительном, затем сразу в повелительном глаголе.', detail: 'Переход от ٱلتَّقْوَىٰ к وَٱتَّقُونِ можно увидеть морфологически и услышать как возвращение родственного звукового материала. Позже к этой связи можно привязать воспроизведение чтения.' },
-        en: { title: 'ٱلتَّقْوَىٰ ↔ وَٱتَّقُونِ', text: 'The root و ق ي is heard first in a noun and immediately again in an imperative verb.', detail: 'The move from ٱلتَّقْوَىٰ to وَٱتَّقُونِ can be seen morphologically and heard as related sound material returning. Recitation playback can later be attached to this relationship.' },
+        id: 'rhetoric-taqwa-command',
+        range: [26, 29],
+        focusWords: [26, 27, 28, 29],
+        ru: {
+          label: 'КОРНЕВОЙ ПОВТОР · ИМЯ → ПОВЕЛЕНИЕ',
+          title: 'ٱلتَّقْوَىٰ → وَٱتَّقُونِ',
+          text: 'Сначала تَقْوَىٰ (taqwā) названа как существительное, затем тот же корень و ق ي сразу возвращается в повелении وَٱتَّقُونِ (wa-ittaqūni). Понятие превращается в прямое действие, а يَا أُولِي ٱلْأَلْبَابِ завершает аят обращением к адресату.'
+        },
+        en: {
+          label: 'ROOT ECHO · NOUN → IMPERATIVE',
+          title: 'ٱلتَّقْوَىٰ → وَٱتَّقُونِ',
+          text: 'تَقْوَىٰ (taqwā) first appears as a noun, then the same root و ق ي immediately returns in the imperative وَٱتَّقُونِ (wa-ittaqūni). The concept becomes a direct command, followed by the address يَا أُولِي ٱلْأَلْبَابِ.'
+        },
       },
     ],
+    sound: {
+      passage: {
+        ru: 'Аят 2:197 входит в блок 2:196–203 о хадже. Внутри этого отрывка окончания ٱلْعِقَابِ (2:196), ٱلْأَلْبَابِ (2:197) и ٱلْحِسَابِ (2:202) создают повторяющееся окончание -āb на расстоянии нескольких аятов.',
+        en: 'Ayah 2:197 belongs to the Hajj passage 2:196–203. Within this passage the endings ٱلْعِقَابِ (2:196), ٱلْأَلْبَابِ (2:197), and ٱلْحِسَابِ (2:202) create a recurring -āb ending across several ayahs.',
+      },
+      endings: [
+        { ref: '2:196', ar: 'ٱلْعِقَابِ' },
+        { ref: '2:197', ar: 'ٱلْأَلْبَابِ', active: true },
+        { ref: '2:202', ar: 'ٱلْحِسَابِ' },
+      ],
+      pauses: [
+        { range: [1, 3], ru: 'Временная рамка', en: 'Temporal frame' },
+        { range: [4, 15], ru: 'Три ограничения', en: 'Three limits' },
+        { range: [16, 21], ru: 'Аллах знает добро', en: 'Allah knows the good' },
+        { range: [22, 26], ru: 'Повеление и taqwā', en: 'Command and taqwā' },
+        { range: [27, 29], ru: 'Прямое обращение', en: 'Direct address' },
+      ],
+      observations: [
+        {
+          ar: 'فَلَا · وَلَا · وَلَا',
+          ru: 'Тройной لَا создаёт отчётливый повтор внутри длинного аята: три ограничения слышатся как одна ритмическая серия.',
+          en: 'The threefold لَا creates a clear recurrence inside the long ayah, making the three limits sound like one rhythmic series.',
+        },
+        {
+          ar: 'وَتَزَوَّدُوا ↔ ٱلزَّادِ',
+          ru: 'Корень ز و د возвращается почти сразу в глаголе и существительном, поэтому связь слышна ещё до смыслового разбора.',
+          en: 'The root ز و د returns almost immediately in a verb and a noun, so the connection can be heard before it is analytically explained.',
+        },
+        {
+          ar: 'ٱلتَّقْوَىٰ ↔ وَٱتَّقُونِ',
+          ru: 'Корень و ق ي повторяется в соседних словах: сначала как существительное, затем как повелительный глагол. Это создаёт локальное звуковое эхо в финале аята.',
+          en: 'The root و ق ي repeats in adjacent words, first as a noun and then as an imperative verb, creating a local sound echo near the end of the ayah.',
+        },
+      ],
+    },
   },
 }
 
