@@ -138,8 +138,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
 
           {isTaqwa ? <>
             <svg className="analysis-morphology-tree first" viewBox="0 0 100 58" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M50 2 V17 C50 23 25 23 25 31 V55" />
-              <path d="M50 2 V17 C50 23 75 23 75 31 V55" />
+              <path d="M50 2 V18 M25 18 H75 M25 18 V55 M75 18 V55" />
             </svg>
 
             <div className="analysis-morphology-level first-level">
@@ -163,9 +162,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
             </div>
 
             <svg className="analysis-morphology-tree second" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M25 2 C25 22 16.7 28 16.7 59" />
-              <path d="M25 2 C25 22 50 24 50 59" />
-              <path d="M25 2 C25 22 83.3 24 83.3 59" />
+              <path d="M25 2 V18 M16.7 18 H83.3 M16.7 18 V59 M50 18 V59 M83.3 18 V59" />
             </svg>
 
             <div className="analysis-morphology-level second-level has-three">
