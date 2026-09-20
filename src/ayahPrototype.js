@@ -196,8 +196,8 @@ export const AYAH_PROTOTYPES = {
       {
         id: 'provision',
         range: [22, 26],
-        ru: { title: 'Практическое наставление → تَقْوَىٰ', text: 'После напоминания о знании Аллаха звучит وَتَزَوَّدُوا (wa-tazawwadū) — повеление подготовиться к пути. Сразу за ним فَإِنَّ خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ переводит акцент к تَقْوَىٰ (taqwā).' },
-        en: { title: 'Practical instruction → تَقْوَىٰ', text: 'After the reminder of Allah’s knowledge comes وَتَزَوَّدُوا (wa-tazawwadū), a command to prepare for the journey. It is immediately followed by فَإِنَّ خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ, shifting the emphasis to تَقْوَىٰ (taqwā).' },
+        ru: { title: 'Подготовка к пути и تَقْوَىٰ', text: 'После напоминания о знании Аллаха звучит وَتَزَوَّدُوا (wa-tazawwadū) — повеление подготовиться к пути. Сразу за ним فَإِنَّ خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ переводит акцент к تَقْوَىٰ (taqwā).' },
+        en: { title: 'Preparing for the journey and تَقْوَىٰ', text: 'After the reminder of Allah’s knowledge comes وَتَزَوَّدُوا (wa-tazawwadū), a command to prepare for the journey. It is immediately followed by فَإِنَّ خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ, shifting the emphasis to تَقْوَىٰ (taqwā).' },
       },
       {
         id: 'address',
