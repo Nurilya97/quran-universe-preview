@@ -209,3 +209,40 @@ h1:focus { outline: none; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
 .is-still *, .is-still *::before, .is-still *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+
+
+/* Dense ل ب ب root family: same galaxy UI, tighter labels only. */
+.root-stage-lbb .root-star {
+  min-width: 58px;
+  padding-inline: 2px;
+}
+.root-stage-lbb .root-star .arabic {
+  font-size: 20px;
+}
+.root-stage-lbb .root-star-featured .arabic {
+  font-size: 27px;
+}
+.root-stage-lbb .root-star .transliteration {
+  font-size: 9px;
+}
+.root-stage-lbb .root-orbit > span {
+  font-size: 9px;
+  padding: 3px;
+}
+
+@media (max-width: 720px) {
+  .root-stage-lbb .root-star {
+    min-width: 48px;
+    min-height: 44px;
+    padding: 5px 1px 3px;
+  }
+  .root-stage-lbb .root-star .arabic {
+    font-size: 18px;
+  }
+  .root-stage-lbb .root-star-featured .arabic {
+    font-size: 24px;
+  }
+  .root-stage-lbb .root-star .transliteration {
+    font-size: 8px;
+  }
+}
