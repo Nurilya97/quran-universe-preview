@@ -172,6 +172,7 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
 
               <div className="morph-flow-arrow down" aria-hidden="true">↓</div>
               <div className="morph-flow-caption">{ru ? 'Словообразовательное гнездо корня' : 'Derivational family of the root'}</div>
+              <div className="morph-family-arrows" aria-hidden="true"><span>↙</span><span>↘</span></div>
 
               <div className="analysis-morphology-family">
                 <article className="analysis-morphology-node verb">
@@ -182,8 +183,6 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
                     ? 'Связанная форма этого корня: активное оберегание себя и внимательность к границам.'
                     : 'A related form of this root: an active stance of guarding oneself and remaining attentive to boundaries.'}</p>
                 </article>
-
-                <span className="morph-family-link" aria-hidden="true">↘</span>
 
                 <article className="analysis-morphology-node base derivation-noun">
                   <span lang="ar" dir="rtl">{morphologyParts[1]?.ar || 'تَقْوَىٰ'}</span>
