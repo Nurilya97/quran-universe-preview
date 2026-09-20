@@ -6353,3 +6353,284 @@
   font-weight: 650;
   letter-spacing: .025em;
 }
+
+
+/* Readability pass: composition and rhetoric are reading surfaces, not micro-label diagrams. */
+.composition-thread {
+  width: min(860px, 86vw) !important;
+}
+
+.composition-thread > p {
+  max-width: 800px !important;
+  font-size: 20px !important;
+  line-height: 1.62 !important;
+}
+
+.composition-constellation h3 {
+  font-size: 26px !important;
+  line-height: 1.35 !important;
+}
+
+.composition-constellation .composition-phrase {
+  margin-top: 8px;
+  font-size: 37px !important;
+  line-height: 1.55 !important;
+}
+
+.composition-transition {
+  max-width: 650px !important;
+  margin: 12px auto 0 !important;
+  color: #b7c7c8 !important;
+  font-size: 19px !important;
+  font-weight: 500;
+  line-height: 1.55 !important;
+}
+
+.composition-transition::before {
+  content: '→';
+  display: inline-block;
+  margin-right: 8px;
+  color: #7fa9ad;
+  font-size: .9em;
+}
+
+.composition-copy {
+  max-width: 690px !important;
+  margin: 10px auto 0 !important;
+  color: #96a4a8 !important;
+  font-size: 21px !important;
+  line-height: 1.6 !important;
+}
+
+.composition-bridge {
+  display: none !important;
+}
+
+/* Rhetoric now uses real document flow so larger type can never overlap. */
+.rhetoric-diagram {
+  overflow: visible;
+}
+
+.rhetoric-flow {
+  position: absolute;
+  width: 760px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 58px;
+  padding-bottom: 80px;
+}
+
+.rhetoric-flow .rhetoric-thread,
+.rhetoric-flow .rhetoric-insight,
+.rhetoric-flow .rhetoric-passage-lens {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  width: 100% !important;
+  transform: none !important;
+}
+
+.rhetoric-flow .rhetoric-thread {
+  margin-bottom: 4px;
+}
+
+.rhetoric-thread > small {
+  font-size: 12px !important;
+}
+
+.rhetoric-thread > p {
+  max-width: 730px !important;
+  font-size: 20px !important;
+  line-height: 1.62 !important;
+}
+
+.rhetoric-step {
+  gap: 12px !important;
+}
+
+.rhetoric-step > span {
+  width: 30px !important;
+  height: 30px !important;
+  font-size: 12px !important;
+}
+
+.rhetoric-step > small {
+  font-size: 12px !important;
+  letter-spacing: .045em !important;
+}
+
+.rhetoric-insight > h3 {
+  max-width: 720px !important;
+  margin-top: 10px !important;
+  font-size: 27px !important;
+  line-height: 1.35 !important;
+}
+
+.rhetoric-phrase {
+  margin-top: 12px !important;
+  font-size: 36px !important;
+  line-height: 1.55 !important;
+}
+
+.rhetoric-story {
+  max-width: 740px !important;
+  margin-top: 16px !important;
+  padding-top: 16px !important;
+}
+
+.rhetoric-story > p.is-story {
+  max-width: 710px !important;
+  color: #c0c8c7 !important;
+  font-size: 21px !important;
+  line-height: 1.62 !important;
+}
+
+.rhetoric-reading {
+  gap: 30px !important;
+  margin-top: 17px !important;
+}
+
+.rhetoric-reading p,
+.rhetoric-story > .rhetoric-sound {
+  color: #9eaaab !important;
+  font-size: 18px !important;
+  line-height: 1.62 !important;
+}
+
+.rhetoric-reading b,
+.rhetoric-story > .rhetoric-sound b {
+  margin-bottom: 6px !important;
+  color: #d1d9d6 !important;
+  font-size: 13px !important;
+}
+
+.rhetoric-story > .rhetoric-sound {
+  max-width: 680px !important;
+  margin-top: 13px !important;
+}
+
+.rhetoric-passage-lens {
+  margin-top: 14px;
+  padding-top: 24px !important;
+}
+
+.rhetoric-passage-lens > small {
+  font-size: 12px !important;
+}
+
+.rhetoric-passage-lens > h3 {
+  margin-top: 10px !important;
+  font-size: 25px !important;
+}
+
+.rhetoric-passage-lens > p,
+.rhetoric-passage-thread {
+  max-width: 720px !important;
+  font-size: 18px !important;
+  line-height: 1.62 !important;
+}
+
+.rhetoric-passage-thread b,
+.rhetoric-passage-sound b {
+  font-size: 13px !important;
+}
+
+.rhetoric-ending-row {
+  margin-top: 20px !important;
+}
+
+.rhetoric-ending-row > div {
+  min-width: 170px !important;
+  padding: 12px 16px 14px !important;
+}
+
+.rhetoric-ending-row span {
+  font-size: 11px !important;
+}
+
+.rhetoric-ending-row b {
+  font-size: 31px !important;
+}
+
+.rhetoric-passage-lens .rhetoric-source-note {
+  margin-top: 16px !important;
+  font-size: 12px !important;
+  line-height: 1.55 !important;
+}
+
+@media (max-width:760px) {
+  .composition-thread > p {
+    font-size: 22px !important;
+  }
+
+  .composition-constellation h3 {
+    font-size: 28px !important;
+  }
+
+  .composition-constellation .composition-phrase {
+    font-size: 40px !important;
+  }
+
+  .composition-transition {
+    max-width: 610px !important;
+    font-size: 21px !important;
+  }
+
+  .composition-copy {
+    max-width: 630px !important;
+    font-size: 23px !important;
+  }
+
+  .rhetoric-flow {
+    width: 700px;
+    gap: 64px;
+  }
+
+  .rhetoric-thread > p {
+    font-size: 22px !important;
+  }
+
+  .rhetoric-insight > h3 {
+    font-size: 29px !important;
+  }
+
+  .rhetoric-phrase {
+    font-size: 39px !important;
+  }
+
+  .rhetoric-story > p.is-story {
+    font-size: 22px !important;
+  }
+
+  .rhetoric-reading p,
+  .rhetoric-story > .rhetoric-sound {
+    font-size: 20px !important;
+  }
+
+  .rhetoric-reading b,
+  .rhetoric-story > .rhetoric-sound b {
+    font-size: 14px !important;
+  }
+
+  .rhetoric-passage-lens > h3 {
+    font-size: 27px !important;
+  }
+
+  .rhetoric-passage-lens > p,
+  .rhetoric-passage-thread {
+    font-size: 20px !important;
+  }
+}
+
+@media (max-width:420px) {
+  .rhetoric-flow {
+    width: 660px;
+    gap: 68px;
+  }
+
+  .rhetoric-reading {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+}
