@@ -16,6 +16,8 @@ function Icon({ name }) {
     {name === 'play' && <path d="m9 5 10 7-10 7Z" />}
     {name === 'external' && <path d="M14 4h6v6m0-6L10 14M10 5H5v14h14v-5" />}
     {name === 'list' && <path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01" />}
+    {name === 'plus' && <path d="M5 12h14M12 5v14" />}
+    {name === 'minus' && <path d="M5 12h14" />}
   </svg>
 }
 
@@ -35,6 +37,7 @@ export function ImmersiveUniverse() {
   const [panel, setPanel] = useState(null)
   const [paused, setPaused] = useState(false)
   const [ayahFocus, setAyahFocus] = useState(null)
+  const [rootZoom, setRootZoom] = useState(1)
   const [reducedMotion, setReducedMotion] = useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches)
   const timer = useRef(null)
   const dialog = useRef(null)
@@ -79,6 +82,10 @@ export function ImmersiveUniverse() {
     observer.observe(viewport)
     return () => observer.disconnect()
   }, [scene, journey, rootKey])
+
+  function zoomRoot(delta) {
+    setRootZoom(value => Math.max(.55, Math.min(1.35, Number((value + delta).toFixed(2)))))
+  }
 
   function openPanel(nextPanel) {
     panelTrigger.current = document.activeElement
@@ -237,10 +244,14 @@ export function ImmersiveUniverse() {
         <span><i className="root-legend-quran" aria-hidden="true" />{t.quranColorLegend}</span>
         <span><b>I · II · IV · V · X</b><small>{t.formNumberLegend}</small></span>
       </div>}
-      {currentRoot.id === 'lbb' && <p className="root-pan-hint">{language === 'ru' ? 'Прокручивайте пространство · I — две дорожки одной семьи' : 'Scroll to explore · I — two tracks, one family'}</p>}
+      {currentRoot.id === 'lbb' && <div className="root-zoom-controls" role="group" aria-label={language === 'ru' ? 'Масштаб пространства корня' : 'Root-space zoom'}>
+        <button type="button" onClick={() => zoomRoot(.1)} disabled={rootZoom >= 1.35} aria-label={language === 'ru' ? 'Приблизить' : 'Zoom in'}><Icon name="plus" /></button>
+        <button type="button" className="root-zoom-level" onClick={() => setRootZoom(1)} aria-label={language === 'ru' ? 'Сбросить масштаб' : 'Reset zoom'}>{Math.round(rootZoom * 100)}%</button>
+        <button type="button" onClick={() => zoomRoot(-.1)} disabled={rootZoom <= .55} aria-label={language === 'ru' ? 'Отдалить' : 'Zoom out'}><Icon name="minus" /></button>
+      </div>}
       <div className="root-viewport" ref={rootViewport} tabIndex={currentRoot.id === 'lbb' ? 0 : undefined} aria-label={t.rootSpace}>
       <div className="root-canvas">
-      <div className="root-field">
+      <div className="root-field" style={currentRoot.id === 'lbb' ? { '--root-zoom': rootZoom } : undefined}>
         {currentRootOrbits.filter(orbit => orbit.innerRadius).map(orbit => <div key={orbit.id + '-inner'} className="root-orbit root-orbit-inner" style={{ '--diameter': orbit.innerRadius * 2 + '%' }} aria-hidden="true" />)}
         {currentRootOrbits.map((orbit) => <div key={orbit.id} className={'root-orbit root-orbit-' + orbit.id}
           style={{ '--diameter': orbit.radius * 2 + '%' }} aria-hidden="true"><span>{orbit.mark || orbit.id}</span></div>)}
