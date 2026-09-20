@@ -156,11 +156,13 @@ export const WORD_CONTENT = {
       {
         id: 'manifestation',
         ru: { title: 'Проявления', description: 'Вера и осознанность становятся видимыми в действиях человека.', items: [
+          { term: 'Благочестие', definition: 'Религиозно-нравственное качество, проявляющееся в почтительном отношении к вере и в поведении, согласованном с её предписаниями. Здесь это одно из поведенческих проявлений تَقْوَىٰ (taqwā), а не полное определение самого понятия.' },
           { term: 'Молитва', definition: 'Регулярное обращение к Всевышнему и поддержание связи с Ним через установленную молитву.' },
           { term: 'Расходование из дарованного', definition: 'Готовность делиться с другими из того, чем Всевышний наделил человека.' },
           { term: 'Праведность', definition: 'Характеристика поступков, соответствующих руководству Всевышнего; одно из проявлений تَقْوَىٰ (taqwā).' },
         ] },
         en: { title: 'Manifestations', description: 'Faith and awareness become visible in a person’s actions.', items: [
+          { term: 'Piety', definition: 'A religious and moral quality expressed through reverence and conduct shaped by religious guidance. Here it is one behavioral manifestation of تَقْوَىٰ (taqwā), not a complete definition of the concept itself.' },
           { term: 'Prayer', definition: 'Regularly turning to the Most High and maintaining the relationship through established prayer.' },
           { term: 'Spending from what has been provided', definition: 'Being willing to share with others from what the Most High has provided.' },
           { term: 'Righteousness', definition: 'A description of conduct aligned with divine guidance; one manifestation of تَقْوَىٰ (taqwā).' },
