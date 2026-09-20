@@ -119,6 +119,10 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
             <h3>{ru ? 'Смысл в этом аяте' : 'Meaning in this ayah'}</h3>
             <p>{meaning?.description || (ru ? selected.noteRu : selected.noteEn)}</p>
           </section>}
+          {meaning?.manifestation && <section className="word-meaning-manifestation">
+            <h3>{ru ? 'Проявление taqwā' : 'Manifestation of taqwā'}</h3>
+            <p><strong>{meaning.manifestation}</strong>{meaning.manifestationDefinition ? <> — {meaning.manifestationDefinition}</> : null}</p>
+          </section>}
           {meaning?.translation && <section>
             <h3>{ru ? 'Почему такой перевод' : 'Why this translation'}</h3>
             <p>{meaning.translation}</p>
