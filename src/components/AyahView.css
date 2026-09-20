@@ -5825,3 +5825,184 @@
     font-size: 11.5px;
   }
 }
+
+
+/* Ayah Space primary navigation: Analysis / Composition / Rhetoric live on one level. */
+.ayah-space-modes {
+  min-width: 390px;
+}
+
+.ayah-space-modes button {
+  min-width: 0;
+}
+
+.composition-layer-switch {
+  display: none !important;
+}
+
+/* Rhetoric is a research surface, not another composition timeline. */
+.rhetoric-diagram {
+  position: absolute;
+  inset: 0;
+}
+
+.rhetoric-insight {
+  position: absolute;
+  width: 680px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.rhetoric-insight > small {
+  display: block;
+  color: #9c87a8;
+  font-size: 9px;
+  font-weight: 620;
+  line-height: 1.45;
+  letter-spacing: .075em;
+  text-transform: uppercase;
+}
+
+.rhetoric-insight > h3 {
+  margin: 8px 0 0;
+  color: #e5e9e8;
+  font-size: 17px;
+  font-weight: 540;
+  line-height: 1.45;
+}
+
+.rhetoric-phrase {
+  margin-top: 11px;
+  color: #aeb8ba;
+  font: 25px/1.7 var(--arabic-font);
+}
+
+.rhetoric-phrase span {
+  display: inline-block;
+  margin: 0 3px;
+  transition: color .18s ease, text-shadow .18s ease, opacity .18s ease;
+}
+
+.rhetoric-phrase span.is-focus {
+  color: #eadcf0;
+  text-shadow: 0 0 14px rgba(201,133,226,.18);
+}
+
+.rhetoric-phrase span.is-entry {
+  color: #f2ece8;
+  text-shadow: 0 0 16px rgba(255,154,87,.22);
+}
+
+.rhetoric-explanation {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 30px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255,255,255,.075);
+  text-align: left;
+}
+
+.rhetoric-explanation p {
+  margin: 0;
+  color: #98a4a6;
+  font-size: 11.5px;
+  line-height: 1.72;
+}
+
+.rhetoric-explanation b {
+  display: block;
+  margin-bottom: 5px;
+  color: #cfd8d5;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: .025em;
+}
+
+.rhetoric-explanation .rhetoric-sound {
+  grid-column: 1 / -1;
+  max-width: 560px;
+  justify-self: center;
+  color: #81969a;
+  text-align: center;
+}
+
+.rhetoric-explanation .rhetoric-sound b {
+  color: #9fc2c5;
+}
+
+.rhetoric-source-note {
+  position: absolute;
+  width: min(720px, 78vw);
+  transform: translateX(-50%);
+  color: #59676b;
+  font-size: 9.5px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+/* Retired sound screen must not surface in the current product. */
+.sound-space,
+.sound-context-block,
+.sound-pause-block,
+.sound-observations,
+.sound-layer-footer {
+  display: none !important;
+}
+
+@media (max-width:760px) {
+  .ayah-space-modes {
+    width: min(390px, calc(100vw - 18px));
+    min-width: 0;
+  }
+
+  .ayah-space-modes button {
+    flex: 1 1 0 !important;
+    padding-inline: 10px !important;
+    font-size: 12.5px !important;
+  }
+
+  .rhetoric-insight {
+    width: 640px;
+  }
+
+  .rhetoric-insight > small {
+    font-size: 9.5px;
+  }
+
+  .rhetoric-insight > h3 {
+    font-size: 17px;
+  }
+
+  .rhetoric-phrase {
+    font-size: 24px;
+  }
+
+  .rhetoric-explanation {
+    gap: 16px 22px;
+  }
+
+  .rhetoric-explanation p {
+    font-size: 11.7px;
+    line-height: 1.68;
+  }
+}
+
+@media (max-width:420px) {
+  .ayah-space-modes {
+    width: calc(100vw - 14px);
+  }
+
+  .ayah-space-modes button {
+    padding-inline: 8px !important;
+    font-size: 12px !important;
+  }
+
+  .rhetoric-insight {
+    width: 610px;
+  }
+
+  .rhetoric-explanation {
+    gap: 14px 18px;
+  }
+}
