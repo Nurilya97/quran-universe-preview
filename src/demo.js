@@ -72,10 +72,11 @@ export const FORMS = [
 ]
 
 export function rootPosition(form, orbits = ROOT_ORBITS) {
+  // A form's family orbit is the source of truth for its radial position.
+  // Individual nodes may choose an angle, but must never drift between rings.
   const orbitRadius = (orbits.find((orbit) => orbit.id === form.orbit) || orbits[0]).radius
-  const radius = form.radius ?? orbitRadius
   const radians = form.angle * Math.PI / 180
-  return { x: 50 + Math.cos(radians) * radius, y: 50 + Math.sin(radians) * radius }
+  return { x: 50 + Math.cos(radians) * orbitRadius, y: 50 + Math.sin(radians) * orbitRadius }
 }
 export function rootForWord(word) {
   return ROOT_DEMOS[word?.rootKey || 'wqy'] || ROOT_DEMOS.wqy
