@@ -11,13 +11,21 @@ const LOCATIONS = {
   "taqwa": "2:197:26 2:237:26 5:2:41 5:8:19 7:26:11 9:108:8 9:109:5 20:132:12 22:32:8 22:37:9 47:17:6 48:26:19 49:3:13 58:9:14 74:56:9 91:8:3 96:12:3",
   "tuqat": "3:28:21",
   "waq": "13:34:14 13:37:19 40:21:30",
-  "waqa": "2:201:12 3:16:9 3:191:19 16:81:15 16:81:18 40:7:25 40:9:1 40:9:4 40:45:1 44:56:8 52:18:5 52:27:4 59:9:26 64:16:11 66:6:4 76:11:1"
+  "waqa": "2:201:12 3:16:9 3:191:19 16:81:15 16:81:18 40:7:25 40:9:1 40:9:4 40:45:1 44:56:8 52:18:5 52:27:4 59:9:26 64:16:11 66:6:4 76:11:1",
+  "albab": "2:179:6 2:197:29 2:269:16 3:7:46 3:190:11 5:100:13 12:111:7 13:19:15 14:52:13 38:29:9 38:43:10 39:9:24 39:18:13 39:21:31 40:54:4 65:10:9"
 }
 export const OCCURRENCES = Object.fromEntries(Object.entries(LOCATIONS).map(([id, locations]) => [id, locations.split(' ').map(location => {
   const [sura, ayah, word] = location.split(':').map(Number)
   return { sura, ayah, word }
 })]))
-export const ROOT_OCCURRENCE_COUNT = Object.values(OCCURRENCES).reduce((total, items) => total + items.length, 0)
+const ROOT_WORD_IDS = {
+  wqy: ['atqa','ittaqa','muttaqin','taqiyy','taqwa','tuqat','waq','waqa'],
+  lbb: ['albab'],
+}
+export function rootOccurrenceCount(rootKey = 'wqy') {
+  return (ROOT_WORD_IDS[rootKey] || []).reduce((total, id) => total + (OCCURRENCES[id]?.length || 0), 0)
+}
+export const ROOT_OCCURRENCE_COUNT = rootOccurrenceCount('wqy')
 export function groupOccurrences(id) {
   const grouped = new Map()
   for (const item of OCCURRENCES[id] || []) {
