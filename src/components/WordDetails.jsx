@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { COPY, FORMS } from '../demo.js'
-import { CONTENT_SOURCES, ROOT_CONTENT, WORD_CONTENT, LBB_ROOT_CONTENT, LBB_WORD_CONTENT } from '../rootContent.js'
+import { CONTENT_SOURCES, ROOT_CONTENT, WORD_CONTENT, LBB_ROOT_CONTENT, LBB_WORD_CONTENT, LBB_DERIVATION_NOTES } from '../rootContent.js'
 import { OCCURRENCES, ROOT_OCCURRENCE_COUNT, rootOccurrenceCount, groupOccurrences } from '../occurrences.js'
 import { WQY_PUBLIC_MODEL } from '../canonicalWqy.js'
 import { MORPH_COPY, MORPH_ROLES, MORPHOLOGY } from '../morphologyWqy.js'
@@ -351,28 +351,27 @@ function MorphologyStructure({ word, content, language, onPick }) {
 
 function LbbRootRelation({ word, language }) {
   if (word?.rootKey !== 'lbb') return null
+  const note = LBB_DERIVATION_NOTES[word.id]
+  if (!note) return null
   const ru = language === 'ru'
-  const copy = {
-    core: ru
-      ? 'Эта форма относится к линии لُبّ: внутренняя сердцевина / ядро → чистая или лучшая часть → применительно к человеку разумение и проницательность.'
-      : 'This form belongs to the لُبّ line: inner core / kernel → pure or choicest part → when applied to a person, understanding and discernment.',
-    chest: ru
-      ? 'Здесь работает физическая ветвь لَبَب / لَبَّة: верхняя часть груди между ключицами и место нагрудного ремня или ожерелья. Поэтому слова этой ветви называют предмет, одежду или действие именно в этой зоне груди.'
-      : 'Here the physical branch لَبَب / لَبَّة is active: the upper chest between the collarbones and the place of a breast-girth or necklace. Words in this branch name an object, garment, or action at that part of the chest.',
-    stay: ru
-      ? 'Это отдельная словарная ветвь لَبَّ / أَلَبَّ со значением «оставаться, пребывать, держаться». Её не следует автоматически выводить из значения «сердцевина»: словари фиксируют её как самостоятельную линию употребления.'
-      : 'This is a separate lexical branch of لَبَّ / أَلَبَّ meaning “to remain, stay, keep to.” It should not automatically be derived from “core”; the lexicons record it as its own usage-line.',
-    rq: ru
-      ? 'Это редуплицированная четырёхбуквенная ветвь, которую словари индексируют рядом с этим гнездом. Прямая смысловая связь с لُبّ «сердцевина / разум» не очевидна, поэтому здесь она не придумывается.'
-      : 'This is a reduplicated quadriliteral branch indexed by the lexicons with this family. A direct semantic bridge to لُبّ “core / understanding” is not evident, so none is invented here.',
-    mixed: ru
-      ? 'I форма многозначна и соединяет несколько засвидетельствованных употреблений этого гнезда: линию لُبّ «разум / ядро», физическую область لَبَّة «верх груди», а также другие старые употребления. Поэтому значения показаны раздельно.'
-      : 'Form I is polysemous and contains several attested usages in this lexical family: the لُبّ “understanding / kernel” line, the physical لَبَّة “upper chest” line, and other older usages. The senses are therefore kept separate.',
-  }
-  const text = copy[word.semanticBranch] || copy.mixed
+  return <>
+    <section className="meaning-distinction">
+      <p className="meaning-distinction-label">{ru ? 'Почему это слово относится к ل ب ب' : 'Why this word belongs to ل ب ب'}</p>
+      <p>{ru ? note.connectionRu : note.connectionEn}</p>
+    </section>
+    {(note.formRu || note.formEn) && <section className="meaning-distinction">
+      <p className="meaning-distinction-label">{ru ? 'Что делает форма' : 'What the form does'}</p>
+      <p>{ru ? note.formRu : note.formEn}</p>
+    </section>}
+  </>
+}
+
+function LbbStructureNote({ word, language }) {
+  const note = LBB_DERIVATION_NOTES[word.id]
+  if (!note?.formRu && !note?.formEn) return null
   return <section className="meaning-distinction">
-    <p className="meaning-distinction-label">{ru ? 'Связь с корнем' : 'Connection to the root'}</p>
-    <p>{text}</p>
+    <p className="meaning-distinction-label">{language === 'ru' ? 'Функция формы' : 'Form function'}</p>
+    <p>{language === 'ru' ? note.formRu : note.formEn}</p>
   </section>
 }
 
@@ -532,6 +531,7 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
     if (!MORPHOLOGY[word.id] && word.rootKey === 'lbb') return <div className="entry-copy">
       <p className="entry-lead">{word.arabic} <span className="transliteration" lang="ar-Latn" dir="ltr">{word.reading}</span></p>
       <p>{language === 'ru' ? word.definitionRu : word.definitionEn}</p>
+      <LbbStructureNote word={word} language={language} />
       <SourceLinks ids={content.structureSources} language={language} />
     </div>
     return <MorphologyStructure word={word} content={content} language={language} onPick={onPick} />
