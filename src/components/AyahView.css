@@ -7104,3 +7104,12 @@
 .rhetoric-insight > .rhetoric-sound {
   display: none !important;
 }
+
+
+.rhetoric-fa-roles b em {
+  margin-left: 5px;
+  color: #9aa9a7;
+  font: 500 13px/1.35 system-ui, sans-serif;
+  font-style: normal;
+  letter-spacing: .01em;
+}
