@@ -1211,3 +1211,48 @@ details.morph-board-callout[open] .morph-board-callout-body {
     right: 18px;
   }
 }
+
+
+/* Root derivative inventory uses the existing detail-sheet language; no layout redesign. */
+.root-derivatives {
+  margin: 28px 0 10px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+.root-derivatives > h3 {
+  margin: 0 0 18px;
+  color: var(--paper);
+  font-size: 18px;
+  font-weight: 650;
+}
+.root-derivative-group + .root-derivative-group {
+  margin-top: 24px;
+}
+.root-derivative-group > h4 {
+  margin: 0 0 10px;
+  color: #aab8b5;
+  font-size: 13px;
+  font-weight: 600;
+}
+.root-derivative-grid {
+  display: grid;
+  gap: 8px;
+}
+.root-derivative-item {
+  padding: 12px 14px;
+  border: 1px solid #ffffff10;
+  border-radius: 4px;
+  background: #ffffff02;
+}
+.root-derivative-item > b {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--word-white, #f7f8fa);
+  font: 600 21px/1.5 'Noto Sans Arabic', sans-serif;
+}
+.root-derivative-item > p {
+  margin: 0 !important;
+  color: var(--muted) !important;
+  font-size: 13px !important;
+  line-height: 1.68 !important;
+}
