@@ -294,6 +294,115 @@ function TaqwaMorphologyLegacy({ selected, morphology, language }) {
   </section>
 }
 
+
+/* Uses the approved al-taqwa visual grammar without modifying al-taqwa itself. */
+function WaIttaquniMorphology({ selected, morphology, profile, language }) {
+  const ru = language === 'ru'
+  const parts = morphology?.parts || []
+  const root = selected.root || 'و ق ي'
+  const rootReading = selected.rootReading || 'w-q-y'
+
+  return <section className="analysis-morphology-screen approved-ayah-word-template" onClick={(event) => event.stopPropagation()}>
+    <div className="analysis-morphology-canvas">
+      <header className="analysis-morphology-hero">
+        <span lang="ar" dir="rtl">{selected.ar}</span>
+        <em>{selected.tr}</em>
+      </header>
+
+      <svg className="analysis-morphology-tree first plain-tree" viewBox="0 0 100 58" preserveAspectRatio="none" aria-hidden="true">
+        <path className="tree-stem" d="M50 2 V17" />
+        <path className="tree-bar" d="M16.7 17 H83.3" />
+        <path className="tree-branch" d="M16.7 17 V51" />
+        <path className="tree-branch" d="M50 17 V51" />
+        <path className="tree-branch" d="M83.3 17 V51" />
+      </svg>
+
+      <div className="analysis-morphology-level first-level has-three">
+        <article className="analysis-morphology-node conjunction">
+          <span lang="ar" dir="rtl">{parts[0]?.ar || 'وَ'}</span>
+          <small>{parts[0]?.tr || 'wa-'}</small>
+          <b>{ru ? 'Союз' : 'Conjunction'}</b>
+          <p>{ru
+            ? 'وَ (wa-) связывает это повеление с предыдущим утверждением.'
+            : 'وَ (wa-) links this command to the preceding statement.'}</p>
+        </article>
+
+        <article className="analysis-morphology-node base">
+          <span lang="ar" dir="rtl">{parts[1]?.ar || 'ٱتَّقُوا'}</span>
+          <small>{parts[1]?.tr || 'ittaqū'}</small>
+          <b>{ru ? 'Повелительная форма · 2 л. мн. ч.' : 'Imperative · 2nd person plural'}</b>
+          <p>{ru
+            ? 'ٱتَّقُوا (ittaqū) — повелительная форма от ٱتَّقَىٰ (ittaqā); واو الجماعة указывает на адресата «вы».'
+            : 'ٱتَّقُوا (ittaqū) is the imperative of ٱتَّقَىٰ (ittaqā); واو الجماعة marks the plural addressee “you”.'}</p>
+        </article>
+
+        <article className="analysis-morphology-node object">
+          <span lang="ar" dir="rtl">{parts[3]?.ar || 'نِ'}</span>
+          <small>{parts[3]?.tr || '-ni'}</small>
+          <b>{ru ? 'نون الوقاية + объект' : 'nūn al-wiqāya + object'}</b>
+          <p>{ru
+            ? 'نِ содержит nūn al-wiqāya; местоименная yā «Меня» в этой коранической записи опущена, а её след сохраняется в kasra.'
+            : 'نِ contains nūn al-wiqāya; the pronominal yā “Me” is omitted in this Quranic spelling, with its trace retained in the kasrah.'}</p>
+        </article>
+      </div>
+
+      <svg className="analysis-morphology-tree second plain-tree" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true">
+        <path className="tree-stem" d="M50 2 V17" />
+        <path className="tree-bar" d="M16.7 17 H83.3" />
+        <path className="tree-branch" d="M16.7 17 V55" />
+        <path className="tree-branch" d="M50 17 V55" />
+        <path className="tree-branch" d="M83.3 17 V55" />
+      </svg>
+
+      <div className="analysis-morphology-level second-level has-three">
+        <article className="analysis-morphology-node root">
+          <span lang="ar" dir="rtl">{root}</span>
+          <small>{rootReading}</small>
+          <b>{ru ? 'Корень' : 'Root'}</b>
+          <p>{ru
+            ? 'و ق ي (w-q-y) несёт идею защиты и оберегания.'
+            : 'و ق ي (w-q-y) carries the idea of protection and guarding.'}</p>
+        </article>
+
+        <article className="analysis-morphology-node verb">
+          <span lang="ar" dir="rtl">{profile?.displayArabic || 'ٱتَّقَىٰ'}</span>
+          <small>ittaqā</small>
+          <b>{ru ? 'Глагол VIII формы' : 'Form VIII verb'}</b>
+          <p>{ru
+            ? 'ٱتَّقَىٰ (ittaqā) — словарная форма, от которой образовано повеление ٱتَّقُوا (ittaqū).'
+            : 'ٱتَّقَىٰ (ittaqā) is the citation form from which the imperative ٱتَّقُوا (ittaqū) is formed.'}</p>
+        </article>
+
+        <article className="analysis-morphology-node pattern">
+          <span lang="ar" dir="rtl">{profile?.pattern?.ar || 'اِفْتَعَلَ'}</span>
+          <small>{profile?.pattern?.reading || 'iftaʿala'}</small>
+          <b>{ru ? 'Модель VIII формы' : 'Form VIII pattern'}</b>
+          <p>{ru
+            ? 'اِفْتَعَلَ (iftaʿala) показывает словообразовательную модель глагола ٱتَّقَىٰ (ittaqā).'
+            : 'اِفْتَعَلَ (iftaʿala) shows the derivational pattern of ٱتَّقَىٰ (ittaqā).'}</p>
+        </article>
+      </div>
+
+      <div className="analysis-morphology-note">
+        <div className="analysis-morphology-summary-formula" lang="ar" dir="rtl">
+          وَٱتَّقُونِ = وَ + ٱتَّقُوا + نِ
+        </div>
+        <div className="analysis-morphology-summary-list">
+          <p>{ru
+            ? <><b>Связка:</b> وَ (wa-) соединяет повеление с предыдущей мыслью.</>
+            : <><b>Link:</b> وَ (wa-) connects the command to the preceding statement.</>}</p>
+          <p>{ru
+            ? <><b>Глагол:</b> ٱتَّقُوا (ittaqū) — повеление множественному адресату от ٱتَّقَىٰ (ittaqā), VIII формы корня و ق ي.</>
+            : <><b>Verb:</b> ٱتَّقُوا (ittaqū) is the plural imperative of ٱتَّقَىٰ (ittaqā), Form VIII of the root و ق ي.</>}</p>
+          <p>{ru
+            ? <><b>Объект:</b> نِ связано с nūn al-wiqāya и опущенной yā местоимения «Меня».</>
+            : <><b>Object:</b> نِ contains nūn al-wiqāya with the pronominal yā “Me” omitted in the Quranic spelling.</>}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+}
+
 function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrbit }) {
   const [focusView, setFocusView] = useState('word')
   useEffect(() => { setFocusView('word') }, [selectedWord])
@@ -343,12 +452,19 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
               profile={morphologyModel}
               language={language}
             />
-          : <AyahMorphologyView
-              selected={selected}
-              morphology={morphology}
-              profile={morphologyModel}
-              language={language}
-            />
+          : selected.tr === 'wa-ittaqūni'
+            ? <WaIttaquniMorphology
+                selected={selected}
+                morphology={morphology}
+                profile={morphologyModel}
+                language={language}
+              />
+            : <AyahMorphologyView
+                selected={selected}
+                morphology={morphology}
+                profile={morphologyModel}
+                language={language}
+              />
       )}
 
       <nav className="analysis-focus-view-switch" onClick={(event) => event.stopPropagation()} aria-label={ru ? 'Вид разбора слова' : 'Word analysis view'}>
