@@ -172,7 +172,65 @@ export const AYAH_PROTOTYPES = {
         },
       },
       { ar: 'يَـٰٓأُو۟لِي', tr: 'yā ulī', ru: 'о обладатели', en: 'O possessors', roleRu: 'частица обращения + существительное', roleEn: 'vocative particle + noun' },
-      { ar: 'ٱلْأَلْبَـٰبِ', tr: 'al-albābi', ru: 'разумения / глубокого разума', en: 'understanding / discerning intellect', roleRu: 'существительное · мн. число', roleEn: 'noun · plural' },
+      {
+        ar: 'ٱلْأَلْبَـٰبِ', tr: 'al-albābi', ru: 'глубокого разумения', en: 'deep understanding',
+        roleRu: 'существительное · мн. число · majrūr', roleEn: 'plural noun · genitive',
+        root: 'ل ب ب', rootReading: 'l-b-b', orbitId: 'albab',
+        noteRu: 'أَلْبَاب (albāb) — множественное от لُبّ (lubb): сердцевины, чистой и лучшей части; применительно к человеку — глубокого, очищенного разумения.',
+        noteEn: 'أَلْبَاب (albāb) is the plural of لُبّ (lubb): the inner, pure or choicest part; applied to a person, deep and purified understanding.',
+        analysis: {
+          ru: {
+            morphology: {
+              parts: [
+                { ar: 'ٱلـ', tr: 'al-', label: 'определённый артикль' },
+                { ar: 'أَلْبَاب', tr: 'albāb', label: 'ломаное множественное число' },
+                { ar: 'ل ب ب', tr: 'l-b-b', label: 'корень: внутренняя сердцевина / чистая часть' },
+                { ar: 'لُبّ', tr: 'lubb', label: 'единственное число' },
+                { ar: 'أَفْعَال', tr: 'afʿāl', label: 'модель множественного числа' },
+                { ar: 'ـِ', tr: '-i', label: 'kasra · состояние majrūr' },
+              ],
+              text: 'В аяте ٱلْأَلْبَابِ (al-albābi) состоит из определённого артикля ٱلـ и формы أَلْبَاب (albāb), ломаного множественного от لُبّ (lubb). Модель множественного числа — أَفْعَال (afʿāl), корень — ل ب ب. Конечная kasra показывает состояние majrūr, потому что слово является второй частью идафы أُولِي ٱلْأَلْبَابِ.',
+            },
+            syntax: {
+              plain: 'ٱلْأَلْبَابِ входит в идафу أُولِي ٱلْأَلْبَابِ. أُولِي — первое слово конструкции, а ٱلْأَلْبَابِ уточняет, обладатели чего имеются в виду.',
+              title: 'مُضَاف إِلَيْهِ (muḍāf ilayhi) — вторая часть идафы',
+              case: 'مَجْرُور (majrūr): состояние второй части идафы.',
+              ending: 'Конечная kasra в ٱلْأَلْبَابِ показывает состояние majrūr.',
+              text: 'Вся конструкция يَا أُولِي ٱلْأَلْبَابِ является обращением: يَا вводит обращение, أُولِي — «обладатели», а ٱلْأَلْبَابِ уточняет «обладатели глубокого разумения».',
+            },
+            meaning: {
+              gloss: 'Глубокое разумение',
+              description: 'لُبّ (lubb) буквально связано с внутренней, чистой или лучшей частью вещи — её сердцевиной. В отношении человека это образ разумения, которое способно дойти до сути. Поэтому أَلْبَاب (albāb) здесь передаёт не просто наличие разума, а глубокую способность понимать и различать.',
+              translation: 'В финале аята обращение أُولِي ٱلْأَلْبَابِ следует после правил хаджа, упоминания добра, внешнего запаса и تَقْوَىٰ (taqwā). «Обладатели глубокого разумения» подчёркивает способность увидеть внутреннюю связь между этими частями аята.',
+            },
+          },
+          en: {
+            morphology: {
+              parts: [
+                { ar: 'ٱلـ', tr: 'al-', label: 'definite article' },
+                { ar: 'أَلْبَاب', tr: 'albāb', label: 'broken plural' },
+                { ar: 'ل ب ب', tr: 'l-b-b', label: 'root: inner core / pure part' },
+                { ar: 'لُبّ', tr: 'lubb', label: 'singular noun' },
+                { ar: 'أَفْعَال', tr: 'afʿāl', label: 'broken-plural pattern' },
+                { ar: 'ـِ', tr: '-i', label: 'kasrah · genitive state' },
+              ],
+              text: 'In the ayah, ٱلْأَلْبَابِ (al-albābi) contains the definite article ٱلـ plus أَلْبَاب (albāb), the broken plural of لُبّ (lubb). The plural pattern is أَفْعَال (afʿāl), from the root ل ب ب. The final kasrah marks the genitive state because the word is the second noun of the iḍāfa أُولِي ٱلْأَلْبَابِ.',
+            },
+            syntax: {
+              plain: 'ٱلْأَلْبَابِ belongs to the iḍāfa أُولِي ٱلْأَلْبَابِ. أُولِي is the first noun, while ٱلْأَلْبَابِ specifies what its possessors possess.',
+              title: 'مُضَاف إِلَيْهِ (muḍāf ilayhi) — the second noun of the iḍāfa',
+              case: 'مَجْرُور (majrūr): the grammatical state of the second noun in the iḍāfa.',
+              ending: 'The final kasrah in ٱلْأَلْبَابِ marks the genitive state.',
+              text: 'The full phrase يَا أُولِي ٱلْأَلْبَابِ is a direct address: يَا opens the vocative, أُولِي means “possessors,” and ٱلْأَلْبَابِ specifies “possessors of deep understanding.”',
+            },
+            meaning: {
+              gloss: 'Deep understanding',
+              description: 'لُبّ (lubb) is linked to the inner, pure or choicest part of a thing — its core. Applied to a person, it becomes an image of understanding able to reach the essence. أَلْبَاب (albāb) therefore conveys more than simply possessing intellect: it points to deep, discerning understanding.',
+              translation: 'At the close of the ayah, أُولِي ٱلْأَلْبَابِ follows the Hajj rules, mention of good action, outward provision, and تَقْوَىٰ (taqwā). “Possessors of deep understanding” highlights the capacity to see the inner relationship between these parts of the ayah.',
+            },
+          },
+        },
+      },
     ],
     compositionThread: {
       ru: 'Аят связывает внешний порядок хаджа с внутренним состоянием человека: установленное время → вступление в хадж и его границы → знание Аллаха о поступках → تَقْوَىٰ (taqwā) как внутренняя опора → прямое обращение к людям разумения.',
