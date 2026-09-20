@@ -496,13 +496,12 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
   if (!content) return null
   if (panel === 'quran') {
     const occurrences = OCCURRENCES[word.id] || []
-    if (!occurrences.length) return null
     const groups = groupOccurrences(word.id)
     const verses = new Set(occurrences.map(item => item.sura + ':' + item.ayah)).size
     return <div className="entry-copy quran-occurrences">
-      {word.lexicalOnly ? <p>{word.rootKey === 'lbb'
-        ? (language === 'ru' ? 'Это словарная форма для понимания корневой семьи; отдельное кораническое вхождение этой формы здесь не заявлено.' : 'This dictionary form is shown to explain the root family; no separate Quranic occurrence of this form is claimed here.')
-        : t.lexicalQuran}</p> : <>
+      {!occurrences.length ? <p>{language === 'ru'
+        ? 'Эта форма в Коране не встречается.'
+        : 'This form does not occur in the Quran.'}</p> : <>
         <h3>{t.references}</h3>
         <p className="occurrence-summary">{t.occurrenceCount}: <strong>{occurrences.length}</strong><span> · </span>{t.verseCount}: <strong>{verses}</strong></p>
         {content.occurrenceNote && <p className="entry-note annotation-note">{content.occurrenceNote[language]}</p>}
