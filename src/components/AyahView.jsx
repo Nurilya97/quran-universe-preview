@@ -202,10 +202,10 @@ function TaqwaMorphologyLegacy({ selected, morphology, language }) {
         <em>{selected.tr}</em>
       </header>
 
-      <div className="analysis-morphology-branch first" aria-hidden="true">
-        <i className="branch-line left" />
-        <i className="branch-line right" />
-      </div>
+      <svg className="analysis-morphology-tree first" viewBox="0 0 100 58" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M50 2 C50 22 25 20 25 55" />
+        <path d="M50 2 C50 22 75 20 75 55" />
+      </svg>
 
       <div className="analysis-morphology-level first-level">
         <article className="analysis-morphology-node base">
@@ -227,10 +227,10 @@ function TaqwaMorphologyLegacy({ selected, morphology, language }) {
         </article>
       </div>
 
-      <div className="analysis-morphology-branch second" aria-hidden="true">
-        <i className="branch-line down" />
-        <i className="branch-line to-pattern" />
-      </div>
+      <svg className="analysis-morphology-tree second" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M25 2 C25 22 25 28 25 59" />
+        <path d="M25 2 C25 22 75 24 75 59" />
+      </svg>
 
       <div className="analysis-morphology-level second-level">
         <article className="analysis-morphology-node root">
@@ -253,7 +253,6 @@ function TaqwaMorphologyLegacy({ selected, morphology, language }) {
       </div>
 
       <div className="analysis-morphology-note">
-        <strong>{ru ? 'Итог' : 'Summary'}</strong>
         <div className="analysis-morphology-summary-formula" lang="ar" dir="rtl">
           ٱلتَّقْوَىٰ = ٱلـ + تَقْوَىٰ
         </div>
