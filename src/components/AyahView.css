@@ -7036,3 +7036,30 @@
     line-height: 1.5;
   }
 }
+
+
+/* Rhetoric heading cleanup — one title only, with the step number beside it. */
+.rhetoric-step {
+  display: none !important;
+}
+
+.rhetoric-insight > h3 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.rhetoric-title-step {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(202,177,211,.20);
+  border-radius: 50%;
+  color: #b89cc1;
+  font-size: 12px;
+  font-weight: 520;
+  line-height: 1;
+}
