@@ -86,115 +86,8 @@ export function ImmersiveUniverse() {
   }, [scene, journey, rootKey])
 
 
-  useEffect(() => {
-    const viewport = rootViewport.current
-    if (scene !== 'root' || journey || rootKey !== 'lbb' || !viewport) return
-
-    const pointers = new Map()
-    const clamp = value => Math.max(.55, Math.min(1.35, Number(value.toFixed(3))))
-    const pointDistance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y)
-
-    const beginPinch = () => {
-      const [a, b] = Array.from(pointers.values())
-      if (!a || !b) return
-      rootGesture.current = {
-        mode: 'pinch',
-        startDistance: pointDistance(a, b),
-        startZoom: rootZoomRef.current,
-        lastX: 0,
-        lastY: 0,
-      }
-    }
-
-    const onPointerDown = event => {
-      if (event.pointerType !== 'touch') return
-      pointers.set(event.pointerId, { x: event.clientX, y: event.clientY })
-
-      if (pointers.size >= 2) {
-        beginPinch()
-      } else {
-        rootGesture.current = {
-          mode: 'pan',
-          startDistance: 0,
-          startZoom: rootZoomRef.current,
-          lastX: event.clientX,
-          lastY: event.clientY,
-        }
-      }
-    }
-
-    const onPointerMove = event => {
-      if (event.pointerType !== 'touch' || !pointers.has(event.pointerId)) return
-      pointers.set(event.pointerId, { x: event.clientX, y: event.clientY })
-
-      if (pointers.size >= 2) {
-        event.preventDefault()
-        const [a, b] = Array.from(pointers.values())
-        if (rootGesture.current.mode !== 'pinch' || !rootGesture.current.startDistance) {
-          beginPinch()
-          return
-        }
-        const next = clamp(rootGesture.current.startZoom * (pointDistance(a, b) / rootGesture.current.startDistance))
-        rootZoomRef.current = next
-        setRootZoom(next)
-        return
-      }
-
-      if (pointers.size === 1 && rootGesture.current.mode === 'pan') {
-        event.preventDefault()
-        viewport.scrollLeft -= event.clientX - rootGesture.current.lastX
-        viewport.scrollTop -= event.clientY - rootGesture.current.lastY
-        rootGesture.current.lastX = event.clientX
-        rootGesture.current.lastY = event.clientY
-      }
-    }
-
-    const onPointerEnd = event => {
-      if (event.pointerType !== 'touch') return
-      pointers.delete(event.pointerId)
-
-      if (pointers.size >= 2) {
-        beginPinch()
-      } else if (pointers.size === 1) {
-        const remaining = Array.from(pointers.values())[0]
-        rootGesture.current = {
-          mode: 'pan',
-          startDistance: 0,
-          startZoom: rootZoomRef.current,
-          lastX: remaining.x,
-          lastY: remaining.y,
-        }
-      } else {
-        rootGesture.current.mode = null
-      }
-    }
-
-    const onWheel = event => {
-      if (!event.ctrlKey && !event.metaKey) return
-      event.preventDefault()
-      const direction = event.deltaY < 0 ? .08 : -.08
-      const next = clamp(rootZoomRef.current + direction)
-      rootZoomRef.current = next
-      setRootZoom(next)
-    }
-
-    viewport.addEventListener('pointerdown', onPointerDown, { passive: false })
-    viewport.addEventListener('pointermove', onPointerMove, { passive: false })
-    viewport.addEventListener('pointerup', onPointerEnd, { passive: false })
-    viewport.addEventListener('pointercancel', onPointerEnd, { passive: false })
-    viewport.addEventListener('wheel', onWheel, { passive: false })
-
-    return () => {
-      viewport.removeEventListener('pointerdown', onPointerDown)
-      viewport.removeEventListener('pointermove', onPointerMove)
-      viewport.removeEventListener('pointerup', onPointerEnd)
-      viewport.removeEventListener('pointercancel', onPointerEnd)
-      viewport.removeEventListener('wheel', onWheel)
-    }
-  }, [scene, journey, rootKey])
-
   function clampRootZoom(value) {
-    return Math.max(.55, Math.min(1.35, Number(value.toFixed(3))))
+    return Math.max(.45, Math.min(1.8, Number(value.toFixed(3))))
   }
 
   function zoomRoot(delta) {
@@ -208,6 +101,121 @@ export function ImmersiveUniverse() {
   function resetRootZoom() {
     rootZoomRef.current = 1
     setRootZoom(1)
+  }
+
+  function touchDistance(touches) {
+    if (touches.length < 2) return 0
+    const a = touches[0]
+    const b = touches[1]
+    return Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY)
+  }
+
+  function handleRootTouchStart(event) {
+    if (currentRoot.id !== 'lbb') return
+
+    if (event.touches.length >= 2) {
+      event.preventDefault()
+      rootGesture.current = {
+        mode: 'pinch',
+        startDistance: touchDistance(event.touches),
+        startZoom: rootZoomRef.current,
+        lastX: 0,
+        lastY: 0,
+      }
+      return
+    }
+
+    if (event.touches.length === 1) {
+      const touch = event.touches[0]
+      rootGesture.current = {
+        mode: 'pan',
+        startDistance: 0,
+        startZoom: rootZoomRef.current,
+        lastX: touch.clientX,
+        lastY: touch.clientY,
+      }
+    }
+  }
+
+  function handleRootTouchMove(event) {
+    if (currentRoot.id !== 'lbb') return
+    const viewport = rootViewport.current
+    if (!viewport) return
+
+    if (event.touches.length >= 2) {
+      event.preventDefault()
+
+      if (rootGesture.current.mode !== 'pinch' || !rootGesture.current.startDistance) {
+        rootGesture.current = {
+          mode: 'pinch',
+          startDistance: touchDistance(event.touches),
+          startZoom: rootZoomRef.current,
+          lastX: 0,
+          lastY: 0,
+        }
+        return
+      }
+
+      const ratio = touchDistance(event.touches) / rootGesture.current.startDistance
+      const next = clampRootZoom(rootGesture.current.startZoom * ratio)
+      rootZoomRef.current = next
+      setRootZoom(next)
+      return
+    }
+
+    if (event.touches.length === 1) {
+      event.preventDefault()
+      const touch = event.touches[0]
+
+      if (rootGesture.current.mode !== 'pan') {
+        rootGesture.current = {
+          mode: 'pan',
+          startDistance: 0,
+          startZoom: rootZoomRef.current,
+          lastX: touch.clientX,
+          lastY: touch.clientY,
+        }
+        return
+      }
+
+      viewport.scrollLeft -= touch.clientX - rootGesture.current.lastX
+      viewport.scrollTop -= touch.clientY - rootGesture.current.lastY
+      rootGesture.current.lastX = touch.clientX
+      rootGesture.current.lastY = touch.clientY
+    }
+  }
+
+  function handleRootTouchEnd(event) {
+    if (currentRoot.id !== 'lbb') return
+
+    if (event.touches.length >= 2) {
+      rootGesture.current = {
+        mode: 'pinch',
+        startDistance: touchDistance(event.touches),
+        startZoom: rootZoomRef.current,
+        lastX: 0,
+        lastY: 0,
+      }
+    } else if (event.touches.length === 1) {
+      const touch = event.touches[0]
+      rootGesture.current = {
+        mode: 'pan',
+        startDistance: 0,
+        startZoom: rootZoomRef.current,
+        lastX: touch.clientX,
+        lastY: touch.clientY,
+      }
+    } else {
+      rootGesture.current.mode = null
+    }
+  }
+
+  function handleRootWheel(event) {
+    if (currentRoot.id !== 'lbb' || (!event.ctrlKey && !event.metaKey)) return
+    event.preventDefault()
+    const next = clampRootZoom(rootZoomRef.current + (event.deltaY < 0 ? .08 : -.08))
+    rootZoomRef.current = next
+    setRootZoom(next)
   }
 
   function handleRootViewportKeyDown(event) {
@@ -381,7 +389,18 @@ export function ImmersiveUniverse() {
         <span><i className="root-legend-quran" aria-hidden="true" />{t.quranColorLegend}</span>
         <span><b>I · II · IV · V · X</b><small>{t.formNumberLegend}</small></span>
       </div>}
-      <div className="root-viewport" ref={rootViewport} tabIndex={currentRoot.id === 'lbb' ? 0 : undefined} aria-label={t.rootSpace} onKeyDown={handleRootViewportKeyDown}>
+      <div
+        className="root-viewport"
+        ref={rootViewport}
+        tabIndex={currentRoot.id === 'lbb' ? 0 : undefined}
+        aria-label={t.rootSpace}
+        onKeyDown={handleRootViewportKeyDown}
+        onWheel={handleRootWheel}
+        onTouchStartCapture={handleRootTouchStart}
+        onTouchMoveCapture={handleRootTouchMove}
+        onTouchEndCapture={handleRootTouchEnd}
+        onTouchCancelCapture={handleRootTouchEnd}
+      >
       <div className="root-canvas">
       <div className="root-field" style={currentRoot.id === 'lbb' ? { '--root-zoom': rootZoom } : undefined}>
         {currentRootOrbits.filter(orbit => orbit.innerRadius).map(orbit => <div key={orbit.id + '-inner'} className="root-orbit root-orbit-inner" style={{ '--diameter': orbit.innerRadius * 2 + '%' }} aria-hidden="true" />)}
