@@ -665,3 +665,269 @@
     font-size: 8.5px;
   }
 }
+
+
+/* Ayah morphology now follows the approved neon "Разбор" language from Word Structure,
+   rather than repeating the large card-based "Схема" composition. */
+.ayah-morph-neon {
+  --morph-root: #aeb5bd;
+  --morph-prefix: #7cff8b;
+  --morph-suffix: #ff7a59;
+  --morph-ending: #c65cff;
+  --morph-particle: #59f2ff;
+  --morph-form: #f7f8fa;
+  width: min(640px, calc(100vw - 42px));
+  min-height: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 46px 6px 58px;
+  color: #e4eaec;
+}
+
+.ayah-morph-neon-header {
+  text-align: left;
+}
+
+.ayah-morph-neon-header > small {
+  display: block;
+  color: #9ea4aa;
+  font-size: 11px;
+  line-height: 1.45;
+  letter-spacing: .035em;
+}
+
+.ayah-morph-neon-word {
+  display: block;
+  margin-top: 8px;
+  direction: rtl;
+  unicode-bidi: isolate;
+  white-space: nowrap;
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-size: clamp(48px, 9vw, 62px);
+  font-weight: 400;
+  line-height: 1.55;
+  text-align: left;
+}
+
+.ayah-morph-part {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  line-height: inherit;
+}
+
+.ayah-morph-root { color: var(--morph-root); }
+.ayah-morph-prefix { color: var(--morph-prefix); }
+.ayah-morph-suffix { color: var(--morph-suffix); }
+.ayah-morph-ending { color: var(--morph-ending); }
+.ayah-morph-particle { color: var(--morph-particle); }
+.ayah-morph-form { color: var(--morph-form); }
+.ayah-morph-fusion {
+  color: transparent;
+  background: linear-gradient(90deg, var(--morph-root) 0 48%, var(--morph-form) 52% 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.ayah-morph-neon-header > em {
+  display: block;
+  margin-top: -4px;
+  color: #92989f;
+  font-size: 13px;
+  font-style: normal;
+}
+
+.ayah-morph-neon-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 15px;
+  margin-top: 12px;
+  color: #9da6ab;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.ayah-morph-neon-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ayah-morph-neon-legend i {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.ayah-morph-legend-root { color: var(--morph-root); }
+.ayah-morph-legend-prefix { color: var(--morph-prefix); }
+.ayah-morph-legend-suffix { color: var(--morph-suffix); }
+.ayah-morph-legend-ending { color: var(--morph-ending); }
+.ayah-morph-legend-particle { color: var(--morph-particle); }
+.ayah-morph-legend-form { color: var(--morph-form); }
+.ayah-morph-legend-fusion { color: var(--morph-root); }
+.ayah-morph-legend-fusion i {
+  background: linear-gradient(90deg, var(--morph-root) 0 48%, var(--morph-form) 52% 100%);
+}
+
+.ayah-morph-transformation {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  color: #8f959c;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.ayah-morph-transformation > span[lang='ar'] {
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-size: 20px;
+}
+
+.ayah-morph-transformation > small {
+  margin-left: 4px;
+  color: #92989f;
+  font-size: 11px;
+}
+
+.ayah-morph-origin,
+.ayah-morph-current {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.065);
+}
+
+.ayah-morph-origin > h3,
+.ayah-morph-current > h3 {
+  margin: 0 0 13px;
+  color: #9ea4aa;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: .035em;
+}
+
+.ayah-morph-origin-flow,
+.ayah-morph-current-list {
+  width: 100%;
+}
+
+.ayah-morph-origin-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 132px 1fr;
+  gap: 14px;
+  align-items: baseline;
+  min-height: 50px;
+  padding-bottom: 14px;
+}
+
+.ayah-morph-origin-step > div,
+.ayah-morph-current-row > div {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ayah-morph-origin-step > div > span,
+.ayah-morph-current-row > div > span {
+  color: #f7f8fa;
+  font-family: 'Noto Sans Arabic', sans-serif;
+  font-size: 24px;
+  line-height: 1.45;
+}
+
+.ayah-morph-origin-step > div > small,
+.ayah-morph-current-row > div > small,
+.ayah-morph-origin-step > p,
+.ayah-morph-current-row > p {
+  color: #92989f;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.ayah-morph-origin-step > p,
+.ayah-morph-current-row > p {
+  margin: 0;
+}
+
+.ayah-morph-origin-arrow {
+  position: absolute;
+  left: 50px;
+  bottom: -1px;
+  color: #8f949b;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.ayah-morph-current-row {
+  display: grid;
+  grid-template-columns: 132px 1fr;
+  gap: 14px;
+  align-items: baseline;
+  min-height: 45px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+}
+
+.ayah-morph-current-row:last-child {
+  border-bottom: 0;
+}
+
+@media (max-width:760px) {
+  .ayah-morph-neon {
+    width: min(100%, 560px);
+    padding: 42px 10px 70px;
+  }
+
+  .ayah-morph-neon-word {
+    font-size: 48px;
+  }
+
+  .ayah-morph-origin-step,
+  .ayah-morph-current-row {
+    grid-template-columns: 112px 1fr;
+    gap: 11px;
+  }
+
+  .ayah-morph-origin-step > div > span,
+  .ayah-morph-current-row > div > span {
+    font-size: 22px;
+  }
+
+  .ayah-morph-origin-arrow {
+    left: 44px;
+  }
+}
+
+@media (max-width:420px) {
+  .ayah-morph-neon {
+    width: 100%;
+    padding-inline: 8px;
+  }
+
+  .ayah-morph-neon-word {
+    font-size: 44px;
+  }
+
+  .ayah-morph-origin-step,
+  .ayah-morph-current-row {
+    grid-template-columns: 104px 1fr;
+    gap: 9px;
+  }
+
+  .ayah-morph-origin-step > div > span,
+  .ayah-morph-current-row > div > span {
+    font-size: 21px;
+  }
+
+  .ayah-morph-origin-arrow {
+    left: 40px;
+  }
+}
