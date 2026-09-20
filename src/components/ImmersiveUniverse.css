@@ -350,8 +350,15 @@ h1:focus { outline: none; }
 }
 .root-stage-lbb .root-orbit-inner { border-style: dashed; border-color: #d6d9de26; }
 .root-stage-lbb .root-orbit > span {
-  left: -34px; top: calc(50% - 42px); font-size: 11px;
-  background: transparent; padding: 4px;
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #090c0f;
+  padding: 4px;
+  color: #b3b8be;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .015em;
 }
 .root-stage-lbb .root-star { min-width: 60px; }
 .root-stage-lbb .root-star .transliteration { font-size: 9px; }
