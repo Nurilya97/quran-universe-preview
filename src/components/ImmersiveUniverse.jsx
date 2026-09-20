@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Cosmos } from './Cosmos.jsx'
 import { COPY, FORMS, ROOT_DEMOS, findWord, findRoot, formsForRoot, resolveQuery, rootForWord, rootPosition } from '../demo.js'
 import { RootDetails, WordDetails } from './WordDetails.jsx'
+import { OCCURRENCES } from '../occurrences.js'
 import { AyahView } from './AyahView.jsx'
 import './ImmersiveUniverse.css'
 
@@ -147,8 +148,9 @@ export function ImmersiveUniverse() {
   const searchRoot = findRoot(query) || rootForWord(searchWord)
   const className = 'universe scene-' + scene + (journey ? ' is-travelling' : '') + (paused || reducedMotion ? ' is-still' : '')
 
+  const wordHasQuranOccurrences = (OCCURRENCES[word.id]?.length || 0) > 0
   const wordOrbitNodes = [
-    { key: 'quran', left: '30%', top: '25%' },
+    ...(wordHasQuranOccurrences ? [{ key: 'quran', left: '30%', top: '25%' }] : []),
     { key: 'structure', left: '84%', top: '48%' },
     { key: 'meaning', left: '35%', top: '77%' },
   ]
@@ -224,7 +226,8 @@ export function ImmersiveUniverse() {
         <div className="root-core"><button className="root-core-trigger" onClick={() => openPanel('root')} aria-label={t.aboutRoot} aria-haspopup="dialog"><h1 ref={destinationHeading} tabIndex={-1} lang="ar" dir="rtl">{currentRoot.arabic}</h1><span>{t.root}</span></button></div>
         {currentRootForms.map((form) => {
           const point = rootPosition(form, currentRootOrbits)
-          return <button key={form.id} className={'root-star' + (form.id === 'taqwa' || form.id === 'albab' ? ' root-star-featured' : '')}
+          const quranic = (OCCURRENCES[form.id]?.length || 0) > 0
+          return <button key={form.id} className={'root-star' + (form.id === 'taqwa' || form.id === 'albab' ? ' root-star-featured' : '') + (quranic ? ' root-star-quranic' : '')}
           data-orbit={form.orbit} aria-label={form.arabic + ' · ' + t[form.type] + ' · ' + t.familyLabel + ' ' + form.orbit}
           style={{ '--x': point.x + '%', '--y': point.y + '%' }} onClick={() => travel('word', form)}>
           <span className="star-point" aria-hidden="true" /><span className="arabic" lang="ar" dir="rtl">{form.arabic}</span>
