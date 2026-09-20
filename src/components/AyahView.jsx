@@ -138,8 +138,8 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
 
           {isTaqwa ? <>
             <svg className="analysis-morphology-tree first" viewBox="0 0 100 58" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M50 2 C50 22 25 20 25 55" />
-              <path d="M50 2 C50 22 75 20 75 55" />
+              <path d="M50 2 V17 C50 23 25 23 25 31 V55" />
+              <path d="M50 2 V17 C50 23 75 23 75 31 V55" />
             </svg>
 
             <div className="analysis-morphology-level first-level">
@@ -242,12 +242,24 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
   </div>
 }
 
-function compositionY(index, count) {
-  if (count === BLOCK_Y.length) return BLOCK_Y[index]
-  if (count <= 1) return 940
-  const top = 390
-  const bottom = 1510
-  return top + ((bottom - top) * index) / (count - 1)
+function compositionY(index, count, layer = 'themes', activeIndex = -1) {
+  let base
+  if (layer === 'themes' && count === BLOCK_Y.length) {
+    base = BLOCK_Y[index]
+  } else if (count <= 1) {
+    base = 940
+  } else {
+    const top = layer === 'sound' ? 430 : 360
+    const bottom = layer === 'sound' ? 1320 : 1450
+    base = top + ((bottom - top) * index) / (count - 1)
+  }
+
+  if (activeIndex < 0 || layer === 'themes') return base
+
+  const expansion = layer === 'sound' ? 88 : 92
+  if (index < activeIndex) return base - expansion
+  if (index > activeIndex) return base + expansion
+  return base
 }
 
 function CompositionDiagram({ ayah, focusWordIndex, language, layer }) {
@@ -261,12 +273,13 @@ function CompositionDiagram({ ayah, focusWordIndex, language, layer }) {
       : ayah.blocks
 
   useEffect(() => { setActiveNode(null) }, [layer])
+  const activeIndex = activeNode ? items.findIndex(item => item.id === activeNode) : -1
 
   return <div className={'diagram-view composition-diagram layer-' + layer + (activeNode ? ' has-active-node' : '')}>
     <svg className="diagram-lines composition-lines" width={WORLD.width} height={WORLD.height} viewBox={`0 0 ${WORLD.width} ${WORLD.height}`} aria-hidden="true">
       {items.map((item, index) => {
-        const y = compositionY(index, items.length)
-        const nextY = index < items.length - 1 ? compositionY(index + 1, items.length) : null
+        const y = compositionY(index, items.length, layer, activeIndex)
+        const nextY = index < items.length - 1 ? compositionY(index + 1, items.length, layer, activeIndex) : null
         return <g key={item.id} style={{ '--composition-line-delay': `${160 + index * 70}ms` }}>
           <path className="composition-spine" d={`M ${WORLD.width / 2} ${y - 58} L ${WORLD.width / 2} ${y + 58}`} />
           {nextY && <path className="composition-spine" d={`M ${WORLD.width / 2} ${y + 58} L ${WORLD.width / 2} ${nextY - 58}`} />}
@@ -275,7 +288,7 @@ function CompositionDiagram({ ayah, focusWordIndex, language, layer }) {
     </svg>
 
     {items.map((item, index) => {
-      const y = compositionY(index, items.length)
+      const y = compositionY(index, items.length, layer, activeIndex)
       const isEntry = focusWordIndex >= item.range[0] && focusWordIndex <= item.range[1]
       const isActive = activeNode === item.id
       const focusWords = item.focusWords || []
@@ -326,11 +339,11 @@ function CompositionDiagram({ ayah, focusWordIndex, language, layer }) {
         </div>
         <p>{copy.text}</p>
         {clickable && <span className="composition-open-cue" aria-hidden="true">{isActive ? '−' : '+'}</span>}
-        {isActive && copy.detail && <div className="composition-node-detail">{copy.detail}</div>}
+        {isActive && copy.detail && <div className="composition-node-detail" onClick={event => event.stopPropagation()}>{copy.detail}</div>}
       </section>
     })}
 
-    {layer === 'sound' && <div className="sound-layer-footer" style={{ left: WORLD.width / 2, top: 1740 }}>
+    {layer === 'sound' && <div className="sound-layer-footer" style={{ left: WORLD.width / 2, top: compositionY(items.length - 1, items.length, layer, activeIndex) + 245 }}>
       <span>{ru ? 'Аудио — следующим этапом' : 'Audio — next step'}</span>
       <p>{ru
         ? 'Здесь будет выбор чтеца и прослушивание аята; сейчас слой показывает только проверяемые звуковые связи в тексте.'
