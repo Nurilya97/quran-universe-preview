@@ -166,7 +166,7 @@ export const AYAH_PROTOTYPES = {
             meaning: {
               gloss: 'Remain consciously mindful before Me',
               description: 'The command turns تَقْوَىٰ (taqwā) from a named quality into action: the addressees are told to remain consciously mindful before Allah and guard themselves from crossing His boundaries.',
-              translation: 'The rendering should not suggest fear of Allah as the core meaning. In this context the command continues the field of تَقْوَىٰ (taqwā): conscious awareness before Allah together with guarding one’s conduct within His boundaries.',
+              translation: 'The rendering here centers conscious awareness before Allah together with guarding one’s conduct within His boundaries, continuing the same semantic field as تَقْوَىٰ (taqwā).',
             },
           },
         },
