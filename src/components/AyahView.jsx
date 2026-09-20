@@ -20,6 +20,7 @@ const WORD_GAP = 152
 const VIEW_BOUNDS = {
   analysis: { left: 650, right: 1850, top: 430, bottom: 1360 },
   composition: { left: 430, right: 2070, top: 40, bottom: 1840 },
+  rhetoric: { left: 430, right: 2070, top: 80, bottom: 1840 },
 }
 
 function finiteNumber(value, fallback) {
@@ -239,29 +240,30 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
   </div>
 }
 
-function compositionY(index, count, layer = 'themes') {
-  if (layer === 'themes' && count === BLOCK_Y.length) return BLOCK_Y[index]
+function compositionY(index, count) {
+  if (count === BLOCK_Y.length) return BLOCK_Y[index]
   if (count <= 1) return 940
-
-  const top = layer === 'sound' ? 430 : 360
-  const bottom = layer === 'sound' ? 1320 : 1450
+  const top = 360
+  const bottom = 1450
   return top + ((bottom - top) * index) / (count - 1)
 }
 
-function CompositionDiagram({ ayah, focusWordIndex, language, layer }) {
-  const ru = language === 'ru'
-  const sourceY = 790
-  const items = layer === 'rhetoric'
-    ? (ayah.rhetoric || [])
-    : layer === 'sound'
-      ? (ayah.sound || [])
-      : ayah.blocks
+function rhetoricY(index, count) {
+  if (count <= 1) return 940
+  const top = 330
+  const bottom = 1640
+  return top + ((bottom - top) * index) / (count - 1)
+}
 
-  return <div className={'diagram-view composition-diagram layer-' + layer}>
+function CompositionDiagram({ ayah, focusWordIndex, language }) {
+  const sourceY = 790
+  const items = ayah.blocks
+
+  return <div className="diagram-view composition-diagram layer-themes">
     <svg className="diagram-lines composition-lines" width={WORLD.width} height={WORLD.height} viewBox={`0 0 ${WORLD.width} ${WORLD.height}`} aria-hidden="true">
       {items.map((item, index) => {
-        const y = compositionY(index, items.length, layer)
-        const nextY = index < items.length - 1 ? compositionY(index + 1, items.length, layer) : null
+        const y = compositionY(index, items.length)
+        const nextY = index < items.length - 1 ? compositionY(index + 1, items.length) : null
         return <g key={item.id} style={{ '--composition-line-delay': `${160 + index * 70}ms` }}>
           <path className="composition-spine" d={`M ${WORLD.width / 2} ${y - 58} L ${WORLD.width / 2} ${y + 58}`} />
           {nextY && <path className="composition-spine" d={`M ${WORLD.width / 2} ${y + 58} L ${WORLD.width / 2} ${nextY - 58}`} />}
@@ -270,9 +272,8 @@ function CompositionDiagram({ ayah, focusWordIndex, language, layer }) {
     </svg>
 
     {items.map((item, index) => {
-      const y = compositionY(index, items.length, layer)
+      const y = compositionY(index, items.length)
       const isEntry = focusWordIndex >= item.range[0] && focusWordIndex <= item.range[1]
-      const focusWords = item.focusWords || []
       const copy = item[language]
 
       return <section
@@ -286,20 +287,12 @@ function CompositionDiagram({ ayah, focusWordIndex, language, layer }) {
         }}
       >
         <i aria-hidden="true" />
-        <small>
-          {layer === 'themes'
-            ? String(index + 1).padStart(2, '0')
-            : (copy.label || '')}
-        </small>
+        <small>{String(index + 1).padStart(2, '0')}</small>
         <h3>{copy.title}</h3>
         <div className="composition-phrase" lang="ar" dir="rtl">
           {phraseTokens(ayah, item).map((token, tokenIndex) => {
             const wordIndex = item.range[0] + tokenIndex
-            const classes = [
-              wordIndex === focusWordIndex ? 'is-entry' : '',
-              focusWords.includes(wordIndex) ? 'is-pattern' : '',
-            ].filter(Boolean).join(' ')
-            return <span key={wordIndex} className={classes}>{token.ar}</span>
+            return <span key={wordIndex} className={wordIndex === focusWordIndex ? 'is-entry' : ''}>{token.ar}</span>
           })}
         </div>
         <p>{copy.text}</p>
@@ -308,56 +301,56 @@ function CompositionDiagram({ ayah, focusWordIndex, language, layer }) {
   </div>
 }
 
-function SoundDiagram({ ayah, language }) {
-  const sound = ayah.sound
-  if (!sound) return null
+function RhetoricDiagram({ ayah, focusWordIndex, language }) {
   const ru = language === 'ru'
+  const items = ayah.rhetoric || []
 
-  return <div className="diagram-view sound-space">
-    <section className="sound-context-block">
-      <small>{ru ? 'ЗВУКОВОЙ КОНТЕКСТ' : 'SOUND CONTEXT'}</small>
-      <h3>{ru ? 'Хадж · аяты 2:196–203' : 'Hajj · ayahs 2:196–203'}</h3>
-      <p>{sound.passage[language]}</p>
-      <div className="sound-ending-row" aria-label={ru ? 'Созвучные окончания в отрывке' : 'Related endings in the passage'}>
-        {sound.endings.map(item => <div key={item.ref} className={item.active ? 'is-active' : ''}>
-          <span>{item.ref}</span>
-          <b lang="ar" dir="rtl">{item.ar}</b>
-        </div>)}
-      </div>
-    </section>
-
-    <section className="sound-pause-block">
-      <small>{ru ? 'ПАУЗЫ ВНУТРИ АЯТА' : 'PAUSE STRUCTURE'}</small>
-      <div className="sound-pause-strip">
-        {sound.pauses.map((item, index) => <div key={index}>
-          <span>{item[language]}</span>
-          <p lang="ar" dir="rtl">{phraseTokens(ayah, item).map(token => token.ar).join(' ')}</p>
-        </div>)}
-      </div>
-    </section>
-
-    <section className="sound-observations">
-      <small>{ru ? 'СЛЫШИМЫЕ ПОВТОРЫ' : 'AUDIBLE RECURRENCES'}</small>
-      <div className="sound-observation-grid">
-        {sound.observations.map((item, index) => <article key={index}>
-          <h3 lang="ar" dir="rtl">{item.ar}</h3>
-          <p>{item[language]}</p>
-        </article>)}
-      </div>
-    </section>
+  return <div className="diagram-view rhetoric-diagram">
+    {items.map((item, index) => {
+      const y = rhetoricY(index, items.length)
+      const copy = item[language]
+      const focusWords = item.focusWords || []
+      return <section
+        key={item.id}
+        className="rhetoric-insight"
+        style={{ left: WORLD.width / 2, top: y }}
+      >
+        <small>{copy.label}</small>
+        <h3>{copy.title}</h3>
+        <div className="rhetoric-phrase" lang="ar" dir="rtl">
+          {phraseTokens(ayah, item).map((token, tokenIndex) => {
+            const wordIndex = item.range[0] + tokenIndex
+            const classes = [
+              focusWords.includes(wordIndex) ? 'is-focus' : '',
+              wordIndex === focusWordIndex ? 'is-entry' : '',
+            ].filter(Boolean).join(' ')
+            return <span key={wordIndex} className={classes}>{token.ar}</span>
+          })}
+        </div>
+        <div className="rhetoric-explanation">
+          <p><b>{ru ? 'Что происходит' : 'What happens'}</b>{copy.what}</p>
+          <p><b>{ru ? 'Что это даёт' : 'What it does'}</b>{copy.effect}</p>
+          {copy.sound && <p className="rhetoric-sound"><b>{ru ? 'На слух' : 'When heard'}</b>{copy.sound}</p>}
+        </div>
+      </section>
+    })}
+    <div className="rhetoric-source-note" style={{ left: WORLD.width / 2, top: 1810 }}>
+      {ru
+        ? 'Грамматические функции частиц сверены с Quranic Arabic Corpus и иʿrāб-разбором Quranpedia.'
+        : 'Particle functions are checked against the Quranic Arabic Corpus and Quranpedia iʿrāb analysis.'}
+    </div>
   </div>
 }
 
-function CanvasWorld({ ayah, mode, focusWordIndex, language, selectedWord, onSelectWord, compositionLayer }) {
-  if (mode === 'composition' && compositionLayer === 'sound') return <SoundDiagram ayah={ayah} language={language} />
-  if (mode === 'composition') return <CompositionDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} layer={compositionLayer} />
+function CanvasWorld({ ayah, mode, focusWordIndex, language, selectedWord, onSelectWord }) {
+  if (mode === 'composition') return <CompositionDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} />
+  if (mode === 'rhetoric') return <RhetoricDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} />
   return <AnalysisDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} selectedWord={selectedWord} onSelectWord={onSelectWord} />
 }
 
 export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWordOrbit }) {
   const ayah = getAyahPrototype(reference)
   const [mode, setMode] = useState('analysis')
-  const [compositionLayer, setCompositionLayer] = useState('themes')
   const [contextOpen, setContextOpen] = useState(false)
   const [selectedWord, setSelectedWord] = useState(null)
   const [activeWordIndex, setActiveWordIndex] = useState(focusWordIndex || null)
@@ -386,7 +379,6 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
 
   useEffect(() => {
     setMode('analysis')
-    setCompositionLayer('themes')
     setContextOpen(false)
     setSelectedWord(null)
     setActiveWordIndex(focusWordIndex || null)
@@ -403,25 +395,21 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
   const modes = [
     { id: 'analysis', label: ru ? 'Разбор' : 'Analysis', status: 'ready' },
     { id: 'composition', label: ru ? 'Композиция' : 'Composition', status: 'draft' },
-  ]
-  const compositionLayers = [
-    { id: 'themes', label: ru ? 'Темы' : 'Themes' },
-    { id: 'rhetoric', label: ru ? 'Риторика' : 'Rhetoric' },
-    { id: 'sound', label: ru ? 'Звучание' : 'Sound' },
+    { id: 'rhetoric', label: ru ? 'Риторика' : 'Rhetoric', status: 'draft' },
   ]
 
   function clampCamera(next, targetMode = mode) {
     const current = cameraRef.current || { x: 0, y: 0, scale: defaultScale() }
-    const isComposition = targetMode === 'composition'
-    const minScale = isComposition ? .42 : .48
-    const maxScale = isComposition ? 1.45 : 1.08
+    const isSpatialMode = targetMode === 'composition' || targetMode === 'rhetoric'
+    const minScale = isSpatialMode ? .42 : .48
+    const maxScale = isSpatialMode ? 1.45 : 1.08
     const scale = clamp(finiteNumber(next.scale, current.scale), minScale, maxScale)
     const viewport = viewportRef.current?.getBoundingClientRect()
     const rawX = finiteNumber(next.x, current.x)
     const rawY = finiteNumber(next.y, current.y)
 
     if (!viewport || viewport.width < 1 || viewport.height < 1) {
-      const fallbackLimit = isComposition ? 900 : 150
+      const fallbackLimit = isSpatialMode ? 900 : 150
       return { x: clamp(rawX, -fallbackLimit, fallbackLimit), y: clamp(rawY, -fallbackLimit, fallbackLimit), scale }
     }
 
@@ -436,7 +424,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     const contentMinY = -cy - (bounds.bottom - worldCy) * scale
     const contentMaxY = viewport.height - cy - (bounds.top - worldCy) * scale
 
-    if (isComposition) {
+    if (isSpatialMode) {
       /* Composition behaves like a map: every edge of the thematic structure
          can be brought into view without the analysis layer's centre lock. */
       return {
@@ -464,7 +452,8 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
 
   function resetCamera(targetMode = mode) {
     const scale = defaultScale()
-    const next = clampCamera({ x: 0, y: 0, scale }, targetMode)
+    const initialY = targetMode === 'analysis' ? 0 : 280
+    const next = clampCamera({ x: 0, y: initialY, scale }, targetMode)
     cameraRef.current = next
     setCamera(next)
   }
@@ -563,8 +552,9 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     setSelectedWord(null)
     setContextOpen(false)
     const scale = defaultScale()
+    const initialY = nextMode === 'analysis' ? 0 : 280
     requestAnimationFrame(() => {
-      const next = clampCamera({ x: 0, y: 0, scale }, nextMode)
+      const next = clampCamera({ x: 0, y: initialY, scale }, nextMode)
       cameraRef.current = next
       setCamera(next)
     })
@@ -586,16 +576,6 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
         onClick={() => changeMode(item.id)}
       >{item.label}</button>)}
     </nav>
-
-    {mode === 'composition' && <nav className="composition-layer-switch" aria-label={ru ? 'Слой композиции' : 'Composition layer'}>
-      {compositionLayers.map(item => <button
-        key={item.id}
-        type="button"
-        aria-selected={compositionLayer === item.id}
-        className={compositionLayer === item.id ? 'is-active' : ''}
-        onClick={() => setCompositionLayer(item.id)}
-      >{item.label}</button>)}
-    </nav>}
 
     {contextOpen && <aside className="ayah-space-context">
       <header><span>{ru ? 'Контекст' : 'Context'}</span><button aria-label={ru ? 'Закрыть контекст' : 'Close context'} onClick={() => setContextOpen(false)}>×</button></header>
@@ -644,7 +624,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
       <div className="ayah-space-grid" aria-hidden="true" />
       <div className="ayah-space-boundary" aria-hidden="true" />
       <div className="ayah-space-world" style={{ transform: `translate(-50%, -50%) translate(${camera.x}px, ${camera.y}px) scale(${selectedWord && mode === 'analysis' ? Math.min(camera.scale * 1.16, 1.18) : camera.scale})` }}>
-        <CanvasWorld ayah={ayah} mode={mode} focusWordIndex={activeWordIndex || focusWordIndex} language={language} selectedWord={selectedWord} onSelectWord={selectWord} compositionLayer={compositionLayer} />
+        <CanvasWorld ayah={ayah} mode={mode} focusWordIndex={activeWordIndex || focusWordIndex} language={language} selectedWord={selectedWord} onSelectWord={selectWord} />
       </div>
     </div>
 
