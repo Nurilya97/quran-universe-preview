@@ -211,38 +211,61 @@ h1:focus { outline: none; }
 .is-still *, .is-still *::before, .is-still *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 
 
-/* Dense ل ب ب root family: same galaxy UI, tighter labels only. */
+/* ل ب ب root family: same galaxy language, with wider spacing for the larger lexical family. */
+.root-stage-lbb .root-field {
+  width: min(900px, calc(100vw - 28px), calc(100dvh - 145px));
+}
 .root-stage-lbb .root-star {
-  min-width: 58px;
+  min-width: 54px;
   padding-inline: 2px;
 }
 .root-stage-lbb .root-star .arabic {
-  font-size: 20px;
+  font-size: 19px;
 }
 .root-stage-lbb .root-star-featured .arabic {
-  font-size: 27px;
+  font-size: 26px;
 }
 .root-stage-lbb .root-star .transliteration {
-  font-size: 9px;
+  font-size: 8.5px;
 }
 .root-stage-lbb .root-orbit > span {
   font-size: 9px;
-  padding: 3px;
+  padding: 3px 4px;
+}
+
+/* Quran-attested words are the only coloured stars. */
+.root-star-quranic .arabic {
+  color: #83dfc1;
+  text-shadow: 0 0 12px #83dfc138, 0 1px 10px #000;
+}
+.root-star-quranic .star-point {
+  background: #83dfc1;
+  box-shadow: 0 0 8px 2px #83dfc175, 0 0 28px 8px #83dfc125;
+}
+.root-star-quranic .transliteration {
+  color: #add9ca;
 }
 
 @media (max-width: 720px) {
+  .root-stage-lbb .root-field {
+    top: 52%;
+    width: min(calc(100vw - 12px), calc(100dvh - 145px));
+  }
   .root-stage-lbb .root-star {
-    min-width: 48px;
-    min-height: 44px;
-    padding: 5px 1px 3px;
+    min-width: 44px;
+    min-height: 40px;
+    padding: 4px 0 2px;
   }
   .root-stage-lbb .root-star .arabic {
-    font-size: 18px;
+    font-size: 16.5px;
   }
   .root-stage-lbb .root-star-featured .arabic {
-    font-size: 24px;
+    font-size: 23px;
   }
   .root-stage-lbb .root-star .transliteration {
+    font-size: 7.5px;
+  }
+  .root-stage-lbb .root-orbit > span {
     font-size: 8px;
   }
 }
