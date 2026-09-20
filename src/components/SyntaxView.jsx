@@ -4,27 +4,29 @@ import { SYNTAX_TERMS } from '../syntaxTerms.js'
 
 export function SyntaxView({ ayah, selectedWord, language }) {
   const ru = language === 'ru'
-  const model = useMemo(() => getSyntaxPresentation(ayah), [ayah])
-  const covered = model && selectedWord >= model.range[0] && selectedWord <= model.range[1]
   const [explore, setExplore] = useState(false)
-  const [stepIndex, setStepIndex] = useState(0)
+  const primaryModel = useMemo(() => getSyntaxPresentation(ayah, selectedWord), [ayah, selectedWord])
+  const fallbackModel = useMemo(() => getSyntaxPresentation(ayah, 26), [ayah])
+  const model = primaryModel || (explore ? fallbackModel : null)
+  const covered = !!primaryModel
+  const initialStep = primaryModel?.steps.findIndex(item => item.active?.includes(selectedWord)) ?? 0
+  const [stepIndex, setStepIndex] = useState(initialStep >= 0 ? initialStep : 0)
   const [selectedTerm, setSelectedTerm] = useState(null)
   const [termHintSeen, setTermHintSeen] = useState(false)
   const [geometry, setGeometry] = useState(null)
   const clauseRef = useRef(null)
   const wordRefs = useRef({})
   const marker = useId().replace(/:/g, '')
-  const enabled = model && (covered || explore)
-  const step = enabled ? model.steps[stepIndex] : null
-  const relationTerms = step
+  const enabled = !!model
+  const step = enabled ? model.steps[Math.min(stepIndex, model.steps.length - 1)] : null
+  const relationTerms = step?.terms || (step
     ? (step.id === 'inna' ? ['inna', 'ismInna'] : step.id === 'idafa' ? ['idafa', 'mudaf', 'mudafIlayhi'] : ['khabarInna'])
-    : []
+    : [])
   const term = SYNTAX_TERMS[selectedTerm]
-  const stepShortLabel = step
-    ? (step.id === 'inna' ? 'إِنَّ' : step.id === 'idafa' ? (ru ? 'Идафа' : 'Iḍāfa') : 'خبر إِنَّ')
-    : ''
+  const stepShortLabel = step?.short?.[language]
+    || (step ? (step.id === 'inna' ? 'إِنَّ' : step.id === 'idafa' ? (ru ? 'Идафа' : 'Iḍāfa') : 'خبر إِنَّ') : '')
   const detailId = marker + '-term'
-  const wordTone = (index) => index === 25 ? 'b' : index === 26 ? 'c' : 'a'
+  const wordTone = (index) => (index === 25 || index === 29) ? 'b' : (index === 26 || index === 27) ? 'c' : 'a'
   function changeStep(index) { setStepIndex(index); setSelectedTerm(null) }
   function termButton(id, label) {
     const item = SYNTAX_TERMS[id]
@@ -36,7 +38,9 @@ export function SyntaxView({ ayah, selectedWord, language }) {
       }}>{label || item.ar}</button>
   }
   function explainTerms(text) {
-    const aliases = Object.entries(SYNTAX_TERMS).flatMap(([id, item]) => item.aliases.map(alias => ({id, alias}))).sort((a,b) => b.alias.length - a.alias.length)
+    const aliases = Object.entries(SYNTAX_TERMS)
+      .flatMap(([id, item]) => item.aliases.map(alias => ({ id, alias, priority: relationTerms.includes(id) ? 0 : 1 })))
+      .sort((a,b) => a.priority - b.priority || b.alias.length - a.alias.length)
     const pieces = []
     let pos = 0
     while (pos < text.length) {
@@ -69,10 +73,10 @@ export function SyntaxView({ ayah, selectedWord, language }) {
     observer.observe(element)
     document.fonts?.ready.then(measure)
     return () => { alive = false; observer.disconnect() }
-  }, [enabled, ayah])
+  }, [enabled, ayah, model?.id])
 
   function chooseWord(index) {
-    const next = model.steps.findIndex(s => s.to === index)
+    const next = model.steps.findIndex(s => s.active?.includes(index))
     changeStep(next < 0 ? 0 : next)
   }
   const plainWords = (from, to) => ayah.tokens.slice(from - 1, to).map((token, i) =>
@@ -85,7 +89,7 @@ export function SyntaxView({ ayah, selectedWord, language }) {
     <p className="syntax-reading-hint">{ru ? 'Как слова связаны внутри этой фразы' : 'How the words relate inside this phrase'}</p>
     <div className="syntax-verse" lang="ar" dir="rtl" aria-label={ru ? 'Разбираемая фраза' : 'Phrase under analysis'}>
       {enabled ? <>
-        <div className="syntax-clause" ref={clauseRef}>
+        <div className={"syntax-clause" + (step?.arrow === false ? " no-connector" : "")} ref={clauseRef}>
           <div className="syntax-clause-words">
             {ayah.tokens.slice(model.range[0] - 1, model.range[1]).map((token, i) => {
               const index = model.range[0] + i
@@ -98,7 +102,7 @@ export function SyntaxView({ ayah, selectedWord, language }) {
               </div>
             })}
           </div>
-          {geometry && step && <svg className="syntax-connectors"
+          {geometry && step && step.arrow !== false && <svg className="syntax-connectors"
             viewBox={`0 0 ${geometry.width} 88`} style={{ height: 88 }} role="group"
             aria-label={ru ? 'Грамматическая связь между словами' : 'Grammatical relationship between words'} dir="ltr">
             <defs><marker id={marker} markerWidth="6" markerHeight="6" refX="5.2" refY="3" orient="auto"><path d="M1 1.2L5 3L1 4.8" fill="none" stroke="currentColor" strokeWidth=".9" strokeLinecap="round" strokeLinejoin="round" /></marker></defs>
@@ -148,11 +152,11 @@ export function SyntaxView({ ayah, selectedWord, language }) {
             </section> : null}
           </>}
         </div>
-        <p className="syntax-coverage">{ru ? 'Пока разобрана конструкция 2:197:23–26. Связи остальных слов ещё не добавлены.' : 'This analysis covers 2:197:23–26. Relationships for the remaining words have not been added yet.'}</p>
+        <p className="syntax-coverage">{model.coverage?.[language] || (ru ? 'Разобрана подтверждённая конструкция этого участка аята.' : 'This view shows the verified syntax for this part of the ayah.')}</p>
       </>}
     </> : <div className="syntax-empty">
       <p>{ru ? 'Для выбранного слова связи пока не подтверждены.' : 'Relationships for this word are not yet confirmed.'}</p>
-      {model && <button onClick={() => setExplore(true)}>{ru ? 'Посмотреть разбор конструкции с إِنَّ' : 'Explore the clause with إِنَّ'}</button>}
+      {fallbackModel && <button onClick={() => setExplore(true)}>{ru ? 'Посмотреть разбор конструкции с إِنَّ' : 'Explore the clause with إِنَّ'}</button>}
     </div>}
   </section>
 }
