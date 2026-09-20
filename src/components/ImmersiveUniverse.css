@@ -77,25 +77,36 @@ h1:focus { outline: none; }
 .root-intro { position: absolute; left: 36px; top: 108px; }
 
 .root-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 16px;
-  max-width: min(760px, calc(100vw - 72px));
-  margin-top: 10px;
+  position: absolute;
+  z-index: 3;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: max(22px, env(safe-area-inset-bottom));
+  display: grid;
+  justify-items: end;
+  gap: 6px;
+  padding: 8px 10px;
+  border: 1px solid #d6d9de16;
+  border-radius: 4px;
+  background: #050709b8;
   color: #9ea4aa;
-  font-size: 11px;
-  line-height: 1.45;
+  font-size: 10px;
+  line-height: 1.35;
 }
 .root-legend > span {
   display: inline-flex;
   align-items: center;
   gap: 7px;
+  white-space: nowrap;
 }
 .root-legend b {
   color: #c9ced3;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 500;
   letter-spacing: .03em;
+}
+.root-legend small {
+  color: #9ea4aa;
+  font-size: 10px;
 }
 .root-legend-quran {
   width: 7px;
@@ -246,24 +257,27 @@ h1:focus { outline: none; }
 
 /* ل ب ب root family: same galaxy language, with wider spacing for the larger lexical family. */
 .root-stage-lbb .root-field {
-  width: min(900px, calc(100vw - 28px), calc(100dvh - 145px));
+  width: min(860px, calc(100vw - 36px), calc(100dvh - 170px));
 }
 .root-stage-lbb .root-star {
-  min-width: 54px;
+  min-width: 48px;
   padding-inline: 2px;
 }
 .root-stage-lbb .root-star .arabic {
-  font-size: 19px;
+  font-size: 18px;
 }
 .root-stage-lbb .root-star-featured .arabic {
-  font-size: 26px;
+  font-size: 24px;
 }
 .root-stage-lbb .root-star .transliteration {
-  font-size: 8.5px;
+  font-size: 8px;
 }
 .root-stage-lbb .root-orbit > span {
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
   font-size: 9px;
-  padding: 3px 4px;
+  padding: 3px 5px;
 }
 
 /* Quran-attested words are the only coloured stars. */
@@ -281,24 +295,36 @@ h1:focus { outline: none; }
 
 @media (max-width: 720px) {
   .root-stage-lbb .root-field {
-    top: 52%;
-    width: min(calc(100vw - 12px), calc(100dvh - 145px));
+    top: 51%;
+    width: min(calc(100vw - 26px), calc(100dvh - 190px));
   }
   .root-stage-lbb .root-star {
-    min-width: 44px;
-    min-height: 40px;
-    padding: 4px 0 2px;
+    min-width: 40px;
+    min-height: 38px;
+    padding: 3px 0 2px;
   }
   .root-stage-lbb .root-star .arabic {
-    font-size: 16.5px;
+    font-size: 15.5px;
   }
   .root-stage-lbb .root-star-featured .arabic {
-    font-size: 23px;
+    font-size: 21px;
   }
   .root-stage-lbb .root-star .transliteration {
-    font-size: 7.5px;
+    font-size: 7px;
   }
   .root-stage-lbb .root-orbit > span {
-    font-size: 8px;
+    font-size: 7.5px;
+    padding: 2px 4px;
+  }
+  .root-legend {
+    right: max(14px, env(safe-area-inset-right));
+    bottom: max(14px, env(safe-area-inset-bottom));
+    gap: 4px;
+    padding: 6px 8px;
+    font-size: 9px;
+  }
+  .root-legend b,
+  .root-legend small {
+    font-size: 9px;
   }
 }
