@@ -5593,3 +5593,235 @@
     line-height: 1.68 !important;
   }
 }
+
+
+/* Rhetoric labels describe the device instead of repeating the layer name. */
+.composition-diagram.layer-rhetoric .composition-constellation > small {
+  color: #a985bc;
+  font-size: 9px;
+  letter-spacing: .08em;
+}
+
+.composition-diagram.layer-rhetoric .composition-constellation h3 {
+  margin-top: 7px;
+  color: #e6dde9;
+}
+
+.composition-diagram.layer-rhetoric .composition-constellation > p {
+  color: #a8a0ad !important;
+}
+
+/* Sound is a separate analytical surface, not a vertical composition spine. */
+.sound-space {
+  position: absolute;
+  inset: 0;
+  color: #c8d2d5;
+}
+
+.sound-context-block,
+.sound-pause-block,
+.sound-observations {
+  position: absolute;
+  left: 50%;
+  width: min(1040px, 82vw);
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.sound-context-block {
+  top: 300px;
+}
+
+.sound-pause-block {
+  top: 760px;
+}
+
+.sound-observations {
+  top: 1180px;
+}
+
+.sound-context-block > small,
+.sound-pause-block > small,
+.sound-observations > small {
+  display: block;
+  color: #718187;
+  font-size: 9px;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.sound-context-block h3 {
+  margin: 9px 0 0;
+  color: #dce5e7;
+  font-size: 18px;
+  font-weight: 520;
+}
+
+.sound-context-block > p {
+  max-width: 720px;
+  margin: 12px auto 0;
+  color: #8f9da2;
+  font-size: 12.5px;
+  line-height: 1.75;
+}
+
+.sound-ending-row {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.sound-ending-row > div {
+  min-width: 150px;
+  padding: 12px 18px 14px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.sound-ending-row span {
+  display: block;
+  color: #69777c;
+  font-size: 9px;
+}
+
+.sound-ending-row b {
+  display: block;
+  margin-top: 7px;
+  color: #aebbc0;
+  font: 25px/1.4 var(--arabic-font);
+  font-weight: 400;
+}
+
+.sound-ending-row > div.is-active {
+  border-top-color: rgba(111,224,236,.38);
+}
+
+.sound-ending-row > div.is-active b {
+  color: #d8f4f6;
+  text-shadow: 0 0 14px rgba(89,242,255,.18);
+}
+
+.sound-pause-strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0,1fr));
+  gap: 0;
+  margin-top: 24px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.sound-pause-strip > div {
+  min-width: 0;
+  padding: 16px 12px 18px;
+}
+
+.sound-pause-strip > div + div {
+  border-left: 1px solid rgba(255,255,255,.055);
+}
+
+.sound-pause-strip span {
+  display: block;
+  color: #7e8c91;
+  font-size: 9.5px;
+  line-height: 1.4;
+}
+
+.sound-pause-strip p {
+  margin: 9px 0 0;
+  color: #c3cdcf;
+  font: 19px/1.75 var(--arabic-font);
+}
+
+.sound-observation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 34px;
+  margin-top: 28px;
+  text-align: left;
+}
+
+.sound-observation-grid article {
+  min-width: 0;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.sound-observation-grid h3 {
+  margin: 0;
+  color: #d4e7e8;
+  font: 23px/1.55 var(--arabic-font);
+  font-weight: 400;
+  text-align: center;
+}
+
+.sound-observation-grid p {
+  margin: 10px 0 0;
+  color: #8c999e;
+  font-size: 12px;
+  line-height: 1.72;
+  text-align: center;
+}
+
+@media (max-width:760px) {
+  .sound-context-block,
+  .sound-pause-block,
+  .sound-observations {
+    width: min(1120px, 92vw);
+  }
+
+  .sound-context-block {
+    top: 260px;
+  }
+
+  .sound-pause-block {
+    top: 720px;
+  }
+
+  .sound-observations {
+    top: 1170px;
+  }
+
+  .sound-context-block > p {
+    max-width: 610px;
+    font-size: 12px;
+  }
+
+  .sound-ending-row {
+    gap: 10px;
+  }
+
+  .sound-ending-row > div {
+    min-width: 0;
+    flex: 1 1 0;
+    padding-inline: 8px;
+  }
+
+  .sound-ending-row b {
+    font-size: 22px;
+  }
+
+  .sound-pause-strip > div {
+    padding-inline: 7px;
+  }
+
+  .sound-pause-strip span {
+    font-size: 8.5px;
+  }
+
+  .sound-pause-strip p {
+    font-size: 17px;
+  }
+
+  .sound-observation-grid {
+    gap: 18px;
+  }
+
+  .sound-observation-grid h3 {
+    font-size: 20px;
+  }
+
+  .sound-observation-grid p {
+    font-size: 11.5px;
+  }
+}
