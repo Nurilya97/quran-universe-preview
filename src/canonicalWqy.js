@@ -56,18 +56,25 @@ export const WQY_PUBLIC_MODEL = {
     universalEquivalent: false,
     ru: {
       summary: 'У تقوى/اتقى нет одного протестированного перевода, который сохранял бы всю модель во всех контекстах.',
+      piety: '«Благочестие» обозначает соблюдение религиозных предписаний и может передавать поведенческое проявление تَقْوَىٰ; оно не является полной дефиницией концепции.',
       righteousness: '«Праведность» может передавать проявление или результат в отдельных контекстах; полный механизм تَقْوَىٰ шире этого слова.',
       godFearing: '«Богобоязненность» не используется как нейтральный перевод по умолчанию: она сдвигает смысл к страху и может искажать роли.',
       q2_194: 'Для 2:194 «остерегайтесь наказания Аллаха» — role-safe интерпретирующий вариант; буквальное лексическое ядро сохраняет направление защиты.',
     },
     en: {
       summary: 'No tested rendering preserves the whole تقوى/اتقى model in every context.',
+      piety: '“Piety” can represent a religious-conduct manifestation of تَقْوَىٰ; it does not exhaust the full concept.',
       righteousness: '“Righteousness” can represent a manifestation or outcome in some contexts; the full تَقْوَىٰ mechanism is broader.',
       godFearing: 'Fear-centered “God-fearing” language is not used as a neutral default because it can import a threat frame and distort semantic roles.',
       q2_194: 'For 2:194, “be mindful of Allah” is the preferred tested short English rendering; it captures a contextually useful part of the broader semantic model.',
     },
   },
   reviewedContexts: {
+    '2:197': {
+      status: 'human_verified',
+      ru: 'В контексте хаджа تَقْوَىٰ названа лучшим запасом и затем возвращается как повеление وَٱتَّقُونِ. «Благочестие» подходит как поведенческое проявление этой внутренней осознанности и защитно-ориентированной позиции, но не как полная дефиниция تَقْوَىٰ.',
+      en: 'In the Hajj context, تَقْوَىٰ is named the best provision and then returns as the imperative وَٱتَّقُونِ. “Piety” works as a behavioral manifestation of this inward awareness and protective orientation, but not as a complete definition of تَقْوَىٰ.',
+    },
     '2:194': {
       status: 'human_verified',
       ru: 'В контексте пропорционального ответа защитная позиция проявляется как саморегуляция перед Аллахом и удерживание разрешённой границы.',
