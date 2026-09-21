@@ -601,13 +601,18 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
       <section className="meaning-primary">
         <p className="meaning-primary-label">{language === 'ru' ? 'Значение' : 'Meaning'}</p>
         <p className="entry-lead"><MeaningText text={content.meaning[language].lead} language={language} /></p>
-        {content.meaning[language].body && <p className="meaning-primary-body"><MeaningText text={content.meaning[language].body} language={language} /></p>}
       </section>
 
       {isLbb ? <>
+        {content.meaning[language].body && <section className="meaning-plain-section meaning-explanation-intro">
+          <h3>{language === 'ru' ? 'Объяснение' : 'Explanation'}</h3>
+          <p><MeaningText text={content.meaning[language].body} language={language} /></p>
+        </section>}
         <LbbRootRelation word={word} language={language} />
         <MimMeaningNote word={word} language={language} />
-      </> : null}
+      </> : content.meaning[language].body
+        ? <p className="meaning-primary-body"><MeaningText text={content.meaning[language].body} language={language} /></p>
+        : null}
 
       {content.distinction?.[language] && <section className="meaning-plain-section">
         <h3>{language === 'ru' ? 'Чем отличается' : 'How it differs'}</h3>
