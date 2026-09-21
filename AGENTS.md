@@ -63,6 +63,15 @@ Arabic, Latin transliteration and Cyrillic must not visually merge.
 
 ## 5. Semantic logic
 
+### Quran-first authority
+
+Quran Universe is Quran-first by design.
+
+- When the Quran itself describes a word, state, quality, or the people characterised by it, that Quranic description is primary evidence and belongs in the explanation.
+- Do not demote a Quranic description merely because it is broader than a compact dictionary gloss.
+- Root analysis, morphology, classical lexicons, translations, and tafsir are supporting layers; they must not override a meaning clearly unfolded by Quranic usage.
+- Preserve the distinction between the lexical/root mechanism and the Quran's own fuller description, but show both when the Quran supplies that description.
+
 For Quran Universe explanations, use this order:
 
 **root meaning → contribution of added letters/elements → complete word meaning**
