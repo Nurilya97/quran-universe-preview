@@ -80,13 +80,15 @@ The full pattern refines this contribution; it does not erase the contribution o
 Connectors must look deliberate and geometric.
 
 - Straight lines only.
-- 3 px thickness.
+- 1 px thickness unless the user explicitly asks for another weight.
 - No arrowheads unless the user explicitly asks for them.
 - No bent “AI-looking” branches.
 - No decorative elbow stubs.
 - Use exactly one connector between consecutive morphology steps.
-- On mobile, keep one vertical alignment axis between steps.
+- On mobile, keep one vertical alignment axis between steps, aligned to the approved taqwā evolution rhythm.
 - Explanatory callouts are text-only: do not add side borders or branch lines to them.
+- If the user says “как в taqwā” or names another approved screen, inspect that existing implementation first and reuse its spacing, alignment, line weight, and interaction pattern. Do not invent a new visual language.
+- The latest explicit user correction overrides older project notes. Before changing a repeated element, check the latest accepted rule in this file and the approved reference implementation.
 - Use the same connector language across roots, including taqwā and ل ب ب.
 
 ## 7. Change discipline
