@@ -831,7 +831,7 @@ export const MORPHOLOGY = {
       { text: 'ب', role: 'root' },
     ],
     components: [
-      { role: 'prefix', ar: 'مَـ', reading: 'ma-', ru: 'Часть модели مَفْعُول.', en: 'Part of the مَفْعُول pattern.' },
+      { role: 'prefix', ar: 'مَـ', reading: 'ma-', ru: 'Часть модели مَفْعُول. Здесь не обозначает место: роль задаётся полной моделью.', en: 'Part of the مَفْعُول pattern. It does not mark a place here; the full pattern determines the role.' },
     ],
     derivedFrom: null,
     pattern: {
@@ -853,7 +853,7 @@ export const MORPHOLOGY = {
       { text: 'بّ', role: 'root' },
     ],
     components: [
-      { role: 'prefix', ar: 'مُـ', reading: 'mu-', ru: 'Часть производной именной / причастной формы.', en: 'Part of a derived nominal/participial form.' },
+      { role: 'prefix', ar: 'مُـ', reading: 'mu-', ru: 'Часть производной именной / причастной формы; удобно читать как указание на носителя действия или качества, если это подтверждает вся модель.', en: 'Part of a derived nominal/participial form; a useful mnemonic is that it points to a bearer of the action or quality when the full pattern supports that reading.' },
     ],
     derivedFrom: {
       ar: 'لَبَب', reading: 'labab', metaRu: 'нагрудный ремень', metaEn: 'breast-girth',
@@ -881,7 +881,7 @@ export const MORPHOLOGY = {
       { text: 'ب', role: 'root' },
     ],
     components: [
-      { role: 'prefix', ar: 'مُـ', reading: 'mu-', ru: 'Начальный элемент производной именной формы.', en: 'Initial element of the derived nominal form.' },
+      { role: 'prefix', ar: 'مُـ', reading: 'mu-', ru: 'Начальный элемент производной именной формы; здесь форма описывает носителя состояния «снабжён لَبَب».', en: 'Initial element of the derived nominal form; here the form describes the bearer of the state “fitted with لَبَب”.' },
     ],
     derivedFrom: {
       ar: 'لَبَب', reading: 'labab', metaRu: 'нагрудный ремень', metaEn: 'breast-girth',
