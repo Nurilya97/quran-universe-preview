@@ -385,10 +385,12 @@ export function ImmersiveUniverse() {
 
     {scene === 'root' && !journey && <section className={'root-stage stage-reveal root-stage-' + currentRoot.id} aria-label={t.rootSpace}>
       <div className="root-intro"><p className="eyebrow">{t.families}</p></div>
-      {currentRoot.id === 'lbb' && <div className="root-legend" aria-label={t.rootLegend}>
+      <div className="root-legend" aria-label={t.rootLegend}>
+        <span><i className="root-legend-orbit" aria-hidden="true" />{t.orbitRingLegend}</span>
+        <span><b>{currentRootOrbits.map(orbit => orbit.mark || orbit.id).join(' · ')}</b><small>{t.formNumberLegend}</small></span>
         <span><i className="root-legend-quran" aria-hidden="true" />{t.quranColorLegend}</span>
-        <span><b>I · II · IV · V · X</b><small>{t.formNumberLegend}</small></span>
-      </div>}
+        {currentRootOrbits.some(orbit => orbit.innerRadius) && <span><i className="root-legend-inner" aria-hidden="true" />{t.innerOrbitLegend}</span>}
+      </div>
       <div
         className="root-viewport"
         ref={rootViewport}
