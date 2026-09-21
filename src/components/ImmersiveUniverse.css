@@ -108,6 +108,18 @@ h1:focus { outline: none; }
   color: #9ea4aa;
   font-size: 10px;
 }
+.root-legend-orbit,
+.root-legend-inner {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  border: 1px solid #d6d9de55;
+  border-radius: 50%;
+}
+.root-legend-inner {
+  border-style: dashed;
+  border-color: #d6d9de45;
+}
 .root-legend-quran {
   width: 7px;
   height: 7px;
