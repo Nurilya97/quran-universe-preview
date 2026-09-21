@@ -30,7 +30,8 @@ jobs:
         run: npm ci
       - name: Build spatial preview
         run: |
-          npm run build
+          VITE_BUILD_SHA="$GITHUB_SHA" npm run build
+          printf '%s' "$GITHUB_SHA" > dist/version.txt
           cp dist/spatial.html "dist/build-${GITHUB_SHA::8}.html"
           cp dist/spatial.html dist/latest.html
           cp dist/spatial.html dist/index.html
