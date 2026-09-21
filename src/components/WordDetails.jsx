@@ -6,7 +6,22 @@ import { WQY_PUBLIC_MODEL } from '../canonicalWqy.js'
 import { MORPH_COPY, MORPH_ROLES, MORPHOLOGY } from '../morphologyWqy.js'
 import './WordDetails.css'
 
-
+function MixedScriptText({ text, language }) {
+  if (text == null) return null
+  const value = String(text)
+  if (language !== 'ru') return value
+  const parts = value.split(/([\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]+|[A-Za-zĀ-žʿʾ'’-]+)/g)
+  return parts.map((part, index) => {
+    if (!part) return null
+    if (/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/.test(part)) {
+      return <bdi className="inline-arabic" lang="ar" dir="rtl" key={index}>{part}</bdi>
+    }
+    if (/[A-Za-zĀ-žʿʾ]/.test(part)) {
+      return <bdi className="inline-latin" dir="ltr" key={index}>{part}</bdi>
+    }
+    return part
+  })
+}
 
 function MorphLegend({ profile, language }) {
   const roles = [...new Set(profile.visualParts.flatMap(part => part.markRole ? [part.role, part.markRole] : [part.role]))]
@@ -59,7 +74,7 @@ function RootBreakdown({ language, word }) {
         <span className="morph-fact-arabic morph-root" lang="ar" dir="rtl">{rootArabic}</span>
         <small className="transliteration" lang="ar-Latn" dir="ltr">{rootReading}</small>
       </div>
-      <p>{nucleus}</p>
+      <p><MixedScriptText text={nucleus} language={language} /></p>
     </div>
   </section>
 }
@@ -77,7 +92,7 @@ function ComponentBreakdown({ components, language }) {
           <span className={'morph-fact-arabic morph-' + component.role} lang="ar" dir="rtl">{component.ar}</span>
           {component.reading && <small className="transliteration" lang="ar-Latn" dir="ltr">{component.reading}</small>}
         </div>
-        {component[language] && <p>{component[language]}</p>}
+        {component[language] && <p><MixedScriptText text={component[language]} language={language} /></p>}
       </div>
     </div>)}
   </section>
@@ -110,7 +125,7 @@ function PatternEffect({ pattern, language }) {
       </div>
       <strong>{copy.title}</strong>
     </div>
-    {copy.text && <p>{copy.text}</p>}
+    {copy.text && <p><MixedScriptText text={copy.text} language={language} /></p>}
   </section>
 }
 
@@ -136,7 +151,7 @@ function WordFormation({ profile, language }) {
 
   return <section className="morph-formation">
     <p className="morph-block-label">{c.wordFormation}</p>
-    {profile.formation?.[language] && <p className="morph-formation-explanation">{profile.formation[language]}</p>}
+    {profile.formation?.[language] && <p className="morph-formation-explanation"><MixedScriptText text={profile.formation[language]} language={language} /></p>}
     <div className="morph-evolution" aria-label={c.evolution}>
       {evolution.map((step, index) => <div className="morph-evolution-row" key={step.ar + index}>
         <div className="morph-evolution-word">
@@ -356,12 +371,12 @@ function LbbRootRelation({ word, language }) {
   const ru = language === 'ru'
   return <>
     <section className="meaning-distinction">
-      <p className="meaning-distinction-label">{ru ? 'Почему это слово относится к ل ب ب' : 'Why this word belongs to ل ب ب'}</p>
-      <p>{ru ? note.connectionRu : note.connectionEn}</p>
+      <p className="meaning-distinction-label">{ru ? 'Как это связано с корнем ل ب ب' : 'How this connects to the root ل ب ب'}</p>
+      <p><MixedScriptText text={ru ? note.connectionRu : note.connectionEn} language={language} /></p>
     </section>
     {(note.formRu || note.formEn) && <section className="meaning-distinction">
-      <p className="meaning-distinction-label">{ru ? 'Что делает форма' : 'What the form does'}</p>
-      <p>{ru ? note.formRu : note.formEn}</p>
+      <p className="meaning-distinction-label">{ru ? 'Что добавляет форма' : 'What the form adds'}</p>
+      <p><MixedScriptText text={ru ? note.formRu : note.formEn} language={language} /></p>
     </section>}
   </>
 }
@@ -371,7 +386,7 @@ function LbbStructureNote({ word, language }) {
   if (!note?.formRu && !note?.formEn) return null
   return <section className="meaning-distinction">
     <p className="meaning-distinction-label">{language === 'ru' ? 'Функция формы' : 'Form function'}</p>
-    <p>{language === 'ru' ? note.formRu : note.formEn}</p>
+    <p><MixedScriptText text={language === 'ru' ? note.formRu : note.formEn} language={language} /></p>
   </section>
 }
 
@@ -381,20 +396,22 @@ function MimMeaningNote({ word, language }) {
   const arabic = word.arabic.replace(/^ٱ/, 'ا')
 
   if (arabic.startsWith('مُ')) {
+    const text = ru
+      ? 'Сначала берём смысл корня. مُـ добавляет идею того, кто этим смыслом обладает или в ком он проявляется. Проще: корень говорит «что за смысл», а مُـ — «кто его носит». Остальные буквы формы уточняют, как именно этот смысл проявляется.'
+      : 'Start with the root meaning. مُـ adds the idea of the one who carries that meaning or in whom it appears. In simple terms: the root tells us what the meaning is, while مُـ points to its bearer. The rest of the form specifies how that meaning is expressed.'
     return <section className="meaning-distinction">
       <p className="meaning-distinction-label">{ru ? 'Что добавляет مُـ' : 'What مُـ adds'}</p>
-      <p>{ru
-        ? 'مُـ добавляет к корневому смыслу идею носителя / обладателя: того, в ком этот смысл проявляется как качество, состояние или действие. Сначала читаем значение корня, а مُـ показывает его носителя. Остальная часть формы уточняет, как именно этот носитель связан с корневым действием.'
-        : 'مُـ adds the idea of a bearer / possessor to the root meaning: the one in whom that meaning appears as a quality, state, or action. Read the root meaning first; مُـ points to its bearer, while the rest of the form specifies how that bearer is related to the root action.'}</p>
+      <p><MixedScriptText text={text} language={language} /></p>
     </section>
   }
 
   if (arabic.startsWith('مَ')) {
+    const text = ru
+      ? 'Сначала берём смысл корня. مَـ указывает место, где этот смысл проявляется. «Место» здесь можно понимать широко: это может быть настоящее место, а может быть предмет или носитель, на котором действие проявилось и закрепилось. Остальная часть формы уточняет, что именно происходит в этой точке.'
+      : 'Start with the root meaning. مَـ points to the locus where that meaning appears. “Locus” can be literal place, or more broadly the thing or bearer on which the action appears and becomes established. The rest of the form specifies what happens at that locus.'
     return <section className="meaning-distinction">
       <p className="meaning-distinction-label">{ru ? 'Что добавляет مَـ' : 'What مَـ adds'}</p>
-      <p>{ru
-        ? 'مَـ направляет корневой смысл к месту / носителю, где он проявляется или на котором закрепляется. То есть сама приставка задаёт точку проявления корня, а остальная часть формы уточняет характер этого проявления. В مَلْبُوب таким местом проявления является тот, на ком закреплено действие или состояние корня.'
-        : 'مَـ directs the root meaning toward the place / bearer where it manifests or becomes established. The prefix itself marks the locus of the root meaning, while the rest of the form specifies the nature of that manifestation. In مَلْبُوب, that locus is the one on whom the root action or state is realised.'}</p>
+      <p><MixedScriptText text={text} language={language} /></p>
     </section>
   }
 
@@ -416,13 +433,13 @@ function MeaningMap({ levels, language }) {
       return <section className={'meaning-class meaning-class-' + level.id} key={level.id}>
         <header>
           <p className="meaning-class-label">{copy.title}</p>
-          <p className="meaning-class-description">{copy.description}</p>
+          <p className="meaning-class-description"><MixedScriptText text={copy.description} language={language} /></p>
         </header>
         <div className="meaning-term-list">
           {copy.items.map((item, index) => <div className="meaning-term-step" key={item.term + index}>
             <article className="meaning-term">
-              <h4>{item.term}</h4>
-              <p>{item.definition}</p>
+              <h4><MixedScriptText text={item.term} language={language} /></h4>
+              <p><MixedScriptText text={item.definition} language={language} /></p>
             </article>
             {item.connector && <div className="meaning-connector" aria-label={item.connector}>
               <span aria-hidden="true">↓</span>
@@ -556,7 +573,7 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
   if (panel === 'structure') {
     if (!MORPHOLOGY[word.id] && word.rootKey === 'lbb') return <div className="entry-copy">
       <p className="entry-lead">{word.arabic} <span className="transliteration" lang="ar-Latn" dir="ltr">{word.reading}</span></p>
-      <p>{language === 'ru' ? word.definitionRu : word.definitionEn}</p>
+      <p><MixedScriptText text={language === 'ru' ? word.definitionRu : word.definitionEn} language={language} /></p>
       <LbbStructureNote word={word} language={language} />
       <SourceLinks ids={content.structureSources} language={language} />
     </div>
@@ -564,18 +581,18 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
   }
   if (panel === 'meaning') return <div className="entry-copy">
     <p className="entry-status">{t.semanticStatus}</p>
-    <p className="entry-lead">{content.meaning[language].lead}</p>{content.meaning[language].body && <p>{content.meaning[language].body}</p>}
+    <p className="entry-lead"><MixedScriptText text={content.meaning[language].lead} language={language} /></p>{content.meaning[language].body && <p><MixedScriptText text={content.meaning[language].body} language={language} /></p>}
     <LbbRootRelation word={word} language={language} />
     <MimMeaningNote word={word} language={language} />
     {content.distinction?.[language] && <section className="meaning-distinction">
       <p className="meaning-distinction-label">{language === 'ru' ? 'Чем отличается' : 'How it differs'}</p>
-      <p>{content.distinction[language]}</p>
+      <p><MixedScriptText text={content.distinction[language]} language={language} /></p>
     </section>}
     <MeaningMap levels={content.meaningMap} language={language} />
     {content.translationNotes?.[language]?.length && <section className="translation-notes">
       {content.translationNotes[language].map((note, index) => <article className={'translation-note translation-note-' + note.tone} key={note.title + index}>
         <h4>{note.title}</h4>
-        <p>{note.text}</p>
+        <p><MixedScriptText text={note.text} language={language} /></p>
       </article>)}
     </section>}
     <p className="entry-note">{t.meaningNote}</p>
