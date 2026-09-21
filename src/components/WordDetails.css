@@ -790,46 +790,31 @@
   font-size: 10.5px;
   line-height: 1.45;
 }
-.morph-board-arrow {
+.morph-board-connector {
   position: relative;
-  width: clamp(26px, 3.5vw, 46px);
-  flex: 0 0 clamp(26px, 3.5vw, 46px);
+  width: clamp(30px, 4vw, 52px);
+  flex: 0 0 clamp(30px, 4vw, 52px);
   height: 119px;
-  display: grid;
-  place-items: center;
 }
-.morph-board-arrow > span {
+.morph-board-connector > span {
   position: absolute;
-  left: 4px;
+  left: 5px;
   right: 5px;
-  top: 66px;
-  height: 1px;
-  background: linear-gradient(90deg, #dbe7f51b, #dbe7f55c);
-}
-.morph-board-arrow > b {
-  position: relative;
-  top: 8px;
-  color: #aab7c25d;
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1;
+  top: 64px;
+  height: 3px;
+  border-radius: 999px;
+  background: #b8c2cc42;
 }
 .morph-board-callout {
   position: relative;
-  margin: 10px 0 0;
-  padding: 12px 0 0 14px;
+  margin: 12px 0 0;
+  padding: 4px 0 4px 16px;
   border: 0;
-  border-left: 1px solid var(--board-line-strong);
+  border-left: 3px solid var(--board-line-strong);
   background: transparent;
 }
 .morph-board-callout::before {
-  content: '';
-  position: absolute;
-  left: -1px;
-  top: -8px;
-  width: 12px;
-  height: 8px;
-  border-top: 1px solid var(--board-line-strong);
+  content: none;
 }
 .morph-board-callout-label,
 .morph-board-callout summary > span {
@@ -868,14 +853,8 @@
 .morph-board-callout-accent {
   border-left-color: #b7d6f16b;
 }
-.morph-board-callout-accent::before {
-  border-top-color: #b7d6f16b;
-}
 .morph-board-callout-soft {
   border-left-color: #cbb9ec55;
-}
-.morph-board-callout-soft::before {
-  border-top-color: #cbb9ec55;
 }
 details.morph-board-callout {
   padding-top: 10px;
@@ -1078,33 +1057,23 @@ details.morph-board-callout[open] .morph-board-callout-body {
   .morph-board-target-word {
     font-size: 39px;
   }
-  .morph-board-arrow {
-    width: 1px;
-    height: 47px;
-    margin: -2px 0 4px 20px;
+  .morph-board-connector {
+    width: 3px;
+    height: 48px;
+    margin: 0 0 4px 19px;
     display: block;
   }
-  .morph-board-arrow > span {
-    left: 0;
-    right: auto;
-    top: 0;
-    bottom: 5px;
-    width: 1px;
-    height: auto;
-    background: linear-gradient(180deg, #dbe7f516, #dbe7f559);
-  }
-  .morph-board-arrow > b {
-    position: absolute;
-    left: -6px;
-    bottom: -2px;
-    top: auto;
-    transform: rotate(90deg);
-    font-size: 16px;
+  .morph-board-connector > span {
+    inset: 0;
+    width: 3px;
+    height: 100%;
+    border-radius: 999px;
+    background: #b8c2cc42;
   }
   .morph-board-callout {
     max-width: 92%;
-    margin-left: 20px;
-    padding-left: 13px;
+    margin-left: 19px;
+    padding-left: 15px;
   }
   .morph-board-target-notes {
     grid-template-columns: 1fr;
