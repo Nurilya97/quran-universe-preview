@@ -164,14 +164,14 @@ export const MORPHOLOGY = {
   taqwa: {
     displayArabic: 'تَقْوَى',
     visualParts: [
-      { text: 'تَ', role: 'prefix' },
+      { text: 'تَ', role: 'form' },
       { text: 'قْوَى', role: 'root' },
     ],
     components: [
       {
-        role: 'prefix', ar: 'تَـ', reading: 'ta-',
-        ru: '',
-        en: '',
+        role: 'form', ar: 'تَـ', reading: 'ta-',
+        ru: 'Часть образования существительного تَقْوَىٰ. Здесь تَـ не выделяется как самостоятельный смысловой префикс.',
+        en: 'Part of the formation of the noun تَقْوَىٰ. Here تَـ is not treated as an independent meaning-bearing prefix.',
       },
     ],
     derivedFrom: {
