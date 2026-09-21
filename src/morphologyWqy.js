@@ -22,7 +22,7 @@ export const MORPH_COPY = {
     analysis: 'Разбор слова',
     root: 'Корень',
     derivedFrom: 'Производное от',
-    patternEffect: 'Что нам даёт форма',
+    patternEffect: 'Функция формы',
     wordFormation: 'Словообразование',
     form: 'Форма',
     evolution: 'Цепочка словообразования',
@@ -133,8 +133,8 @@ export const MORPHOLOGY = {
     components: [
       {
         role: 'prefix', ar: 'مُـ', reading: 'mu-',
-        ru: 'Участвует в образовании действительного причастия от производного глагола.',
-        en: 'Part of active-participle formation from a derived verb.',
+        ru: 'مُـ показывает носителя смысла корня: того, кто этим качеством обладает или в ком это действие проявляется. Полная модель уточняет, что здесь это действительное причастие VIII формы.',
+        en: 'مُـ points to the bearer of the root meaning: the one who possesses the quality or in whom the action appears. The full pattern specifies that this is the active participle of Form VIII.',
       },
       {
         role: 'ending', ar: 'ـينَ', reading: '-īna',
@@ -149,8 +149,8 @@ export const MORPHOLOGY = {
     },
     pattern: {
       ar: 'مُفْتَعِل', reading: 'muftaʿil',
-      ru: { title: 'Действительное причастие VIII формы', text: 'Форма مُفْتَعِل (muftaʿil) переводит действие на его носителя: مُتَّقٍ (muttaqī) — тот, кто практикует تَقْوَىٰ (taqwā) и становится носителем этого качества. То есть человек, для которого осознанное остережение и защита стали устойчивой практикой и характеристикой. Множественное число — مُتَّقِينَ (muttaqīn).' },
-      en: { title: 'Form VIII active participle', text: 'The مُفْتَعِل (muftaʿil) pattern shifts the action to its bearer: مُتَّقٍ (muttaqī) is a person who practises تَقْوَىٰ (taqwā) and becomes characterised by it. In other words, conscious caution and protection become an enduring practice and quality. The plural is مُتَّقِينَ (muttaqīn).' },
+      ru: { title: 'Действительное причастие VIII формы', text: 'Начальное مُـ показывает носителя смысла: مُتَّقٍ (muttaqī) — тот, кто осуществляет ٱتَّقَىٰ (ittaqā) и характеризуется этой защитной позицией. Модель مُفْتَعِل уточняет, что это действительное причастие VIII формы. Множественное число — مُتَّقِينَ (muttaqīn).' },
+      en: { title: 'Form VIII active participle', text: 'Initial مُـ points to the bearer of the meaning: مُتَّقٍ (muttaqī) is the one who enacts ٱتَّقَىٰ (ittaqā) and is characterised by this protective stance. The مُفْتَعِل pattern specifies that this is the active participle of Form VIII. The plural is مُتَّقِينَ (muttaqīn).' },
     },
     evolution: [
       { ar: 'و ق ي', reading: 'w-q-y', metaRu: 'корень', metaEn: 'root' },
@@ -180,9 +180,9 @@ export const MORPHOLOGY = {
       en: 'تَقْوَىٰ (taqwā) comes from the verb ٱتَّقَىٰ (ittaqā).',
     },
     pattern: {
-      ar: 'اِفْتَعَلَ', reading: 'iftaʿala',
-      ru: { title: 'VIII форма', text: '' },
-      en: { title: 'Form VIII', text: '' },
+      ar: 'فَعْلَى', reading: 'faʿlā',
+      ru: { title: 'Именная модель', text: '' },
+      en: { title: 'Nominal pattern', text: '' },
     },
     formation: {
       ru: 'تَقْوَىٰ (taqwā) происходит от глагола ٱتَّقَىٰ (ittaqā). ٱتَّقَىٰ означает: беречь / защищать себя, остерегаться, ограждать себя от чего-либо. تَقْوَىٰ описывает это действие как состояние или качество человека. В этом смысле осознанность становится способом защиты: человек осознаёт то, от чего нужно себя уберечь, и остерегается этого.',
