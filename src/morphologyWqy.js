@@ -449,4 +449,481 @@ export const MORPHOLOGY = {
       { ar: 'لَبِيب', reading: 'labīb', metaRu: 'прилагательное · обладающий لُبّ', metaEn: 'adjective · possessing لُبّ' },
     ],
   }
+
+  labba: {
+    displayArabic: 'لَبَّ',
+    visualParts: [
+      { text: 'لَ', role: 'root' },
+      { text: 'بّ', role: 'root' },
+    ],
+    transformation: {
+      root: 'ب + ب', form: '—', result: 'بّ',
+      ru: 'В удвоенном корне вторая и третья одинаковые корневые ب стягиваются в одну букву с шаддой.',
+      en: 'In the geminate root, the second and third identical root letters ب are written as one consonant with shadda.',
+    },
+    components: [],
+    derivedFrom: null,
+    pattern: {
+      ar: 'فَعَّ', reading: 'faʿʿa',
+      ru: { title: 'Глагол I формы · удвоенный корень', text: 'Базовая глагольная форма корня ل ب ب. Шадда здесь передаёт две корневые ب, а не отдельный суффикс.' },
+      en: { title: 'Form I verb · geminate root', text: 'The base verbal form of ل ب ب. The shadda represents the two root letters ب rather than a separate suffix.' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'لَبَّ', reading: 'labba', metaRu: 'глагол I формы', metaEn: 'Form I verb' },
+    ],
+  },
+
+  labbaba: {
+    displayArabic: 'لَبَّبَ',
+    visualParts: [
+      { text: 'لَ', role: 'root' },
+      { text: 'بَّ', role: 'fusion' },
+      { text: 'بَ', role: 'root' },
+    ],
+    transformation: {
+      root: 'ب', form: 'ّ', result: 'بّ',
+      ru: 'II форма удваивает вторую корневую букву; третья корневая ب остаётся отдельной.',
+      en: 'Form II doubles the second root consonant; the third root ب remains separate.',
+    },
+    components: [],
+    derivedFrom: {
+      ar: 'لَبَّ', reading: 'labba', metaRu: 'глагол I формы', metaEn: 'Form I verb',
+      ru: 'II форма делает корневое действие направленным на объект: в словарях это видно и в линии формирования сердцевины зерна, и в действии с одеждой у груди.',
+      en: 'Form II makes the root action operative on an object: lexicons show this both in forming a grain’s kernel and in action involving clothing at the chest.',
+    },
+    pattern: {
+      ar: 'فَعَّلَ', reading: 'faʿʿala',
+      ru: { title: 'Глагол II формы', text: 'К модели добавляется удвоение второй корневой буквы. Для ل ب ب это даёт видимую последовательность بّ + ب.' },
+      en: { title: 'Form II verb', text: 'The pattern doubles the second root consonant. With ل ب ب this yields the visible sequence بّ + ب.' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'لَبَّ', reading: 'labba', metaRu: 'I форма', metaEn: 'Form I' },
+      { ar: 'لَبَّبَ', reading: 'labbaba', metaRu: 'II форма', metaEn: 'Form II' },
+    ],
+  },
+
+  alabba: {
+    displayArabic: 'أَلَبَّ',
+    visualParts: [
+      { text: 'أَ', role: 'prefix' },
+      { text: 'لَ', role: 'root' },
+      { text: 'بّ', role: 'root' },
+    ],
+    transformation: {
+      root: 'ب + ب', form: '—', result: 'بّ',
+      ru: 'Две конечные корневые ب объединяются под шаддой после применения модели IV формы.',
+      en: 'The two final root letters ب merge under shadda after the Form IV pattern is applied.',
+    },
+    components: [
+      { role: 'prefix', ar: 'أَـ', reading: 'a-', ru: 'Префикс IV формы.', en: 'Form IV prefix.' },
+    ],
+    derivedFrom: {
+      ar: 'لَبَّ', reading: 'labba', metaRu: 'базовая семья корня', metaEn: 'base root family',
+      ru: 'IV форма أَفْعَلَ добавляет начальную أ и оформляет отдельную глагольную ветвь корня.',
+      en: 'Form IV أَفْعَلَ adds initial أ and forms a distinct verbal branch of the root.',
+    },
+    pattern: {
+      ar: 'أَفْعَلَ', reading: 'afʿala',
+      ru: { title: 'Глагол IV формы', text: 'В удвоенном корне конечные одинаковые радикалы стягиваются: ожидаемая последовательность ب + ب реализуется как بّ.' },
+      en: { title: 'Form IV verb', text: 'In a geminate root, the final identical radicals contract: the underlying ب + ب is realised as بّ.' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'أَلَبَّ', reading: 'alabba', metaRu: 'IV форма', metaEn: 'Form IV' },
+    ],
+  },
+
+  talabbaba: {
+    displayArabic: 'تَلَبَّبَ',
+    visualParts: [
+      { text: 'تَ', role: 'prefix' },
+      { text: 'لَ', role: 'root' },
+      { text: 'بَّ', role: 'fusion' },
+      { text: 'بَ', role: 'root' },
+    ],
+    transformation: {
+      root: 'ب', form: 'ّ', result: 'بّ',
+      ru: 'V форма сохраняет удвоение второй корневой буквы, как в связанной II форме.',
+      en: 'Form V retains the doubling of the second root consonant found in its related Form II.',
+    },
+    components: [
+      { role: 'prefix', ar: 'تَـ', reading: 'ta-', ru: 'Префикс V формы.', en: 'Form V prefix.' },
+    ],
+    derivedFrom: {
+      ar: 'لَبَّبَ', reading: 'labbaba', metaRu: 'II форма', metaEn: 'Form II',
+      ru: 'V форма разворачивает действие на самого субъекта: в засвидетельствованном употреблении человек собирает одежду на себе и готовится.',
+      en: 'Form V turns the action onto the subject: in the attested usage a person gathers their clothing on themself and prepares.',
+    },
+    pattern: {
+      ar: 'تَفَعَّلَ', reading: 'tafaʿʿala',
+      ru: { title: 'Глагол V формы', text: 'Начальная تَـ и удвоение второй корневой буквы образуют модель تَفَعَّلَ.' },
+      en: { title: 'Form V verb', text: 'Initial تَـ plus doubling of the second root consonant forms the تَفَعَّلَ pattern.' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'لَبَّبَ', reading: 'labbaba', metaRu: 'II форма', metaEn: 'Form II' },
+      { ar: 'تَلَبَّبَ', reading: 'talabbaba', metaRu: 'V форма', metaEn: 'Form V' },
+    ],
+  },
+
+  istalabba: {
+    displayArabic: 'اِسْتَلَبَّ',
+    visualParts: [
+      { text: 'اِسْتَ', role: 'prefix' },
+      { text: 'لَ', role: 'root' },
+      { text: 'بّ', role: 'root' },
+    ],
+    transformation: {
+      root: 'ب + ب', form: '—', result: 'بّ',
+      ru: 'Две конечные корневые ب стягиваются под шаддой.',
+      en: 'The two final root letters ب contract under shadda.',
+    },
+    components: [
+      { role: 'prefix', ar: 'اِسْتَـ', reading: 'ista-', ru: 'Префикс X формы.', en: 'Form X prefix.' },
+    ],
+    derivedFrom: {
+      ar: 'لُبّ', reading: 'lubb', metaRu: 'сердцевина / разумение', metaEn: 'core / understanding',
+      ru: 'Словарное употребление направляет X форму на чей-либо لُبّ: испытать или проверить его разумение.',
+      en: 'The attested Form X usage is directed at a person’s لُبّ: to test or examine their understanding.',
+    },
+    pattern: {
+      ar: 'اِسْتَفْعَلَ', reading: 'istafʿala',
+      ru: { title: 'Глагол X формы', text: 'Начальная последовательность اِسْتَـ принадлежит модели X формы; корень остаётся ل ب ب.' },
+      en: { title: 'Form X verb', text: 'Initial اِسْتَـ belongs to the Form X pattern; the root remains ل ب ب.' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'لُبّ', reading: 'lubb', metaRu: 'разумение / сердцевина', metaEn: 'understanding / core' },
+      { ar: 'اِسْتَلَبَّ', reading: 'istalabba', metaRu: 'X форма · испытать لُبّ', metaEn: 'Form X · test a person’s لُبّ' },
+    ],
+  },
+
+  lubab: {
+    displayArabic: 'لُبَاب',
+    visualParts: [
+      { text: 'لُ', role: 'root' },
+      { text: 'بَ', role: 'root' },
+      { text: 'ا', role: 'form' },
+      { text: 'ب', role: 'root' },
+    ],
+    components: [],
+    derivedFrom: {
+      ar: 'لُبّ', reading: 'lubb', metaRu: 'базовое существительное', metaEn: 'base noun',
+      ru: 'لُبَاب развивает ту же именную линию: чистая, отборная, наиболее существенная часть.',
+      en: 'لُبَاب develops the same nominal line: the pure, choicest, most essential part.',
+    },
+    pattern: {
+      ar: 'فُعَال', reading: 'fuʿāl',
+      ru: { title: 'Именная модель', text: 'Внутренний ا принадлежит модели; три корневые буквы остаются ل ب ب.' },
+      en: { title: 'Nominal pattern', text: 'The internal ا belongs to the pattern; the three root consonants remain ل ب ب.' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'لُبّ', reading: 'lubb', metaRu: 'сердцевина / суть', metaEn: 'core / essence' },
+      { ar: 'لُبَاب', reading: 'lubāb', metaRu: 'чистая / отборная часть', metaEn: 'pure / choicest part' },
+    ],
+  },
+
+  lababa: {
+    displayArabic: 'لَبَابَة',
+    visualParts: [
+      { text: 'لَ', role: 'root' },
+      { text: 'بَ', role: 'root' },
+      { text: 'ا', role: 'form' },
+      { text: 'بَ', role: 'root' },
+      { text: 'ة', role: 'suffix' },
+    ],
+    components: [
+      { role: 'suffix', ar: 'ـة', reading: '-ah', ru: 'Завершает именную модель فَعَالَة.', en: 'Completes the فَعَالَة nominal pattern.' },
+    ],
+    derivedFrom: {
+      ar: 'لَبَّ / لَبِيب', reading: 'labba / labīb', metaRu: 'линия разумения', metaEn: 'understanding line',
+      ru: 'В словарях لَبَابَة засвидетельствовано как масдар: стать обладателем لُبّ, то есть разумения.',
+      en: 'Lexicons attest لَبَابَة as a verbal noun: becoming possessed of لُبّ, i.e. understanding.',
+    },
+    pattern: {
+      ar: 'فَعَالَة', reading: 'faʿālah',
+      ru: { title: 'Масдар / именная модель', text: 'ا и конечная ة принадлежат модели; корневые согласные — ل ب ب.' },
+      en: { title: 'Verbal noun / nominal pattern', text: 'ا and final ة belong to the pattern; the root consonants are ل ب ب.' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'لَبَّ', reading: 'labba', metaRu: 'стать обладателем لُبّ', metaEn: 'become possessed of لُبّ' },
+      { ar: 'لَبَابَة', reading: 'labāba', metaRu: 'масдар этой линии', metaEn: 'verbal noun of this line' },
+    ],
+  },
+
+  labbNoun: {
+    displayArabic: 'لَبّ',
+    visualParts: [
+      { text: 'لَ', role: 'root' },
+      { text: 'بّ', role: 'root' },
+    ],
+    components: [],
+    derivedFrom: {
+      ar: 'لَبَّ بالمكان', reading: 'labba bi-l-makān', metaRu: 'глагольная линия пребывания', metaEn: 'staying verbal line',
+      ru: 'لَبّ выступает как масдар в линии «оставаться / держаться места или дела».',
+      en: 'لَبّ functions as a verbal noun in the line “remain / keep to a place or matter.”',
+    },
+    pattern: {
+      ar: 'فَعّ', reading: 'faʿʿ',
+      ru: { title: 'Масдар удвоенного глагола', text: 'Шадда объединяет вторую и третью одинаковые корневые ب.' },
+      en: { title: 'Verbal noun of a geminate verb', text: 'The shadda joins the second and third identical root letters ب.' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'لَبَّ', reading: 'labba', metaRu: 'оставаться / держаться', metaEn: 'remain / keep to' },
+      { ar: 'لَبّ', reading: 'labb', metaRu: 'масдар · пребывание / удерживание', metaEn: 'verbal noun · remaining / keeping to' },
+    ],
+  },
+
+  ulbub: {
+    displayArabic: 'أُلْبُوب',
+    visualParts: [
+      { text: 'أُ', role: 'form' },
+      { text: 'لْ', role: 'root' },
+      { text: 'بُ', role: 'root' },
+      { text: 'و', role: 'form' },
+      { text: 'ب', role: 'root' },
+    ],
+    components: [],
+    derivedFrom: {
+      ar: 'لُبّ', reading: 'lubb', metaRu: 'внутреннее ядро', metaEn: 'inner kernel',
+      ru: 'أُلْبُوب называет съедобное внутреннее ядро косточки плода и сохраняет буквальный образ لُبّ.',
+      en: 'أُلْبُوب names the edible kernel inside a fruit stone and preserves the literal image of لُبّ.',
+    },
+    pattern: {
+      ar: 'أُفْعُول', reading: 'ufʿūl',
+      ru: { title: 'Именная модель', text: 'Начальная أ и و принадлежат модели; корневые согласные — ل ب ب.' },
+      en: { title: 'Nominal pattern', text: 'Initial أ and و belong to the pattern; the root consonants are ل ب ب.' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'أُلْبُوب', reading: 'ulbūb', metaRu: 'ядро косточки плода', metaEn: 'kernel of a fruit stone' },
+    ],
+  },
+
+  lababPasture: {
+    displayArabic: 'لَبَاب',
+    visualParts: [
+      { text: 'لَ', role: 'root' },
+      { text: 'بَ', role: 'root' },
+      { text: 'ا', role: 'form' },
+      { text: 'ب', role: 'root' },
+    ],
+    components: [],
+    derivedFrom: null,
+    pattern: {
+      ar: 'فَعَال', reading: 'faʿāl',
+      ru: { title: 'Отдельное словарное существительное', text: 'Словари фиксируют это написание в значении небольшого количества пастбища / травы. В интерфейсе оно не смешивается с لُبَاب «чистая, отборная часть».' },
+      en: { title: 'Separate lexical noun', text: 'Lexicons attest this spelling for a small amount of pasture/herbage. The interface keeps it distinct from لُبَاب “pure, choicest part.”' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'словарное гнездо', metaEn: 'lexical root family' },
+      { ar: 'لَبَاب', reading: 'labāb', metaRu: 'небольшое пастбище / немного травы', metaEn: 'a little pasture / herbage' },
+    ],
+  },
+
+  labab: {
+    displayArabic: 'لَبَب',
+    visualParts: [
+      { text: 'لَ', role: 'root' },
+      { text: 'بَ', role: 'root' },
+      { text: 'ب', role: 'root' },
+    ],
+    components: [],
+    derivedFrom: null,
+    pattern: {
+      ar: 'فَعَل', reading: 'faʿal',
+      ru: { title: 'Именная форма', text: 'Все три согласные слова — корневые. Словари фиксируют телесное значение верхней груди, нагрудный ремень и отдельное значение части песчаного холма.' },
+      en: { title: 'Nominal form', text: 'All three consonants are root letters. Lexicons record the upper-chest sense, a breast-girth, and a separate sense referring to part of a sand-hill.' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'لَبَب', reading: 'labab', metaRu: 'верх груди / нагрудный ремень', metaEn: 'upper chest / breast-girth' },
+    ],
+  },
+
+  labbaChest: {
+    displayArabic: 'لَبَّة',
+    visualParts: [
+      { text: 'لَ', role: 'root' },
+      { text: 'بَّ', role: 'root' },
+      { text: 'ة', role: 'suffix' },
+    ],
+    components: [
+      { role: 'suffix', ar: 'ـة', reading: '-ah', ru: 'Именное окончание.', en: 'Nominal ending.' },
+    ],
+    derivedFrom: null,
+    pattern: {
+      ar: 'فَعَّة', reading: 'faʿʿah',
+      ru: { title: 'Именная форма удвоенного корня', text: 'Шадда объединяет две корневые ب; конечная ة завершает существительное.' },
+      en: { title: 'Nominal form of a geminate root', text: 'The shadda joins the two root letters ب; final ة completes the noun.' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'لَبَّة', reading: 'labba', metaRu: 'точка верхней груди между ключицами', metaEn: 'upper-chest hollow between the collarbones' },
+    ],
+  },
+
+  libaba: {
+    displayArabic: 'لِبَابَة',
+    visualParts: [
+      { text: 'لِ', role: 'root' },
+      { text: 'بَ', role: 'root' },
+      { text: 'ا', role: 'form' },
+      { text: 'بَ', role: 'root' },
+      { text: 'ة', role: 'suffix' },
+    ],
+    components: [
+      { role: 'suffix', ar: 'ـة', reading: '-ah', ru: 'Завершает именную модель.', en: 'Completes the nominal pattern.' },
+    ],
+    derivedFrom: {
+      ar: 'تَلَبَّبَ', reading: 'talabbaba', metaRu: 'одежная линия корня', metaEn: 'garment-related line',
+      ru: 'لِبَابَة — то, что носит مُتَلَبِّب: одежда / драпировка, надеваемая при подготовке и собираемая на верхней части груди и плечах.',
+      en: 'لِبَابَة is what a مُتَلَبِّب wears: a garment/drapery used in preparation and gathered over the upper chest and shoulders.',
+    },
+    pattern: {
+      ar: 'فِعَالَة', reading: 'fiʿālah',
+      ru: { title: 'Именная модель', text: 'Внутренний ا и конечная ة принадлежат модели; корневые согласные — ل ب ب.' },
+      en: { title: 'Nominal pattern', text: 'Internal ا and final ة belong to the pattern; the root consonants are ل ب ب.' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'تَلَبَّبَ', reading: 'talabbaba', metaRu: 'собраться / подтянуть одежду', metaEn: 'gather/tuck up clothing' },
+      { ar: 'لِبَابَة', reading: 'libāba', metaRu: 'одежда этой линии', metaEn: 'garment in this line' },
+    ],
+  },
+
+  labiba: {
+    displayArabic: 'لَبِيبَة',
+    visualParts: [
+      { text: 'لَ', role: 'root' },
+      { text: 'بِ', role: 'root' },
+      { text: 'ي', role: 'form' },
+      { text: 'بَ', role: 'root' },
+      { text: 'ة', role: 'suffix' },
+    ],
+    components: [
+      { role: 'suffix', ar: 'ـة', reading: '-ah', ru: 'Завершает именную модель فَعِيلَة.', en: 'Completes the فَعِيلَة nominal pattern.' },
+    ],
+    derivedFrom: null,
+    pattern: {
+      ar: 'فَعِيلَة', reading: 'faʿīlah',
+      ru: { title: 'Именная модель', text: 'Словари фиксируют لَبِيبَة как название определённого вида одежды, сопоставляя его с بَقِيرَة. Дополнительную смысловую мотивацию интерфейс не выдумывает.' },
+      en: { title: 'Nominal pattern', text: 'Lexicons attest لَبِيبَة as the name of a particular garment, comparing it with بَقِيرَة. The interface does not invent an additional semantic motivation.' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'словарное гнездо', metaEn: 'lexical root family' },
+      { ar: 'لَبِيبَة', reading: 'labība', metaRu: 'название одежды', metaEn: 'garment name' },
+    ],
+  },
+
+  malbub: {
+    displayArabic: 'مَلْبُوب',
+    visualParts: [
+      { text: 'مَ', role: 'prefix' },
+      { text: 'لْ', role: 'root' },
+      { text: 'بُ', role: 'root' },
+      { text: 'و', role: 'form' },
+      { text: 'ب', role: 'root' },
+    ],
+    components: [
+      { role: 'prefix', ar: 'مَـ', reading: 'ma-', ru: 'Часть модели مَفْعُول.', en: 'Part of the مَفْعُول pattern.' },
+    ],
+    derivedFrom: null,
+    pattern: {
+      ar: 'مَفْعُول', reading: 'mafʿūl',
+      ru: { title: 'Причастно-именная модель', text: 'Словари фиксируют два значения этой формы: характеризуемый разумением и животное, снабжённое нагрудным ремнём لَبَب.' },
+      en: { title: 'Participial/nominal pattern', text: 'Lexicons record two senses for this form: characterised by understanding, and a beast fitted with a لَبَب breast-girth.' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'مَلْبُوب', reading: 'malbūb', metaRu: 'словарная производная форма', metaEn: 'attested derived form' },
+    ],
+  },
+
+  mulabb: {
+    displayArabic: 'مُلَبّ',
+    visualParts: [
+      { text: 'مُ', role: 'prefix' },
+      { text: 'لَ', role: 'root' },
+      { text: 'بّ', role: 'root' },
+    ],
+    components: [
+      { role: 'prefix', ar: 'مُـ', reading: 'mu-', ru: 'Часть производной именной / причастной формы.', en: 'Part of a derived nominal/participial form.' },
+    ],
+    derivedFrom: {
+      ar: 'لَبَب', reading: 'labab', metaRu: 'нагрудный ремень', metaEn: 'breast-girth',
+      ru: 'مُلَبّ характеризует животное как снабжённое нагрудным ремнём لَبَب.',
+      en: 'مُلَبّ describes a beast as fitted with a لَبَب breast-girth.',
+    },
+    pattern: {
+      ar: 'مُفَعّ', reading: 'mufaʿʿ',
+      ru: { title: 'Производная именная форма', text: 'Шадда объединяет две конечные корневые ب; начальная مُـ принадлежит производной модели.' },
+      en: { title: 'Derived nominal form', text: 'The shadda joins the two final root letters ب; initial مُـ belongs to the derived pattern.' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'لَبَب', reading: 'labab', metaRu: 'нагрудный ремень', metaEn: 'breast-girth' },
+      { ar: 'مُلَبّ', reading: 'mulabb', metaRu: 'снабжённый этим ремнём', metaEn: 'fitted with this girth' },
+    ],
+  },
+
+  mulbab: {
+    displayArabic: 'مُلْبَب',
+    visualParts: [
+      { text: 'مُ', role: 'prefix' },
+      { text: 'لْ', role: 'root' },
+      { text: 'بَ', role: 'root' },
+      { text: 'ب', role: 'root' },
+    ],
+    components: [
+      { role: 'prefix', ar: 'مُـ', reading: 'mu-', ru: 'Начальный элемент производной именной формы.', en: 'Initial element of the derived nominal form.' },
+    ],
+    derivedFrom: {
+      ar: 'لَبَب', reading: 'labab', metaRu: 'нагрудный ремень', metaEn: 'breast-girth',
+      ru: 'مُلْبَب — словарный вариант формы для животного, снабжённого لَبَب.',
+      en: 'مُلْبَب is an attested variant for a beast fitted with a لَبَب.',
+    },
+    pattern: {
+      ar: 'مُفْعَل', reading: 'mufʿal',
+      ru: { title: 'Словарная производная форма', text: 'Начальная مُـ принадлежит модели; далее видны три корневые согласные ل ب ب без стяжения.' },
+      en: { title: 'Attested derived form', text: 'Initial مُـ belongs to the pattern; the three root consonants ل ب ب remain visibly separate.' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'لَبَب', reading: 'labab', metaRu: 'нагрудный ремень', metaEn: 'breast-girth' },
+      { ar: 'مُلْبَب', reading: 'mulbab', metaRu: 'снабжённый ремнём', metaEn: 'fitted with the girth' },
+    ],
+  },
+
+  talbib: {
+    displayArabic: 'تَلْبِيب',
+    visualParts: [
+      { text: 'تَ', role: 'form' },
+      { text: 'لْ', role: 'root' },
+      { text: 'بِ', role: 'root' },
+      { text: 'ي', role: 'form' },
+      { text: 'ب', role: 'root' },
+    ],
+    components: [],
+    derivedFrom: {
+      ar: 'لَبَّبَ', reading: 'labbaba', metaRu: 'II форма', metaEn: 'Form II',
+      ru: 'تَلْبِيب — масдар II формы. Отдельно словари называют этим словом часть одежды в области لَبَب.',
+      en: 'تَلْبِيب is the verbal noun of Form II. Lexicons also use the word for the portion of clothing at the لَبَب area.',
+    },
+    pattern: {
+      ar: 'تَفْعِيل', reading: 'tafʿīl',
+      ru: { title: 'Масдар II формы', text: 'Начальная ت и внутренний ي принадлежат модели تَفْعِيل; корневые согласные — ل ب ب.' },
+      en: { title: 'Form II verbal noun', text: 'Initial ت and internal ي belong to the تَفْعِيل pattern; the root consonants are ل ب ب.' },
+    },
+    evolution: [
+      { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' },
+      { ar: 'لَبَّبَ', reading: 'labbaba', metaRu: 'II форма', metaEn: 'Form II' },
+      { ar: 'تَلْبِيب', reading: 'talbīb', metaRu: 'масдар II формы', metaEn: 'Form II verbal noun' },
+    ],
+  }
 }
