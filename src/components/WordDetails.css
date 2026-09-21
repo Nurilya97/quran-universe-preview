@@ -1093,16 +1093,29 @@ details.morph-board-callout[open] .morph-board-callout-body {
     height: auto;
     background: #ffffff24;
   }
+  .morph-board-connector-line::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #8f949b;
+    transform: translate(-50%, -50%);
+  }
   .morph-board-connector-line::after {
     content: '';
     position: absolute;
-    left: -3px;
+    left: 50%;
+    right: auto;
+    top: auto;
     bottom: 0;
     width: 6px;
     height: 6px;
     border-right: 1px solid #8f949b;
     border-bottom: 1px solid #8f949b;
-    transform: translateY(-1px) rotate(45deg);
+    transform: translate(-50%, -1px) rotate(45deg);
     transform-origin: center;
   }
   .morph-board-callout {
