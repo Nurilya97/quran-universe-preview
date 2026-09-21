@@ -529,19 +529,19 @@ export const LBB_ROOT_CONTENT = {
 
 export const LBB_DERIVATION_NOTES = {
   lubb: {
-    connectionRu: 'Это статический образ корня: внутренняя сердцевина, ядро и чистая или отборная часть вещи. В интеллектуальном употреблении тот же образ переносится на способность человека дойти до самой сути.',
+    connectionRu: 'Это самый прямой образ корня: внутренняя сердцевина, ядро, лучшая и наиболее существенная часть. Когда слово относится к человеку, этот образ переходит в способность добраться до сути и не застрять на внешнем.',
     connectionEn: 'This is the root’s static image: the inner core, kernel, and pure or choicest part of a thing. In intellectual usage the same image is applied to the human capacity to reach the essence itself.',
   },
   albab: {
-    connectionRu: 'أَلْبَاب — множественное от لُبّ в интеллектуальной линии. Здесь сердцевина становится образом разумения, которое проходит внешнее и примеси, различает определяющую суть и не отходит от неё.',
+    connectionRu: 'أَلْبَاب — множественное от لُبّ. Здесь образ сердцевины относится к разумению: человек проходит внешнее, отделяет главное от лишнего и удерживает найденную суть.',
     connectionEn: 'أَلْبَاب is the plural of لُبّ in the intellectual line. Here the core becomes an image of understanding that passes through outward layers and admixtures, discerns the defining essence, and does not leave it.',
   },
   labib: {
-    connectionRu: 'لَبِيب — человек, обладающий لُبّ. Поэтому это не просто общий ярлык «умный»: слово характеризует того, кто способен пройти внешнее и добраться до сути.',
+    connectionRu: 'لَبِيب — тот, кто обладает لُبّ. Поэтому это больше, чем просто «умный»: речь о человеке, который умеет видеть суть за внешним.',
     connectionEn: 'لَبِيب is a person who possesses لُبّ. It is therefore more than a generic label “intelligent”: it characterises someone able to pass beyond the outward layer and reach the essence.',
   },
   labba: {
-    connectionRu: 'I форма показывает базовый механизм корня в действии. В засвидетельствованных употреблениях она может вести к сердцевине миндаля, к точке لَبَّة, к прямому положению напротив или к пребыванию при месте. Общая линия — дойти до определяющей точки, а не остановиться раньше.',
+    connectionRu: 'В I форме корень проявляется без дополнительной приставки. В разных словарных употреблениях действие связано с достижением определённой точки: ядра, конкретной точки груди, положения напротив или места, при котором остаются.',
     connectionEn: 'Form I shows the root’s basic mechanism in action. Its attested usages can reach the kernel of an almond, the point called لَبَّة, a position directly opposite, or remaining at a place. The shared line is reaching the defining point rather than stopping short.',
     formRu: 'I форма не добавляет отдельного приставочного механизма: здесь непосредственно проявляется действие самого корня.',
     formEn: 'Form I adds no separate prefixed mechanism here: it directly realises the action of the root itself.',
@@ -549,55 +549,55 @@ export const LBB_DERIVATION_NOTES = {
   labbaba: {
     connectionRu: 'Во II форме корневой механизм осуществляется на объекте: у зерна формируется لُبّ, а в телесной линии действие направляется на одежду в области لَبَب / لَبَّة.',
     connectionEn: 'In Form II the root mechanism is made operative on an object: grain develops a لُبّ, while in the bodily line the action is directed to clothing at the لَبَب / لَبَّة area.',
-    formRu: 'II форма فَعَّلَ здесь делает корневой смысл реализованным в объекте: сформировать сердцевину либо воздействовать через определяющую грудную точку.',
+    formRu: 'Во II форме действие направляется на объект: у зерна формируется сердцевина, а в телесной линии действие связано с областью груди.',
     formEn: 'Form II فَعَّلَ makes the root meaning operative in an object here: forming a core or acting through the defining chest point.',
   },
   alabba: {
-    connectionRu: 'В этой форме повторяется достигнутое состояние корня: у зерна появляется внутренняя часть; при месте или деле субъект остаётся и не отходит. Это не нейтральное «быть где-то», а закрепиться при достигнутой точке.',
+    connectionRu: 'В IV форме виден уже достигнутый результат: у зерна появляется внутренняя часть, а человек остаётся при месте или деле и не отходит от него.',
     connectionEn: 'This form repeatedly presents the root as an achieved state: grain develops an inner part; at a place or matter the subject remains and does not leave. It is not merely neutral “being somewhere” but staying with the reached point.',
-    formRu: 'IV форма أَفْعَلَ в засвидетельствованных значениях этой семьи показывает вхождение в состояние, где результат корня уже достигнут.',
+    formRu: 'IV форма показывает вхождение в состояние, где корневой смысл уже проявился как результат.',
     formEn: 'In the attested senses of this family, Form IV أَفْعَلَ presents entry into a state in which the root’s result has been reached.',
   },
   talabbaba: {
-    connectionRu: 'Человек собирает одежду на себе в области груди, подпоясывается и готовится. То есть он сам приводит себя в собранное и закреплённое состояние.',
+    connectionRu: 'Человек сам собирает на себе одежду у груди, подпоясывается и готовится. Действие направлено на самого себя.',
     connectionEn: 'A person gathers the clothing on their own body at the chest, girds themself, and prepares. The subject thus brings themself into a gathered and secured state.',
-    formRu: 'V форма تَفَعَّلَ разворачивает действие II формы на самого субъекта: не «собрать другого», а «собраться самому».',
+    formRu: 'V форма переносит действие II формы на самого человека: не собрать другого, а собраться самому.',
     formEn: 'Form V تَفَعَّلَ turns the Form II action onto the subject: not “gather another” but “gather oneself.”',
   },
   istalabba: {
-    connectionRu: 'Здесь объектом проверки становится чей-либо لُبّ: насколько человек действительно способен понимать и доходить до сути.',
+    connectionRu: 'Здесь проверяют чей-либо لُبّ — то есть насколько человек действительно понимает и способен доходить до сути.',
     connectionEn: 'Here the object of examination is a person’s لُبّ: how far they truly possess understanding capable of reaching the essence.',
-    formRu: 'X форма اِسْتَفْعَلَ здесь направлена на выявление / испытание того, что выражает корень: проверить لُبّ человека.',
+    formRu: 'X форма здесь даёт смысл проверки: выявить и испытать لُبّ человека.',
     formEn: 'Form X اِسْتَفْعَلَ here seeks to reveal or test what the root expresses: to examine a person’s لُبّ.',
   },
   labab: {
-    connectionRu: 'لَبَب называет верхнюю грудную область и нагрудный ремень. Название ремня связано с местом груди, где он проходит. Его функция — удерживать седло от смещения — дополнительно созвучна корневому механизму удержания, но не выдаётся здесь за доказанную историческую причину названия.',
+    connectionRu: 'لَبَب называет верхнюю часть груди и нагрудный ремень, который проходит в этой области. Ремень удерживает седло на месте; это хорошо сочетается с линией удержания, но само происхождение названия мы из этого не выводим.',
     connectionEn: 'لَبَب names the upper chest area and a breast-girth. The strap is named through the chest area where it lies. Its function of keeping the saddle from shifting also resonates with the root’s holding mechanism, but is not presented here as the historically proven reason for the name.',
   },
   labbaChest: {
-    connectionRu: 'لَبَّة — конкретная точка верхней груди между ключицами. В глагольной линии لَبَّهُ действие направляется именно в эту определённую точку, а не просто «куда-то в грудь».',
+    connectionRu: 'لَبَّة — конкретная точка между ключицами, прямо под горлом. В глагольном употреблении действие направляется именно в эту точку.',
     connectionEn: 'لَبَّة is a specific point of the upper chest between the collarbones. In the verbal line لَبَّهُ the action is directed to that precise point, not merely “somewhere on the chest.”',
   },
   talbib: {
-    connectionRu: 'تَلْبِيب связан с одеждой именно в области لَبَب: собрать её там или схватить человека за эту часть одежды. Связь с корнем проходит через определяющую грудную точку.',
+    connectionRu: 'تَلْبِيب связан с одеждой у верхней части груди: её собирают там или хватают человека за эту часть одежды.',
     connectionEn: 'تَلْبِيب concerns clothing specifically at the لَبَب area: gathering it there or seizing a person by that part of the garment. Its connection to the root runs through the defining chest point.',
-    formRu: 'تَلْبِيب — масдар II формы لَبَّبَ: он называет само осуществление этого действия.',
+    formRu: 'تَلْبِيب — масдар II формы لَبَّبَ, то есть название самого действия.',
     formEn: 'تَلْبِيب is the verbal noun of Form II لَبَّبَ, naming the action itself.',
   },
   libaba: {
-    connectionRu: 'Одежда называется через область, на которой она собирается и лежит: верх груди и плечи. Здесь связь проходит через физический لَبَب / لَبَّة.',
+    connectionRu: 'لِبَابَة — одежда, которую собирают и носят в области верхней груди и плеч. Связь идёт через физическую область لَبَب / لَبَّة.',
     connectionEn: 'The garment is named through the area where it is gathered and worn: the upper chest and shoulders. The connection here runs through the physical لَبَب / لَبَّة.',
   },
   labiba: {
-    connectionRu: 'لَبِيبَة — самостоятельное засвидетельствованное название определённого вида одежды; Lane сопоставляет его с بَقِيرَة. В интерфейсе оно сохраняется как отдельное словарное значение без искусственного сведения к линии «разума» или «сердцевины».',
+    connectionRu: 'لَبِيبَة — засвидетельствованное название определённого вида одежды. Lane сопоставляет его с بَقِيرَة; здесь мы оставляем это как отдельное словарное значение.',
     connectionEn: 'لَبِيبَة is an independently attested name for a particular garment; Lane compares it with بَقِيرَة. The interface keeps it as a distinct lexical sense rather than forcing it into the “understanding” or “core” branch.',
   },
   malbub: {
-    connectionRu: 'Словарное значение связано непосредственно с لَبَب как нагрудным ремнём: مَلْبُوب — животное, на котором этот ремень закреплён.',
+    connectionRu: 'Одно из словарных значений напрямую связано с لَبَب как нагрудным ремнём: مَلْبُوب — животное, на котором этот ремень закреплён.',
     connectionEn: 'The lexical meaning connects directly to لَبَب as the breast-girth: مَلْبُوب is an animal on which that strap is fitted.',
   },
   mulabb: {
-    connectionRu: 'Связь прозрачна через предмет لَبَب: слово характеризует животное, снабжённое этим нагрудным ремнём.',
+    connectionRu: 'Слово описывает животное, которое снабжено لَبَب — нагрудным ремнём.',
     connectionEn: 'The connection is transparent through the object لَبَب: the word describes an animal fitted with this breast-girth.',
   },
   mulbab: {
@@ -605,23 +605,23 @@ export const LBB_DERIVATION_NOTES = {
     connectionEn: 'The connection is transparent through the object لَبَب: the word describes an animal fitted with this breast-girth.',
   },
   ulbub: {
-    connectionRu: 'Съедобная внутренняя часть плода или косточки непосредственно сохраняет буквальный образ لُبّ — внутреннего ядра.',
+    connectionRu: 'Здесь связь самая буквальная: أُلْبُوب — съедобное внутреннее ядро плода или косточки.',
     connectionEn: 'The edible inner part of a fruit or stone directly preserves the literal image of لُبّ — the inner kernel.',
   },
   labbNoun: {
-    connectionRu: 'В линии пребывания корень показывает не просто длительность, а لزوم: держаться при чём-либо и не отходить от него. Это та же завершённость движения: дойти и остаться при достигнутом.',
+    connectionRu: 'В линии пребывания смысл не просто «долго быть где-то», а держаться при месте или деле и не отходить от него.',
     connectionEn: 'In the staying-line the root expresses more than duration: لزوم, keeping to something and not leaving it. It is the same completed movement: reaching and remaining with what has been reached.',
   },
   lubab: {
-    connectionRu: 'لُبَاب усиливает статический образ сердцевины: чистая, отборная, самая существенная часть вещи.',
+    connectionRu: 'لُبَاب — чистая, лучшая и наиболее существенная часть вещи; тот же образ сердцевины, выраженный особенно ясно.',
     connectionEn: 'لُبَاب sharpens the static core-image: the pure, choicest, most essential part of a thing.',
   },
   lababa: {
-    connectionRu: 'لَبَابَة засвидетельствовано как масдар линии لَبَّ / لَبِيب: стать обладателем لُبّ, то есть разумения. Омонимичное словарное значение, связанное с небольшим пастбищем, показывается отдельно и не смешивается с этой линией.',
+    connectionRu: 'لَبَابَة засвидетельствовано как масдар линии لَبَّ / لَبِيب: стать обладателем لُبّ, то есть приобрести разумение. Отдельное словарное значение, связанное с небольшим пастбищем, мы показываем отдельно.',
     connectionEn: 'لَبَابَة is attested as a verbal noun in the لَبَّ / لَبِيب line: becoming possessed of لُبّ, i.e. understanding. A homonymous lexical sense connected with a small amount of pasture is shown separately and not merged with this line.',
   },
   lababPasture: {
-    connectionRu: 'لَبَاب в этом употреблении означает небольшое количество пастбища или травы. Это засвидетельствованное отдельное словарное значение; его не нужно искусственно выводить из интеллектуальной линии لُبّ.',
+    connectionRu: 'В этом словарном употреблении لَبَاب означает небольшое количество пастбища или травы. Мы показываем его отдельно от значения لُبّ, связанного с сердцевиной и разумением.',
     connectionEn: 'In this usage لَبَاب means a small amount of pasture or herbage. It is an attested separate lexical sense and does not need to be artificially derived from the intellectual line of لُبّ.',
   },
 }
