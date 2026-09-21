@@ -589,8 +589,8 @@ export const LBB_DERIVATION_NOTES = {
     connectionEn: 'The garment is named through the area where it is gathered and worn: the upper chest and shoulders. The connection here runs through the physical لَبَب / لَبَّة.',
   },
   labiba: {
-    connectionRu: 'Это название одежды из той же телесной линии. Точную внутреннюю мотивацию названия ещё нужно отдельно проверить; пока фиксируем только подтверждённую связь с грудной областью.',
-    connectionEn: 'This is a garment name from the same bodily line. Its precise internal naming motivation still needs separate verification; for now only the attested connection with the chest area is retained.',
+    connectionRu: 'لَبِيبَة — самостоятельное засвидетельствованное название определённого вида одежды; Lane сопоставляет его с بَقِيرَة. В интерфейсе оно сохраняется как отдельное словарное значение без искусственного сведения к линии «разума» или «сердцевины».',
+    connectionEn: 'لَبِيبَة is an independently attested name for a particular garment; Lane compares it with بَقِيرَة. The interface keeps it as a distinct lexical sense rather than forcing it into the “understanding” or “core” branch.',
   },
   malbub: {
     connectionRu: 'Словарное значение связано непосредственно с لَبَب как нагрудным ремнём: مَلْبُوب — животное, на котором этот ремень закреплён.',
@@ -617,12 +617,12 @@ export const LBB_DERIVATION_NOTES = {
     connectionEn: 'لُبَاب sharpens the static core-image: the pure, choicest, most essential part of a thing.',
   },
   lababa: {
-    connectionRu: 'В линии разумения لَبَابَة называет качество обладания لُبّ. Другое словарное значение, связанное с пастбищем, пока не соединяем с этим механизмом без дополнительной проверки.',
-    connectionEn: 'In the understanding-line لَبَابَة names the quality of possessing لُبّ. A separate dictionary sense connected with pasture is not yet joined to this mechanism without further verification.',
+    connectionRu: 'لَبَابَة засвидетельствовано как масдар линии لَبَّ / لَبِيب: стать обладателем لُبّ, то есть разумения. Омонимичное словарное значение, связанное с небольшим пастбищем, показывается отдельно и не смешивается с этой линией.',
+    connectionEn: 'لَبَابَة is attested as a verbal noun in the لَبَّ / لَبِيب line: becoming possessed of لُبّ, i.e. understanding. A homonymous lexical sense connected with a small amount of pasture is shown separately and not merged with this line.',
   },
   lababPasture: {
-    connectionRu: 'Это употребление пока не встроено в общий пазл без остатка. Его сохраняем как подтверждённое словарное значение и отдельно проверяем мотивацию, вместо того чтобы придумывать связь.',
-    connectionEn: 'This usage has not yet been integrated into the overall semantic puzzle without remainder. It is retained as an attested dictionary sense while its motivation is investigated separately rather than invented.',
+    connectionRu: 'لَبَاب в этом употреблении означает небольшое количество пастбища или травы. Это засвидетельствованное отдельное словарное значение; его не нужно искусственно выводить из интеллектуальной линии لُبّ.',
+    connectionEn: 'In this usage لَبَاب means a small amount of pasture or herbage. It is an attested separate lexical sense and does not need to be artificially derived from the intellectual line of لُبّ.',
   },
 }
 
