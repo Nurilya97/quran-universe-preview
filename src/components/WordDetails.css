@@ -796,18 +796,9 @@
   flex: 0 0 clamp(36px, 4vw, 54px);
   height: 119px;
 }
-.morph-board-connector-dot {
-  position: absolute;
-  left: 2px;
-  top: 63px;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #8f949b;
-}
 .morph-board-connector-line {
   position: absolute;
-  left: 7px;
+  left: 0;
   right: 16px;
   top: 64px;
   height: 1px;
@@ -1055,6 +1046,8 @@ details.morph-board-callout[open] .morph-board-callout-body {
     position: relative;
     display: block;
     width: 100%;
+    padding-left: 30px;
+    box-sizing: border-box;
   }
   .morph-board-node {
     width: 100%;
@@ -1069,10 +1062,10 @@ details.morph-board-callout[open] .morph-board-callout-body {
     padding: 10px 0 8px;
   }
   .morph-board-flow-unit:not(:last-child) {
-    padding-bottom: 24px;
+    padding-bottom: 18px;
   }
   .morph-board-flow-unit + .morph-board-flow-unit {
-    margin-top: 4px;
+    margin-top: 0;
   }
   .morph-board-node-word > [lang='ar'],
   .morph-board-target-word {
@@ -1081,27 +1074,20 @@ details.morph-board-callout[open] .morph-board-callout-body {
   .morph-board-connector {
     position: absolute;
     z-index: 2;
-    left: -14px;
-    top: 70px;
-    bottom: 2px;
+    left: 0;
+    top: 15px;
+    bottom: -15px;
     width: 18px;
     min-height: 54px;
     margin: 0;
     display: block;
     pointer-events: none;
   }
-  .morph-board-connector-dot {
-    left: 7px;
-    top: 0;
-    width: 4px;
-    height: 4px;
-    background: #8f949b;
-  }
   .morph-board-connector-line {
-    left: 8.5px;
+    left: 8px;
     right: auto;
-    top: 5px;
-    bottom: 17px;
+    top: 0;
+    bottom: 0;
     width: 1px;
     height: auto;
     background: #ffffff24;
@@ -1110,9 +1096,9 @@ details.morph-board-callout[open] .morph-board-callout-body {
     left: 2px;
     right: auto;
     top: auto;
-    bottom: 0;
+    bottom: -7px;
     color: #8f949b;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 400;
     line-height: 1;
     transform: none;
