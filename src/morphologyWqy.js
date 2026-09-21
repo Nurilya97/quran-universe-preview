@@ -831,7 +831,7 @@ export const MORPHOLOGY = {
       { text: 'ب', role: 'root' },
     ],
     components: [
-      { role: 'prefix', ar: 'مَـ', reading: 'ma-', ru: 'مَـ задаёт место / носителя проявления корневого смысла: то, на чём действие или состояние проявилось и закрепилось. Остальная модель уточняет характер этой связи.', en: 'مَـ marks the locus / bearer where the root meaning manifests: what the action or state appears on and becomes established in. The rest of the pattern specifies the nature of that relation.' },
+      { role: 'prefix', ar: 'مَـ', reading: 'ma-', ru: 'مَـ показывает место проявления корневого смысла. Это может быть буквальное место или то, на чём действие проявилось и закрепилось. Остальная форма уточняет эту связь.', en: 'مَـ marks the locus / bearer where the root meaning manifests: what the action or state appears on and becomes established in. The rest of the pattern specifies the nature of that relation.' },
     ],
     derivedFrom: null,
     pattern: {
@@ -853,7 +853,7 @@ export const MORPHOLOGY = {
       { text: 'بّ', role: 'root' },
     ],
     components: [
-      { role: 'prefix', ar: 'مُـ', reading: 'mu-', ru: 'مُـ добавляет значение носителя / обладателя корневого действия или качества: того, в ком этот смысл проявляется. Остальная модель уточняет вид связи.', en: 'مُـ adds the meaning of a bearer / possessor of the root action or quality: the one in whom that meaning manifests. The rest of the pattern specifies the relation.' },
+      { role: 'prefix', ar: 'مُـ', reading: 'mu-', ru: 'مُـ показывает носителя корневого смысла — того, кто им обладает или в ком он проявляется. Остальная форма уточняет, как именно.', en: 'مُـ adds the meaning of a bearer / possessor of the root action or quality: the one in whom that meaning manifests. The rest of the pattern specifies the relation.' },
     ],
     derivedFrom: {
       ar: 'لَبَب', reading: 'labab', metaRu: 'нагрудный ремень', metaEn: 'breast-girth',
@@ -881,7 +881,7 @@ export const MORPHOLOGY = {
       { text: 'ب', role: 'root' },
     ],
     components: [
-      { role: 'prefix', ar: 'مُـ', reading: 'mu-', ru: 'مُـ указывает на носителя / обладателя проявленного корневого смысла; здесь — носителя состояния «снабжён لَبَب».', en: 'مُـ points to the bearer / possessor of the manifested root meaning; here, the bearer of the state “fitted with لَبَب”.' },
+      { role: 'prefix', ar: 'مُـ', reading: 'mu-', ru: 'مُـ показывает носителя корневого смысла. Здесь это тот, кто снабжён لَبَب.', en: 'مُـ points to the bearer / possessor of the manifested root meaning; here, the bearer of the state “fitted with لَبَب”.' },
     ],
     derivedFrom: {
       ar: 'لَبَب', reading: 'labab', metaRu: 'нагрудный ремень', metaEn: 'breast-girth',
