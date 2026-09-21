@@ -88,8 +88,8 @@ Connectors must look deliberate and geometric.
 - No start dot.
 - On mobile, use one 1 px vertical timeline rail on the left of the text.
 - All step content sits to the right of this rail.
-- Each rail segment begins at the current step heading and continues without a visual gap to the vertical level of the next step heading.
-- The arrow is integrated at the end of the segment and points to the next heading.
+- Anchor the rail to the numbered step headings: the segment starts at the vertical center of “01 …” and ends at the vertical center of “02 …”; the next segment runs from “02 …” to “03 …”, and so on.
+- The arrowhead is physically attached to the 1 px line at its endpoint. Never render the arrow as a separate glyph or with a visible gap.
 - The connector must never float between a paragraph and the next word, and must never start from the body copy.
 - Reuse the same restrained arrow treatment as the approved taqwā evolution; no filled triangle arrowheads.
 - On desktop, the same visual language may run horizontally when the steps are horizontal.
