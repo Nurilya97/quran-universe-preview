@@ -792,36 +792,37 @@
 }
 .morph-board-connector {
   position: relative;
-  width: clamp(34px, 4vw, 52px);
-  flex: 0 0 clamp(34px, 4vw, 52px);
+  width: clamp(36px, 4vw, 54px);
+  flex: 0 0 clamp(36px, 4vw, 54px);
   height: 119px;
 }
 .morph-board-connector-dot {
   position: absolute;
   left: 2px;
-  top: 62px;
-  width: 5px;
-  height: 5px;
+  top: 63px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
-  background: #9aa3ab;
+  background: #8f949b;
 }
 .morph-board-connector-line {
   position: absolute;
   left: 7px;
-  right: 8px;
+  right: 16px;
   top: 64px;
   height: 1px;
-  background: #ffffff28;
+  background: #ffffff24;
 }
 .morph-board-connector-arrow {
   position: absolute;
-  right: 1px;
-  top: 60px;
-  width: 0;
-  height: 0;
-  border-top: 4px solid transparent;
-  border-bottom: 4px solid transparent;
-  border-left: 6px solid #9aa3ab;
+  right: 0;
+  top: 55px;
+  color: #8f949b;
+  font-size: 15px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1;
+  transform: rotate(-90deg);
 }
 .morph-board-callout {
   position: relative;
@@ -1051,11 +1052,16 @@ details.morph-board-callout[open] .morph-board-callout-body {
   }
   .morph-board-flow-unit,
   .morph-board-flow-unit.is-target-unit {
-    display: block;
+    position: relative;
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr);
+    column-gap: 12px;
     width: 100%;
   }
   .morph-board-node {
+    grid-column: 2;
     width: 100%;
+    min-width: 0;
   }
   .morph-board-node-topline {
     width: min(240px, 78%);
@@ -1065,41 +1071,54 @@ details.morph-board-callout[open] .morph-board-callout-body {
     min-height: 82px;
     padding: 10px 0 8px;
   }
+  .morph-board-flow-unit:not(:last-child) {
+    padding-bottom: 24px;
+  }
+  .morph-board-flow-unit + .morph-board-flow-unit {
+    margin-top: 4px;
+  }
   .morph-board-node-word > [lang='ar'],
   .morph-board-target-word {
     font-size: 39px;
   }
   .morph-board-connector {
-    position: relative;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 70px;
+    bottom: 2px;
     width: 18px;
-    height: 54px;
-    margin: -2px 0 4px 23px;
+    min-height: 54px;
+    margin: 0;
     display: block;
+    pointer-events: none;
   }
   .morph-board-connector-dot {
-    left: 6px;
+    left: 7px;
     top: 0;
-    width: 5px;
-    height: 5px;
+    width: 4px;
+    height: 4px;
+    background: #8f949b;
   }
   .morph-board-connector-line {
-    left: 8px;
+    left: 8.5px;
     right: auto;
     top: 5px;
+    bottom: 17px;
     width: 1px;
-    height: 39px;
-    background: #ffffff28;
+    height: auto;
+    background: #ffffff24;
   }
   .morph-board-connector-arrow {
-    left: 4px;
+    left: 2px;
     right: auto;
-    top: 43px;
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 7px solid #9aa3ab;
-    border-bottom: 0;
+    top: auto;
+    bottom: 0;
+    color: #8f949b;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1;
+    transform: none;
   }
   .morph-board-callout {
     max-width: 100%;
