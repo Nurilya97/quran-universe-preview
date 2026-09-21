@@ -381,17 +381,9 @@ function LbbRootRelation({ word, language }) {
   const note = LBB_DERIVATION_NOTES[word.id]
   if (!note) return null
   const ru = language === 'ru'
-
-  return <section className="meaning-explanation">
-    <h3>{ru ? 'Почему это значение' : 'Why this meaning'}</h3>
-    <div className="meaning-explanation-row">
-      <p className="meaning-explanation-label">{ru ? 'Связь с корнем' : 'Connection to the root'}</p>
-      <p><MeaningText text={ru ? note.connectionRu : note.connectionEn} language={language} /></p>
-    </div>
-    {(note.formRu || note.formEn) && <div className="meaning-explanation-row">
-      <p className="meaning-explanation-label">{ru ? 'Что добавляет форма' : 'What the form adds'}</p>
-      <p><MeaningText text={ru ? note.formRu : note.formEn} language={language} /></p>
-    </div>}
+  return <section className="meaning-plain-section meaning-root-link">
+    <h3>{ru ? 'Почему это значение связано с корнем' : 'Why this meaning connects to the root'}</h3>
+    <p><MeaningText text={ru ? note.connectionRu : note.connectionEn} language={language} /></p>
   </section>
 }
 
@@ -411,22 +403,22 @@ function MimMeaningNote({ word, language }) {
 
   if (arabic.startsWith('مُ')) {
     const text = ru
-      ? 'مُـ показывает носителя смысла корня: того, кто этим качеством обладает или в ком это действие проявляется. Корень даёт основной смысл, а مُـ показывает его носителя.'
-      : 'مُـ points to the bearer of the root meaning: the one who possesses the quality or in whom the action appears. The root gives the core meaning, and مُـ points to its bearer.'
-    return <div className="meaning-explanation-row">
-      <p className="meaning-explanation-label">{ru ? 'Что добавляет مُـ' : 'What مُـ adds'}</p>
+      ? 'مُـ показывает носителя смысла корня: того, кто этим качеством обладает или в ком это действие проявляется.'
+      : 'مُـ points to the bearer of the root meaning: the one who possesses the quality or in whom the action appears.'
+    return <section className="meaning-plain-section meaning-prefix-note">
+      <h3>{ru ? 'Что добавляет مُـ' : 'What مُـ adds'}</h3>
       <p><MeaningText text={text} language={language} /></p>
-    </div>
+    </section>
   }
 
   if (arabic.startsWith('مَ')) {
     const text = ru
-      ? 'مَـ показывает место проявления смысла корня. Это может быть буквальное место, предмет или носитель, на котором действие проявилось и закрепилось.'
-      : 'مَـ points to the locus where the root meaning appears. This can be a literal place, an object, or a bearer on which the action appears and becomes established.'
-    return <div className="meaning-explanation-row">
-      <p className="meaning-explanation-label">{ru ? 'Что добавляет مَـ' : 'What مَـ adds'}</p>
+      ? 'مَـ показывает место проявления смысла корня: место, предмет или носитель, на котором действие проявилось и закрепилось.'
+      : 'مَـ points to the locus where the root meaning appears: a place, object, or bearer on which the action appears and becomes established.'
+    return <section className="meaning-plain-section meaning-prefix-note">
+      <h3>{ru ? 'Что добавляет مَـ' : 'What مَـ adds'}</h3>
       <p><MeaningText text={text} language={language} /></p>
-    </div>
+    </section>
   }
 
   return null
@@ -600,14 +592,10 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
 
       <section className="meaning-primary">
         <p className="meaning-primary-label">{language === 'ru' ? 'Значение' : 'Meaning'}</p>
-        <p className="entry-lead"><MeaningText text={content.meaning[language].lead} language={language} /></p>
+        <p className="entry-lead"><MeaningText text={isLbb ? (language === 'ru' ? word.definitionRu : word.definitionEn) : content.meaning[language].lead} language={language} /></p>
       </section>
 
       {isLbb ? <>
-        {content.meaning[language].body && <section className="meaning-plain-section meaning-explanation-intro">
-          <h3>{language === 'ru' ? 'Объяснение' : 'Explanation'}</h3>
-          <p><MeaningText text={content.meaning[language].body} language={language} /></p>
-        </section>}
         <LbbRootRelation word={word} language={language} />
         <MimMeaningNote word={word} language={language} />
       </> : content.meaning[language].body
