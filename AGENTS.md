@@ -91,11 +91,10 @@ Connectors must look deliberate and geometric.
 
 - Straight lines only.
 - 1 px thickness unless the user explicitly asks for another weight.
-- No arrowheads unless the user explicitly asks for them.
 - No bent “AI-looking” branches.
 - No decorative elbow stubs.
 - Use exactly one connector between consecutive morphology steps.
-- No start dot.
+- The approved mobile connector is: small dot at the upper heading → continuous 1 px vertical line → attached arrowhead at the lower heading.
 - On mobile, use one 1 px vertical timeline rail on the left of the text.
 - All step content sits to the right of this rail.
 - Anchor the rail to the numbered step headings: the segment starts at the vertical center of “01 …” and ends at the vertical center of “02 …”; the next segment runs from “02 …” to “03 …”, and so on.
@@ -110,7 +109,17 @@ Connectors must look deliberate and geometric.
 - The latest explicit user correction overrides older project notes. Before changing a repeated element, check the latest accepted rule in this file and the approved reference implementation.
 - Use the same connector language across roots, including taqwā and ل ب ب.
 
-## 7. Change discipline
+## 7. Root orbit notation
+
+Root-space legends are required whenever orbital rings are shown.
+
+- A ring represents one derivational / word-formation family.
+- The Roman numeral labels the verb form around which that family is grouped; it does not assign that verb pattern to every noun on the ring.
+- Quran-attested words use the approved green highlight.
+- If an inner dashed ring is used only to create extra room inside a crowded family, label it explicitly as an additional zone of the same family, not a separate form.
+- Keep the legend available for every root space, not only ل ب ب.
+
+## 8. Change discipline
 
 Do not redesign approved screens unless explicitly requested.
 
