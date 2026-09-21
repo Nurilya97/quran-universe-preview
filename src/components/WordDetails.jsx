@@ -375,6 +375,34 @@ function LbbStructureNote({ word, language }) {
   </section>
 }
 
+function LbbMimMeaningNote({ word, language }) {
+  if (word?.rootKey !== 'lbb') return null
+  const ru = language === 'ru'
+
+  if (word.id === 'mulabb' || word.id === 'mulbab') {
+    return <section className="meaning-distinction">
+      <p className="meaning-distinction-label">{ru ? 'Как читать مُـ' : 'How to read مُـ'}</p>
+      <p>{ru
+        ? 'Полезная мнемоника: مُـ в производных именных и причастных моделях часто переводит корневое действие или качество на его носителя — «тот, кто несёт, осуществляет или характеризуется этим». Здесь مُلَبّ / مُلْبَب — носитель состояния «снабжён لَبَب», то есть животное с нагрудным ремнём.'
+        : 'Useful mnemonic: in derived nominal and participial patterns, مُـ often shifts the root action or quality onto its bearer — “the one who carries, performs, or is characterised by it.” Here مُلَبّ / مُلْبَب denotes the bearer of the state “fitted with لَبَب”, a beast with a breast-girth.'}</p>
+      <p className="entry-note">{ru
+        ? 'Важно: точное значение задаёт вся модель, а не одна буква م.'
+        : 'The exact meaning comes from the full pattern, not from م alone.'}</p>
+    </section>
+  }
+
+  if (word.id === 'malbub') {
+    return <section className="meaning-distinction">
+      <p className="meaning-distinction-label">{ru ? 'Как читать مَـ' : 'How to read مَـ'}</p>
+      <p>{ru
+        ? 'Мَـ действительно часто встречается в именах места и помогает запомнить идею «места, где проявляется действие корня». Но это не универсальное правило. В مَلْبُوب полная модель — مَفْعُول, поэтому здесь мīm не обозначает место: слово указывает на того или то, на ком реализовано действие / состояние.'
+        : 'مَـ often occurs in nouns of place and can support the mnemonic “the place where the root action manifests”, but this is not universal. In مَلْبُوب the full pattern is مَفْعُول, so the mīm does not mark a place here; the word points to the one or thing on which the action/state is realised.'}</p>
+    </section>
+  }
+
+  return null
+}
+
 function SourceLinks({ ids, language }) {
   return <footer className="entry-sources"><h3>{COPY[language].sources}</h3>{ids.map(id => {
     const source = CONTENT_SOURCES[id]
@@ -540,6 +568,7 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
     <p className="entry-status">{t.semanticStatus}</p>
     <p className="entry-lead">{content.meaning[language].lead}</p>{content.meaning[language].body && <p>{content.meaning[language].body}</p>}
     <LbbRootRelation word={word} language={language} />
+    <LbbMimMeaningNote word={word} language={language} />
     {content.distinction?.[language] && <section className="meaning-distinction">
       <p className="meaning-distinction-label">{language === 'ru' ? 'Чем отличается' : 'How it differs'}</p>
       <p>{content.distinction[language]}</p>
