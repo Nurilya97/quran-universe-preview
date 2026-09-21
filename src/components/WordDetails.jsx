@@ -375,28 +375,26 @@ function LbbStructureNote({ word, language }) {
   </section>
 }
 
-function LbbMimMeaningNote({ word, language }) {
-  if (word?.rootKey !== 'lbb') return null
+function MimMeaningNote({ word, language }) {
+  if (!word?.arabic) return null
   const ru = language === 'ru'
+  const arabic = word.arabic.replace(/^ٱ/, 'ا')
 
-  if (word.id === 'mulabb' || word.id === 'mulbab') {
+  if (arabic.startsWith('مُ')) {
     return <section className="meaning-distinction">
-      <p className="meaning-distinction-label">{ru ? 'Как читать مُـ' : 'How to read مُـ'}</p>
+      <p className="meaning-distinction-label">{ru ? 'Что добавляет مُـ' : 'What مُـ adds'}</p>
       <p>{ru
-        ? 'Полезная мнемоника: مُـ в производных именных и причастных моделях часто переводит корневое действие или качество на его носителя — «тот, кто несёт, осуществляет или характеризуется этим». Здесь مُلَبّ / مُلْبَب — носитель состояния «снабжён لَبَب», то есть животное с нагрудным ремнём.'
-        : 'Useful mnemonic: in derived nominal and participial patterns, مُـ often shifts the root action or quality onto its bearer — “the one who carries, performs, or is characterised by it.” Here مُلَبّ / مُلْبَب denotes the bearer of the state “fitted with لَبَب”, a beast with a breast-girth.'}</p>
-      <p className="entry-note">{ru
-        ? 'Важно: точное значение задаёт вся модель, а не одна буква م.'
-        : 'The exact meaning comes from the full pattern, not from م alone.'}</p>
+        ? 'مُـ добавляет к корневому смыслу идею носителя / обладателя: того, в ком этот смысл проявляется как качество, состояние или действие. Сначала читаем значение корня, а مُـ показывает его носителя. Остальная часть формы уточняет, как именно этот носитель связан с корневым действием.'
+        : 'مُـ adds the idea of a bearer / possessor to the root meaning: the one in whom that meaning appears as a quality, state, or action. Read the root meaning first; مُـ points to its bearer, while the rest of the form specifies how that bearer is related to the root action.'}</p>
     </section>
   }
 
-  if (word.id === 'malbub') {
+  if (arabic.startsWith('مَ')) {
     return <section className="meaning-distinction">
-      <p className="meaning-distinction-label">{ru ? 'Как читать مَـ' : 'How to read مَـ'}</p>
+      <p className="meaning-distinction-label">{ru ? 'Что добавляет مَـ' : 'What مَـ adds'}</p>
       <p>{ru
-        ? 'Мَـ действительно часто встречается в именах места и помогает запомнить идею «места, где проявляется действие корня». Но это не универсальное правило. В مَلْبُوب полная модель — مَفْعُول, поэтому здесь мīm не обозначает место: слово указывает на того или то, на ком реализовано действие / состояние.'
-        : 'مَـ often occurs in nouns of place and can support the mnemonic “the place where the root action manifests”, but this is not universal. In مَلْبُوب the full pattern is مَفْعُول, so the mīm does not mark a place here; the word points to the one or thing on which the action/state is realised.'}</p>
+        ? 'مَـ направляет корневой смысл к месту / носителю, где он проявляется или на котором закрепляется. То есть сама приставка задаёт точку проявления корня, а остальная часть формы уточняет характер этого проявления. В مَلْبُوب таким местом проявления является тот, на ком закреплено действие или состояние корня.'
+        : 'مَـ directs the root meaning toward the place / bearer where it manifests or becomes established. The prefix itself marks the locus of the root meaning, while the rest of the form specifies the nature of that manifestation. In مَلْبُوب, that locus is the one on whom the root action or state is realised.'}</p>
     </section>
   }
 
@@ -568,7 +566,7 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
     <p className="entry-status">{t.semanticStatus}</p>
     <p className="entry-lead">{content.meaning[language].lead}</p>{content.meaning[language].body && <p>{content.meaning[language].body}</p>}
     <LbbRootRelation word={word} language={language} />
-    <LbbMimMeaningNote word={word} language={language} />
+    <MimMeaningNote word={word} language={language} />
     {content.distinction?.[language] && <section className="meaning-distinction">
       <p className="meaning-distinction-label">{language === 'ru' ? 'Чем отличается' : 'How it differs'}</p>
       <p>{content.distinction[language]}</p>
