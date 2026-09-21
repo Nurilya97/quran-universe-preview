@@ -1283,3 +1283,138 @@ details.morph-board-callout[open] .morph-board-callout-body {
 .meaning-class-description {
   unicode-bidi: plaintext;
 }
+
+
+/* LBB meaning view — value first, then a clean explanation flow. */
+.meaning-entry-lbb {
+  font-family: inherit;
+}
+.meaning-entry-lbb .meaning-primary {
+  margin: 0 0 28px;
+  padding: 0 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.meaning-entry-lbb .meaning-primary-label {
+  margin: 0 0 9px !important;
+  color: #8f969d !important;
+  font-size: 11px !important;
+  font-weight: 500;
+  line-height: 1.4 !important;
+  letter-spacing: .035em;
+}
+.meaning-entry-lbb .entry-lead {
+  margin: 0 !important;
+  color: var(--paper) !important;
+  font-size: 20px !important;
+  font-weight: 560;
+  line-height: 1.55 !important;
+  letter-spacing: -.012em;
+}
+.meaning-entry-lbb .meaning-primary-body {
+  margin: 12px 0 0 !important;
+  color: #a8afb5 !important;
+  font-size: 14px !important;
+  line-height: 1.75 !important;
+}
+.meaning-entry-lbb .meaning-explanation {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+.meaning-entry-lbb .meaning-explanation > h3,
+.meaning-entry-lbb .meaning-plain-section > h3 {
+  margin: 0 0 14px;
+  color: var(--paper);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.meaning-entry-lbb .meaning-explanation-row {
+  display: grid;
+  grid-template-columns: minmax(92px, 118px) minmax(0, 1fr);
+  gap: 14px;
+  margin: 0;
+  padding: 14px 0;
+  border-top: 1px solid #ffffff0d;
+}
+.meaning-entry-lbb .meaning-explanation-row:last-child {
+  border-bottom: 1px solid #ffffff0d;
+}
+.meaning-entry-lbb .meaning-explanation-label {
+  margin: 0 !important;
+  color: #8f969d !important;
+  font-size: 11px !important;
+  font-weight: 500;
+  line-height: 1.55 !important;
+  letter-spacing: 0;
+}
+.meaning-entry-lbb .meaning-explanation-row > p:last-child {
+  margin: 0 !important;
+  color: #d6dade !important;
+  font-size: 14px !important;
+  line-height: 1.72 !important;
+}
+.meaning-entry-lbb .meaning-plain-section {
+  margin: 28px 0 0;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+.meaning-entry-lbb .meaning-plain-section > p {
+  margin: 0 !important;
+  color: #c4c9ce !important;
+  font-size: 14px !important;
+  line-height: 1.72 !important;
+}
+
+/* Do not turn every semantic item into a card in this root. */
+.meaning-entry-lbb .meaning-map {
+  margin-top: 30px;
+}
+.meaning-entry-lbb .meaning-class {
+  padding-left: 0;
+  border-left: 0;
+}
+.meaning-entry-lbb .meaning-term-list {
+  gap: 0;
+}
+.meaning-entry-lbb .meaning-term {
+  padding: 12px 0;
+  border: 0;
+  border-top: 1px solid #ffffff0d;
+  border-radius: 0;
+  background: transparent;
+}
+.meaning-entry-lbb .meaning-term-step:last-child .meaning-term {
+  border-bottom: 1px solid #ffffff0d;
+}
+.meaning-entry-lbb .meaning-term h4 {
+  font-size: 14px;
+}
+.meaning-entry-lbb .meaning-term p {
+  font-size: 13px !important;
+}
+.meaning-entry-lbb .inline-arabic {
+  margin-inline: .18em;
+  font-family: var(--arabic-font, 'Noto Sans Arabic', serif);
+  font-size: 1.12em;
+  font-weight: 450;
+  vertical-align: -.08em;
+}
+.meaning-entry-lbb .inline-latin {
+  margin-inline: .12em;
+  font-family: inherit;
+  font-size: .94em;
+  letter-spacing: .01em;
+}
+@media (max-width: 600px) {
+  .meaning-entry-lbb .meaning-explanation-row {
+    grid-template-columns: 1fr;
+    gap: 5px;
+    padding: 13px 0;
+  }
+  .meaning-entry-lbb .entry-lead {
+    font-size: 19px !important;
+  }
+}
