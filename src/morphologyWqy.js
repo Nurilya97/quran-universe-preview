@@ -448,7 +448,7 @@ export const MORPHOLOGY = {
       { ar: 'لُبّ', reading: 'lubb', metaRu: 'сердцевина / разумение', metaEn: 'core / understanding' },
       { ar: 'لَبِيب', reading: 'labīb', metaRu: 'прилагательное · обладающий لُبّ', metaEn: 'adjective · possessing لُبّ' },
     ],
-  }
+  },
 
   labba: {
     displayArabic: 'لَبَّ',
