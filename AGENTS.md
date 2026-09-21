@@ -84,9 +84,10 @@ Connectors must look deliberate and geometric.
 - No arrowheads unless the user explicitly asks for them.
 - No bent “AI-looking” branches.
 - No decorative elbow stubs.
-- Keep one alignment axis between steps on mobile.
+- Use exactly one connector between consecutive morphology steps.
+- On mobile, keep one vertical alignment axis between steps.
+- Explanatory callouts are text-only: do not add side borders or branch lines to them.
 - Use the same connector language across roots, including taqwā and ل ب ب.
-- Callout rules should be straight vertical rules, not L-shaped branches.
 
 ## 7. Change discipline
 
