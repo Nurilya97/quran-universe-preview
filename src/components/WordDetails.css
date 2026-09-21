@@ -1256,3 +1256,30 @@ details.morph-board-callout[open] .morph-board-callout-body {
   font-size: 13px !important;
   line-height: 1.68 !important;
 }
+
+
+/* Keep Arabic, transliteration and Russian prose visually separate. */
+.inline-arabic {
+  display: inline-block;
+  direction: rtl;
+  unicode-bidi: isolate;
+  margin-inline: .12em;
+  font-family: var(--arabic-font, 'Noto Naskh Arabic', 'Traditional Arabic', serif);
+  font-size: 1.08em;
+  line-height: 1;
+}
+.inline-latin {
+  display: inline-block;
+  direction: ltr;
+  unicode-bidi: isolate;
+  margin-inline: .08em;
+  font-variant-ligatures: none;
+}
+.entry-copy p,
+.morph-fact-main p,
+.morph-pattern-effect p,
+.meaning-distinction p,
+.meaning-term p,
+.meaning-class-description {
+  unicode-bidi: plaintext;
+}
