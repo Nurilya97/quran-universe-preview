@@ -247,7 +247,7 @@ function MorphBoard({ word, profile, language }) {
   return <section className="morph-board" aria-label={c.analysis}>
     <header className="morph-board-header">
       <p>{ru ? 'Визуальная морфология' : 'Visual morphology'}</p>
-      <h3>{ru ? 'Как слово складывается шаг за шагом' : 'How the word is built, step by step'}</h3>
+      <h3>{ru ? 'Структура слова' : 'Word structure'}</h3>
     </header>
 
     <div className="morph-board-canvas">
@@ -270,12 +270,12 @@ function MorphBoard({ word, profile, language }) {
               </div>
 
               {isRoot && <MorphBoardCallout
-                label={ru ? 'Смысловое ядро' : 'Root nucleus'}
+                label={ru ? 'Смысл корня' : 'Root meaning'}
                 text={isLbb ? LBB_ROOT_CONTENT.rootNucleus[language] : WQY_PUBLIC_MODEL.rootNucleus[language]}
               />}
 
               {isSource && derivedText && <MorphBoardCallout
-                label={ru ? 'Что меняется' : 'What changes'}
+                label={ru ? 'Изменение' : 'Change'}
                 text={firstSentence(derivedText)}
               />}
 
@@ -290,7 +290,7 @@ function MorphBoard({ word, profile, language }) {
                 />}
 
                 {profile.transformation && <MorphBoardCallout
-                  label={ru ? 'Изменение внутри слова' : 'Change inside the word'}
+                  label={ru ? 'Изменение формы' : 'Form change'}
                   ar={profile.transformation.result}
                   text={profile.transformation[language]}
                   tone="accent"
@@ -306,7 +306,7 @@ function MorphBoard({ word, profile, language }) {
                 />)}
 
                 {formationText && <MorphBoardCallout
-                  label={ru ? 'Что получилось' : 'What this creates'}
+                  label={ru ? 'Результат' : 'Result'}
                   text={formationText}
                   tone="soft"
                   expandable={formationText.length > 130}
@@ -314,10 +314,7 @@ function MorphBoard({ word, profile, language }) {
               </div>}
             </article>
 
-            {index < lastIndex && <div className="morph-board-arrow" aria-hidden="true">
-              <span />
-              <b>→</b>
-            </div>}
+            {index < lastIndex && <div className="morph-board-connector" aria-hidden="true"><span /></div>}
           </div>
         })}
       </div>
