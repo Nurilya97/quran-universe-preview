@@ -185,14 +185,14 @@ export const MORPHOLOGY = {
       en: { title: 'Nominal pattern', text: '' },
     },
     formation: {
-      ru: 'تَقْوَىٰ (taqwā) происходит от глагола ٱتَّقَىٰ (ittaqā). ٱتَّقَىٰ означает: беречь / защищать себя, остерегаться, ограждать себя от чего-либо. تَقْوَىٰ описывает это действие как состояние или качество человека. В этом смысле осознанность становится способом защиты: человек осознаёт то, от чего нужно себя уберечь, и остерегается этого.',
-      en: 'تَقْوَىٰ (taqwā) comes from the verb ٱتَّقَىٰ (ittaqā). ٱتَّقَىٰ means: to guard or protect oneself, be cautious, or guard oneself against something. تَقْوَىٰ describes this action as a state or quality of a person. In this sense, awareness becomes a form of protection: a person recognizes what they need to guard themselves from and is cautious of it.',
+      ru: 'تَقْوَىٰ (taqwā) словообразовательно связано с ٱتَّقَىٰ (ittaqā), но само существительное имеет модель فَعْلَى. Для объяснения букв классическая морфология реконструирует исходную форму وَقْيَا: первая و — первая корневая буква, ق — вторая, ي — третья. Затем начальная و заменяется на ت: وَقْيَا → تَقْيَا. После этого конечная корневая ي в имени на فَعْلَى заменяется на و: تَقْيَا → تَقْوَىٰ. Поэтому ت в начале и و после ق отражают два разных морфологических изменения, а не два новых корневых элемента.',
+      en: 'تَقْوَىٰ (taqwā) is derivationally related to ٱتَّقَىٰ (ittaqā), while the noun itself follows the pattern فَعْلَى. To explain its letters, classical morphology reconstructs an underlying وَقْيَا: initial و is the first root letter, ق the second, and ي the third. The initial و is then replaced by ت: وَقْيَا → تَقْيَا. Next, the final root ي in a noun on the pattern فَعْلَى is replaced by و: تَقْيَا → تَقْوَىٰ. Thus the initial ت and the و after ق reflect two separate morphological changes, not two new root elements.',
     },
     evolution: [
       { ar: 'و ق ي', reading: 'w-q-y', metaRu: 'корень', metaEn: 'root' },
-      { ar: 'وَقَىٰ', reading: 'waqā', metaRu: 'глагол I формы · защищать, оберегать', metaEn: 'Form I verb · to protect, guard' },
-      { ar: 'ٱتَّقَىٰ', reading: 'ittaqā', metaRu: 'глагол VIII формы · беречь / защищать себя, остерегаться', metaEn: 'Form VIII verb · guard/protect oneself, be cautious' },
-      { ar: 'تَقْوَىٰ', reading: 'taqwā', metaRu: 'существительное · осознанное остережение как внутренняя защита', metaEn: 'noun · conscious caution as inner protection' },
+      { ar: 'وَقْيَا', reading: 'waqyā', metaRu: 'реконструируемая исходная форма на модели فَعْلَى', metaEn: 'reconstructed underlying form on the pattern فَعْلَى' },
+      { ar: 'تَقْيَا', reading: 'taqyā', metaRu: 'إبدال: начальная و → ت', metaEn: 'ibdāl: initial و → ت' },
+      { ar: 'تَقْوَىٰ', reading: 'taqwā', metaRu: 'إبدال: конечная корневая ي → و в имени на فَعْلَى', metaEn: 'ibdāl: final root ي → و in a noun on فَعْلَى' },
     ],
   },
 
