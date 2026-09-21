@@ -314,7 +314,11 @@ function MorphBoard({ word, profile, language }) {
               </div>}
             </article>
 
-            {index < lastIndex && <div className="morph-board-connector" aria-hidden="true"><span /></div>}
+            {index < lastIndex && <div className="morph-board-connector" aria-hidden="true">
+              <i className="morph-board-connector-dot" />
+              <span className="morph-board-connector-line" />
+              <b className="morph-board-connector-arrow" />
+            </div>}
           </div>
         })}
       </div>
