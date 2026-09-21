@@ -85,7 +85,9 @@ Connectors must look deliberate and geometric.
 - No bent “AI-looking” branches.
 - No decorative elbow stubs.
 - Use exactly one connector between consecutive morphology steps.
-- On mobile, keep one vertical alignment axis between steps, aligned to the approved taqwā evolution rhythm.
+- The approved connector is: small start dot → 1 px line → arrowhead pointing to the next derived word.
+- On mobile, this connector is vertical and sits to the left of the word flow; the arrow points downward to the next step.
+- On desktop, the same visual language may run horizontally when the steps are horizontal.
 - Explanatory callouts are text-only: do not add side borders or branch lines to them.
 - If the user says “как в taqwā” or names another approved screen, inspect that existing implementation first and reuse its spacing, alignment, line weight, and interaction pattern. Do not invent a new visual language.
 - The latest explicit user correction overrides older project notes. Before changing a repeated element, check the latest accepted rule in this file and the approved reference implementation.
