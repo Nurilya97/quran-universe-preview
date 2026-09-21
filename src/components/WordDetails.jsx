@@ -382,7 +382,7 @@ function LbbRootRelation({ word, language }) {
   if (!note) return null
   const ru = language === 'ru'
   return <section className="meaning-plain-section meaning-root-link">
-    <h3>{ru ? 'Почему это значение связано с корнем' : 'Why this meaning connects to the root'}</h3>
+    <h3>{ru ? 'Связь с корнем' : 'Connection to the root'}</h3>
     <p><MeaningText text={ru ? note.connectionRu : note.connectionEn} language={language} /></p>
   </section>
 }
