@@ -10,7 +10,7 @@ export const DATA_SOURCE_SYSTEMS = {
   tanzil: { role: 'canonical_text', status: 'planned' },
   tafsircenter: { role: 'morphology_irab_tafsir', status: 'pilot_row_mapped' },
   quranmorph: { role: 'lemma_pos', status: 'metadata_verified_access_pending' },
-  qamar: { role: 'root_lemma_pos', status: 'metadata_verified_import_pending' },
+  qamar: { role: 'root_lemma_pos', status: 'publication_verified_release_pending' },
   qac: { role: 'morphology_syntax', status: 'pilot_row_mapped' },
   qul: { role: 'aggregated_quran_layers', status: 'planned' },
   qabas: { role: 'lexical_bridge', status: 'planned' },
