@@ -123,6 +123,8 @@ Root-space legends are required whenever orbital rings are shown.
 - Quran-attested words use the approved green highlight.
 - If an inner dashed ring is used only to create extra room inside a crowded family, label it explicitly as an additional zone of the same family, not a separate form.
 - Keep the legend available for every root space, not only ل ب ب.
+- Keep root-space notation unboxed: the legend must not sit inside a surrounding card, frame, or opaque panel.
+- Roman form labels beside the orbital rings are free-standing text placed just to the left of the ring, never chip-like badges with a background or border.
 
 ## 8. Change discipline
 
