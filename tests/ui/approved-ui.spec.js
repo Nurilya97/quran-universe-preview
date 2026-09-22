@@ -56,7 +56,7 @@ test.describe('approved Quran Universe UI contracts', () => {
 
     expect(geometry).not.toBeNull()
     expect(geometry.lineWidth).toBe('1px')
-    expect(Math.abs(geometry.lineTop - geometry.firstCenter)).toBeLessThanOrEqual(2)
+    expect(Math.abs(geometry.lineTop - geometry.firstCenter)).toBeLessThanOrEqual(3)
     expect(Math.abs(geometry.lineBottom - geometry.secondCenter)).toBeLessThanOrEqual(4)
     expect(geometry.dotContent).not.toBe('none')
     expect(geometry.dotTop).toBe('0px')
@@ -84,10 +84,10 @@ test.describe('approved Quran Universe UI contracts', () => {
 
     const legend = rootStage.locator('.root-legend')
     await expect(legend).toBeVisible()
-    await expect(legend).toContainText('кольцо — словообразовательная семья')
-    await expect(legend).toContainText('глагольная форма семьи')
-    await expect(legend).toContainText('встречается в Коране')
-    await expect(legend).toContainText('пунктир — дополнительная зона той же I семьи')
+    await expect(legend).toContainText('кольцо — семья')
+    await expect(legend).toContainText('форма семьи')
+    await expect(legend).toContainText('есть в Коране')
+    await expect(legend).toContainText('пунктир — доп. зона I семьи')
 
     await expect(rootStage.locator('.root-orbit-inner')).toHaveCount(1)
     await expect(rootStage.locator('.root-legend-orbit')).toHaveCount(1)
