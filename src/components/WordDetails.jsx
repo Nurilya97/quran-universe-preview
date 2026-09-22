@@ -26,13 +26,7 @@ function MixedScriptText({ text, language }) {
 
 function MeaningText({ text, language }) {
   if (text == null) return null
-  let value = String(text)
-  if (language === 'ru') {
-    value = value
-      .replace(/\s*\(([A-Za-zĀ-žʿʾ'’-]+)\)/g, '')
-      .replace(/\bmīm\b/gi, 'م')
-  }
-  return <MixedScriptText text={value} language={language} />
+  return <MixedScriptText text={String(text)} language={language} />
 }
 
 
