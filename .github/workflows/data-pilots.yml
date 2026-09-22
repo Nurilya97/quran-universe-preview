@@ -13,23 +13,31 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      - name: Download official QAMAR supplementary material
-        run: |
-          curl -L --fail --retry 3 --retry-delay 3             -o qamar-supplement.zip             'https://aclanthology.org/attachments/2026.abjadnlp-1.38.OptionalSupplementaryMaterial.zip'
-          test -s qamar-supplement.zip
-          unzip -l qamar-supplement.zip
-      - name: Extract QAMAR supplementary material
-        run: |
-          mkdir -p qamar-supplement
-          unzip -q qamar-supplement.zip -d qamar-supplement
-          echo "QAMAR files:"
-          find qamar-supplement -maxdepth 4 -type f -printf '%p\n' | sort
-      - name: Upload QAMAR supplementary material
-        uses: actions/upload-artifact@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
-          name: qamar-official-supplement
-          path: qamar-supplement
+          node-version: 24
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Quarantine official QAMAR supplementary material
+        run: node scripts/quarantine-download.mjs qamar-acl-supplement
+      - name: Inspect QAMAR archive without extraction
+        run: |
+          unzip -Z1 .quarantine/qamar-acl-supplement/qamar-supplement.zip | sort | tee qamar-files.txt
+          if grep -E -i '(corpus|dataset|\.csv$|\.tsv$|\.json$|\.parquet$|\.sqlite$|\.db$|\.tei$)' qamar-files.txt > qamar-potential.txt; then
+            echo 'Potential corpus-like files found. Manual source/licence/hash review is required before any extraction or ingestion.'
+          fi
+      - name: Upload QAMAR quarantine evidence
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: qamar-quarantine-evidence
+          path: |
+            .quarantine/qamar-acl-supplement/qamar-supplement.zip.integrity.json
+            qamar-files.txt
+            qamar-potential.txt
+          if-no-files-found: ignore
           retention-days: 14
 
   tafsircenter:
@@ -38,17 +46,24 @@ jobs:
     timeout-minutes: 20
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      - name: Download official Tafsir Center database
-        run: |
-          curl -L --fail --retry 3 --retry-delay 3             -o quran.db             'https://huggingface.co/datasets/tafsircenter/tafsir-mcp-data/resolve/main/quran.db?download=true'
-          test -s quran.db
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Quarantine and verify official Tafsir Center database
+        run: node scripts/quarantine-download.mjs tafsircenter-quran-db --require-approved
       - name: Extract 2:197 into Quran Universe coordinates
         run: |
-          python scripts/import_tafsircenter_pilot.py quran.db --output tafsircenter-2-197.json
+          python scripts/import_tafsircenter_pilot.py .quarantine/tafsircenter-quran-db/quran.db --output tafsircenter-2-197.json
       - name: Upload Tafsir Center pilot
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: tafsircenter-2-197
-          path: tafsircenter-2-197.json
+          path: |
+            tafsircenter-2-197.json
+            .quarantine/tafsircenter-quran-db/quran.db.integrity.json
           retention-days: 14
