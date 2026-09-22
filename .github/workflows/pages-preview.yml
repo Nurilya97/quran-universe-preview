@@ -28,6 +28,8 @@ jobs:
           cache: npm
       - name: Install
         run: npm ci
+      - name: Validate Quran Universe data
+        run: npm run test:content
       - name: Build spatial preview
         run: |
           VITE_BUILD_SHA="$GITHUB_SHA" npm run build
