@@ -42,6 +42,93 @@ export const WORD_CONTENT = {
       en: ['A Form I verb with the root letters و، ق، ي. The first and last root letters are weak consonants, so they may change or disappear in inflected forms.', 'The final ي appears as ى in وَقَىٰ. The present form is يَقِي (yaqī), and the singular imperative is قِ (qi).'],
     },
     meaning: {
+      ru: { lead: 'Защищать, оберегать кого-либо или что-либо.', body: 'Действие направлено на сохранение того, кого защищают, от вреда. Что именно оберегают и от чего — определяется дополнениями и контекстом.' },
+      en: { lead: 'To protect or preserve someone or something.', body: 'The action keeps its object safe from harm. The surrounding words identify who or what is protected and what they are protected from.' },
+    },
+    meaningMap: [
+      {
+        id: 'mechanism',
+        ru: { title: 'Механизм', description: 'وَقَىٰ (waqā) называет само действие защиты.', items: [
+          { term: 'Защищать / оберегать', definition: 'Создавать защиту между тем, что оберегают, и тем, что может причинить ему вред.' },
+        ] },
+        en: { title: 'Mechanism', description: 'وَقَىٰ (waqā) names the act of protection itself.', items: [
+          { term: 'To protect / guard', definition: 'To create protection between what is guarded and what could cause it harm.' },
+        ] },
+      },
+      {
+        id: 'component',
+        ru: { title: 'Составные части механизма', description: 'Контекст показывает, кто защищает, что защищают и от чего.', items: [
+          { term: 'Защищаемое', definition: 'Человек или объект, который сохраняют от вреда.' },
+          { term: 'Угроза или вред', definition: 'То, от чего направлено действие защиты; конкретное содержание определяется контекстом.' },
+        ] },
+        en: { title: 'Components of the mechanism', description: 'Context identifies who protects, what is protected, and what it is protected from.', items: [
+          { term: 'The protected object', definition: 'The person or thing being kept safe from harm.' },
+          { term: 'Threat or harm', definition: 'What the protective action is directed against; its specific content comes from context.' },
+        ] },
+      },
+      {
+        id: 'result',
+        ru: { title: 'Следствия', description: 'Результат действия وَقَىٰ (waqā) — сохранение защищаемого от вреда.', items: [
+          { term: 'Сохранение от вреда', definition: 'Защита сохраняет оберегаемое от воздействия вреда.' },
+        ] },
+        en: { title: 'Outcomes', description: 'The outcome of وَقَىٰ (waqā) is preservation of the protected object from harm.', items: [
+          { term: 'Preservation from harm', definition: 'Protection keeps what is guarded safe from harm.' },
+        ] },
+      },
+    ],
+    distinction: {
+      ru: 'Базовый глагол семьи: وَقَىٰ (waqā) называет само действие «защищать». وِقَايَة (wiqāya) называет защиту как процесс, وَاقٍ (wāqin) — того, кто защищает, а وِقَاء (wiqāʾ) — средство защиты.',
+      en: 'The base verb of the family: وَقَىٰ (waqā) names the act “to protect.” وِقَايَة (wiqāya) names protection as a process, وَاقٍ (wāqin) the protector, and وِقَاء (wiqāʾ) the means of protection.',
+    },
+    structureSources: ['jawhari', 'corpus'], meaningSources: ['raghib', 'laneWqy'], related: ['wiqaya', 'wiqaa', 'waq'],
+  },
+  ittaqa: {
+    pattern: 'اِفْتَعَلَ', patternReading: 'iftaʿala',
+    structure: {
+      ru: ['Глагол VIII породы от و ق ي. При образовании этой формы начальная корневая و изменяется и сливается с ت модели: поэтому в ٱتَّقَىٰ видна удвоенная ت.', 'Настоящее время — يَتَّقِي (yattaqī). Регулярный масдар, то есть существительное действия, — اِتِّقَاء (ittiqāʾ). تَقْوَى — связанное существительное со своей моделью.'],
+      en: ['A Form VIII verb from و ق ي. The first root letter و changes and assimilates with the pattern’s ت, producing the doubled ت in ٱتَّقَىٰ.', 'The present form is يَتَّقِي (yattaqī). The regular verbal noun is اِتِّقَاء (ittiqāʾ). تَقْوَى is a related noun with its own pattern.'],
+    },
+    meaning: {
+      ru: { lead: 'Занимать активную защитную позицию.', body: WQY_PUBLIC_MODEL.operativeMechanism.ru },
+      en: { lead: 'To take an active, protection-oriented stance.', body: WQY_PUBLIC_MODEL.operativeMechanism.en },
+    },
+    meaningMap: [
+      {
+        id: 'mechanism',
+        ru: { title: 'Механизм', description: 'ٱتَّقَىٰ (ittaqā) переносит защитное действие на самого субъекта.', items: [
+          { term: 'Защитная позиция', definition: 'Человек сам занимает позицию, которая помогает ему уберечь себя от того, что определяется контекстом.' },
+          { term: 'Остережение', definition: 'Распознать то, от чего следует себя уберечь, и держаться от этого в стороне.' },
+        ] },
+        en: { title: 'Mechanism', description: 'ٱتَّقَىٰ (ittaqā) turns the protective action toward the subject themself.', items: [
+          { term: 'Protective stance', definition: 'The person takes a position that helps guard them from what the context identifies.' },
+          { term: 'Caution', definition: 'To recognise what should be guarded against and avoid approaching it.' },
+        ] },
+      },
+      {
+        id: 'component',
+        ru: { title: 'Составные части механизма', description: 'Для защитного выбора нужны распознавание границы и действие.', items: [
+          { term: 'Внимательность', definition: 'Замечать, где находится граница, риск или возможный вред.' },
+          { term: 'Саморегуляция', definition: 'Соотносить своё действие с распознанной границей и удерживать себя от её нарушения.' },
+        ] },
+        en: { title: 'Components of the mechanism', description: 'Protective choice requires recognising a boundary and acting on it.', items: [
+          { term: 'Attentiveness', definition: 'Noticing where a boundary, risk, or possible harm lies.' },
+          { term: 'Self-regulation', definition: 'Relating one’s action to the recognised boundary and restraining oneself from crossing it.' },
+        ] },
+      },
+    ],
+    distinction: {
+      ru: 'ٱتَّقَىٰ (ittaqā) — действие самого субъекта: он принимает защитную позицию. تَقْوَىٰ (taqwā) называет состояние/качество, возникающее из этой линии, а مُتَّقٍ (muttaqin) — человека, который осуществляет это действие.',
+      en: 'ٱتَّقَىٰ (ittaqā) is the subject’s own action: taking a protective stance. تَقْوَىٰ (taqwā) names the state/quality developing from this line, while مُتَّقٍ (muttaqin) names the person who enacts it.',
+    },
+    structureSources: ['jawhari', 'laneTqy'], meaningSources: ['raghib', 'laneWqy'], related: ['taqwa', 'muttaqin', 'tuqat'],
+  },
+  taqwa: {
+    pattern: 'فَعْلَى', patternReading: 'faʿlā',
+    structure: {
+      ru: ['Существительное, называющее качество или состояние и словообразовательно связанное с ٱتَّقَىٰ. Для существительного показана собственная модель فَعْلَى.', 'Чтобы увидеть происхождение букв, классическая морфология реконструирует исходную форму وَقْيَا от корня و ق ي. Сначала начальная корневая و заменяется на ت: وَقْيَا → تَقْيَا. Затем конечная корневая ي в имени на فَعْلَى заменяется на و: تَقْيَا → تَقْوَىٰ. Поэтому начальная ت восходит к первой корневой و, а و после ق — к третьей корневой ي.', 'Промежуточные формы здесь показаны как морфологическая реконструкция для объяснения изменений букв, а не как отдельные словарные слова. Классические источники могут по-разному располагать промежуточные стадии; важно, что начальная و соотносится с ت, а конечная корневая ي — с و после ق. Орбита VIII обозначает словообразовательную семью; собственная модель существительного — فَعْلَى.'],
+      en: ['A noun naming a quality or state and derivationally related to ٱتَّقَىٰ. The noun is shown with its own pattern فَعْلَى.', 'To make the letters transparent, classical morphology reconstructs an underlying وَقْيَا from the root و ق ي. First, the initial root و is replaced by ت: وَقْيَا → تَقْيَا. Then the final root ي in a noun on فَعْلَى is replaced by و: تَقْيَا → تَقْوَىٰ. Thus initial ت goes back to the first root و, while the و after ق goes back to the third root ي.', 'The intermediate forms are shown here as a morphological reconstruction that explains the letter changes, not as separate dictionary words. Classical sources may order the intermediate stages differently; the key correspondences remain initial و with ت and final root ي with the و after ق. Orbit VIII represents the derivational family; the noun’s own pattern is فَعْلَى.'],
+    },
+    meaning: {
       ru: {
         lead: 'تَقْوَىٰ (taqwā) — состояние направленности к Аллаху, в котором память о Нём и Его присутствии, внимание к установленным Им границам и остережение от их нарушения направляют выбор человека.',
         body: 'Корень و ق ي сохраняет защитное ядро — оберегание и удерживание от вреда. Связанная форма ٱتَّقَىٰ (ittaqā) показывает активную позицию самого человека. Это объясняет механизм слова, но не создаёт один обязательный перевод для всех аятов. В 2:197 утверждённый русский перевод — «благочестие»; источник этого состояния раскрывается отдельно.',
@@ -139,6 +226,7 @@ export const WORD_CONTENT = {
     },
     structureSources: ['laneTqy', 'jawhari'], meaningSources: ['raghib', 'laneTqy', 'baqarahMuttaqin'], related: ['ittaqa', 'taqiyy', 'muttaqin'],
   },
+
   tuqat: {
     pattern: 'فُعَلَة', patternReading: 'fuʿala',
     structure: {

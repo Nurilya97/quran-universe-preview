@@ -90,6 +90,9 @@ if ((OCCURRENCES.albab ?? []).length !== 16) fail('albab Quran occurrence count 
 const wqyForms = FORMS.filter(form => form.rootKey === 'wqy')
 if (wqyForms.filter(form => !form.lexicalOnly).length !== 8) fail('w-q-y must preserve 8 Quranic Corpus groups')
 if (wqyForms.filter(form => form.lexicalOnly).length !== 3) fail('w-q-y must preserve 3 clearly-marked lexical-only forms')
+for (const form of wqyForms) {
+  if (!WORD_CONTENT[form.id]) fail(`missing WQY word content for visible form ${form.id}`)
+}
 
 // Every visible root-space form has a morphology teaching profile.
 const activeForms = FORMS.filter(form => !form.relatedOnly)
