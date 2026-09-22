@@ -10,6 +10,7 @@ import {
   DATA_LAYER_AUTHORITY,
   buildPilotOrthographicWordMap,
 } from '../src/data/quranUniverseData.js'
+import { PILOT_SOURCE_ADAPTERS, PILOT_2_197_DATASET_STATUS } from '../src/data/sourceAdapters.js'
 
 const errors = []
 const fail = message => errors.push(message)
@@ -39,6 +40,11 @@ for (const rootKey of Object.keys(ROOT_DEMOS)) {
   for (const form of formsForRoot(rootKey)) {
     if (!orbitIds.has(form.orbit)) fail(`${form.id} points to missing visible orbit ${form.orbit}`)
   }
+}
+
+// Every registered word source must resolve through the single canonical source registry.
+for (const form of FORMS) {
+  if (form.source && !CONTENT_SOURCES[form.source]) fail(`form ${form.id} references undefined source ${form.source}`)
 }
 
 // Occurrence database and canonical counts.
@@ -145,7 +151,7 @@ for (const id of new Set([...collectSourceRefs(WORD_CONTENT), ...collectSourceRe
 
 
 // Canonical Quran Universe IDs and first cross-corpus pilot.
-if (QURAN_UNIVERSE_DATA_VERSION !== 'QU-DATA v0.1 — 2026-09-22') fail('unexpected Quran Universe data-layer version')
+if (QURAN_UNIVERSE_DATA_VERSION !== 'QU-DATA v0.2 — 2026-09-22') fail('unexpected Quran Universe data-layer version')
 const pilotAyah = AYAH_PROTOTYPES['2:197']
 if (!pilotAyah) fail('2:197 pilot ayah missing')
 else {
@@ -162,6 +168,29 @@ else {
     }
   }
 }
+if (PILOT_2_197_DATASET_STATUS.qac.mappedOrthographicWords !== 29) fail('2:197 QAC pilot must remain 29/29 words')
+if (PILOT_SOURCE_ADAPTERS.qac.pilotStatus !== 'row_mapped') fail('QAC pilot adapter status drifted')
+if (PILOT_SOURCE_ADAPTERS.tafsircenter.pilotStatus !== 'schema_verified_row_import_pending') fail('Tafsir Center adapter status drifted')
+if (PILOT_SOURCE_ADAPTERS.quranmorph.pilotStatus !== 'metadata_verified_access_pending') fail('QuranMorph access status drifted')
+if (PILOT_SOURCE_ADAPTERS.qamar.pilotStatus !== 'metadata_verified_row_import_pending') fail('QAMAR import status drifted')
+if (!PILOT_SOURCE_ADAPTERS.quranmorph.access.includes('official_download_form_requires')) {
+  fail('QuranMorph official-access restriction must remain explicit until authorized access is available')
+}
+
+const taqwaToken = pilotAyah?.tokens?.[25]
+if (!taqwaToken || taqwaToken.orbitId !== 'taqwa') fail('2:197 word 26 must remain linked to taqwa')
+else {
+  if (taqwaToken.ru === 'благочестие' || taqwaToken.analysis?.ru?.meaning?.gloss === 'Благочестие / праведность') {
+    fail('2:197 taqwa token regressed to manifestation-only gloss')
+  }
+  if (!taqwaToken.analysis?.ru?.meaning?.description?.includes('целостная осознанность перед Всевышним')) {
+    fail('2:197 taqwa meaning is not synchronized with the canonical Quran-first model')
+  }
+  if (!taqwaToken.analysis?.ru?.morphology?.text?.includes('модели فَعْلَى')) {
+    fail('2:197 taqwa morphology lost its own noun pattern')
+  }
+}
+
 for (const [layer, sources] of Object.entries(DATA_LAYER_AUTHORITY)) {
   if (!Array.isArray(sources) || !sources.length) fail(`data authority layer ${layer} has no sources`)
   for (const source of sources) if (!DATA_SOURCE_SYSTEMS[source]) fail(`data authority layer ${layer} references unknown source ${source}`)
@@ -179,4 +208,4 @@ if (errors.length) {
   process.exit(1)
 }
 
-console.log(`Quran Universe data guard passed: ${FORMS.length} forms, ${activeForms.length} visible morphology profiles, ${Object.keys(OCCURRENCES).length} Quran occurrence groups, 2:197 canonical word mapping, and source references are aligned.`)
+console.log(`Quran Universe data guard passed: ${FORMS.length} forms, ${activeForms.length} visible morphology profiles, ${Object.keys(OCCURRENCES).length} Quran occurrence groups, canonical source registry, and staged 2:197 cross-corpus mapping are aligned.`)
