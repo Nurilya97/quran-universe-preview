@@ -101,6 +101,34 @@ test.describe('approved Quran Universe UI contracts', () => {
     })
   })
 
+
+
+  test('registered Ayah Space record opens from Quran occurrences and renders the shared schema', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 900 })
+    await openSearch(page, 'taqwa')
+
+    await expect(page.locator('.word-stage')).toBeVisible()
+    await page.locator('.node-quran').click()
+    await expect(page.locator('dialog.detail-sheet[open]')).toBeVisible()
+
+    const reference = page.locator('.quran-reference-grid button.has-prototype').filter({ hasText: '2:197' })
+    await expect(reference).toBeEnabled()
+    await reference.click()
+
+    const ayah = page.locator('.ayah-space-shell')
+    await expect(ayah).toBeVisible()
+    await expect(ayah.locator('.analysis-verse-reference > span')).toHaveText('2:197')
+
+    const words = ayah.locator('.analysis-inline-word')
+    await expect(words).toHaveCount(29)
+    await expect(words.nth(25)).toHaveClass(/is-entry/)
+    await expect(words.nth(25)).toContainText('ٱلتَّقْوَىٰ')
+
+    await page.getByRole('button', { name: 'Риторика' }).click()
+    const grammarReference = ayah.locator('.rhetoric-source-note a')
+    await expect(grammarReference).toHaveAttribute('href', /chapter=2&verse=197/)
+  })
+
   test('search language controls expose pressed state and Arabic stays directionally marked', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 900 })
     await page.goto('spatial.html')
