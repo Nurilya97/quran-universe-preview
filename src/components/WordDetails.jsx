@@ -536,8 +536,8 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
       en: { lead: word.definitionEn || 'A lexical form of the root ل ب ب.', body: '' },
     },
     meaningMap: [],
-    structureSources: ['laneLbb', 'arabicLexiconLbb'],
-    meaningSources: ['laneLbb', 'arabicLexiconLbb'],
+    structureSources: CONTENT_SOURCES[word.source] ? [word.source] : ['laneLbb', 'arabicLexiconLbb'],
+    meaningSources: CONTENT_SOURCES[word.source] ? [word.source] : ['laneLbb', 'arabicLexiconLbb'],
     related: [],
   } : null)
   if (!content) return null
