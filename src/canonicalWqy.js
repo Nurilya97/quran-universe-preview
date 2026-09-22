@@ -39,8 +39,8 @@ export const WQY_PUBLIC_MODEL = {
     en: 'The fundamental meaning of the root is to protect / shield by preventing harm from reaching what is protected.',
   },
   operativeMechanism: {
-    ru: 'ٱتَّقَىٰ (ittaqā) описывает активную защитную позицию: человек сам действует так, чтобы уберечь себя.',
-    en: 'ٱتَّقَىٰ (ittaqā) describes an active protective stance: the person acts in a way that guards themself.',
+    ru: 'ٱتَّقَىٰ (ittaqā) — беречь себя / остерегаться: человек сам действует так, чтобы не допустить вреда или дурного последствия; конкретное содержание задаёт контекст.',
+    en: 'ٱتَّقَىٰ (ittaqā) — to guard oneself / beware: the person acts to avoid harm or a bad consequence; context supplies the specific content.',
   },
   roleSafeguards: {
     directObject: {
