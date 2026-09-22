@@ -11,6 +11,7 @@ import {
   buildPilotOrthographicWordMap,
 } from '../src/data/quranUniverseData.js'
 import { PILOT_SOURCE_ADAPTERS, PILOT_2_197_DATASET_STATUS } from '../src/data/sourceAdapters.js'
+import { TAFSIRCENTER_2_197_PILOT } from '../src/data/pilots/tafsircenter-2-197.js'
 
 const errors = []
 const fail = message => errors.push(message)
@@ -151,7 +152,7 @@ for (const id of new Set([...collectSourceRefs(WORD_CONTENT), ...collectSourceRe
 
 
 // Canonical Quran Universe IDs and first cross-corpus pilot.
-if (QURAN_UNIVERSE_DATA_VERSION !== 'QU-DATA v0.2 — 2026-09-22') fail('unexpected Quran Universe data-layer version')
+if (QURAN_UNIVERSE_DATA_VERSION !== 'QU-DATA v0.3 — 2026-09-22') fail('unexpected Quran Universe data-layer version')
 const pilotAyah = AYAH_PROTOTYPES['2:197']
 if (!pilotAyah) fail('2:197 pilot ayah missing')
 else {
@@ -168,9 +169,29 @@ else {
     }
   }
 }
+if (TAFSIRCENTER_2_197_PILOT.wordCount !== 29 || TAFSIRCENTER_2_197_PILOT.rows.length !== 29) {
+  fail('Tafsir Center 2:197 pilot must remain 29/29 words')
+}
+if (!unique(TAFSIRCENTER_2_197_PILOT.rows.map(row => row.id))) fail('duplicate Tafsir Center Quran Universe IDs')
+const tafsirTaqwa = TAFSIRCENTER_2_197_PILOT.evidence.taqwa
+const tafsirIttaquni = TAFSIRCENTER_2_197_PILOT.evidence.ittaquni
+const tafsirAlbab = TAFSIRCENTER_2_197_PILOT.evidence.albab
+if (tafsirTaqwa.root !== 'وقي' || !tafsirTaqwa.sarf.includes('فَعْلَى')) {
+  fail('Tafsir Center taqwa evidence must preserve root وقي and noun pattern فَعْلَى')
+}
+if (tafsirIttaquni.root !== 'وقي' || !tafsirIttaquni.sarf.includes('افْتَعَلَ') || !tafsirIttaquni.sarf.includes('اوْتَقِي')) {
+  fail('Tafsir Center ittaquni evidence must preserve root وقي, Form VIII, and source form اوْتَقِي')
+}
+if (tafsirAlbab.root !== 'لبب' || !tafsirAlbab.sarf.includes('أَفْعَالٌ')) {
+  fail('Tafsir Center albab evidence must preserve root لبب and pattern أَفْعَال')
+}
+if (PILOT_2_197_DATASET_STATUS.tafsircenter.mappedOrthographicWords !== 29) {
+  fail('2:197 Tafsir Center pilot must remain 29/29 words')
+}
+
 if (PILOT_2_197_DATASET_STATUS.qac.mappedOrthographicWords !== 29) fail('2:197 QAC pilot must remain 29/29 words')
 if (PILOT_SOURCE_ADAPTERS.qac.pilotStatus !== 'row_mapped') fail('QAC pilot adapter status drifted')
-if (PILOT_SOURCE_ADAPTERS.tafsircenter.pilotStatus !== 'schema_verified_importer_ready') fail('Tafsir Center adapter status drifted')
+if (PILOT_SOURCE_ADAPTERS.tafsircenter.pilotStatus !== 'row_mapped') fail('Tafsir Center adapter status drifted')
 if (PILOT_SOURCE_ADAPTERS.quranmorph.pilotStatus !== 'metadata_verified_access_pending') fail('QuranMorph access status drifted')
 if (PILOT_SOURCE_ADAPTERS.qamar.pilotStatus !== 'metadata_verified_row_import_pending') fail('QAMAR import status drifted')
 if (!PILOT_SOURCE_ADAPTERS.quranmorph.access.includes('official_download_form_requires')) {
@@ -208,4 +229,4 @@ if (errors.length) {
   process.exit(1)
 }
 
-console.log(`Quran Universe data guard passed: ${FORMS.length} forms, ${activeForms.length} visible morphology profiles, ${Object.keys(OCCURRENCES).length} Quran occurrence groups, canonical source registry, and staged 2:197 cross-corpus mapping are aligned.`)
+console.log(`Quran Universe data guard passed: ${FORMS.length} forms, ${activeForms.length} visible morphology profiles, ${Object.keys(OCCURRENCES).length} Quran occurrence groups, canonical source registry, and QAC + Tafsir Center 2:197 row mappings are aligned.`)
