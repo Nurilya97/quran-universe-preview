@@ -57,21 +57,23 @@ export const WQY_PUBLIC_MODEL = {
     universalEquivalent: false,
     ru: {
       summary: 'У تقوى/اتقى нет одного протестированного перевода, который сохранял бы всю модель во всех контекстах.',
-      righteousness: '«Праведность» может передавать проявление или результат в отдельных контекстах; полный механизм تَقْوَىٰ шире этого слова.',
-      godFearing: '«Богобоязненность» не используется как нейтральный перевод по умолчанию: она сдвигает смысл к страху и может искажать роли.',
+      righteousness: '«Праведность» — допустимая контекстная передача одной стороны تَقْوَىٰ; она не покрывает всю концепцию автоматически.',
+      awareness: '«Осознанность перед Аллахом» — допустимая контекстная передача внимания, памятования и саморегуляции; она не является универсальным эквивалентом для каждого аята.',
+      godFearing: '«Богобоязненность» помечается как проблемная общая передача: она выдвигает боязнь/страх в смысловой центр и сужает более широкое поле защиты, внимания и саморегуляции. Эмоциональный оттенок точнее раскрывать через благоговейный трепет и почтение, когда это уместно.',
       q2_194: 'Для 2:194 «остерегайтесь наказания Аллаха» — role-safe интерпретирующий вариант; буквальное лексическое ядро сохраняет направление защиты.',
     },
     en: {
       summary: 'No tested rendering preserves the whole تقوى/اتقى model in every context.',
-      righteousness: '“Righteousness” can represent a manifestation or outcome in some contexts; the full تَقْوَىٰ mechanism is broader.',
-      godFearing: 'Fear-centered “God-fearing” language is not used as a neutral default because it can import a threat frame and distort semantic roles.',
+      righteousness: '“Righteousness” is a valid context-sensitive rendering of one side of تَقْوَىٰ; it does not automatically cover the whole concept.',
+      awareness: '“God-consciousness / mindfulness of Allah” is a valid context-sensitive rendering of attentiveness, remembrance, and self-regulation; it is not a universal equivalent for every ayah.',
+      godFearing: 'Fear-centred “God-fearing” is treated as a problematic general rendering because it makes fear the semantic centre and narrows the broader field of guarding, attentiveness, and self-regulation. Where relevant, reverential awe and regard are more precise descriptions of the emotional component.',
       q2_194: 'For 2:194, “be mindful of Allah” is the preferred tested short English rendering; it captures a contextually useful part of the broader semantic model.',
     },
   },
   reviewedContexts: {
     '2:197': {
       status: 'human_verified',
-      ru: 'تَقْوَىٰ названа лучшим запасом. Основной русский перевод в этом аяте — «благочестие». Его обычное значение не подменяется арабской этимологией; отдельно раскрывается источник этого состояния в taqwā: память об Аллахе и Его присутствии, осознание установленных Им границ и остережение от их нарушения и от зла. «Осознанность» не используется как самостоятельный русский эквивалент, а «праведность» не добавляется рядом по умолчанию.',
+      ru: 'تَقْوَىٰ названа лучшим запасом. Основной русский перевод в этом аяте — «благочестие». В общей модели «праведность» и «осознанность перед Аллахом» остаются допустимыми контекстными передачами других сторон концепции; это не означает, что их нужно ставить рядом в каждом аяте. Отдельно раскрывается источник состояния: память об Аллахе и Его присутствии, внимание к установленным Им границам и остережение от их нарушения и от зла.',
       en: 'تَقْوَىٰ is named as the best provision. For this ayah, piety is the context rendering, while the source of that state is explained separately through remembrance of Allah, awareness of His boundaries, and guarding against crossing them. This context decision does not replace the broader root model.',
     },
     '2:194': {
