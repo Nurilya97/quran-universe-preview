@@ -14,7 +14,7 @@ const roadmap = readJson('src/data/research/roadmap.json')
 const upstreams = readJson('src/data/research/upstreams.json')
 const pkg = readJson('package.json')
 
-const requiredScripts = ['sync', 'sync:check', 'audit:system', 'check', 'verify']
+const requiredScripts = ['sync', 'sync:check', 'audit:system', 'security:static', 'security:deps', 'check', 'verify']
 for (const script of requiredScripts) if (!pkg.scripts?.[script]) fail(`package.json missing script ${script}`)
 
 if (rootRegistry.authority !== 'single_repository') fail('root registry authority drift')
@@ -63,7 +63,7 @@ for (const match of agents.matchAll(/\.github\/skills\/([^/]+)\/SKILL\.md/g)) {
   if (!fs.existsSync(skillPath)) fail(`AGENTS references missing skill: ${match[1]}`)
 }
 
-const expectedWorkflows = ['pages-preview.yml', 'preview-integrity.yml', 'data-pilots.yml', 'system-health.yml']
+const expectedWorkflows = ['pages-preview.yml', 'preview-integrity.yml', 'data-pilots.yml', 'system-health.yml', 'security-audit.yml', 'codeql.yml', 'dependency-review.yml']
 for (const wf of expectedWorkflows) if (!fs.existsSync(path.join(root, '.github/workflows', wf))) fail(`missing workflow ${wf}`)
 const pilots = fs.readFileSync(path.join(root, '.github/workflows/data-pilots.yml'), 'utf8')
 if (/push:\s*[\s\S]*branches:\s*[\s\S]*main/.test(pilots)) fail('data-pilots workflow must not create skipped runs on every main push')
