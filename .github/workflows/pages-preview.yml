@@ -20,14 +20,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 24
           cache: npm
       - name: Install
         run: npm ci
+      - name: Dependency vulnerability gate
+        run: npm run security:deps
       - name: Verify synchronized Quran Universe system
         run: npm run check
       - name: Build spatial preview
@@ -43,15 +45,8 @@ jobs:
           <head>
             <meta charset="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta name="referrer" content="no-referrer" />
             <title>Quran Universe</title>
-            <script>
-              (function () {
-                var base = '/quran-universe-preview/';
-                if (location.pathname.indexOf(base + 'build-') === 0) {
-                  location.replace(base + '?v=' + Date.now());
-                }
-              }());
-            </script>
           </head>
           <body style="margin:0;background:#050709;color:#dfe3e5;font-family:system-ui,sans-serif;display:grid;place-items:center;min-height:100vh">
             <a href="/quran-universe-preview/" style="color:#dfe3e5">Open Quran Universe</a>
@@ -59,7 +54,7 @@ jobs:
           </html>
           EOF
       - name: Cache Playwright browser
-        uses: actions/cache@v4
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: ~/.cache/ms-playwright
           key: playwright-chromium-1.55.0-${{ runner.os }}
@@ -71,7 +66,7 @@ jobs:
         run: npx playwright test
       - name: Upload UI verification evidence
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: quran-universe-ui-evidence-${{ github.sha }}
           path: |
@@ -80,11 +75,11 @@ jobs:
           if-no-files-found: ignore
           retention-days: 14
       - name: Configure Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
         with:
           enablement: true
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
         with:
           path: ./dist
 
@@ -97,4 +92,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
