@@ -37,7 +37,7 @@ https://corpus.quran.com/wordbyword.jsp?chapter=2&verse=197
 
 ### Tafsir Center quran.db
 
-Status: **schema verified; row import pending**
+Status: **row-mapped · 29/29**
 
 The official Tafsir Center tooling exposes a word key of:
 
@@ -63,7 +63,15 @@ A read-only importer is now available:
 
 It validates that 2:197 has exactly 29 sequential word rows, maps them to `q:2:197:wN`, and exports text, rasm note, meaning, iʿrāb, ṣarf, root and frequency fields without modifying the source database.
 
-Next action: provide/materialize the official `quran.db`, run the importer, then compare the resulting 29 rows against the QAC/Ayah Space layer.
+The official `quran.db` was downloaded and imported read-only on 2026-09-22. All 29 rows are now persisted as a Quran Universe pilot in `src/data/pilots/tafsircenter-2-197.js`.
+
+Important verified rows:
+
+- `q:2:197:w26` — `التقوى` — root `وقي`; ṣarf explicitly gives noun pattern `فَعْلَى`.
+- `q:2:197:w27` — `واتقون` — root `وقي`; ṣarf gives Form VIII `افْتَعَلَ`, reconstructed source `اوْتَقِي`, and `و → ت` ibdāl.
+- `q:2:197:w29` — `الألباب` — root `لبب`; ṣarf gives plural pattern `أَفْعَال` and singular `لُبّ`.
+
+The imported source meaning/iʿrāb/ṣarf is evidence. It does not overwrite Quran Universe's Quran-first canonical meaning layer.
 
 ### QuranMorph
 
@@ -107,7 +115,7 @@ The pilot must remain asymmetric until every dataset is actually inspected.
 It is valid to have:
 
 - QAC = mapped
-- Tafsir Center = schema ready
+- Tafsir Center = 29/29 row-mapped
 - QuranMorph = access pending
 - QAMAR = import pending
 
