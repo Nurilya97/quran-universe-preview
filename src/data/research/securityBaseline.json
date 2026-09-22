@@ -5,12 +5,12 @@
   "criticalFiles": [
     {
       "path": "src/ayahPrototype.js",
-      "gitBlobSha": "a4927c27c4a909ea964d0b79301f4145d4c114a2",
+      "gitBlobSha": "28f5553b070b4c9122f18cdcda025403fa9f1663",
       "protects": "Ayah Space canonical records"
     },
     {
       "path": "src/canonicalWqy.js",
-      "gitBlobSha": "5c1b603f6075591336542ae728c866b02ce5a278",
+      "gitBlobSha": "0589491fd5013ef8de18b6fc0fe419e15747428e",
       "protects": "approved WQY semantic model"
     },
     {
@@ -20,7 +20,7 @@
     },
     {
       "path": "src/data/research/rootRegistry.json",
-      "gitBlobSha": "eb9f53492e4f7de445343aa203e77c6c0f70ced7",
+      "gitBlobSha": "9bb5baaa9783ddfdd1ab257844cba15781bda625",
       "protects": "root research and review status"
     },
     {
@@ -30,7 +30,7 @@
     },
     {
       "path": "src/data/research/wqyResearch.json",
-      "gitBlobSha": "d0bd98b8c69aa3dee2860e2ddc7fdc470688e722",
+      "gitBlobSha": "620a3403a02fbf5b0c77b03c6cb53dd00be6f296",
       "protects": "human-review and falsification record"
     },
     {
