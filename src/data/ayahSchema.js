@@ -4,10 +4,17 @@ function assert(condition, message) {
   if (!condition) throw new Error(message)
 }
 
-function bilingual(value, label) {
+function bilingualLabel(value, label) {
   assert(value && typeof value === 'object', `${label} must be an object`)
   assert(typeof value.ru === 'string' && value.ru.trim(), `${label}.ru is required`)
   assert(typeof value.en === 'string' && value.en.trim(), `${label}.en is required`)
+}
+
+function localizedCopy(value, label, requiredFields) {
+  assert(value && typeof value === 'object', `${label} must be an object`)
+  for (const field of requiredFields) {
+    assert(typeof value[field] === 'string' && value[field].trim(), `${label}.${field} is required`)
+  }
 }
 
 function validRange(range, tokenCount, label) {
@@ -22,7 +29,7 @@ export function validateAyahRecord(record) {
   const { surah, ayah } = parseAyahReference(record.reference)
   assert(surah >= 1 && surah <= 114, `invalid surah in ${record.reference}`)
   assert(ayah >= 1, `invalid ayah in ${record.reference}`)
-  bilingual(record.surah, `${record.reference}.surah`)
+  bilingualLabel(record.surah, `${record.reference}.surah`)
 
   assert(Array.isArray(record.tokens) && record.tokens.length > 0, `${record.reference}.tokens must be non-empty`)
   record.tokens.forEach((token, index) => {
@@ -45,16 +52,16 @@ export function validateAyahRecord(record) {
     validRange(block.range, tokenCount, label)
     assert(block.range[0] > previousEnd, `${record.reference}.blocks must be ordered and non-overlapping`)
     previousEnd = block.range[1]
-    bilingual(block.ru, `${label}.ru`)
-    bilingual(block.en, `${label}.en`)
+    localizedCopy(block.ru, `${label}.ru`, ['title', 'text'])
+    localizedCopy(block.en, `${label}.en`, ['title', 'text'])
   })
 
   for (const [index, item] of (record.rhetoric || []).entries()) {
     const label = `${record.reference}.rhetoric[${index}]`
     assert(item?.id, `${label}.id is required`)
     validRange(item.range, tokenCount, label)
-    bilingual(item.ru, `${label}.ru`)
-    bilingual(item.en, `${label}.en`)
+    localizedCopy(item.ru, `${label}.ru`, ['step', 'title', 'evidence', 'mechanism', 'effect'])
+    localizedCopy(item.en, `${label}.en`, ['step', 'title', 'evidence', 'mechanism', 'effect'])
     for (const wordIndex of item.focusWords || []) {
       assert(Number.isInteger(wordIndex) && wordIndex >= item.range[0] && wordIndex <= item.range[1],
         `${label}.focusWords contains an index outside its range`)
