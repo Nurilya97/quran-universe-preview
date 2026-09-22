@@ -1094,6 +1094,7 @@ details.morph-board-callout[open] .morph-board-callout-body {
     top: 15px;
     bottom: -15px;
     width: 18px;
+    height: auto;
     margin: 0;
     display: block;
     pointer-events: none;
