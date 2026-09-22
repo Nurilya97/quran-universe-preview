@@ -436,3 +436,7 @@ const PREPARED_AYAH_PROTOTYPES = Object.fromEntries(
 export function getAyahPrototype(reference) {
   return PREPARED_AYAH_PROTOTYPES[reference] || null
 }
+
+export function hasAyahPrototype(reference) {
+  return Boolean(PREPARED_AYAH_PROTOTYPES[reference])
+}
