@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { getAyahPrototype } from '../ayahPrototype.js'
+import { qacTreebankUrl } from '../data/ayahSchema.js'
 import { MORPHOLOGY, MORPH_ROLES } from '../morphologyWqy.js'
 import './AyahView.css'
 import { SyntaxView } from './SyntaxView.jsx'
@@ -16,7 +17,8 @@ function ExternalIcon() {
 }
 
 const WORLD = { width: 2500, height: 1900 }
-const BLOCK_Y = [300, 620, 940, 1260, 1580]
+const BLOCK_START_Y = 300
+const BLOCK_STEP_Y = 320
 const WORD_GAP = 152
 const VIEW_BOUNDS = {
   analysis: { left: 650, right: 1850, top: 430, bottom: 1360 },
@@ -44,7 +46,7 @@ function phraseTokens(ayah, block) {
 function layoutBlock(block, blockIndex) {
   const count = block.range[1] - block.range[0] + 1
   const centerX = WORLD.width / 2
-  const y = BLOCK_Y[blockIndex]
+  const y = BLOCK_START_Y + blockIndex * BLOCK_STEP_Y
   return Array.from({ length: count }, (_, i) => ({
     index: block.range[0] + i,
     x: centerX + ((count - 1) / 2 - i) * WORD_GAP,
@@ -671,7 +673,7 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
         {lens[language].thread && <p className="rhetoric-passage-thread"><b>{ru ? 'Смысловая связь внутри блока' : 'Semantic link inside the block'}</b>{lens[language].thread}</p>}
 
         <div className="rhetoric-source-note">
-          <a href="https://corpus.quran.com/treebank.jsp?chapter=2&verse=197" target="_blank" rel="noopener noreferrer">
+          <a href={qacTreebankUrl(ayah.reference)} target="_blank" rel="noopener noreferrer">
             {ru ? 'Грамматическая сверка ↗' : 'Grammar reference ↗'}
           </a>
         </div>
