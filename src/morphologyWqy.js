@@ -15,6 +15,7 @@ export const MORPH_ROLES = {
   particle: { ru: 'Частица', en: 'Particle' },
   form: { ru: 'Форма', en: 'Form' },
   fusion: { ru: 'Корень + форма', en: 'Root + form' },
+  rootShift: { ru: 'Изменённая корневая', en: 'Changed root letter' },
 }
 
 export const MORPH_COPY = {
@@ -164,14 +165,26 @@ export const MORPHOLOGY = {
   taqwa: {
     displayArabic: 'تَقْوَى',
     visualParts: [
-      { text: 'تَ', role: 'form' },
-      { text: 'قْوَى', role: 'root' },
+      { text: 'تَ', role: 'rootShift' },
+      { text: 'قْ', role: 'root' },
+      { text: 'و', role: 'rootShift' },
+      { text: 'ىٰ', role: 'form' },
     ],
     components: [
       {
-        role: 'form', ar: 'تَـ', reading: 'ta-',
-        ru: 'Часть образования существительного تَقْوَىٰ. Здесь تَـ не выделяется как самостоятельный смысловой префикс.',
-        en: 'Part of the formation of the noun تَقْوَىٰ. Here تَـ is not treated as an independent meaning-bearing prefix.',
+        role: 'rootShift', ar: 'و → ت',
+        ru: 'Начальная ت не является самостоятельным смысловым префиксом: в морфологической реконструкции она соответствует первой корневой و.',
+        en: 'Initial ت is not an independent meaning-bearing prefix: in the morphological reconstruction it corresponds to the first root letter و.',
+      },
+      {
+        role: 'rootShift', ar: 'ي → و',
+        ru: 'و после ق соответствует третьей корневой ي после морфологического изменения в имени на модели فَعْلَى.',
+        en: 'The و after ق corresponds to the third root letter ي after the morphological change in a noun on the pattern فَعْلَى.',
+      },
+      {
+        role: 'form', ar: 'ـىٰ',
+        ru: 'Конечная ىٰ принадлежит именной модели فَعْلَى; это элемент модели, а не четвёртая корневая буква.',
+        en: 'Final ىٰ belongs to the nominal pattern فَعْلَى; it is a pattern element, not a fourth root letter.',
       },
     ],
     derivedFrom: {
