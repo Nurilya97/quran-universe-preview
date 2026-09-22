@@ -3,12 +3,12 @@
 // External corpora are mapped onto these IDs; none of their positional IDs
 // becomes the primary key of Quran Universe.
 
-export const QURAN_UNIVERSE_DATA_VERSION = 'QU-DATA v0.2 — 2026-09-22'
+export const QURAN_UNIVERSE_DATA_VERSION = 'QU-DATA v0.3 — 2026-09-22'
 
 export const DATA_SOURCE_SYSTEMS = {
   'quran-universe': { role: 'canonical_mapping', status: 'internal' },
   tanzil: { role: 'canonical_text', status: 'planned' },
-  tafsircenter: { role: 'morphology_irab_tafsir', status: 'schema_verified' },
+  tafsircenter: { role: 'morphology_irab_tafsir', status: 'pilot_row_mapped' },
   quranmorph: { role: 'lemma_pos', status: 'metadata_verified_access_pending' },
   qamar: { role: 'root_lemma_pos', status: 'metadata_verified_import_pending' },
   qac: { role: 'morphology_syntax', status: 'pilot_row_mapped' },
