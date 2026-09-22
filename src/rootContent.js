@@ -4,6 +4,8 @@ import { WQY_PUBLIC_MODEL } from './canonicalWqy.js'
 // This lexical guide presents public word-level explanations and linked sources.
 export const CONTENT_SOURCES = {
   corpus: { url: 'https://corpus.quran.com/qurandictionary.jsp?q=wqy', ru: 'Коранический арабский корпус · University of Leeds', en: 'Quranic Arabic Corpus · University of Leeds' },
+  lexicon: { url: 'https://arabiclexicon.hawramani.com/%D9%88%D9%82%D9%89/', ru: 'Arabic Lexicon · свод классических словарей · وقى', en: 'Arabic Lexicon · classical lexicon collection · وقى' },
+  taqwa: { url: 'https://www.almaany.com/ar/dict/ar-ar/%D8%AA%D9%82%D9%88%D9%89/', ru: 'Almaany · تقوى', en: 'Almaany · تقوى' },
   raghib: { url: 'https://arabiclexicon.hawramani.com/?p=9899#3cb2a3', ru: 'Ар-Рагиб · «Аль-Муфрадат», وقى', en: 'Al-Raghib · Al-Mufradat, وقى' },
   jawhari: { url: 'https://arabiclexicon.hawramani.com/?p=9899#feef21', ru: 'Аль-Джаухари · «Ас-Сихах», وقى', en: 'Al-Jawhari · Al-Sihah, وقى' },
   laneWqy: { url: 'https://arabiclexicon.hawramani.com/?p=9899#0d72b9', ru: 'Lane · Arabic-English Lexicon, وقى', en: 'Lane · Arabic-English Lexicon, وقى' },
