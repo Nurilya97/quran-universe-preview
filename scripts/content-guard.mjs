@@ -94,6 +94,54 @@ for (const form of wqyForms) {
   if (!WORD_CONTENT[form.id]) fail(`missing WQY word content for visible form ${form.id}`)
 }
 
+// Word Orbit meaning cards must be readable and self-contained.
+const simpleWqyMeaningIds = new Set(['waqa', 'ittaqa', 'tuqat', 'waq', 'taqiyy', 'atqa', 'wiqaa', 'wiqaya', 'tawaqqa'])
+const collectStrings = value => {
+  if (typeof value === 'string') return [value]
+  if (Array.isArray(value)) return value.flatMap(collectStrings)
+  if (!value || typeof value !== 'object') return []
+  return Object.values(value).flatMap(collectStrings)
+}
+for (const form of wqyForms) {
+  const content = WORD_CONTENT[form.id]
+  const lead = content?.meaning?.ru?.lead || ''
+  const body = content?.meaning?.ru?.body || ''
+  const distinction = content?.distinction?.ru || ''
+  if (!/[\u0600-\u06FF]/.test(lead) || !/\([A-Za-zĀ-žʿʾ'’-]+\)/.test(lead)) {
+    fail(`${form.id} meaning lead must show Arabic plus adjacent Latin transliteration`)
+  }
+  if (!lead.trim() || !body.trim()) fail(`${form.id} meaning card needs a direct definition and a short semantic-focus paragraph`)
+  if (!distinction.trim()) fail(`${form.id} meaning card needs a standalone «Чем отличается» contrast`)
+  if (body.length > 430) fail(`${form.id} meaning body is too long for the concise Word Orbit contract`)
+  if (distinction.length > 480) fail(`${form.id} distinction is too long for the concise Word Orbit contract`)
+  const publicRu = collectStrings({ meaning: content.meaning?.ru, meaningMap: content.meaningMap?.map(level => level.ru), distinction }).join(' ')
+  if (/защитно-ориентир|активн(?:ую|ой) защитн(?:ую|ой) позици/i.test(publicRu)) {
+    fail(`${form.id} regressed to abstract protective-position wording instead of a direct definition`)
+  }
+  if (/смотр(?:и|ите)|посмотр(?:и|ите)|различие .*Строени|раскрывается .*Строени/i.test(publicRu)) {
+    fail(`${form.id} meaning card uses navigation as a substitute for explanation`)
+  }
+  if (simpleWqyMeaningIds.has(form.id) && (content.meaningMap?.length || 0) !== 0) {
+    fail(`${form.id} simple meaning card must not repeat itself in a mechanism map`)
+  }
+}
+if ((WORD_CONTENT.taqwa?.meaningMap?.length || 0) > 1 || (WORD_CONTENT.muttaqin?.meaningMap?.length || 0) > 1) {
+  fail('complex WQY meaning cards may keep only one genuinely additive meaning-map layer')
+}
+if (!WORD_CONTENT.ittaqa?.meaning?.ru?.lead?.includes('беречь себя') ||
+    !WORD_CONTENT.tawaqqa?.meaning?.ru?.lead?.includes('беречься')) {
+  fail('ittaqa/tawaqqa must use direct self-guarding definitions')
+}
+if (!WORD_CONTENT.ittaqa?.distinction?.ru?.includes('очень близок') ||
+    !WORD_CONTENT.tawaqqa?.distinction?.ru?.includes('сближают по значению')) {
+  fail('ittaqa/tawaqqa must state source-supported near-synonymy instead of inventing a semantic split')
+}
+if (!WORD_CONTENT.atqa?.meaning?.ru?.lead?.includes('أَتْقَى (atqā)') ||
+    !WORD_CONTENT.atqa?.meaning?.ru?.lead?.includes('تَقْوَىٰ (taqwā)') ||
+    !WORD_CONTENT.atqa?.meaning?.ru?.lead?.includes('благочестив')) {
+  fail('atqa must be directly readable: Arabic + atqā + taqwā + plain Russian meaning')
+}
+
 // Every visible root-space form has a morphology teaching profile.
 const activeForms = FORMS.filter(form => !form.relatedOnly)
 const allowedRoles = new Set(['root', 'prefix', 'suffix', 'ending', 'particle', 'form', 'fusion', 'rootShift'])
