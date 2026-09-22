@@ -169,7 +169,7 @@ test.describe('approved Quran Universe UI contracts', () => {
     expect(connector.markerEnd).toBe('none')
   })
 
-  test('Word Orbit meanings are direct, readable, and non-duplicative', async ({ page }) => {
+  test('Word Orbit meanings are direct, readable, and preserve researched connotations', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 })
 
     await openSearch(page, 'atqa')
@@ -185,7 +185,6 @@ test.describe('approved Quran Universe UI contracts', () => {
     await expect(meaning).toContainText('تَقِيّ')
     await expect(meaning).toContainText('taqiyy')
     await expect(meaning.locator('.meaning-map')).toHaveCount(0)
-    await expect(meaning).not.toContainText('Механизм')
 
     await openSearch(page, 'ittaqa')
     await expect(page.locator('.word-stage')).toBeVisible()
@@ -194,18 +193,53 @@ test.describe('approved Quran Universe UI contracts', () => {
     await expect(meaning).toContainText('беречь себя')
     await expect(meaning).toContainText('تَوَقَّىٰ')
     await expect(meaning).toContainText('tawaqqā')
-    await expect(meaning).toContainText('очень близок')
+    await expect(meaning).toContainText('коннотационная')
+    await expect(meaning).toContainText('более широкое этическое самосохранение')
     await expect(meaning).not.toContainText('защитно-ориентирован')
 
     await openSearch(page, 'tawaqqa')
     await expect(page.locator('.word-stage')).toBeVisible()
     await page.locator('.node-meaning').click()
     meaning = page.locator('dialog.detail-sheet[open] .meaning-entry')
-    await expect(meaning).toContainText('беречься, остерегаться, принимать меры предосторожности')
+    await expect(meaning).toContainText('конкретные меры предосторожности')
     await expect(meaning).toContainText('ٱتَّقَىٰ')
     await expect(meaning).toContainText('ittaqā')
-    await expect(meaning).not.toContainText('различие моделей раскрывается')
+    await expect(meaning).toContainText('конкретное практическое')
     await expect(meaning.locator('.meaning-map')).toHaveCount(0)
+
+    await openSearch(page, 'muttaqin')
+    await expect(page.locator('.word-stage')).toBeVisible()
+    await page.locator('.node-meaning').click()
+    meaning = page.locator('dialog.detail-sheet[open] .meaning-entry')
+    await expect(meaning).toContainText('благочестивые, праведные, осознанные перед Аллахом')
+    await expect(meaning).toContainText('осуществляют')
+    await expect(meaning).toContainText('более сильная похвала')
+    await expect(meaning).toContainText('تَقِيّ')
+    await expect(meaning).toContainText('taqiyy')
+
+    await openSearch(page, 'taqiyy')
+    await expect(page.locator('.word-stage')).toBeVisible()
+    await page.locator('.node-meaning').click()
+    meaning = page.locator('dialog.detail-sheet[open] .meaning-entry')
+    await expect(meaning).toContainText('благочестивый, праведный')
+    await expect(meaning).toContainText('устойчивой и выраженной чертой')
+    await expect(meaning).toContainText('более усиленную похвалу')
+    await expect(meaning).toContainText('مُتَّقٍ')
+    await expect(meaning).toContainText('muttaqin')
+
+    await openSearch(page, 'taqwa')
+    await expect(page.locator('.word-stage')).toBeVisible()
+    await page.locator('.node-meaning').click()
+    meaning = page.locator('dialog.detail-sheet[open] .meaning-entry')
+    await expect(meaning).toContainText('благочестие, праведность, осознанность перед Аллахом')
+    const positive = meaning.locator('.translation-note-positive')
+    const warning = meaning.locator('.translation-note-warning')
+    await expect(positive).toContainText('Допустимые передачи')
+    await expect(positive).toContainText('осознанность перед Аллахом')
+    await expect(warning).toContainText('Богобоязненность')
+    await expect(warning).toContainText('благоговейном трепете')
+    await expect(warning).toContainText('почтении')
+    await expect(warning).not.toContainText('Осознанность')
   })
 
   test('search language controls expose pressed state and Arabic stays directionally marked', async ({ page }) => {
