@@ -129,3 +129,27 @@ jobs:
           path: tafsircenter-2-197.json
           retention-days: 14
 
+  pilot_qamar:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pilot-qamar]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Download official QAMAR supplementary material
+        run: |
+          curl -L --fail --retry 3 --retry-delay 3             -o qamar-supplement.zip             'https://aclanthology.org/attachments/2026.abjadnlp-1.38.OptionalSupplementaryMaterial.zip'
+          test -s qamar-supplement.zip
+          unzip -l qamar-supplement.zip
+      - name: Extract QAMAR supplementary material
+        run: |
+          mkdir -p qamar-supplement
+          unzip -q qamar-supplement.zip -d qamar-supplement
+          find qamar-supplement -maxdepth 3 -type f -printf '%p\n' | sort
+      - name: Upload QAMAR supplementary material
+        uses: actions/upload-artifact@v4
+        with:
+          name: qamar-official-supplement
+          path: qamar-supplement
+          retention-days: 14
+
