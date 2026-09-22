@@ -221,10 +221,10 @@ Keep three different ideas separate:
 **التَّقْوَىٰ — благочестие**
 
 ### Meaning of the Russian equivalent
-Use the ordinary meaning of «благочестие»: reverence toward the Almighty and life/behavior corresponding to that reverence. Do not redefine the Russian word by simply repeating the Arabic explanation.
+Keep the ordinary Russian definition separate: **«почитание Всевышнего и жизнь/поведение в соответствии с этим почитанием»**. Do not redefine the Russian word by simply repeating the Arabic explanation.
 
 ### Source of this state in taqwā
-Explain separately that this state grows from remembering Allah and His presence, awareness of the boundaries He has established, and therefore caution against crossing those boundaries and doing evil.
+Explain separately: **«память об Аллахе и Его присутствии, осознание установленных Им границ; зная это, человек остерегается нарушать эти границы и делать зло»**.
 
 Conceptual flow:
 
