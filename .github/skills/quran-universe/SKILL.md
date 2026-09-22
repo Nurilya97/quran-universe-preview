@@ -313,7 +313,45 @@ Default hierarchy:
 
 Only show a section when it adds new information.
 
-Do not repeat the same concept under “Значение”, “Связь с корнем”, and “В этом аяте”.
+### Word Orbit meaning-card contract
+
+A Word Orbit meaning card must stand on its own. A reader should understand the word without opening another tab.
+
+For every visible word:
+
+1. **Start with a direct definition.**
+   - Prefer an ordinary verb, noun, adjective, or phrase that answers “what does this word mean?”
+   - Write `ٱتَّقَىٰ (ittaqā) — беречь себя / остерегаться`, not an abstract surrogate such as “занимать защитно-ориентированную позицию”.
+   - Do not make the reader infer the basic meaning from a mechanism, root theory, or morphology.
+
+2. **Add one short semantic-focus paragraph.**
+   - Explain what is foregrounded: action, state, agent, degree, process, means, stable quality, etc.
+   - Keep it to one or two short sentences.
+   - Do not repeat the definition in different words.
+
+3. **Give one useful contrast.**
+   - “Чем отличается” must compare the nearest genuinely confusable form.
+   - It must add a difference, not restate the lead.
+   - If reliable sources treat two forms as near-synonyms and do not establish a stable semantic boundary, say so explicitly. Do not invent a contrast from morphology alone.
+
+4. **Make Arabic readable.**
+   - In Russian explanatory prose, every Arabic lexical form must be followed by Latin transliteration on first mention in that local section: `تَقْوَىٰ (taqwā)`, `أَتْقَى (atqā)`.
+   - The renderer must not strip author-supplied transliteration.
+   - Do not assume the reader can vocalize Arabic unaided.
+
+5. **Do not use navigation as explanation.**
+   - Never write “различие раскрывается в «Строении слова»”, “смотрите там”, or equivalent as a substitute for explaining the meaning.
+   - Morphology may add a separate explanation, but the meaning panel must already answer what the word means and how it differs.
+
+6. **Avoid negative-definition chains.**
+   - Define the word positively first.
+   - Do not build paragraphs from “это не X, не Y, но Z” unless a rejected translation materially needs clarification.
+
+7. **Use mechanism maps only when they add information.**
+   - Simple lexical items normally need direct meaning + semantic focus + contrast, not a repeated “Механизм” card.
+   - Complex Quranic concepts may keep a map only for genuinely additional layers such as Quranic unfolding, source-of-state logic, or context.
+
+Do not repeat the same concept under “Значение”, “Связь с корнем”, “Механизм”, and “В этом аяте”.
 
 Morphological mechanics belong in structure/morphology, not in lexical meaning.
 
@@ -714,6 +752,11 @@ Before implementation, confirm internally:
 - Did I distinguish fact/synthesis/hypothesis?
 - Did I avoid unsupported semantic bridges?
 - Did I preserve alternative analyses when real uncertainty exists?
+- Does every Word Orbit card begin with a direct, ordinary-language definition?
+- Is every Arabic form in Russian explanatory prose readable through adjacent Latin transliteration?
+- Does “Чем отличается” add a real contrast instead of repeating the definition?
+- Did I avoid inventing semantic differences between near-synonyms when the sources do not support one?
+- Can the meaning panel stand alone without telling the reader to open Structure/Morphology?
 - Did I avoid duplicate explanation?
 
 If any answer is no, research is incomplete.
