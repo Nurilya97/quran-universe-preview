@@ -11,9 +11,11 @@
     "sync": "node scripts/sync-generated.mjs",
     "sync:check": "node scripts/sync-generated.mjs --check",
     "audit:system": "node scripts/system-audit.mjs",
-    "check": "npm run sync:check && npm run syntax:maintenance && npm run audit:system && npm run test:content",
-    "verify": "npm run check && npm run build",
-    "syntax:maintenance": "node --check scripts/sync-generated.mjs && node --check scripts/system-audit.mjs && node --check scripts/upstream-watch.mjs"
+    "check": "npm run sync:check && npm run syntax:maintenance && npm run audit:system && npm run security:static && npm run test:content",
+    "verify": "npm run check && npm run security:deps && npm run build",
+    "syntax:maintenance": "node --check scripts/sync-generated.mjs && node --check scripts/system-audit.mjs && node --check scripts/upstream-watch.mjs && node --check scripts/security-audit.mjs && node --check scripts/tamper-guard.mjs && node --check scripts/quarantine-download.mjs",
+    "security:static": "node scripts/security-audit.mjs && node scripts/tamper-guard.mjs",
+    "security:deps": "npm audit --audit-level=high"
   },
   "dependencies": {
     "@fontsource/noto-sans-arabic": "5.3.0",
