@@ -480,21 +480,29 @@ Do not redesign approved screens unless explicitly requested.
 
 A new root must inherit the approved template instead of receiving a bespoke layout.
 
-## 20. Morphology connectors — current approved rule
+## 20. Connector rules are context-specific
 
-The latest approved correction overrides older arrow/timeline notes.
+Do not apply one connector style globally across Quran Universe.
 
-Current rule:
-- straight connectors;
-- **3 px** thickness;
-- **no arrowheads**;
+### Word Orbit → Structure → Visual morphology
+
+The approved/current reference implementation uses:
+- straight **1 px** connectors;
+- an arrowhead showing direction of derivation;
+- desktop: horizontal connector between consecutive morphology nodes;
+- mobile: vertical 1 px connector, small dot at the upper end, arrowhead attached at the lower end;
 - clean geometric alignment;
-- no bent AI-looking branches;
+- no bent “AI-looking” branches;
 - no decorative elbow stubs;
-- no floating line fragments;
-- relationships must be visually intentional and readable on mobile and desktop.
+- no floating line fragments.
 
-Do not restore the old 1 px arrow treatment.
+Reuse this exact language when rebuilding the Word Orbit morphology scheme.
+
+### Other diagrams
+
+Root Space semantic relations, Ayah Space syntax relations, and other diagram families may use a different connector treatment. Inspect their approved reference before changing them.
+
+Never propagate a connector correction from one diagram family to every other diagram family unless the user explicitly approves that global change.
 
 ## 21. Visual hierarchy
 
