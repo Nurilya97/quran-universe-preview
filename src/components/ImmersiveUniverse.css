@@ -82,21 +82,21 @@ h1:focus { outline: none; }
   right: max(24px, env(safe-area-inset-right));
   bottom: max(22px, env(safe-area-inset-bottom));
   display: grid;
-  justify-items: end;
-  gap: 6px;
-  padding: 8px 10px;
-  border: 1px solid #d6d9de16;
-  border-radius: 4px;
-  background: #050709b8;
+  justify-items: start;
+  gap: 7px;
   color: #9ea4aa;
   font-size: 10px;
   line-height: 1.35;
 }
 .root-legend > span {
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: 56px auto;
   align-items: center;
-  gap: 7px;
+  column-gap: 8px;
   white-space: nowrap;
+}
+.root-legend > span > :first-child {
+  justify-self: end;
 }
 .root-legend b {
   color: #c9ced3;
@@ -133,7 +133,7 @@ h1:focus { outline: none; }
 .root-orbit { position: absolute; left: 50%; top: 50%; width: var(--diameter); aspect-ratio: 1; border: 1px solid #d6d9de38; border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; box-shadow: 0 0 25px #d6d9de04, inset 0 0 25px #d6d9de04; }
 .root-orbit-V { border-color: #c3cbd330; }
 .root-orbit-VIII { border-color: #d6d9de32; }
-.root-orbit > span { position: absolute; left: 0; top: 50%; transform: translate(-50%, -50%); background: #090c0f; padding: 4px; color: #b3b8be; font-size: 11px; font-weight: 500; letter-spacing: .015em; }
+.root-orbit > span { position: absolute; left: -8px; top: 50%; transform: translate(-100%, -50%); background: transparent; padding: 0; color: #b3b8be; font-size: 11px; font-weight: 500; letter-spacing: .015em; text-shadow: 0 1px 8px #000; }
 .root-core { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
 .root-core h1 { margin: 0; color: var(--word-white); font-family: 'Traditional Arabic', 'Geeza Pro', serif; font-size: clamp(30px, 4vw, 49px); font-weight: 400; line-height: 1.65; white-space: nowrap; text-shadow: 0 0 45px #d6d9de40; }
 .root-core > span { display: block; color: var(--muted); font-size: 12px; }
@@ -285,11 +285,7 @@ h1:focus { outline: none; }
   font-size: 8px;
 }
 .root-stage-lbb .root-orbit > span {
-  left: 0;
-  top: 50%;
-  transform: translate(-50%, -50%);
   font-size: 9px;
-  padding: 3px 5px;
 }
 
 /* Quran-attested words are the only coloured stars. */
@@ -326,14 +322,16 @@ h1:focus { outline: none; }
   }
   .root-stage-lbb .root-orbit > span {
     font-size: 7.5px;
-    padding: 2px 4px;
   }
   .root-legend {
     right: max(14px, env(safe-area-inset-right));
     bottom: max(14px, env(safe-area-inset-bottom));
-    gap: 4px;
-    padding: 6px 8px;
+    gap: 5px;
     font-size: 9px;
+  }
+  .root-legend > span {
+    grid-template-columns: 50px auto;
+    column-gap: 7px;
   }
   .root-legend b,
   .root-legend small {
@@ -362,15 +360,7 @@ h1:focus { outline: none; }
 }
 .root-stage-lbb .root-orbit-inner { border-style: dashed; border-color: #d6d9de26; }
 .root-stage-lbb .root-orbit > span {
-  left: 0;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background: #090c0f;
-  padding: 4px;
-  color: #b3b8be;
   font-size: 11px;
-  font-weight: 500;
-  letter-spacing: .015em;
 }
 .root-stage-lbb .root-star { min-width: 60px; }
 .root-stage-lbb .root-star .transliteration { font-size: 9px; }
