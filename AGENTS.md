@@ -12,7 +12,7 @@
 
 Before substantial Quran Universe implementation work:
 
-1. Load and follow `.github/skills/quran-universe/SKILL.md`. This is the project-specific authority.
+1. Load and follow `.github/skills/quran-universe/SKILL.md`. This is the master content-and-design authority for Quran Universe.
 2. For data/corpus work also read `docs/DATA_ARCHITECTURE.md`.
 3. For coding changes apply `.github/skills/ponytail/SKILL.md` after understanding the real flow. It may simplify implementation but may never simplify away canonical data, provenance, validation, accessibility, or approved UI.
 4. For repo-wide architecture, dependency/data-flow tracing, shared-owner discovery, and broad refactors use `.github/skills/graphify/SKILL.md`. If `graphify-out/graph.json` exists, query it before re-reading the repository.
@@ -116,26 +116,19 @@ The full pattern refines this contribution; it does not erase the contribution o
 
 ## 6. Morphology connectors
 
-Connectors must look deliberate and geometric.
+The latest approved morphology connector rule supersedes older arrow/timeline experiments.
 
-- Straight lines only.
-- 1 px thickness unless the user explicitly asks for another weight.
+- Straight geometric lines only.
+- 3 px thickness.
+- No arrowheads.
 - No bent “AI-looking” branches.
 - No decorative elbow stubs.
-- Use exactly one connector between consecutive morphology steps.
-- The approved mobile connector is: small dot at the upper heading → continuous 1 px vertical line → attached arrowhead at the lower heading.
-- On mobile, use one 1 px vertical timeline rail on the left of the text.
-- All step content sits to the right of this rail.
-- Anchor the rail to the numbered step headings: the segment starts at the vertical center of “01 …” and ends at the vertical center of “02 …”; the next segment runs from “02 …” to “03 …”, and so on.
-- Put a small dot exactly at the upper endpoint beside the current numbered heading.
-- Put the arrowhead exactly at the lower endpoint beside the next numbered heading.
-- The arrowhead is physically attached to the 1 px line at its endpoint. Never render the arrow as a separate glyph, in the middle of the line, or with a visible gap.
-- The connector must never float between a paragraph and the next word, and must never start from the body copy.
-- Reuse the same restrained arrow treatment as the approved taqwā evolution; no filled triangle arrowheads.
-- On desktop, the same visual language may run horizontally when the steps are horizontal.
-- Explanatory callouts are text-only: do not add side borders or branch lines to them.
-- If the user says “как в taqwā” or names another approved screen, inspect that existing implementation first and reuse its spacing, alignment, line weight, and interaction pattern. Do not invent a new visual language.
-- The latest explicit user correction overrides older project notes. Before changing a repeated element, check the latest accepted rule in this file and the approved reference implementation.
+- Use one clear connector between consecutive morphology steps.
+- The connector must remain visually anchored to the relevant stages and must not float between body paragraphs.
+- If the accepted reference contains a small endpoint dot, preserve it only when matching that reference exactly; do not introduce new dots as decoration.
+- Explanatory callouts are text-only: do not add side borders or decorative branch lines.
+- If the user says “как в taqwā” or names another approved screen, inspect that implementation first and reuse its spacing, alignment, line weight, and interaction pattern.
+- The latest explicit user correction overrides older project notes.
 - Use the same connector language across roots, including taqwā and ل ب ب.
 
 ## 7. Root orbit notation
