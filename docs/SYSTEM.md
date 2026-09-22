@@ -40,3 +40,9 @@ Canonical structured registries generate their human-readable documentation with
 A weekly `system-health.yml` run performs the full system check, production build, browser contracts, upstream skill watch, core-source freshness watch, and QAMAR release watch. Findings create/update one GitHub maintenance issue instead of silently mutating research data.
 
 Dependabot watches npm and GitHub Actions dependencies weekly. Third-party agent skills are intentionally not auto-replaced: upstream changes are detected automatically, then pass the skill-security review before adoption.
+
+## Security contour
+
+Security is repository-native and additive to the existing Quran/content guards. CodeQL, dependency review, npm audit, immutable Action SHAs, CSP, external-data quarantine, secret/injection checks, CODEOWNERS and the critical-data tamper baseline are documented in `docs/SECURITY.md`.
+
+External datasets never enter canonical paths directly: downloads are quarantined and verified first. Critical Quran/research data changes intentionally require both the ordinary content guards and a reviewed tamper-baseline update.
