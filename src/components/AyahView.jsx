@@ -217,9 +217,9 @@ function TaqwaMorphologyLegacy({ selected, morphology, language }) {
                 <span lang="ar" dir="rtl">{morphologyParts[1]?.ar || 'تَقْوَىٰ'}</span>
                 <small>{morphologyParts[1]?.tr || 'taqwā'}</small>
                 <b>{ru ? 'Слово без артикля' : 'Word without the article'}</b>
-                <p>{ru
-                  ? 'تَقْوَىٰ (taqwā) — существительное. Контекстный перевод в этом аяте: «благочестие / праведность».'
-                  : 'تَقْوَىٰ (taqwā) is a noun. Contextual renderings here include “piety” and “righteousness”.'}</p>
+                <p>{selected.analysis?.[language]?.meaning?.gloss || (ru
+                  ? 'تَقْوَىٰ (taqwā) — существительное.'
+                  : 'تَقْوَىٰ (taqwā) is a noun.')}</p>
               </article>
 
               <article className="analysis-morphology-node article">
@@ -286,9 +286,7 @@ function TaqwaMorphologyLegacy({ selected, morphology, language }) {
                 <p>{ru
                   ? <><b>Что добавилось:</b> ٱلـ (al-) присоединяется к слову и делает его определённым.</>
                   : <><b>What is added:</b> ٱلـ (al-) attaches to the word and makes it definite.</>}</p>
-                <p>{ru
-                  ? <><b>В аяте 2:197:</b> краткий контекстный перевод — «благочестие / праведность».</>
-                  : <><b>In 2:197:</b> concise contextual renderings include “piety / righteousness.”</>}</p>
+                <p><b>{ru ? `В аяте ${selected.reference || '2:197'}:` : `In ${selected.reference || '2:197'}:`}</b> {selected.analysis?.[language]?.meaning?.gloss}</p>
               </div>
             </div>
           
