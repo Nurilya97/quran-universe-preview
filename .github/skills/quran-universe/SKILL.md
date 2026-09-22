@@ -70,7 +70,9 @@ When several translations are possible:
 - identify what each preserves;
 - identify what each loses;
 - choose the project rendering from the ayah context, not from popularity;
-- retain alternative published renderings only when they materially help explain the decision.
+- retain alternative published renderings only when they materially help explain the decision;
+- do not repeat “depending on context” inside every lexical definition; state context-sensitivity once in the general explanation and let each card define the word directly;
+- green/positive translation notes mean contextually valid renderings; red/warning notes are reserved for renderings that materially distort or over-narrow the concept. Never mark a valid partial/contextual rendering red merely because it is not universal.
 
 Do not describe a meaning as merely “religious”, “spiritual”, or “moral” when those labels do not explain the semantic mechanism.
 
@@ -332,7 +334,10 @@ For every visible word:
 3. **Give one useful contrast.**
    - “Чем отличается” must compare the nearest genuinely confusable form.
    - It must add a difference, not restate the lead.
-   - If reliable sources treat two forms as near-synonyms and do not establish a stable semantic boundary, say so explicitly. Do not invent a contrast from morphology alone.
+   - For near-synonyms, research **connotation as well as denotation**: stable quality vs enacted action, intensity, praise/evaluation, register, typical collocations, concrete vs abstract usage, Quranic conventionalization, and other source-supported tendencies.
+   - Grammar is evidence, not the final answer. Do not stop at “one is an adjective and one is an active participle”; explain the semantic colouring created by that contrast when a source supports it.
+   - If lexicons call two forms synonymous, continue with corpus/usage research before concluding that there is no nuance. If only a usage tendency is supported, label it as a connotational/usage tendency rather than a hard lexical boundary.
+   - Never invent a distinction from morphology alone.
 
 4. **Make Arabic readable.**
    - In Russian explanatory prose, every Arabic lexical form must be followed by Latin transliteration on first mention in that local section: `تَقْوَىٰ (taqwā)`, `أَتْقَى (atqā)`.
@@ -755,7 +760,9 @@ Before implementation, confirm internally:
 - Does every Word Orbit card begin with a direct, ordinary-language definition?
 - Is every Arabic form in Russian explanatory prose readable through adjacent Latin transliteration?
 - Does “Чем отличается” add a real contrast instead of repeating the definition?
-- Did I avoid inventing semantic differences between near-synonyms when the sources do not support one?
+- Did I research connotative differences between near-synonyms instead of stopping at grammatical labels?
+- Did I distinguish an explicit lexical difference from a usage-based connotational tendency?
+- Did I avoid inventing semantic differences when the sources do not support one?
 - Can the meaning panel stand alone without telling the reader to open Structure/Morphology?
 - Did I avoid duplicate explanation?
 
