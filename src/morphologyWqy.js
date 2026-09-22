@@ -97,8 +97,8 @@ export const MORPHOLOGY = {
     ],
     transformation: {
       root: 'و', form: 'ت', result: 'تّ',
-      ru: 'و корня сливается с ت VIII формы.',
-      en: 'The root و assimilates with the Form VIII ت.',
+      ru: 'Первая корневая و сначала заменяется на ت (إبدال), затем эта ت сливается с ت VIII формы (إدغام) → تّ.',
+      en: 'The first root و is first replaced by ت (ibdāl), then that ت merges with the Form VIII ت (idghām) → تّ.',
     },
     components: [],
     derivedFrom: {
@@ -128,8 +128,8 @@ export const MORPHOLOGY = {
     ],
     transformation: {
       root: 'و', form: 'ت', result: 'تّ',
-      ru: 'و корня сливается с ت формы; конечная корневая ي в этой форме множественного числа выпадает перед ـينَ.',
-      en: 'The root و assimilates with the form’s ت; the final root ي is dropped here before the plural ending ـينَ.',
+      ru: 'Первая корневая و сначала заменяется на ت, затем сливается с ت формы → تّ; конечная корневая ي в этой форме множественного числа выпадает перед ـينَ.',
+      en: 'The first root و is first replaced by ت and then merges with the form’s ت → تّ; the final root ي is dropped here before the plural ending ـينَ.',
     },
     components: [
       {
@@ -189,8 +189,8 @@ export const MORPHOLOGY = {
     ],
     derivedFrom: {
       ar: 'ٱتَّقَىٰ', reading: 'ittaqā', metaRu: 'глагол VIII формы', metaEn: 'Form VIII verb',
-      ru: 'تَقْوَىٰ (taqwā) происходит от глагола ٱتَّقَىٰ (ittaqā).',
-      en: 'تَقْوَىٰ (taqwā) comes from the verb ٱتَّقَىٰ (ittaqā).',
+      ru: 'تَقْوَىٰ (taqwā) словообразовательно связано с глаголом ٱتَّقَىٰ (ittaqā); собственная модель существительного показана отдельно как فَعْلَى.',
+      en: 'تَقْوَىٰ (taqwā) is derivationally related to the verb ٱتَّقَىٰ (ittaqā); the noun’s own pattern is shown separately as فَعْلَى.',
     },
     pattern: {
       ar: 'فَعْلَى', reading: 'faʿlā',
