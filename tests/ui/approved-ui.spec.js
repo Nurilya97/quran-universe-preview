@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 
 async function openSearch(page, query) {
   await page.goto('spatial.html')
-  const input = page.getByRole('searchbox')
+  const input = page.locator('.search-form input')
   await expect(input).toBeVisible()
   await input.fill(query)
   await input.press('Enter')
