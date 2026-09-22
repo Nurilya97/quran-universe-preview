@@ -124,7 +124,7 @@ test.describe('approved Quran Universe UI contracts', () => {
     await expect(words.nth(25)).toHaveClass(/is-entry/)
     await expect(words.nth(25)).toContainText('ٱلتَّقْوَىٰ')
 
-    await page.getByRole('button', { name: 'Риторика' }).click()
+    await page.getByRole('tab', { name: 'Риторика' }).click()
     const grammarReference = ayah.locator('.rhetoric-source-note a')
     await expect(grammarReference).toHaveAttribute('href', /chapter=2&verse=197/)
   })
