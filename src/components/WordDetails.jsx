@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { hasAyahPrototype } from '../ayahPrototype.js'
 import { COPY, FORMS } from '../demo.js'
 import { CONTENT_SOURCES, ROOT_CONTENT, WORD_CONTENT, LBB_ROOT_CONTENT, LBB_WORD_CONTENT, LBB_DERIVATION_NOTES } from '../rootContent.js'
 import { OCCURRENCES, ROOT_OCCURRENCE_COUNT, rootOccurrenceCount, groupOccurrences } from '../occurrences.js'
@@ -559,7 +560,7 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
             <summary>{t.sura} {sura}<span>{verseItems.length}</span></summary>
             <div className="quran-reference-grid">{verseItems.map(item => {
               const reference = item.sura + ':' + item.ayah
-              const isPrototype = reference === '2:197'
+              const isPrototype = hasAyahPrototype(reference)
               return <button key={reference} onClick={() => onOpenAyah?.(item)} disabled={!isPrototype}
                 className={isPrototype ? 'has-prototype' : ''} aria-label={t.openVerse + ' ' + reference}>
                 <span>{reference}</span>
