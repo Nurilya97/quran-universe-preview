@@ -1,8 +1,16 @@
 # Quran Universe — editorial and UI rules
 
-## Project skill
+## Project skills
 
-Before substantial Quran Universe implementation work, load and follow `.github/skills/quran-universe/SKILL.md`. For data/corpus work also read `docs/DATA_ARCHITECTURE.md`.
+Before substantial Quran Universe implementation work:
+
+1. Load and follow `.github/skills/quran-universe/SKILL.md`. This is the project-specific authority.
+2. For data/corpus work also read `docs/DATA_ARCHITECTURE.md`.
+3. For coding changes apply `.github/skills/ponytail/SKILL.md` after understanding the real flow. It may simplify implementation but may never simplify away canonical data, provenance, validation, accessibility, or approved UI.
+4. For repo-wide architecture, dependency/data-flow tracing, shared-owner discovery, and broad refactors use `.github/skills/graphify/SKILL.md`. If `graphify-out/graph.json` exists, query it before re-reading the repository.
+5. Use `ponytail-review` or `ponytail-audit` for cleanup only after correctness and Quran Universe invariants are established.
+
+Authority order: latest explicit user instruction → AGENTS.md / Quran Universe skill → approved canonical UI/data → supporting skills such as Graphify and Ponytail.
 
 These rules are the default source of truth for future Quran Universe changes.
 
