@@ -135,7 +135,7 @@ export const AYAH_PROTOTYPES = {
                 { ar: 'و', tr: '-ū', label: 'واو الجماعة — субъект «вы»' },
                 { ar: 'نِ', tr: '-ni', label: 'نون الوقاية; yā «Меня» опущена, её показывает kasra' },
               ],
-              text: 'Структура читается как وَ + ٱتَّقُوا + نِ. Глагол ٱتَّقُوا (ittaqū) — повелительная форма от ٱتَّقَىٰ (ittaqā), VIII формы корня و ق ي (w-q-y). В этой форме начальная корневая و преобразуется и сливается с ت, поэтому появляется удвоенная تّ. Полная объектная форма подразумевает ٱتَّقُونِي (ittaqūnī): ن — nūn al-wiqāya, а yā местоимения «Меня» в коранической записи опущена; её след сохраняется в касре نِ.',
+              text: 'Структура читается как وَ + ٱتَّقُوا + نِ. Глагол ٱتَّقُوا (ittaqū) — повелительная форма от ٱتَّقَىٰ (ittaqā), VIII формы корня و ق ي (w-q-y). Первая корневая و сначала заменяется на ت (إبدال), затем эта ت сливается с ت VIII формы (إدغام), поэтому появляется удвоенная تّ. Полная объектная форма подразумевает ٱتَّقُونِي (ittaqūnī): ن — nūn al-wiqāya, а yā местоимения «Меня» в коранической записи опущена; её след сохраняется в касре نِ.',
             },
             syntax: {
               plain: 'Это прямое повеление группе людей. Действие направлено к Аллаху как к объекту обращения: «Меня». В контексте аята эта направленность выражает осознанность перед Аллахом и сохранение поведения внутри установленных Им границ.',
@@ -158,7 +158,7 @@ export const AYAH_PROTOTYPES = {
                 { ar: 'و', tr: '-ū', label: 'plural subject pronoun “you”' },
                 { ar: 'نِ', tr: '-ni', label: 'nūn al-wiqāya; the yā “Me” is omitted and indicated by kasrah' },
               ],
-              text: 'The structure is وَ + ٱتَّقُوا + نِ. ٱتَّقُوا (ittaqū) is the plural imperative of Form VIII ٱتَّقَىٰ (ittaqā), from the root و ق ي (w-q-y). In this form, the initial root و is transformed and assimilates with ت, producing doubled تّ. The full object form underlying the expression is ٱتَّقُونِي (ittaqūnī): ن is nūn al-wiqāya, while the pronominal yā “Me” is omitted in the Quranic spelling and its trace remains in the kasrah of نِ.',
+              text: 'The structure is وَ + ٱتَّقُوا + نِ. ٱتَّقُوا (ittaqū) is the plural imperative of Form VIII ٱتَّقَىٰ (ittaqā), from the root و ق ي (w-q-y). The first root و is first replaced by ت (ibdāl), then that ت merges with the Form VIII ت (idghām), producing doubled تّ. The full object form underlying the expression is ٱتَّقُونِي (ittaqūnī): ن is nūn al-wiqāya, while the pronominal yā “Me” is omitted in the Quranic spelling and its trace remains in the kasrah of نِ.',
             },
             syntax: {
               plain: 'This is a direct command to a plural audience. The action is grammatically directed to Allah as the first-person object “Me.” In this ayah, that direction expresses mindfulness of Allah together with conduct guarded within His boundaries.',
