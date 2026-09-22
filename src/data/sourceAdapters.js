@@ -53,11 +53,12 @@ export const PILOT_SOURCE_ADAPTERS = {
     authority: 'Faqihi, Bouzoubaa, Tajmout, Namly · AbjadNLP 2026',
     url: 'https://aclanthology.org/2026.abjadnlp-1.38/',
     license: 'ACL Anthology 2026 material · CC BY 4.0',
-    access: 'paper_and_optional_supplement_available',
+    access: 'paper_public_corpus_release_not_found',
     wordKey: null,
     layers: ['msa_equivalent', 'stem', 'lemma', 'root', 'pos'],
-    pilotStatus: 'metadata_verified_row_import_pending',
+    pilotStatus: 'publication_verified_release_pending',
     checkedOn: '2026-09-22',
+    note: 'ACL optional supplementary material currently contains the paper source and figures, not the QAMAR corpus. The paper states that the corpus will be released as an open-source resource after peer review; a row-level public corpus release was not present in the ACL attachment checked on 2026-09-22.',
   },
 }
 
@@ -79,8 +80,8 @@ export const PILOT_2_197_DATASET_STATUS = {
     note: 'Official current download form requires organization affiliation; no unofficial mirror is promoted to canonical data.',
   },
   qamar: {
-    status: 'import_pending',
+    status: 'release_pending',
     mappedOrthographicWords: 0,
-    note: 'Paper and optional supplementary material are identified; row-level 2:197 mapping is not yet stored in this repo.',
+    note: 'The publication is verified, but the ACL optional supplementary archive contains paper source/figures rather than corpus rows. No row-level QAMAR mapping is claimed until the official corpus release is located.',
   },
 }
