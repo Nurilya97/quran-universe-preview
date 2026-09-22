@@ -80,6 +80,7 @@ export function prepareAyahRecord(record) {
     tokens: record.tokens.map((token, index) => ({
       ...token,
       canonicalId: canonicalWordId(surah, ayah, index + 1),
+      ayahReference: record.reference,
       wordIndex: index + 1,
     })),
   }
