@@ -10,6 +10,8 @@ export const CONTENT_SOURCES = {
   jawhari: { url: 'https://arabiclexicon.hawramani.com/?p=9899#feef21', ru: 'Аль-Джаухари · «Ас-Сихах», وقى', en: 'Al-Jawhari · Al-Sihah, وقى' },
   laneWqy: { url: 'https://arabiclexicon.hawramani.com/?p=9899#0d72b9', ru: 'Lane · Arabic-English Lexicon, وقى', en: 'Lane · Arabic-English Lexicon, وقى' },
   laneTqy: { url: 'https://arabiclexicon.hawramani.com/?p=17705#09c7e5', ru: 'Lane · Arabic-English Lexicon, تقى', en: 'Lane · Arabic-English Lexicon, تقى' },
+  lisanWqy: { url: 'https://www.islamweb.net/ar/library/content/122/9138/%D9%88%D9%82%D9%8A', ru: 'Ибн Манзур · «Лисан аль-Араб» · وقى', en: 'Ibn Manzur · Lisan al-Arab · وقى' },
+  furuqTaqi: { url: 'https://ablibrary.net/book_content/b/2655/137', ru: 'Абу Хиляль аль-Аскари · «Аль-Фурук аль-лугавийя» · التقي والمتقي', en: 'Abu Hilal al-Askari · Al-Furuq al-Lughawiyya · التقي والمتقي' },
   ibnFaris: { url: 'https://arabiclexicon.hawramani.com/?p=15912#565c1b', ru: 'Ибн Фарис · «Мака̄йӣс аль-луга», وقى', en: 'Ibn Faris · Maqayis al-Lugha, وقى' },
   tuqatPattern: { url: 'https://www.greattafsirs.com/Tafsir_Library.aspx?AyahNo=28&MadhabNo=1&SoraNo=3&TafsirNo=5', ru: 'Аль-Куртуби · языковой разбор تُقَاة, 3:28', en: 'Al-Qurtubi · linguistic analysis of تُقَاة, 3:28' },
   tuqatCorpus: { url: 'https://corpus.quran.com/wordmorphology.jsp?location=(3:102:7)', ru: 'Разметка слова تُقَاتِهِ · 3:102:7', en: 'Annotation of تُقَاتِهِ · 3:102:7' },
@@ -59,15 +61,15 @@ export const WORD_CONTENT = {
       en: ['A Form VIII verb from و ق ي. The first root letter و changes and assimilates with the pattern’s ت, producing the doubled ت in ٱتَّقَىٰ.', 'The present form is يَتَّقِي (yattaqī). The regular verbal noun is اِتِّقَاء (ittiqāʾ). تَقْوَى is a related noun with its own pattern.'],
     },
     meaning: {
-      ru: { lead: 'ٱتَّقَىٰ (ittaqā) — беречь себя, остерегаться, предохранять себя от того, что может причинить вред или привести к дурному исходу.', body: 'В фокусе действие самого человека: он понимает, чего следует избегать, и ведёт себя так, чтобы уберечь себя от вреда или дурного последствия. Конкретное содержание задаёт контекст.' },
-      en: { lead: 'ٱتَّقَىٰ (ittaqā) — to guard oneself, beware, or protect oneself from what may cause harm or a bad consequence.', body: 'The focus is the person’s own action: recognising a risk, transgression, or boundary and adjusting behaviour to avoid a harmful consequence. Context supplies the specific object.' },
+      ru: { lead: 'ٱتَّقَىٰ (ittaqā) — беречь себя, остерегаться, предохранять себя от вреда или дурного последствия.', body: 'В кораническом употреблении этот глагол получает более широкий этический оттенок: человек регулирует себя перед Аллахом, учитывает Его границы и удерживается от их нарушения. Это развитие употребления, а не отдельное базовое значение корня.' },
+      en: { lead: 'ٱتَّقَىٰ (ittaqā) — to guard oneself, beware, or protect oneself from harm or a bad consequence.', body: 'In Quranic usage the verb develops a broader ethical colouring: the person regulates themself before Allah, attends to His boundaries, and guards against crossing them. This is a usage development, not a separate basic root meaning.' },
     },
     meaningMap: [],
     distinction: {
-      ru: 'По словарному значению ٱتَّقَىٰ (ittaqā) очень близок к تَوَقَّىٰ (tawaqqā): оба могут означать «беречься / остерегаться». Надёжную самостоятельную смысловую границу между ними мы не проводим.',
-      en: 'Lexically, ٱتَّقَىٰ (ittaqā) is very close to تَوَقَّىٰ (tawaqqā): both can mean “to guard oneself / beware.” We do not impose a separate semantic boundary that the sources do not establish.',
+      ru: 'ٱتَّقَىٰ (ittaqā) и تَوَقَّىٰ (tawaqqā) словари прямо сближают по значению. Оттенок различается прежде всего по употреблению: تَوَقَّىٰ (tawaqqā) чаще профилирует конкретную предосторожность и избегание определённого вреда, а ٱتَّقَىٰ (ittaqā) в кораническом употреблении развивает более широкое этическое самосохранение перед Аллахом. Это коннотационная, а не жёсткая словарная граница.',
+      en: 'Lexicons explicitly bring ٱتَّقَىٰ (ittaqā) and تَوَقَّىٰ (tawaqqā) close in meaning. The nuance is chiefly usage-based: تَوَقَّىٰ (tawaqqā) more often profiles a concrete precaution against a specified harm, while Quranic ٱتَّقَىٰ (ittaqā) develops a broader ethical self-guarding before Allah. This is a connotational tendency, not a hard lexical boundary.',
     },
-    structureSources: ['jawhari', 'laneTqy'], meaningSources: ['raghib', 'laneWqy'], related: ['taqwa', 'muttaqin', 'tuqat'],
+    structureSources: ['jawhari', 'laneTqy'], meaningSources: ['raghib', 'laneWqy', 'lisanWqy'], related: ['taqwa', 'muttaqin', 'tuqat'],
   },
   taqwa: {
     pattern: 'فَعْلَى', patternReading: 'faʿlā',
@@ -76,8 +78,8 @@ export const WORD_CONTENT = {
       en: ['A noun naming a quality or state and derivationally related to ٱتَّقَىٰ. The noun is shown with its own pattern فَعْلَى.', 'To make the letters transparent, classical morphology reconstructs an underlying وَقْيَا from the root و ق ي. First, the initial root و is replaced by ت: وَقْيَا → تَقْيَا. Then the final root ي in a noun on فَعْلَى is replaced by و: تَقْيَا → تَقْوَىٰ. Thus initial ت goes back to the first root و, while the و after ق goes back to the third root ي.', 'The intermediate forms are shown here as a morphological reconstruction that explains the letter changes, not as separate dictionary words. Classical sources may order the intermediate stages differently; the key correspondences remain initial و with ت and final root ي with the و after ق. Orbit VIII represents the derivational family; the noun’s own pattern is فَعْلَى.'],
     },
     meaning: {
-      ru: { lead: 'تَقْوَىٰ (taqwā) — состояние или качество, при котором человек помнит об Аллахе и Его присутствии, учитывает установленные Им границы и поэтому остерегается их нарушать и совершать зло.', body: 'В 2:197 это передаётся как «благочестие». Это не делает «благочестие» единственным переводом для всех аятов: русский вариант выбирается по контексту.' },
-      en: { lead: 'تَقْوَىٰ (taqwā) — a state or quality in which a person remembers Allah and His presence, attends to the boundaries He has set, and therefore guards against crossing them and doing evil.', body: 'In 2:197 this is rendered as “piety.” That does not make “piety” the single translation for every ayah; the surface rendering remains context-sensitive.' },
+      ru: { lead: 'تَقْوَىٰ (taqwā) — благочестие, праведность, осознанность перед Аллахом; широкая концепция внутренней направленности к Нему.', body: 'Эти русские варианты передают разные стороны одного поля смысла. Внутри концепции соединяются память об Аллахе и Его присутствии, внимание к установленным Им границам, остережение от их нарушения и соответствующее поведение. Ни один русский эквивалент не покрывает всё поле одинаково; выбор конкретной передачи определяется аятом.' },
+      en: { lead: 'تَقْوَىٰ (taqwā) — piety, righteousness, God-consciousness; a broad concept of inward orientation toward Allah.', body: 'These renderings preserve different sides of one semantic field: remembrance of Allah and His presence, attention to the boundaries He has set, guarding against crossing them, and the conduct that follows. No single English equivalent covers the whole field equally in every ayah.' },
     },
     meaningMap: [
       {
@@ -98,25 +100,25 @@ export const WORD_CONTENT = {
       ru: [
         {
           tone: 'positive',
-          title: 'В 2:197 — «благочестие»',
-          text: '«Благочестие» передаёт почитание Всевышнего и поведение, соответствующее этому почитанию. В taqwā источник такого состояния раскрывается отдельно: память об Аллахе и Его присутствии, осознание Его границ и остережение от их нарушения.',
+          title: 'Допустимые передачи',
+          text: '«Благочестие», «праведность» и «осознанность перед Аллахом» передают разные стороны تَقْوَىٰ (taqwā). В 2:197 основным переводом остаётся «благочестие»; в других аятах другой вариант может лучше передавать активированный оттенок.',
         },
         {
           tone: 'warning',
-          title: '«Осознанность» — не самостоятельный перевод',
-          text: 'Осознанность может описывать часть внутреннего механизма, но по-русски не передаёт всего состояния и направленности к послушанию. Поэтому она используется в объяснении источника, а не как замена слова taqwā.',
+          title: '«Богобоязненность»',
+          text: 'Проблемна как общий перевод تَقْوَىٰ (taqwā), потому что выдвигает боязнь и страх на первое место и сужает более широкое поле защиты, внимания и саморегуляции. Если нужно передать эмоциональный оттенок отношения к Аллаху, точнее говорить о благоговейном трепете и почтении, а не делать страх центром значения.',
         },
       ],
       en: [
         {
           tone: 'positive',
-          title: 'In 2:197 — “piety”',
-          text: '“Piety” is used as the context rendering. The source of that state is explained separately through remembrance of Allah, attention to His boundaries, and guarding against crossing them.',
+          title: 'Contextually valid renderings',
+          text: '“Piety”, “righteousness”, and “God-consciousness” preserve different sides of تَقْوَىٰ (taqwā). In 2:197 “piety” remains the primary rendering, while another ayah may foreground a different side.',
         },
         {
           tone: 'warning',
-          title: 'Awareness is explanatory, not a universal gloss',
-          text: 'Awareness can describe part of the inward mechanism, but it does not by itself exhaust the Quranic concept or establish one universal English rendering.',
+          title: 'Fear-centred “God-fearing”',
+          text: 'Problematic as a general rendering because it makes fear the semantic centre and narrows the broader field of guarding, attentiveness, and self-regulation. Where an emotional component is relevant, reverential awe and regard are more precise than making fear the whole meaning.',
         },
       ],
     },
@@ -151,8 +153,8 @@ export const WORD_CONTENT = {
       en: ['An active participle of Form VIII, naming someone who performs ٱتَّقَىٰ. The pattern is singular; the displayed word is plural.', 'The singular is مُتَّقٍ (muttaqin). The plural is مُتَّقُونَ (muttaqūna) in the nominative and مُتَّقِينَ (muttaqīna) in the accusative or genitive. Long ī distinguishes the displayed plural form.'],
     },
     meaning: {
-      ru: { lead: 'مُتَّقِين (muttaqīn) — люди, которые живут с تَقْوَىٰ (taqwā): помнят об Аллахе, учитывают Его границы и остерегаются их нарушать.', body: 'Это множественное действительное причастие от ٱتَّقَىٰ (ittaqā), поэтому слово показывает людей через практику и выбор, а не только через название качества.' },
-      en: { lead: 'مُتَّقِين (muttaqīn) — people who live with تَقْوَىٰ (taqwā): remembering Allah, attending to His boundaries, and guarding against crossing them.', body: 'It is the plural active participle of ٱتَّقَىٰ (ittaqā), so it presents people through enacted practice and choice rather than only by naming a quality.' },
+      ru: { lead: 'مُتَّقِين (muttaqīn) — благочестивые, праведные, осознанные перед Аллахом, остерегающиеся нарушать Его границы.', body: 'Это люди, которые осуществляют ٱتَّقَىٰ (ittaqā) в своём поведении: их تَقْوَىٰ (taqwā) видна в выборе, самоограничении и поступках. Действительное причастие сохраняет оттенок осуществляемого действия.' },
+      en: { lead: 'مُتَّقِين (muttaqīn) — the pious, the righteous, the God-conscious; people who guard against crossing Allah’s boundaries.', body: 'They are people who enact ٱتَّقَىٰ (ittaqā) in conduct: their تَقْوَىٰ (taqwā) is visible in choices, restraint, and action. The active participle preserves an agentive, enacted nuance.' },
     },
     meaningMap: [
       {
@@ -170,10 +172,10 @@ export const WORD_CONTENT = {
       },
     ],
     distinction: {
-      ru: 'مُتَّقِين (muttaqīn) — множественное действительное причастие от ٱتَّقَىٰ (ittaqā); تَقِيّ (taqiyy) — прилагательное «благочестивый». По смыслу формы близки; уверенно различается прежде всего способ, которым грамматика описывает человека.',
-      en: 'مُتَّقِين (muttaqīn) is the plural active participle of ٱتَّقَىٰ (ittaqā); تَقِيّ (taqiyy) is the adjective “pious.” The forms are close in meaning; the securely established difference is primarily how the grammar describes the person.',
+      ru: 'مُتَّقٍ (muttaqin) и تَقِيّ (taqiyy) оба описывают благочестивого человека, но с разным оттенком. مُتَّقٍ (muttaqin) как действительное причастие сильнее удерживает связь с осуществляемым ٱتَّقَىٰ (ittaqā): человек активно бережёт себя и соблюдает границы. تَقِيّ (taqiyy) характеризует уже само качество человека и в классическом «Аль-Фурук аль-лугавийя» оценивается как более сильная похвала и усиленная характеристика.',
+      en: 'مُتَّقٍ (muttaqin) and تَقِيّ (taqiyy) both describe a pious person, but with different colouring. As an active participle, مُتَّقٍ (muttaqin) keeps a stronger link to enacted ٱتَّقَىٰ (ittaqā): the person actively guards themself and keeps the boundaries. تَقِيّ (taqiyy) characterises the person through the quality itself, and Abu Hilal al-Askari explicitly treats it as stronger praise and an intensified characterization.',
     },
-    structureSources: ['corpus', 'laneTqy'], meaningSources: ['raghib', 'laneTqy', 'baqarahMuttaqin'], related: ['ittaqa', 'taqwa'],
+    structureSources: ['corpus', 'laneTqy'], meaningSources: ['raghib', 'laneTqy', 'baqarahMuttaqin', 'furuqTaqi'], related: ['ittaqa', 'taqwa'],
   },
   waq: {
     pattern: 'فَاعِل', patternReading: 'fāʿil',
@@ -199,8 +201,8 @@ export const WORD_CONTENT = {
       en: ['An adjective describing a person’s quality. فَعِيل is one of the pattern analyses recorded by Lane, who also discusses an alternative historical account.', 'Its usage is close to مُتَّقٍ, but its form differs. A plural is أَتْقِيَاء (atqiyāʾ). The doubled ي in تَقِيّ belongs to the word’s formation.'],
     },
     meaning: {
-      ru: { lead: 'تَقِيّ (taqiyy) — благочестивый; человек, для которого تَقْوَىٰ (taqwā) является устойчивым качеством.', body: 'Это прилагательное: оно характеризует человека через качество, а не описывает отдельное действие в конкретный момент.' },
-      en: { lead: 'تَقِيّ (taqiyy) — pious; a person for whom تَقْوَىٰ (taqwā) is a stable quality.', body: 'It is an adjective: it characterises the person through a quality rather than describing one separate action at a particular moment.' },
+      ru: { lead: 'تَقِيّ (taqiyy) — благочестивый, праведный; человек, у которого تَقْوَىٰ (taqwā) стала устойчивой и выраженной чертой.', body: 'Здесь в фокусе не отдельный акт остережения, а характеристика самого человека. Классический источник по лексическим различиям прямо отмечает у تَقِيّ (taqiyy) оттенок усиления и более сильной похвалы по сравнению с مُتَّقٍ (muttaqin).' },
+      en: { lead: 'تَقِيّ (taqiyy) — pious, righteous; a person in whom تَقْوَىٰ (taqwā) has become an established and strongly marked quality.', body: 'The focus is not one act of guarding but the person’s characterization. A classical lexical-differences source explicitly gives تَقِيّ (taqiyy) an intensified, more strongly praiseworthy colouring than مُتَّقٍ (muttaqin).' },
     },
     occurrenceNote: {
       ru: 'Особенность источника: корпус включает сюда تُقَاتِهِ из 3:102:7 и размечает его как существительное во множественном числе. Это отдельная словоформа; счётчик сохраняет именно такую группировку корпуса.',
@@ -208,10 +210,10 @@ export const WORD_CONTENT = {
     },
     meaningMap: [],
     distinction: {
-      ru: 'تَقِيّ (taqiyy) — прилагательное «благочестивый»; مُتَّقٍ (muttaqin) — действительное причастие от ٱتَّقَىٰ (ittaqā). По смыслу они близки; без отдельного источника мы не приписываем им более жёсткую семантическую границу.',
-      en: 'تَقِيّ (taqiyy) is the adjective “pious”; مُتَّقٍ (muttaqin) is the active participle of ٱتَّقَىٰ (ittaqā). They are close in meaning; without separate evidence we do not impose a stronger semantic boundary between them.',
+      ru: 'تَقِيّ (taqiyy) и مُتَّقٍ (muttaqin) близки по основному значению, но не полностью нейтральны друг к другу. تَقِيّ (taqiyy) сильнее характеризует устойчивое качество и несёт более усиленную похвалу; مُتَّقٍ (muttaqin) сохраняет оттенок действующего субъекта — того, кто осуществляет ٱتَّقَىٰ (ittaqā).',
+      en: 'تَقِيّ (taqiyy) and مُتَّقٍ (muttaqin) are close in basic meaning but not connotationally identical. تَقِيّ (taqiyy) more strongly characterises an established quality and carries intensified praise; مُتَّقٍ (muttaqin) preserves the agentive nuance of one who enacts ٱتَّقَىٰ (ittaqā).',
     },
-    structureSources: ['laneTqy'], meaningSources: ['laneTqy', 'jawhari'], related: ['taqwa', 'atqa', 'muttaqin'],
+    structureSources: ['laneTqy'], meaningSources: ['laneTqy', 'jawhari', 'furuqTaqi'], related: ['taqwa', 'atqa', 'muttaqin'],
   },
   atqa: {
     pattern: 'أَفْعَل', patternReading: 'afʿal',
@@ -271,15 +273,15 @@ export const WORD_CONTENT = {
       en: ['A Form V verb. The pattern adds initial ت and doubles the second root letter ق. The root و remains visible after ت.', 'The present form is يَتَوَقَّى (yatawaqqā). The final root ي appears as ى in the displayed form.'],
     },
     meaning: {
-      ru: { lead: 'تَوَقَّىٰ (tawaqqā) — беречься, остерегаться, принимать меры предосторожности.', body: 'В фокусе собственное поведение человека: он предпринимает меры, чтобы избежать вреда.' },
-      en: { lead: 'تَوَقَّىٰ (tawaqqā) — to guard oneself, beware, or take precautions.', body: 'The focus is the person’s own behaviour: taking measures to avoid harm.' },
+      ru: { lead: 'تَوَقَّىٰ (tawaqqā) — беречься, остерегаться, принимать конкретные меры предосторожности.', body: 'Оттенок формы и словарные примеры профилируют практическое предотвращение: избежать определённой опасности, удара, вреда или нежелательного действия. Это делает слово особенно естественным для конкретной предосторожности.' },
+      en: { lead: 'تَوَقَّىٰ (tawaqqā) — to guard oneself, beware, or take concrete precautions.', body: 'The form and dictionary examples profile practical prevention: avoiding a specified danger, blow, harm, or unwanted act. This makes the verb especially natural for concrete precaution.' },
     },
     meaningMap: [],
     distinction: {
-      ru: 'تَوَقَّىٰ (tawaqqā) и ٱتَّقَىٰ (ittaqā) словари сближают по значению; оба могут означать «беречься / остерегаться». Без отдельного источника мы не приписываем им искусственную смысловую разницу.',
-      en: 'Lexicons bring تَوَقَّىٰ (tawaqqā) and ٱتَّقَىٰ (ittaqā) close in meaning; both can mean “to guard oneself / beware.” Without separate evidence, we do not invent a semantic difference between them.',
+      ru: 'تَوَقَّىٰ (tawaqqā) и ٱتَّقَىٰ (ittaqā) имеют одно защитное ядро и могут быть синонимичны. Но تَوَقَّىٰ (tawaqqā) чаще звучит как конкретное практическое «предпринять меры и избежать вреда», тогда как ٱتَّقَىٰ (ittaqā), особенно в Коране, способен охватывать более широкую этическую саморегуляцию перед Аллахом. Это оттенок употребления, а не два разных корневых значения.',
+      en: 'تَوَقَّىٰ (tawaqqā) and ٱتَّقَىٰ (ittaqā) share the same protective nucleus and can be synonymous. Yet تَوَقَّىٰ (tawaqqā) more often sounds like concrete practical precaution, while Quranic ٱتَّقَىٰ (ittaqā) can extend to broader ethical self-regulation before Allah. This is a usage nuance, not two different root meanings.',
     },
-    structureSources: ['laneWqy', 'jawhari'], meaningSources: ['laneWqy', 'jawhari'], related: ['waqa', 'ittaqa'],
+    structureSources: ['laneWqy', 'jawhari'], meaningSources: ['laneWqy', 'jawhari', 'lisanWqy'], related: ['waqa', 'ittaqa'],
   },
 }
 
