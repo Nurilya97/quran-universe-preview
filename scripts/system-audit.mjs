@@ -71,6 +71,7 @@ if (fs.existsSync(path.join(root, 'src/components/archive'))) fail('obsolete pro
 
 const sourceFiles = [...walk(path.join(root, 'src')), ...walk(path.join(root, 'scripts')), ...walk(path.join(root, '.github/workflows'))]
 for (const file of sourceFiles) {
+  if (file.endsWith(path.join('scripts', 'system-audit.mjs'))) continue
   const content = fs.readFileSync(file, 'utf8')
   if (/mcp__Notion__|notion-rest|research-by-heart-viz/.test(content) && !file.endsWith('wqyResearch.json')) {
     fail(`active runtime/control file references legacy system: ${path.relative(root, file)}`)
