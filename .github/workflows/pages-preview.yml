@@ -98,3 +98,34 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  pilot_tafsircenter:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pilot-tafsircenter]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Download official Tafsir Center database
+        run: |
+          curl -L --fail --retry 3 --retry-delay 3             -o quran.db             'https://huggingface.co/datasets/tafsircenter/tafsir-mcp-data/resolve/main/quran.db?download=true'
+          test -s quran.db
+      - name: Extract 2:197 into Quran Universe coordinates
+        run: |
+          python scripts/import_tafsircenter_pilot.py quran.db --output tafsircenter-2-197.json
+          python - <<'PY'
+          import json
+          data = json.load(open('tafsircenter-2-197.json', encoding='utf-8'))
+          assert data['reference'] == '2:197'
+          assert data['wordCount'] == 29
+          assert data['words'][25]['id'] == 'q:2:197:w26'
+          print('Tafsir Center pilot:', data['wordCount'], 'words')
+          print('w26:', data['words'][25]['text'], 'root=', data['words'][25]['root'])
+          PY
+      - name: Upload Tafsir Center pilot
+        uses: actions/upload-artifact@v4
+        with:
+          name: tafsircenter-2-197
+          path: tafsircenter-2-197.json
+          retention-days: 14
+
