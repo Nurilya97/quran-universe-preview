@@ -527,6 +527,14 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
           {meaning?.gloss && <strong className="word-meaning-gloss">{meaning.gloss}</strong>}
         </div>
         <div className="word-meaning-explanation">
+          {meaning?.definition && <section>
+            <h3>{ru ? 'Значение' : 'Meaning'}</h3>
+            <p>{meaning.definition}</p>
+          </section>}
+          {meaning?.source && <section>
+            <h3>{ru ? 'Источник состояния' : 'Source of the state'}</h3>
+            <p>{meaning.source}</p>
+          </section>}
           {(meaning?.description || (ru ? selected.noteRu : selected.noteEn)) && <section>
             <h3>{ru ? 'Смысл в этом аяте' : 'Meaning in this ayah'}</h3>
             <p>{meaning?.description || (ru ? selected.noteRu : selected.noteEn)}</p>
