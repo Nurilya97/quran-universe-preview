@@ -325,7 +325,7 @@ h1:focus { outline: none; }
   }
   .root-legend {
     right: max(14px, env(safe-area-inset-right));
-    bottom: max(14px, env(safe-area-inset-bottom));
+    bottom: max(72px, calc(env(safe-area-inset-bottom) + 62px));
     gap: 5px;
     font-size: 9px;
   }
