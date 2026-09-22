@@ -58,6 +58,27 @@ jobs:
           </body>
           </html>
           EOF
+      - name: Cache Playwright browser
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-1.55.0-${{ runner.os }}
+      - name: Install browser test runner
+        run: |
+          npm install --no-save --package-lock=false @playwright/test@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Verify approved UI contracts
+        run: npx playwright test
+      - name: Upload UI verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quran-universe-ui-evidence-${{ github.sha }}
+          path: |
+            test-results
+            playwright-report
+          if-no-files-found: ignore
+          retention-days: 14
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
