@@ -91,8 +91,8 @@ export const AYAH_PROTOTYPES = {
             },
             meaning: {
               gloss: 'Таква · осознанность перед Всевышним',
-              description: 'В этом аяте تَقْوَىٰ (taqwā) названа лучшим запасом. Её более широкий смысл в Quran Universe — целостная осознанность перед Всевышним, основанная на вере и доверии Ему, осознании сокрытой реальности и Последней жизни. Корень و ق ي сохраняет направление защиты и оберегания; благочестие и праведность могут быть проявлениями этой осознанности, но не исчерпывают слово.',
-              translation: 'У تَقْوَىٰ (taqwā) нет одного русского эквивалента, который сохраняет всю смысловую модель во всех контекстах. Здесь формулировка «осознанность перед Всевышним» передаёт внутреннюю основу, а «благочестие» и «праведность» остаются возможными проявлениями или результатами. Следующее وَٱتَّقُونِ (wa-ittaqūni) возвращает тот же корень уже как прямое действие.',
+              description: 'В этом аяте تَقْوَىٰ (taqwā) названа лучшим запасом. Её более широкий смысл в Quran Universe — целостная осознанность перед Всевышним, основанная на вере и доверии Ему, осознании сокрытой реальности и Последней жизни. Корень و ق ي сохраняет направление защиты и оберегания; благочестие может быть одним из проявлений этой осознанности в данном контексте, но не исчерпывает слово.',
+              translation: 'У تَقْوَىٰ (taqwā) нет одного русского эквивалента, который сохраняет всю смысловую модель во всех контекстах. Здесь формулировка «осознанность перед Всевышним» передаёт внутреннюю основу, а «благочестие» может показывать проявление этого качества. «Праведность» не используется здесь как дополнительный перевод по умолчанию. Следующее وَٱتَّقُونِ (wa-ittaqūni) возвращает тот же корень уже как прямое действие.',
             },
           },
           en: {
@@ -114,8 +114,8 @@ export const AYAH_PROTOTYPES = {
             },
             meaning: {
               gloss: 'Taqwā · awareness before the Most High',
-              description: 'In this ayah, تَقْوَىٰ (taqwā) is named as the best provision. Quran Universe treats its broader sense as a holistic awareness before the Most High, grounded in faith and trust in Him, awareness of the unseen, and certainty in the Hereafter. The root و ق ي retains the direction of protection and guarding; piety and righteousness may describe manifestations of this awareness without exhausting the word.',
-              translation: 'No single English rendering preserves the entire تَقْوَىٰ (taqwā) model in every context. Here “awareness before the Most High” conveys the inward foundation, while “piety” and “righteousness” can describe manifestations or outcomes. The following وَٱتَّقُونِ (wa-ittaqūni) returns the same root field as a direct command.',
+              description: 'In this ayah, تَقْوَىٰ (taqwā) is named as the best provision. Quran Universe treats its broader sense as a holistic awareness before the Most High, grounded in faith and trust in Him, awareness of the unseen, and certainty in the Hereafter. The root و ق ي retains the direction of protection and guarding; piety may describe a manifestation of this awareness here without exhausting the word.',
+              translation: 'No single English rendering preserves the entire تَقْوَىٰ (taqwā) model in every context. Here “awareness before the Most High” conveys the inward foundation, while “piety” may describe a manifestation. “Righteousness” is not added as a default paired rendering in this ayah. The following وَٱتَّقُونِ (wa-ittaqūni) returns the same root field as a direct command.',
             },
           },
         },

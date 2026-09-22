@@ -2,6 +2,10 @@
 
 ## Principle
 
+## Repository authority
+
+This repository is the sole active machine and project authority. Notion and the former private repository are legacy archives, not dependencies. Canonical IDs, mappings, research status, source/licence metadata, guards and runtime all live here.
+
 Quran Universe must not use the positional word ID of any single external corpus as its primary key.
 
 Different Quran datasets can use different tokenisation and segmentation rules. Quran Universe therefore owns a stable canonical coordinate system and stores mappings from each external source onto it.
@@ -78,13 +82,15 @@ The multi-dataset pilot is deliberately staged instead of pretending all corpora
 | Source | Verified now | 2:197 row mapping |
 |---|---|---|
 | Quranic Arabic Corpus | public word coordinates + morphology/syntax interface | 29/29 orthographic words mapped |
-| Tafsir Center quran.db | official schema, word key `surahNo + ayahNo + wordNo`, linguistic tables | schema ready; rows not yet imported |
+| Tafsir Center quran.db | official schema, word key `surahNo + ayahNo + wordNo`, linguistic tables | 29/29 words of 2:197 row-mapped |
 | QuranMorph | official corpus metadata; lemma/POS + Qabas linkage | pending official access |
-| QAMAR | 2026 paper and optional supplementary resource metadata | import pending |
+| QAMAR | 2026 publication verified; ACL supplement inspected | official corpus row release not yet located |
 
 ### Access rule
 
 QuranMorph's current official download form states that access is granted to users affiliated with a recognized company, university, or institution and requires an official professional email. Until authorized access is available, Quran Universe must not silently promote an unofficial mirror into the canonical ingestion layer.
+
+QAMAR's ACL optional supplement was downloaded and inspected on 2026-09-22; it contains paper source/figures rather than corpus rows. No QAMAR row mapping may be claimed until an official corpus release is located.
 
 ### Adapter rule
 

@@ -1,9 +1,10 @@
-// Public-safe canonical snapshot exported from the private Quran Universe research repo.
-// Semantic/control authority remains private. This file intentionally contains no Notion IDs,
-// orchestrator state, private evidence packets, or unpublished research notes.
+// Quran Universe canonical w-q-y snapshot.
+// This repository is the sole active semantic/control + runtime authority.
+// Detailed reviewed research state lives in src/data/research/wqyResearch.json.
 export const WQY_PUBLIC_MODEL = {
-  sourceCommit: '2fb38e5d7b530922f9178e21cde3016a64cffb44',
-  syncedAt: '2026-09-18',
+  canonicalResearchRecord: 'src/data/research/wqyResearch.json',
+  migratedFromLegacyCommit: '2fb38e5d7b530922f9178e21cde3016a64cffb44',
+  syncedAt: '2026-09-22',
   modelVersion: 'WQY-SM v0.2 — falsification-passed — 2026-09-17',
   phase: 'Visualization',
   publicationStatus: 'published_working_model',
@@ -68,6 +69,11 @@ export const WQY_PUBLIC_MODEL = {
     },
   },
   reviewedContexts: {
+    '2:197': {
+      status: 'human_verified',
+      ru: 'تَقْوَىٰ названа лучшим запасом. В 2:197 «благочестие» допустимо как manifestation-level rendering, но не как lexical nucleus или полная дефиниция; «праведность» не добавляется к нему по умолчанию в этом аяте.',
+      en: 'تَقْوَىٰ is named as the best provision. In 2:197, “piety” may be shown at manifestation level, but not as the lexical nucleus or whole definition; “righteousness” is not paired with it by default here.',
+    },
     '2:194': {
       status: 'human_verified',
       ru: 'В контексте пропорционального ответа защитная позиция проявляется как саморегуляция перед Аллахом и удерживание разрешённой границы.',

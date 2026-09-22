@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.0",
+  "authority": "single_repository",
+  "sourceOfTruth": "Nurilya97/quran-universe-preview",
+  "migratedOn": "2026-09-22",
+  "roots": [
+    {
+      "root": "ص ب ر",
+      "status": "In research",
+      "phase": "Semantic synthesis",
+      "modelVersion": null,
+      "humanReviewed": false,
+      "scholarReviewed": false,
+      "evidenceComplete": false,
+      "falsificationDone": false,
+      "nextAction": "Сформировать отдельный ROOT_STATE из уже собранной модели, затем провести falsification.",
+      "openQuestions": "Нужно проверить модель против трудных употреблений и завершить morphology/translation gates.",
+      "notes": "Research-only / pre-falsification. ROOT_STATE is still missing, so Orchestrator must fail closed before any worker run. Explicit Sync Status = Not checked prevents null/ambiguous routing.",
+      "updated": "2026-09-18"
+    },
+    {
+      "root": "ل ب ب",
+      "status": "In research",
+      "phase": "Visualization",
+      "modelVersion": null,
+      "humanReviewed": false,
+      "scholarReviewed": false,
+      "evidenceComplete": false,
+      "falsificationDone": false,
+      "nextAction": "Formalize the root research record from the current reviewed lexical/morphology implementation before promoting a semantic model.",
+      "openQuestions": "The UI/morphology implementation is active, but the root has not yet passed the full Research By Heart semantic/falsification pipeline.",
+      "notes": "Current Root Space and morphology UI are implemented here. UI approval does not equal semantic-model human review.",
+      "updated": "2026-09-22"
+    },
+    {
+      "root": "و ق ي",
+      "status": "In research",
+      "phase": "Visualization",
+      "modelVersion": "WQY-SM v0.2 — falsification-passed — 2026-09-17",
+      "humanReviewed": true,
+      "scholarReviewed": false,
+      "evidenceComplete": false,
+      "falsificationDone": true,
+      "nextAction": "Human visual review of Word Structure v2 in the live public preview. Check connected Arabic shaping, dynamic legend (only roles actually present), explicit full root و ق ي, compact Derived From block, pattern-function explanation, and whether technical details now feel secondary rather than repetitive.",
+      "openQuestions": "How should typography, transliteration and progressive disclosure improve the spatial experience without changing the approved derivational orbit structure or semantic/epistemic status?",
+      "notes": "Word Structure v2 merged to quran-universe-preview main at 9295d0d62bb64c88ccf682cad288060f559ade1d and deployed successfully. Replaced v1 letter-button UX with connected Arabic spans, role taxonomy root/prefix/suffix/ending/particle/form, dynamic legend, explicit full-root block, compact derivation source, one pattern-function block, and optional technical analysis. Meaning tab and Root Galaxy unchanged. Content guard/build passed.",
+      "updated": "2026-09-18"
+    }
+  ]
+}

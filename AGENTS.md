@@ -1,5 +1,13 @@
 # Quran Universe — editorial and UI rules
 
+## Single source of truth
+
+- This repository is the only active Quran Universe source of truth.
+- Do not require Notion, `Nurilya97/research-by-heart-viz`, or any second control plane for implementation, validation, research status, or deployment.
+- If a fact is necessary for the product or its guards, store it here.
+- Legacy systems may be consulted only for a specific missing historical fact, never as current authority.
+- Do not recreate mirrored semantic runtimes or duplicate registries in another service/repository.
+
 ## Project skills
 
 Before substantial Quran Universe implementation work:

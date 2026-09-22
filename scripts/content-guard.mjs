@@ -1,3 +1,4 @@
+import fs from 'node:fs'
 import { COPY, FORMS, ROOT_DEMOS, formsForRoot } from '../src/demo.js'
 import { OCCURRENCES, ROOT_OCCURRENCE_COUNT } from '../src/occurrences.js'
 import { WQY_PUBLIC_MODEL } from '../src/canonicalWqy.js'
@@ -17,6 +18,21 @@ import { TAFSIRCENTER_2_197_PILOT } from '../src/data/pilots/tafsircenter-2-197.
 const errors = []
 const fail = message => errors.push(message)
 const unique = values => new Set(values).size === values.length
+
+const readProjectJson = relativePath => JSON.parse(fs.readFileSync(new URL(`../${relativePath}`, import.meta.url), 'utf8'))
+const rootRegistry = readProjectJson('src/data/research/rootRegistry.json')
+const sourceRegistry = readProjectJson('src/data/research/sourceRegistry.json')
+const wqyResearch = readProjectJson('src/data/research/wqyResearch.json')
+
+if (rootRegistry.authority !== 'single_repository' || rootRegistry.sourceOfTruth !== 'Nurilya97/quran-universe-preview') fail('root registry must declare the single-repository authority')
+if (sourceRegistry.authority !== 'single_repository') fail('source registry must declare the single-repository authority')
+if (wqyResearch.authority !== 'single_repository') fail('w-q-y research record must declare the single-repository authority')
+if (wqyResearch.modelVersion !== WQY_PUBLIC_MODEL.modelVersion) fail('w-q-y research/public model version drift')
+if (!wqyResearch.humanReviewed || wqyResearch.scholarReviewed) fail('w-q-y review state drifted')
+for (const systemId of ['qac', 'tafsircenter', 'quranmorph', 'qamar', 'tanzil']) {
+  if (!sourceRegistry.sources.some(source => source.systemId === systemId)) fail(`missing canonical source-registry entry ${systemId}`)
+}
+if (!rootRegistry.roots.some(root => root.root === 'ل ب ب')) fail('ل ب ب must exist in the single root registry')
 
 // Canonical w-q-y semantic model.
 if (WQY_PUBLIC_MODEL.modelVersion !== 'WQY-SM v0.2 — falsification-passed — 2026-09-17') {
@@ -165,7 +181,7 @@ for (const [reference, record] of Object.entries(AYAH_PROTOTYPES)) {
 }
 
 // Canonical Quran Universe IDs and first cross-corpus pilot.
-if (QURAN_UNIVERSE_DATA_VERSION !== 'QU-DATA v0.3 — 2026-09-22') fail('unexpected Quran Universe data-layer version')
+if (QURAN_UNIVERSE_DATA_VERSION !== 'QU-DATA v0.4 — 2026-09-22') fail('unexpected Quran Universe data-layer version')
 const pilotAyah = AYAH_PROTOTYPES['2:197']
 if (!pilotAyah) fail('2:197 pilot ayah missing')
 else {

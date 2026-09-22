@@ -1,0 +1,259 @@
+{
+  "schemaVersion": "1.0",
+  "authority": "single_repository",
+  "canonicalRepository": "Nurilya97/quran-universe-preview",
+  "modelVersion": "WQY-SM v0.2 — falsification-passed — 2026-09-17",
+  "phase": "Visualization",
+  "researchStatus": "human_verified",
+  "humanReviewed": true,
+  "scholarReviewed": false,
+  "falsificationStatus": "refined",
+  "translationFidelityStatus": "human_reviewed",
+  "root": {
+    "arabic": "و ق ي",
+    "normalized": "وقي",
+    "transliteration": "w-q-y"
+  },
+  "fundamentalNucleus": {
+    "summary": "Ограждать / защищать, не позволяя вреду достигнуть защищаемого.",
+    "explanation": "Ибн Фарис описывает реляционную структуру: одно отводится от другого посредством защитного средства. al-Rāghib определяет الوقاية как сохранение вещи от того, что причиняет вред. Страх может быть мотивом или контекстом, но не является bare-root nucleus.",
+    "status": "cross_source_consensus",
+    "evidence": [
+      "src:maqayis-wqy",
+      "src:raghib-wqy",
+      "src:lisan-wqy",
+      "src:taj-wqy"
+    ]
+  },
+  "operativeMechanism": {
+    "summary": "Субъект занимает или поддерживает активную защитно-ориентированную позицию; конкретный избегаемый вред, последствие или граница определяются конструкцией и контекстом.",
+    "explanation": "Это falsification-supported рабочая модель Form VIII. Морфология сама по себе не назначает semantic roles: прямой объект اتقى + X не равен автоматически conceptual SOURCE_OF_DANGER. В разных аятах защитная позиция реализуется через внимание к руководству, удерживание границ, память, коррекцию поведения и другие контекстные проявления.",
+    "status": "human_verified",
+    "evidence": [
+      "notion:falsification-wqy-v0.2",
+      "ayah:7:201",
+      "ayah:2:194",
+      "ayah:3:28",
+      "ayah:13:34",
+      "ayah:13:37"
+    ]
+  },
+  "semanticRoleSafeguards": [
+    {
+      "id": "wqy-direct-object-not-threat",
+      "statement": "В конструкции اتقى + X прямой грамматический объект не должен автоматически становиться conceptual SOURCE_OF_DANGER; роли устанавливаются construction + context.",
+      "status": "human_verified",
+      "evidence": [
+        "notion:falsification-wqy-v0.2",
+        "ayah:2:194"
+      ]
+    },
+    {
+      "id": "wqy-no-global-opposite-rule",
+      "statement": "Нельзя вводить и противоположное глобальное правило, будто в корневой семье никогда не бывает protection/judgment relation относительно Аллаха: конструкции من الله من واق показывают отсутствие защиты от Аллаха в контексте суда/наказания.",
+      "status": "human_verified",
+      "evidence": [
+        "ayah:13:34",
+        "ayah:13:37",
+        "notion:falsification-wqy-v0.2"
+      ]
+    }
+  ],
+  "translationFidelity": {
+    "status": "human_verified",
+    "compressionNote": "No tested candidate is a universal whole-concept equivalent. Context-sensitive renderings may preserve different layers without becoming lexical definitions.",
+    "assessments": [
+      {
+        "candidate": "ближе к праведности",
+        "context": "5:8",
+        "conceptLevel": "manifestation/outcome",
+        "status": "CONTEXTUALLY_GOOD_PARTIAL",
+        "mechanismFidelity": "weak",
+        "directionFidelity": "good",
+        "semanticRoleFidelity": "good",
+        "contextualFit": "good partial",
+        "addedMeaning": [
+          "религиозно-нравственная правильность"
+        ],
+        "lostMeaning": [
+          "protection-oriented mechanism",
+          "guarding relation"
+        ],
+        "riskFlags": [
+          "mechanism_to_outcome_substitution",
+          "undercoverage"
+        ]
+      },
+      {
+        "candidate": "ближе к богобоязненности",
+        "context": "5:8",
+        "conceptLevel": "fear-centered religious disposition",
+        "status": "DISTORTION_RISK",
+        "mechanismFidelity": "weak",
+        "directionFidelity": "syntactically preserved",
+        "semanticRoleFidelity": "no forced inversion here, but fear-frame is imported",
+        "contextualFit": "conventional but semantically narrower",
+        "addedMeaning": [
+          "страх Бога",
+          "строгое соблюдение религиозных предписаний/обрядов"
+        ],
+        "lostMeaning": [
+          "protective mechanism",
+          "broader context-sensitive layers"
+        ],
+        "riskFlags": [
+          "fear_centered_shift",
+          "emotion_injection",
+          "undercoverage",
+          "false_equivalence"
+        ]
+      },
+      {
+        "candidate": "nearer to righteousness",
+        "context": "5:8",
+        "conceptLevel": "manifestation/outcome",
+        "status": "CONTEXTUALLY_GOOD_PARTIAL",
+        "mechanismFidelity": "weak",
+        "directionFidelity": "good",
+        "semanticRoleFidelity": "good",
+        "contextualFit": "good partial",
+        "addedMeaning": [
+          "explicit moral rightness"
+        ],
+        "lostMeaning": [
+          "protective mechanism",
+          "wider relational structure"
+        ],
+        "riskFlags": [
+          "mechanism_to_outcome_substitution",
+          "undercoverage"
+        ]
+      },
+      {
+        "candidate": "nearer to piety",
+        "context": "5:8",
+        "conceptLevel": "religious disposition/behavior",
+        "status": "CONTEXTUALLY_GOOD_PARTIAL",
+        "mechanismFidelity": "weak",
+        "directionFidelity": "good",
+        "semanticRoleFidelity": "good",
+        "contextualFit": "plausible partial",
+        "addedMeaning": [
+          "religious belief/devotion/observance"
+        ],
+        "lostMeaning": [
+          "protective mechanism"
+        ],
+        "riskFlags": [
+          "undercoverage",
+          "false_equivalence"
+        ]
+      },
+      {
+        "candidate": "бойтесь Аллаха",
+        "context": "2:194",
+        "conceptLevel": "emotion/threat appraisal",
+        "status": "DISTORTION_RISK",
+        "mechanismFidelity": "weak",
+        "directionFidelity": "target lexeme makes Allah the feared object",
+        "semanticRoleFidelity": "substantial threat-source risk",
+        "contextualFit": "possible motive, not mechanism-level fidelity",
+        "addedMeaning": [
+          "felt fear",
+          "threat relation"
+        ],
+        "lostMeaning": [
+          "precaution/guarding mechanism",
+          "boundary self-regulation"
+        ],
+        "riskFlags": [
+          "fear_centered_shift",
+          "emotion_injection",
+          "semantic_role_inversion",
+          "protector_threat_inversion"
+        ]
+      },
+      {
+        "candidate": "остерегайтесь Аллаха",
+        "context": "2:194",
+        "conceptLevel": "protective/precaution mechanism",
+        "status": "DISTORTION_RISK",
+        "mechanismFidelity": "superficially strong",
+        "directionFidelity": "problematic: target construction means precautions against/from X",
+        "semanticRoleFidelity": "poor",
+        "contextualFit": "boundary-control captured but relation redirected onto Allah as avoided danger",
+        "addedMeaning": [
+          "Allah as immediate avoided object"
+        ],
+        "lostMeaning": [
+          "distinction between divine direction and harmful violation/consequence"
+        ],
+        "riskFlags": [
+          "semantic_role_inversion",
+          "protector_threat_inversion",
+          "theological_subject_object_shift"
+        ]
+      },
+      {
+        "candidate": "fear Allah",
+        "context": "2:194",
+        "conceptLevel": "emotion/threat appraisal",
+        "status": "DISTORTION_RISK",
+        "mechanismFidelity": "weak",
+        "directionFidelity": "direct but fear semantics foreground feared object",
+        "semanticRoleFidelity": "threat-source assignment risk",
+        "contextualFit": "possible motivational layer",
+        "addedMeaning": [
+          "fright/worry"
+        ],
+        "lostMeaning": [
+          "active protective posture",
+          "boundary restraint"
+        ],
+        "riskFlags": [
+          "fear_centered_shift",
+          "emotion_injection",
+          "semantic_role_inversion"
+        ]
+      },
+      {
+        "candidate": "be mindful of Allah",
+        "context": "2:194",
+        "conceptLevel": "attention/cognitive disposition",
+        "status": "CONTEXTUALLY_GOOD_PARTIAL",
+        "mechanismFidelity": "partial",
+        "directionFidelity": "good",
+        "semanticRoleFidelity": "role-safe relative to tested fear/avoidance alternatives",
+        "contextualFit": "good partial in boundary-sensitive retaliation context",
+        "addedMeaning": [
+          "attentiveness/remembrance",
+          "possible modern mindfulness connotation"
+        ],
+        "lostMeaning": [
+          "explicit precaution/guarding",
+          "explicit avoided harmful consequence"
+        ],
+        "riskFlags": [
+          "undercoverage",
+          "connotation_shift"
+        ],
+        "humanNote": "Предпочтительный среди протестированных кратких EN вариантов: awareness/attentiveness toward Allah может функционировать как protective posture. Role-safe interpretive RU alternative: «остерегайтесь наказания Аллаха».",
+        "preferredAmongTested": true
+      }
+    ]
+  },
+  "presentationDecisions": {
+    "2:197": {
+      "status": "human_reviewed",
+      "meaning": "تَقْوَىٰ remains the broader Quran Universe concept; the Quranic statement that it is the best provision is primary context evidence.",
+      "manifestationRu": "Благочестие",
+      "ruleRu": "«Благочестие» может показываться как manifestation-level rendering в 2:197, но не как lexical nucleus или полная дефиниция taqwā. «Праведность» не добавляется к нему по умолчанию в этом аяте."
+    }
+  },
+  "migration": {
+    "migratedOn": "2026-09-22",
+    "legacyRepository": "Nurilya97/research-by-heart-viz",
+    "legacyCommitContext": "2fb38e5d7b530922f9178e21cde3016a64cffb44",
+    "note": "Notion IDs and duplicate orchestration/runtime state were removed; only reviewed research facts unique to the old control system were retained."
+  }
+}

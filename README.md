@@ -1,11 +1,8 @@
-# Quran Universe — Spatial Preview
+# Quran Universe
 
-Public visual preview of the Quran Universe spatial interface.
+This repository is the **single active Quran Universe system**: product UI, canonical data, research-control records, provenance/licensing registry, validation, tests and deployment live here together.
 
-This repository contains the standalone public demo for the root `و ق ي`,
-11 selected forms, and the current Ayah Space prototype for Qur'an 2:197.
-It does not include the private research archive, full methodology documents,
-source audits, or internal project notes.
+The former Notion control plane and `Nurilya97/research-by-heart-viz` repository are no longer operational dependencies. See [docs/SYSTEM.md](./docs/SYSTEM.md).
 
 Each displayed form has a short RU/EN lexical guide, transliteration,
 morphology explanation and public source links. These are working
@@ -23,14 +20,14 @@ panel has two internal views:
 - **Diagram / Схема** — the secondary visual board that presents the same
   morphology as a step-by-step structural map.
 
-### Ayah Space — 2:197
+### Ayah Space
 
 Focused-word analysis now keeps the three word-level views connected rather than treating them as isolated cards:
 
 - **Morphology** shows a directional derivation chain with arrows (root → documented derived forms → the surface form used in the ayah), followed by the visible parts of that surface form.
 - **Syntax** opens only the verified phrase relevant to the selected word. The current prototype covers both `فَإِنَّ خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ` (2:197:23–26) and the closing `وَٱتَّقُونِ يَـٰٓأُو۟لِي ٱلْأَلْبَـٰبِ` (2:197:27–29). Relation arrows and clickable grammatical terms connect the explanation back to the exact words.
 
-The current Ayah Space prototype has three top-level modes:
+Ayah Space uses three top-level modes:
 
 - **Analysis / Разбор** — the ayah remains the central object. A word can be
   opened into Meaning, Morphology and Syntax.
@@ -57,10 +54,9 @@ research tools.
 
 ## Research discipline
 
-The public preview implements conclusions from the private Research By Heart /
-Quran Universe research layer. External corpora, tafsir and translations can
-support verification, but they do not silently override the project's approved
-semantic model.
+Research and runtime now share one repository without becoming the same layer. Reviewed research state is stored under `src/data/research/`; reader-facing data, morphology, corpus mappings and UI remain separately structured and are protected by `npm run test:content`.
+
+External corpora, tafsir and translations support verification, but they do not silently override Quran-first project decisions.
 
 Root research follows the project method in
 [`ROOT_SEMANTIC_METHOD.md`](./ROOT_SEMANTIC_METHOD.md): reconstruct the

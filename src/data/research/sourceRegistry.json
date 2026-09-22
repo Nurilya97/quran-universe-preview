@@ -1,0 +1,445 @@
+{
+  "schemaVersion": "1.0",
+  "authority": "single_repository",
+  "migratedOn": "2026-09-22",
+  "sources": [
+    {
+      "systemId": "al-qamus",
+      "source": "Al Qamus app/data partnership candidate",
+      "organization": "Al Qamus developers",
+      "sourceUrl": "https://play.google.com/store/apps/details?id=io.arabic.dictionary",
+      "layer": [
+        "Lexicon"
+      ],
+      "priority": "C — Research",
+      "legalStatus": "Permission Needed",
+      "license": "No open dataset/API licence identified",
+      "commercialUse": "Unknown",
+      "modification": "Unknown",
+      "cost": "Unknown",
+      "whyNeeded": "Modern Russian-facing Arabic dictionary with root, verb form, taṣrīf and related-word UX; potential data/partnership lead rather than a dataset to scrape.",
+      "nextAction": "Treat as reference/possible partner; contact developers only if their enriched Baranov-based data becomes strategically important.",
+      "lastChecked": "2026-09-13"
+    },
+    {
+      "systemId": "arabic-ontology",
+      "source": "Arabic Ontology",
+      "organization": "SinaLab, Birzeit University",
+      "sourceUrl": "https://sina.birzeit.edu/resources/index.html",
+      "layer": [
+        "Semantics",
+        "Lexicon"
+      ],
+      "priority": "A — Core",
+      "legalStatus": "Ready",
+      "license": "CC BY 4.0",
+      "commercialUse": "Yes",
+      "modification": "Allowed",
+      "cost": "Free",
+      "whyNeeded": "Concept/synset hierarchy lets Quran Universe distinguish lexical/root relation from conceptual/semantic relation.",
+      "nextAction": "Test API/download against QuranMorph/Qabas lemmas; model concept IDs and relation types.",
+      "lastChecked": "2026-09-13"
+    },
+    {
+      "systemId": "ardt",
+      "source": "Arabic Rhetorical Device Taxonomy (ARDT)",
+      "organization": "Al-Balagha / Encyclopedia of Arabic Rhetoric",
+      "sourceUrl": "https://github.com/Al-Balagha/Arabic-Rhetoric",
+      "layer": [
+        "Rhetoric"
+      ],
+      "priority": "A — Core",
+      "legalStatus": "Ready",
+      "license": "CC BY 4.0",
+      "commercialUse": "Yes",
+      "modification": "Allowed",
+      "cost": "Free",
+      "whyNeeded": "Machine-readable taxonomy of 95 classical rhetorical devices across ʿilm al-maʿānī, al-bayān and al-badīʿ; starting ontology for Rhetoric Graph.",
+      "nextAction": "Import taxonomy IDs as provisional schema; cross-check each category against classical balāgha sources before scholar-verified release.",
+      "lastChecked": "2026-09-13"
+    },
+    {
+      "systemId": "balagha-corpus",
+      "source": "Balagha Corpus",
+      "organization": "Balagha Corpus project",
+      "sourceUrl": "https://balagha-corpus.com/",
+      "layer": [
+        "Rhetoric"
+      ],
+      "priority": "B — Enrichment",
+      "legalStatus": "Legal Check",
+      "license": "Exact annotated-corpus reuse terms to verify",
+      "commercialUse": "Unknown",
+      "modification": "Unknown",
+      "cost": "Free",
+      "whyNeeded": "Small but manually annotated rhetoric corpus; includes initial Quran annotations and can inform annotation methodology.",
+      "nextAction": "Use as methodological reference; request/verify data license before importing annotations.",
+      "lastChecked": "2026-09-13"
+    },
+    {
+      "systemId": "baranov",
+      "source": "Baranov Arabic–Russian dictionary / Arabus lineage",
+      "organization": "Dictionary rights holders / app-specific implementations",
+      "sourceUrl": "https://search.rsl.ru/ru/record/01001195110",
+      "layer": [
+        "Lexicon"
+      ],
+      "priority": "C — Research",
+      "legalStatus": "Permission Needed",
+      "license": "Do not assume app/database rights from printed dictionary availability; permission status must be resolved",
+      "commercialUse": "Unknown",
+      "modification": "Unknown",
+      "cost": "Unknown",
+      "whyNeeded": "Strong Russian Arabic lexicographic reference; useful for terminology comparison and Russian lexical layer research.",
+      "nextAction": "Identify edition copyright status and a legally reusable digital source; do not extract app databases.",
+      "lastChecked": "2026-09-13"
+    },
+    {
+      "systemId": "boundary-quran",
+      "source": "Boundary-Annotated Qur’an",
+      "organization": "Quran NLP researchers / LREC",
+      "sourceUrl": "https://aclanthology.org/L12-1092/",
+      "layer": [
+        "Prosody",
+        "Syntax"
+      ],
+      "priority": "B — Enrichment",
+      "legalStatus": "Legal Check",
+      "license": "Exact downloadable dataset license to verify",
+      "commercialUse": "Unknown",
+      "modification": "Unknown",
+      "cost": "Free",
+      "whyNeeded": "Prosodic/syntactic boundary annotations informed by tajwīd/waqf; useful for rhythm, pause structure and sound architecture.",
+      "nextAction": "Locate data files/license and test alignment against canonical word IDs.",
+      "lastChecked": "2026-09-13"
+    },
+    {
+      "systemId": "corpus-coranicum",
+      "source": "Corpus Coranicum TEI / research resources",
+      "organization": "Berlin-Brandenburg Academy of Sciences and Humanities",
+      "sourceUrl": "https://github.com/telota/corpus-coranicum-tei",
+      "layer": [
+        "Historical"
+      ],
+      "priority": "C — Research",
+      "legalStatus": "Legal Check",
+      "license": "TEI repository published CC BY-SA 4.0; images/other resources may have separate rights",
+      "commercialUse": "Conditional",
+      "modification": "Allowed",
+      "cost": "Free",
+      "whyNeeded": "Manuscripts, variant readings, intertexts and historical-critical research; valuable as a clearly separated scholarly/history layer.",
+      "nextAction": "Keep separate from canonical/traditional layer; verify rights for every non-TEI asset before display.",
+      "lastChecked": "2026-09-13"
+    },
+    {
+      "systemId": "greentech-quranfiles",
+      "source": "GreenTech QuranFiles",
+      "organization": "Greentech Apps Foundation",
+      "sourceUrl": "https://gitlab.com/greentech/quran/Quranfiles",
+      "layer": [
+        "Morphology",
+        "Tafsir",
+        "Lexicon"
+      ],
+      "priority": "B — Enrichment",
+      "legalStatus": "Legal Check",
+      "license": "Public repository, but exact dataset-by-dataset licensing/redistribution rights are not sufficiently explicit",
+      "commercialUse": "Unknown",
+      "modification": "Unknown",
+      "cost": "Free",
+      "whyNeeded": "SQLite Quran resources including Arabic iʿrāb and multilingual word-by-word/translation data; useful for comparison and gap filling.",
+      "nextAction": "Inventory exact DB files and provenance; contact GTAF or trace upstream licenses before production use.",
+      "lastChecked": "2026-09-13"
+    },
+    {
+      "systemId": "lane",
+      "source": "Lane’s Arabic-English Lexicon — Perseus digital edition",
+      "organization": "Perseus Digital Library / Alpheios digital encoding",
+      "sourceUrl": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:2002.02.0045",
+      "layer": [
+        "Lexicon"
+      ],
+      "priority": "B — Enrichment",
+      "legalStatus": "Legal Check",
+      "license": "CC BY-SA 3.0 (digital edition as distributed by Perseus ecosystem; verify exact repository notice)",
+      "commercialUse": "Yes",
+      "modification": "Allowed",
+      "cost": "Free",
+      "whyNeeded": "Deep classical root lexicon with historical definitions and citations; valuable for root semantic research and source tracing.",
+      "nextAction": "Review ShareAlike boundary with legal counsel/architecture; isolate Lane-derived layer if needed.",
+      "lastChecked": "2026-09-13"
+    },
+    {
+      "systemId": "nur-mubarak",
+      "source": "Nūr-Mubārak Arabic–Kazakh dictionary / Arabist KZ source",
+      "organization": "Nūr-Mubārak University / dictionary authors",
+      "sourceUrl": "https://nabrk.kz/",
+      "layer": [
+        "Lexicon"
+      ],
+      "priority": "B — Enrichment",
+      "legalStatus": "Permission Needed",
+      "license": "No open production licence identified",
+      "commercialUse": "Unknown",
+      "modification": "Unknown",
+      "cost": "Potentially paid",
+      "whyNeeded": "Potentially the strongest structured Arabic→Kazakh lexical layer and a distinctive advantage for Quran Universe multilingual research.",
+      "nextAction": "Approach Nūr-Mubārak for formal digital-data collaboration/licence once prototype and data model are demonstrable.",
+      "lastChecked": "2026-09-13"
+    },
+    {
+      "systemId": "openiti",
+      "source": "OpenITI",
+      "organization": "Open Islamicate Texts Initiative / KITAB",
+      "sourceUrl": "https://openiti.org/documentation/",
+      "layer": [
+        "Lexicon",
+        "Historical",
+        "Tafsir"
+      ],
+      "priority": "C — Research",
+      "legalStatus": "Research Only",
+      "license": "Free research corpus; licensing/provenance may vary by text/release — verify exact version and individual-text metadata",
+      "commercialUse": "No / Research only",
+      "modification": "Unknown",
+      "cost": "Free",
+      "whyNeeded": "Massive machine-readable classical Islamicate corpus for studying historical usage across tafsir, lexicography, hadith, theology and literature.",
+      "nextAction": "Use for research/reference first; record provenance and license per selected text before any product exposure.",
+      "lastChecked": "2026-09-13"
+    },
+    {
+      "systemId": "qabas",
+      "source": "Qabas Arabic Lexicon",
+      "organization": "SinaLab, Birzeit University",
+      "sourceUrl": "https://sina.birzeit.edu/qabas/about",
+      "layer": [
+        "Lexicon",
+        "Semantics"
+      ],
+      "priority": "A — Core",
+      "legalStatus": "Ready",
+      "license": "CC BY-ND 4.0 on current SinaLab resources page; free and premium editions exist",
+      "commercialUse": "Yes",
+      "modification": "No derivatives",
+      "cost": "Free",
+      "whyNeeded": "\\~58k lemmas linked to 110 lexicons and 12 corpora; key bridge from Quran lemma to a broader Arabic lexical data graph.",
+      "nextAction": "Keep as immutable source layer; build Quran Universe semantic graph separately; evaluate whether Premium adds needed fields.",
+      "lastChecked": "2026-09-13"
+    },
+    {
+      "systemId": "qac",
+      "source": "Quranic Arabic Corpus (QAC)",
+      "organization": "Kais Dukes / Quranic Arabic Corpus",
+      "sourceUrl": "https://corpus.quran.com/download/",
+      "layer": [
+        "Morphology",
+        "Syntax",
+        "Semantics"
+      ],
+      "priority": "A — Core",
+      "legalStatus": "Legal Check",
+      "license": "Download page: GNU GPL label + special terms; verbatim annotation use with attribution; commercial wording is inconsistent across legacy pages",
+      "commercialUse": "Unknown",
+      "modification": "Verbatim only",
+      "cost": "Free",
+      "whyNeeded": "Morpheme segmentation, root, lemma, morphology, traditional Arabic grammar, dependency syntax and Quran ontology.",
+      "nextAction": "Use in internal audit now; obtain clear written production/commercial clarification before launch.",
+      "lastChecked": "2026-09-13"
+    },
+    {
+      "systemId": "qamar",
+      "source": "QAMAR 2026",
+      "organization": "QAMAR authors / ACL Anthology",
+      "sourceUrl": "https://aclanthology.org/2026.abjadnlp-1.38/",
+      "layer": [
+        "Morphology"
+      ],
+      "priority": "A — Core",
+      "legalStatus": "Legal Check",
+      "license": "ACL paper and attached publication materials are CC BY 4.0 under ACL Anthology policy; the actual QAMAR corpus release and its own license were not located in the ACL supplementary bundle.",
+      "commercialUse": "Unknown",
+      "modification": "Unknown",
+      "cost": "Unknown",
+      "whyNeeded": "Fully verified morphological reference with Quran form, MSA equivalent, stem, lemma, root and POS; ideal cross-check against other corpora.",
+      "nextAction": "Monitor the authors/ACL entry for the actual corpus release; do not claim row-level mapping until official corpus rows and corpus-specific licensing are available.",
+      "lastChecked": "2026-09-22"
+    },
+    {
+      "systemId": "qul",
+      "source": "QUL — Quranic Universal Library",
+      "organization": "Tarteel AI",
+      "sourceUrl": "https://qul.tarteel.ai/resources",
+      "layer": [
+        "Morphology",
+        "Themes",
+        "Tafsir",
+        "Audio",
+        "Semantics"
+      ],
+      "priority": "B — Enrichment",
+      "legalStatus": "Legal Check",
+      "license": "Dataset-specific; QUL code license does not automatically cover all hosted resources",
+      "commercialUse": "Conditional",
+      "modification": "Unknown",
+      "cost": "Free",
+      "whyNeeded": "Strong aggregation layer: morphology, roots, lemmas, translations, tafsir, themes, similar ayahs, mutashābihāt, scripts and audio.",
+      "nextAction": "Create per-resource license checklist before importing any individual QUL dataset.",
+      "lastChecked": "2026-09-13"
+    },
+    {
+      "systemId": "quran-foundation",
+      "source": "Quran Foundation / [Quran.com](http://Quran.com) Content API",
+      "organization": "Quran Foundation",
+      "sourceUrl": "https://api-docs.quran.foundation/legal/developer-terms/",
+      "layer": [
+        "API",
+        "Canonical text",
+        "Tafsir",
+        "Audio"
+      ],
+      "priority": "B — Enrichment",
+      "legalStatus": "Ready",
+      "license": "Developer Terms; app use allowed under terms; raw QF Content/API redistribution requires separate written commercial license",
+      "commercialUse": "Conditional",
+      "modification": "Verbatim only",
+      "cost": "Free",
+      "whyNeeded": "Verified live/sync layer for Quran text, translations, tafsir, word-by-word resources, audio and Mushaf content.",
+      "nextAction": "Use as runtime/verification source, not master redistributed dataset; document caching and Content Sync rules.",
+      "lastChecked": "2026-09-13"
+    },
+    {
+      "systemId": "qurana",
+      "source": "QurAna",
+      "organization": "University of Leeds researchers",
+      "sourceUrl": "https://aclanthology.org/L12-1011/",
+      "layer": [
+        "Discourse",
+        "Semantics"
+      ],
+      "priority": "B — Enrichment",
+      "legalStatus": "Legal Check",
+      "license": "Exact corpus license to verify",
+      "commercialUse": "Unknown",
+      "modification": "Unknown",
+      "cost": "Free",
+      "whyNeeded": "24,500+ Quranic pronouns linked to antecedents; factual basis for discourse reference, addressee shifts and future iltifāt research.",
+      "nextAction": "Find current downloadable corpus/license; map antecedents to Quran Universe entity IDs.",
+      "lastChecked": "2026-09-13"
+    },
+    {
+      "systemId": "quranmorph",
+      "source": "QuranMorph — Birzeit / SinaLab",
+      "organization": "SinaLab, Birzeit University",
+      "sourceUrl": "https://sina.birzeit.edu/quran/",
+      "layer": [
+        "Morphology",
+        "Lexicon"
+      ],
+      "priority": "A — Core",
+      "legalStatus": "Legal Check",
+      "license": "Reported open dataset; exact downloadable-version license must be archived before production",
+      "commercialUse": "Unknown",
+      "modification": "Unknown",
+      "cost": "Free",
+      "whyNeeded": "Manually lemmatized and POS-tagged Quran corpus; words linked to Qabas lemmas, creating a bridge from Quran words into a larger Arabic lexical graph.",
+      "nextAction": "Obtain authorized official access through SinaLab's current institutional/professional-email process, then archive the exact release and licence before ingestion.",
+      "lastChecked": "2026-09-22"
+    },
+    {
+      "systemId": "qursim",
+      "source": "QurSim",
+      "organization": "University of Leeds researchers",
+      "sourceUrl": "https://aclanthology.org/L12-1051/",
+      "layer": [
+        "Semantics",
+        "Themes"
+      ],
+      "priority": "B — Enrichment",
+      "legalStatus": "Legal Check",
+      "license": "Exact dataset redistribution license to verify",
+      "commercialUse": "Unknown",
+      "modification": "Unknown",
+      "cost": "Free",
+      "whyNeeded": "7,600+ expert-derived related-ayah pairs; demonstrates semantic relations beyond shared roots and can seed cross-ayah graph edges.",
+      "nextAction": "Locate downloadable corpus and exact license; inspect relation provenance and granularity.",
+      "lastChecked": "2026-09-13"
+    },
+    {
+      "systemId": "rei",
+      "source": "REI — Rhetorical Element Identifier",
+      "organization": "Computational rhetoric researchers",
+      "sourceUrl": "https://digitalhumanities.org/dhq/vol/17/2/000673/000673.html",
+      "layer": [
+        "Rhetoric"
+      ],
+      "priority": "C — Research",
+      "legalStatus": "Research Only",
+      "license": "Research method/software/data terms vary by implementation; verify before reuse",
+      "commercialUse": "Unknown",
+      "modification": "Unknown",
+      "cost": "Unknown",
+      "whyNeeded": "Computational detection of a subset of classical Arabic rhetorical devices; useful for machine_candidate generation, never as automatic truth.",
+      "nextAction": "Extract detectable device list, precision/recall limitations and implementation availability; keep outputs candidate-only.",
+      "lastChecked": "2026-09-13"
+    },
+    {
+      "systemId": "sinalab-lexicographic-db",
+      "source": "SinaLab Lexicographic DB — 150 dictionaries",
+      "organization": "SinaLab, Birzeit University",
+      "sourceUrl": "https://sina.birzeit.edu/resources/index.html",
+      "layer": [
+        "Lexicon",
+        "Semantics",
+        "API"
+      ],
+      "priority": "B — Enrichment",
+      "legalStatus": "Permission Needed",
+      "license": "Special licence; premium access also advertised for some SinaLab datasets",
+      "commercialUse": "Unknown",
+      "modification": "Unknown",
+      "cost": "Potentially paid",
+      "whyNeeded": "Definitions, synonyms, translations and morphology across 150 manually digitized dictionaries — potentially exceptional lexical enrichment.",
+      "nextAction": "Contact Prof. Mustafa Jarrar when schema/MVP is ready; ask about academic/startup/commercial terms, API rights and pricing.",
+      "lastChecked": "2026-09-13"
+    },
+    {
+      "systemId": "tafsircenter",
+      "source": "Tafsir Center quran.db / tafsir-mcp-data",
+      "organization": "Tafsir Center for Quranic Studies",
+      "sourceUrl": "https://github.com/tafsircenter/tafsir-mcp",
+      "layer": [
+        "Canonical text",
+        "Morphology",
+        "Tafsir",
+        "Qiraat"
+      ],
+      "priority": "A — Core",
+      "legalStatus": "Ready",
+      "license": "CC BY 4.0 (data); MIT (code)",
+      "commercialUse": "Yes",
+      "modification": "Allowed",
+      "cost": "Free",
+      "whyNeeded": "77k+ Quran words, roots, ṣarf, iʿrāb, meanings, qirāʾāt, tafsir and asbāb al-nuzūl in one verified SQLite database.",
+      "nextAction": "2:197 is imported 29/29. Keep source/version provenance and extend only when the next audited slice is selected.",
+      "lastChecked": "2026-09-22"
+    },
+    {
+      "systemId": "tanzil",
+      "source": "Tanzil Quran Text",
+      "organization": "Tanzil Project",
+      "sourceUrl": "https://tanzil.net/docs/text_license",
+      "layer": [
+        "Canonical text"
+      ],
+      "priority": "A — Core",
+      "legalStatus": "Ready",
+      "license": "CC BY 3.0 / project terms; Quran text must remain verbatim",
+      "commercialUse": "Yes",
+      "modification": "Verbatim only",
+      "cost": "Free",
+      "whyNeeded": "Verified canonical Quran text baseline; attach all linguistic and research layers to a stable text.",
+      "nextAction": "Download exact production version; record hash/version and attribution notice.",
+      "lastChecked": "2026-09-13"
+    }
+  ]
+}
