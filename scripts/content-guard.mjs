@@ -4,6 +4,7 @@ import { WQY_PUBLIC_MODEL } from '../src/canonicalWqy.js'
 import { MORPHOLOGY } from '../src/morphologyWqy.js'
 import { CONTENT_SOURCES, WORD_CONTENT, LBB_WORD_CONTENT, LBB_DERIVATION_NOTES } from '../src/rootContent.js'
 import { AYAH_PROTOTYPES } from '../src/ayahPrototype.js'
+import { validateAyahRecord } from '../src/data/ayahSchema.js'
 import {
   QURAN_UNIVERSE_DATA_VERSION,
   DATA_SOURCE_SYSTEMS,
@@ -153,6 +154,15 @@ for (const id of new Set([...collectSourceRefs(WORD_CONTENT), ...collectSourceRe
   if (!CONTENT_SOURCES[id]) fail(`content references undefined source ${id}`)
 }
 
+
+// Ayah Space records must satisfy the shared schema before deployment.
+for (const [reference, record] of Object.entries(AYAH_PROTOTYPES)) {
+  try {
+    validateAyahRecord(record)
+  } catch (error) {
+    fail(`Ayah Space schema failed for ${reference}: ${error.message}`)
+  }
+}
 
 // Canonical Quran Universe IDs and first cross-corpus pilot.
 if (QURAN_UNIVERSE_DATA_VERSION !== 'QU-DATA v0.3 — 2026-09-22') fail('unexpected Quran Universe data-layer version')
