@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0",
+  "policy": "watch_then_security_review",
+  "updated": "2026-09-22",
+  "repositories": [
+    {
+      "id": "ponytail",
+      "repo": "DietrichGebert/ponytail",
+      "branch": "main",
+      "pinnedCommit": "e3ba2aa6f1e6f0bc4d69eb09c9f0d0a93af56156"
+    },
+    {
+      "id": "graphify",
+      "repo": "Graphify-Labs/graphify",
+      "branch": "v8",
+      "pinnedCommit": "20a20d30d8e7eef77675651f0199d87f913bd3e7"
+    },
+    {
+      "id": "anthropic-skills",
+      "repo": "anthropics/skills",
+      "branch": "main",
+      "pinnedCommit": "34040c9c568585f6929bedeaad110ad08f079624"
+    },
+    {
+      "id": "superpowers",
+      "repo": "obra/superpowers",
+      "branch": "main",
+      "pinnedCommit": "5bf4e78011075bcfc0dc295f0724994cd123ee71"
+    },
+    {
+      "id": "skill-security-auditor",
+      "repo": "alirezarezvani/claude-skills",
+      "branch": "main",
+      "pinnedCommit": "19392f7a08264ed00486a251f5b2098321771f94"
+    }
+  ]
+}

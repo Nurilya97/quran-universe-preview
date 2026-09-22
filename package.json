@@ -7,7 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test:content": "node scripts/content-guard.mjs"
+    "test:content": "node scripts/content-guard.mjs",
+    "sync": "node scripts/sync-generated.mjs",
+    "sync:check": "node scripts/sync-generated.mjs --check",
+    "audit:system": "node scripts/system-audit.mjs",
+    "check": "npm run sync:check && npm run audit:system && npm run test:content",
+    "verify": "npm run check && npm run build"
   },
   "dependencies": {
     "@fontsource/noto-sans-arabic": "5.3.0",

@@ -1,0 +1,79 @@
+name: Quran Universe system health
+
+on:
+  schedule:
+    - cron: '17 3 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Verify synchronized system
+        run: npm run check
+      - name: Production build
+        run: npm run build
+      - name: Install Chromium verification runner
+        run: |
+          npm install --no-save --package-lock=false @playwright/test@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Approved UI contracts
+        run: npx playwright test
+      - name: Watch skills and source freshness
+        id: watch
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/upstream-watch.mjs
+      - name: Check QAMAR supplement for corpus-like release files
+        id: qamar
+        continue-on-error: true
+        run: |
+          curl -L --fail --retry 3 --retry-delay 3             -o qamar-supplement.zip             'https://aclanthology.org/attachments/2026.abjadnlp-1.38.OptionalSupplementaryMaterial.zip'
+          unzip -Z1 qamar-supplement.zip > qamar-files.txt
+          if grep -E -i '(corpus|dataset|\.csv$|\.tsv$|\.json$|\.parquet$|\.sqlite$|\.db$|\.tei$)' qamar-files.txt > qamar-potential.txt; then
+            {
+              echo
+              echo '## QAMAR release watch'
+              echo
+              echo 'Potential corpus-like files appeared in the official ACL supplement:'
+              sed 's/^/- /' qamar-potential.txt
+              echo
+              echo 'Manual source/licence review is required before ingestion.'
+            } >> system-health-report.md
+            exit 1
+          fi
+      - name: Open or update maintenance issue
+        if: steps.watch.outcome == 'failure' || steps.qamar.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          title='Automated maintenance watch — review required'
+          existing="$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[0].number // empty')"
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body-file system-health-report.md
+          else
+            gh issue create --title "$title" --body-file system-health-report.md
+          fi
+      - name: Upload health report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quran-universe-system-health
+          path: |
+            system-health-report.md
+            qamar-files.txt
+            qamar-potential.txt
+          if-no-files-found: ignore
+          retention-days: 30

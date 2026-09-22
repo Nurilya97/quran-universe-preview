@@ -1,9 +1,6 @@
 name: Quran Universe preview integrity
 
 on:
-  push:
-    branches:
-      - "sync/**"
   pull_request:
     branches:
       - main
@@ -18,5 +15,5 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - run: npm run test:content
+      - run: npm run check
       - run: npm run build

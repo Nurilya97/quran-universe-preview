@@ -43,11 +43,12 @@ Do not redesign unrelated screens. The latest explicit user correction overrides
 2. Check for stale duplicate rules before adding new ones.
 3. Make the smallest coherent change.
 4. Update project invariants in `AGENTS.md` only when the user has explicitly approved the rule.
-5. Run or rely on `npm run test:content`.
-6. Run the production build.
-7. Inspect the GitHub Actions result.
-8. Never say "deployed", "live", or "готово" until the newest workflow run completes successfully.
-9. Provide the build-specific Pages URL after success.
+5. Run `npm run sync` when canonical research registries changed.
+6. Run `npm run check` so generated docs, system architecture and content invariants are all verified.
+7. Run the production build.
+8. Inspect the GitHub Actions result.
+9. Never say "deployed", "live", or "готово" until the newest workflow run completes successfully.
+10. Provide the build-specific Pages URL after success.
 
 ## Data audit checklist
 

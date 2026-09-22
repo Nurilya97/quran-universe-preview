@@ -29,3 +29,14 @@ The former Notion Quran Universe control plane and the former private repository
 ## Simplicity rule
 
 Do not recreate a second control plane, mirror repository, duplicate semantic runtime, or external mandatory state store. If a fact is required to build or validate the product, it belongs in this repository.
+
+
+## Automatic synchronization
+
+Canonical structured registries generate their human-readable documentation with `npm run sync`. CI runs `npm run sync:check`, so generated docs cannot silently drift from JSON owners.
+
+`npm run audit:system` validates single-repository authority, product-root registration, source/adaptor freshness, skill wiring, workflow topology, and absence of legacy runtime dependencies.
+
+A weekly `system-health.yml` run performs the full system check, production build, browser contracts, upstream skill watch, core-source freshness watch, and QAMAR release watch. Findings create/update one GitHub maintenance issue instead of silently mutating research data.
+
+Dependabot watches npm and GitHub Actions dependencies weekly. Third-party agent skills are intentionally not auto-replaced: upstream changes are detected automatically, then pass the skill-security review before adoption.

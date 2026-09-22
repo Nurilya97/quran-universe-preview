@@ -243,8 +243,8 @@
       "modification": "Verbatim only",
       "cost": "Free",
       "whyNeeded": "Morpheme segmentation, root, lemma, morphology, traditional Arabic grammar, dependency syntax and Quran ontology.",
-      "nextAction": "Use in internal audit now; obtain clear written production/commercial clarification before launch.",
-      "lastChecked": "2026-09-13"
+      "nextAction": "2:197 is mapped 29/29 in the current pilot. Preserve QAC as a source-specific morphology/syntax layer and extend only through explicit Quran Universe word/segment mappings.",
+      "lastChecked": "2026-09-22"
     },
     {
       "systemId": "qamar",

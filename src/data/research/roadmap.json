@@ -1,0 +1,151 @@
+{
+  "schemaVersion": "1.0",
+  "authority": "single_repository",
+  "updated": "2026-09-22",
+  "phases": [
+    {
+      "order": 1,
+      "phase": "01 — Source & License Registry",
+      "status": "Done",
+      "priority": "Critical",
+      "deliverable": "Single source/licence registry with provenance, legal status and next actions.",
+      "nextAction": "Maintain the registry in this repository; automated health checks flag stale core-source reviews."
+    },
+    {
+      "order": 2,
+      "phase": "02 — Acquire Core Datasets",
+      "status": "In progress",
+      "priority": "Critical",
+      "deliverable": "Immutable permitted source snapshots with licence/terms evidence and checksums.",
+      "nextAction": "Tafsir Center pilot is available; acquire/freeze Tanzil next. QuranMorph awaits authorized access; QAMAR awaits an official corpus release."
+    },
+    {
+      "order": 3,
+      "phase": "03 — Freeze Canonical Quran Text",
+      "status": "Not started",
+      "priority": "Critical",
+      "deliverable": "Versioned canonical Quran text package with rasm/display policy and checksums.",
+      "nextAction": "Select and freeze the exact Tanzil production text; keep display normalization separate from canonical bytes."
+    },
+    {
+      "order": 4,
+      "phase": "04 — Canonical Word & Segment IDs",
+      "status": "In progress",
+      "priority": "Critical",
+      "deliverable": "Quran Universe IDs for ayah → orthographic word → segment.",
+      "nextAction": "2:197 has 29 canonical word IDs. Define and verify segment-level IDs only after source-specific segmentation is inspected."
+    },
+    {
+      "order": 5,
+      "phase": "05 — One-Surah Data Audit",
+      "status": "In progress",
+      "priority": "Critical",
+      "deliverable": "Full one-surah comparison matrix across text, segmentation, root, lemma, POS, morphology and iʿrāb.",
+      "nextAction": "The 2:197 29-word pilot is complete for QAC + Tafsir Center, but it is not a full-surah audit. Choose the pilot surah and run the same source-aware mapping across every word."
+    },
+    {
+      "order": 6,
+      "phase": "06 — Conflict & Verification Policy",
+      "status": "In progress",
+      "priority": "Critical",
+      "deliverable": "Explicit policy for disagreements between authoritative sources.",
+      "nextAction": "Formalize current safeguards into a source-assertion/conflict policy before a full-surah import; never collapse source-specific disagreements."
+    },
+    {
+      "order": 7,
+      "phase": "07 — Quran Universe Data Schema v1",
+      "status": "In progress",
+      "priority": "Critical",
+      "deliverable": "Stable entities/relations for Quran text, words, segments, linguistic assertions, concepts and citations.",
+      "nextAction": "Extend the existing canonical ID + Ayah schema into the source-assertion schema after the one-surah audit exposes required conflict cases."
+    },
+    {
+      "order": 8,
+      "phase": "08 — Core Linguistic Import",
+      "status": "In progress",
+      "priority": "High",
+      "deliverable": "Source adapters for morphology, roots, lemmas, POS, ṣarf, iʿrāb and syntax.",
+      "nextAction": "QAC + Tafsir Center are piloted on 2:197. Add the next audited source only when official data/licensing is available; preserve raw and normalized layers."
+    },
+    {
+      "order": 9,
+      "phase": "09 — Lexical & Semantic Graph",
+      "status": "Not started",
+      "priority": "High",
+      "deliverable": "Root → lemma → word forms → senses/concepts → Quran occurrences graph.",
+      "nextAction": "Start after canonical lemma/root mappings are stable enough to connect Qabas/Arabic Ontology without inventing equivalences."
+    },
+    {
+      "order": 10,
+      "phase": "10 — Classical Lexicon Research Layer",
+      "status": "Not started",
+      "priority": "Medium",
+      "deliverable": "Citable classical lexicon layer separated from Quran Universe conclusions.",
+      "nextAction": "Pilot Lane and other licensed sources on selected roots with explicit source assertions."
+    },
+    {
+      "order": 11,
+      "phase": "11 — Tafsir, Qiraat & Multilingual Enrichment",
+      "status": "Not started",
+      "priority": "High",
+      "deliverable": "Ayah/word-linked tafsir, qirāʾāt, meanings and multilingual resources.",
+      "nextAction": "Use Tafsir Center first; add QUL/Quran Foundation only under verified per-resource terms."
+    },
+    {
+      "order": 12,
+      "phase": "12 — Ayah Relations Graph",
+      "status": "Not started",
+      "priority": "High",
+      "deliverable": "Typed lexical, root, semantic, thematic and parallel-ayah relations.",
+      "nextAction": "Evaluate QurSim/QUL relation datasets after canonical word/ayah identity is stable."
+    },
+    {
+      "order": 13,
+      "phase": "13 — Balagha Source Research",
+      "status": "Researching",
+      "priority": "High",
+      "deliverable": "Source map for classical/modern balāgha and iʿjāz scholarship.",
+      "nextAction": "Keep computational rhetoric datasets as candidate generators; prioritize citable scholarly/classical evidence."
+    },
+    {
+      "order": 14,
+      "phase": "14 — Rhetoric Ontology & Annotation Protocol",
+      "status": "In progress",
+      "priority": "High",
+      "deliverable": "Rhetoric graph schema with machine_candidate / human_verified / scholar_verified statuses.",
+      "nextAction": "Formalize the evidence/status vocabulary used by Ayah Space before scaling rhetoric annotations."
+    },
+    {
+      "order": 15,
+      "phase": "15 — Rhetoric Pilot on One Surah",
+      "status": "Not started",
+      "priority": "High",
+      "deliverable": "One fully annotated surah with syntax, discourse, rhetoric, composition and sound/waqf evidence.",
+      "nextAction": "Start only after the rhetoric protocol and one-surah linguistic audit are stable."
+    },
+    {
+      "order": 16,
+      "phase": "16 — Backend, Search & Research API",
+      "status": "Not started",
+      "priority": "High",
+      "deliverable": "API for Quran entities, relations, provenance and graph traversal.",
+      "nextAction": "Define API contracts after schema v1 stabilizes; every answer must preserve source/citation retrieval."
+    },
+    {
+      "order": 17,
+      "phase": "17 — Immersive MVP Vertical Slice",
+      "status": "In progress",
+      "priority": "High",
+      "deliverable": "Universe + Root Space + Word Space + schema-driven Ayah Space with verified relations.",
+      "nextAction": "Continue expanding from real audited data only; keep approved spatial UI protected by browser contracts."
+    },
+    {
+      "order": 18,
+      "phase": "18 — Full-Quran Scale, Scholarly QA & Production",
+      "status": "Not started",
+      "priority": "Later",
+      "deliverable": "Full-Quran scaling, scholar review, legal review, corrections and production release.",
+      "nextAction": "Evaluate scholar-review and scaling resources after the vertical slice and core data model are stable."
+    }
+  ]
+}

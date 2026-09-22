@@ -22,6 +22,9 @@ Before substantial Quran Universe implementation work:
 8. Before saying work is done/live/fixed load `.github/skills/verification-before-completion/SKILL.md`.
 9. Before adding any external skill/package load `.github/skills/skill-security-auditor/SKILL.md`.
 10. For interactive Quran UI changes also apply `.github/skills/quran-universe-accessibility/SKILL.md`.
+11. For architecture, workflow, synchronization, automation, cleanup, or system-health changes load `.github/skills/quran-universe-system-maintenance/SKILL.md`.
+12. For external dataset/licence/source-status refreshes load `.github/skills/quran-universe-source-refresh/SKILL.md`.
+13. After canonical registry changes run `npm run sync`; before completion run `npm run check`.
 
 Authority order: latest explicit user instruction → AGENTS.md / Quran Universe skill → approved canonical UI/data → supporting skills such as Graphify, Ponytail, testing/debugging, accessibility, and skill-security review.
 

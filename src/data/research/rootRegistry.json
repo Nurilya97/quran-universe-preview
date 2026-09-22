@@ -13,10 +13,10 @@
       "scholarReviewed": false,
       "evidenceComplete": false,
       "falsificationDone": false,
-      "nextAction": "Сформировать отдельный ROOT_STATE из уже собранной модели, затем провести falsification.",
-      "openQuestions": "Нужно проверить модель против трудных употреблений и завершить morphology/translation gates.",
-      "notes": "Research-only / pre-falsification. ROOT_STATE is still missing, so Orchestrator must fail closed before any worker run. Explicit Sync Status = Not checked prevents null/ambiguous routing.",
-      "updated": "2026-09-18"
+      "nextAction": "When ص ب ر research resumes, consolidate its evidence into this repository, create the canonical research record here, then run falsification before any semantic model is promoted.",
+      "openQuestions": "The historical research has not yet been revalidated inside the single-repository workflow.",
+      "notes": "Research-only / pre-falsification. No external orchestrator or ROOT_STATE is required; any resumed work must be rebuilt against the current Quran Universe research schema.",
+      "updated": "2026-09-22"
     },
     {
       "root": "ل ب ب",
@@ -41,10 +41,10 @@
       "scholarReviewed": false,
       "evidenceComplete": false,
       "falsificationDone": true,
-      "nextAction": "Human visual review of Word Structure v2 in the live public preview. Check connected Arabic shaping, dynamic legend (only roles actually present), explicit full root و ق ي, compact Derived From block, pattern-function explanation, and whether technical details now feel secondary rather than repetitive.",
-      "openQuestions": "How should typography, transliteration and progressive disclosure improve the spatial experience without changing the approved derivational orbit structure or semantic/epistemic status?",
-      "notes": "Word Structure v2 merged to quran-universe-preview main at 9295d0d62bb64c88ccf682cad288060f559ade1d and deployed successfully. Replaced v1 letter-button UX with connected Arabic spans, role taxonomy root/prefix/suffix/ending/particle/form, dynamic legend, explicit full-root block, compact derivation source, one pattern-function block, and optional technical analysis. Meaning tab and Root Galaxy unchanged. Content guard/build passed.",
-      "updated": "2026-09-18"
+      "nextAction": "Expand the verified Quran-first model to additional ayah records and keep cross-corpus evidence synchronized without changing the approved semantic nucleus.",
+      "openQuestions": "Which additional Quran contexts should be promoted into Ayah Space next, and which claims still require scholar review?",
+      "notes": "Canonical WQY-SM v0.2 is owned by this repository. 2:197 is mapped 29/29 against QAC and Tafsir Center; content guards and browser contracts protect the approved morphology and semantic presentation.",
+      "updated": "2026-09-22"
     }
   ]
 }
