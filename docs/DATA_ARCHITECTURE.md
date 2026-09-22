@@ -69,3 +69,23 @@ Research candidates must remain distinguishable from human-verified and scholar-
 ## Deployment invariant
 
 `npm run test:content` is the gatekeeper. A deployment must fail when canonical IDs, corpus counts, source references, morphology profiles or approved semantic invariants drift out of sync.
+
+
+## Pilot source status · 2026-09-22
+
+The multi-dataset pilot is deliberately staged instead of pretending all corpora are already aligned.
+
+| Source | Verified now | 2:197 row mapping |
+|---|---|---|
+| Quranic Arabic Corpus | public word coordinates + morphology/syntax interface | 29/29 orthographic words mapped |
+| Tafsir Center quran.db | official schema, word key `surahNo + ayahNo + wordNo`, linguistic tables | schema ready; rows not yet imported |
+| QuranMorph | official corpus metadata; lemma/POS + Qabas linkage | pending official access |
+| QAMAR | 2026 paper and optional supplementary resource metadata | import pending |
+
+### Access rule
+
+QuranMorph's current official download form states that access is granted to users affiliated with a recognized company, university, or institution and requires an official professional email. Until authorized access is available, Quran Universe must not silently promote an unofficial mirror into the canonical ingestion layer.
+
+### Adapter rule
+
+Every external source gets an explicit adapter in `src/data/sourceAdapters.js`. An adapter may be schema-ready without being row-mapped. Missing row mappings remain null/pending rather than being inferred from another corpus.
