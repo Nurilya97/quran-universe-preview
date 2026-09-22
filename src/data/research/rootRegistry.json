@@ -27,9 +27,9 @@
       "scholarReviewed": false,
       "evidenceComplete": false,
       "falsificationDone": false,
-      "nextAction": "Formalize the root research record from the current reviewed lexical/morphology implementation before promoting a semantic model.",
-      "openQuestions": "The UI/morphology implementation is active, but the root has not yet passed the full Research By Heart semantic/falsification pipeline.",
-      "notes": "Current Root Space and morphology UI are implemented here. UI approval does not equal semantic-model human review.",
+      "nextAction": "After the master content/design template is approved, re-run ل ب ب end-to-end: re-verify the lexical family and semantic branches, run falsification/Quran-context checks, then rebuild Word Orbit and Root Space relationships from the canonical template instead of patching the current prototype.",
+      "openQuestions": "Which parts of the working nucleus survive the formal falsification pass, and how should the verified semantic branches be represented as relationships without forcing weak links?",
+      "notes": "The current Root Space, lexical data and some morphology UI are implemented, but the relationship layer and per-word template are not final. UI approval of individual elements does not equal semantic-model human review.",
       "updated": "2026-09-22"
     },
     {
