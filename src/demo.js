@@ -1,11 +1,6 @@
 // Public interface demo only; no private research content.
 // Rings group a verb with its lexical family, not a grammatical form number
 // assigned to every noun. Public sources are exposed in the structure panel.
-export const SOURCES = {
-  corpus: 'https://corpus.quran.com/qurandictionary.jsp?q=wqy',
-  lexicon: 'https://arabiclexicon.hawramani.com/%D9%88%D9%82%D9%89/',
-  taqwa: 'https://www.almaany.com/ar/dict/ar-ar/%D8%AA%D9%82%D9%88%D9%89/',
-}
 export const ROOT_ORBITS = [
   { id: 'I', radius: 24, label: 'familyI' },
   { id: 'V', radius: 34.5, label: 'familyV' },
