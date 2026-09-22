@@ -286,7 +286,7 @@ function TaqwaMorphologyLegacy({ selected, morphology, language }) {
                 <p>{ru
                   ? <><b>Что добавилось:</b> ٱلـ (al-) присоединяется к слову и делает его определённым.</>
                   : <><b>What is added:</b> ٱلـ (al-) attaches to the word and makes it definite.</>}</p>
-                <p><b>{ru ? `В аяте ${selected.reference || '2:197'}:` : `In ${selected.reference || '2:197'}:`}</b> {selected.analysis?.[language]?.meaning?.gloss}</p>
+                <p><b>{ru ? `В аяте ${selected.ayahReference}:` : `In ${selected.ayahReference}:`}</b> {selected.analysis?.[language]?.meaning?.gloss}</p>
               </div>
             </div>
           
