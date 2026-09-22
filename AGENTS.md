@@ -72,6 +72,7 @@ Quran Universe is Quran-first by design.
 - Root analysis, morphology, classical lexicons, translations, and tafsir are supporting layers; they must not override a meaning clearly unfolded by Quranic usage.
 - Preserve the distinction between the lexical/root mechanism and the Quran's own fuller description, but show both when the Quran supplies that description.
 - For تَقْوَىٰ morphology, keep the noun pattern فَعْلَى distinct from the Form VIII verb ٱتَّقَىٰ. For a transparent teaching sequence, show وَقْيَا → تَقْيَا → تَقْوَىٰ: initial root و corresponds to ت, then final root ي corresponds to و in the noun pattern. Label these as reconstructed morphological stages, not separate lexical words, and note that classical sources may order the intermediate derivation differently while preserving the same two correspondences.
+- In the colour analysis of تَقْوَىٰ, mark ت and the و after ق as changed root letters, ق as an unchanged root letter, and final ىٰ as the element of the فَعْلَى pattern. Do not label ت as a semantic prefix or treat قْوَى as an undifferentiated root block.
 
 For Quran Universe explanations, use this order:
 
