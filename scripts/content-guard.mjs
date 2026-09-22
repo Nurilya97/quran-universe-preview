@@ -107,6 +107,9 @@ if (JSON.stringify(taqwaParts.map(p => [p.text, p.role])) !== JSON.stringify(exp
 }
 if (MORPHOLOGY.taqwa?.pattern?.ar !== 'فَعْلَى') fail('taqwa must use its own noun pattern فَعْلَى')
 if (!MORPHOLOGY.taqwa?.formation?.ru?.includes('وَقْيَا → تَقْيَا')) fail('taqwa reconstruction sequence missing')
+if (!MORPHOLOGY.ittaqa?.transformation?.ru?.includes('إبدال') || !MORPHOLOGY.ittaqa?.transformation?.ru?.includes('إدغام')) {
+  fail('ittaqa transformation must preserve explicit ibdal then idgham')
+}
 if (JSON.stringify(MORPHOLOGY.taqwa).includes('تَـ не выделяется как самостоятельный смысловой префикс') &&
     taqwaParts.some(p => p.role === 'prefix')) {
   fail('taqwa ت must not be visually classified as a semantic prefix')
