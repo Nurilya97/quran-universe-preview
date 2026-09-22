@@ -1,0 +1,16 @@
+# Sensitive Quran Universe surfaces require repository-owner review.
+/.github/workflows/ @Nurilya97
+/.github/dependabot.yml @Nurilya97
+/.github/skills/quran-universe-security/ @Nurilya97
+/scripts/security-audit.mjs @Nurilya97
+/scripts/tamper-guard.mjs @Nurilya97
+/scripts/quarantine-download.mjs @Nurilya97
+/src/data/research/ @Nurilya97
+/src/ayahPrototype.js @Nurilya97
+/src/canonicalWqy.js @Nurilya97
+/src/occurrences.js @Nurilya97
+/src/data/quranUniverseData.js @Nurilya97
+/src/data/sourceAdapters.js @Nurilya97
+/spatial.html @Nurilya97
+/package.json @Nurilya97
+/package-lock.json @Nurilya97
