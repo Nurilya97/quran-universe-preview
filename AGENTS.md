@@ -117,20 +117,33 @@ The full pattern refines this contribution; it does not erase the contribution o
 
 ## 6. Connector rules
 
-Connector styling is diagram-specific. Do not copy one line treatment across every Quran Universe diagram.
+Connector styling is diagram-specific. Never copy one line treatment across every Quran Universe diagram.
 
-For **Word Orbit → Структура слова → visual morphology** use the current approved/reference implementation:
-- straight **1 px** connectors;
+**Word Orbit → Структура слова → visual morphology**
+- 1 px straight connectors;
 - directional arrowhead;
-- desktop: horizontal line between consecutive morphology nodes;
-- mobile: vertical 1 px line with a small dot at the upper endpoint and an attached arrowhead at the lower endpoint;
-- no bent “AI-looking” branches;
-- no decorative elbow stubs;
-- no floating line fragments.
+- desktop horizontal;
+- mobile vertical with a small upper dot and attached lower arrowhead.
+- Canonical owner: `.morph-board` in `WordDetails.jsx/css`; protected by the approved UI browser contract.
 
-For Root Space semantic links, Ayah Space syntax, and other diagram families, inspect the approved reference for that specific diagram before changing connector weight, arrowheads, or geometry.
+**Ayah Space → taqwā morphology**
+- 1 px connector tree;
+- no arrowheads / SVG markers;
+- clean orthogonal geometry.
+- Canonical owner: `TaqwaMorphologyLegacy` + scoped `.approved-taqwa-baseline`.
+- The earlier 3 px instruction was later reduced to 2 px and then 1 px; “no arrows” remained.
 
-If the user says “как в taqwā” or names another approved screen, inspect that implementation first and reuse its spacing, alignment, line weight, and interaction pattern. Do not invent or globally propagate a different visual language.
+**Ayah Space syntax**
+- uses its own restrained directional relation arcs and clickable grammar terms;
+- never inherit morphology connector settings.
+
+**Root Space**
+- orbit rings are family guides;
+- ل ب ب notation/legend is partly approved, but semantic relationship lines are not yet a finished canonical template.
+
+`AyahView.css` contains historical connector experiments. Do not treat old “v4/v5” comments as authority. Check the rendered approved state, active component, winning scoped CSS and browser contract.
+
+If the user says “как в taqwā” or names another approved screen, first identify which taqwā context they mean: Word Orbit structure and Ayah Space morphology do **not** use the same connector rule.
 
 The latest explicit user correction overrides older project notes. Remove stale conflicting rules instead of preserving both.
 
