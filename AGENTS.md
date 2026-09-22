@@ -120,24 +120,31 @@ The full pattern refines this contribution; it does not erase the contribution o
 Connectors must look deliberate and geometric.
 
 - Straight lines only.
-- 1 px thickness unless the user explicitly asks for another weight.
+- Current approved thickness: **3 px**.
+- **No arrowheads.**
 - No bent “AI-looking” branches.
 - No decorative elbow stubs.
-- Use exactly one connector between consecutive morphology steps.
-- The approved mobile connector is: small dot at the upper heading → continuous 1 px vertical line → attached arrowhead at the lower heading.
-- On mobile, use one 1 px vertical timeline rail on the left of the text.
-- All step content sits to the right of this rail.
-- Anchor the rail to the numbered step headings: the segment starts at the vertical center of “01 …” and ends at the vertical center of “02 …”; the next segment runs from “02 …” to “03 …”, and so on.
-- Put a small dot exactly at the upper endpoint beside the current numbered heading.
-- Put the arrowhead exactly at the lower endpoint beside the next numbered heading.
-- The arrowhead is physically attached to the 1 px line at its endpoint. Never render the arrow as a separate glyph, in the middle of the line, or with a visible gap.
-- The connector must never float between a paragraph and the next word, and must never start from the body copy.
-- Reuse the same restrained arrow treatment as the approved taqwā evolution; no filled triangle arrowheads.
-- On desktop, the same visual language may run horizontally when the steps are horizontal.
-- Explanatory callouts are text-only: do not add side borders or branch lines to them.
+- No floating line fragments.
+- Use only the connectors required to express a real morphological or semantic relation.
+- Explanatory callouts are text-only: do not add decorative side borders or branch lines.
 - If the user says “как в taqwā” or names another approved screen, inspect that existing implementation first and reuse its spacing, alignment, line weight, and interaction pattern. Do not invent a new visual language.
-- The latest explicit user correction overrides older project notes. Before changing a repeated element, check the latest accepted rule in this file and the approved reference implementation.
+- The latest explicit user correction overrides older project notes. Remove stale conflicting rules instead of preserving both.
 - Use the same connector language across roots, including taqwā and ل ب ب.
+
+## 6A. Root research authority
+
+For root meanings and semantic families, follow the **Root Research Protocol** in `.github/skills/quran-universe/SKILL.md`.
+
+In particular:
+- triangulate multiple lexical/Quran sources;
+- test the proposed root nucleus against the full derivational family;
+- explain real semantic bridges and separate genuine branches;
+- distinguish dictionary fact, synthesis, and hypothesis;
+- compare near-synonymous roots when it clarifies the semantic centre;
+- do not force unrelated derivatives into one elegant story;
+- present one coherent Quran Universe synthesis with source provenance kept separately.
+
+For **ل ب ب**, preserve the established working model only as an evidence-tested synthesis and re-run the root through the finalized master template rather than patching the older Root Space.
 
 ## 7. Root orbit notation
 
