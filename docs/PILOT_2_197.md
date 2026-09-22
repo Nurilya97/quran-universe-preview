@@ -91,7 +91,7 @@ Next action: ingest after authorized official access, then map by ayah + orthogr
 
 ### QAMAR
 
-Status: **metadata verified; row import pending**
+Status: **publication verified; official row release not yet located**
 
 The 2026 QAMAR paper describes a manually verified Quranic morphological resource with, for every Quranic word:
 
@@ -101,12 +101,12 @@ The 2026 QAMAR paper describes a manually verified Quranic morphological resourc
 - root
 - POS
 
-ACL Anthology exposes optional supplementary material, but row-level 2:197 data is not yet stored in Quran Universe.
+The ACL Anthology page exposes optional supplementary material. We downloaded and inspected that official archive on 2026-09-22: it contains the paper source, bibliography, style files, and figures, but **not the QAMAR corpus rows**. The paper itself states that the corpus will be released as an open-source resource for research and education.
 
 Reference:
 https://aclanthology.org/2026.abjadnlp-1.38/
 
-Next action: ingest the official supplementary resource, inspect its identifiers/tokenisation, then map it onto Quran Universe IDs.
+Next action: monitor the authors/ACL entry for the actual corpus release. Do not fabricate a QAMAR 2:197 mapping from QAC or another corpus while the official row data is unavailable.
 
 ## Important conclusion
 
@@ -117,7 +117,7 @@ It is valid to have:
 - QAC = mapped
 - Tafsir Center = 29/29 row-mapped
 - QuranMorph = access pending
-- QAMAR = import pending
+- QAMAR = publication verified; corpus release pending
 
 It is **not** valid to copy QAC's word numbering into the other corpora and call that a mapping.
 
