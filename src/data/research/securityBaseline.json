@@ -10,7 +10,7 @@
     },
     {
       "path": "src/canonicalWqy.js",
-      "gitBlobSha": "0589491fd5013ef8de18b6fc0fe419e15747428e",
+      "gitBlobSha": "923ac063acf641c0f73eec2fa23fe664aa9cc053",
       "protects": "approved WQY semantic model"
     },
     {
@@ -30,7 +30,7 @@
     },
     {
       "path": "src/data/research/wqyResearch.json",
-      "gitBlobSha": "620a3403a02fbf5b0c77b03c6cb53dd00be6f296",
+      "gitBlobSha": "3a44270a6b014f5fe5e0a8869619458ae4b7029e",
       "protects": "human-review and falsification record"
     },
     {
