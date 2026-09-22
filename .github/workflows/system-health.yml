@@ -6,10 +6,16 @@ on:
       - main
     paths:
       - '.github/workflows/system-health.yml'
+      - '.github/workflows/security-audit.yml'
       - 'scripts/system-audit.mjs'
+      - 'scripts/security-audit.mjs'
+      - 'scripts/tamper-guard.mjs'
+      - 'scripts/quarantine-download.mjs'
       - 'scripts/sync-generated.mjs'
       - 'scripts/upstream-watch.mjs'
       - 'src/data/research/upstreams.json'
+      - 'src/data/research/externalDataIntegrity.json'
+      - 'src/data/research/securityBaseline.json'
   schedule:
     - cron: '17 3 * * 1'
   workflow_dispatch:
@@ -23,12 +29,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 24
           cache: npm
       - run: npm ci
+      - name: Dependency vulnerability gate
+        run: npm run security:deps
       - name: Verify synchronized system
         run: npm run check
       - name: Production build
@@ -45,21 +53,21 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/upstream-watch.mjs
-      - name: Check QAMAR supplement for corpus-like release files
+      - name: Quarantine QAMAR supplement for release watch
         id: qamar
         continue-on-error: true
         run: |
-          curl -L --fail --retry 3 --retry-delay 3             -o qamar-supplement.zip             'https://aclanthology.org/attachments/2026.abjadnlp-1.38.OptionalSupplementaryMaterial.zip'
-          unzip -Z1 qamar-supplement.zip > qamar-files.txt
+          node scripts/quarantine-download.mjs qamar-acl-supplement
+          unzip -Z1 .quarantine/qamar-acl-supplement/qamar-supplement.zip > qamar-files.txt
           if grep -E -i '(corpus|dataset|\.csv$|\.tsv$|\.json$|\.parquet$|\.sqlite$|\.db$|\.tei$)' qamar-files.txt > qamar-potential.txt; then
             {
               echo
               echo '## QAMAR release watch'
               echo
-              echo 'Potential corpus-like files appeared in the official ACL supplement:'
+              echo 'Potential corpus-like files appeared in the quarantined ACL supplement:'
               sed 's/^/- /' qamar-potential.txt
               echo
-              echo 'Manual source/licence review is required before ingestion.'
+              echo 'Manual source/licence/hash review is required before extraction or ingestion.'
             } >> system-health-report.md
             exit 1
           fi
@@ -77,12 +85,13 @@ jobs:
           fi
       - name: Upload health report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: quran-universe-system-health
           path: |
             system-health-report.md
             qamar-files.txt
             qamar-potential.txt
+            .quarantine/qamar-acl-supplement/qamar-supplement.zip.integrity.json
           if-no-files-found: ignore
           retention-days: 30

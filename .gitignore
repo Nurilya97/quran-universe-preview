@@ -28,3 +28,5 @@ test-results/
 playwright-report/
 data/design-mcp.db
 
+# Untrusted external data stays local/quarantined.
+.quarantine/

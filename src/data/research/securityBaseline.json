@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.0",
+  "policy": "critical_quran_data_requires_deliberate_baseline_update_after_review",
+  "updatedOn": "2026-09-22",
+  "criticalFiles": [
+    {
+      "path": "src/ayahPrototype.js",
+      "gitBlobSha": "a4927c27c4a909ea964d0b79301f4145d4c114a2",
+      "protects": "Ayah Space canonical records"
+    },
+    {
+      "path": "src/canonicalWqy.js",
+      "gitBlobSha": "5c1b603f6075591336542ae728c866b02ce5a278",
+      "protects": "approved WQY semantic model"
+    },
+    {
+      "path": "src/occurrences.js",
+      "gitBlobSha": "a104ae78262d1ad03346b95d547d366428508ed6",
+      "protects": "Quran occurrence counts and coordinates"
+    },
+    {
+      "path": "src/data/research/rootRegistry.json",
+      "gitBlobSha": "eb9f53492e4f7de445343aa203e77c6c0f70ced7",
+      "protects": "root research and review status"
+    },
+    {
+      "path": "src/data/research/sourceRegistry.json",
+      "gitBlobSha": "520a2aed79eb5902d9c7ff3fce5fde19d574bbb3",
+      "protects": "source provenance and licence status"
+    },
+    {
+      "path": "src/data/research/wqyResearch.json",
+      "gitBlobSha": "d0bd98b8c69aa3dee2860e2ddc7fdc470688e722",
+      "protects": "human-review and falsification record"
+    },
+    {
+      "path": "src/data/quranUniverseData.js",
+      "gitBlobSha": "03ba1c0c37e69229199306bb61a31363fa38837a",
+      "protects": "canonical IDs and layer authority"
+    },
+    {
+      "path": "src/data/sourceAdapters.js",
+      "gitBlobSha": "d312695ec5d66be44a333cfce869f7e059db80f7",
+      "protects": "external source mapping status"
+    },
+    {
+      "path": "src/data/pilots/tafsircenter-2-197.js",
+      "gitBlobSha": "f16cf7279be09d8e6726a4d01fcdf69689b2e383",
+      "protects": "verified Tafsir Center pilot evidence"
+    }
+  ]
+}
