@@ -3,7 +3,7 @@
 // External corpora are mapped onto these IDs; none of their positional IDs
 // becomes the primary key of Quran Universe.
 
-export const QURAN_UNIVERSE_DATA_VERSION = 'QU-DATA v0.1 — 2026-09-22'
+export const QURAN_UNIVERSE_DATA_VERSION = 'QU-DATA v0.2 — 2026-09-22'
 
 export const DATA_SOURCE_SYSTEMS = {
   'quran-universe': { role: 'canonical_mapping', status: 'internal' },
