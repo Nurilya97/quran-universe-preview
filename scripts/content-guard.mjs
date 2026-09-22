@@ -170,7 +170,7 @@ else {
 }
 if (PILOT_2_197_DATASET_STATUS.qac.mappedOrthographicWords !== 29) fail('2:197 QAC pilot must remain 29/29 words')
 if (PILOT_SOURCE_ADAPTERS.qac.pilotStatus !== 'row_mapped') fail('QAC pilot adapter status drifted')
-if (PILOT_SOURCE_ADAPTERS.tafsircenter.pilotStatus !== 'schema_verified_row_import_pending') fail('Tafsir Center adapter status drifted')
+if (PILOT_SOURCE_ADAPTERS.tafsircenter.pilotStatus !== 'schema_verified_importer_ready') fail('Tafsir Center adapter status drifted')
 if (PILOT_SOURCE_ADAPTERS.quranmorph.pilotStatus !== 'metadata_verified_access_pending') fail('QuranMorph access status drifted')
 if (PILOT_SOURCE_ADAPTERS.qamar.pilotStatus !== 'metadata_verified_row_import_pending') fail('QAMAR import status drifted')
 if (!PILOT_SOURCE_ADAPTERS.quranmorph.access.includes('official_download_form_requires')) {
