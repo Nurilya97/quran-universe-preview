@@ -3,6 +3,13 @@ import { OCCURRENCES, ROOT_OCCURRENCE_COUNT } from '../src/occurrences.js'
 import { WQY_PUBLIC_MODEL } from '../src/canonicalWqy.js'
 import { MORPHOLOGY } from '../src/morphologyWqy.js'
 import { CONTENT_SOURCES, WORD_CONTENT, LBB_WORD_CONTENT, LBB_DERIVATION_NOTES } from '../src/rootContent.js'
+import { AYAH_PROTOTYPES } from '../src/ayahPrototype.js'
+import {
+  QURAN_UNIVERSE_DATA_VERSION,
+  DATA_SOURCE_SYSTEMS,
+  DATA_LAYER_AUTHORITY,
+  buildPilotOrthographicWordMap,
+} from '../src/data/quranUniverseData.js'
 
 const errors = []
 const fail = message => errors.push(message)
@@ -136,6 +143,33 @@ for (const id of new Set([...collectSourceRefs(WORD_CONTENT), ...collectSourceRe
   if (!CONTENT_SOURCES[id]) fail(`content references undefined source ${id}`)
 }
 
+
+// Canonical Quran Universe IDs and first cross-corpus pilot.
+if (QURAN_UNIVERSE_DATA_VERSION !== 'QU-DATA v0.1 — 2026-09-22') fail('unexpected Quran Universe data-layer version')
+const pilotAyah = AYAH_PROTOTYPES['2:197']
+if (!pilotAyah) fail('2:197 pilot ayah missing')
+else {
+  const pilotWords = buildPilotOrthographicWordMap(pilotAyah)
+  if (pilotWords.length !== 29) fail(`2:197 pilot token count changed: ${pilotWords.length}`)
+  if (!unique(pilotWords.map(word => word.id))) fail('duplicate canonical Quran Universe word IDs in 2:197 pilot')
+  for (const word of pilotWords) {
+    if (word.external.qac !== `2:197:${word.word}`) fail(`QAC bridge mismatch for ${word.id}`)
+    if (word.orbitId && OCCURRENCES[word.orbitId]) {
+      const hasOccurrence = OCCURRENCES[word.orbitId].some(item =>
+        item.sura === word.surah && item.ayah === word.ayah && item.word === word.word
+      )
+      if (!hasOccurrence) fail(`Ayah token ${word.id} links to ${word.orbitId} but occurrence database lacks its QAC coordinate`)
+    }
+  }
+}
+for (const [layer, sources] of Object.entries(DATA_LAYER_AUTHORITY)) {
+  if (!Array.isArray(sources) || !sources.length) fail(`data authority layer ${layer} has no sources`)
+  for (const source of sources) if (!DATA_SOURCE_SYSTEMS[source]) fail(`data authority layer ${layer} references unknown source ${source}`)
+}
+if (DATA_SOURCE_SYSTEMS['corpus-coranicum']?.status !== 'separate_layer') {
+  fail('Corpus Coranicum must remain a separate historical/research layer')
+}
+
 // Editorial rules that previously drifted.
 if (COPY.ru.semanticStatus.includes('Рабочее объяснение по источникам')) fail('obsolete semantic-status wording returned')
 if (JSON.stringify(MORPHOLOGY).includes('Что нам даёт форма')) fail('obsolete morphology heading returned')
@@ -145,4 +179,4 @@ if (errors.length) {
   process.exit(1)
 }
 
-console.log(`Quran Universe data guard passed: ${FORMS.length} forms, ${activeForms.length} visible morphology profiles, ${Object.keys(OCCURRENCES).length} Quran occurrence groups, and source references are aligned.`)
+console.log(`Quran Universe data guard passed: ${FORMS.length} forms, ${activeForms.length} visible morphology profiles, ${Object.keys(OCCURRENCES).length} Quran occurrence groups, 2:197 canonical word mapping, and source references are aligned.`)
