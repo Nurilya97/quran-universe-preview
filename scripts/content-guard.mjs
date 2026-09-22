@@ -132,9 +132,28 @@ if (!WORD_CONTENT.ittaqa?.meaning?.ru?.lead?.includes('беречь себя') |
     !WORD_CONTENT.tawaqqa?.meaning?.ru?.lead?.includes('беречься')) {
   fail('ittaqa/tawaqqa must use direct self-guarding definitions')
 }
-if (!WORD_CONTENT.ittaqa?.distinction?.ru?.includes('очень близок') ||
-    !WORD_CONTENT.tawaqqa?.distinction?.ru?.includes('сближают по значению')) {
-  fail('ittaqa/tawaqqa must state source-supported near-synonymy instead of inventing a semantic split')
+if (!WORD_CONTENT.ittaqa?.distinction?.ru?.includes('коннотационная') ||
+    !WORD_CONTENT.tawaqqa?.distinction?.ru?.includes('оттенок употребления') ||
+    !WORD_CONTENT.tawaqqa?.meaning?.ru?.lead?.includes('конкретные меры предосторожности')) {
+  fail('ittaqa/tawaqqa must preserve source-supported near-synonymy plus the researched usage/connotation nuance')
+}
+if (!WORD_CONTENT.taqiyy?.distinction?.ru?.includes('более усиленную похвалу') ||
+    !WORD_CONTENT.muttaqin?.distinction?.ru?.includes('более сильная похвала') ||
+    !WORD_CONTENT.taqiyy?.meaningSources?.includes('furuqTaqi') ||
+    !WORD_CONTENT.muttaqin?.meaningSources?.includes('furuqTaqi')) {
+  fail('taqiyy/muttaqin must preserve the source-backed connotational distinction, not grammar-only wording')
+}
+const taqwaPositiveNotes = (WORD_CONTENT.taqwa?.translationNotes?.ru || []).filter(note => note.tone === 'positive')
+const taqwaWarningNotes = (WORD_CONTENT.taqwa?.translationNotes?.ru || []).filter(note => note.tone === 'warning')
+if (!WORD_CONTENT.taqwa?.meaning?.ru?.lead?.includes('благочестие, праведность, осознанность перед Аллахом') ||
+    !taqwaPositiveNotes.some(note => /благочестие/.test(note.text) && /праведность/.test(note.text) && /осознанность перед Аллахом/.test(note.text))) {
+  fail('taqwa must present the three approved contextually valid Russian renderings as valid, not as errors')
+}
+if (!taqwaWarningNotes.some(note => /Богобоязненность/.test(note.title) && /благоговейн/.test(note.text) && /почтен/.test(note.text))) {
+  fail('taqwa warning note must target fear-centred «богобоязненность» and preserve awe/regard guidance')
+}
+if (taqwaWarningNotes.some(note => /Осознанность/.test(note.title))) {
+  fail('taqwa must not mark «осознанность перед Аллахом» as a warning/error rendering')
 }
 if (!WORD_CONTENT.atqa?.meaning?.ru?.lead?.includes('أَتْقَى (atqā)') ||
     !WORD_CONTENT.atqa?.meaning?.ru?.lead?.includes('تَقْوَىٰ (taqwā)') ||
