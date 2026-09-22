@@ -62,21 +62,23 @@ export const AYAH_PROTOTYPES = {
       { ar: 'خَيْرَ', tr: 'khayra', ru: 'лучший', en: 'the best', roleRu: 'существительное сравнения', roleEn: 'elative noun' },
       { ar: 'ٱلزَّادِ', tr: 'al-zādi', ru: 'запас / провизия', en: 'provision', roleRu: 'существительное', roleEn: 'noun' },
       {
-        ar: 'ٱلتَّقْوَىٰ', tr: 'al-taqwā', ru: 'благочестие', en: 'piety',
+        ar: 'ٱلتَّقْوَىٰ', tr: 'al-taqwā', ru: 'таква · осознанность перед Всевышним', en: 'taqwā · awareness before the Most High',
         roleRu: 'существительное · marfūʿ', roleEn: 'noun · nominative',
         root: 'و ق ي', rootReading: 'w-q-y', orbitId: 'taqwa',
-        noteRu: 'تَقْوَىٰ (taqwā) называет качество осознанности перед Аллахом: человек помнит об установленных Им границах и оберегает себя от их нарушения.',
-        noteEn: 'تَقْوَىٰ (taqwā) names conscious awareness before Allah: remembering His boundaries and guarding oneself from crossing them.',
+        noteRu: 'تَقْوَىٰ (taqwā) здесь названа лучшим запасом. В Quran Universe это слово раскрывается как целостная осознанность перед Всевышним, из которой рождаются внимание к Его руководству, выбор и остережение.',
+        noteEn: 'تَقْوَىٰ (taqwā) is named here as the best provision. In Quran Universe it is unfolded as a holistic awareness before the Most High from which attention to His guidance, choice, and caution arise.',
         analysis: {
           ru: {
             morphology: {
               parts: [
                 { ar: 'ٱلـ', tr: 'al-', label: 'определённый артикль' },
-                { ar: 'تَقْوَىٰ', tr: 'taqwā', label: 'существительное' },
+                { ar: 'تَقْوَىٰ', tr: 'taqwā', label: 'существительное · модель فَعْلَى' },
                 { ar: 'و ق ي', tr: 'w-q-y', label: 'корень: защита / оберегание' },
-                { ar: 'فَعْلَى', tr: 'faʿlā', label: 'именная модель' },
+                { ar: 'و → ت', tr: 'w → t', label: 'изменение первой корневой буквы' },
+                { ar: 'ي → و', tr: 'y → w', label: 'изменение третьей корневой буквы' },
+                { ar: 'ـىٰ', tr: '-ā', label: 'элемент именной модели فَعْلَى' },
               ],
-              text: 'В аяте ٱلتَّقْوَىٰ (al-taqwā) состоит из определённого артикля ٱلـ и существительного تَقْوَىٰ (taqwā). Слово связано с корнем و ق ي (w-q-y) «защищать / оберегать» и с глаголом VIII формы ٱتَّقَىٰ (ittaqā). Конечная ىٰ — alif maqṣūra.',
+              text: 'В аяте ٱلتَّقْوَىٰ (al-taqwā) состоит из определённого артикля ٱلـ и существительного تَقْوَىٰ (taqwā) на собственной именной модели فَعْلَى. Для прозрачного разбора букв используется та же реконструкция, что и в карточке слова: начальная корневая و соотносится с ت, третья корневая ي — с و после ق, а конечная ىٰ принадлежит модели. Эти промежуточные соответствия являются морфологическим объяснением, а не отдельными словарными словами.',
             },
             syntax: {
               plain: 'Здесь работает конструкция с إِنَّ (inna). Сначала называется то, о чём говорится: خَيْرَ ٱلزَّادِ (khayra al-zādi) — «лучший запас». Затем следует ٱلتَّقْوَىٰ (al-taqwā), которое завершает мысль: именно это слово сообщает, чем является названный запас. Поэтому ٱلتَّقْوَىٰ (al-taqwā) выполняет роль خبر إِنَّ (khabar inna).',
@@ -86,9 +88,9 @@ export const AYAH_PROTOTYPES = {
               text: 'Если разобрать фразу по шагам: فَ (fa-) связывает её с предыдущей мыслью; إِنَّ (inna) вводит и усиливает утверждение; خَيْرَ (khayra) — اسم إِنَّ (ism inna), поэтому находится в состоянии manṣūb, и одновременно является مُضاف (muḍāf); ٱلزَّادِ (al-zādi) — مُضاف إليه (muḍāf ilayh), поэтому находится в состоянии majrūr; ٱلتَّقْوَىٰ (al-taqwā) — خبر إِنَّ (khabar inna), поэтому находится в состоянии marfūʿ.',
             },
             meaning: {
-              gloss: 'Благочестие / праведность',
-              description: 'В этом аяте تَقْوَىٰ (taqwā) хорошо передают слова «благочестие» и «праведность». Оба значения включают внимательность человека к своим поступкам: стремление выбирать правильное и соблюдать установленные Аллахом границы. В taqwā к этому особенно добавляются осознанность и почтительность перед Всевышним. Корень و ق ي (w-q-y) сохраняет идею защиты и оберегания.',
-              translation: '«Благочестие» и «праведность» здесь не противопоставляются: оба слова хорошо передают تَقْوَىٰ (taqwā), поскольку благочестие и праведность включают внимательность к собственным поступкам и стремление действовать правильно. Особый оттенок taqwā — осознанность и почтительность перед Всевышним вместе с идеей оберегания себя. Следующее وَٱتَّقُونِ (wa-ittaqūni) показывает то же смысловое поле уже как прямое действие.',
+              gloss: 'Таква · осознанность перед Всевышним',
+              description: 'В этом аяте تَقْوَىٰ (taqwā) названа лучшим запасом. Её более широкий смысл в Quran Universe — целостная осознанность перед Всевышним, основанная на вере и доверии Ему, осознании сокрытой реальности и Последней жизни. Корень و ق ي сохраняет направление защиты и оберегания; благочестие и праведность могут быть проявлениями этой осознанности, но не исчерпывают слово.',
+              translation: 'У تَقْوَىٰ (taqwā) нет одного русского эквивалента, который сохраняет всю смысловую модель во всех контекстах. Здесь формулировка «осознанность перед Всевышним» передаёт внутреннюю основу, а «благочестие» и «праведность» остаются возможными проявлениями или результатами. Следующее وَٱتَّقُونِ (wa-ittaqūni) возвращает тот же корень уже как прямое действие.',
             },
           },
           en: {
@@ -99,7 +101,7 @@ export const AYAH_PROTOTYPES = {
                 { ar: 'و ق ي', tr: 'w-q-y', label: 'root: protection / guarding' },
                 { ar: 'فَعْلَى', tr: 'faʿlā', label: 'nominal pattern' },
               ],
-              text: 'In the ayah the word carries the definite article ٱلـ. تَقْوَىٰ (taqwā) remains derivationally linked to the root و ق ي (w-q-y) and the verb ٱتَّقَىٰ (ittaqā). The final ىٰ is alif maqṣūra.',
+              text: 'In the ayah, ٱلتَّقْوَىٰ (al-taqwā) consists of the definite article ٱلـ plus the noun تَقْوَىٰ (taqwā), which has its own nominal pattern فَعْلَى. The same transparent reconstruction as the word card is used: initial root و corresponds to ت, final root ي corresponds to the و after ق, and final ىٰ belongs to the pattern. These are reconstructed morphological correspondences, not separate lexical words.',
             },
             syntax: {
               plain: 'This clause uses the إِنَّ (inna) construction. First comes what the statement is about: خَيْرَ ٱلزَّادِ (khayra al-zādi), “the best provision.” Then ٱلتَّقْوَىٰ (al-taqwā) completes the thought by telling us what that provision is. That makes ٱلتَّقْوَىٰ (al-taqwā) the خبر إِنَّ (khabar inna).',
@@ -109,9 +111,9 @@ export const AYAH_PROTOTYPES = {
               text: 'Step by step: فَ (fa-) links the clause to what comes before; إِنَّ (inna) introduces and emphasizes the statement; خَيْرَ (khayra) is اسم إِنَّ (ism inna), so it is accusative, and it also functions as مُضاف (muḍāf); ٱلزَّادِ (al-zādi) is مُضاف إليه (muḍāf ilayh), so it is genitive; ٱلتَّقْوَىٰ (al-taqwā) is خبر إِنَّ (khabar inna), so it is grammatically مرفوع (marfūʿ).',
             },
             meaning: {
-              gloss: 'Piety / righteousness',
-              description: 'In this ayah, تَقْوَىٰ (taqwā) is rendered as “piety.” Here, piety describes an inward quality: awareness before Allah, care in one’s choices, and an effort to remain within the relevant boundaries. The root و ق ي (w-q-y) carries the idea of protection and guarding, while ٱتَّقَىٰ (ittaqā) expresses an active protective stance.',
-              translation: '“Piety” and “righteousness” both work here because تَقْوَىٰ (taqwā) concerns a person’s orientation and conduct together: attention to one’s choices, respect for Allah’s boundaries, and right action. Its distinctive shade includes conscious awareness and reverence before Allah together with the root idea of guarding oneself. The following وَٱتَّقُونِ (wa-ittaqūni) expresses the same field as a direct command.',
+              gloss: 'Taqwā · awareness before the Most High',
+              description: 'In this ayah, تَقْوَىٰ (taqwā) is named as the best provision. Quran Universe treats its broader sense as a holistic awareness before the Most High, grounded in faith and trust in Him, awareness of the unseen, and certainty in the Hereafter. The root و ق ي retains the direction of protection and guarding; piety and righteousness may describe manifestations of this awareness without exhausting the word.',
+              translation: 'No single English rendering preserves the entire تَقْوَىٰ (taqwā) model in every context. Here “awareness before the Most High” conveys the inward foundation, while “piety” and “righteousness” can describe manifestations or outcomes. The following وَٱتَّقُونِ (wa-ittaqūni) returns the same root field as a direct command.',
             },
           },
         },
