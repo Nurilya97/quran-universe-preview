@@ -129,6 +129,46 @@ test.describe('approved Quran Universe UI contracts', () => {
     await expect(grammarReference).toHaveAttribute('href', /chapter=2&verse=197/)
   })
 
+  test('2:197 taqwa keeps approved meaning layers and Ayah Space connector contract', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 })
+    await openSearch(page, 'taqwa')
+
+    await page.locator('.node-quran').click()
+    const reference = page.locator('.quran-reference-grid button.has-prototype').filter({ hasText: '2:197' })
+    await reference.click()
+
+    const ayah = page.locator('.ayah-space-shell')
+    const taqwa = ayah.locator('.analysis-inline-word').nth(25)
+    await taqwa.click()
+
+    const meaning = page.locator('.word-meaning-view')
+    await expect(meaning).toBeVisible()
+    await expect(meaning.locator('.word-meaning-gloss')).toHaveText('Благочестие')
+    await expect(meaning).toContainText('Почитание Всевышнего')
+    await expect(meaning).toContainText('Источник состояния')
+    await expect(meaning).toContainText('помнит о Нём и Его присутствии')
+    await expect(meaning).toContainText('Почему такой перевод')
+
+    await page.locator('.analysis-focus-view-switch').getByRole('button', { name: 'Морфология' }).click()
+    const morphology = page.locator('.approved-taqwa-baseline')
+    await expect(morphology).toBeVisible()
+
+    const connector = await morphology.locator('.analysis-morphology-tree.plain-tree path').first().evaluate((path) => {
+      const style = getComputedStyle(path)
+      return {
+        strokeWidth: style.strokeWidth,
+        markerStart: style.markerStart,
+        markerMid: style.markerMid,
+        markerEnd: style.markerEnd,
+      }
+    })
+
+    expect(connector.strokeWidth).toBe('1px')
+    expect(connector.markerStart).toBe('none')
+    expect(connector.markerMid).toBe('none')
+    expect(connector.markerEnd).toBe('none')
+  })
+
   test('search language controls expose pressed state and Arabic stays directionally marked', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 900 })
     await page.goto('spatial.html')
