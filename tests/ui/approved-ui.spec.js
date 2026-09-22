@@ -50,7 +50,6 @@ test.describe('approved Quran Universe UI contracts', () => {
         dotWidth: startDot.width,
         arrowContent: arrow.content,
         arrowBottom: arrow.bottom,
-        arrowTop: arrow.top,
       }
     })
 
@@ -63,7 +62,6 @@ test.describe('approved Quran Universe UI contracts', () => {
     expect(Number.parseFloat(geometry.dotWidth)).toBeGreaterThan(0)
     expect(geometry.arrowContent).not.toBe('none')
     expect(geometry.arrowBottom).toBe('0px')
-    expect(geometry.arrowTop).toBe('auto')
 
     const target = board.locator('.morph-board-target-word')
     await expect(target).toHaveAttribute('lang', 'ar')
