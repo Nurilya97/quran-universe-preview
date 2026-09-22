@@ -115,21 +115,24 @@ Working mnemonic used in this project:
 
 The full pattern refines this contribution; it does not erase the contribution of the added element.
 
-## 6. Morphology connectors
+## 6. Connector rules
 
-Connectors must look deliberate and geometric.
+Connector styling is diagram-specific. Do not copy one line treatment across every Quran Universe diagram.
 
-- Straight lines only.
-- Current approved thickness: **3 px**.
-- **No arrowheads.**
-- No bent “AI-looking” branches.
-- No decorative elbow stubs.
-- No floating line fragments.
-- Use only the connectors required to express a real morphological or semantic relation.
-- Explanatory callouts are text-only: do not add decorative side borders or branch lines.
-- If the user says “как в taqwā” or names another approved screen, inspect that existing implementation first and reuse its spacing, alignment, line weight, and interaction pattern. Do not invent a new visual language.
-- The latest explicit user correction overrides older project notes. Remove stale conflicting rules instead of preserving both.
-- Use the same connector language across roots, including taqwā and ل ب ب.
+For **Word Orbit → Структура слова → visual morphology** use the current approved/reference implementation:
+- straight **1 px** connectors;
+- directional arrowhead;
+- desktop: horizontal line between consecutive morphology nodes;
+- mobile: vertical 1 px line with a small dot at the upper endpoint and an attached arrowhead at the lower endpoint;
+- no bent “AI-looking” branches;
+- no decorative elbow stubs;
+- no floating line fragments.
+
+For Root Space semantic links, Ayah Space syntax, and other diagram families, inspect the approved reference for that specific diagram before changing connector weight, arrowheads, or geometry.
+
+If the user says “как в taqwā” or names another approved screen, inspect that implementation first and reuse its spacing, alignment, line weight, and interaction pattern. Do not invent or globally propagate a different visual language.
+
+The latest explicit user correction overrides older project notes. Remove stale conflicting rules instead of preserving both.
 
 ## 6A. Root research authority
 
