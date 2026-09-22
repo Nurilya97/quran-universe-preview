@@ -31,7 +31,7 @@ export const PILOT_SOURCE_ADAPTERS = {
       root: 'word_statistics.root',
     },
     layers: ['word_text', 'meaning', 'irab', 'sarf', 'root', 'qiraat', 'tafsir'],
-    pilotStatus: 'schema_verified_row_import_pending',
+    pilotStatus: 'schema_verified_importer_ready',
     checkedOn: '2026-09-22',
   },
 
@@ -71,7 +71,7 @@ export const PILOT_2_197_DATASET_STATUS = {
   tafsircenter: {
     status: 'schema_ready',
     mappedOrthographicWords: 0,
-    note: 'Official schema is verified; the row-level 2:197 import has not yet been materialized in this repo.',
+    note: 'Official schema is verified and a read-only importer exists; the row-level 2:197 output has not yet been materialized because quran.db is not present in this environment.',
   },
   quranmorph: {
     status: 'access_pending',
