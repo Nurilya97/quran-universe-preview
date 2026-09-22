@@ -59,7 +59,7 @@ export const WORD_CONTENT = {
       en: ['A Form VIII verb from و ق ي. The first root letter و changes and assimilates with the pattern’s ت, producing the doubled ت in ٱتَّقَىٰ.', 'The present form is يَتَّقِي (yattaqī). The regular verbal noun is اِتِّقَاء (ittiqāʾ). تَقْوَى is a related noun with its own pattern.'],
     },
     meaning: {
-      ru: { lead: 'ٱتَّقَىٰ (ittaqā) — беречь себя, остерегаться, предохранять себя от того, что может причинить вред или привести к дурному исходу.', body: 'В фокусе действие самого человека: он замечает риск, нарушение или границу и меняет своё поведение, чтобы не попасть под вредное последствие. Конкретное содержание задаёт контекст.' },
+      ru: { lead: 'ٱتَّقَىٰ (ittaqā) — беречь себя, остерегаться, предохранять себя от того, что может причинить вред или привести к дурному исходу.', body: 'В фокусе действие самого человека: он понимает, чего следует избегать, и ведёт себя так, чтобы уберечь себя от вреда или дурного последствия. Конкретное содержание задаёт контекст.' },
       en: { lead: 'ٱتَّقَىٰ (ittaqā) — to guard oneself, beware, or protect oneself from what may cause harm or a bad consequence.', body: 'The focus is the person’s own action: recognising a risk, transgression, or boundary and adjusting behaviour to avoid a harmful consequence. Context supplies the specific object.' },
     },
     meaningMap: [],
@@ -170,8 +170,8 @@ export const WORD_CONTENT = {
       },
     ],
     distinction: {
-      ru: 'مُتَّقِين (muttaqīn) подчёркивает людей через совершаемое действие ٱتَّقَىٰ (ittaqā); تَقِيّ (taqiyy) — прилагательное «благочестивый», которое описывает качество как характеристику человека.',
-      en: 'مُتَّقِين (muttaqīn) foregrounds people through the enacted action ٱتَّقَىٰ (ittaqā); تَقِيّ (taqiyy) is the adjective “pious,” describing the quality as a characteristic of the person.',
+      ru: 'مُتَّقِين (muttaqīn) — множественное действительное причастие от ٱتَّقَىٰ (ittaqā); تَقِيّ (taqiyy) — прилагательное «благочестивый». По смыслу формы близки; уверенно различается прежде всего способ, которым грамматика описывает человека.',
+      en: 'مُتَّقِين (muttaqīn) is the plural active participle of ٱتَّقَىٰ (ittaqā); تَقِيّ (taqiyy) is the adjective “pious.” The forms are close in meaning; the securely established difference is primarily how the grammar describes the person.',
     },
     structureSources: ['corpus', 'laneTqy'], meaningSources: ['raghib', 'laneTqy', 'baqarahMuttaqin'], related: ['ittaqa', 'taqwa'],
   },
@@ -208,8 +208,8 @@ export const WORD_CONTENT = {
     },
     meaningMap: [],
     distinction: {
-      ru: 'تَقِيّ (taqiyy) описывает человека как благочестивого; مُتَّقٍ (muttaqin) — действительное причастие от ٱتَّقَىٰ (ittaqā) и сильнее связывает человека с самим действием «беречь себя / остерегаться».',
-      en: 'تَقِيّ (taqiyy) describes a person as pious; مُتَّقٍ (muttaqin) is the active participle of ٱتَّقَىٰ (ittaqā) and more directly links the person to the action “to guard oneself / beware.”',
+      ru: 'تَقِيّ (taqiyy) — прилагательное «благочестивый»; مُتَّقٍ (muttaqin) — действительное причастие от ٱتَّقَىٰ (ittaqā). По смыслу они близки; без отдельного источника мы не приписываем им более жёсткую семантическую границу.',
+      en: 'تَقِيّ (taqiyy) is the adjective “pious”; مُتَّقٍ (muttaqin) is the active participle of ٱتَّقَىٰ (ittaqā). They are close in meaning; without separate evidence we do not impose a stronger semantic boundary between them.',
     },
     structureSources: ['laneTqy'], meaningSources: ['laneTqy', 'jawhari'], related: ['taqwa', 'atqa', 'muttaqin'],
   },
