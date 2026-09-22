@@ -31,7 +31,7 @@ export const PILOT_SOURCE_ADAPTERS = {
       root: 'word_statistics.root',
     },
     layers: ['word_text', 'meaning', 'irab', 'sarf', 'root', 'qiraat', 'tafsir'],
-    pilotStatus: 'schema_verified_importer_ready',
+    pilotStatus: 'row_mapped',
     checkedOn: '2026-09-22',
   },
 
@@ -69,9 +69,9 @@ export const PILOT_2_197_DATASET_STATUS = {
     note: 'All 29 current Ayah Space orthographic words have Quran Universe IDs and QAC 2:197:N locators.',
   },
   tafsircenter: {
-    status: 'schema_ready',
-    mappedOrthographicWords: 0,
-    note: 'Official schema is verified and a read-only importer exists; the row-level 2:197 output has not yet been materialized because quran.db is not present in this environment.',
+    status: 'mapped',
+    mappedOrthographicWords: 29,
+    note: 'Official quran.db was imported read-only on 2026-09-22. All 29 Tafsir Center orthographic word rows for 2:197 are mapped to Quran Universe IDs; source evidence remains separate from canonical Quran-first meaning.',
   },
   quranmorph: {
     status: 'access_pending',
