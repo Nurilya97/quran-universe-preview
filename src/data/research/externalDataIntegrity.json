@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0",
+  "policy": "quarantine_before_use",
+  "updatedOn": "2026-09-22",
+  "datasets": {
+    "tafsircenter-quran-db": {
+      "sourceSystem": "tafsircenter",
+      "url": "https://huggingface.co/datasets/tafsircenter/tafsir-mcp-data/resolve/main/quran.db?download=true",
+      "allowedHosts": [
+        "huggingface.co",
+        ".huggingface.co",
+        ".hf.co"
+      ],
+      "filename": "quran.db",
+      "fileType": "sqlite",
+      "maxBytes": 300000000,
+      "sha256": "10e61f615ab5e6a3440e8ecc8ba1dc2273d12cd9048752760fe53a44d191cc27",
+      "status": "approved_for_pilot",
+      "hashSource": "tafsircenter/tafsir-mcp src/tafsir/data_loader.py",
+      "checkedOn": "2026-09-22",
+      "ingestionPolicy": "read_only_pilot_after_hash_match"
+    },
+    "qamar-acl-supplement": {
+      "sourceSystem": "qamar",
+      "url": "https://aclanthology.org/attachments/2026.abjadnlp-1.38.OptionalSupplementaryMaterial.zip",
+      "allowedHosts": [
+        "aclanthology.org",
+        ".aclanthology.org"
+      ],
+      "filename": "qamar-supplement.zip",
+      "fileType": "zip",
+      "maxBytes": 50000000,
+      "sha256": null,
+      "status": "quarantine_only",
+      "checkedOn": "2026-09-22",
+      "ingestionPolicy": "never_extract_or_ingest_until_hash_source_and_corpus_license_are_manually_approved"
+    }
+  }
+}
