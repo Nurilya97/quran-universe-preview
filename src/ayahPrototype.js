@@ -64,11 +64,11 @@ export const AYAH_PROTOTYPES = {
       { ar: 'خَيْرَ', tr: 'khayra', ru: 'лучший', en: 'the best', roleRu: 'существительное сравнения', roleEn: 'elative noun' },
       { ar: 'ٱلزَّادِ', tr: 'al-zādi', ru: 'запас / провизия', en: 'provision', roleRu: 'существительное', roleEn: 'noun' },
       {
-        ar: 'ٱلتَّقْوَىٰ', tr: 'al-taqwā', ru: 'благочестие', en: 'taqwā · awareness before the Most High',
+        ar: 'ٱلتَّقْوَىٰ', tr: 'al-taqwā', ru: 'благочестие', en: 'piety',
         roleRu: 'существительное · marfūʿ', roleEn: 'noun · nominative',
         root: 'و ق ي', rootReading: 'w-q-y', orbitId: 'taqwa',
         noteRu: 'تَقْوَىٰ (taqwā) здесь названа лучшим запасом. В этом аяте основной русский перевод — «благочестие»; источник этого состояния в taqwā раскрывается отдельно.',
-        noteEn: 'تَقْوَىٰ (taqwā) is named here as the best provision. In Quran Universe it is unfolded as a holistic awareness before the Most High from which attention to His guidance, choice, and caution arise.',
+        noteEn: 'تَقْوَىٰ (taqwā) is named here as the best provision. In this ayah the context rendering is “piety”; the inward source of that state is explained separately.',
         analysis: {
           ru: {
             morphology: {
@@ -115,9 +115,11 @@ export const AYAH_PROTOTYPES = {
               text: 'Step by step: فَ (fa-) links the clause to what comes before; إِنَّ (inna) introduces and emphasizes the statement; خَيْرَ (khayra) is اسم إِنَّ (ism inna), so it is accusative, and it also functions as مُضاف (muḍāf); ٱلزَّادِ (al-zādi) is مُضاف إليه (muḍāf ilayh), so it is genitive; ٱلتَّقْوَىٰ (al-taqwā) is خبر إِنَّ (khabar inna), so it is grammatically مرفوع (marfūʿ).',
             },
             meaning: {
-              gloss: 'Taqwā · awareness before the Most High',
-              description: 'In this ayah, تَقْوَىٰ (taqwā) is named as the best provision. Quran Universe treats its broader sense as a holistic awareness before the Most High, grounded in faith and trust in Him, awareness of the unseen, and certainty in the Hereafter. The root و ق ي retains the direction of protection and guarding; piety may describe a manifestation of this awareness here without exhausting the word.',
-              translation: 'No single English rendering preserves the entire تَقْوَىٰ (taqwā) model in every context. Here “awareness before the Most High” conveys the inward foundation, while “piety” may describe a manifestation. “Righteousness” is not added as a default paired rendering in this ayah. The following وَٱتَّقُونِ (wa-ittaqūni) returns the same root field as a direct command.',
+              gloss: 'Piety',
+              definition: 'Reverence for Allah expressed in a life and conduct shaped by that reverence.',
+              source: 'In taqwā, the source of this state is an inward orientation toward Allah: remembering Him and His presence, recognising the boundaries He has established, and therefore guarding against crossing them and doing evil.',
+              description: 'In this ayah, piety is named the “best provision” after instructions about conduct during Hajj.',
+              translation: '“Piety” is used here as the context rendering. Awareness or mindfulness can describe part of the inward source of the state, but is not treated as the whole lexical equivalent; “righteousness” more strongly describes conduct and is not paired with it by default.',
             },
           },
         },
