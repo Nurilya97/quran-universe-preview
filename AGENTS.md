@@ -1,5 +1,9 @@
 # Quran Universe — editorial and UI rules
 
+## Project skill
+
+Before substantial Quran Universe implementation work, load and follow `.github/skills/quran-universe/SKILL.md`. For data/corpus work also read `docs/DATA_ARCHITECTURE.md`.
+
 These rules are the default source of truth for future Quran Universe changes.
 
 ## 1. Writing hierarchy
