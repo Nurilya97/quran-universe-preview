@@ -89,3 +89,18 @@ QuranMorph's current official download form states that access is granted to use
 ### Adapter rule
 
 Every external source gets an explicit adapter in `src/data/sourceAdapters.js`. An adapter may be schema-ready without being row-mapped. Missing row mappings remain null/pending rather than being inferred from another corpus.
+
+
+## Ayah Space schema
+
+Ayah Space is now record-driven rather than tied to one hard-coded reference.
+
+Every record in `AYAH_PROTOTYPES` is validated by `src/data/ayahSchema.js` and then hydrated with:
+
+- canonical ayah ID `q:<surah>:<ayah>`;
+- canonical word IDs `q:<surah>:<ayah>:wN`;
+- stable `wordIndex` values.
+
+The renderer derives Quranic Arabic Corpus grammar links from the ayah reference instead of hard-coding 2:197, and composition block positions are computed from block order rather than a five-item fixed array.
+
+Adding another ayah should therefore be a data task first: supply a valid record with tokens, ordered non-overlapping composition blocks, and optional rhetoric/analysis layers. The approved Ayah Space visual language must remain shared by all records.
