@@ -15,7 +15,7 @@
       "falsificationDone": false,
       "nextAction": "When ص ب ر research resumes, consolidate its evidence into this repository, create the canonical research record here, then run falsification before any semantic model is promoted.",
       "openQuestions": "The historical research has not yet been revalidated inside the single-repository workflow.",
-      "notes": "Research-only / pre-falsification. No external orchestrator or ROOT_STATE is required; any resumed work must be rebuilt against the current Quran Universe research schema.",
+      "notes": "Research-only / pre-falsification. Any resumed work must be rebuilt against the current single-repository research schema before promotion.",
       "updated": "2026-09-22"
     },
     {

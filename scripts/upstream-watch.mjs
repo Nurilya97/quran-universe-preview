@@ -33,11 +33,6 @@ for (const source of sourceRegistry.sources.filter(item => String(item.priority)
   if (age > 60) findings.push(`Core source review due: ${source.systemId} was last checked ${Math.floor(age)} days ago (${source.lastChecked}).`)
 }
 
-const report = [
-  '# Quran Universe automated maintenance watch',
-  '',
-  findings.length ? ...[] : ''
-]
 const body = findings.length
   ? '# Quran Universe automated maintenance watch\n\n' + findings.map(item => '- ' + item).join('\n') + '\n'
   : '# Quran Universe automated maintenance watch\n\nNo upstream skill changes or overdue core-source reviews detected.\n'
