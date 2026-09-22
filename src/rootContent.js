@@ -42,183 +42,100 @@ export const WORD_CONTENT = {
       en: ['A Form I verb with the root letters و، ق، ي. The first and last root letters are weak consonants, so they may change or disappear in inflected forms.', 'The final ي appears as ى in وَقَىٰ. The present form is يَقِي (yaqī), and the singular imperative is قِ (qi).'],
     },
     meaning: {
-      ru: { lead: 'Защищать, оберегать кого-либо или что-либо.', body: 'Действие направлено на сохранение того, кого защищают, от вреда. Что именно оберегают и от чего — определяется дополнениями и контекстом.' },
-      en: { lead: 'To protect or preserve someone or something.', body: 'The action keeps its object safe from harm. The surrounding words identify who or what is protected and what they are protected from.' },
+      ru: {
+        lead: 'تَقْوَىٰ (taqwā) — состояние направленности к Аллаху, в котором память о Нём и Его присутствии, внимание к установленным Им границам и остережение от их нарушения направляют выбор человека.',
+        body: 'Корень و ق ي сохраняет защитное ядро — оберегание и удерживание от вреда. Связанная форма ٱتَّقَىٰ (ittaqā) показывает активную позицию самого человека. Это объясняет механизм слова, но не создаёт один обязательный перевод для всех аятов. В 2:197 утверждённый русский перевод — «благочестие»; источник этого состояния раскрывается отдельно.',
+      },
+      en: {
+        lead: 'تَقْوَىٰ (taqwā) names an orientation toward Allah in which remembrance of Him, attention to His boundaries, and guarding against crossing them shape a person’s choices.',
+        body: 'The root و ق ي preserves the protective nucleus of guarding and preservation, while ٱتَّقَىٰ (ittaqā) shows the person actively taking that protective stance. This explains the semantic mechanism without forcing one universal translation. In 2:197 the approved context rendering is “piety”, with the source of that state explained separately.',
+      },
     },
     meaningMap: [
       {
         id: 'mechanism',
-        ru: { title: 'Механизм', description: 'وَقَىٰ (waqā) называет само действие защиты.', items: [
-          { term: 'Защищать / оберегать', definition: 'Создавать защиту между тем, что оберегают, и тем, что может причинить ему вред.' },
+        ru: { title: 'Источник состояния', description: 'Это не отдельный перевод слова, а внутренняя логика, из которой формируется поведение.', items: [
+          { term: 'Память об Аллахе и Его присутствии', definition: 'Человек держит в памяти, перед Кем он живёт и делает выбор.', connector: 'обращает внимание на границы' },
+          { term: 'Осознание Его границ', definition: 'Человек понимает установленные Аллахом пределы и соотносит с ними свои решения.', connector: 'ведёт к остережению' },
+          { term: 'Остережение', definition: 'Зная это, человек остерегается нарушать установленные границы и совершать зло.' },
         ] },
-        en: { title: 'Mechanism', description: 'وَقَىٰ (waqā) names the act of protection itself.', items: [
-          { term: 'To protect / guard', definition: 'To create protection between what is guarded and what could cause it harm.' },
-        ] },
-      },
-      {
-        id: 'component',
-        ru: { title: 'Составные части механизма', description: 'Контекст показывает, кто защищает, что защищают и от чего.', items: [
-          { term: 'Защищаемое', definition: 'Человек или объект, который сохраняют от вреда.' },
-          { term: 'Угроза или вред', definition: 'То, от чего направлено действие защиты; конкретное содержание определяется контекстом.' },
-        ] },
-        en: { title: 'Components of the mechanism', description: 'Context identifies who protects, what is protected, and what it is protected from.', items: [
-          { term: 'The protected object', definition: 'The person or thing being kept safe from harm.' },
-          { term: 'Threat or harm', definition: 'What the protective action is directed against; its specific content comes from context.' },
-        ] },
-      },
-      {
-        id: 'result',
-        ru: { title: 'Следствия', description: 'Результат действия وَقَىٰ (waqā) — сохранение защищаемого от вреда.', items: [
-          { term: 'Сохранение от вреда', definition: 'Защита сохраняет оберегаемое от воздействия вреда.' },
-        ] },
-        en: { title: 'Outcomes', description: 'The outcome of وَقَىٰ (waqā) is preservation of the protected object from harm.', items: [
-          { term: 'Preservation from harm', definition: 'Protection keeps what is guarded safe from harm.' },
-        ] },
-      },
-    ],
-    distinction: {
-      ru: 'Базовый глагол семьи: وَقَىٰ (waqā) называет само действие «защищать». وِقَايَة (wiqāya) называет защиту как процесс, وَاقٍ (wāqin) — того, кто защищает, а وِقَاء (wiqāʾ) — средство защиты.',
-      en: 'The base verb of the family: وَقَىٰ (waqā) names the act “to protect.” وِقَايَة (wiqāya) names protection as a process, وَاقٍ (wāqin) the protector, and وِقَاء (wiqāʾ) the means of protection.',
-    },
-    structureSources: ['jawhari', 'corpus'], meaningSources: ['raghib', 'laneWqy'], related: ['wiqaya', 'wiqaa', 'waq'],
-  },
-  ittaqa: {
-    pattern: 'اِفْتَعَلَ', patternReading: 'iftaʿala',
-    structure: {
-      ru: ['Глагол VIII породы от و ق ي. При образовании этой формы начальная корневая و изменяется и сливается с ت модели: поэтому в ٱتَّقَىٰ видна удвоенная ت.', 'Настоящее время — يَتَّقِي (yattaqī). Регулярный масдар, то есть существительное действия, — اِتِّقَاء (ittiqāʾ). تَقْوَى — связанное существительное со своей моделью.'],
-      en: ['A Form VIII verb from و ق ي. The first root letter و changes and assimilates with the pattern’s ت, producing the doubled ت in ٱتَّقَىٰ.', 'The present form is يَتَّقِي (yattaqī). The regular verbal noun is اِتِّقَاء (ittiqāʾ). تَقْوَى is a related noun with its own pattern.'],
-    },
-    meaning: {
-      ru: { lead: 'Занимать активную защитную позицию.', body: WQY_PUBLIC_MODEL.operativeMechanism.ru },
-      en: { lead: 'To take an active, protection-oriented stance.', body: WQY_PUBLIC_MODEL.operativeMechanism.en },
-    },
-    meaningMap: [
-      {
-        id: 'mechanism',
-        ru: { title: 'Механизм', description: 'ٱتَّقَىٰ (ittaqā) переносит защитное действие на самого субъекта.', items: [
-          { term: 'Защитная позиция', definition: 'Человек сам занимает позицию, которая помогает ему уберечь себя от того, что определяется контекстом.' },
-          { term: 'Остережение', definition: 'Распознать то, от чего следует себя уберечь, и держаться от этого в стороне.' },
-        ] },
-        en: { title: 'Mechanism', description: 'ٱتَّقَىٰ (ittaqā) turns the protective action toward the subject themself.', items: [
-          { term: 'Protective stance', definition: 'The person takes a position that helps guard them from what the context identifies.' },
-          { term: 'Caution', definition: 'To recognise what should be guarded against and avoid approaching it.' },
+        en: { title: 'Source of the state', description: 'This is not a separate translation but the inner logic from which conduct develops.', items: [
+          { term: 'Remembrance of Allah and His presence', definition: 'A person keeps in mind before Whom they live and make choices.', connector: 'directs attention to boundaries' },
+          { term: 'Awareness of His boundaries', definition: 'The person recognises the limits established by Allah and measures choices against them.', connector: 'leads to guarding' },
+          { term: 'Guarding oneself', definition: 'With that awareness, the person guards against crossing those boundaries and doing evil.' },
         ] },
       },
       {
         id: 'component',
-        ru: { title: 'Составные части механизма', description: 'Для защитного выбора нужны распознавание границы и действие.', items: [
-          { term: 'Внимательность', definition: 'Замечать, где находится граница, риск или возможный вред.' },
-          { term: 'Саморегуляция', definition: 'Соотносить своё действие с распознанной границей и удерживать себя от её нарушения.' },
+        ru: { title: 'Кораническое раскрытие', description: 'В 2:2–5 Коран описывает المُتَّقِينَ через признаки и действия; это контекстное раскрытие людей, а не словарная дефиниция taqwā.', items: [
+          { term: 'Вера в сокрытое — الغيب (al-ghayb)', definition: 'Признание реальности за пределами непосредственного чувственного восприятия, известной через откровение.' },
+          { term: 'Убеждённость в Последней жизни — الآخرة (al-ākhirah)', definition: 'Осознание продолжения жизни после земного этапа и ответственности за выбор.' },
+          { term: 'Вера в откровение', definition: 'Доверие руководству, которое Аллах сообщает через откровение.' },
+          { term: 'Внимание к установленным границам', definition: 'Соотнесение выбора с тем, что дозволено и запрещено.' },
         ] },
-        en: { title: 'Components of the mechanism', description: 'Protective choice requires recognising a boundary and acting on it.', items: [
-          { term: 'Attentiveness', definition: 'Noticing where a boundary, risk, or possible harm lies.' },
-          { term: 'Self-regulation', definition: 'Relating one’s action to the recognised boundary and restraining oneself from crossing it.' },
-        ] },
-      },
-    ],
-    distinction: {
-      ru: 'ٱتَّقَىٰ (ittaqā) — действие самого субъекта: он принимает защитную позицию. تَقْوَىٰ (taqwā) называет состояние/качество, возникающее из этой линии, а مُتَّقٍ (muttaqin) — человека, который осуществляет это действие.',
-      en: 'ٱتَّقَىٰ (ittaqā) is the subject’s own action: taking a protective stance. تَقْوَىٰ (taqwā) names the state/quality developing from this line, while مُتَّقٍ (muttaqin) names the person who enacts it.',
-    },
-    structureSources: ['jawhari', 'laneTqy'], meaningSources: ['raghib', 'laneWqy'], related: ['taqwa', 'muttaqin', 'tuqat'],
-  },
-  taqwa: {
-    pattern: 'فَعْلَى', patternReading: 'faʿlā',
-    structure: {
-      ru: ['Существительное, называющее качество или состояние и словообразовательно связанное с ٱتَّقَىٰ. Для существительного показана собственная модель فَعْلَى.', 'Чтобы увидеть происхождение букв, классическая морфология реконструирует исходную форму وَقْيَا от корня و ق ي. Сначала начальная корневая و заменяется на ت: وَقْيَا → تَقْيَا. Затем конечная корневая ي в имени на فَعْلَى заменяется на و: تَقْيَا → تَقْوَىٰ. Поэтому начальная ت восходит к первой корневой و, а و после ق — к третьей корневой ي.', 'Промежуточные формы здесь показаны как морфологическая реконструкция для объяснения изменений букв, а не как отдельные словарные слова. Классические источники могут по-разному располагать промежуточные стадии; важно, что начальная و соотносится с ت, а конечная корневая ي — с و после ق. Орбита VIII обозначает словообразовательную семью; собственная модель существительного — فَعْلَى.'],
-      en: ['A noun naming a quality or state and derivationally related to ٱتَّقَىٰ. The noun is shown with its own pattern فَعْلَى.', 'To make the letters transparent, classical morphology reconstructs an underlying وَقْيَا from the root و ق ي. First, the initial root و is replaced by ت: وَقْيَا → تَقْيَا. Then the final root ي in a noun on فَعْلَى is replaced by و: تَقْيَا → تَقْوَىٰ. Thus initial ت goes back to the first root و, while the و after ق goes back to the third root ي.', 'The intermediate forms are shown here as a morphological reconstruction that explains the letter changes, not as separate dictionary words. Classical sources may order the intermediate stages differently; the key correspondences remain initial و with ت and final root ي with the و after ق. Orbit VIII represents the derivational family; the noun’s own pattern is فَعْلَى.'],
-    },
-    meaning: {
-      ru: { lead: 'تَقْوَىٰ (taqwā) — целостное состояние осознанности перед Всевышним, основанное на вере и доверии Ему, осознании сокрытой реальности и Последней жизни.', body: 'Корень و ق ي сохраняет направление защиты и оберегания, а связь с ٱتَّقَىٰ (ittaqā) показывает активную позицию человека. Человек помнит о Всевышнем, воспринимает эту жизнь в связи с тем, что будет после неё, держит в сознании Его границы и делает выбор, который оберегает его. Остережение греха и наказания — часть защитного механизма. Более широкий уровень تَقْوَىٰ (taqwā) — сама осознанность перед Всевышним, из которой рождаются внимание, выбор и остережение.' },
-      en: { lead: 'تَقْوَىٰ (taqwā) is a holistic state of awareness before the Most High, grounded in faith and trust in Him, awareness of the unseen, and certainty in the Hereafter.', body: 'The root و ق ي retains the direction of protection and guarding, while its link to ٱتَّقَىٰ (ittaqā) shows an active stance taken by the person. A person keeps the Most High in mind, understands this life in relation to what comes after it, remains attentive to His boundaries, and makes choices that guard them. Guarding against sin and punishment is one part of this protective mechanism; the broader level of تَقْوَىٰ (taqwā) is the state of awareness before the Most High from which attention, choice, and caution arise.' },
-    },
-    meaningMap: [
-      {
-        id: 'mechanism',
-        ru: { title: 'Механизм', description: 'Осознанность перед Всевышним делает последствия выбора значимыми для человека, помогает различать направление и приводит к защитному действию.', items: [
-          { term: 'Осознанность перед Всевышним', definition: 'Помнить о Нём, верить и доверять Ему, осознавать сокрытую реальность и Последнюю жизнь и воспринимать свой выбор в свете Его руководства.', connector: 'даёт различение' },
-          { term: 'Распознавание', definition: 'Человек замечает границу, направление и последствия выбора: что приближает к руководству, а что ведёт к нарушению и вреду.', connector: 'ведёт к защитному действию' },
-          { term: 'Оберегание себя', definition: 'Человек удерживается от того, что ведёт к греху и вредному исходу, и выбирает действие, которое сохраняет его в рамках руководства.' },
-        ] },
-        en: { title: 'Mechanism', description: 'Awareness before the Most High makes the consequences of choice meaningful, helps a person discern direction, and leads to protective action.', items: [
-          { term: 'Awareness before the Most High', definition: 'Keeping Him in mind, believing in and trusting Him, recognising the unseen and the Hereafter, and viewing one’s choices through His guidance.', connector: 'gives discernment' },
-          { term: 'Recognition', definition: 'The person notices the boundary, direction, and consequences of a choice: what moves toward guidance and what leads toward transgression and harm.', connector: 'leads to protective action' },
-          { term: 'Self-guarding', definition: 'The person holds back from what leads to sin and harmful consequences and chooses what keeps them within guidance.' },
-        ] },
-      },
-      {
-        id: 'component',
-        ru: { title: 'Составные части механизма', description: 'Коран раскрывает основания, на которых держится эта осознанность и из которых формируется выбор человека.', items: [
-          { term: 'Вера в сокрытое — الغيب (al-ghayb)', definition: 'Признание реальности за пределами непосредственного чувственного восприятия, известной через откровение: Всевышнего, ангелов, Рая, Ада и других сокрытых вещей.' },
-          { term: 'Убеждённость в Последней жизни — الآخرة (al-ākhirah)', definition: 'Осознание продолжения жизни после земного этапа и того, что за выбором человека последуют расчёт и воздаяние.' },
-          { term: 'Вера в откровение', definition: 'Доверие тому, что Всевышний сообщает человеку через Своё руководство, и принятие этого руководства как основы для выбора.' },
-          { term: 'Внимание к границам дозволенного', definition: 'Понимание установленных Всевышним границ и сознательное стремление оставаться в их пределах.' },
-        ] },
-        en: { title: 'Components of the mechanism', description: 'The Quran unfolds the foundations that sustain this awareness and shape a person’s choices.', items: [
-          { term: 'Belief in the unseen — الغيب (al-ghayb)', definition: 'Acknowledging realities beyond immediate sensory perception and known through revelation: the Most High, angels, Paradise, Hell, and other unseen realities.' },
-          { term: 'Certainty in the Hereafter — الآخرة (al-ākhirah)', definition: 'Awareness of life continuing beyond the earthly stage and of reckoning and recompense following a person’s choices.' },
-          { term: 'Faith in revelation', definition: 'Trusting what the Most High communicates through revelation and accepting that guidance as a basis for one’s choices.' },
-          { term: 'Attention to the permitted boundaries', definition: 'Recognising the boundaries set by the Most High and consciously remaining within them.' },
+        en: { title: 'Quranic unfolding', description: 'In 2:2–5 the Quran describes المُتَّقِينَ through traits and actions; this describes the people in context rather than serving as a dictionary definition of taqwā.', items: [
+          { term: 'Belief in the unseen — الغيب (al-ghayb)', definition: 'Acknowledging realities beyond immediate sensory perception and known through revelation.' },
+          { term: 'Certainty in the Hereafter — الآخرة (al-ākhirah)', definition: 'Awareness of life beyond the earthly stage and responsibility for one’s choices.' },
+          { term: 'Faith in revelation', definition: 'Trusting the guidance communicated by Allah through revelation.' },
+          { term: 'Attention to established boundaries', definition: 'Measuring one’s choices against what is permitted and prohibited.' },
         ] },
       },
       {
         id: 'manifestation',
-        ru: { title: 'Проявления', description: 'Вера и осознанность становятся видимыми в действиях человека.', items: [
-          { term: 'Благочестие', definition: 'Нравственное качество, проявляющееся в почтительном отношении к вере и в поведении, согласованном с её предписаниями. Здесь это одно из поведенческих проявлений تَقْوَىٰ (taqwā).' },
-          { term: 'Молитва', definition: 'Регулярное обращение к Всевышнему и поддержание связи с Ним через установленную молитву.' },
-          { term: 'Расходование из дарованного', definition: 'Готовность делиться с другими из того, чем Всевышний наделил человека.' },
-          { term: 'Праведность', definition: 'Характеристика поступков, соответствующих руководству Всевышнего; одно из проявлений تَقْوَىٰ (taqwā).' },
+        ru: { title: 'Поведение', description: 'Внутренняя направленность становится видимой в поступках.', items: [
+          { term: 'Молитва', definition: 'Регулярное обращение к Аллаху через установленную молитву.' },
+          { term: 'Расходование из дарованного', definition: 'Готовность делиться из того, чем Аллах наделил человека.' },
+          { term: 'Праведные поступки', definition: 'Поступки, соответствующие руководству; это описание поведения, а не полный перевод taqwā.' },
         ] },
-        en: { title: 'Manifestations', description: 'Faith and awareness become visible in a person’s actions.', items: [
-          { term: 'Piety', definition: 'A religious and moral quality expressed through reverence and conduct shaped by religious guidance. Here it is one behavioral manifestation of تَقْوَىٰ (taqwā), not a complete definition of the concept itself.' },
-          { term: 'Prayer', definition: 'Regularly turning to the Most High and maintaining the relationship through established prayer.' },
-          { term: 'Spending from what has been provided', definition: 'Being willing to share with others from what the Most High has provided.' },
-          { term: 'Righteousness', definition: 'A description of conduct aligned with divine guidance; one manifestation of تَقْوَىٰ (taqwā).' },
+        en: { title: 'Conduct', description: 'The inward orientation becomes visible in action.', items: [
+          { term: 'Prayer', definition: 'Regularly turning to Allah through established prayer.' },
+          { term: 'Spending from what has been provided', definition: 'Sharing from what Allah has provided.' },
+          { term: 'Righteous conduct', definition: 'Actions aligned with guidance; this describes conduct rather than serving as a complete translation of taqwā.' },
         ] },
       },
       {
         id: 'result',
-        ru: { title: 'Следствия', description: 'В 2:5 после описания المُتَّقِينَ названы результаты этой ориентированности.', items: [
+        ru: { title: 'Следствия', description: 'В 2:5 после описания المُتَّقِينَ названы результаты этой направленности.', items: [
           { term: 'Руководство от Господа', definition: 'Человек находится на пути руководства, которое помогает ему видеть направление и делать дальнейший выбор.' },
-          { term: 'Успех — الفلاح (al-falāḥ)', definition: 'Итоговая состоятельность и благой исход, к которому приводит следование руководству Всевышнего.' },
-          { term: 'Оберегание', definition: 'Защитный смысл корня проявляется в том, что такая осознанность удерживает человека от того, что ведёт к вреду.' },
+          { term: 'Успех — الفلاح (al-falāḥ)', definition: 'Благой исход, связанный со следованием руководству.' },
+          { term: 'Оберегание', definition: 'Защитный смысл корня проявляется в том, что человек удерживается от того, что ведёт к вреду.' },
         ] },
         en: { title: 'Outcomes', description: 'After describing المُتَّقِينَ, 2:5 names the outcomes of this orientation.', items: [
           { term: 'Guidance from their Lord', definition: 'The person remains upon guidance that helps them recognise direction and make further choices.' },
-          { term: 'Success — الفلاح (al-falāḥ)', definition: 'A good and ultimately successful outcome reached through following the guidance of the Most High.' },
-          { term: 'Protection', definition: 'The protective sense of the root appears in how this awareness restrains a person from what leads to harm.' },
+          { term: 'Success — الفلاح (al-falāḥ)', definition: 'A good outcome associated with following guidance.' },
+          { term: 'Protection', definition: 'The protective sense of the root appears in being held back from what leads to harm.' },
         ] },
       },
     ],
     translationNotes: {
       ru: [
         {
-          tone: 'warning',
-          title: 'Богобоязненность — неверный перевод',
-          text: 'Само слово «богобоязненность» построено вокруг боязни: «Бого-» + «боязненность». Поэтому страх оказывается на первом месте. Это плохо согласуется с кораническим раскрытием تَقْوَىٰ (taqwā), где в центре стоят осознанность перед Всевышним, вера и доверие Ему, различение, внимание к Его границам и сознательный выбор.',
+          tone: 'positive',
+          title: 'В 2:197 — «благочестие»',
+          text: '«Благочестие» передаёт почитание Всевышнего и поведение, соответствующее этому почитанию. В taqwā источник такого состояния раскрывается отдельно: память об Аллахе и Его присутствии, осознание Его границ и остережение от их нарушения.',
         },
         {
-          tone: 'positive',
-          title: 'Трепет — более близкий вариант',
-          text: '«Трепет» ближе, потому что передаёт одновременно почтительное осознание величия Всевышнего, уважение, внутреннюю собранность и внимательность перед Ним. Страх может присутствовать как один из оттенков, а центром остаётся осознанное отношение к Всевышнему.',
+          tone: 'warning',
+          title: '«Осознанность» — не самостоятельный перевод',
+          text: 'Осознанность может описывать часть внутреннего механизма, но по-русски не передаёт всего состояния и направленности к послушанию. Поэтому она используется в объяснении источника, а не как замена слова taqwā.',
         },
       ],
       en: [
         {
-          tone: 'warning',
-          title: '“God-fearing” is an inaccurate rendering',
-          text: '“God-fearing” places fear at the centre of the meaning and narrows the broader Quranic sense of تَقْوَىٰ (taqwā): awareness before the Most High, faith and trust in Him, discernment, attention to His boundaries, and protective choice.',
+          tone: 'positive',
+          title: 'In 2:197 — “piety”',
+          text: '“Piety” is used as the context rendering. The source of that state is explained separately through remembrance of Allah, attention to His boundaries, and guarding against crossing them.',
         },
         {
-          tone: 'positive',
-          title: '“Awe” is a closer rendering',
-          text: '“Awe” better conveys reverent awareness of the greatness of the Most High, respect, inner attentiveness, and seriousness toward Him. Fear can appear as one shade within that response, while reverent awareness remains central.',
+          tone: 'warning',
+          title: 'Awareness is explanatory, not a universal gloss',
+          text: 'Awareness can describe part of the inward mechanism, but it does not by itself exhaust the Quranic concept or establish one universal English rendering.',
         },
       ],
     },
-        distinction: {
-      ru: 'تَقْوَىٰ (taqwā) называет состояние/качество. Его защитное ядро приходит от و ق ي (w-q-y) и ٱتَّقَىٰ (ittaqā), а более широкий смысл раскрывается кораническим описанием.',
-      en: 'تَقْوَىٰ (taqwā) names a state/quality. Its protective core comes from و ق ي (w-q-y) and ٱتَّقَىٰ (ittaqā), while its broader sense is unfolded by Quranic description.',
+    distinction: {
+      ru: 'تَقْوَىٰ (taqwā) называет состояние/качество. Его защитное ядро приходит от و ق ي (w-q-y) и ٱتَّقَىٰ (ittaqā); конкретный перевод выбирается по контексту аята.',
+      en: 'تَقْوَىٰ (taqwā) names a state/quality. Its protective nucleus comes from و ق ي (w-q-y) and ٱتَّقَىٰ (ittaqā); the surface translation is chosen from the context of the ayah.',
     },
     structureSources: ['laneTqy', 'jawhari'], meaningSources: ['raghib', 'laneTqy', 'baqarahMuttaqin'], related: ['ittaqa', 'taqiyy', 'muttaqin'],
   },
