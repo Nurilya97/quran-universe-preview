@@ -64,11 +64,11 @@ export const AYAH_PROTOTYPES = {
       { ar: 'خَيْرَ', tr: 'khayra', ru: 'лучший', en: 'the best', roleRu: 'существительное сравнения', roleEn: 'elative noun' },
       { ar: 'ٱلزَّادِ', tr: 'al-zādi', ru: 'запас / провизия', en: 'provision', roleRu: 'существительное', roleEn: 'noun' },
       {
-        ar: 'ٱلتَّقْوَىٰ', tr: 'al-taqwā', ru: 'таква · осознанность перед Всевышним', en: 'taqwā · awareness before the Most High',
+        ar: 'ٱلتَّقْوَىٰ', tr: 'al-taqwā', ru: 'благочестие', en: 'piety',
         roleRu: 'существительное · marfūʿ', roleEn: 'noun · nominative',
         root: 'و ق ي', rootReading: 'w-q-y', orbitId: 'taqwa',
-        noteRu: 'تَقْوَىٰ (taqwā) здесь названа лучшим запасом. В Quran Universe это слово раскрывается как целостная осознанность перед Всевышним, из которой рождаются внимание к Его руководству, выбор и остережение.',
-        noteEn: 'تَقْوَىٰ (taqwā) is named here as the best provision. In Quran Universe it is unfolded as a holistic awareness before the Most High from which attention to His guidance, choice, and caution arise.',
+        noteRu: 'تَقْوَىٰ (taqwā) здесь названа лучшим запасом. В этом аяте основной русский перевод — «благочестие»; источник этого состояния в taqwā раскрывается отдельно.',
+        noteEn: 'تَقْوَىٰ (taqwā) is named here as the best provision. In this ayah the context rendering is “piety”; the inward source of that state is explained separately.',
         analysis: {
           ru: {
             morphology: {
@@ -90,9 +90,11 @@ export const AYAH_PROTOTYPES = {
               text: 'Если разобрать фразу по шагам: فَ (fa-) связывает её с предыдущей мыслью; إِنَّ (inna) вводит и усиливает утверждение; خَيْرَ (khayra) — اسم إِنَّ (ism inna), поэтому находится в состоянии manṣūb, и одновременно является مُضاف (muḍāf); ٱلزَّادِ (al-zādi) — مُضاف إليه (muḍāf ilayh), поэтому находится в состоянии majrūr; ٱلتَّقْوَىٰ (al-taqwā) — خبر إِنَّ (khabar inna), поэтому находится в состоянии marfūʿ.',
             },
             meaning: {
-              gloss: 'Таква · осознанность перед Всевышним',
-              description: 'В этом аяте تَقْوَىٰ (taqwā) названа лучшим запасом. Её более широкий смысл в Quran Universe — целостная осознанность перед Всевышним, основанная на вере и доверии Ему, осознании сокрытой реальности и Последней жизни. Корень و ق ي сохраняет направление защиты и оберегания; благочестие может быть одним из проявлений этой осознанности в данном контексте, но не исчерпывает слово.',
-              translation: 'У تَقْوَىٰ (taqwā) нет одного русского эквивалента, который сохраняет всю смысловую модель во всех контекстах. Здесь формулировка «осознанность перед Всевышним» передаёт внутреннюю основу, а «благочестие» может показывать проявление этого качества. «Праведность» не используется здесь как дополнительный перевод по умолчанию. Следующее وَٱتَّقُونِ (wa-ittaqūni) возвращает тот же корень уже как прямое действие.',
+              gloss: 'Благочестие',
+              definition: 'Почитание Всевышнего и жизнь или поведение в соответствии с этим почитанием.',
+              source: 'В taqwā источник этого состояния — внутренняя направленность к Аллаху: человек помнит о Нём и Его присутствии, осознаёт установленные Им границы и поэтому остерегается нарушать их и совершать зло.',
+              description: 'В этом аяте благочестие названо «лучшим запасом» после наставлений о поведении во время хаджа.',
+              translation: '«Благочестие» подходит здесь, потому что передаёт почитание Всевышнего и поведение, которое из него следует. «Осознанность» сама по себе слишком узка и не используется как самостоятельный русский эквивалент; она относится к источнику этого состояния. «Праведность» сильнее описывает качество поступков и поэтому не ставится здесь рядом по умолчанию.',
             },
           },
           en: {
@@ -113,15 +115,17 @@ export const AYAH_PROTOTYPES = {
               text: 'Step by step: فَ (fa-) links the clause to what comes before; إِنَّ (inna) introduces and emphasizes the statement; خَيْرَ (khayra) is اسم إِنَّ (ism inna), so it is accusative, and it also functions as مُضاف (muḍāf); ٱلزَّادِ (al-zādi) is مُضاف إليه (muḍāf ilayh), so it is genitive; ٱلتَّقْوَىٰ (al-taqwā) is خبر إِنَّ (khabar inna), so it is grammatically مرفوع (marfūʿ).',
             },
             meaning: {
-              gloss: 'Taqwā · awareness before the Most High',
-              description: 'In this ayah, تَقْوَىٰ (taqwā) is named as the best provision. Quran Universe treats its broader sense as a holistic awareness before the Most High, grounded in faith and trust in Him, awareness of the unseen, and certainty in the Hereafter. The root و ق ي retains the direction of protection and guarding; piety may describe a manifestation of this awareness here without exhausting the word.',
-              translation: 'No single English rendering preserves the entire تَقْوَىٰ (taqwā) model in every context. Here “awareness before the Most High” conveys the inward foundation, while “piety” may describe a manifestation. “Righteousness” is not added as a default paired rendering in this ayah. The following وَٱتَّقُونِ (wa-ittaqūni) returns the same root field as a direct command.',
+              gloss: 'Piety',
+              definition: 'Reverence for Allah expressed in a life and conduct shaped by that reverence.',
+              source: 'In taqwā, the source of this state is an inward orientation toward Allah: remembering Him and His presence, recognising the boundaries He has established, and therefore guarding against crossing them and doing evil.',
+              description: 'In this ayah, piety is named the “best provision” after instructions about conduct during Hajj.',
+              translation: '“Piety” is used here as the context rendering. Awareness or mindfulness can describe part of the inward source of the state, but is not treated as the whole lexical equivalent; “righteousness” more strongly describes conduct and is not paired with it by default.',
             },
           },
         },
       },
       {
-        ar: 'وَٱتَّقُونِ', tr: 'wa-ittaqūni', ru: 'и сохраняйте осознанность передо Мной', en: 'and remain mindful of Me',
+        ar: 'وَٱتَّقُونِ', tr: 'wa-ittaqūni', ru: 'и остерегайтесь нарушать Его границы', en: 'and remain mindful of Me',
         roleRu: 'союз + повелительный глагол VIII формы + подлежащее + объект 1-го лица', roleEn: 'conjunction + Form VIII imperative + subject pronoun + 1st-person object',
         root: 'و ق ي', rootReading: 'w-q-y', orbitId: 'ittaqa',
         noteRu: 'وَٱتَّقُونِ (wa-ittaqūni) возвращает тот же корень و ق ي уже как прямое повеление множественному адресату.',
@@ -138,16 +142,16 @@ export const AYAH_PROTOTYPES = {
               text: 'Структура читается как وَ + ٱتَّقُوا + نِ. Глагол ٱتَّقُوا (ittaqū) — повелительная форма от ٱتَّقَىٰ (ittaqā), VIII формы корня و ق ي (w-q-y). Первая корневая و сначала заменяется на ت (إبدال), затем эта ت сливается с ت VIII формы (إدغام), поэтому появляется удвоенная تّ. Полная объектная форма подразумевает ٱتَّقُونِي (ittaqūnī): ن — nūn al-wiqāya, а yā местоимения «Меня» в коранической записи опущена; её след сохраняется в касре نِ.',
             },
             syntax: {
-              plain: 'Это прямое повеление группе людей. Действие направлено к Аллаху как к объекту обращения: «Меня». В контексте аята эта направленность выражает осознанность перед Аллахом и сохранение поведения внутри установленных Им границ.',
+              plain: 'Это прямое повеление группе людей. Грамматически форма содержит объект первого лица — «Меня». В смысловом объяснении аята это раскрывается через память об Аллахе и остережение от нарушения установленных Им границ.',
               title: 'فعل أمر (fiʿl amr) — прямое повеление',
               case: 'Глагол повелительного наклонения построен на حذف النون; واو الجماعة выступает подлежащим — «вы».',
               ending: 'نون الوقاية отделяет глагол от местоимения 1-го лица; yā «Меня» опущена, а kasra в نِ указывает на неё.',
               text: 'Начальная وَ связывает повеление с предыдущим утверждением о تَقْوَىٰ как лучшем запасе. Поэтому одна и та же корневая идея сначала названа существительным تَقْوَىٰ, а затем сразу возвращается как действие وَٱتَّقُونِ.',
             },
             meaning: {
-              gloss: 'Сохраняйте осознанность передо Мной',
-              description: 'Здесь تَقْوَىٰ (taqwā) перестаёт быть только названным качеством и становится действием. После того как она названа лучшим запасом, адресатам прямо велено сохранять эту осознанность перед Аллахом и оберегать своё поведение в установленных Им границах.',
-              translation: 'Форма направляет действие непосредственно к Аллаху — «Меня». В контексте хаджа уже установлены границы поведения, добро связано со знанием Аллаха, а taqwā названа лучшим внутренним запасом. Поэтому «сохраняйте осознанность передо Мной» передаёт направление действия и связывает внутреннюю осознанность с поведением в установленных Им границах.',
+              gloss: 'Остерегайтесь нарушать Его границы',
+              description: 'После того как taqwā названа лучшим запасом, тот же корень возвращается как действие: помнить об Аллахе и Его присутствии, учитывать установленные Им границы и остерегаться нарушать их и совершать зло.',
+              translation: 'Грамматически форма сохраняет объект первого лица, а в русском смысловом переводе действие раскрывается через память об Аллахе и остережение от нарушения установленных Им границ.',
             },
           },
           en: {

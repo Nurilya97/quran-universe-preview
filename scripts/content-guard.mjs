@@ -248,14 +248,36 @@ if (!PILOT_SOURCE_ADAPTERS.quranmorph.access.includes('official_download_form_re
 const taqwaToken = pilotAyah?.tokens?.[25]
 if (!taqwaToken || taqwaToken.orbitId !== 'taqwa') fail('2:197 word 26 must remain linked to taqwa')
 else {
-  if (taqwaToken.ru === 'благочестие' || taqwaToken.analysis?.ru?.meaning?.gloss === 'Благочестие / праведность') {
-    fail('2:197 taqwa token regressed to manifestation-only gloss')
+  const taqwaMeaning = taqwaToken.analysis?.ru?.meaning
+  if (taqwaToken.ru !== 'благочестие' || taqwaMeaning?.gloss !== 'Благочестие') {
+    fail('2:197 taqwa must keep the approved Russian rendering «благочестие»')
   }
-  if (!taqwaToken.analysis?.ru?.meaning?.description?.includes('целостная осознанность перед Всевышним')) {
-    fail('2:197 taqwa meaning is not synchronized with the canonical Quran-first model')
+  if (!taqwaMeaning?.definition?.includes('Почитание Всевышнего')) {
+    fail('2:197 taqwa must keep the ordinary Russian definition of «благочестие» separate')
+  }
+  if (!taqwaMeaning?.source?.includes('помнит о Нём') ||
+      !taqwaMeaning?.source?.includes('границ') ||
+      !taqwaMeaning?.source?.includes('совершать зло')) {
+    fail('2:197 taqwa source/mechanism is not synchronized with the approved model')
+  }
+  if (JSON.stringify(taqwaMeaning).includes('целостная осознанность перед Всевышним') ||
+      taqwaMeaning?.gloss?.toLowerCase().includes('осознанност')) {
+    fail('2:197 taqwa regressed to «осознанность» as the standalone Russian rendering')
   }
   if (!taqwaToken.analysis?.ru?.morphology?.text?.includes('модели فَعْلَى')) {
     fail('2:197 taqwa morphology lost its own noun pattern')
+  }
+}
+
+const ittaquniToken = pilotAyah?.tokens?.[26]
+if (!ittaquniToken || ittaquniToken.orbitId !== 'ittaqa') fail('2:197 word 27 must remain linked to ittaqa')
+else {
+  const ittaquniMeaning = ittaquniToken.analysis?.ru?.meaning
+  if (!ittaquniToken.ru?.includes('границы') || !ittaquniMeaning?.gloss?.includes('границы')) {
+    fail('2:197 wa-ittaqūni must keep the approved boundary-centred Russian explanation')
+  }
+  if (JSON.stringify(ittaquniMeaning).includes('передо Мной') || JSON.stringify(ittaquniMeaning).includes('опасайтесь Меня')) {
+    fail('2:197 wa-ittaqūni restored an explicitly rejected Russian phrasing')
   }
 }
 

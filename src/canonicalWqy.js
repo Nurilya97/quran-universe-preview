@@ -71,8 +71,8 @@ export const WQY_PUBLIC_MODEL = {
   reviewedContexts: {
     '2:197': {
       status: 'human_verified',
-      ru: 'تَقْوَىٰ названа лучшим запасом. В 2:197 «благочестие» допустимо как manifestation-level rendering, но не как lexical nucleus или полная дефиниция; «праведность» не добавляется к нему по умолчанию в этом аяте.',
-      en: 'تَقْوَىٰ is named as the best provision. In 2:197, “piety” may be shown at manifestation level, but not as the lexical nucleus or whole definition; “righteousness” is not paired with it by default here.',
+      ru: 'تَقْوَىٰ названа лучшим запасом. Основной русский перевод в этом аяте — «благочестие». Его обычное значение не подменяется арабской этимологией; отдельно раскрывается источник этого состояния в taqwā: память об Аллахе и Его присутствии, осознание установленных Им границ и остережение от их нарушения и от зла. «Осознанность» не используется как самостоятельный русский эквивалент, а «праведность» не добавляется рядом по умолчанию.',
+      en: 'تَقْوَىٰ is named as the best provision. For this ayah, piety is the context rendering, while the source of that state is explained separately through remembrance of Allah, awareness of His boundaries, and guarding against crossing them. This context decision does not replace the broader root model.',
     },
     '2:194': {
       status: 'human_verified',
