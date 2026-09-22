@@ -1,5 +1,7 @@
 # Quran Universe — Root Semantic Reconstruction Method
 
+> **Normative authority:** `.github/skills/quran-universe/SKILL.md` is the canonical project skill. This document is a human-readable research reference. If the two ever diverge, update this document to match the master skill; do not create a second root-research authority.
+
 ## Purpose
 
 This is the working research skill for Arabic root analysis in Quran Universe.
