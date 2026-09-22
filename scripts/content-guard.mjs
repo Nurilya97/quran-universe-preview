@@ -224,7 +224,7 @@ if (PILOT_2_197_DATASET_STATUS.qac.mappedOrthographicWords !== 29) fail('2:197 Q
 if (PILOT_SOURCE_ADAPTERS.qac.pilotStatus !== 'row_mapped') fail('QAC pilot adapter status drifted')
 if (PILOT_SOURCE_ADAPTERS.tafsircenter.pilotStatus !== 'row_mapped') fail('Tafsir Center adapter status drifted')
 if (PILOT_SOURCE_ADAPTERS.quranmorph.pilotStatus !== 'metadata_verified_access_pending') fail('QuranMorph access status drifted')
-if (PILOT_SOURCE_ADAPTERS.qamar.pilotStatus !== 'metadata_verified_row_import_pending') fail('QAMAR import status drifted')
+if (PILOT_SOURCE_ADAPTERS.qamar.pilotStatus !== 'publication_verified_release_pending') fail('QAMAR release status drifted')
 if (!PILOT_SOURCE_ADAPTERS.quranmorph.access.includes('official_download_form_requires')) {
   fail('QuranMorph official-access restriction must remain explicit until authorized access is available')
 }
