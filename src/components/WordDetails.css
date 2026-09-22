@@ -89,6 +89,7 @@
   --morph-ending: #c65cff;
   --morph-particle: #59f2ff;
   --morph-form: #f7f8fa;
+  --morph-root-shift: color-mix(in srgb, var(--morph-root) 62%, var(--morph-form) 38%);
 }
 .morph-analysis { margin: 4px 0 26px; }
 .morph-analysis > h3 { margin-bottom: 9px !important; }
@@ -123,6 +124,12 @@
 .morph-analysis .morph-ending { color: var(--morph-ending); }
 .morph-analysis .morph-particle { color: var(--morph-particle); }
 .morph-analysis .morph-form { color: var(--morph-form); }
+.morph-analysis .morph-rootShift {
+  color: transparent;
+  background: linear-gradient(90deg, var(--morph-root) 0 52%, var(--morph-form) 56% 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
 .morph-analysis .morph-fusion {
   color: transparent;
   background: linear-gradient(90deg, var(--morph-root) 0 48%, var(--morph-form) 52% 100%);
@@ -166,6 +173,10 @@
 .morph-legend-ending { color: var(--morph-ending); }
 .morph-legend-particle { color: var(--morph-particle); }
 .morph-legend-form { color: var(--morph-form); }
+.morph-legend-rootShift { color: var(--morph-root-shift); }
+.morph-legend-rootShift i {
+  background: linear-gradient(90deg, var(--morph-root) 0 52%, var(--morph-form) 56% 100%);
+}
 .morph-legend-fusion { color: var(--morph-root); }
 .morph-legend-fusion i {
   background: linear-gradient(90deg, var(--morph-root) 0 48%, var(--morph-form) 52% 100%);
@@ -402,6 +413,10 @@
 .morph-components .morph-dot.morph-ending { color: var(--morph-ending); }
 .morph-components .morph-dot.morph-particle { color: var(--morph-particle); }
 .morph-components .morph-dot.morph-form { color: var(--morph-form); }
+.morph-components .morph-dot.morph-rootShift {
+  color: var(--morph-root-shift);
+  background: linear-gradient(90deg, var(--morph-root) 0 52%, var(--morph-form) 56% 100%);
+}
 
 
 /* Meaning taxonomy — mechanism → component → manifestation → result */
