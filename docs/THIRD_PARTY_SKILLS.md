@@ -29,3 +29,21 @@ Project integration:
 The project skill is a lightweight integration guide. The Graphify runtime
 itself is not vendored into this repository; its official package is
 `graphifyy` and the CLI is `graphify`.
+
+## Anthropic Webapp Testing
+
+Source: https://github.com/anthropics/skills/tree/main/skills/webapp-testing
+
+License: Apache-2.0. The Quran Universe project copy is an adapted workflow, not a verbatim vendoring of helper scripts.
+
+## Superpowers · systematic debugging / verification before completion
+
+Source: https://github.com/obra/superpowers
+
+License: MIT. Project copies are shortened/adapted to Quran Universe's authority and deployment rules.
+
+## Skill Security Auditor
+
+Source: https://github.com/alirezarezvani/claude-skills/tree/main/engineering/skills/skill-security-auditor
+
+License: MIT. Project copy is a narrowed static-review workflow; upstream scripts are not vendored.
