@@ -122,6 +122,8 @@ Do not mix Quran-attested and lexical-only status.
 ### Step 2 — triangulate multiple sources
 Use several reliable sources rather than one dictionary.
 
+Root-verify every collected form. Broad lexical searches can mix homographs, neighbouring roots, cross-references, or later related forms. Never admit a form to the semantic map merely because a search result grouped it nearby.
+
 Preferred lexical stack when available:
 - Arabist / Arabous;
 - Almaany;
@@ -153,8 +155,17 @@ Ask:
 
 The goal is not to invent a poetic “root essence”. The goal is to find the smallest defensible semantic mechanism that explains the family.
 
-### Step 4 — test the candidate against every derivative
+### Step 4 — test and falsify the candidate
 A proposed core meaning is not accepted merely because it explains the Quranic word.
+
+Actively try to break the proposed nucleus:
+- test every verified derivative;
+- test concrete/physical senses before abstract ones where possible;
+- test every manageable Quranic occurrence;
+- search for a counterexample that would make the proposed mechanism fail;
+- compare neighbouring roots that receive similar translations.
+
+A model becomes stronger by surviving counterexamples, not by accumulating only supportive examples.
 
 Run it against the full family:
 - explain why each derivative belongs to the root;
@@ -482,27 +493,57 @@ A new root must inherit the approved template instead of receiving a bespoke lay
 
 ## 20. Connector rules are context-specific
 
-Do not apply one connector style globally across Quran Universe.
+Never apply one connector style globally across Quran Universe. “Morphology”, “syntax”, “Root Space” and “Word Orbit” are separate diagram families.
 
-### Word Orbit → Structure → Visual morphology
+### A. Word Orbit → Structure → visual morphology
 
-The approved/current reference implementation uses:
+Canonical runtime owner:
+- `src/components/WordDetails.jsx` → `.morph-board`
+- `src/components/WordDetails.css`
+- browser contract in `tests/ui/approved-ui.spec.js`
+
+Approved rule:
 - straight **1 px** connectors;
-- an arrowhead showing direction of derivation;
+- directional arrowhead;
 - desktop: horizontal connector between consecutive morphology nodes;
-- mobile: vertical 1 px connector, small dot at the upper end, arrowhead attached at the lower end;
-- clean geometric alignment;
-- no bent “AI-looking” branches;
-- no decorative elbow stubs;
-- no floating line fragments.
+- mobile: vertical 1 px connector, small dot at the upper endpoint, attached arrowhead at the lower endpoint;
+- no bent “AI-looking” branches or floating fragments.
 
-Reuse this exact language when rebuilding the Word Orbit morphology scheme.
+### B. Ayah Space → taqwā morphology
 
-### Other diagrams
+Canonical runtime owner:
+- `TaqwaMorphologyLegacy` in `src/components/AyahView.jsx`
+- scoped CSS `.approved-taqwa-baseline` in `src/components/AyahView.css`
 
-Root Space semantic relations, Ayah Space syntax relations, and other diagram families may use a different connector treatment. Inspect their approved reference before changing them.
+Latest approved rule:
+- **1 px** connector tree;
+- **no arrowheads / no SVG markers**;
+- clean orthogonal geometry;
+- the word begins the scheme; the root is not substituted for the word as the start node.
 
-Never propagate a connector correction from one diagram family to every other diagram family unless the user explicitly approves that global change.
+The earlier 3 px request was later reduced to 2 px and then 1 px. The no-arrow requirement remained.
+
+### C. Ayah Space syntax
+
+Runtime owner:
+- `src/components/SyntaxView.jsx`
+- `src/components/WordFocusViews.css`
+
+Syntax uses restrained directional relation arcs with clickable grammatical terms. Its geometry and weight are its own system; do not copy morphology connector settings into it.
+
+### D. Root Space
+
+Orbit rings are family guides, not morphology arrows. The current ل ب ب Root Space has approved notation/legend elements, but its semantic relationship layer is incomplete and must not be frozen as the final relationship template.
+
+### Cascade rule
+
+`AyahView.css` contains several older morphology experiments. Comments such as “v4” or “v5” are historical layers, not authority. For a repeated visual decision inspect, in this order:
+1. the rendered approved state / explicit user decision;
+2. the active component;
+3. the latest scoped selector that actually wins the CSS cascade;
+4. the browser contract, when one exists.
+
+Never propagate a connector correction from one diagram family to another unless the user explicitly approves that cross-context change.
 
 ## 21. Visual hierarchy
 
@@ -599,6 +640,26 @@ Unverified datasets remain research/pending, not canonical.
 ---
 
 # PART VII — CHANGE DISCIPLINE
+
+## 25A. Runtime ownership map
+
+Before editing a repeated pattern, locate its real owner:
+
+- Universe/search/root navigation: `ImmersiveUniverse.jsx` + `ImmersiveUniverse.css`
+- Word Orbit layout: `WordOrbit.css`
+- Word Orbit content/structure/meaning: `WordDetails.jsx`, `WordDetails.css`, `rootContent.js`, `morphologyWqy.js`
+- Root families/positions: `demo.js`
+- Ayah Space record content: `ayahPrototype.js` validated by `data/ayahSchema.js`
+- Ayah Space UI/morphology/composition/rhetoric: `AyahView.jsx` + `AyahView.css`
+- Ayah Space focused meaning/syntax styling: `WordFocusViews.css`
+- Syntax presentation: `SyntaxView.jsx`, `syntaxPresentation.js`, `syntaxTerms.js`
+- WQY canonical semantic safeguards: `canonicalWqy.js` + `data/research/wqyResearch.json`
+- Quran occurrences: `occurrences.js`
+- Cross-corpus canonical IDs/adapters: `data/quranUniverseData.js`, `data/sourceAdapters.js`
+- Automated semantic/data invariants: `scripts/content-guard.mjs`
+- Approved browser contracts: `tests/ui/approved-ui.spec.js`
+
+Do not infer authority from file names or comments alone. A historical CSS block, obsolete test assumption, or stale guard can conflict with a later explicit user decision and must then be updated.
 
 ## 26. Before editing
 
