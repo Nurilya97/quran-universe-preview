@@ -1,3 +1,5 @@
+import { prepareAyahRecord } from './data/ayahSchema.js'
+
 export const AYAH_PROTOTYPES = {
   '2:197': {
     reference: '2:197',
@@ -427,6 +429,10 @@ export const AYAH_PROTOTYPES = {
   },
 }
 
+const PREPARED_AYAH_PROTOTYPES = Object.fromEntries(
+  Object.entries(AYAH_PROTOTYPES).map(([reference, record]) => [reference, prepareAyahRecord(record)]),
+)
+
 export function getAyahPrototype(reference) {
-  return AYAH_PROTOTYPES[reference] || null
+  return PREPARED_AYAH_PROTOTYPES[reference] || null
 }
