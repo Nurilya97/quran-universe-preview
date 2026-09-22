@@ -57,7 +57,13 @@ References:
 https://huggingface.co/datasets/tafsircenter/tafsir-mcp-data
 https://github.com/tafsircenter/tafsir-mcp
 
-Next action: materialize/query the official database and compare all 29 2:197 word rows against Quran Universe IDs.
+A read-only importer is now available:
+
+`python scripts/import_tafsircenter_pilot.py /path/to/quran.db`
+
+It validates that 2:197 has exactly 29 sequential word rows, maps them to `q:2:197:wN`, and exports text, rasm note, meaning, iʿrāb, ṣarf, root and frequency fields without modifying the source database.
+
+Next action: provide/materialize the official `quran.db`, run the importer, then compare the resulting 29 rows against the QAC/Ayah Space layer.
 
 ### QuranMorph
 
