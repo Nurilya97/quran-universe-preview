@@ -175,6 +175,24 @@ else {
 if (TAFSIRCENTER_2_197_PILOT.wordCount !== 29 || TAFSIRCENTER_2_197_PILOT.rows.length !== 29) {
   fail('Tafsir Center 2:197 pilot must remain 29/29 words')
 }
+const canonicalPilotRows = buildPilotOrthographicWordMap(pilotAyah)
+for (let index = 0; index < TAFSIRCENTER_2_197_PILOT.rows.length; index += 1) {
+  const sourceRow = TAFSIRCENTER_2_197_PILOT.rows[index]
+  const canonicalRow = canonicalPilotRows[index]
+  if (sourceRow.id !== canonicalRow?.id) fail(`Tafsir Center pilot ID mismatch at word ${index + 1}`)
+  if (sourceRow.qacText !== canonicalRow?.text) fail(`Tafsir Center pilot QAC text drift at ${sourceRow.id}`)
+}
+const normalizeArabicSurface = value => String(value)
+  .replace(/ٱ/g, 'ا')
+  .replace(/ـ/g, '')
+  .replace(/[\u064B-\u065F\u0670\u06D6-\u06ED]/g, '')
+  .replace(/\//g, '')
+const orthographyDifferences = TAFSIRCENTER_2_197_PILOT.rows
+  .filter(row => normalizeArabicSurface(row.qacText) !== normalizeArabicSurface(row.tafsirCenterText))
+  .map(row => row.id)
+if (JSON.stringify(orthographyDifferences) !== JSON.stringify(['q:2:197:w28', 'q:2:197:w29'])) {
+  fail(`unexpected 2:197 QAC/Tafsir Center orthography differences: ${orthographyDifferences.join(', ')}`)
+}
 if (!unique(TAFSIRCENTER_2_197_PILOT.rows.map(row => row.id))) fail('duplicate Tafsir Center Quran Universe IDs')
 const tafsirTaqwa = TAFSIRCENTER_2_197_PILOT.evidence.taqwa
 const tafsirIttaquni = TAFSIRCENTER_2_197_PILOT.evidence.ittaquni
