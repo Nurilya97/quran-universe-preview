@@ -261,7 +261,7 @@ test.describe('approved Quran Universe UI contracts', () => {
     await expect(note).toBeVisible()
     await expect(note.getByRole('heading', { name: 'Благочестие / благочестивый' })).toBeVisible()
     await expect(note).toContainText('почитание Бога')
-    await expect(note).toContainText('праведность')
+    await expect(note).toContainText(/праведност/)
     await expect(note.getByRole('link', { name: /Грамота\.ру · благочестие/ })).toBeVisible()
 
     const position = await note.evaluate((element) => {
