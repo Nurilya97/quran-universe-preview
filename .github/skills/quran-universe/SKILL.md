@@ -359,6 +359,16 @@ For every visible word:
    - Simple lexical items normally need direct meaning + semantic focus + contrast, not a repeated “Механизм” card.
    - Complex Quranic concepts may keep a map only for genuinely additional layers such as Quranic unfolding, source-of-state logic, or context.
 
+8. **Use progressive disclosure for translation vocabulary.**
+   - If a concept has several valid translation words whose own meanings need explanation, do not overload the main paragraph with dictionary definitions.
+   - Keep the translation terms visible in the main line and make them optionally clickable.
+   - Open the explanation as a compact bottom note inside the same Word Orbit sheet, not as a new page or navigation state.
+   - The note should answer only: **what this translation word means → what side of the Quranic concept it captures → how it differs from the nearest translation alternatives**.
+   - Include a source link when the note relies on a general-language dictionary.
+   - Keep dictionary meaning separate from the project synthesis for the Quranic concept.
+   - In English, distinguish ordinary `consciousness` from `God-consciousness`, and ordinary/modern `mindfulness` from the phrase `mindfulness of Allah`; do not treat these as automatic synonyms.
+   - Glossary notes are supplementary. The primary Word Orbit definition must still be understandable without opening them.
+
 Do not repeat the same concept under “Значение”, “Связь с корнем”, “Механизм”, and “В этом аяте”.
 
 Morphological mechanics belong in structure/morphology, not in lexical meaning.
