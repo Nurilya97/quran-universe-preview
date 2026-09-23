@@ -561,6 +561,11 @@ When the user says “как в taqwā” or names another approved reference:
 
 Do not redesign approved screens unless explicitly requested.
 
+For the Ayah Space onboarding hint (“Нажмите на любое слово” / “Tap any word”):
+- use translucent light gray rather than cyan/blue;
+- keep the weight regular and the treatment quiet, with no glow;
+- make it comfortably readable in the interface while still clearly smaller than the Arabic ayah text.
+
 A new root must inherit the approved template instead of receiving a bespoke layout.
 
 ## 20. Connector rules are context-specific
