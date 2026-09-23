@@ -58,6 +58,22 @@ test('design evidence · ayah 2:197 analysis · desktop', async ({ page }, testI
   await snap(page, testInfo, 'ayah-2-197-analysis-desktop')
 })
 
+test('design evidence · ayah 2:197 analysis · mobile', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await openAyah197(page)
+  await snap(page, testInfo, 'ayah-2-197-analysis-mobile')
+})
+
+test('design evidence · ayah 2:197 word focus · mobile', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await openAyah197(page)
+  const entry = page.locator('.analysis-inline-word.is-entry').first()
+  await expect(entry).toBeVisible()
+  await entry.click()
+  await expect(page.locator('.analysis-focus-overlay')).toBeVisible()
+  await snap(page, testInfo, 'ayah-2-197-word-focus-mobile')
+})
+
 test('design evidence · ayah 2:197 composition · mobile', async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await openAyah197(page)
