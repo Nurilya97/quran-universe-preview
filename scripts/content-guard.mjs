@@ -226,15 +226,6 @@ if (!MEANING_GLOSSARY.pietyRu?.ru?.difference?.includes('набожност') ||
   fail('Russian glossary must distinguish благочестие, набожность, праведность, and осознанность')
 }
 
-const forbiddenPublicRussian = JSON.stringify({
-  wordContent: WORD_CONTENT,
-  glossary: MEANING_GLOSSARY,
-  ayah: pilotAyah,
-})
-if (/религиоз/i.test(forbiddenPublicRussian)) {
-  fail('forbidden vague Russian wording returned to public Quran Universe copy')
-}
-
 // Every visible root-space form has a morphology teaching profile.
 const activeForms = FORMS.filter(form => !form.relatedOnly)
 const allowedRoles = new Set(['root', 'prefix', 'suffix', 'ending', 'particle', 'form', 'fusion', 'rootShift'])
@@ -328,6 +319,15 @@ for (const [reference, record] of Object.entries(AYAH_PROTOTYPES)) {
 if (QURAN_UNIVERSE_DATA_VERSION !== 'QU-DATA v0.4 — 2026-09-22') fail('unexpected Quran Universe data-layer version')
 const pilotAyah = AYAH_PROTOTYPES['2:197']
 if (!pilotAyah) fail('2:197 pilot ayah missing')
+
+const forbiddenPublicRussian = JSON.stringify({
+  wordContent: WORD_CONTENT,
+  glossary: MEANING_GLOSSARY,
+  ayah: pilotAyah,
+})
+if (/религиоз/i.test(forbiddenPublicRussian)) {
+  fail('forbidden vague Russian wording returned to public Quran Universe copy')
+}
 else {
   const pilotWords = buildPilotOrthographicWordMap(pilotAyah)
   if (pilotWords.length !== 29) fail(`2:197 pilot token count changed: ${pilotWords.length}`)
