@@ -78,7 +78,7 @@ export const WORD_CONTENT = {
       en: ['A noun naming a quality or state and derivationally related to ٱتَّقَىٰ. The noun is shown with its own pattern فَعْلَى.', 'To make the letters transparent, classical morphology reconstructs an underlying وَقْيَا from the root و ق ي. First, the initial root و is replaced by ت: وَقْيَا → تَقْيَا. Then the final root ي in a noun on فَعْلَى is replaced by و: تَقْيَا → تَقْوَىٰ. Thus initial ت goes back to the first root و, while the و after ق goes back to the third root ي.', 'The intermediate forms are shown here as a morphological reconstruction that explains the letter changes, not as separate dictionary words. Classical sources may order the intermediate stages differently; the key correspondences remain initial و with ت and final root ي with the و after ق. Orbit VIII represents the derivational family; the noun’s own pattern is فَعْلَى.'],
     },
     meaning: {
-      ru: { lead: 'تَقْوَىٰ (taqwā) — благочестие, праведность, осознанность перед Аллахом.', body: 'Каждое из этих слов передаёт одну сторону تَقْوَىٰ (taqwā). «Благочестие» подчёркивает отношение к Аллаху и жизнь в соответствии с ним; «праведность» — правильность поступков; «осознанность перед Аллахом» — постоянную память о Нём и внимание к Его границам. تَقْوَىٰ (taqwā) шире любого одного из этих слов.' },
+      ru: { lead: 'تَقْوَىٰ (taqwā) — благочестие, набожность, праведность, осознанность перед Аллахом.', body: 'Каждое из этих слов передаёт одну сторону تَقْوَىٰ (taqwā). «Благочестие» подчёркивает почитание Аллаха и жизнь в соответствии с этим; «набожность» — преданность Аллаху и стремление следовать Его предписаниям; «праведность» — правильность поступков; «осознанность перед Аллахом» — постоянную память о Нём и внимание к Его границам. تَقْوَىٰ (taqwā) шире любого одного из этих слов.' },
       en: { lead: 'تَقْوَىٰ (taqwā) — piety, righteousness, God-consciousness, mindfulness of Allah.', body: 'Each rendering highlights one side of تَقْوَىٰ (taqwā), and none covers the whole concept by itself. Tap a term to see its exact emphasis and how it differs from the others.' },
     },
     meaningMap: [
@@ -101,7 +101,7 @@ export const WORD_CONTENT = {
         {
           tone: 'positive',
           title: 'Допустимые переводы',
-          text: 'Какой вариант выбрать, показывает сам аят. В 2:197 основным переводом остаётся «благочестие».',
+          text: '«Благочестие», «набожность», «праведность» и «осознанность перед Аллахом» передают разные стороны تَقْوَىٰ (taqwā). Какой вариант выбрать, показывает сам аят. В 2:197 основным переводом остаётся «благочестие».',
         },
         {
           tone: 'warning',
@@ -153,7 +153,7 @@ export const WORD_CONTENT = {
       en: ['An active participle of Form VIII, naming someone who performs ٱتَّقَىٰ. The pattern is singular; the displayed word is plural.', 'The singular is مُتَّقٍ (muttaqin). The plural is مُتَّقُونَ (muttaqūna) in the nominative and مُتَّقِينَ (muttaqīna) in the accusative or genitive. Long ī distinguishes the displayed plural form.'],
     },
     meaning: {
-      ru: { lead: 'مُتَّقِين (muttaqīn) — благочестивые, праведные, осознанные перед Аллахом, остерегающиеся нарушать Его границы.', body: 'Это качество видно в том, как человек выбирает и поступает: он старается не переходить границы Аллаха и удерживается от дурного.' },
+      ru: { lead: 'مُتَّقِين (muttaqīn) — благочестивые, набожные, праведные, осознанные перед Аллахом, остерегающиеся нарушать Его границы.', body: 'Это качество видно в том, как человек выбирает и поступает: он старается не переходить границы Аллаха и удерживается от дурного.' },
       en: { lead: 'مُتَّقِين (muttaqīn) — the pious, the righteous, the God-conscious; people who guard against crossing Allah’s boundaries.', body: 'This quality is visible in how they choose and act: they try not to cross Allah’s boundaries and hold themselves back from wrongdoing.' },
     },
     meaningMap: [
@@ -172,7 +172,7 @@ export const WORD_CONTENT = {
       },
     ],
     distinction: {
-      ru: 'مُتَّقٍ (muttaqin) и تَقِيّ (taqiyy) оба можно перевести как «благочестивый / праведный». В مُتَّقٍ (muttaqin) сильнее чувствуется, что человек проявляет это качество в своих действиях и остерегается нарушать границы. تَقِيّ (taqiyy) сильнее описывает благочестие как уже закрепившуюся черту человека; в классическом источнике это слово считается более сильной похвалой.',
+      ru: 'مُتَّقٍ (muttaqin) и تَقِيّ (taqiyy) можно перевести как «благочестивый / набожный / праведный». В مُتَّقٍ (muttaqin) сильнее чувствуется, что человек проявляет это качество в своих действиях и остерегается нарушать границы. تَقِيّ (taqiyy) сильнее описывает благочестие как уже закрепившуюся черту человека; в классическом источнике это слово считается более сильной похвалой.',
       en: 'مُتَّقٍ (muttaqin) and تَقِيّ (taqiyy) can both be translated as “pious / righteous.” مُتَّقٍ (muttaqin) more strongly suggests that the quality is being shown in what the person does and in avoiding crossed boundaries. تَقِيّ (taqiyy) presents piety more as an established trait of the person; a classical source treats it as the stronger expression of praise.',
     },
     structureSources: ['corpus', 'laneTqy'], meaningSources: ['raghib', 'laneTqy', 'baqarahMuttaqin', 'furuqTaqi'], related: ['ittaqa', 'taqwa'],
@@ -201,7 +201,7 @@ export const WORD_CONTENT = {
       en: ['An adjective describing a person’s quality. فَعِيل is one of the pattern analyses recorded by Lane, who also discusses an alternative historical account.', 'Its usage is close to مُتَّقٍ, but its form differs. A plural is أَتْقِيَاء (atqiyāʾ). The doubled ي in تَقِيّ belongs to the word’s formation.'],
     },
     meaning: {
-      ru: { lead: 'تَقِيّ (taqiyy) — благочестивый, праведный; человек, у которого تَقْوَىٰ (taqwā) стала устойчивой и выраженной чертой.', body: 'Здесь в фокусе не отдельный акт остережения, а характеристика самого человека. Классический источник по лексическим различиям прямо отмечает у تَقِيّ (taqiyy) оттенок усиления и более сильной похвалы по сравнению с مُتَّقٍ (muttaqin).' },
+      ru: { lead: 'تَقِيّ (taqiyy) — благочестивый, набожный, праведный; человек, у которого تَقْوَىٰ (taqwā) стала устойчивой и выраженной чертой.', body: 'Здесь в фокусе не отдельный акт остережения, а характеристика самого человека. Классический источник по лексическим различиям прямо отмечает у تَقِيّ (taqiyy) оттенок усиления и более сильной похвалы по сравнению с مُتَّقٍ (muttaqin).' },
       en: { lead: 'تَقِيّ (taqiyy) — pious, righteous; a person in whom تَقْوَىٰ (taqwā) has become an established and strongly marked quality.', body: 'The focus is not one act of guarding but the person’s characterization. A classical lexical-differences source explicitly gives تَقِيّ (taqiyy) an intensified, more strongly praiseworthy colouring than مُتَّقٍ (muttaqin).' },
     },
     occurrenceNote: {
@@ -210,7 +210,7 @@ export const WORD_CONTENT = {
     },
     meaningMap: [],
     distinction: {
-      ru: 'تَقِيّ (taqiyy) и مُتَّقٍ (muttaqin) оба можно перевести как «благочестивый / праведный». تَقِيّ (taqiyy) сильнее подчёркивает благочестие как закрепившуюся черту человека и считается более сильной похвалой; مُتَّقٍ (muttaqin) сильнее показывает это качество через действия человека.',
+      ru: 'تَقِيّ (taqiyy) и مُتَّقٍ (muttaqin) можно перевести как «благочестивый / набожный / праведный». تَقِيّ (taqiyy) сильнее подчёркивает благочестие как закрепившуюся черту человека и считается более сильной похвалой; مُتَّقٍ (muttaqin) сильнее показывает это качество через действия человека.',
       en: 'تَقِيّ (taqiyy) and مُتَّقٍ (muttaqin) can both be translated as “pious / righteous.” تَقِيّ (taqiyy) more strongly presents piety as an established trait and is treated as the stronger praise; مُتَّقٍ (muttaqin) more strongly shows the quality through what the person does.',
     },
     structureSources: ['laneTqy'], meaningSources: ['laneTqy', 'jawhari', 'furuqTaqi'], related: ['taqwa', 'atqa', 'muttaqin'],
@@ -222,12 +222,12 @@ export const WORD_CONTENT = {
       en: ['An elative adjective expressing a greater degree of a quality. The traditional Arabic term is اسم التفضيل.', 'The form belongs to اسم التفضيل. The final weak consonant gives ى. Depending on the construction, it can express “more…” or “most…”.'],
     },
     meaning: {
-      ru: { lead: 'أَتْقَى (atqā) — более / наиболее благочестивый; тот, у кого сильнее выражена تَقْوَىٰ (taqwā).', body: 'Это сравнительно-превосходная форма: конструкция показывает, означает ли она «более благочестивый» или «наиболее благочестивый».' },
+      ru: { lead: 'أَتْقَى (atqā) — более / наиболее благочестивый, набожный или праведный; тот, у кого сильнее выражена تَقْوَىٰ (taqwā).', body: 'Это сравнительно-превосходная форма: конструкция и контекст показывают, какой русский вариант точнее передаёт степень качества.' },
       en: { lead: 'أَتْقَى (atqā) — more / most pious; having a greater degree of تَقْوَىٰ (taqwā).', body: 'It is an elative form: the construction determines whether it means “more pious” or “most pious.”' },
     },
     meaningMap: [],
     distinction: {
-      ru: 'تَقِيّ (taqiyy) просто характеризует человека как благочестивого; أَتْقَى (atqā) сравнивает степень этого качества.',
+      ru: 'تَقِيّ (taqiyy) характеризует человека как благочестивого, набожного или праведного; أَتْقَى (atqā) сравнивает степень этого качества.',
       en: 'تَقِيّ (taqiyy) simply characterises a person as pious; أَتْقَى (atqā) compares the degree of that quality.',
     },
     structureSources: ['laneTqy', 'corpus'], meaningSources: ['laneTqy'], related: ['taqiyy', 'taqwa'],
