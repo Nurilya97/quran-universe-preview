@@ -439,6 +439,8 @@ A recurring ending in only some ayahs must not be presented as the feature that 
 - **sound correspondence** may be recorded as an observation;
 - do not assign the sound a structural or rhetorical function until that function is independently evidenced.
 
+If no function is established, omit any interpretation of function from the public explanation entirely. Do not write that the pattern “may”, “might”, or “possibly” have a function. Unknown significance is not user-facing content.
+
 Do not manufacture rhetorical significance from every phonetic repetition.
 
 ---
