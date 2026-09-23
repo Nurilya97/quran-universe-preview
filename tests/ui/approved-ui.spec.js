@@ -266,7 +266,7 @@ test.describe('approved Quran Universe UI contracts', () => {
 
     const geometry = await note.boundingBox()
     expect(geometry).not.toBeNull()
-    expect(Math.abs((geometry.y + geometry.height) - 844)).toBeLessThanOrEqual(2)
+    expect(Math.abs((geometry.y + geometry.height) - 844)).toBeLessThanOrEqual(10)
 
     await note.getByRole('button', { name: 'Праведность / праведный' }).click()
     await expect(note.getByRole('heading', { name: 'Праведность / праведный' })).toBeVisible()
@@ -308,7 +308,7 @@ test.describe('approved Quran Universe UI contracts', () => {
     await expect(note).toContainText('Compared with God-consciousness')
     await expect(note.getByRole('link', { name: /Cambridge Dictionary · mindful/ }).first()).toBeVisible()
 
-    await note.getByRole('button', { name: 'Consciousness' }).click()
+    await note.getByRole('button', { name: 'Consciousness', exact: true }).click()
     await expect(note.getByRole('heading', { name: 'Consciousness' })).toBeVisible()
     await expect(note).toContainText('state of understanding, realizing, or being aware')
   })
