@@ -7,18 +7,14 @@ import { WQY_PUBLIC_MODEL } from '../canonicalWqy.js'
 import { MORPH_COPY, MORPH_ROLES, MORPHOLOGY } from '../morphologyWqy.js'
 import './WordDetails.css'
 
-function MixedScriptText({ text, language }) {
+function MixedScriptText({ text }) {
   if (text == null) return null
   const value = String(text)
-  if (language !== 'ru') return value
-  const parts = value.split(/([\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]+|[A-Za-zĀ-žʿʾ'’-]+)/g)
+  const parts = value.split(/([\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]+)/g)
   return parts.map((part, index) => {
     if (!part) return null
     if (/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/.test(part)) {
       return <bdi className="inline-arabic" lang="ar" dir="rtl" key={index}>{part}</bdi>
-    }
-    if (/[A-Za-zĀ-žʿʾ]/.test(part)) {
-      return <bdi className="inline-latin" dir="ltr" key={index}>{part}</bdi>
     }
     return part
   })
@@ -581,7 +577,7 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
   }
   if (panel === 'meaning') {
     const isLbb = word.rootKey === 'lbb'
-    return <div className={'entry-copy meaning-entry' + (isLbb ? ' meaning-entry-lbb' : '')}>
+    return <div className={'entry-copy meaning-entry' + (isLbb ? ' meaning-entry-lbb' : '')} dir="ltr">
       {!isLbb && <p className="entry-status">{t.semanticStatus}</p>}
 
       <section className="meaning-primary">
@@ -613,7 +609,6 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
         </article>)}
       </section>}
 
-      {!isLbb && <p className="entry-note">{t.meaningNote}</p>}
       <RelatedWords ids={content.related} language={language} onPick={onPick} />
       <SourceLinks ids={content.meaningSources} language={language} />
     </div>
