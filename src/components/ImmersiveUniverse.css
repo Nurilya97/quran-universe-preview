@@ -514,7 +514,17 @@ h1:focus { outline: none; }
   text-transform: uppercase;
   white-space: nowrap;
 }
-.root-intro { position: absolute; left: 36px; top: 108px; }
+.root-intro {
+  position: absolute;
+  z-index: 3;
+  left: 32px;
+  top: 101px;
+}
+.root-intro .eyebrow {
+  color: #717d85;
+  font-size: 9px;
+  letter-spacing: .12em;
+}
 
 .root-legend {
   position: absolute;
@@ -523,70 +533,227 @@ h1:focus { outline: none; }
   bottom: max(22px, env(safe-area-inset-bottom));
   display: grid;
   justify-items: start;
-  gap: 7px;
-  color: #9ea4aa;
-  font-size: 10px;
+  gap: 6px;
+  color: #727d85;
+  font-size: 9px;
   line-height: 1.35;
 }
 .root-legend > span {
   display: grid;
-  grid-template-columns: 56px auto;
+  grid-template-columns: 54px auto;
   align-items: center;
   column-gap: 8px;
   white-space: nowrap;
 }
-.root-legend > span > :first-child {
-  justify-self: end;
-}
+.root-legend > span > :first-child { justify-self: end; }
 .root-legend b {
-  color: #c9ced3;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: .03em;
+  color: #aab3b9;
+  font-size: 9px;
+  font-weight: 520;
+  letter-spacing: .06em;
 }
 .root-legend small {
-  color: #9ea4aa;
-  font-size: 10px;
+  color: #727d85;
+  font-size: 9px;
 }
 .root-legend-orbit,
 .root-legend-inner {
-  width: 15px;
-  height: 15px;
-  flex: 0 0 15px;
-  border: 1px solid #d6d9de55;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  border: 1px solid #dce5e93b;
   border-radius: 50%;
 }
 .root-legend-inner {
   border-style: dashed;
-  border-color: #d6d9de45;
+  border-color: #dce5e92b;
 }
 .root-legend-quran {
-  width: 7px;
-  height: 7px;
-  flex: 0 0 7px;
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
   border-radius: 50%;
-  background: #83dfc1;
-  box-shadow: 0 0 8px 2px #83dfc155;
+  background: #91ddc3;
+  box-shadow: 0 0 9px 2px #91ddc34d;
 }
 
-.root-field { position: absolute; width: min(710px, calc(100vw - 80px), calc(100dvh - 190px)); aspect-ratio: 1; left: 50%; top: 53%; transform: translate(-50%, -50%); }
-.root-orbit { position: absolute; left: 50%; top: 50%; width: var(--diameter); aspect-ratio: 1; border: 1px solid #d6d9de38; border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; box-shadow: 0 0 25px #d6d9de04, inset 0 0 25px #d6d9de04; }
-.root-orbit-V { border-color: #c3cbd330; }
-.root-orbit-VIII { border-color: #d6d9de32; }
-.root-orbit > span { position: absolute; left: -8px; top: 50%; transform: translate(-100%, -50%); background: transparent; padding: 0; color: #b3b8be; font-size: 11px; font-weight: 500; letter-spacing: .015em; text-shadow: 0 1px 8px #000; }
-.root-core { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
-.root-core h1 { margin: 0; color: var(--word-white); font-family: 'Traditional Arabic', 'Geeza Pro', serif; font-size: clamp(30px, 4vw, 49px); font-weight: 400; line-height: 1.65; white-space: nowrap; text-shadow: 0 0 45px #d6d9de40; }
-.root-core > span { display: block; color: var(--muted); font-size: 12px; }
-.root-star { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, 0); display: grid; justify-items: center; min-width: 90px; min-height: 44px; padding: 8px 6px 5px; border: 0; background: none; }
-.root-star .star-point { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); }
-.arabic { font-family: 'Noto Naskh Arabic', 'Traditional Arabic', 'Geeza Pro', serif; }
-.root-star .arabic { color: var(--word-white); font-size: 28px; line-height: 1.5; text-shadow: 0 1px 10px #000, 0 0 5px #000; }
-.root-star-featured .arabic { color: var(--word-white); font-size: 34px; }
-.root-star-featured .star-point { width: 7px; height: 7px; }
-.form-type { color: var(--muted); font-size: 12px; line-height: 1.5; }
-.root-star:hover .arabic { color: var(--word-white); }
-.forms-button { position: absolute; z-index: 2; bottom: max(24px, env(safe-area-inset-bottom)); left: 36px; display: flex; gap: 12px; align-items: center; min-height: 44px; border: 0; background: #05070999; color: var(--paper); font-size: 14px; }
-.forms-button > span { margin-left: 8px; color: var(--accent); font-size: 12px; }
+.root-field {
+  position: absolute;
+  width: min(710px, calc(100vw - 80px), calc(100dvh - 190px));
+  aspect-ratio: 1;
+  left: 50%;
+  top: 53%;
+  transform: translate(-50%, -50%);
+}
+.root-orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--diameter);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border: 1px solid #dce5e91f;
+  border-radius: 50%;
+  box-shadow: inset 0 0 38px #dce8ee02;
+  pointer-events: none;
+}
+.root-orbit-V { border-color: #dce5e91b; }
+.root-orbit-VIII { border-color: #dce5e91d; }
+.root-orbit > span {
+  position: absolute;
+  left: -13px;
+  top: 50%;
+  transform: translate(-100%, -50%);
+  padding: 0;
+  background: transparent;
+  color: #7d8990;
+  font-size: 10px;
+  font-weight: 520;
+  letter-spacing: .07em;
+  text-shadow: 0 1px 8px #000;
+}
+.root-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.root-core::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 47%;
+  width: 116px;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, #e2eaf01a 0, #e2eaf007 35%, transparent 70%);
+  box-shadow: 0 0 60px #dce8ee0c;
+  pointer-events: none;
+}
+.root-core-trigger {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  min-width: 92px;
+  min-height: 92px;
+  place-content: center;
+  padding: 7px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+}
+.root-core-trigger h1 {
+  margin: 0;
+  color: var(--word-white);
+  font-family: var(--arabic-font, 'Traditional Arabic', serif);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-shadow: 0 0 35px #e3ebef37;
+  transition: transform .3s var(--ease-space), text-shadow .3s var(--ease-soft);
+}
+.root-core-trigger > span {
+  display: block;
+  margin-top: -3px;
+  color: #6f7b82;
+  font-size: 8px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.root-core-trigger:hover h1,
+.root-core-trigger:focus-visible h1 {
+  transform: scale(1.04);
+  text-shadow: 0 0 42px #e3edf04a;
+}
+.root-star {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  display: grid;
+  justify-items: center;
+  min-width: 86px;
+  min-height: 44px;
+  padding: 8px 5px 5px;
+  transform: translate(-50%, 0);
+  border: 0;
+  background: none;
+  opacity: .78;
+  transition: opacity .22s var(--ease-soft), transform .28s var(--ease-space);
+}
+.root-star .star-point {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  transform: translate(-50%, -50%);
+  background: #dce4e8;
+  box-shadow: 0 0 7px 1px #dce4e84a, 0 0 18px 5px #dce4e80e;
+  transition: transform .28s var(--ease-space), box-shadow .28s var(--ease-soft);
+}
+.arabic { font-family: var(--arabic-font, 'Noto Sans Arabic', serif); }
+.root-star .arabic {
+  color: #e9edef;
+  font-size: 26px;
+  line-height: 1.5;
+  text-shadow: 0 1px 10px #000;
+  transition: color .22s var(--ease-soft), text-shadow .22s var(--ease-soft);
+}
+.root-star-featured .arabic {
+  color: #f5f7f8;
+  font-size: 31px;
+}
+.root-star-featured .star-point { width: 6px; height: 6px; }
+.form-type {
+  color: #68737a;
+  font-size: 10px;
+  line-height: 1.45;
+}
+.root-star:hover,
+.root-star:focus-visible {
+  z-index: 4;
+  opacity: 1;
+  transform: translate(-50%, -2px) scale(1.035);
+}
+.root-star:hover .star-point,
+.root-star:focus-visible .star-point {
+  transform: translate(-50%, -50%) scale(1.35);
+  box-shadow: 0 0 10px 2px #e2eaee66, 0 0 30px 9px #dce4e814;
+}
+.root-star:hover .arabic,
+.root-star:focus-visible .arabic { color: #fff; }
+.root-field:has(.root-star:hover) .root-star:not(:hover) { opacity: .34; }
+
+.forms-button {
+  position: absolute;
+  z-index: 3;
+  bottom: max(22px, env(safe-area-inset-bottom));
+  left: 32px;
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 8px 0 0;
+  border: 0;
+  background: transparent;
+  color: #8d979d;
+  font-size: 11px;
+  letter-spacing: .02em;
+  transition: color .2s var(--ease-soft), transform .2s var(--ease-space);
+}
+.forms-button svg { width: 16px; }
+.forms-button > span {
+  margin-left: 4px;
+  color: #636f76;
+  font-size: 9px;
+}
+.forms-button:hover {
+  transform: translateX(2px);
+  color: #e0e5e8;
+}
 .motion-button { position: absolute; z-index: 5; right: 26px; bottom: max(18px, env(safe-area-inset-bottom)); }
 .motion-button:disabled { opacity: .4; }
 .journey {
@@ -721,8 +888,12 @@ h1:focus { outline: none; }
   .node-label { font-size: 12px; }
   .node-light { margin-bottom: 10px; }
   .node-caption { font-size: 11px; }
-  .root-intro { left: max(22px, env(safe-area-inset-left)); top: max(88px, calc(env(safe-area-inset-top) + 68px)); right: max(18px, env(safe-area-inset-right)); }
-  .root-legend { max-width: 100%; gap: 5px 12px; margin-top: 7px; font-size: 9.5px; }
+  .root-intro {
+    left: max(20px, env(safe-area-inset-left));
+    top: max(86px, calc(env(safe-area-inset-top) + 66px));
+    right: max(18px, env(safe-area-inset-right));
+  }
+  .root-legend { max-width: 100%; gap: 5px 12px; margin-top: 7px; font-size: 9px; }
   .root-legend b { font-size: 9.5px; }
   .root-field { top: 51%; width: min(calc(100vw - 48px), calc(100dvh - 210px)); }
   .root-core h1 { font-size: 30px; }
@@ -796,15 +967,18 @@ h1:focus { outline: none; }
 
 /* Quran-attested words are the only coloured stars. */
 .root-star-quranic .arabic {
-  color: #83dfc1;
-  text-shadow: 0 0 12px #83dfc138, 0 1px 10px #000;
+  color: #91ddc3;
+  text-shadow: 0 0 11px #91ddc32c, 0 1px 10px #000;
 }
 .root-star-quranic .star-point {
-  background: #83dfc1;
-  box-shadow: 0 0 8px 2px #83dfc175, 0 0 28px 8px #83dfc125;
+  background: #91ddc3;
+  box-shadow: 0 0 7px 2px #91ddc35c, 0 0 24px 7px #91ddc318;
 }
-.root-star-quranic .transliteration {
-  color: #add9ca;
+.root-star-quranic .transliteration { color: #8fbbaa; }
+.root-star-quranic:hover .arabic,
+.root-star-quranic:focus-visible .arabic {
+  color: #b9f0dc;
+  text-shadow: 0 0 16px #91ddc342, 0 1px 10px #000;
 }
 
 @media (max-width: 720px) {
@@ -862,14 +1036,22 @@ h1:focus { outline: none; }
   top: 50%;
   transform: translate(-50%, -50%) scale(var(--root-zoom, 1));
   transform-origin: center;
-  transition: transform .22s ease;
+  transition: transform .28s var(--ease-space);
 }
-.root-stage-lbb .root-orbit-inner { border-style: dashed; border-color: #d6d9de26; }
+.root-stage-lbb .root-orbit-inner {
+  border-style: dashed;
+  border-color: #dce5e91a;
+}
 .root-stage-lbb .root-orbit > span {
-  font-size: 11px;
+  left: -16px;
+  color: #78848b;
+  font-size: 10px;
 }
 .root-stage-lbb .root-star { min-width: 60px; }
-.root-stage-lbb .root-star .transliteration { font-size: 9px; }
+.root-stage-lbb .root-star .transliteration {
+  color: #68747b;
+  font-size: 8.5px;
+}
 @media (max-width: 720px) {
   .root-stage-lbb .root-canvas { --lbb-field: 800px; }
   .root-stage-lbb .root-star { min-width: 52px; min-height: 44px; }
