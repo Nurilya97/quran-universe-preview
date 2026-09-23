@@ -5,7 +5,7 @@
   "criticalFiles": [
     {
       "path": "src/ayahPrototype.js",
-      "gitBlobSha": "2f2bd0679e85bf11e7f6a1f095fe049b0a904b92",
+      "gitBlobSha": "27b65ea554de9eea477c106dc6ec64338c635931",
       "protects": "Ayah Space canonical records"
     },
     {
