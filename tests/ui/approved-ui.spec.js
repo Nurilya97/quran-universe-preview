@@ -278,7 +278,7 @@ test.describe('approved Quran Universe UI contracts', () => {
 
     await note.getByRole('button', { name: 'Осознанность / осознанный' }).click()
     await expect(note.getByRole('heading', { name: 'Осознанность / осознанный' })).toBeVisible()
-    await expect(note).toContainText('не действовать автоматически')
+    await expect(note).toContainText('действовать сознательно и осмысленно')
     await expect(note).toContainText('В выражении «осознанность перед Аллахом»')
 
     await note.getByRole('button', { name: 'Праведность / праведный' }).click()
