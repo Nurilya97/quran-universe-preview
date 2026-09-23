@@ -246,6 +246,39 @@ test.describe('approved Quran Universe UI contracts', () => {
     await expect(warning).not.toContainText('Осознанность')
   })
 
+  test('translation terms open a compact bottom glossary note on mobile', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 })
+    await openSearch(page, 'taqwa')
+    await page.locator('.node-meaning').click()
+
+    const meaning = page.locator('dialog.detail-sheet[open] .meaning-entry')
+    await expect(meaning).toBeVisible()
+    const pietyTerm = meaning.getByRole('button', { name: 'Пояснить термин: благочестие' }).first()
+    await expect(pietyTerm).toBeVisible()
+    await pietyTerm.click()
+
+    const note = page.locator('.meaning-glossary-note')
+    await expect(note).toBeVisible()
+    await expect(note.getByRole('heading', { name: 'Благочестие / благочестивый' })).toBeVisible()
+    await expect(note).toContainText('отношение к Богу')
+    await expect(note).toContainText('праведность')
+    await expect(note.getByRole('link', { name: /Грамота\.ру · благочестие/ })).toBeVisible()
+
+    const position = await note.evaluate((element) => {
+      const style = getComputedStyle(element)
+      return { position: style.position, bottom: style.bottom }
+    })
+    expect(position.position).toBe('fixed')
+    expect(position.bottom).toBe('0px')
+
+    await note.getByRole('button', { name: 'Праведность / праведный' }).click()
+    await expect(note.getByRole('heading', { name: 'Праведность / праведный' })).toBeVisible()
+    await expect(note).toContainText('правильность поведения и поступков')
+
+    await note.getByRole('button', { name: 'Закрыть заметку' }).click()
+    await expect(note).toHaveCount(0)
+  })
+
   test('search language controls expose pressed state and Arabic stays directionally marked', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 900 })
     await page.goto('spatial.html')
@@ -266,5 +299,20 @@ test.describe('approved Quran Universe UI contracts', () => {
     await expect(meaning.getByRole('heading', { name: 'How it differs' })).toBeVisible()
     await expect(meaning.locator('bdi.inline-arabic').first()).toHaveAttribute('dir', 'rtl')
     await expect(meaning.locator('bdi.inline-arabic').first()).toHaveAttribute('lang', 'ar')
+    await expect(meaning).toContainText('mindfulness of Allah')
+
+    const mindfulness = meaning.getByRole('button', { name: 'Explain term: mindfulness of Allah' }).first()
+    await expect(mindfulness).toBeVisible()
+    await mindfulness.click()
+
+    const note = page.locator('.meaning-glossary-note')
+    await expect(note.getByRole('heading', { name: 'Mindfulness of Allah / mindful of Allah' })).toBeVisible()
+    await expect(note).toContainText('Actively keeping Allah in mind')
+    await expect(note).toContainText('Compared with God-consciousness')
+    await expect(note.getByRole('link', { name: /Cambridge Dictionary · mindful/ }).first()).toBeVisible()
+
+    await note.getByRole('button', { name: 'Consciousness', exact: true }).click()
+    await expect(note.getByRole('heading', { name: 'Consciousness' })).toBeVisible()
+    await expect(note).toContainText('state of understanding, realizing, or being aware')
   })
 })

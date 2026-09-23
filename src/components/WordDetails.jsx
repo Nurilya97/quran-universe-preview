@@ -1,13 +1,55 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { hasAyahPrototype } from '../ayahPrototype.js'
 import { COPY, FORMS } from '../demo.js'
 import { CONTENT_SOURCES, ROOT_CONTENT, WORD_CONTENT, LBB_ROOT_CONTENT, LBB_WORD_CONTENT, LBB_DERIVATION_NOTES } from '../rootContent.js'
 import { OCCURRENCES, ROOT_OCCURRENCE_COUNT, rootOccurrenceCount, groupOccurrences } from '../occurrences.js'
 import { WQY_PUBLIC_MODEL } from '../canonicalWqy.js'
 import { MORPH_COPY, MORPH_ROLES, MORPHOLOGY } from '../morphologyWqy.js'
+import { MEANING_GLOSSARY, glossaryAliases } from '../data/meaningGlossary.js'
 import './WordDetails.css'
 
-function MixedScriptText({ text }) {
+function glossaryTextParts(text, language, onGlossary) {
+  if (!onGlossary) return text
+  const aliases = glossaryAliases(language)
+  if (!aliases.length) return text
+
+  const locale = language === 'ru' ? 'ru-RU' : 'en-US'
+  const lower = text.toLocaleLowerCase(locale)
+  const output = []
+  let cursor = 0
+  let key = 0
+
+  while (cursor < text.length) {
+    let next = null
+    for (const candidate of aliases) {
+      const index = lower.indexOf(candidate.alias.toLocaleLowerCase(locale), cursor)
+      if (index < 0) continue
+      if (!next || index < next.index || (index === next.index && candidate.alias.length > next.alias.length)) {
+        next = { ...candidate, index }
+      }
+    }
+
+    if (!next) {
+      output.push(text.slice(cursor))
+      break
+    }
+
+    if (next.index > cursor) output.push(text.slice(cursor, next.index))
+    const visible = text.slice(next.index, next.index + next.alias.length)
+    output.push(<button
+      type="button"
+      className="meaning-glossary-term"
+      onClick={() => onGlossary(next.id)}
+      aria-label={(language === 'ru' ? 'Пояснить термин: ' : 'Explain term: ') + visible}
+      key={'glossary-' + key++}
+    >{visible}</button>)
+    cursor = next.index + next.alias.length
+  }
+
+  return output
+}
+
+function MixedScriptText({ text, language, onGlossary }) {
   if (text == null) return null
   const value = String(text)
   const parts = value.split(/([\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]+)/g)
@@ -16,13 +58,54 @@ function MixedScriptText({ text }) {
     if (/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/.test(part)) {
       return <bdi className="inline-arabic" lang="ar" dir="rtl" key={index}>{part}</bdi>
     }
-    return part
+    return <Fragment key={index}>{glossaryTextParts(part, language, onGlossary)}</Fragment>
   })
 }
 
-function MeaningText({ text, language }) {
+function MeaningText({ text, language, onGlossary }) {
   if (text == null) return null
-  return <MixedScriptText text={String(text)} language={language} />
+  return <MixedScriptText text={String(text)} language={language} onGlossary={onGlossary} />
+}
+
+function MeaningGlossaryNote({ entryId, language, onClose, onSelect }) {
+  const entry = MEANING_GLOSSARY[entryId]
+  const copy = entry?.[language]
+  if (!entry || !copy) return null
+  const sources = entry.sources?.[language] || []
+  const related = (entry.related || [])
+    .map(id => ({ id, entry: MEANING_GLOSSARY[id] }))
+    .filter(item => item.entry?.[language])
+
+  return <aside className="meaning-glossary-note" role="note" aria-live="polite">
+    <header>
+      <p>{language === 'ru' ? 'Заметка о переводе' : 'Translation note'}</p>
+      <button type="button" onClick={onClose} aria-label={language === 'ru' ? 'Закрыть заметку' : 'Close note'}>×</button>
+    </header>
+    <h4>{copy.title}</h4>
+    <p className="meaning-glossary-definition">{copy.definition}</p>
+    <div className="meaning-glossary-detail">
+      <strong>{language === 'ru' ? 'В taqwā' : 'In taqwā'}</strong>
+      <p><MixedScriptText text={copy.inContext} language={language} /></p>
+    </div>
+    <div className="meaning-glossary-detail">
+      <strong>{language === 'ru' ? 'Отличие' : 'Difference'}</strong>
+      <p><MixedScriptText text={copy.difference} language={language} /></p>
+    </div>
+    {related.length > 0 && <div className="meaning-glossary-related">
+      <span>{language === 'ru' ? 'Сравнить' : 'Compare'}</span>
+      <div>{related.map(({ id, entry: relatedEntry }) => <button
+        type="button"
+        onClick={() => onSelect(id)}
+        key={id}
+      >{relatedEntry[language].title}</button>)}</div>
+    </div>}
+    {sources.length > 0 && <footer>{sources.map(source => <a
+      href={source.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      key={source.url}
+    >{source.label}<span aria-hidden="true">↗</span></a>)}</footer>}
+  </aside>
 }
 
 
@@ -520,6 +603,7 @@ export function RootDetails({ language, rootKey = 'wqy' }) {
 
 export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
   const t = COPY[language]
+  const [glossaryId, setGlossaryId] = useState(null)
   const storedContent = word.rootKey === 'lbb' ? LBB_WORD_CONTENT[word.id] : WORD_CONTENT[word.id]
   const content = storedContent || (word.rootKey === 'lbb' ? {
     meaning: {
@@ -577,12 +661,13 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
   }
   if (panel === 'meaning') {
     const isLbb = word.rootKey === 'lbb'
+    const openGlossary = isLbb ? undefined : setGlossaryId
     return <div className={'entry-copy meaning-entry' + (isLbb ? ' meaning-entry-lbb' : '')} dir="ltr">
       {!isLbb && <p className="entry-status">{t.semanticStatus}</p>}
 
       <section className="meaning-primary">
         <p className="meaning-primary-label">{language === 'ru' ? 'Значение' : 'Meaning'}</p>
-        <p className="entry-lead"><MeaningText text={isLbb ? (language === 'ru' ? word.definitionRu : word.definitionEn) : content.meaning[language].lead} language={language} /></p>
+        <p className="entry-lead"><MeaningText text={isLbb ? (language === 'ru' ? word.definitionRu : word.definitionEn) : content.meaning[language].lead} language={language} onGlossary={openGlossary} /></p>
       </section>
 
       {isLbb ? <>
@@ -590,14 +675,14 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
         <MimMeaningNote word={word} language={language} />
       </> : <>
         {content.meaning[language].body
-          ? <p className="meaning-primary-body"><MeaningText text={content.meaning[language].body} language={language} /></p>
+          ? <p className="meaning-primary-body"><MeaningText text={content.meaning[language].body} language={language} onGlossary={openGlossary} /></p>
           : null}
         <MimMeaningNote word={word} language={language} />
       </>}
 
       {content.distinction?.[language] && <section className="meaning-plain-section">
         <h3>{language === 'ru' ? 'Чем отличается' : 'How it differs'}</h3>
-        <p><MeaningText text={content.distinction[language]} language={language} /></p>
+        <p><MeaningText text={content.distinction[language]} language={language} onGlossary={openGlossary} /></p>
       </section>}
 
       <MeaningMap levels={content.meaningMap} language={language} />
@@ -605,12 +690,18 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
       {content.translationNotes?.[language]?.length && <section className="translation-notes">
         {content.translationNotes[language].map((note, index) => <article className={'translation-note translation-note-' + note.tone} key={note.title + index}>
           <h4>{note.title}</h4>
-          <p><MeaningText text={note.text} language={language} /></p>
+          <p><MeaningText text={note.text} language={language} onGlossary={openGlossary} /></p>
         </article>)}
       </section>}
 
       <RelatedWords ids={content.related} language={language} onPick={onPick} />
       <SourceLinks ids={content.meaningSources} language={language} />
+      {!isLbb && glossaryId && <MeaningGlossaryNote
+        entryId={glossaryId}
+        language={language}
+        onClose={() => setGlossaryId(null)}
+        onSelect={setGlossaryId}
+      />}
     </div>
   }
   return null
