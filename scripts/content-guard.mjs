@@ -331,11 +331,10 @@ if (/религиоз/i.test(forbiddenPublicRussian)) {
 
 const passageLensRu = pilotAyah.passageLens?.ru
 if (!passageLensRu?.title?.includes('единый смысловой блок о хадже') ||
-    !passageLensRu?.sound?.includes('объединяет прежде всего единая тема хаджа') ||
+    !passageLensRu?.sound?.includes('объединяет единая тема хаджа') ||
     !passageLensRu?.sound?.includes('не используем эту конечную букву как признак, объединяющий блок') ||
-    !passageLensRu?.sound?.includes('функция') ||
-    !passageLensRu?.sound?.includes('не установлена')) {
-  fail('2:196–203 sound note must keep thematic unity separate from unproven final-letter function')
+    /возможно|может|функци|не установлена/i.test(passageLensRu?.sound || '')) {
+  fail('2:196–203 sound note must state only observed sound facts and omit unestablished function')
 }
 else {
   const pilotWords = buildPilotOrthographicWordMap(pilotAyah)
