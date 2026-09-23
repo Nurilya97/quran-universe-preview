@@ -241,8 +241,8 @@ test.describe('approved Quran Universe UI contracts', () => {
     await expect(positive).toContainText('Допустимые переводы')
     await expect(positive).toContainText('2:197')
     await expect(warning).toContainText('Богобоязненность')
-    await expect(warning).toContainText('благоговейном трепете')
-    await expect(warning).toContainText('почтении')
+    await expect(warning).toContainText('благоговейный трепет')
+    await expect(warning).toContainText('почтение')
     await expect(warning).not.toContainText('Осознанность')
   })
 
