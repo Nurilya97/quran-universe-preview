@@ -20,6 +20,8 @@ async function openAyah197(page) {
 }
 
 async function snap(page, testInfo, name) {
+  // Capture the settled visual state, not the first visible frame of sheet/focus transitions.
+  await page.waitForTimeout(420)
   await page.screenshot({
     path: testInfo.outputPath(name + '.png'),
     fullPage: true,
