@@ -105,14 +105,14 @@ export function SyntaxView({ ayah, selectedWord, language }) {
           {geometry && step && step.arrow !== false && <svg className="syntax-connectors"
             viewBox={`0 0 ${geometry.width} 88`} style={{ height: 88 }} role="group"
             aria-label={ru ? 'Грамматическая связь между словами' : 'Grammatical relationship between words'} dir="ltr">
-            <defs><marker id={marker} markerWidth="6" markerHeight="6" refX="5.2" refY="3" orient="auto"><path d="M1 1.2L5 3L1 4.8" fill="none" stroke="currentColor" strokeWidth=".9" strokeLinecap="round" strokeLinejoin="round" /></marker></defs>
+            <defs><marker id={marker} markerWidth="5" markerHeight="5" refX="4.35" refY="2.5" orient="auto"><path d="M.75 .75L4.25 2.5L.75 4.25" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="butt" strokeLinejoin="miter" /></marker></defs>
             {[step].map(s => {
               const i = model.steps.indexOf(s)
               const from = geometry.points[s.from], to = geometry.points[s.to]
               if (!from || !to) return null
               const x = from.x
-              const midX = (x + to.x) / 2
-              const path = `M ${x} 8 Q ${midX} 34 ${to.x} 8`
+              const depth = 30
+              const path = `M ${x} 8 V ${depth} H ${to.x} V 8`
               return <g key={s.id}>
                 <path className="syntax-link" d={path} markerEnd={`url(#${marker})`} />
                 <path className="syntax-link-hit" d={path} role="button" tabIndex="0"

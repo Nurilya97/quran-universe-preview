@@ -177,6 +177,28 @@ test.describe('approved Quran Universe UI contracts', () => {
     expect(connector.markerStart).toBe('none')
     expect(connector.markerMid).toBe('none')
     expect(connector.markerEnd).toBe('none')
+
+    await page.locator('.analysis-focus-view-switch').getByRole('button', { name: 'Синтаксис' }).click()
+    const syntax = page.locator('.syntax-notebook')
+    await expect(syntax).toBeVisible()
+    const syntaxLink = syntax.locator('.syntax-link').first()
+    await expect(syntaxLink).toBeVisible()
+    const syntaxConnector = await syntaxLink.evaluate((path) => {
+      const style = getComputedStyle(path)
+      return {
+        d: path.getAttribute('d'),
+        strokeWidth: style.strokeWidth,
+        strokeLinecap: style.strokeLinecap,
+        strokeLinejoin: style.strokeLinejoin,
+        markerEnd: style.markerEnd,
+      }
+    })
+    expect(syntaxConnector.d).toMatch(/M .* V .* H .* V 8/)
+    expect(syntaxConnector.d).not.toContain('Q')
+    expect(syntaxConnector.strokeWidth).toBe('1px')
+    expect(syntaxConnector.strokeLinecap).toBe('butt')
+    expect(syntaxConnector.strokeLinejoin).toBe('miter')
+    expect(syntaxConnector.markerEnd).not.toBe('none')
   })
 
   test('Word Orbit meanings are direct, readable, and preserve researched connotations', async ({ page }) => {

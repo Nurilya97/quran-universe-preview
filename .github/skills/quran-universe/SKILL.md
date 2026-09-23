@@ -411,7 +411,8 @@ For the selected construction:
 - visually mark the exact spans being explained;
 - Arabic grammar terms such as مُضاف / مُضاف إليه may be clickable;
 - clicking a term should explain the term itself;
-- do not insert unrelated lexical labels into syntax explanations.
+- do not insert unrelated lexical labels into syntax explanations;
+- connector styling should reuse the approved Ayah morphology language: quiet 1 px lines, no glow, orthogonal/straight geometry, square/miter joins. Syntax may retain one small arrowhead only where direction `from → to` is meaningful.
 
 Syntax explains relationships between words. It must not duplicate morphology.
 
