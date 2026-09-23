@@ -319,13 +319,13 @@ export const AYAH_PROTOTYPES = {
         title: '2:196–203 — единый смысловой блок о хадже',
         text: 'Этот отрывок последовательно ведёт через правила хаджа, движение паломника, поминание Аллаха, дуа и завершение обрядов. Поэтому 2:197 читается не отдельно, а внутри одной хадж-темы.',
         thread: 'Для 2:197 особенно важно, что 2:196 завершается وَاتَّقُوا ٱللَّهَ وَٱعْلَمُوا wa-ttaqū Allāha wa-ʿlamū, внутри 2:197 стоят يَعْلَمْهُ ٱللَّهُ yaʿlamhu Allāh, ٱلتَّقْوَىٰ al-taqwā и وَٱتَّقُونِ wa-ittaqūni, а 2:203 снова возвращает وَاتَّقُوا ٱللَّهَ وَٱعْلَمُوا. Так taqwā и знание проходят через хадж-блок как связанные ориентиры.',
-        sound: 'Внутри этого же смыслового блока есть простая звуковая перекличка концовок: 2:196 — ٱلْعِقَابِ al-ʿiqāb, 2:197 — ٱلْأَلْبَابِ al-albāb, 2:202 — ٱلْحِسَابِ al-ḥisāb. При остановке во всех трёх слышится окончание -āb с конечным ب b. Это не рифма каждого аята 2:196–203, а три заметные звуковые точки внутри одного тематического блока о хадже.',
+        sound: '2:196–203 объединяет прежде всего единая тема хаджа. У 2:196 — ٱلْعِقَابِ al-ʿiqāb, 2:197 — ٱلْأَلْبَابِ al-albāb и 2:202 — ٱلْحِسَابِ al-ḥisāb действительно совпадает слышимое окончание -āb с конечным ب b, но между ними есть аяты с другими окончаниями. Поэтому мы не используем эту конечную букву как признак, объединяющий блок. Возможно, у этой звуковой переклички есть отдельная функция, но пока она не установлена.',
       },
       en: {
         title: '2:196–203 — one Hajj meaning-block',
         text: 'The passage moves through Hajj rules, the pilgrim’s movement, remembrance of Allah, supplication, and completion of the rites. Ayah 2:197 therefore belongs to one continuous Hajj sequence rather than standing alone.',
         thread: 'For 2:197 it is especially useful that 2:196 closes with وَاتَّقُوا ٱللَّهَ وَٱعْلَمُوا wa-ttaqū Allāha wa-ʿlamū, 2:197 contains يَعْلَمْهُ ٱللَّهُ yaʿlamhu Allāh, ٱلتَّقْوَىٰ al-taqwā, and وَٱتَّقُونِ wa-ittaqūni, while 2:203 returns to وَاتَّقُوا ٱللَّهَ وَٱعْلَمُوا. Taqwā and knowledge thus recur across the Hajj passage as linked orientations.',
-        sound: 'Within the same meaning-block there is a simple correspondence in the endings: 2:196 — ٱلْعِقَابِ al-ʿiqāb, 2:197 — ٱلْأَلْبَابِ al-albāb, and 2:202 — ٱلْحِسَابِ al-ḥisāb. At pause, all three end audibly in -āb with final ب b. This is not the rhyme of every ayah in 2:196–203, but three noticeable sound-points inside one Hajj meaning-block.',
+        sound: 'Ayahs 2:196–203 are united first of all by one continuous Hajj theme. Ayahs 2:196 — ٱلْعِقَابِ al-ʿiqāb, 2:197 — ٱلْأَلْبَابِ al-albāb, and 2:202 — ٱلْحِسَابِ al-ḥisāb do share the audible ending -āb with final ب b, but the intervening ayahs have other endings. We therefore do not treat the final letter as what unifies the passage. The sound correspondence may have a separate function, but that function has not yet been established.',
       },
       anchors: [
         { ref: '2:196', ar: 'ٱلْعِقَابِ' },
