@@ -330,13 +330,16 @@ For every visible word:
    - Explain what is foregrounded: action, state, agent, degree, process, means, stable quality, etc.
    - Keep it to one or two short sentences.
    - Do not repeat the definition in different words.
+   - Research notes may use technical terminology internally, but the public card must translate it into ordinary language.
+   - Avoid reader-facing jargon such as “ethical self-regulation”, “profiles”, “connotational tendency”, “agentive/enacted nuance”, or “semantic field” when a direct everyday explanation can say the same thing.
 
 3. **Give one useful contrast.**
    - “Чем отличается” must compare the nearest genuinely confusable form.
    - It must add a difference, not restate the lead.
    - For near-synonyms, research **connotation as well as denotation**: stable quality vs enacted action, intensity, praise/evaluation, register, typical collocations, concrete vs abstract usage, Quranic conventionalization, and other source-supported tendencies.
    - Grammar is evidence, not the final answer. Do not stop at “one is an adjective and one is an active participle”; explain the semantic colouring created by that contrast when a source supports it.
-   - If lexicons call two forms synonymous, continue with corpus/usage research before concluding that there is no nuance. If only a usage tendency is supported, label it as a connotational/usage tendency rather than a hard lexical boundary.
+   - If lexicons call two forms synonymous, continue with corpus/usage research before concluding that there is no nuance. In research records, label a usage tendency honestly; in the public card, explain the tendency directly in ordinary language instead of naming the technical category.
+   - Compare only the words named in the contrast. Do not pull in a third form merely to explain grammar if it makes the distinction harder to understand.
    - Never invent a distinction from morphology alone.
 
 4. **Make Arabic readable.**
