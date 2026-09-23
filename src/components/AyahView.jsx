@@ -527,16 +527,13 @@ function WordFocusOverlay({ ayah, selectedWord, language, onClose, onOpenWordOrb
           {meaning?.gloss && <strong className="word-meaning-gloss">{meaning.gloss}</strong>}
         </div>
         <div className="word-meaning-explanation">
-          {meaning?.definition && <section>
+          {(meaning?.definition || meaning?.source) && <section>
             <h3>{ru ? 'Значение' : 'Meaning'}</h3>
-            <p>{meaning.definition}</p>
-          </section>}
-          {meaning?.source && <section>
-            <h3>{ru ? 'Источник состояния' : 'Source of the state'}</h3>
-            <p>{meaning.source}</p>
+            {meaning?.definition && <p>{meaning.definition}</p>}
+            {meaning?.source && <p>{meaning.source}</p>}
           </section>}
           {(meaning?.description || (ru ? selected.noteRu : selected.noteEn)) && <section>
-            <h3>{ru ? 'Смысл в этом аяте' : 'Meaning in this ayah'}</h3>
+            <h3>{ru ? 'Смысл в аяте' : 'Meaning in the ayah'}</h3>
             <p>{meaning?.description || (ru ? selected.noteRu : selected.noteEn)}</p>
           </section>}
           {meaning?.translation && <section>
@@ -598,7 +595,7 @@ function CompositionDiagram({ ayah, focusWordIndex, language }) {
   return <div className="diagram-view composition-diagram layer-themes">
     <div className="composition-flow" style={{ left: WORLD.width / 2, top: 150 }}>
       <div className="composition-thread">
-        <small>{language === 'ru' ? 'НИТЬ АЯТА' : 'AYAH THREAD'}</small>
+        <h2>{language === 'ru' ? 'Нить аята' : 'Ayah thread'}</h2>
         <p>{ayah.compositionThread?.[language]}</p>
       </div>
 
@@ -656,9 +653,11 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
             {phraseTokens(ayah, item).map(token => token.tr).join(' ')}
           </div>
           <div className="rhetoric-proof">
-            <p><b>{ru ? 'Что здесь видно' : 'What we see here'}</b>{copy.evidence}</p>
-            <p><b>{ru ? 'Как это связано' : 'How it connects'}</b>{copy.mechanism}</p>
-            <p><b>{ru ? 'Что это показывает' : 'What this shows'}</b>{copy.effect}</p>
+            <p className="rhetoric-evidence">{copy.evidence}</p>
+            <div className="rhetoric-connection">
+              <h4>{ru ? 'Связь' : 'Connection'}</h4>
+              <p>{copy.mechanism} {copy.effect}</p>
+            </div>
           </div>
         </section>
       })}
