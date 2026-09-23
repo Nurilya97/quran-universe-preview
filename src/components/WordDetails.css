@@ -10,6 +10,18 @@
   backdrop-filter: blur(12px);
 }
 .entry-copy p { font-size: 15px; line-height: 1.75; color: var(--muted); margin: 16px 0; }
+.detail-sheet-quran .entry-copy p,
+.detail-sheet-meaning .entry-copy p {
+  color: #b7c1c6;
+}
+.detail-sheet-quran .entry-copy .entry-lead,
+.detail-sheet-meaning .entry-copy .entry-lead {
+  color: #eef2f4;
+}
+.detail-sheet-quran .entry-copy h3,
+.detail-sheet-meaning .entry-copy h3 {
+  color: #dbe2e5;
+}
 .entry-copy .entry-lead { color: var(--paper); font-size: 20px; line-height: 1.5; margin-top: 10px; }
 .entry-copy .entry-status { font-size: 11px; letter-spacing: .025em; color: #9ea4aa; margin-bottom: 6px; }
 .entry-copy .entry-note { font-size: 13px; line-height: 1.7; }
@@ -1540,7 +1552,7 @@ details.morph-board-callout[open] .morph-board-callout-body {
 }
 .meaning-entry-lbb .meaning-primary-body {
   margin: 12px 0 0 !important;
-  color: #a8afb5 !important;
+  color: #bcc5ca !important;
   font-size: 14px !important;
   line-height: 1.75 !important;
 }
