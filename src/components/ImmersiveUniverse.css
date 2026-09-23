@@ -49,15 +49,22 @@ h1:focus { outline: none; }
   padding: 0;
   border: 0;
   background: none;
-  color: #cbd1d5;
+  color: #bcc5ca;
   font-family: var(--ui-font);
-  font-weight: 520;
-  font-size: 14px;
-  letter-spacing: -.018em;
-  opacity: .86;
-  transition: color .24s var(--ease-soft), opacity .24s var(--ease-soft);
+  font-weight: 430;
+  font-size: 13px;
+  letter-spacing: .085em;
+  opacity: .78;
+  transition:
+    color .24s var(--ease-soft),
+    opacity .24s var(--ease-soft),
+    letter-spacing .28s var(--ease-space);
 }
-.brand-button:hover { color: #fff; opacity: 1; }
+.brand-button:hover {
+  color: #eef2f4;
+  opacity: 1;
+  letter-spacing: .095em;
+}
 .header-actions { display: flex; align-items: center; gap: 10px; }
 .language-control {
   display: flex;
@@ -954,7 +961,10 @@ h1:focus { outline: none; }
     padding-right: max(18px, env(safe-area-inset-right));
     padding-left: max(18px, env(safe-area-inset-left));
   }
-  .brand-button { font-size: 13px; }
+  .brand-button {
+    font-size: 12px;
+    letter-spacing: .075em;
+  }
   .header-actions { gap: 6px; }
   .language-control { padding: 2px; }
   .language-control button { min-width: 34px; min-height: 32px; }
