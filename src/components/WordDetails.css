@@ -1,5 +1,14 @@
 .entry-copy { font-family: var(--ui-font), var(--arabic-font); overflow-wrap: break-word; }
-.detail-sheet .sheet-header { position: sticky; top: 0; z-index: 2; background: #0a0e11; padding-bottom: 12px; border-bottom: 1px solid transparent; }
+.detail-sheet .sheet-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  margin: -4px -2px 0;
+  padding: 4px 2px 13px;
+  border-bottom: 1px solid transparent;
+  background: linear-gradient(180deg, rgba(10,14,17,.96) 0%, rgba(10,14,17,.83) 72%, rgba(10,14,17,0) 100%);
+  backdrop-filter: blur(12px);
+}
 .entry-copy p { font-size: 15px; line-height: 1.75; color: var(--muted); margin: 16px 0; }
 .entry-copy .entry-lead { color: var(--paper); font-size: 20px; line-height: 1.5; margin-top: 10px; }
 .entry-copy .entry-status { font-size: 11px; letter-spacing: .025em; color: #9ea4aa; margin-bottom: 6px; }
@@ -761,8 +770,8 @@
 .quran-reference-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 7px;
-  padding: 2px 0 12px;
+  gap: 8px;
+  padding: 3px 0 14px;
 }
 .quran-reference-grid button {
   position: relative;
@@ -770,42 +779,49 @@
   align-items: center;
   justify-content: space-between;
   gap: 7px;
-  min-height: 44px;
+  min-height: 46px;
   padding: 9px 11px;
-  border: 1px solid #ffffff0d;
-  border-radius: 4px;
-  background: #ffffff04;
-  color: #d7dbde;
+  border: 1px solid rgba(255,255,255,.075);
+  border-radius: 12px;
+  background: rgba(255,255,255,.025);
+  color: #cfd5d9;
   font: inherit;
-  font-size: 12px;
+  font-size: 11.5px;
   text-align: left;
+  transition:
+    transform .2s var(--ease-space),
+    border-color .2s var(--ease-soft),
+    background .2s var(--ease-soft),
+    color .2s var(--ease-soft);
 }
 .quran-reference-grid button:hover,
 .quran-reference-grid button:focus-visible {
-  border-color: #ffffff2c;
-  background: #ffffff05;
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,.16);
+  background: rgba(255,255,255,.045);
   color: #fff;
   outline: none;
 }
 .quran-reference-grid button.has-prototype {
-  border-color: #ff8a3d35;
+  border-color: rgba(232,177,123,.22);
+  background: rgba(232,177,123,.025);
 }
 .quran-reference-grid button.has-prototype::before {
   content: '';
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #ff8a3d;
-  box-shadow: 0 0 10px #ff8a3d99;
+  background: #e8b17b;
+  box-shadow: 0 0 9px rgba(232,177,123,.58);
   flex: 0 0 auto;
 }
 .quran-reference-grid button.has-prototype > span {
   margin-right: auto;
 }
 .quran-reference-grid small {
-  color: #b7815f;
-  font-size: 9px;
-  letter-spacing: .03em;
+  color: #a57c5c;
+  font-size: 8px;
+  letter-spacing: .045em;
   text-transform: uppercase;
 }
 .quran-source-link {
@@ -1339,12 +1355,13 @@ details.morph-board-callout[open] .morph-board-callout-body {
   z-index: 5;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   margin: 0 0 22px;
   padding: 3px;
-  border: 1px solid #ffffff12;
+  border: 1px solid rgba(255,255,255,.09);
   border-radius: 999px;
-  background: #05080a99;
+  background: rgba(5,8,10,.56);
+  backdrop-filter: blur(12px);
 }
 .morph-view-tabs button {
   min-height: 38px;
@@ -1352,24 +1369,25 @@ details.morph-board-callout[open] .morph-board-callout-body {
   border: 0;
   border-radius: 999px;
   background: transparent;
-  color: #8f989f;
+  color: #7d898f;
   font: inherit;
-  font-size: 12px;
+  font-size: 11.5px;
   line-height: 1;
+  transition: color .2s var(--ease-soft), background .2s var(--ease-soft);
 }
 .morph-view-tabs button.is-active {
-  background: #ffffff09;
-  color: #edf5f1;
-  box-shadow: inset 0 0 0 1px #7cff8b2e, 0 0 18px #7cff8b0d;
+  background: linear-gradient(145deg, rgba(255,255,255,.085), rgba(255,255,255,.035));
+  color: #edf3f5;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.055), 0 0 18px rgba(89,242,255,.025);
 }
 .morph-view-tabs button.is-active::after {
   content: '';
   display: block;
-  width: 18px;
+  width: 15px;
   height: 1px;
   margin: 5px auto -6px;
-  background: #7cff8b;
-  box-shadow: 0 0 8px #7cff8b8a;
+  background: rgba(89,242,255,.78);
+  box-shadow: 0 0 7px rgba(89,242,255,.38);
 }
 .morph-view-neon {
   --morph-root: #aeb5bd;
@@ -1385,7 +1403,9 @@ details.morph-board-callout[open] .morph-board-callout-body {
 .structure-sheet:has(.morphology-entry-neon) {
   width: min(440px, calc(100vw - 56px));
   max-height: calc(100dvh - 130px);
-  background: #0a0e11;
+  background:
+    radial-gradient(circle at 82% 5%, rgba(89,242,255,.045), transparent 24%),
+    linear-gradient(160deg, rgba(12,17,20,.98), rgba(6,10,12,.99));
 }
 .structure-sheet:has(.morphology-entry-neon) .sheet-inner {
   padding: 26px;
