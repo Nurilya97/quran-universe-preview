@@ -792,14 +792,63 @@ h1:focus { outline: none; }
   0%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(.76); }
   42% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
-.detail-sheet { position: fixed; inset: auto 28px 28px auto; width: min(440px, calc(100vw - 56px)); max-height: calc(100dvh - 130px); margin: 0; padding: 0; overflow: auto; overscroll-behavior: contain; scrollbar-gutter: stable; scrollbar-width: thin; scrollbar-color: #8e949a38 transparent; border: 1px solid #d6d9de30; border-radius: 5px; background: #0a0e11; color: var(--paper); box-shadow: 0 24px 90px #0008; }
-.detail-sheet::backdrop { background: #02050866; }
-.detail-sheet[open] { animation: sheet-in .3s ease-out; }
-@keyframes sheet-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-.sheet-inner { position: relative; padding: 26px; }
+.detail-sheet {
+  --sheet-tone: #dce4e8;
+  --sheet-glow: rgba(220,228,232,.055);
+  position: fixed;
+  inset: auto 28px 28px auto;
+  width: min(440px, calc(100vw - 56px));
+  max-height: calc(100dvh - 130px);
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: #8e949a2f transparent;
+  border: 1px solid color-mix(in srgb, var(--sheet-tone) 16%, transparent);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 84% 4%, var(--sheet-glow) 0, transparent 28%),
+    linear-gradient(160deg, rgba(12,17,20,.97), rgba(6,10,12,.985));
+  color: var(--paper);
+  box-shadow:
+    0 30px 100px rgba(0,0,0,.55),
+    inset 0 1px 0 rgba(255,255,255,.03);
+}
+.detail-sheet-quran {
+  --sheet-tone: #dce4e8;
+  --sheet-glow: rgba(220,228,232,.06);
+}
+.detail-sheet-structure {
+  --sheet-tone: #73e7ee;
+  --sheet-glow: rgba(89,242,255,.055);
+}
+.detail-sheet-meaning {
+  --sheet-tone: #9be7aa;
+  --sheet-glow: rgba(124,255,139,.052);
+}
+.detail-sheet::backdrop {
+  background: rgba(2,5,8,.54);
+  backdrop-filter: blur(2px);
+}
+.detail-sheet[open] { animation: sheet-in .34s var(--ease-space); }
+@keyframes sheet-in {
+  from { opacity: 0; transform: translateY(20px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.sheet-inner { position: relative; padding: 27px; }
 .sheet-handle { display: none; }
 .sheet-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
-.sheet-header h2 { margin: 7px 0 0; font-size: 21px; font-weight: 450; line-height: 1.35; }
+.sheet-header .eyebrow { color: color-mix(in srgb, var(--sheet-tone) 58%, #667279); }
+.sheet-header h2 {
+  margin: 7px 0 0;
+  color: #edf1f3;
+  font-size: 20px;
+  font-weight: 520;
+  line-height: 1.35;
+  letter-spacing: -.015em;
+}
 .sheet-header .icon-button { margin: -8px -10px 0 0; flex-shrink: 0; }
 .sheet-header-compact {
   position: absolute;
@@ -809,7 +858,22 @@ h1:focus { outline: none; }
   display: block;
 }
 .sheet-header-compact .icon-button { margin: -8px -10px 0 0; }
-.sheet-word { margin: 20px 0 26px; padding-bottom: 16px; border-bottom: 1px solid var(--line); text-align: left; color: var(--word-white); font-family: 'Traditional Arabic', 'Geeza Pro', serif; font-size: 46px; line-height: 1.6; }
+.sheet-word-label {
+  margin: 18px 0 25px;
+  padding-bottom: 17px;
+  border-bottom-color: color-mix(in srgb, var(--sheet-tone) 13%, transparent);
+}
+.sheet-word {
+  margin: 0;
+  padding: 0;
+  border-bottom: 0;
+  text-align: left;
+  color: var(--word-white);
+  font-family: var(--arabic-font, 'Traditional Arabic', serif);
+  font-size: 46px;
+  line-height: 1.55;
+  text-shadow: 0 0 24px var(--sheet-glow);
+}
 .sheet-inner h3 { margin: 18px 0 12px; font-size: 14px; font-weight: 500; color: #d6d9de; }
 .sheet-note { color: var(--muted); font-size: 16px; line-height: 1.7; margin: 22px 0 0; }
 .verse-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -909,10 +973,13 @@ h1:focus { outline: none; }
     inset: auto 0 0;
     width: 100%;
     max-width: 100%;
-    max-height: min(82dvh, calc(100dvh - env(safe-area-inset-top) - 18px));
-    border-radius: 18px 18px 0 0;
+    max-height: min(84dvh, calc(100dvh - env(safe-area-inset-top) - 16px));
+    border-radius: 24px 24px 0 0;
+    border-right: 0;
     border-bottom: 0;
+    border-left: 0;
     scrollbar-gutter: auto;
+    box-shadow: 0 -24px 84px rgba(0,0,0,.58);
   }
   .sheet-inner {
     padding-top: 12px;
