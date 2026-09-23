@@ -124,7 +124,14 @@ test.describe('approved Quran Universe UI contracts', () => {
     await expect(words.nth(25)).toHaveClass(/is-entry/)
     await expect(words.nth(25)).toContainText('ٱلتَّقْوَىٰ')
 
+    await page.getByRole('tab', { name: 'Композиция' }).click()
+    await expect(ayah.getByRole('heading', { name: 'Нить аята', level: 2 })).toBeVisible()
+
     await page.getByRole('tab', { name: 'Риторика' }).click()
+    await expect(ayah.getByRole('heading', { name: 'Связь', level: 4 }).first()).toBeVisible()
+    await expect(ayah).not.toContainText('Что здесь видно')
+    await expect(ayah).not.toContainText('Как это связано')
+    await expect(ayah).not.toContainText('Что это показывает')
     const grammarReference = ayah.locator('.rhetoric-source-note a')
     await expect(grammarReference).toHaveAttribute('href', /chapter=2&verse=197/)
   })
@@ -145,8 +152,11 @@ test.describe('approved Quran Universe UI contracts', () => {
     await expect(meaning).toBeVisible()
     await expect(meaning.locator('.word-meaning-gloss')).toHaveText('Благочестие')
     await expect(meaning).toContainText('Почитание Всевышнего')
-    await expect(meaning).toContainText('Источник состояния')
+    await expect(meaning.getByRole('heading', { name: 'Значение', level: 3 })).toBeVisible()
+    await expect(meaning).not.toContainText('Источник состояния')
     await expect(meaning).toContainText('помнит о Нём и Его присутствии')
+    await expect(meaning.getByRole('heading', { name: 'Смысл в аяте', level: 3 })).toBeVisible()
+    await expect(meaning).not.toContainText('Смысл в этом аяте')
     await expect(meaning).toContainText('Почему такой перевод')
 
     await page.locator('.analysis-focus-view-switch').getByRole('button', { name: 'Морфология' }).click()
