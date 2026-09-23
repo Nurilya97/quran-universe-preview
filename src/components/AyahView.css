@@ -6816,9 +6816,10 @@
 
 /* Rhetoric stays in flow and fits the mobile viewport at the default 60% scale. */
 .rhetoric-flow {
+  --rhetoric-gap: 84px;
   top: 230px !important;
   width: 760px !important;
-  gap: 84px !important;
+  gap: var(--rhetoric-gap) !important;
   padding: 8px 0 190px 54px !important;
   isolation: isolate;
 }
@@ -6840,6 +6841,21 @@
   border-radius: 50%;
   background: #bca9c4;
   box-shadow: 0 0 12px rgba(199,179,207,.20);
+}
+.rhetoric-flow .rhetoric-insight:has(+ .rhetoric-insight)::after {
+  content: '';
+  position: absolute;
+  left: -26px;
+  top: 23px;
+  width: 1px;
+  height: calc(100% + var(--rhetoric-gap));
+  background: linear-gradient(
+    to bottom,
+    rgba(188,169,196,.24),
+    rgba(151,174,180,.14) 72%,
+    rgba(188,169,196,.20)
+  );
+  pointer-events: none;
 }
 
 .rhetoric-flow .rhetoric-passage-lens {
@@ -6903,8 +6919,9 @@
   }
 
   .rhetoric-flow {
+    --rhetoric-gap: 74px;
     width: 570px !important;
-    gap: 74px !important;
+    gap: var(--rhetoric-gap) !important;
     padding-bottom: 220px !important;
   }
 
