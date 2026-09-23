@@ -52,6 +52,22 @@ for (const viewport of [
   })
 }
 
+test('design evidence · word Quran panel · mobile', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await openSearch(page, 'taqwa')
+  await page.locator('.node-quran').click()
+  await expect(page.locator('dialog.detail-sheet-quran[open]')).toBeVisible()
+  await snap(page, testInfo, 'word-quran-panel-mobile')
+})
+
+test('design evidence · word Meaning panel · mobile', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await openSearch(page, 'taqwa')
+  await page.locator('.node-meaning').click()
+  await expect(page.locator('dialog.detail-sheet-meaning[open]')).toBeVisible()
+  await snap(page, testInfo, 'word-meaning-panel-mobile')
+})
+
 test('design evidence · ayah 2:197 analysis · desktop', async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 1280, height: 900 })
   await openAyah197(page)
