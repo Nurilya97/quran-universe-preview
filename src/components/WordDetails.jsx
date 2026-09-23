@@ -681,7 +681,7 @@ export function WordDetails({ word, panel, language, onPick, onOpenAyah }) {
       </>}
 
       {content.distinction?.[language] && <section className="meaning-plain-section">
-        <h3>{language === 'ru' ? 'Чем отличается' : 'How it differs'}</h3>
+        <h3>{language === 'ru' ? 'Отличие' : 'Difference'}</h3>
         <p><MeaningText text={content.distinction[language]} language={language} onGlossary={openGlossary} /></p>
       </section>}
 

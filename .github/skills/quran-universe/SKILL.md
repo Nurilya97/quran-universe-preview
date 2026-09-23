@@ -74,7 +74,7 @@ When several translations are possible:
 - do not repeat “depending on context” inside every lexical definition; state context-sensitivity once in the general explanation and let each card define the word directly;
 - green/positive translation notes mean contextually valid renderings; red/warning notes are reserved for renderings that materially distort or over-narrow the concept. Never mark a valid partial/contextual rendering red merely because it is not universal.
 
-Do not describe a meaning as merely “religious”, “spiritual”, or “moral” when those labels do not explain the semantic mechanism.
+Do not use vague umbrella labels when they do not explain the semantic mechanism.
 
 ## 3. Canonical decision: التَّقْوَىٰ in 2:197
 
@@ -82,15 +82,21 @@ For Quran Universe, the current approved Russian rendering in 2:197 is:
 
 **التَّقْوَىٰ — благочестие**
 
-Do not replace it with `осознанность`.
+This is the ayah-level decision for 2:197, not a universal one-word equivalent for every occurrence.
+
+Approved Russian renderings for different sides of the wider concept include:
+- **благочестие** — почитание Аллаха и жизнь в соответствии с этим;
+- **набожность** — преданность Аллаху и стремление следовать Его предписаниям;
+- **праведность** — нравственно правильная жизнь и поступки;
+- **осознанность перед Аллахом** — внимательность, направленная к Аллаху: память о Нём, внимание к собственным выборам и к установленным Им границам.
 
 Keep the layers separate:
 
-### Translation
+### Translation in 2:197
 **благочестие**
 
-### Meaning of the Russian word
-Use the ordinary Russian definition of благочестие: reverence for the Creator / living and behaving in accordance with that reverence. Do not redefine the Russian word through Arabic etymology.
+### Meaning of the Russian translation words
+Preserve the ordinary Russian meaning of each translation word. Do not redefine Russian vocabulary through Arabic etymology. The optional glossary may explain **благочестие**, **набожность**, **праведность**, and the base word **осознанность** separately.
 
 ### Source of this state in taqwā
 Explain separately that in taqwā this state grows from orientation toward Allah: remembering Him / His presence, being aware of the boundaries He has established, and therefore guarding oneself from crossing them and from doing evil.
@@ -334,7 +340,7 @@ For every visible word:
    - Avoid reader-facing jargon such as “ethical self-regulation”, “profiles”, “connotational tendency”, “agentive/enacted nuance”, or “semantic field” when a direct everyday explanation can say the same thing.
 
 3. **Give one useful contrast.**
-   - “Чем отличается” must compare the nearest genuinely confusable form.
+   - “Отличие” must compare the nearest genuinely confusable form.
    - It must add a difference, not restate the lead.
    - For near-synonyms, research **connotation as well as denotation**: stable quality vs enacted action, intensity, praise/evaluation, register, typical collocations, concrete vs abstract usage, Quranic conventionalization, and other source-supported tendencies.
    - Grammar is evidence, not the final answer. Do not stop at “one is an adjective and one is an active participle”; explain the semantic colouring created by that contrast when a source supports it.
@@ -772,7 +778,7 @@ Before implementation, confirm internally:
 - Did I preserve alternative analyses when real uncertainty exists?
 - Does every Word Orbit card begin with a direct, ordinary-language definition?
 - Is every Arabic form in Russian explanatory prose readable through adjacent Latin transliteration?
-- Does “Чем отличается” add a real contrast instead of repeating the definition?
+- Does “Отличие” add a real contrast instead of repeating the definition?
 - Did I research connotative differences between near-synonyms instead of stopping at grammatical labels?
 - Did I distinguish an explicit lexical difference from a usage-based connotational tendency?
 - Did I avoid inventing semantic differences when the sources do not support one?

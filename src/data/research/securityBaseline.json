@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "policy": "critical_quran_data_requires_deliberate_baseline_update_after_review",
-  "updatedOn": "2026-09-22",
+  "updatedOn": "2026-09-23",
   "criticalFiles": [
     {
       "path": "src/ayahPrototype.js",
@@ -10,7 +10,7 @@
     },
     {
       "path": "src/canonicalWqy.js",
-      "gitBlobSha": "5b35e8e15bda4053855091693ad9cd02e24c25e9",
+      "gitBlobSha": "3e6477f3288f1b61eb64f0d9be60bb8d79099118",
       "protects": "approved WQY semantic model"
     },
     {
@@ -30,7 +30,7 @@
     },
     {
       "path": "src/data/research/wqyResearch.json",
-      "gitBlobSha": "734cdaad863085ff3c2ecb1f2411129748702dbe",
+      "gitBlobSha": "2e96df2d36d69dde31cf2460b60b4377f4256e05",
       "protects": "human-review and falsification record"
     },
     {
