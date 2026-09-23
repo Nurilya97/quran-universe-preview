@@ -59,10 +59,10 @@ What the translated Russian word itself means in ordinary, precise Russian.
 ### C. Source/mechanism of the meaning in the Arabic word
 How the Arabic root, form, Quranic usage, and context give rise to that meaning.
 
-### D. Meaning in this ayah
+### D. Meaning in the ayah
 Which part of the lexical field is activated here, and why.
 
-Never collapse all four into one paragraph.
+Keep these conceptual layers distinct in research/data. In the Ayah Space UI, **B. Meaning** and **C. Source/mechanism** may appear under the single visible heading **«Значение» / “Meaning”** as separate paragraphs; do not show a redundant public heading **«Источник состояния» / “Source of the state”**. The contextual heading is **«Смысл в аяте» / “Meaning in the ayah”**.
 
 Do not use a vague explanatory word merely because it is popular in English. In particular, distinguish English `conscious` from `mindful`; Russian `осознанность` is not automatically an adequate equivalent for either and must not be used as a default substitute for a richer Quranic concept.
 
@@ -421,9 +421,11 @@ These are separate analytical dimensions.
 
 ### Rhetoric
 Show a rhetorical mechanism only when it is actually evidenced in the construction.
+In the public rhetoric view, let the evidence text stand on its own without the micro-heading **«Что здесь видно»**. Use one real heading **«Связь» / “Connection”** for the explanation, and merge the former “how it connects” + “what this shows” prose under that heading instead of stacking three label-like subsections.
 
 ### Composition
 Show how the parts of the ayah/sequence are arranged and why the order matters.
+The overview **«Нить аята» / “Ayah thread”** is a real heading, not an uppercase micro-label. Use the normal heading hierarchy and typography.
 
 ### Context
 Show the relevant local/surah context without turning the interface into a long tafsir article.
