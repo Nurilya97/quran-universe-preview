@@ -828,6 +828,14 @@ h1:focus { outline: none; }
   --sheet-tone: #9be7aa;
   --sheet-glow: rgba(124,255,139,.052);
 }
+.detail-sheet-root {
+  --sheet-tone: #dce4e8;
+  --sheet-glow: rgba(196,214,222,.048);
+}
+.detail-sheet-forms {
+  --sheet-tone: #c9d8de;
+  --sheet-glow: rgba(180,207,216,.042);
+}
 .detail-sheet::backdrop {
   background: rgba(2,5,8,.54);
   backdrop-filter: blur(2px);
@@ -885,10 +893,57 @@ h1:focus { outline: none; }
 .structure-list dt { color: var(--muted); font-size: 14px; }
 .structure-list dd { margin: 0; text-align: right; font-size: 16px; }
 .structure-list dd[lang='ar'] { font-family: 'Traditional Arabic', serif; font-size: 27px; }
-.form-family button { display: flex; align-items: center; width: 100%; gap: 16px; min-height: 66px; padding: 8px 0; border: 0; border-bottom: 1px solid #ffffff10; background: none; text-align: left; }
-.form-family .arabic { min-width: 78px; font-size: 29px; color: var(--word-white); text-align: center; }
-.form-family button > span:nth-child(2) { flex: 1; font-size: 14px; line-height: 1.5; color: var(--muted); }
-.form-family button > svg { flex-shrink: 0; width: 16px; }
+.form-family {
+  margin-top: 24px;
+}
+.form-family + .form-family {
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.055);
+}
+.form-family h3 {
+  margin: 0 0 8px;
+  color: #7d898f;
+  font-size: 10px;
+  font-weight: 560;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.form-family button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+  min-height: 68px;
+  padding: 8px 7px;
+  border: 0;
+  border-bottom: 1px solid rgba(255,255,255,.045);
+  border-radius: 10px;
+  background: none;
+  text-align: left;
+  transition: background .2s var(--ease-soft), transform .22s var(--ease-space);
+}
+.form-family button:hover,
+.form-family button:focus-visible {
+  transform: translateX(2px);
+  background: rgba(255,255,255,.028);
+}
+.form-family .arabic {
+  min-width: 78px;
+  color: #f1f3f4;
+  font-size: 27px;
+  text-align: center;
+}
+.form-family button > span:nth-child(2) {
+  flex: 1;
+  color: #8d989f;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.form-family button > svg {
+  flex-shrink: 0;
+  width: 15px;
+  color: #68747b;
+}
 .lexical-tag { display: block; margin-top: 4px; color: #9ea4aa; font-size: 12px; }
 .source-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 18px; color: var(--accent); font-size: 14px; line-height: 1.5; text-underline-offset: 4px; }
 .source-link svg { width: 15px; flex-shrink: 0; }
