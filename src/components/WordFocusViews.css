@@ -72,10 +72,20 @@
   line-height: 1.45;
   letter-spacing: .005em;
 }
-.word-meaning-note { position: relative; margin: 48px 0 0 65px; padding-left: 44px; text-align: left; max-width: min(90%, 380px); }
-.word-meaning-note i { position: absolute; width: 36px; left: 0; top: 11px; height: 1px; background: #adcdb875; }
-.word-meaning-note i::before { content: ''; position: absolute; left: 0; top: -2px; width: 5px; height: 5px; border-radius: 50%; background: #b8d9c4; }
-.word-meaning-note p { font-size: 21px; line-height: 1.6; margin: 0; overflow-wrap: anywhere; }
+.word-meaning-note {
+  position: relative;
+  margin: 34px auto 0;
+  padding-left: 0;
+  max-width: min(90%, 420px);
+  text-align: center;
+}
+.word-meaning-note i { display: none; }
+.word-meaning-note p {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
 .syntax-notebook {
   position: absolute;
   inset: 0;
@@ -189,20 +199,14 @@
 }
 .word-meaning-explanation section {
   position: relative;
-  padding-left: 18px;
+  padding-left: 0;
 }
 .word-meaning-explanation section::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 5px;
-  bottom: 3px;
-  width: 1px;
-  background: linear-gradient(to bottom, rgba(169,213,197,.28), rgba(169,213,197,.04));
+  content: none;
 }
-.word-meaning-explanation section + section { margin-top: 32px; }
+.word-meaning-explanation section + section { margin-top: 34px; }
 .word-meaning-explanation h3 {
-  margin: 0 0 10px;
+  margin: 0 0 9px;
   color: #b8d8cc;
   font-size: 12px;
   font-weight: 600;
@@ -212,7 +216,11 @@
   margin: 0;
   color: #d3dade;
   font-size: 16px;
-  line-height: 1.82;
+  line-height: 1.8;
+}
+.word-meaning-explanation section p + p {
+  margin-top: 10px;
+  color: #aebbc0;
 }
 .word-meaning-orbit {
   display: inline-flex;
