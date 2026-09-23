@@ -428,6 +428,14 @@ In the public rhetoric view, let the evidence text stand on its own without the 
 Show how the parts of the ayah/sequence are arranged and why the order matters.
 The overview **«Нить аята» / “Ayah thread”** is a real heading, not an uppercase micro-label. Use the normal heading hierarchy and typography.
 
+For both **Composition** and **Rhetoric**, navigation is a vertical reading flow:
+- move the canvas up/down, not left/right;
+- keep the content horizontally centred;
+- preserve stable side gutters on mobile;
+- mobile zoom must not force sideways navigation;
+- mouse/trackpad wheel moves through the flow vertically; pinch and the explicit +/- controls remain available for scale;
+- this vertical-only navigation rule does not apply to Analysis or Root Space.
+
 ### Context
 Show the relevant local/surah context without turning the interface into a long tafsir article.
 
