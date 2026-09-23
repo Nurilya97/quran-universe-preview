@@ -328,6 +328,15 @@ const forbiddenPublicRussian = JSON.stringify({
 if (/религиоз/i.test(forbiddenPublicRussian)) {
   fail('forbidden vague Russian wording returned to public Quran Universe copy')
 }
+
+const passageLensRu = pilotAyah.passageLens?.ru
+if (!passageLensRu?.title?.includes('единый смысловой блок о хадже') ||
+    !passageLensRu?.sound?.includes('объединяет прежде всего единая тема хаджа') ||
+    !passageLensRu?.sound?.includes('не используем эту конечную букву как признак, объединяющий блок') ||
+    !passageLensRu?.sound?.includes('функция') ||
+    !passageLensRu?.sound?.includes('не установлена')) {
+  fail('2:196–203 sound note must keep thematic unity separate from unproven final-letter function')
+}
 else {
   const pilotWords = buildPilotOrthographicWordMap(pilotAyah)
   if (pilotWords.length !== 29) fail(`2:197 pilot token count changed: ${pilotWords.length}`)
