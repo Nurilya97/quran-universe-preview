@@ -264,9 +264,12 @@ test.describe('approved Quran Universe UI contracts', () => {
     await expect(note).toContainText('праведность')
     await expect(note.getByRole('link', { name: /Грамота\.ру · благочестие/ })).toBeVisible()
 
-    const geometry = await note.boundingBox()
-    expect(geometry).not.toBeNull()
-    expect(Math.abs((geometry.y + geometry.height) - 844)).toBeLessThanOrEqual(10)
+    const position = await note.evaluate((element) => {
+      const style = getComputedStyle(element)
+      return { position: style.position, bottom: style.bottom }
+    })
+    expect(position.position).toBe('fixed')
+    expect(position.bottom).toBe('0px')
 
     await note.getByRole('button', { name: 'Праведность / праведный' }).click()
     await expect(note.getByRole('heading', { name: 'Праведность / праведный' })).toBeVisible()
