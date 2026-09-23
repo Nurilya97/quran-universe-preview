@@ -5,7 +5,9 @@
   overflow: hidden;
   font-family: var(--ui-font), var(--arabic-font);
   background:
-    radial-gradient(circle at 50% 46%, #14202b2c 0, #090c10de 50%, #050709fb 88%);
+    radial-gradient(circle at 50% 42%, rgba(178, 208, 220, .075) 0, rgba(91, 125, 140, .025) 24%, transparent 48%),
+    radial-gradient(circle at 50% 68%, rgba(203, 172, 132, .028) 0, transparent 38%),
+    linear-gradient(180deg, #05080a 0%, #040608 56%, #030506 100%);
 }
 .ayah-space-topbar {
   position: absolute;
@@ -25,39 +27,54 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  min-height: 38px;
+  min-height: 40px;
   width: fit-content;
   padding: 0 10px;
-  border: 1px solid #ffffff0d;
-  background: #080b0db8;
-  color: #bbc3c9;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: rgba(7, 10, 12, .26);
+  color: #8d989f;
   font: inherit;
   font-size: 10px;
-  backdrop-filter: blur(13px);
+  backdrop-filter: blur(12px);
+  transition:
+    color .2s var(--ease-soft),
+    border-color .2s var(--ease-soft),
+    background .2s var(--ease-soft),
+    transform .24s var(--ease-space);
 }
 .ayah-back { justify-self: start; }
 .ayah-context-trigger { justify-self: end; }
-.ayah-back:hover,
+.ayah-back:hover {
+  transform: translateX(-2px);
+  border-color: #ffffff0f;
+  background: #ffffff04;
+  color: #eef2f4;
+}
 .ayah-context-trigger:hover,
-.ayah-context-trigger.is-open { color: #fff; }
+.ayah-context-trigger.is-open {
+  border-color: #ffffff0f;
+  background: #ffffff04;
+  color: #eef2f4;
+}
 .ayah-space-reference {
   display: inline-flex;
   align-items: baseline;
   gap: 8px;
   justify-self: center;
-  padding: 7px 11px;
-  border: 1px solid #ffffff0d;
-  background: #080b0dab;
-  backdrop-filter: blur(13px);
+  padding: 7px 9px;
+  border: 0;
+  background: transparent;
 }
 .ayah-space-reference strong {
-  color: #edf1f3;
-  font-size: 11px;
-  font-weight: 500;
+  color: #cfd6da;
+  font-size: 10px;
+  font-weight: 560;
+  letter-spacing: .045em;
 }
 .ayah-space-reference small {
-  color: #727d85;
-  font-size: 9px;
+  color: #667279;
+  font-size: 8.5px;
 }
 
 .ayah-space-modes {
@@ -66,26 +83,39 @@
   top: 57px;
   left: 50%;
   display: flex;
+  gap: 2px;
   transform: translateX(-50%);
-  padding: 4px;
-  border: 1px solid #ffffff0d;
-  background: #080b0dca;
-  backdrop-filter: blur(14px);
+  padding: 3px;
+  border: 1px solid #ffffff0b;
+  border-radius: 999px;
+  background: rgba(7, 10, 12, .44);
+  box-shadow: 0 14px 42px rgba(0,0,0,.18);
+  backdrop-filter: blur(16px);
 }
 .ayah-space-modes button {
-  min-height: 33px;
-  padding: 0 12px;
+  position: relative;
+  min-height: 34px;
+  padding: 0 14px;
   border: 0;
+  border-radius: 999px;
   background: transparent;
-  color: #747f87;
+  color: #657179;
   font: inherit;
   font-size: 9.5px;
+  transition:
+    color .2s var(--ease-soft),
+    background .2s var(--ease-soft),
+    transform .24s var(--ease-space);
 }
 .ayah-space-modes button[aria-selected='true'] {
-  background: #ffffff08;
+  background: linear-gradient(180deg, rgba(255,255,255,.085), rgba(255,255,255,.035));
   color: #eef2f4;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.055), 0 0 24px rgba(188, 214, 226, .035);
 }
-.ayah-space-modes button:hover { color: #eef2f4; }
+.ayah-space-modes button:hover {
+  color: #dfe5e8;
+  transform: translateY(-1px);
+}
 
 .ayah-space-context {
   position: absolute;
@@ -165,13 +195,14 @@
 .ayah-space-grid {
   position: absolute;
   inset: -8%;
-  opacity: .3;
+  opacity: .22;
   pointer-events: none;
   background-image:
-    radial-gradient(circle at 18% 26%, #ffffff15 0 1px, transparent 1.4px),
-    radial-gradient(circle at 67% 44%, #c8ddec11 0 1px, transparent 1.4px),
-    radial-gradient(circle at 83% 72%, #ffffff0d 0 1px, transparent 1.4px);
-  background-size: 87px 87px, 119px 119px, 151px 151px;
+    radial-gradient(circle at 18% 26%, #ffffff12 0 1px, transparent 1.35px),
+    radial-gradient(circle at 67% 44%, #c8ddec0d 0 1px, transparent 1.35px),
+    radial-gradient(circle at 83% 72%, #ffffff0a 0 1px, transparent 1.35px);
+  background-size: 101px 101px, 137px 137px, 179px 179px;
+  mask-image: radial-gradient(circle at 50% 46%, #000 0 54%, transparent 88%);
 }
 .ayah-space-boundary {
   position: absolute;
@@ -198,11 +229,11 @@
 .diagram-view {
   position: absolute;
   inset: 0;
-  animation: diagram-view-in .22s ease both;
+  animation: diagram-view-in .46s var(--ease-space) both;
 }
 @keyframes diagram-view-in {
-  from { opacity: .18; transform: scale(.988); }
-  to { opacity: 1; transform: scale(1); }
+  from { opacity: .08; transform: translateY(8px) scale(.986); filter: blur(2px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
 }
 
 .diagram-lines {
@@ -2374,6 +2405,20 @@
   width: 1540px;
   transform: translateX(-50%);
   text-align: center;
+  isolation: isolate;
+}
+.analysis-ayah-group::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 46%;
+  width: 1120px;
+  height: 470px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(206, 222, 229, .055) 0, rgba(152, 183, 196, .018) 38%, transparent 72%);
+  pointer-events: none;
 }
 
 .analysis-ayah-group .analysis-ayah-continuous {
@@ -2855,12 +2900,12 @@
   .ayah-space-modes {
     top: 58px !important;
     max-width: calc(100vw - 20px) !important;
-    min-height: 48px;
-    padding: 4px !important;
-    gap: 3px;
-    border-radius: 17px;
-    background: rgba(9,13,16,.86) !important;
-    box-shadow: 0 12px 34px rgba(0,0,0,.28);
+    min-height: 46px;
+    padding: 3px !important;
+    gap: 2px;
+    border-radius: 999px;
+    background: rgba(7,10,12,.60) !important;
+    box-shadow: 0 12px 36px rgba(0,0,0,.20);
     scrollbar-width: none;
   }
   .ayah-space-modes::-webkit-scrollbar { display: none; }
@@ -2868,18 +2913,18 @@
   .ayah-space-modes button {
     min-height: 40px !important;
     padding: 0 13px !important;
-    border-radius: 13px;
-    font-size: 13px !important;
+    border-radius: 999px;
+    font-size: 12px !important;
     white-space: nowrap;
   }
 
   .ayah-space-modes button[aria-selected='true'] {
     background:
-      linear-gradient(145deg, rgba(255,255,255,.105), rgba(255,255,255,.04)) !important;
+      linear-gradient(145deg, rgba(255,255,255,.095), rgba(255,255,255,.035)) !important;
     color: #f3f6f7 !important;
     box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.07),
-      0 0 22px rgba(170,205,225,.06);
+      inset 0 1px 0 rgba(255,255,255,.06),
+      0 0 22px rgba(170,205,225,.045);
   }
 
   .ayah-space-context {
@@ -5197,27 +5242,27 @@
 /* Ayah onboarding hint: neutral, readable guidance below the verse reference.
    Keep it clearly subordinate to the Arabic ayah text. */
 .analysis-ayah-group .analysis-tap-hint {
-  margin-top: 50px !important;
-  color: rgba(214, 219, 223, .78) !important;
-  font-size: 17px !important;
+  margin-top: 42px !important;
+  color: rgba(177, 188, 195, .72) !important;
+  font-size: 15px !important;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: .015em;
-  opacity: .72;
+  opacity: .68;
   text-shadow: none !important;
 }
 @media (max-width: 760px) {
   .analysis-ayah-group .analysis-tap-hint {
-    margin-top: 50px !important;
-    font-size: 17px !important;
-    opacity: .72;
+    margin-top: 42px !important;
+    font-size: 15px !important;
+    opacity: .68;
   }
 }
 @media (max-width: 420px) {
   .analysis-ayah-group .analysis-tap-hint {
-    margin-top: 50px !important;
-    font-size: 16px !important;
-    opacity: .72;
+    margin-top: 40px !important;
+    font-size: 14px !important;
+    opacity: .68;
   }
 }
 
@@ -6651,8 +6696,20 @@
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
-  gap: 72px;
-  padding-bottom: 120px;
+  gap: 86px;
+  padding-bottom: 140px;
+  isolation: isolate;
+}
+.composition-flow::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 150px;
+  bottom: 120px;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, transparent 0, rgba(176, 204, 212, .16) 8%, rgba(176, 204, 212, .08) 86%, transparent 100%);
 }
 
 .composition-flow .composition-thread,
@@ -6677,18 +6734,19 @@
 .composition-flow .composition-constellation > i {
   position: relative;
   display: block;
-  margin: 0 auto 8px;
+  width: 7px;
+  height: 7px;
+  margin: 0 auto 12px;
+  background: #dce6e9;
+  box-shadow: 0 0 10px rgba(220,230,233,.42), 0 0 30px rgba(180,214,224,.10);
+}
+.composition-flow .composition-constellation.has-entry > i {
+  background: #a7e2ce;
+  box-shadow: 0 0 11px rgba(167,226,206,.5), 0 0 32px rgba(126,215,187,.14);
 }
 
 .composition-flow .composition-constellation + .composition-constellation::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: -48px;
-  width: 1px;
-  height: 30px;
-  transform: translateX(-50%);
-  background: linear-gradient(to bottom, rgba(190,210,216,.06), rgba(190,210,216,.26));
+  content: none;
 }
 
 .composition-flow .composition-constellation > small {
@@ -6709,9 +6767,10 @@
 
 .composition-explanation {
   max-width: 690px;
-  margin: 14px auto 0;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255,255,255,.065);
+  margin: 16px auto 0;
+  padding: 16px 24px 0;
+  border-top: 1px solid rgba(255,255,255,.055);
+  background: radial-gradient(ellipse at 50% 0, rgba(188, 216, 224, .025), transparent 62%);
 }
 
 .composition-transition {
@@ -6738,12 +6797,35 @@
 /* Rhetoric stays in flow and fits the mobile viewport at the default 60% scale. */
 .rhetoric-flow {
   width: 760px !important;
-  gap: 68px !important;
-  padding-bottom: 180px !important;
+  gap: 84px !important;
+  padding: 8px 0 190px 54px !important;
+  isolation: isolate;
+}
+.rhetoric-flow::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 20px;
+  top: 24px;
+  bottom: 150px;
+  width: 1px;
+  background: linear-gradient(to bottom, rgba(196, 179, 204, .18), rgba(126, 156, 164, .07) 74%, transparent);
 }
 
 .rhetoric-flow .rhetoric-insight {
-  padding-bottom: 2px;
+  position: relative !important;
+  padding-bottom: 4px;
+}
+.rhetoric-flow .rhetoric-insight::before {
+  content: '';
+  position: absolute;
+  left: -38px;
+  top: 17px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c7b3cf;
+  box-shadow: 0 0 10px rgba(199,179,207,.40), 0 0 28px rgba(199,179,207,.10);
 }
 
 .rhetoric-flow .rhetoric-passage-lens {
@@ -7062,14 +7144,17 @@
   display: inline-grid;
   place-items: center;
   flex: 0 0 auto;
-  width: 30px;
-  height: 30px;
-  border: 1px solid rgba(202,177,211,.20);
-  border-radius: 50%;
-  color: #b89cc1;
-  font-size: 12px;
-  font-weight: 520;
+  min-width: 34px;
+  height: 22px;
+  padding: 0 8px;
+  border: 1px solid rgba(202,177,211,.15);
+  border-radius: 999px;
+  background: rgba(190, 164, 200, .035);
+  color: #9e8ca6;
+  font-size: 9px;
+  font-weight: 560;
   line-height: 1;
+  letter-spacing: .04em;
 }
 
 
@@ -7491,10 +7576,11 @@
 
 .rhetoric-proof {
   display: block;
-  max-width: 740px;
-  margin: 18px auto 0;
-  padding-top: 18px;
-  border-top: 1px solid rgba(255,255,255,.07);
+  max-width: 720px;
+  margin: 20px auto 0;
+  padding: 18px 20px 0;
+  border-top: 1px solid rgba(255,255,255,.055);
+  background: linear-gradient(180deg, rgba(195, 178, 202, .025), transparent 72%);
   text-align: left;
 }
 
@@ -7506,14 +7592,25 @@
 }
 
 .rhetoric-connection {
+  position: relative;
   margin-top: 24px;
+  padding-left: 18px;
+}
+.rhetoric-connection::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 5px;
+  bottom: 4px;
+  width: 1px;
+  background: linear-gradient(to bottom, rgba(178, 220, 211, .38), rgba(178, 220, 211, .08));
 }
 
 .rhetoric-connection > h4 {
   margin: 0 0 9px;
-  color: #d8dedd;
-  font-size: 23px;
-  font-weight: 620;
+  color: #d8e2df;
+  font-size: 21px;
+  font-weight: 600;
   line-height: 1.35;
   letter-spacing: 0;
 }
