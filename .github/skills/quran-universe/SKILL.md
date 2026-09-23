@@ -434,6 +434,11 @@ Show the relevant local/surah context without turning the interface into a long 
 ### Sound
 When added, analyze meaningful sonic patterning cautiously and evidence-first. A recitation layer may be connected to the ayah, but audio is not itself proof of a rhetorical claim.
 
+A recurring ending in only some ayahs must not be presented as the feature that unifies a larger passage when intervening ayahs use different endings. Keep the observations separate:
+- **thematic/compositional unity** must be established from the passage itself;
+- **sound correspondence** may be recorded as an observation;
+- do not assign the sound a structural or rhetorical function until that function is independently evidenced.
+
 Do not manufacture rhetorical significance from every phonetic repetition.
 
 ---
