@@ -216,7 +216,7 @@ test.describe('approved Quran Universe UI contracts', () => {
     await page.locator('.node-meaning').click()
     meaning = page.locator('dialog.detail-sheet[open] .meaning-entry')
     await expect(meaning).toContainText('благочестивые, праведные, осознанные перед Аллахом')
-    await expect(meaning).toContainText('это качество видно')
+    await expect(meaning).toContainText('Это качество видно')
     await expect(meaning).toContainText('более сильной похвалой')
     await expect(meaning).toContainText('تَقِيّ')
     await expect(meaning).toContainText('taqiyy')
