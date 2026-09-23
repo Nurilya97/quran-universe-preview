@@ -6692,6 +6692,7 @@
 /* Mobile-safe semantic flows: no fixed block coordinates, no overlap. */
 .composition-flow {
   position: absolute;
+  top: 230px !important;
   width: 760px;
   transform: translateX(-50%);
   display: flex;
