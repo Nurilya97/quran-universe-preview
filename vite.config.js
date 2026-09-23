@@ -1,7 +1,7 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
-const pagesBase = '/quran-universe-preview/'
+const pagesBase = process.env.VITE_BASE_PATH || '/quran-universe-preview/'
 
 export default defineConfig({
   plugins: [react()],
