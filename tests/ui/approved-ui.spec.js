@@ -259,8 +259,9 @@ test.describe('approved Quran Universe UI contracts', () => {
 
     const note = page.locator('.meaning-glossary-note')
     await expect(note).toBeVisible()
-    await expect(note.getByRole('heading', { name: 'Благочестие / благочестивый' })).toBeVisible()
-    await expect(note).toContainText('почитание Бога')
+    await expect(note.getByRole('heading', { name: 'Благочестие (благочестивый человек)' })).toBeVisible()
+    await expect(note).toContainText('почитает Всевышнего')
+    await expect(note).toContainText('осознанно следит за своими поступками')
     await expect(note).toContainText(/праведност/)
     await expect(note.getByRole('link', { name: /Грамота\.ру · благочестие/ })).toBeVisible()
 
@@ -281,9 +282,9 @@ test.describe('approved Quran Universe UI contracts', () => {
     await expect(note).toContainText('действовать сознательно и осмысленно')
     await expect(note).toContainText('В выражении «осознанность перед Аллахом»')
 
-    await note.getByRole('button', { name: 'Праведность / праведный' }).click()
-    await expect(note.getByRole('heading', { name: 'Праведность / праведный' })).toBeVisible()
-    await expect(note).toContainText('нравственно правильная жизнь и поступки')
+    await note.getByRole('button', { name: 'Праведность (праведный человек)' }).click()
+    await expect(note.getByRole('heading', { name: 'Праведность (праведный человек)' })).toBeVisible()
+    await expect(note).toContainText('Праведный человек — тот, кто строго следует нравственным нормам')
 
     await note.getByRole('button', { name: 'Закрыть заметку' }).click()
     await expect(note).toHaveCount(0)
