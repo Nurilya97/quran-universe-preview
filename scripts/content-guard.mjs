@@ -112,7 +112,7 @@ for (const form of wqyForms) {
     fail(`${form.id} meaning lead must show Arabic plus adjacent Latin transliteration`)
   }
   if (!lead.trim() || !body.trim()) fail(`${form.id} meaning card needs a direct definition and a short semantic-focus paragraph`)
-  if (!distinction.trim()) fail(`${form.id} meaning card needs a standalone «Чем отличается» contrast`)
+  if (!distinction.trim()) fail(`${form.id} meaning card needs a standalone «Отличие» contrast`)
   if (body.length > 430) fail(`${form.id} meaning body is too long for the concise Word Orbit contract`)
   if (distinction.length > 480) fail(`${form.id} distinction is too long for the concise Word Orbit contract`)
   const publicRu = collectStrings({ meaning: content.meaning?.ru, meaningMap: content.meaningMap?.map(level => level.ru), distinction }).join(' ')
@@ -157,9 +157,16 @@ if (/этическ(?:ая|ое|ую) саморегуляц|коннотаци�
 }
 const taqwaPositiveNotes = (WORD_CONTENT.taqwa?.translationNotes?.ru || []).filter(note => note.tone === 'positive')
 const taqwaWarningNotes = (WORD_CONTENT.taqwa?.translationNotes?.ru || []).filter(note => note.tone === 'warning')
-if (!WORD_CONTENT.taqwa?.meaning?.ru?.lead?.includes('благочестие, праведность, осознанность перед Аллахом') ||
-    !taqwaPositiveNotes.some(note => note.title === 'Допустимые переводы' && /2:197/.test(note.text) && /благочестие/.test(note.text))) {
-  fail('taqwa must present the three approved renderings directly and keep 2:197 «благочестие» as the selected translation')
+if (!WORD_CONTENT.taqwa?.meaning?.ru?.lead?.includes('благочестие, набожность, праведность, осознанность перед Аллахом') ||
+    !taqwaPositiveNotes.some(note =>
+      note.title === 'Допустимые переводы' &&
+      /2:197/.test(note.text) &&
+      /благочестие/.test(note.text) &&
+      /набожность/.test(note.text) &&
+      /праведность/.test(note.text) &&
+      /осознанность перед Аллахом/.test(note.text)
+    )) {
+  fail('taqwa must present the four approved Russian renderings and keep 2:197 «благочестие» as the selected translation')
 }
 if (!taqwaWarningNotes.some(note => /Богобоязненность/.test(note.title) && /благоговейн/.test(note.text) && /почтен/.test(note.text))) {
   fail('taqwa warning note must target fear-centred «богобоязненность» and preserve awe/regard guidance')
@@ -176,8 +183,9 @@ if (!WORD_CONTENT.atqa?.meaning?.ru?.lead?.includes('أَتْقَى (atqā)') ||
 
 const requiredGlossaryEntries = [
   'pietyRu',
+  'devotionRu',
   'righteousnessRu',
-  'awarenessBeforeAllahRu',
+  'awarenessRu',
   'pietyEn',
   'righteousnessEn',
   'godConsciousnessEn',
@@ -210,9 +218,21 @@ if (!MEANING_GLOSSARY.godConsciousnessEn?.en?.difference?.includes('Mindfulness 
     !MEANING_GLOSSARY.consciousnessEn?.en?.difference?.includes('Mindfulness')) {
   fail('English glossary must explicitly distinguish mindfulness, consciousness, and God-consciousness')
 }
-if (!MEANING_GLOSSARY.pietyRu?.ru?.difference?.includes('праведност') ||
-    !MEANING_GLOSSARY.righteousnessRu?.ru?.difference?.includes('благочести')) {
-  fail('Russian glossary must explain the difference between благочестие and праведность')
+if (!MEANING_GLOSSARY.pietyRu?.ru?.difference?.includes('набожност') ||
+    !MEANING_GLOSSARY.pietyRu?.ru?.difference?.includes('праведност') ||
+    !MEANING_GLOSSARY.devotionRu?.ru?.difference?.includes('благочести') ||
+    !MEANING_GLOSSARY.righteousnessRu?.ru?.difference?.includes('набожност') ||
+    !MEANING_GLOSSARY.awarenessRu?.ru?.definition?.includes('Осознанность')) {
+  fail('Russian glossary must distinguish благочестие, набожность, праведность, and осознанность')
+}
+
+const forbiddenPublicRussian = JSON.stringify({
+  wordContent: WORD_CONTENT,
+  glossary: MEANING_GLOSSARY,
+  ayah: pilotAyah,
+})
+if (/религиоз/i.test(forbiddenPublicRussian)) {
+  fail('forbidden vague Russian wording returned to public Quran Universe copy')
 }
 
 // Every visible root-space form has a morphology teaching profile.
