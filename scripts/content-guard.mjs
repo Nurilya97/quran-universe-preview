@@ -14,6 +14,7 @@ import {
 } from '../src/data/quranUniverseData.js'
 import { PILOT_SOURCE_ADAPTERS, PILOT_2_197_DATASET_STATUS } from '../src/data/sourceAdapters.js'
 import { TAFSIRCENTER_2_197_PILOT } from '../src/data/pilots/tafsircenter-2-197.js'
+import { MEANING_GLOSSARY } from '../src/data/meaningGlossary.js'
 
 const errors = []
 const fail = message => errors.push(message)
@@ -170,6 +171,48 @@ if (!WORD_CONTENT.atqa?.meaning?.ru?.lead?.includes('أَتْقَى (atqā)') ||
     !WORD_CONTENT.atqa?.meaning?.ru?.lead?.includes('تَقْوَىٰ (taqwā)') ||
     !WORD_CONTENT.atqa?.meaning?.ru?.lead?.includes('благочестив')) {
   fail('atqa must be directly readable: Arabic + atqā + taqwā + plain Russian meaning')
+}
+
+
+const requiredGlossaryEntries = [
+  'pietyRu',
+  'righteousnessRu',
+  'awarenessBeforeAllahRu',
+  'pietyEn',
+  'righteousnessEn',
+  'godConsciousnessEn',
+  'mindfulnessAllahEn',
+  'consciousnessEn',
+]
+for (const id of requiredGlossaryEntries) {
+  const entry = MEANING_GLOSSARY[id]
+  if (!entry) {
+    fail(`missing meaning glossary entry ${id}`)
+    continue
+  }
+  const languages = ['ru', 'en'].filter(language => entry[language])
+  for (const language of languages) {
+    const copy = entry[language]
+    if (!copy.title || !copy.definition || !copy.inContext || !copy.difference) {
+      fail(`meaning glossary entry ${id} must define title, definition, inContext, and difference for ${language}`)
+    }
+    if (!(entry.aliases?.[language] || []).length) fail(`meaning glossary entry ${id} needs at least one clickable alias for ${language}`)
+    for (const source of entry.sources?.[language] || []) {
+      if (!/^https:\/\//.test(source.url || '')) fail(`meaning glossary source for ${id} must use HTTPS`)
+    }
+  }
+}
+if (!WORD_CONTENT.taqwa?.meaning?.en?.lead?.includes('mindfulness of Allah')) {
+  fail('English taqwa lead must include mindfulness of Allah as an approved explanatory rendering')
+}
+if (!MEANING_GLOSSARY.godConsciousnessEn?.en?.difference?.includes('Mindfulness of Allah') ||
+    !MEANING_GLOSSARY.mindfulnessAllahEn?.en?.difference?.includes('God-consciousness') ||
+    !MEANING_GLOSSARY.consciousnessEn?.en?.difference?.includes('Mindfulness')) {
+  fail('English glossary must explicitly distinguish mindfulness, consciousness, and God-consciousness')
+}
+if (!MEANING_GLOSSARY.pietyRu?.ru?.difference?.includes('праведност') ||
+    !MEANING_GLOSSARY.righteousnessRu?.ru?.difference?.includes('благочести')) {
+  fail('Russian glossary must explain the difference between благочестие and праведность')
 }
 
 // Every visible root-space form has a morphology teaching profile.
