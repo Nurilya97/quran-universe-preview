@@ -136,6 +136,49 @@ test.describe('approved Quran Universe UI contracts', () => {
     await expect(grammarReference).toHaveAttribute('href', /chapter=2&verse=197/)
   })
 
+  test('composition and rhetoric keep mobile reading vertical without horizontal drift', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 })
+    await openSearch(page, 'taqwa')
+
+    await page.locator('.node-quran').click()
+    const reference = page.locator('.quran-reference-grid button.has-prototype').filter({ hasText: '2:197' })
+    await reference.click()
+
+    const ayah = page.locator('.ayah-space-shell')
+    const viewport = ayah.locator('.ayah-space-viewport')
+    const world = ayah.locator('.ayah-space-world')
+
+    const cameraOffset = async () => world.evaluate((element) => {
+      const match = element.style.transform.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/)
+      return match ? { x: Number(match[1]), y: Number(match[2]) } : { x: NaN, y: NaN }
+    })
+
+    const diagonalDrag = async () => {
+      const box = await viewport.boundingBox()
+      if (!box) throw new Error('Ayah viewport is not measurable')
+      const startX = box.x + box.width * .52
+      const startY = box.y + box.height * .62
+      await page.mouse.move(startX, startY)
+      await page.mouse.down()
+      await page.mouse.move(startX + 110, startY - 140, { steps: 6 })
+      await page.mouse.up()
+    }
+
+    for (const tab of ['Композиция', 'Риторика']) {
+      await page.getByRole('tab', { name: tab }).click()
+      await expect(viewport).toHaveAttribute('data-pan-axis', 'vertical')
+      await page.waitForTimeout(80)
+
+      const before = await cameraOffset()
+      await diagonalDrag()
+      const after = await cameraOffset()
+
+      expect(Number.isFinite(after.x)).toBeTruthy()
+      expect(Math.abs(after.x)).toBeLessThan(.01)
+      expect(Math.abs(after.y - before.y)).toBeGreaterThan(20)
+    }
+  })
+
   test('2:197 taqwa keeps approved meaning layers and Ayah Space connector contract', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 })
     await openSearch(page, 'taqwa')
