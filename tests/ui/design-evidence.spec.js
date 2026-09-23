@@ -68,6 +68,23 @@ test('design evidence · word Meaning panel · mobile', async ({ page }, testInf
   await snap(page, testInfo, 'word-meaning-panel-mobile')
 })
 
+test('design evidence · Ayah context · mobile', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await openAyah197(page)
+  await page.locator('.ayah-context-trigger').click()
+  await expect(page.locator('.ayah-space-context')).toBeVisible()
+  await snap(page, testInfo, 'ayah-context-mobile')
+})
+
+test('design evidence · Root forms panel · mobile', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await openSearch(page, 'lbb')
+  await expect(page.locator('.root-stage-lbb')).toBeVisible()
+  await page.locator('.forms-button').click()
+  await expect(page.locator('dialog.detail-sheet-forms[open]')).toBeVisible()
+  await snap(page, testInfo, 'root-forms-panel-mobile')
+})
+
 test('design evidence · ayah 2:197 analysis · desktop', async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 1280, height: 900 })
   await openAyah197(page)
