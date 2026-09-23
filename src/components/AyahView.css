@@ -6801,6 +6801,7 @@
 
 /* Rhetoric stays in flow and fits the mobile viewport at the default 60% scale. */
 .rhetoric-flow {
+  top: 230px !important;
   width: 760px !important;
   gap: 84px !important;
   padding: 8px 0 190px 54px !important;
