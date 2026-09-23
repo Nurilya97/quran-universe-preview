@@ -1,7 +1,7 @@
 .scene-word .orbit-field {
-  width: min(500px, 86vw, 62dvh);
-  height: min(500px, 86vw, 62dvh);
-  top: 53%;
+  width: min(590px, 86vw, 68dvh);
+  height: min(590px, 86vw, 68dvh);
+  top: 52%;
 }
 
 .scene-word .orbit-track,
@@ -20,30 +20,35 @@
 }
 
 .scene-word .orbit-node {
-  min-width: 112px;
-  min-height: 70px;
+  min-width: 118px;
+  min-height: 76px;
   padding: 6px 4px;
-  align-content: start;
-  transform: translate(-50%, -7px);
+  align-content: center;
+  transform: translate(-50%, -50%);
 }
 
 .scene-word .node-quran {
-  left: 20.5% !important;
-  top: 20.5% !important;
+  left: 22% !important;
+  top: 22% !important;
 }
 
 .scene-word .node-structure {
-  left: 92% !important;
+  left: 93% !important;
   top: 50% !important;
 }
 
 .scene-word .node-meaning {
-  left: 20.5% !important;
-  top: 79.5% !important;
+  left: 22% !important;
+  top: 78% !important;
 }
 
 .scene-word .node-light {
-  margin-bottom: 13px;
+  margin-bottom: 12px;
+}
+
+.scene-word .orbit-node:hover,
+.scene-word .orbit-node:focus-visible {
+  transform: translate(-50%, -50%) scale(1.035);
 }
 
 .scene-word .node-caption,
@@ -53,35 +58,41 @@
 
 @media (max-width: 600px) {
   .scene-word .orbit-field {
-    width: min(460px, 84vw, 58dvh);
-    height: min(460px, 84vw, 58dvh);
-    top: 53%;
+    width: min(440px, 88vw, 60dvh);
+    height: min(440px, 88vw, 60dvh);
+    top: 52%;
   }
 
   .scene-word .orbit-node {
-    min-width: 100px;
+    min-width: 96px;
+    min-height: 68px;
     padding: 5px 3px;
-    transform: translate(-50%, -6px);
+    transform: translate(-50%, -50%);
   }
 
   .scene-word .node-quran {
-    left: 20.5% !important;
-    top: 20.5% !important;
+    left: 20% !important;
+    top: 20% !important;
   }
 
   .scene-word .node-structure {
-    left: 92% !important;
+    left: 94% !important;
     top: 50% !important;
   }
 
   .scene-word .node-meaning {
-    left: 20.5% !important;
-    top: 79.5% !important;
+    left: 20% !important;
+    top: 80% !important;
   }
 
   .scene-word .node-label {
     max-width: 105px;
-    font-size: 15px;
+    font-size: 12px;
     line-height: 1.3;
+  }
+
+  .scene-word .orbit-node:hover,
+  .scene-word .orbit-node:focus-visible {
+    transform: translate(-50%, -50%) scale(1.025);
   }
 }
