@@ -79,7 +79,7 @@ export const WORD_CONTENT = {
     },
     meaning: {
       ru: { lead: 'تَقْوَىٰ (taqwā) — благочестие, праведность, осознанность перед Аллахом.', body: 'Каждое из этих слов передаёт одну сторону تَقْوَىٰ (taqwā). «Благочестие» подчёркивает отношение к Аллаху и жизнь в соответствии с ним; «праведность» — правильность поступков; «осознанность перед Аллахом» — постоянную память о Нём и внимание к Его границам. تَقْوَىٰ (taqwā) шире любого одного из этих слов.' },
-      en: { lead: 'تَقْوَىٰ (taqwā) — piety, righteousness, God-consciousness.', body: 'Each rendering highlights one side of تَقْوَىٰ (taqwā). “Piety” stresses devotion to Allah and the life that follows from it; “righteousness” stresses right conduct; “God-consciousness” stresses remembering Allah and staying attentive to His boundaries. تَقْوَىٰ (taqwā) is broader than any one of these words.' },
+      en: { lead: 'تَقْوَىٰ (taqwā) — piety, righteousness, God-consciousness, mindfulness of Allah.', body: 'Each rendering highlights one side of تَقْوَىٰ (taqwā), and none covers the whole concept by itself. Tap a term to see its exact emphasis and how it differs from the others.' },
     },
     meaningMap: [
       {
@@ -113,7 +113,7 @@ export const WORD_CONTENT = {
         {
           tone: 'positive',
           title: 'Valid translations',
-          text: 'The ayah itself shows which rendering fits best. In 2:197 the primary rendering remains “piety”.',
+          text: 'The ayah itself shows which rendering fits best. In 2:197 the primary rendering remains “piety”. The glossary note explains the difference between piety, righteousness, God-consciousness, and mindfulness of Allah.',
         },
         {
           tone: 'warning',
