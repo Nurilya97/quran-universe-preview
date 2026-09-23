@@ -425,7 +425,7 @@ export function ImmersiveUniverse() {
     </section>}
 
 
-    <dialog ref={dialog} className={'detail-sheet' + (panel === 'structure' ? ' structure-sheet' : '')}
+    <dialog ref={dialog} className={'detail-sheet' + (panel ? ' detail-sheet-' + panel : '') + (panel === 'structure' ? ' structure-sheet' : '')}
       aria-labelledby={panel === 'structure' ? undefined : 'sheet-title'}
       aria-label={panel === 'structure' ? t.structure : undefined}
       onCancel={(event) => { event.preventDefault(); closePanel() }}
