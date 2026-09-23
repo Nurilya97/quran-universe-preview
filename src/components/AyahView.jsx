@@ -747,15 +747,21 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     const current = cameraRef.current || { x: 0, y: 0, scale: defaultScale() }
     const isSpatialMode = targetMode === 'composition' || targetMode === 'rhetoric'
     const minScale = isSpatialMode ? .42 : .48
-    const maxScale = isSpatialMode ? 1.45 : 1.08
-    const scale = clamp(finiteNumber(next.scale, current.scale), minScale, maxScale)
     const viewport = viewportRef.current?.getBoundingClientRect()
+    const spatialFlowWidth = viewport?.width <= 420 ? 550 : viewport?.width <= 760 ? 570 : 760
+    const spatialFitScale = viewport?.width
+      ? Math.max(minScale, (viewport.width - 32) / spatialFlowWidth)
+      : 1.45
+    const maxScale = isSpatialMode ? Math.min(1.45, spatialFitScale) : 1.08
+    const scale = clamp(finiteNumber(next.scale, current.scale), minScale, maxScale)
     const rawX = finiteNumber(next.x, current.x)
     const rawY = finiteNumber(next.y, current.y)
 
     if (!viewport || viewport.width < 1 || viewport.height < 1) {
       const fallbackLimit = isSpatialMode ? 900 : 150
-      return { x: clamp(rawX, -fallbackLimit, fallbackLimit), y: clamp(rawY, -fallbackLimit, fallbackLimit), scale }
+      return isSpatialMode
+        ? { x: 0, y: clamp(rawY, -fallbackLimit, fallbackLimit), scale }
+        : { x: clamp(rawX, -fallbackLimit, fallbackLimit), y: clamp(rawY, -fallbackLimit, fallbackLimit), scale }
     }
 
     const bounds = VIEW_BOUNDS[targetMode] || VIEW_BOUNDS.analysis
@@ -770,10 +776,11 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     const contentMaxY = viewport.height - cy - (bounds.top - worldCy) * scale
 
     if (isSpatialMode) {
-      /* Composition behaves like a map: every edge of the thematic structure
-         can be brought into view without the analysis layer's centre lock. */
+      /* Composition and rhetoric are vertical reading surfaces.
+         Keep the flow centred horizontally and move only up/down so mobile
+         gutters remain stable and reading never requires sideways hunting. */
       return {
-        x: clamp(rawX, contentMinX, contentMaxX),
+        x: 0,
         y: clamp(rawY, contentMinY, contentMaxY),
         scale,
       }
@@ -812,6 +819,14 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
 
   function onWheel(event) {
     event.preventDefault()
+    if (mode === 'composition' || mode === 'rhetoric') {
+      const current = cameraRef.current
+      const deltaY = finiteNumber(event.deltaY, 0)
+      const next = clampCamera({ ...current, x: 0, y: current.y - deltaY }, mode)
+      cameraRef.current = next
+      setCamera(next)
+      return
+    }
     zoomBy(event.deltaY > 0 ? -.07 : .07)
   }
 
@@ -958,6 +973,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     <div
       ref={viewportRef}
       className="ayah-space-viewport"
+      data-pan-axis={mode === 'composition' || mode === 'rhetoric' ? 'vertical' : 'free'}
       onWheel={onWheel}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
