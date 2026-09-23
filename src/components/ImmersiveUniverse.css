@@ -152,7 +152,7 @@ h1:focus { outline: none; }
   font-family: var(--ui-font);
   font-weight: 470;
   font-size: clamp(34px, 4vw, 52px);
-  letter-spacing: -.058em;
+  letter-spacing: -.018em;
   line-height: 1.08;
   text-shadow: 0 2px 30px #000, 0 0 45px #dfeaf00d;
 }
@@ -977,6 +977,7 @@ h1:focus { outline: none; }
   .search-stage h1 {
     margin-bottom: 36px;
     font-size: clamp(32px, 10vw, 43px);
+    letter-spacing: -.012em;
   }
   .search-form { gap: 11px; padding-left: 17px; }
   .search-form input { height: 46px; font-size: 15px; }
