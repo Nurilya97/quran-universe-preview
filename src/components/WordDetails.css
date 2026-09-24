@@ -1291,11 +1291,14 @@ details.morph-board-callout[open] .morph-board-callout-body {
     font-size: 39px;
   }
   .morph-board-connector {
+    --morph-board-arrow-gap: 5px;
     position: absolute;
     z-index: 2;
     left: 0;
     top: 15px;
-    bottom: -15px;
+    /* Stop the connector 5px before the next step marker so the arrowhead
+       never visually merges with the dot. */
+    bottom: calc(-15px + var(--morph-board-arrow-gap));
     width: 18px;
     height: auto;
     margin: 0;
