@@ -56,7 +56,9 @@ test.describe('approved Quran Universe UI contracts', () => {
     expect(geometry).not.toBeNull()
     expect(geometry.lineWidth).toBe('1px')
     expect(Math.abs(geometry.lineTop - geometry.firstCenter)).toBeLessThanOrEqual(3)
-    expect(Math.abs(geometry.lineBottom - geometry.secondCenter)).toBeLessThanOrEqual(4)
+    const arrowGap = geometry.secondCenter - geometry.lineBottom
+    expect(arrowGap).toBeGreaterThanOrEqual(4)
+    expect(arrowGap).toBeLessThanOrEqual(6)
     expect(geometry.dotContent).not.toBe('none')
     expect(geometry.dotTop).toBe('0px')
     expect(Number.parseFloat(geometry.dotWidth)).toBeGreaterThan(0)
