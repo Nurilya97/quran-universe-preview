@@ -136,12 +136,12 @@
 
 /* Word Structure v2 — compact morpheme-first analysis */
 .morphology-entry {
-  --morph-root: #aeb5bd;
+  --morph-root: #f7f8fa;
   --morph-prefix: #7cff8b;
   --morph-suffix: #ff7a59;
   --morph-ending: #c65cff;
   --morph-particle: #59f2ff;
-  --morph-form: #f7f8fa;
+  --morph-form: #eaff5b;
   --morph-root-shift: color-mix(in srgb, var(--morph-root) 62%, var(--morph-form) 38%);
 }
 .morph-analysis { margin: 4px 0 26px; }
@@ -914,7 +914,7 @@
   right: 28px;
 }
 .morphology-entry-board {
-  --board-root: #b8bec6;
+  --board-root: #f7f8fa;
   --board-added: #d9ebff;
   --board-ending: #d9c7ff;
   --board-line: #dce8f52b;
@@ -1178,7 +1178,7 @@ details.morph-board-callout[open] .morph-board-callout-body {
   color: var(--board-root);
 }
 .morphology-entry-taqwa.morphology-entry-board .morph-board-form {
-  color: var(--board-paper);
+  color: #eaff5b;
 }
 .morphology-entry-taqwa.morphology-entry-board .morph-board-key .key-added {
   color: var(--board-paper);
@@ -1450,12 +1450,12 @@ details.morph-board-callout[open] .morph-board-callout-body {
   box-shadow: 0 0 7px rgba(89,242,255,.38);
 }
 .morph-view-neon {
-  --morph-root: #aeb5bd;
+  --morph-root: #f7f8fa;
   --morph-prefix: #7cff8b;
   --morph-suffix: #ff7a59;
   --morph-ending: #c65cff;
   --morph-particle: #59f2ff;
-  --morph-form: #f7f8fa;
+  --morph-form: #eaff5b;
 }
 
 /* taqwā: rootShift is a root relationship, not a separate colour category.

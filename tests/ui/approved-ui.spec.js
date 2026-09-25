@@ -20,17 +20,23 @@ test.describe('approved Quran Universe UI contracts', () => {
     const analysisColours = await page.locator('.morphology-entry-taqwa.morphology-entry-neon').evaluate((root) => {
       const changed = root.querySelector('.morph-analysis .morph-rootShift')
       const rootLetter = root.querySelector('.morph-analysis .morph-root')
-      if (!changed || !rootLetter) return null
+      const form = root.querySelector('.morph-analysis .morph-form')
+      if (!changed || !rootLetter || !form) return null
       const changedStyle = getComputedStyle(changed)
       const rootStyle = getComputedStyle(rootLetter)
+      const formStyle = getComputedStyle(form)
       return {
         changed: changedStyle.color,
         root: rootStyle.color,
+        form: formStyle.color,
         changedBackground: changedStyle.backgroundImage,
       }
     })
     expect(analysisColours).not.toBeNull()
     expect(analysisColours.changed).toBe(analysisColours.root)
+    expect(analysisColours.root).toBe('rgb(247, 248, 250)')
+    expect(analysisColours.form).toBe('rgb(234, 255, 91)')
+    expect(analysisColours.form).not.toBe(analysisColours.root)
     expect(analysisColours.changedBackground).toBe('none')
 
     await page.locator('.morph-view-tabs').getByRole('button', { name: 'Схема' }).click()
@@ -105,6 +111,9 @@ test.describe('approved Quran Universe UI contracts', () => {
     })
     expect(targetColours).not.toBeNull()
     expect(targetColours.changed).toBe(targetColours.root)
+    expect(targetColours.root).toBe('rgb(247, 248, 250)')
+    expect(targetColours.form).toBe('rgb(234, 255, 91)')
+    expect(targetColours.form).not.toBe(targetColours.root)
     expect(targetColours.changed).not.toBe(targetColours.added)
     await expect(board.locator('.morph-board-key')).toContainText('элемент модели')
 

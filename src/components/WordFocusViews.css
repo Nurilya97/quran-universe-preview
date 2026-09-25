@@ -789,12 +789,12 @@
 /* Ayah morphology now follows the approved neon "Разбор" language from Word Structure,
    rather than repeating the large card-based "Схема" composition. */
 .ayah-morph-neon {
-  --morph-root: #aeb5bd;
+  --morph-root: #f7f8fa;
   --morph-prefix: #7cff8b;
   --morph-suffix: #ff7a59;
   --morph-ending: #c65cff;
   --morph-particle: #59f2ff;
-  --morph-form: #f7f8fa;
+  --morph-form: #eaff5b;
   width: min(640px, calc(100vw - 42px));
   min-height: 100%;
   box-sizing: border-box;
