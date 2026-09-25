@@ -490,3 +490,17 @@
     transition: none;
   }
 }
+
+
+/* Research is a second navigation depth. Historical AyahView mobile rules pin
+   .ayah-space-modes near the first row, so keep this final scoped override. */
+.ayah-space-shell.is-research .ayah-space-modes {
+  top: 112px !important;
+  z-index: 28;
+}
+
+@media (max-width: 760px) {
+  .ayah-space-shell.is-research .ayah-space-modes {
+    top: 112px !important;
+  }
+}
