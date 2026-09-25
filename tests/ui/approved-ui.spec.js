@@ -70,6 +70,14 @@ test.describe('approved Quran Universe UI contracts', () => {
     expect(formSemantics.title).toBe('rgb(247, 248, 250)')
     expect(formSemantics.pattern).toBe('rgb(234, 255, 91)')
 
+    const formLegend = page.locator('.morph-legend-form')
+    const formLegendColours = await formLegend.evaluate((node) => ({
+      text: getComputedStyle(node).color,
+      dot: getComputedStyle(node.querySelector('i')).backgroundColor,
+    }))
+    expect(formLegendColours.text).toBe('rgb(247, 248, 250)')
+    expect(formLegendColours.dot).toBe('rgb(234, 255, 91)')
+
     const diagramTab = viewTabs.getByRole('button', { name: 'Схема' })
     await diagramTab.click()
     await expect(diagramTab).toHaveClass(/is-active/)
