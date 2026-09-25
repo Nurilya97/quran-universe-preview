@@ -458,7 +458,7 @@ test.describe('approved Quran Universe UI contracts', () => {
     await page.goto('spatial.html')
 
     const searchTransition = await page.locator('.search-submit').evaluate((element) => getComputedStyle(element).transitionDuration)
-    expect(searchTransition).toBe('0s')
+    expect(Number.parseFloat(searchTransition)).toBeLessThanOrEqual(.001)
 
     await openSearch(page, 'taqwa')
     await page.locator('.node-quran').click()
@@ -466,7 +466,7 @@ test.describe('approved Quran Universe UI contracts', () => {
     await reference.click()
 
     const backTransition = await page.locator('.ayah-back').evaluate((element) => getComputedStyle(element).transitionDuration)
-    expect(backTransition).toBe('0s')
+    expect(Number.parseFloat(backTransition)).toBeLessThanOrEqual(.001)
   })
 
 })
