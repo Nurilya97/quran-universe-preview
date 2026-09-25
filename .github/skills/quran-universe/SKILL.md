@@ -436,6 +436,7 @@ For both **Composition** and **Rhetoric**, navigation is a vertical reading flow
 - mouse/trackpad wheel moves through the flow vertically; pinch and the explicit +/- controls remain available for scale;
 - a thin constellation-style reading rail may sit in the side gutter to show the current block and jump between verified blocks; it must read as spatial wayfinding, not as a conventional scrollbar, card, or second content column;
 - the rail must remain visually subordinate: neutral line, small nodes, one restrained active glow, no persistent text labels except a compact active index;
+- on mobile, the active step index must remain comfortably readable rather than decorative micro-type; target roughly 12px with full active opacity;
 - this vertical-only navigation rule does not apply to Analysis or Root Space.
 
 ### Context
@@ -643,6 +644,10 @@ The interface should remain:
 - progressively disclosed.
 
 The ayah/root itself is primary. Panels and explanations support it and must not dominate the screen.
+
+Mobile Root Space and Word Orbit must preserve the approved calm, full-screen cosmic atmosphere. Do not rely on a stretched cached dust texture when it creates seams, stripes, or GPU artifacts on real mobile browsers; prefer stable stage-level atmosphere while keeping stars spatial and continuous.
+
+In Ayah Space, the Context entry must read as an explicit control, not an ambiguous icon. On mobile keep the label visible, preserve at least a 44px target, and give the control enough contrast against the cosmic background without turning it into a dominant CTA.
 
 For Word Orbit/detail sheets, the draggable/sticky header belongs to the same visual surface as the sheet. It must keep enough same-surface background and/or restrained backdrop blur that scrolled content never visually collides with the title or close control. The header may blur the sheet behind it, but must not read as a differently coloured standalone bar.
 
