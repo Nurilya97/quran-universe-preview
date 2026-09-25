@@ -576,9 +576,9 @@ h1:focus { outline: none; }
   border-color: #dce5e92b;
 }
 .root-legend-quran {
-  width: 7px;
-  height: 7px;
-  flex: 0 0 7px;
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
   border-radius: 50%;
   background: #72ff86;
   box-shadow: none;
@@ -1188,8 +1188,8 @@ h1:focus { outline: none; }
 }
 .root-star-quranic .star-point,
 .root-star-featured.root-star-quranic .star-point {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   background: #72ff86;
   box-shadow: none;
 }
