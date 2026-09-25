@@ -300,7 +300,33 @@ h1:focus { outline: none; }
   font-size: 12px;
   line-height: 1.6;
 }
-.word-stage, .root-stage { position: absolute; inset: 0; }
+.word-stage, .root-stage {
+  position: absolute;
+  inset: 0;
+  isolation: isolate;
+}
+.word-stage::before,
+.root-stage::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 54% 58%, rgba(113, 122, 126, .11) 0, rgba(62, 72, 78, .055) 25%, transparent 56%),
+    radial-gradient(ellipse at 24% 38%, rgba(105, 119, 126, .045) 0, transparent 42%),
+    radial-gradient(ellipse at 78% 70%, rgba(146, 126, 96, .035) 0, transparent 38%);
+  opacity: .92;
+}
+@media (max-width: 760px) {
+  .word-stage::before,
+  .root-stage::before {
+    background:
+      radial-gradient(ellipse at 54% 57%, rgba(116, 124, 128, .16) 0, rgba(66, 76, 81, .075) 27%, transparent 58%),
+      radial-gradient(ellipse at 18% 36%, rgba(105, 119, 126, .055) 0, transparent 42%),
+      radial-gradient(ellipse at 82% 72%, rgba(141, 123, 96, .045) 0, transparent 40%);
+  }
+}
 .stage-reveal { animation: reveal .72s var(--ease-space) both; }
 @keyframes reveal {
   from { opacity: 0; transform: translateY(10px) scale(.982); filter: blur(3px); }
