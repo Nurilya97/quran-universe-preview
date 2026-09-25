@@ -788,6 +788,20 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
 
       const viewportRect = viewport.getBoundingClientRect()
       const readingLine = viewportRect.top + viewportRect.height * .46
+      const current = cameraRef.current
+      const topEdge = clampCamera({ ...current, y: 1e9 }, mode).y
+      const bottomEdge = clampCamera({ ...current, y: -1e9 }, mode).y
+      const edgeEpsilon = 1
+
+      if (Math.abs(current.y - topEdge) <= edgeEpsilon) {
+        setReadingStep(0)
+        return
+      }
+      if (Math.abs(current.y - bottomEdge) <= edgeEpsilon) {
+        setReadingStep(nodes.length - 1)
+        return
+      }
+
       let nearestIndex = 0
       let nearestDistance = Number.POSITIVE_INFINITY
 
