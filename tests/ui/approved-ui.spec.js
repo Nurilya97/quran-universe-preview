@@ -205,6 +205,18 @@ test.describe('approved Quran Universe UI contracts', () => {
     const meaningCloseBox = await meaningClose.boundingBox()
     expect(meaningCloseBox).not.toBeNull()
     expect(meaningCloseBox.x + meaningCloseBox.width / 2).toBeGreaterThan(390 * .72)
+
+    const meaningHeaderSurface = await meaningSheet.locator('.sheet-header').evaluate((node) => {
+      const style = getComputedStyle(node)
+      return {
+        backgroundImage: style.backgroundImage,
+        backgroundColor: style.backgroundColor,
+        backdropFilter: style.backdropFilter,
+      }
+    })
+    expect(meaningHeaderSurface.backgroundImage).toBe('none')
+    expect(meaningHeaderSurface.backgroundColor).toBe('rgba(0, 0, 0, 0)')
+    expect(meaningHeaderSurface.backdropFilter).toBe('none')
   })
 
   test('ل ب ب root space keeps its orbit legend and same-family inner ring', async ({ page }, testInfo) => {
@@ -381,7 +393,10 @@ test.describe('approved Quran Universe UI contracts', () => {
     await expect(ayah.getByRole('heading', { name: 'Нить аята', level: 2 })).toBeVisible()
 
     await page.getByRole('tab', { name: 'Риторика' }).click()
-    await expect(ayah.getByRole('heading', { name: 'Связь', level: 4 }).first()).toBeVisible()
+    await expect(ayah.getByRole('heading', { name: 'Связь', level: 4 })).toHaveCount(0)
+    await expect(ayah.getByText('Как устроена связь')).toHaveCount(0)
+    await expect(ayah.getByText('Что она даёт')).toHaveCount(0)
+    await expect(ayah.locator('.rhetoric-connection li > span').first()).toBeVisible()
     await expect(ayah).not.toContainText('Что здесь видно')
     await expect(ayah).not.toContainText('Как это связано')
     await expect(ayah).not.toContainText('Что это показывает')

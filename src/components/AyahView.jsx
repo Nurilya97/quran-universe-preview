@@ -655,16 +655,9 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
           <div className="rhetoric-proof">
             <p className="rhetoric-evidence">{copy.evidence}</p>
             <div className="rhetoric-connection">
-              <h4>{ru ? 'Связь' : 'Connection'}</h4>
               <ul>
-                <li>
-                  <b>{ru ? 'Как устроена связь' : 'How the connection works'}</b>
-                  <span>{copy.mechanism}</span>
-                </li>
-                <li>
-                  <b>{ru ? 'Что она даёт' : 'What it adds'}</b>
-                  <span>{copy.effect}</span>
-                </li>
+                <li><span>{copy.mechanism}</span></li>
+                <li><span>{copy.effect}</span></li>
               </ul>
             </div>
           </div>
