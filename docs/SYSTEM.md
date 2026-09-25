@@ -35,6 +35,12 @@ Do not recreate a second control plane, mirror repository, duplicate semantic ru
 
 Canonical structured registries generate their human-readable documentation with `npm run sync`. CI runs `npm run sync:check`, so generated docs cannot silently drift from JSON owners.
 
+### Live preview authority
+
+`main` is the only branch allowed to deploy the public GitHub Pages site. Design or experiment branches may run checks and generate evidence, but they must not own a competing Pages deployment or publish an archived baseline over the live root.
+
+The design branch may mirror `main` when useful for visual work, but the live URL always follows `main`.
+
 `npm run audit:system` validates single-repository authority, product-root registration, source/adaptor freshness, skill wiring, workflow topology, and absence of legacy runtime dependencies.
 
 A weekly `system-health.yml` run performs the full system check, production build, browser contracts, upstream skill watch, core-source freshness watch, and QAMAR release watch. Findings create/update one GitHub maintenance issue instead of silently mutating research data.
