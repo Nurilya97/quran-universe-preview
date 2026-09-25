@@ -400,3 +400,14 @@ h1:focus { outline: none; }
 .root-star:active .star-point {
   box-shadow: 0 0 14px 4px #e5e8ec80, 0 0 42px 14px #d6d9de22;
 }
+
+
+@media (prefers-reduced-motion: reduce) {
+  .search-submit,
+  .icon-button,
+  .forms-button,
+  .root-return,
+  .node-light {
+    transition: none;
+  }
+}
