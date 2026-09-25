@@ -477,6 +477,7 @@ Distinguish:
 Approved morphology color roles:
 - **root** — white `#F7F8FA`, as the stable lexical foundation;
 - **form/pattern contribution** — neon lemon `#EAFF5B`, reserved for the Form role and kept distinct from the existing green prefix, orange suffix, violet ending, and cyan particle roles;
+- the same neon lemon is the approved **Structure** navigation accent: use it for the Word Orbit “Структура слова” node and for the active “Разбор / Схема” state inside Word Structure, so the path into structure and the form role read as one semantic system;
 - transformed root letters remain in the root family unless a separately approved rule requires a mixed treatment.
 Use the same root/form semantics in Word Structure and Ayah morphology; do not silently swap their colors between views.
 
