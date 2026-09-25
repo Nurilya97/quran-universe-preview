@@ -6,6 +6,7 @@
   margin: -12px -27px 0;
   padding: 16px 27px 14px;
   border-bottom: 1px solid color-mix(in srgb, var(--sheet-tone) 7%, transparent);
+  background-color: rgba(8,12,14,.94);
   background:
     linear-gradient(
       160deg,
