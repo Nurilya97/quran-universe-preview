@@ -360,7 +360,7 @@ function MorphBoard({ word, profile, language }) {
                   ar={profile.pattern.ar}
                   reading={profile.pattern.reading}
                   text={patternText}
-                  tone="accent"
+                  tone="form"
                   expandable={patternText.length > 120}
                 />}
 
