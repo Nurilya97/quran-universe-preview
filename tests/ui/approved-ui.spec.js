@@ -242,6 +242,18 @@ test.describe('approved Quran Universe UI contracts', () => {
     await expect(legend).toContainText('есть в Коране')
     await expect(legend).toContainText('пунктир — доп. зона I семьи')
 
+    const mobileAtmosphere = await rootStage.evaluate((element) => {
+      const style = getComputedStyle(element, '::before')
+      return {
+        content: style.content,
+        position: style.position,
+        backgroundImage: style.backgroundImage,
+      }
+    })
+    expect(mobileAtmosphere.content).not.toBe('none')
+    expect(mobileAtmosphere.position).toBe('absolute')
+    expect(mobileAtmosphere.backgroundImage).not.toBe('none')
+
     await expect(rootStage.locator('.root-orbit-inner')).toHaveCount(1)
     await expect(rootStage.locator('.root-legend-orbit')).toHaveCount(1)
     await expect(rootStage.locator('.root-legend-inner')).toHaveCount(1)
@@ -393,6 +405,15 @@ test.describe('approved Quran Universe UI contracts', () => {
     await expect(ayah).toBeVisible()
     await expect(ayah.locator('.analysis-verse-reference > span')).toHaveText('2:197')
 
+    const contextTrigger = ayah.locator('.ayah-context-trigger')
+    await expect(contextTrigger).toBeVisible()
+    await expect(contextTrigger.locator('span')).toBeVisible()
+    await expect(contextTrigger).toContainText('Контекст')
+    const contextTriggerBox = await contextTrigger.boundingBox()
+    expect(contextTriggerBox).not.toBeNull()
+    expect(contextTriggerBox.width).toBeGreaterThanOrEqual(96)
+    expect(contextTriggerBox.height).toBeGreaterThanOrEqual(44)
+
     const words = ayah.locator('.analysis-inline-word')
     await expect(words).toHaveCount(29)
     await expect(words.nth(25)).toHaveClass(/is-entry/)
@@ -459,6 +480,13 @@ test.describe('approved Quran Universe UI contracts', () => {
       const railButtons = rail.locator('button')
       expect(await railButtons.count()).toBeGreaterThan(1)
       await expect(rail.locator('button[aria-current="step"]')).toHaveCount(1)
+      const activeRailNumber = rail.locator('button[aria-current="step"] > span')
+      const activeRailNumberStyle = await activeRailNumber.evaluate((node) => {
+        const style = getComputedStyle(node)
+        return { fontSize: Number.parseFloat(style.fontSize), opacity: Number.parseFloat(style.opacity) }
+      })
+      expect(activeRailNumberStyle.fontSize).toBeGreaterThanOrEqual(12)
+      expect(activeRailNumberStyle.opacity).toBeGreaterThanOrEqual(.95)
 
       const beforeJump = await cameraOffset()
       await railButtons.last().click()
