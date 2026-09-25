@@ -46,6 +46,7 @@
 .ayah-back { justify-self: start; }
 .ayah-context-trigger {
   justify-self: end;
+  min-width: 112px;
   min-height: 44px;
   padding: 0 13px;
   border-color: rgba(220,230,235,.13);
