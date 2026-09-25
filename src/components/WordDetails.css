@@ -1,13 +1,21 @@
 .entry-copy { font-family: var(--ui-font), var(--arabic-font); overflow-wrap: break-word; }
 .detail-sheet .sheet-header {
   position: sticky;
-  top: 0;
+  top: -12px;
   z-index: 2;
-  margin: -4px -2px 0;
-  padding: 4px 2px 13px;
-  border-bottom: 1px solid transparent;
-  background: transparent;
-  backdrop-filter: none;
+  margin: -12px -27px 0;
+  padding: 16px 27px 14px;
+  border-bottom: 1px solid color-mix(in srgb, var(--sheet-tone) 7%, transparent);
+  background:
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--sheet-surface-start) 92%, transparent),
+      color-mix(in srgb, var(--sheet-surface-end) 94%, transparent)
+    );
+  background-color: rgba(8,12,14,.94);
+  box-shadow: 0 16px 20px -22px rgba(0,0,0,.92);
+  backdrop-filter: blur(14px) saturate(1.08);
+  -webkit-backdrop-filter: blur(14px) saturate(1.08);
 }
 .detail-sheet .sheet-header.sheet-header-compact {
   position: absolute;
@@ -95,7 +103,12 @@
 
 @media (max-width: 600px) {
   .detail-sheet .sheet-header {
-    padding-top: 2px;
+    top: -12px;
+    margin-right: -24px;
+    margin-left: -24px;
+    padding-top: 14px;
+    padding-right: max(24px, env(safe-area-inset-right));
+    padding-left: max(24px, env(safe-area-inset-left));
   }
   .detail-sheet .sheet-header.sheet-header-compact {
     top: 20px;

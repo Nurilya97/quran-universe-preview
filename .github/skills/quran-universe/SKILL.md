@@ -644,7 +644,7 @@ The interface should remain:
 
 The ayah/root itself is primary. Panels and explanations support it and must not dominate the screen.
 
-For Word Orbit/detail sheets, the draggable/sticky header belongs to the same visual surface as the sheet. Do not give the title/close row a separately coloured or blurred header band unless the user explicitly approves a distinct layer.
+For Word Orbit/detail sheets, the draggable/sticky header belongs to the same visual surface as the sheet. It must keep enough same-surface background and/or restrained backdrop blur that scrolled content never visually collides with the title or close control. The header may blur the sheet behind it, but must not read as a differently coloured standalone bar.
 
 ## 22. Script handling
 

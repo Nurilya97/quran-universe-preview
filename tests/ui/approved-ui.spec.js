@@ -214,9 +214,18 @@ test.describe('approved Quran Universe UI contracts', () => {
         backdropFilter: style.backdropFilter,
       }
     })
-    expect(meaningHeaderSurface.backgroundImage).toBe('none')
-    expect(meaningHeaderSurface.backgroundColor).toBe('rgba(0, 0, 0, 0)')
-    expect(meaningHeaderSurface.backdropFilter).toBe('none')
+    expect(meaningHeaderSurface.backgroundImage).not.toBe('none')
+    expect(meaningHeaderSurface.backgroundColor).not.toBe('rgba(0, 0, 0, 0)')
+
+    await meaningSheet.evaluate((node) => { node.scrollTop = 220 })
+    await page.waitForTimeout(80)
+    const stickyHeader = meaningSheet.locator('.sheet-header')
+    const stickyBox = await stickyHeader.boundingBox()
+    const sheetBox = await meaningSheet.boundingBox()
+    expect(stickyBox).not.toBeNull()
+    expect(sheetBox).not.toBeNull()
+    expect(Math.abs(stickyBox.y - sheetBox.y)).toBeLessThanOrEqual(16)
+    await expect(meaningClose).toBeVisible()
   })
 
   test('ل ب ب root space keeps its orbit legend and same-family inner ring', async ({ page }, testInfo) => {
