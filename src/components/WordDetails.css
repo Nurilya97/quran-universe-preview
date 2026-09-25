@@ -1157,6 +1157,19 @@ details.morph-board-callout[open] .morph-board-callout-body {
 .morph-board-ending {
   color: var(--board-ending);
 }
+
+/* taqwā: changed root letters stay visually inside the root family.
+   The final ىٰ remains a separate pattern element, but the word no longer
+   reads as an unrelated blue "added structure". */
+.morphology-entry-taqwa.morphology-entry-board .morph-board-rootShift {
+  color: var(--board-root);
+}
+.morphology-entry-taqwa.morphology-entry-board .morph-board-form {
+  color: var(--board-paper);
+}
+.morphology-entry-taqwa.morphology-entry-board .morph-board-key .key-added {
+  color: var(--board-paper);
+}
 .morph-board-fusion {
   color: transparent;
   background: linear-gradient(90deg, var(--board-root) 0 46%, var(--board-added) 54% 100%);
@@ -1430,6 +1443,27 @@ details.morph-board-callout[open] .morph-board-callout-body {
   --morph-ending: #c65cff;
   --morph-particle: #59f2ff;
   --morph-form: #f7f8fa;
+}
+
+/* taqwā: rootShift is a root relationship, not a separate colour category.
+   Keep the change explicit in labels/arrows while unifying the letters with
+   the root colour. Other words retain the approved neon taxonomy unchanged. */
+.morphology-entry-taqwa.morphology-entry-neon {
+  --morph-root-shift: var(--morph-root);
+}
+.morphology-entry-taqwa.morphology-entry-neon .morph-analysis .morph-rootShift {
+  color: var(--morph-root);
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+}
+.morphology-entry-taqwa.morphology-entry-neon .morph-legend-rootShift {
+  color: var(--morph-root);
+}
+.morphology-entry-taqwa.morphology-entry-neon .morph-legend-rootShift i,
+.morphology-entry-taqwa.morphology-entry-neon .morph-components .morph-dot.morph-rootShift {
+  color: var(--morph-root);
+  background: currentColor;
 }
 
 /* When the restored analysis is selected, return the original compact
