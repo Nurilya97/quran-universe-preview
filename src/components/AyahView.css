@@ -7542,3 +7542,14 @@
 .analysis-focus-view-switch button:active {
   opacity: .72;
 }
+
+
+@media (prefers-reduced-motion: reduce) {
+  .ayah-back,
+  .ayah-context-trigger,
+  .ayah-space-modes button,
+  .ayah-space-zoom button,
+  .analysis-focus-view-switch button {
+    transition: none;
+  }
+}
