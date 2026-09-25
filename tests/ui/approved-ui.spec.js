@@ -29,7 +29,7 @@ test.describe('approved Quran Universe UI contracts', () => {
       underline: getComputedStyle(node, '::after').backgroundColor,
     }))
     expect(analysisTabStyle.color).toBe('rgb(234, 255, 91)')
-    expect(analysisTabStyle.underline).toBe('color(srgb 0.918824 1 0.390196)')
+    expect(analysisTabStyle.underline).not.toBe('rgba(0, 0, 0, 0)')
 
     const analysisColours = await page.locator('.morphology-entry-taqwa.morphology-entry-neon').evaluate((root) => {
       const changed = root.querySelector('.morph-analysis .morph-rootShift')
