@@ -53,6 +53,23 @@ test.describe('approved Quran Universe UI contracts', () => {
     expect(analysisColours.form).not.toBe(analysisColours.root)
     expect(analysisColours.changedBackground).toBe('none')
 
+    const formSemantics = await page.locator('.morphology-entry-taqwa.morphology-entry-neon').evaluate((root) => {
+      const section = root.querySelector('.morph-taqwa-form')
+      const label = section?.querySelector('.morph-block-label')
+      const title = section?.querySelector('.morph-pattern-heading > strong')
+      const pattern = section?.querySelector('.morph-pattern-heading [lang="ar"]')
+      if (!label || !title || !pattern) return null
+      return {
+        label: getComputedStyle(label).color,
+        title: getComputedStyle(title).color,
+        pattern: getComputedStyle(pattern).color,
+      }
+    })
+    expect(formSemantics).not.toBeNull()
+    expect(formSemantics.label).toBe('rgb(234, 255, 91)')
+    expect(formSemantics.title).toBe('rgb(234, 255, 91)')
+    expect(formSemantics.pattern).toBe('rgb(234, 255, 91)')
+
     const diagramTab = viewTabs.getByRole('button', { name: 'Схема' })
     await diagramTab.click()
     await expect(diagramTab).toHaveClass(/is-active/)
@@ -60,6 +77,21 @@ test.describe('approved Quran Universe UI contracts', () => {
 
     const board = page.locator('.morph-board')
     await expect(board).toBeVisible()
+
+    const boardFormCallout = board.locator('.morph-board-callout-form').first()
+    await expect(boardFormCallout).toBeVisible()
+    const boardFormColours = await boardFormCallout.evaluate((node) => {
+      const label = node.querySelector('.morph-board-callout-label, summary > span')
+      const pattern = node.querySelector('.morph-board-callout-term > [lang="ar"], summary > b')
+      if (!label || !pattern) return null
+      return {
+        label: getComputedStyle(label).color,
+        pattern: getComputedStyle(pattern).color,
+      }
+    })
+    expect(boardFormColours).not.toBeNull()
+    expect(boardFormColours.label).toBe('rgb(234, 255, 91)')
+    expect(boardFormColours.pattern).toBe('rgb(234, 255, 91)')
 
     const units = board.locator('.morph-board-flow-unit')
     await expect(units).toHaveCount(4)
