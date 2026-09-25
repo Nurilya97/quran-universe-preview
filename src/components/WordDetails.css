@@ -6,8 +6,8 @@
   margin: -4px -2px 0;
   padding: 4px 2px 13px;
   border-bottom: 1px solid transparent;
-  background: linear-gradient(180deg, rgba(10,14,17,.96) 0%, rgba(10,14,17,.83) 72%, rgba(10,14,17,0) 100%);
-  backdrop-filter: blur(12px);
+  background: transparent;
+  backdrop-filter: none;
 }
 .detail-sheet .sheet-header.sheet-header-compact {
   position: absolute;
