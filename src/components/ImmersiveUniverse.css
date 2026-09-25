@@ -599,13 +599,13 @@ h1:focus { outline: none; }
   width: var(--diameter);
   aspect-ratio: 1;
   transform: translate(-50%, -50%);
-  border: 1px solid #dce5e91f;
+  border: 1px solid rgba(255,255,255,.14);
   border-radius: 50%;
-  box-shadow: inset 0 0 38px #dce8ee02;
+  box-shadow: inset 0 0 38px rgba(255,255,255,.008);
   pointer-events: none;
 }
-.root-orbit-V { border-color: #dce5e91b; }
-.root-orbit-VIII { border-color: #dce5e91d; }
+.root-orbit-V { border-color: rgba(255,255,255,.12); }
+.root-orbit-VIII { border-color: rgba(255,255,255,.13); }
 .root-orbit > span {
   position: absolute;
   left: -13px;
@@ -613,7 +613,7 @@ h1:focus { outline: none; }
   transform: translate(-100%, -50%);
   padding: 0;
   background: transparent;
-  color: #7d8990;
+  color: rgba(255,255,255,.52);
   font-size: 10px;
   font-weight: 520;
   letter-spacing: .07em;
@@ -703,14 +703,14 @@ h1:focus { outline: none; }
 }
 .arabic { font-family: var(--arabic-font, 'Noto Sans Arabic', serif); }
 .root-star .arabic {
-  color: #e9edef;
+  color: #fff;
   font-size: 26px;
   line-height: 1.5;
   text-shadow: 0 1px 10px #000;
   transition: color .22s var(--ease-soft), text-shadow .22s var(--ease-soft);
 }
 .root-star-featured .arabic {
-  color: #f5f7f8;
+  color: #fff;
   font-size: 31px;
 }
 .root-star-featured .star-point { width: 6px; height: 6px; }
@@ -1183,7 +1183,7 @@ h1:focus { outline: none; }
 
 /* Quran attestation is encoded by the star point, not by the word itself. */
 .root-star-quranic .arabic {
-  color: #e9edef;
+  color: #fff;
   text-shadow: 0 1px 10px #000;
 }
 .root-star-quranic .star-point,
@@ -1263,11 +1263,11 @@ h1:focus { outline: none; }
 }
 .root-stage-lbb .root-orbit-inner {
   border-style: dashed;
-  border-color: #dce5e91a;
+  border-color: rgba(255,255,255,.11);
 }
 .root-stage-lbb .root-orbit > span {
   left: -16px;
-  color: #78848b;
+  color: rgba(255,255,255,.52);
   font-size: 10px;
 }
 .root-stage-lbb .root-star { min-width: 60px; }
