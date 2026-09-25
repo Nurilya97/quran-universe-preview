@@ -6795,13 +6795,9 @@
   content: none;
 }
 
-.composition-flow .composition-constellation > small {
-  font-size: 12px !important;
-}
-
 .composition-flow .composition-constellation h3 {
   max-width: 710px;
-  margin: 8px auto 0 !important;
+  margin: 4px auto 0 !important;
   font-size: 28px !important;
 }
 
@@ -6908,10 +6904,6 @@
     max-width: 540px !important;
     font-size: 23px !important;
     line-height: 1.58 !important;
-  }
-
-  .composition-flow .composition-constellation > small {
-    font-size: 12px !important;
   }
 
   .composition-flow .composition-constellation h3 {
@@ -7184,35 +7176,6 @@
   }
 }
 
-
-/* Rhetoric heading cleanup — one title only, with the step number beside it. */
-.rhetoric-step {
-  display: none !important;
-}
-
-.rhetoric-insight > h3 {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-}
-
-.rhetoric-title-step {
-  display: inline-grid;
-  place-items: center;
-  flex: 0 0 auto;
-  min-width: 34px;
-  height: 22px;
-  padding: 0 8px;
-  border: 1px solid rgba(202,177,211,.15);
-  border-radius: 999px;
-  background: rgba(190, 164, 200, .035);
-  color: #9e8ca6;
-  font-size: 9px;
-  font-weight: 560;
-  line-height: 1;
-  letter-spacing: .04em;
-}
 
 
 /* Taqwa meaning — show the semantic movement explicitly. */
