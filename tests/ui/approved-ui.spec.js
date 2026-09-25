@@ -86,6 +86,9 @@ test.describe('approved Quran Universe UI contracts', () => {
     const structureSheet = page.locator('dialog.detail-sheet[open]')
     await expect(structureSheet).toBeVisible()
 
+    await expect(structureSheet).toHaveAttribute('data-presentation', 'sheet')
+    expect(await structureSheet.evaluate((node) => node.matches(':modal'))).toBe(false)
+
     const structureClose = structureSheet.locator('.sheet-header-compact .icon-button')
     const closeBox = await structureClose.boundingBox()
     expect(closeBox).not.toBeNull()
