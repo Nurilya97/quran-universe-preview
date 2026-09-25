@@ -460,8 +460,8 @@ h1:focus { outline: none; }
   top: 24%;
 }
 .node-structure {
-  --node-tone: #8feaf1;
-  --node-glow: #59f2ff;
+  --node-tone: #eaff5b;
+  --node-glow: #eaff5b;
   left: 82%;
   top: 49%;
 }
