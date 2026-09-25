@@ -422,7 +422,7 @@ These are separate analytical dimensions.
 
 ### Rhetoric
 Show a rhetorical mechanism only when it is actually evidenced in the construction.
-In the public rhetoric view, let the evidence text stand on its own without the micro-heading **«Что здесь видно»**. Use one real heading **«Связь» / “Connection”** for the explanation, and merge the former “how it connects” + “what this shows” prose under that heading instead of stacking three label-like subsections.
+In the public rhetoric view, let the evidence and explanation text stand on their own. Do not insert redundant micro-headings such as **«Связь»**, **«Как устроена связь»**, **«Что она даёт»** or their English equivalents when the surrounding rhetoric block already establishes the context. Preserve the mechanism/effect content itself; remove label clutter, not meaning.
 
 ### Composition
 Show how the parts of the ayah/sequence are arranged and why the order matters.
@@ -641,6 +641,8 @@ The interface should remain:
 - progressively disclosed.
 
 The ayah/root itself is primary. Panels and explanations support it and must not dominate the screen.
+
+For Word Orbit/detail sheets, the draggable/sticky header belongs to the same visual surface as the sheet. Do not give the title/close row a separately coloured or blurred header band unless the user explicitly approves a distinct layer.
 
 ## 22. Script handling
 
