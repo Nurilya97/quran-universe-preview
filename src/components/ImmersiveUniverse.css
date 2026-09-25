@@ -960,6 +960,7 @@ h1:focus { outline: none; }
     background: rgba(2,5,8,.62);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+    transition: background-color .18s linear;
   }
   .detail-sheet.is-dragging::backdrop,
   .detail-sheet.is-settling::backdrop {
@@ -1067,7 +1068,9 @@ h1:focus { outline: none; }
     padding-left: max(24px, env(safe-area-inset-left));
   }
   .detail-sheet {
-    transform: translateY(var(--sheet-drag-y, 0px));
+    transform: translate3d(0, var(--sheet-drag-y, 0px), 0);
+    will-change: transform;
+    backface-visibility: hidden;
   }
   .detail-sheet.is-dragging {
     animation: none !important;
