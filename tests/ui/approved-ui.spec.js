@@ -230,13 +230,17 @@ test.describe('approved Quran Universe UI contracts', () => {
       return {
         arabic: getComputedStyle(star.querySelector('.arabic')).color,
         point: getComputedStyle(star.querySelector('.star-point')).backgroundColor,
+        pointShadow: getComputedStyle(star.querySelector('.star-point')).boxShadow,
         legend: getComputedStyle(legendDot).backgroundColor,
+        legendShadow: getComputedStyle(legendDot).boxShadow,
       }
     })
     expect(quranAccent).not.toBeNull()
     expect(quranAccent.arabic).toBe('rgb(233, 237, 239)')
     expect(quranAccent.point).toBe('rgb(114, 255, 134)')
+    expect(quranAccent.pointShadow).toBe('none')
     expect(quranAccent.legend).toBe('rgb(114, 255, 134)')
+    expect(quranAccent.legendShadow).toBe('none')
 
     const rootLabel = rootStage.locator('.root-core h1')
     await expect(rootLabel).toHaveAttribute('lang', 'ar')
