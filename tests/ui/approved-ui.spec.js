@@ -121,7 +121,20 @@ test.describe('approved Quran Universe UI contracts', () => {
     await page.mouse.move(x, y)
     await page.mouse.down()
     await page.mouse.move(x, y + 110, { steps: 8 })
+    const draggedTop = (await structureSheet.boundingBox())?.y
     await page.mouse.up()
+
+    await page.waitForTimeout(90)
+    const midDismiss = await structureSheet.evaluate((node) => ({
+      hidden: node.hidden,
+      top: node.getBoundingClientRect().top,
+      dragY: node.style.getPropertyValue('--sheet-drag-y'),
+    }))
+    if (!midDismiss.hidden && draggedTop != null) {
+      expect(midDismiss.top).toBeGreaterThanOrEqual(draggedTop - 1)
+      expect(midDismiss.dragY).not.toBe('0px')
+    }
+
     await expect(page.locator('.detail-sheet.is-open')).toHaveCount(0)
 
     const orbitAfter = await orbit.evaluate((node) => {
