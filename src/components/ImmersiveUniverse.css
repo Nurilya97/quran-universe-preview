@@ -580,8 +580,8 @@ h1:focus { outline: none; }
   height: 6px;
   flex: 0 0 6px;
   border-radius: 50%;
-  background: #8dffb0;
-  box-shadow: 0 0 9px 2px #8dffb04d;
+  background: #72ff86;
+  box-shadow: 0 0 9px 2px #72ff864d;
 }
 
 .root-field {
@@ -1183,18 +1183,18 @@ h1:focus { outline: none; }
 
 /* Quran-attested words are the only coloured stars. */
 .root-star-quranic .arabic {
-  color: #8dffb0;
-  text-shadow: 0 0 11px #8dffb02c, 0 1px 10px #000;
+  color: #72ff86;
+  text-shadow: 0 0 11px #72ff862c, 0 1px 10px #000;
 }
 .root-star-quranic .star-point {
-  background: #8dffb0;
-  box-shadow: 0 0 7px 2px #8dffb05c, 0 0 24px 7px #8dffb018;
+  background: #72ff86;
+  box-shadow: 0 0 7px 2px #72ff865c, 0 0 24px 7px #72ff8618;
 }
-.root-star-quranic .transliteration { color: #9fd7ae; }
+.root-star-quranic .transliteration { color: #86c995; }
 .root-star-quranic:hover .arabic,
 .root-star-quranic:focus-visible .arabic {
-  color: #c9ffd8;
-  text-shadow: 0 0 16px #8dffb042, 0 1px 10px #000;
+  color: #b8ffc3;
+  text-shadow: 0 0 16px #72ff8642, 0 1px 10px #000;
 }
 
 @media (max-width: 720px) {
