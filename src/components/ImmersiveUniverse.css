@@ -663,7 +663,7 @@ h1:focus { outline: none; }
   text-shadow: 0 0 35px #e3ebef37;
   transition: transform .3s var(--ease-space), text-shadow .3s var(--ease-soft);
 }
-.root-core-reading {
+.root-core .root-core-reading.transliteration {
   display: block;
   margin-top: 5px;
   color: rgba(255,255,255,.72);
@@ -1088,7 +1088,7 @@ h1:focus { outline: none; }
   .root-legend b { font-size: 9.5px; }
   .root-field { top: 51%; width: min(calc(100vw - 48px), calc(100dvh - 210px)); }
   .root-core h1 { font-size: 30px; }
-  .root-core-reading {
+  .root-core .root-core-reading.transliteration {
     margin-top: 6px;
     font-size: 11px;
   }
