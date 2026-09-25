@@ -1452,6 +1452,16 @@ details.morph-board-callout[open] .morph-board-callout-body {
   background: color-mix(in srgb, var(--structure-accent) 88%, white 12%);
   box-shadow: 0 0 8px color-mix(in srgb, var(--structure-accent) 42%, transparent);
 }
+
+/* Keep the Structure accent stable across both inner views.
+   Historical board styles must not reset the active tab to muted gray. */
+.structure-sheet .morph-view-tabs button.is-active {
+  color: var(--structure-accent) !important;
+}
+.structure-sheet .morph-view-tabs button.is-active::after {
+  background: #eaff5b !important;
+  box-shadow: 0 0 8px rgba(234,255,91,.42) !important;
+}
 .morph-view-neon {
   --morph-root: #f7f8fa;
   --morph-prefix: #7cff8b;
