@@ -422,6 +422,7 @@ These are separate analytical dimensions.
 
 ### Rhetoric
 Show a rhetorical mechanism only when it is actually evidenced in the construction.
+Prefer direct positive explanation over defensive contrast copy. Avoid filler formulations such as “это показывает X, а не Y”, “this shows X rather than Y”, or “не заменяет…” when they merely justify the text instead of adding evidence. If the point can be stated directly, state it directly.
 In the public rhetoric view, let the evidence and explanation text stand on their own. Do not insert redundant micro-headings such as **«Связь»**, **«Как устроена связь»**, **«Что она даёт»** or their English equivalents when the surrounding rhetoric block already establishes the context. Preserve the mechanism/effect content itself; remove label clutter, not meaning.
 
 ### Composition
