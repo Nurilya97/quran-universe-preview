@@ -7683,3 +7683,122 @@
     line-height: 1.62;
   }
 }
+
+
+/* Ayah Space constellation wayfinding — quiet orientation for long reading flows. */
+.ayah-reading-rail {
+  --rail-accent: #dce6e9;
+  position: absolute;
+  z-index: 29;
+  top: 50%;
+  right: max(14px, env(safe-area-inset-right));
+  display: grid;
+  grid-auto-rows: 36px;
+  align-items: center;
+  padding: 8px 0;
+  transform: translateY(-50%);
+}
+.ayah-reading-rail.mode-composition {
+  --rail-accent: #a7e2ce;
+}
+.ayah-reading-rail.mode-rhetoric {
+  --rail-accent: #c7b3cf;
+}
+.ayah-reading-rail::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 25px;
+  bottom: 25px;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, transparent, rgba(204,216,221,.12) 12%, rgba(204,216,221,.12) 88%, transparent);
+}
+.ayah-reading-rail button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #778188;
+  font: inherit;
+  cursor: pointer;
+}
+.ayah-reading-rail button > i {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #9aa4aa;
+  box-shadow: 0 0 8px rgba(205,217,222,.10);
+  opacity: .54;
+  transition:
+    width .18s var(--ease-soft),
+    height .18s var(--ease-soft),
+    opacity .18s var(--ease-soft),
+    background-color .18s var(--ease-soft),
+    box-shadow .18s var(--ease-soft);
+}
+.ayah-reading-rail button > span {
+  position: absolute;
+  top: 50%;
+  right: 31px;
+  transform: translateY(-50%);
+  color: color-mix(in srgb, var(--rail-accent) 72%, #68737a);
+  font-size: 9px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .04em;
+  opacity: 0;
+  transition: opacity .18s var(--ease-soft);
+}
+.ayah-reading-rail button:hover > i,
+.ayah-reading-rail button:focus-visible > i {
+  width: 6px;
+  height: 6px;
+  opacity: .82;
+}
+.ayah-reading-rail button:focus-visible {
+  outline: 1px solid color-mix(in srgb, var(--rail-accent) 44%, transparent);
+  outline-offset: -6px;
+  border-radius: 999px;
+}
+.ayah-reading-rail button.is-active > i {
+  width: 7px;
+  height: 7px;
+  background: var(--rail-accent);
+  box-shadow:
+    0 0 10px color-mix(in srgb, var(--rail-accent) 48%, transparent),
+    0 0 26px color-mix(in srgb, var(--rail-accent) 16%, transparent);
+  opacity: 1;
+}
+.ayah-reading-rail button.is-active > span {
+  opacity: .76;
+}
+
+@media (max-width: 760px) {
+  .ayah-reading-rail {
+    top: 52%;
+    right: max(1px, env(safe-area-inset-right));
+    grid-auto-rows: 44px;
+    padding: 4px 0;
+  }
+  .ayah-reading-rail button {
+    width: 44px;
+    height: 44px;
+  }
+  .ayah-reading-rail button > span {
+    right: 29px;
+    font-size: 9.5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ayah-reading-rail button > i,
+  .ayah-reading-rail button > span {
+    transition: none;
+  }
+}

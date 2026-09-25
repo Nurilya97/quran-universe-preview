@@ -114,6 +114,7 @@ test('design evidence · ayah 2:197 composition · mobile', async ({ page }, tes
   await openAyah197(page)
   await page.getByRole('tab', { name: 'Композиция' }).click()
   await expect(page.getByRole('heading', { name: 'Нить аята', level: 2 })).toBeVisible()
+  await expect(page.locator('.ayah-reading-rail.mode-composition')).toBeVisible()
   await snap(page, testInfo, 'ayah-2-197-composition-mobile')
 })
 
@@ -125,5 +126,6 @@ test('design evidence · ayah 2:197 rhetoric · mobile', async ({ page }, testIn
   await expect(page.getByText('Как устроена связь')).toHaveCount(0)
   await expect(page.getByText('Что она даёт')).toHaveCount(0)
   await expect(page.locator('.rhetoric-connection li > span').first()).toBeVisible()
+  await expect(page.locator('.ayah-reading-rail.mode-rhetoric')).toBeVisible()
   await snap(page, testInfo, 'ayah-2-197-rhetoric-mobile')
 })
