@@ -451,4 +451,22 @@ test.describe('approved Quran Universe UI contracts', () => {
     expect(hintStyle.color).not.toBe('rgb(121, 246, 255)')
   })
 
+
+  test('reduced-motion preference disables the new interaction transitions', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' })
+    await page.setViewportSize({ width: 390, height: 844 })
+    await page.goto('spatial.html')
+
+    const searchTransition = await page.locator('.search-submit').evaluate((element) => getComputedStyle(element).transitionDuration)
+    expect(searchTransition).toBe('0s')
+
+    await openSearch(page, 'taqwa')
+    await page.locator('.node-quran').click()
+    const reference = page.locator('.quran-reference-grid button.has-prototype').filter({ hasText: '2:197' })
+    await reference.click()
+
+    const backTransition = await page.locator('.ayah-back').evaluate((element) => getComputedStyle(element).transitionDuration)
+    expect(backTransition).toBe('0s')
+  })
+
 })
