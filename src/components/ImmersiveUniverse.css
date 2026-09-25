@@ -1187,6 +1187,8 @@ h1:focus { outline: none; }
   text-shadow: 0 1px 10px #000;
 }
 .root-star-quranic .star-point {
+  width: 6px;
+  height: 6px;
   background: #72ff86;
   box-shadow: none;
 }
