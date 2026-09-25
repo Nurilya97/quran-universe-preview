@@ -899,6 +899,7 @@
 
 /* Word Structure v3 — visual board / blackboard-style morphology */
 .structure-sheet {
+  --structure-accent: #eaff5b;
   width: min(860px, calc(100vw - 72px));
   max-height: calc(100dvh - 96px);
   background:
@@ -1437,17 +1438,19 @@ details.morph-board-callout[open] .morph-board-callout-body {
 }
 .morph-view-tabs button.is-active {
   background: linear-gradient(145deg, rgba(255,255,255,.085), rgba(255,255,255,.035));
-  color: #edf3f5;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.055), 0 0 18px rgba(89,242,255,.025);
+  color: var(--structure-accent);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.055),
+    0 0 20px color-mix(in srgb, var(--structure-accent) 8%, transparent);
 }
 .morph-view-tabs button.is-active::after {
   content: '';
   display: block;
-  width: 15px;
+  width: 16px;
   height: 1px;
   margin: 5px auto -6px;
-  background: rgba(89,242,255,.78);
-  box-shadow: 0 0 7px rgba(89,242,255,.38);
+  background: color-mix(in srgb, var(--structure-accent) 88%, white 12%);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--structure-accent) 42%, transparent);
 }
 .morph-view-neon {
   --morph-root: #f7f8fa;
