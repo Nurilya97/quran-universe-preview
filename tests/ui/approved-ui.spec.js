@@ -227,10 +227,13 @@ test.describe('approved Quran Universe UI contracts', () => {
       const star = stage.querySelector('.root-star-quranic')
       const legendDot = stage.querySelector('.root-legend-quran')
       if (!star || !legendDot) return null
+      const pointStyle = getComputedStyle(star.querySelector('.star-point'))
       return {
         arabic: getComputedStyle(star.querySelector('.arabic')).color,
-        point: getComputedStyle(star.querySelector('.star-point')).backgroundColor,
-        pointShadow: getComputedStyle(star.querySelector('.star-point')).boxShadow,
+        point: pointStyle.backgroundColor,
+        pointWidth: pointStyle.width,
+        pointHeight: pointStyle.height,
+        pointShadow: pointStyle.boxShadow,
         legend: getComputedStyle(legendDot).backgroundColor,
         legendShadow: getComputedStyle(legendDot).boxShadow,
       }
@@ -238,6 +241,8 @@ test.describe('approved Quran Universe UI contracts', () => {
     expect(quranAccent).not.toBeNull()
     expect(quranAccent.arabic).toBe('rgb(233, 237, 239)')
     expect(quranAccent.point).toBe('rgb(114, 255, 134)')
+    expect(quranAccent.pointWidth).toBe('6px')
+    expect(quranAccent.pointHeight).toBe('6px')
     expect(quranAccent.pointShadow).toBe('none')
     expect(quranAccent.legend).toBe('rgb(114, 255, 134)')
     expect(quranAccent.legendShadow).toBe('none')
