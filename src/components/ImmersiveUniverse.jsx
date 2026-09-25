@@ -521,7 +521,6 @@ export function ImmersiveUniverse() {
     <dialog ref={dialog} className={'detail-sheet' + (panel ? ' detail-sheet-' + panel : '') + (panel === 'structure' ? ' structure-sheet' : '')}
       aria-labelledby={panel === 'structure' ? undefined : 'sheet-title'}
       aria-label={panel === 'structure' ? t.structure : undefined}
-      aria-modal={dialog.current?.dataset.presentation === 'modal' ? 'true' : undefined}
       onCancel={(event) => { event.preventDefault(); closePanel() }}
       onClick={(event) => { if (event.target === event.currentTarget) closePanel() }}>
       <div className="sheet-inner">
