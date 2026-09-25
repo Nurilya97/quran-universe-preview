@@ -241,11 +241,24 @@ test.describe('approved Quran Universe UI contracts', () => {
     expect(quranAccent).not.toBeNull()
     expect(quranAccent.arabic).toBe('rgb(233, 237, 239)')
     expect(quranAccent.point).toBe('rgb(114, 255, 134)')
-    expect(quranAccent.pointWidth).toBe('6px')
-    expect(quranAccent.pointHeight).toBe('6px')
+    expect(quranAccent.pointWidth).toBe('7px')
+    expect(quranAccent.pointHeight).toBe('7px')
     expect(quranAccent.pointShadow).toBe('none')
     expect(quranAccent.legend).toBe('rgb(114, 255, 134)')
     expect(quranAccent.legendShadow).toBe('none')
+
+    const markerSizes = await rootStage.evaluate((stage) => ({
+      quranic: [...stage.querySelectorAll('.root-star-quranic .star-point')].map(point => getComputedStyle(point).width),
+      featuredQuranic: [...stage.querySelectorAll('.root-star-featured.root-star-quranic .star-point')].map(point => getComputedStyle(point).width),
+      ordinary: [...stage.querySelectorAll('.root-star:not(.root-star-quranic) .star-point')].map(point => getComputedStyle(point).width),
+      legend: getComputedStyle(stage.querySelector('.root-legend-quran')).width,
+    }))
+    expect(markerSizes.quranic.length).toBeGreaterThan(1)
+    expect(new Set(markerSizes.quranic)).toEqual(new Set(['7px']))
+    expect(new Set(markerSizes.featuredQuranic)).toEqual(new Set(['7px']))
+    expect(markerSizes.ordinary.length).toBeGreaterThan(0)
+    expect(new Set(markerSizes.ordinary)).toEqual(new Set(['4px']))
+    expect(markerSizes.legend).toBe('7px')
 
     const rootLabel = rootStage.locator('.root-core h1')
     await expect(rootLabel).toHaveAttribute('lang', 'ar')
