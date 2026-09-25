@@ -434,6 +434,8 @@ For both **Composition** and **Rhetoric**, navigation is a vertical reading flow
 - preserve stable side gutters on mobile;
 - mobile zoom must not force sideways navigation;
 - mouse/trackpad wheel moves through the flow vertically; pinch and the explicit +/- controls remain available for scale;
+- a thin constellation-style reading rail may sit in the side gutter to show the current block and jump between verified blocks; it must read as spatial wayfinding, not as a conventional scrollbar, card, or second content column;
+- the rail must remain visually subordinate: neutral line, small nodes, one restrained active glow, no persistent text labels except a compact active index;
 - this vertical-only navigation rule does not apply to Analysis or Root Space.
 
 ### Context
