@@ -411,8 +411,17 @@ test.describe('approved Quran Universe UI contracts', () => {
     await expect(contextTrigger).toContainText('Контекст')
     const contextTriggerBox = await contextTrigger.boundingBox()
     expect(contextTriggerBox).not.toBeNull()
-    expect(contextTriggerBox.width).toBeGreaterThanOrEqual(96)
-    expect(contextTriggerBox.height).toBeGreaterThanOrEqual(44)
+    const contextTriggerCss = await contextTrigger.evaluate((node) => {
+      const style = getComputedStyle(node)
+      return {
+        width: Number.parseFloat(style.width),
+        height: Number.parseFloat(style.height),
+      }
+    })
+    expect(contextTriggerCss.width).toBeGreaterThanOrEqual(120)
+    expect(contextTriggerCss.height).toBeGreaterThanOrEqual(44)
+    expect(contextTriggerBox.width).toBeGreaterThanOrEqual(90)
+    expect(contextTriggerBox.height).toBeGreaterThanOrEqual(36)
 
     const words = ayah.locator('.analysis-inline-word')
     await expect(words).toHaveCount(29)
