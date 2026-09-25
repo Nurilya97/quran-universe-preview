@@ -1053,7 +1053,45 @@ h1:focus { outline: none; }
     padding-bottom: max(30px, env(safe-area-inset-bottom));
     padding-left: max(24px, env(safe-area-inset-left));
   }
-  .sheet-handle { display: block; width: 34px; height: 3px; margin: 0 auto 24px; border-radius: 3px; background: #d6d9de45; }
+  .detail-sheet {
+    transform: translateY(var(--sheet-drag-y, 0px));
+  }
+  .detail-sheet.is-dragging {
+    animation: none !important;
+    transition: none !important;
+  }
+  .detail-sheet.is-settling {
+    transition: transform .22s var(--ease-space);
+  }
+  .detail-sheet.is-dismissing {
+    transition: transform .18s cubic-bezier(.4, 0, 1, 1);
+  }
+  .sheet-handle {
+    position: relative;
+    display: block;
+    width: 58px;
+    height: 28px;
+    margin: 0 auto 10px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    touch-action: none;
+    cursor: grab;
+  }
+  .sheet-handle::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 8px;
+    width: 34px;
+    height: 3px;
+    transform: translateX(-50%);
+    border-radius: 3px;
+    background: #d6d9de45;
+  }
+  .detail-sheet.is-dragging .sheet-handle {
+    cursor: grabbing;
+  }
   .sheet-header-compact {
     top: 12px;
     right: max(24px, env(safe-area-inset-right));
