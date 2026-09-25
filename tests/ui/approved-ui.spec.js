@@ -78,15 +78,33 @@ test.describe('approved Quran Universe UI contracts', () => {
     })
   })
 
-  test('mobile detail sheets keep close on the right and drag handle dismisses', async ({ page }) => {
+  test('mobile detail sheets stay in-layer, keep close on the right, and dismiss without restarting the orbit', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 })
     await openSearch(page, 'taqwa')
+
+    const orbit = page.locator('.orbit-field')
+    await expect(orbit).toBeVisible()
+    const orbitBefore = await orbit.evaluate((node) => {
+      const rect = node.getBoundingClientRect()
+      const stage = node.closest('.word-stage')
+      const stageAnimation = stage?.getAnimations?.()[0]
+      return {
+        x: rect.x,
+        y: rect.y,
+        width: rect.width,
+        height: rect.height,
+        transform: getComputedStyle(node).transform,
+        stageAnimationName: stage ? getComputedStyle(stage).animationName : 'none',
+        stageAnimationState: stageAnimation?.playState || 'none',
+      }
+    })
 
     await page.locator('.node-structure').click()
     const structureSheet = page.locator('.detail-sheet.is-open')
     await expect(structureSheet).toBeVisible()
 
     await expect(structureSheet).toHaveAttribute('data-presentation', 'sheet')
+    expect(await structureSheet.evaluate((node) => node.tagName)).toBe('SECTION')
     expect(await structureSheet.evaluate((node) => node.matches(':modal'))).toBe(false)
 
     const structureClose = structureSheet.locator('.sheet-header-compact .icon-button')
@@ -105,6 +123,29 @@ test.describe('approved Quran Universe UI contracts', () => {
     await page.mouse.move(x, y + 110, { steps: 8 })
     await page.mouse.up()
     await expect(page.locator('.detail-sheet.is-open')).toHaveCount(0)
+
+    const orbitAfter = await orbit.evaluate((node) => {
+      const rect = node.getBoundingClientRect()
+      const stage = node.closest('.word-stage')
+      const stageAnimation = stage?.getAnimations?.()[0]
+      return {
+        x: rect.x,
+        y: rect.y,
+        width: rect.width,
+        height: rect.height,
+        transform: getComputedStyle(node).transform,
+        stageAnimationName: stage ? getComputedStyle(stage).animationName : 'none',
+        stageAnimationState: stageAnimation?.playState || 'none',
+      }
+    })
+
+    expect(Math.abs(orbitAfter.x - orbitBefore.x)).toBeLessThanOrEqual(.5)
+    expect(Math.abs(orbitAfter.y - orbitBefore.y)).toBeLessThanOrEqual(.5)
+    expect(Math.abs(orbitAfter.width - orbitBefore.width)).toBeLessThanOrEqual(.5)
+    expect(Math.abs(orbitAfter.height - orbitBefore.height)).toBeLessThanOrEqual(.5)
+    expect(orbitAfter.transform).toBe(orbitBefore.transform)
+    expect(orbitAfter.stageAnimationName).toBe(orbitBefore.stageAnimationName)
+    expect(orbitAfter.stageAnimationState).toBe('finished')
 
     await page.locator('.node-meaning').click()
     const meaningSheet = page.locator('.detail-sheet.is-open')
