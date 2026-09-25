@@ -288,10 +288,47 @@ test.describe('approved Quran Universe UI contracts', () => {
       }
     })
     expect(readability).not.toBeNull()
-    expect(readability.transliteration).toBe('rgba(255, 255, 255, 0.62)')
+    expect(readability.transliteration).toBe('rgba(255, 255, 255, 0.68)')
     expect(Number(readability.transliterationWeight)).toBeGreaterThanOrEqual(400)
     expect(readability.brand).toBe('rgb(255, 255, 255)')
     expect(readability.brandOpacity).toBe('1')
+
+    const hierarchy = await rootStage.evaluate((stage) => {
+      const intro = stage.querySelector('.root-intro .eyebrow')
+      const forms = stage.querySelector('.forms-button')
+      const reading = stage.querySelector('.root-core-reading')
+      const rootMeta = stage.querySelector('.root-core-trigger > span')
+      const star = stage.querySelector('.root-star')
+      if (!intro || !forms || !reading || !rootMeta || !star) return null
+      const introStyle = getComputedStyle(intro)
+      const formsStyle = getComputedStyle(forms)
+      const readingStyle = getComputedStyle(reading)
+      const rootMetaStyle = getComputedStyle(rootMeta)
+      return {
+        introColor: introStyle.color,
+        introSize: introStyle.fontSize,
+        formsColor: formsStyle.color,
+        formsSize: formsStyle.fontSize,
+        readingColor: readingStyle.color,
+        readingMarginTop: readingStyle.marginTop,
+        rootMetaColor: rootMetaStyle.color,
+        starOpacity: getComputedStyle(star).opacity,
+      }
+    })
+    expect(hierarchy).not.toBeNull()
+    expect(hierarchy.introColor).toBe('rgba(255, 255, 255, 0.72)')
+    expect(hierarchy.introSize).toBe('11px')
+    expect(hierarchy.formsColor).toBe('rgba(255, 255, 255, 0.74)')
+    expect(hierarchy.formsSize).toBe('13px')
+    expect(hierarchy.readingColor).toBe('rgba(255, 255, 255, 0.72)')
+    expect(hierarchy.readingMarginTop).toBe('6px')
+    expect(hierarchy.rootMetaColor).toBe('rgba(255, 255, 255, 0.46)')
+    expect(hierarchy.starOpacity).toBe('1')
+
+    const rootReading = rootStage.locator('.root-core-reading')
+    await expect(rootReading).toBeVisible()
+    await expect(rootReading).toHaveAttribute('lang', 'ar-Latn')
+    await expect(rootReading).toHaveAttribute('dir', 'ltr')
 
     const rootLabel = rootStage.locator('.root-core h1')
     await expect(rootLabel).toHaveAttribute('lang', 'ar')
