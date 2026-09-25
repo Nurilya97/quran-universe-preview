@@ -581,7 +581,7 @@ h1:focus { outline: none; }
   flex: 0 0 6px;
   border-radius: 50%;
   background: #72ff86;
-  box-shadow: 0 0 9px 2px #72ff864d;
+  box-shadow: none;
 }
 
 .root-field {
@@ -1188,7 +1188,7 @@ h1:focus { outline: none; }
 }
 .root-star-quranic .star-point {
   background: #72ff86;
-  box-shadow: 0 0 7px 2px #72ff865c, 0 0 24px 7px #72ff8618;
+  box-shadow: none;
 }
 .root-star-quranic .transliteration { color: #7a858c; }
 .root-star-quranic:hover .arabic,
@@ -1198,7 +1198,7 @@ h1:focus { outline: none; }
 }
 .root-star-quranic:hover .star-point,
 .root-star-quranic:focus-visible .star-point {
-  box-shadow: 0 0 10px 3px #72ff8670, 0 0 30px 10px #72ff8624;
+  box-shadow: none;
 }
 
 @media (max-width: 720px) {
