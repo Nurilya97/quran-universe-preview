@@ -2929,10 +2929,11 @@
     border-radius: 14px;
   }
   .ayah-context-trigger {
-    width: auto !important;
-    min-width: 104px;
+    width: 112px !important;
+    min-width: 112px !important;
     height: 44px !important;
     padding-inline: 13px;
+    flex: 0 0 112px;
     border-radius: 14px;
   }
 
