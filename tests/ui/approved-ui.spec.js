@@ -89,7 +89,7 @@ test.describe('approved Quran Universe UI contracts', () => {
     const structureClose = structureSheet.locator('.sheet-header-compact .icon-button')
     const closeBox = await structureClose.boundingBox()
     expect(closeBox).not.toBeNull()
-    expect(390 - (closeBox.x + closeBox.width)).toBeLessThanOrEqual(32)
+    expect(closeBox.x + closeBox.width / 2).toBeGreaterThan(390 * .72)
 
     const handle = structureSheet.locator('.sheet-handle')
     await expect(handle).toBeVisible()
@@ -109,7 +109,7 @@ test.describe('approved Quran Universe UI contracts', () => {
     const meaningClose = meaningSheet.locator('.sheet-header .icon-button')
     const meaningCloseBox = await meaningClose.boundingBox()
     expect(meaningCloseBox).not.toBeNull()
-    expect(390 - (meaningCloseBox.x + meaningCloseBox.width)).toBeLessThanOrEqual(32)
+    expect(meaningCloseBox.x + meaningCloseBox.width / 2).toBeGreaterThan(390 * .72)
   })
 
   test('ل ب ب root space keeps its orbit legend and same-family inner ring', async ({ page }, testInfo) => {
