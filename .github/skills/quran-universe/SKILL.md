@@ -642,6 +642,14 @@ The interface should remain:
 
 The ayah/root itself is primary. Panels and explanations support it and must not dominate the screen.
 
+System-polish rules:
+- use the shared motion/touch tokens before introducing one-off timing or target sizes;
+- frequent UI feedback should be quick and restrained; reserve longer cinematic motion for rare spatial journeys;
+- on mobile, primary interactive controls must keep at least a 44×44 CSS-pixel hit target even when the visible icon is smaller;
+- Arabic interface text must use the canonical `--arabic-font` stack unless a separately approved Quran-display face is intentionally introduced;
+- never use `transition: all`; name the properties that actually animate;
+- pressed/active feedback may change light, opacity or other non-geometric treatment, but must not displace orbit/root geometry.
+
 ## 22. Script handling
 
 Arabic, transliteration, and Russian must remain visually distinct.
