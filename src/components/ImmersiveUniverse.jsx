@@ -245,7 +245,7 @@ export function ImmersiveUniverse() {
     setPanel(nextPanel)
   }
 
-  function closePanel() {
+  function closePanel({ restoreFocus = true } = {}) {
     clearTimeout(sheetCloseTimer.current)
     const sheet = dialog.current
 
@@ -257,7 +257,9 @@ export function ImmersiveUniverse() {
     sheet?.classList.remove('is-dragging', 'is-settling', 'is-dismissing')
     sheetGesture.current = { active: false, pointerId: null, startY: 0, lastY: 0 }
     setPanel(null)
-    requestAnimationFrame(() => panelTrigger.current?.focus?.({ preventScroll: true }))
+    if (restoreFocus) {
+      requestAnimationFrame(() => panelTrigger.current?.focus?.({ preventScroll: true }))
+    }
   }
 
   function handleSheetPointerDown(event) {
@@ -308,7 +310,7 @@ export function ImmersiveUniverse() {
       }
       sheet.classList.add('is-dismissing')
       sheet.style.setProperty('--sheet-drag-y', '105dvh')
-      sheetCloseTimer.current = setTimeout(closePanel, 180)
+      sheetCloseTimer.current = setTimeout(() => closePanel({ restoreFocus: false }), 180)
       return
     }
 
