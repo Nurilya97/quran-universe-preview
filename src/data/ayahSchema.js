@@ -56,7 +56,26 @@ export function validateAyahRecord(record) {
     localizedCopy(block.en, `${label}.en`, ['title', 'text'])
   })
 
-  for (const [index, item] of (record.rhetoric || []).entries()) {
+  if (record.journey) {
+    localizedCopy(record.journey.ru, `${record.reference}.journey.ru`, ['guide', 'guideNote'])
+    localizedCopy(record.journey.en, `${record.reference}.journey.en`, ['guide', 'guideNote'])
+    assert(Array.isArray(record.journey.segments) && record.journey.segments.length > 0,
+      `${record.reference}.journey.segments must be non-empty`)
+
+    let previousJourneyEnd = 0
+    record.journey.segments.forEach((segment, index) => {
+      const label = `${record.reference}.journey.segments[${index}]`
+      assert(segment?.id, `${label}.id is required`)
+      validRange(segment.range, tokenCount, label)
+      assert(segment.range[0] > previousJourneyEnd,
+        `${record.reference}.journey.segments must be ordered and non-overlapping`)
+      previousJourneyEnd = segment.range[1]
+      localizedCopy(segment.ru, `${label}.ru`, ['meaning', 'note'])
+      localizedCopy(segment.en, `${label}.en`, ['meaning', 'note'])
+    })
+  }
+
+    for (const [index, item] of (record.rhetoric || []).entries()) {
     const label = `${record.reference}.rhetoric[${index}]`
     assert(item?.id, `${label}.id is required`)
     validRange(item.range, tokenCount, label)

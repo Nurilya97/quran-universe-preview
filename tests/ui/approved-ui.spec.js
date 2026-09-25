@@ -470,6 +470,22 @@ test.describe('approved Quran Universe UI contracts', () => {
 
     const ayah = page.locator('.ayah-space-shell')
     await expect(ayah).toBeVisible()
+
+    await expect(ayah.getByRole('tab', { name: 'Понять аят' })).toHaveAttribute('aria-selected', 'true')
+    const journey = ayah.locator('.ayah-journey')
+    await expect(journey).toBeVisible()
+    await expect(journey.locator('.ayah-journey-arabic')).toContainText('ٱلْحَجُّ')
+    await expect(journey.locator('.ayah-journey-guide')).toContainText('лучший запас — taqwā')
+    await expect(journey.locator('.ayah-journey-step')).toHaveCount(5)
+    await expect(journey.locator('.ayah-translation-toggle')).toContainText('Сравнить переводы')
+
+    const taqwaJourneyWord = journey.locator('.ayah-journey-step').nth(3).getByRole('button', { name: 'ٱلتَّقْوَىٰ' })
+    await taqwaJourneyWord.click()
+    await expect(page.locator('.word-meaning-view')).toBeVisible()
+    await page.locator('.word-focus-return').click()
+    await expect(page.locator('.word-meaning-view')).toHaveCount(0)
+
+    await ayah.getByRole('tab', { name: 'Исследовать' }).click()
     await expect(ayah.locator('.analysis-verse-reference > span')).toHaveText('2:197')
 
     const contextTrigger = ayah.locator('.ayah-context-trigger')
@@ -525,6 +541,7 @@ test.describe('approved Quran Universe UI contracts', () => {
     await reference.click()
 
     const ayah = page.locator('.ayah-space-shell')
+    await ayah.getByRole('tab', { name: 'Исследовать' }).click()
     const viewport = ayah.locator('.ayah-space-viewport')
     const world = ayah.locator('.ayah-space-world')
 
@@ -590,6 +607,7 @@ test.describe('approved Quran Universe UI contracts', () => {
     await reference.click()
 
     const ayah = page.locator('.ayah-space-shell')
+    await ayah.getByRole('tab', { name: 'Исследовать' }).click()
     const taqwa = ayah.locator('.analysis-inline-word').nth(25)
     await taqwa.click()
 

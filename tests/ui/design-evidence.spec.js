@@ -87,21 +87,32 @@ test('design evidence · Root forms panel · mobile', async ({ page }, testInfo)
   await snap(page, testInfo, 'root-forms-panel-mobile')
 })
 
-test('design evidence · ayah 2:197 analysis · desktop', async ({ page }, testInfo) => {
+test('design evidence · ayah 2:197 journey · desktop', async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 1280, height: 900 })
   await openAyah197(page)
-  await snap(page, testInfo, 'ayah-2-197-analysis-desktop')
+  await expect(page.locator('.ayah-journey')).toBeVisible()
+  await snap(page, testInfo, 'ayah-2-197-journey-desktop')
+})
+
+test('design evidence · ayah 2:197 journey · mobile', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await openAyah197(page)
+  await expect(page.locator('.ayah-journey')).toBeVisible()
+  await snap(page, testInfo, 'ayah-2-197-journey-mobile')
 })
 
 test('design evidence · ayah 2:197 analysis · mobile', async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await openAyah197(page)
+  await page.getByRole('tab', { name: 'Исследовать' }).click()
+  await expect(page.locator('.analysis-ayah-continuous')).toBeVisible()
   await snap(page, testInfo, 'ayah-2-197-analysis-mobile')
 })
 
 test('design evidence · ayah 2:197 word focus · mobile', async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await openAyah197(page)
+  await page.getByRole('tab', { name: 'Исследовать' }).click()
   const entry = page.locator('.analysis-inline-word.is-entry').first()
   await expect(entry).toBeVisible()
   await entry.click()
@@ -112,6 +123,7 @@ test('design evidence · ayah 2:197 word focus · mobile', async ({ page }, test
 test('design evidence · ayah 2:197 composition · mobile', async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await openAyah197(page)
+  await page.getByRole('tab', { name: 'Исследовать' }).click()
   await page.getByRole('tab', { name: 'Композиция' }).click()
   await expect(page.getByRole('heading', { name: 'Нить аята', level: 2 })).toBeVisible()
   await expect(page.locator('.ayah-reading-rail.mode-composition')).toBeVisible()
@@ -121,6 +133,7 @@ test('design evidence · ayah 2:197 composition · mobile', async ({ page }, tes
 test('design evidence · ayah 2:197 rhetoric · mobile', async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await openAyah197(page)
+  await page.getByRole('tab', { name: 'Исследовать' }).click()
   await page.getByRole('tab', { name: 'Риторика' }).click()
   await expect(page.getByRole('heading', { name: 'Связь', level: 4 })).toHaveCount(0)
   await expect(page.getByText('Как устроена связь')).toHaveCount(0)
