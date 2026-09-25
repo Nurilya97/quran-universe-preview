@@ -501,6 +501,10 @@ test.describe('approved Quran Universe UI contracts', () => {
 
     await page.getByRole('tab', { name: 'Риторика' }).click()
     await expect(ayah.locator('.rhetoric-title-step')).toHaveCount(0)
+    await expect(ayah.locator('.rhetoric-ending-row')).toHaveCount(0)
+    await expect(ayah.locator('.rhetoric-passage-sound')).toHaveCount(0)
+    await expect(ayah.locator('.rhetoric-passage-lens')).toContainText('единый смысловой блок о хадже')
+    await expect(ayah.locator('.rhetoric-passage-lens')).toContainText('Смысловая связь внутри блока')
     await expect(ayah.getByRole('heading', { name: 'Связь', level: 4 })).toHaveCount(0)
     await expect(ayah.getByText('Как устроена связь')).toHaveCount(0)
     await expect(ayah.getByText('Что она даёт')).toHaveCount(0)

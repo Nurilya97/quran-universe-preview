@@ -670,14 +670,14 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
         <h3>{lens[language].title}</h3>
         <p>{lens[language].text}</p>
 
-        <div className="rhetoric-ending-row">
+        {lens.anchors?.length > 0 && <div className="rhetoric-ending-row">
           {lens.anchors.map(item => <div key={item.ref} className={item.active ? 'is-active' : ''}>
             <span>{item.ref}</span>
             <b lang="ar" dir="rtl">{item.ar}</b>
           </div>)}
-        </div>
+        </div>}
 
-        <p className="rhetoric-passage-sound"><b>{ru ? 'Звучание' : 'Sound'}</b>{lens[language].sound}</p>
+        {lens[language].sound && <p className="rhetoric-passage-sound"><b>{ru ? 'Звучание' : 'Sound'}</b>{lens[language].sound}</p>}
         {lens[language].thread && <p className="rhetoric-passage-thread"><b>{ru ? 'Смысловая связь внутри блока' : 'Semantic link inside the block'}</b>{lens[language].thread}</p>}
 
         <div className="rhetoric-source-note">

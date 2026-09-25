@@ -84,12 +84,12 @@ export const WORD_CONTENT = {
     meaningMap: [
       {
         id: 'component',
-        ru: { title: 'Кораническое раскрытие', description: 'В 2:2–5 مُتَّقِين (muttaqīn) описаны через убеждения и поступки. Это показывает, как تَقْوَىٰ (taqwā) проявляется в жизни, а не заменяет её словарное определение.', items: [
+        ru: { title: 'Кораническое раскрытие', description: 'В 2:2–5 مُتَّقِين (muttaqīn) описаны через убеждения и поступки.', items: [
           { term: 'Вера в сокрытое и откровение', definition: 'Человек принимает руководство Аллаха и реальность, известную через откровение.' },
           { term: 'Молитва и расходование из дарованного', definition: 'Внутреннее состояние становится видимым в конкретных поступках.' },
           { term: 'Руководство и успех', definition: 'В 2:5 эти результаты названы после описания مُتَّقِين (muttaqīn).' },
         ] },
-        en: { title: 'Quranic unfolding', description: 'In 2:2–5, مُتَّقِين (muttaqīn) are described through convictions and actions. This shows how تَقْوَىٰ (taqwā) appears in life rather than replacing its lexical definition.', items: [
+        en: { title: 'Quranic unfolding', description: 'In 2:2–5, مُتَّقِين (muttaqīn) are described through convictions and actions.', items: [
           { term: 'Belief in the unseen and revelation', definition: 'The person accepts Allah’s guidance and realities known through revelation.' },
           { term: 'Prayer and spending from what is provided', definition: 'The inward state becomes visible in concrete actions.' },
           { term: 'Guidance and success', definition: 'In 2:5 these outcomes are named after the description of مُتَّقِين (muttaqīn).' },

@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.0",
   "policy": "critical_quran_data_requires_deliberate_baseline_update_after_review",
-  "updatedOn": "2026-09-23",
+  "updatedOn": "2026-09-25",
   "criticalFiles": [
     {
       "path": "src/ayahPrototype.js",
-      "gitBlobSha": "27b65ea554de9eea477c106dc6ec64338c635931",
+      "gitBlobSha": "0adc1d87ee272120fab3930cbb6fc998fb8343d0",
       "protects": "Ayah Space canonical records"
     },
     {

@@ -331,10 +331,14 @@ if (/религиоз/i.test(forbiddenPublicRussian)) {
 
 const passageLensRu = pilotAyah.passageLens?.ru
 if (!passageLensRu?.title?.includes('единый смысловой блок о хадже') ||
-    !passageLensRu?.sound?.includes('объединяет единая тема хаджа') ||
-    !passageLensRu?.sound?.includes('не используем эту конечную букву как признак, объединяющий блок') ||
-    /возможно|может|функци|не установлена/i.test(passageLensRu?.sound || '')) {
-  fail('2:196–203 sound note must state only observed sound facts and omit unestablished function')
+    !passageLensRu?.text?.includes('единой хадж-темы') ||
+    !passageLensRu?.thread?.includes('taqwā и знание') ||
+    passageLensRu?.sound ||
+    pilotAyah.passageLens?.anchors?.length) {
+  fail('2:196–203 passage lens must focus on the unified Hajj theme without ending/sound claims')
+}
+if (/Это показывает, как تَقْوَىٰ \(taqwā\) проявляется в жизни, а не заменяет её словарное определение/i.test(forbiddenPublicRussian)) {
+  fail('defensive contrast filler returned to taqwa meaning copy')
 }
 else {
   const pilotWords = buildPilotOrthographicWordMap(pilotAyah)
