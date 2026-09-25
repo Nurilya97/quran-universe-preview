@@ -28,7 +28,7 @@ test.describe('approved Quran Universe UI contracts', () => {
       color: getComputedStyle(node).color,
       underline: getComputedStyle(node, '::after').backgroundColor,
     }))
-    expect(analysisTabStyle.color).toBe('rgb(234, 255, 91)')
+    expect(analysisTabStyle.color).toBe('rgb(247, 248, 250)')
     expect(analysisTabStyle.underline).not.toBe('rgba(0, 0, 0, 0)')
 
     const analysisColours = await page.locator('.morphology-entry-taqwa.morphology-entry-neon').evaluate((root) => {
@@ -66,14 +66,14 @@ test.describe('approved Quran Universe UI contracts', () => {
       }
     })
     expect(formSemantics).not.toBeNull()
-    expect(formSemantics.label).toBe('rgb(234, 255, 91)')
-    expect(formSemantics.title).toBe('rgb(234, 255, 91)')
+    expect(formSemantics.label).toBe('rgb(247, 248, 250)')
+    expect(formSemantics.title).toBe('rgb(247, 248, 250)')
     expect(formSemantics.pattern).toBe('rgb(234, 255, 91)')
 
     const diagramTab = viewTabs.getByRole('button', { name: 'Схема' })
     await diagramTab.click()
     await expect(diagramTab).toHaveClass(/is-active/)
-    await expect.poll(async () => diagramTab.evaluate((node) => getComputedStyle(node).color)).toBe('rgb(234, 255, 91)')
+    await expect.poll(async () => diagramTab.evaluate((node) => getComputedStyle(node).color)).toBe('rgb(247, 248, 250)')
 
     const board = page.locator('.morph-board')
     await expect(board).toBeVisible()
@@ -90,7 +90,7 @@ test.describe('approved Quran Universe UI contracts', () => {
       }
     })
     expect(boardFormColours).not.toBeNull()
-    expect(boardFormColours.label).toBe('rgb(234, 255, 91)')
+    expect(boardFormColours.label).toBe('rgb(247, 248, 250)')
     expect(boardFormColours.pattern).toBe('rgb(234, 255, 91)')
 
     const units = board.locator('.morph-board-flow-unit')

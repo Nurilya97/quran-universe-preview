@@ -1438,7 +1438,7 @@ details.morph-board-callout[open] .morph-board-callout-body {
 }
 .morph-view-tabs button.is-active {
   background: linear-gradient(145deg, rgba(255,255,255,.085), rgba(255,255,255,.035));
-  color: var(--structure-accent);
+  color: #f7f8fa;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.055),
     0 0 20px color-mix(in srgb, var(--structure-accent) 8%, transparent);
@@ -1456,7 +1456,7 @@ details.morph-board-callout[open] .morph-board-callout-body {
 /* Keep the Structure accent stable across both inner views.
    Historical board styles must not reset the active tab to muted gray. */
 .structure-sheet .morph-view-tabs button.is-active {
-  color: var(--structure-accent) !important;
+  color: #f7f8fa !important;
 }
 .structure-sheet .morph-view-tabs button.is-active::after {
   background: #eaff5b !important;
@@ -1742,18 +1742,25 @@ details.morph-board-callout[open] .morph-board-callout-body {
 }
 
 
-/* Approved Form/model semantics: labels, model name, and Arabic pattern share the Form accent. */
+/* Approved Form/model semantics:
+   text labels stay white; only the Arabic pattern/model carries the Form accent. */
 .morphology-entry-neon .morph-taqwa-form .morph-block-label,
 .morphology-entry-neon .morph-taqwa-form .morph-pattern-heading > strong,
-.morphology-entry-neon .morph-taqwa-form .morph-pattern-heading .morph-arabic-pair > span,
 .morphology-entry-neon .morph-pattern-effect .morph-block-label,
-.morphology-entry-neon .morph-pattern-effect .morph-pattern-heading > strong,
+.morphology-entry-neon .morph-pattern-effect .morph-pattern-heading > strong {
+  color: #f7f8fa !important;
+}
+
+.morphology-entry-neon .morph-taqwa-form .morph-pattern-heading .morph-arabic-pair > span,
 .morphology-entry-neon .morph-pattern-effect .morph-pattern-heading .morph-arabic-pair > span {
   color: var(--morph-form) !important;
 }
 
 .morphology-entry-board .morph-board-callout-form .morph-board-callout-label,
-.morphology-entry-board .morph-board-callout-form summary > span,
+.morphology-entry-board .morph-board-callout-form summary > span {
+  color: #f7f8fa !important;
+}
+
 .morphology-entry-board .morph-board-callout-form .morph-board-callout-term > [lang='ar'],
 .morphology-entry-board .morph-board-callout-form summary > b {
   color: #eaff5b !important;
