@@ -956,6 +956,19 @@ h1:focus { outline: none; }
 .source-link svg { width: 15px; flex-shrink: 0; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 @media (max-width: 600px) {
+  .detail-sheet::backdrop {
+    background: rgba(2,5,8,.62);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .detail-sheet.is-dragging::backdrop,
+  .detail-sheet.is-settling::backdrop {
+    background: rgba(2,5,8,.60);
+  }
+  .detail-sheet.is-dismissing::backdrop {
+    background: rgba(2,5,8,.18);
+  }
+
   .universe-header {
     padding-top: max(14px, env(safe-area-inset-top));
     padding-right: max(18px, env(safe-area-inset-right));
