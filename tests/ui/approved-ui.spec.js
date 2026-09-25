@@ -285,13 +285,15 @@ test.describe('approved Quran Universe UI contracts', () => {
         transliterationWeight: getComputedStyle(transliteration).fontWeight,
         brand: getComputedStyle(brand).color,
         brandOpacity: getComputedStyle(brand).opacity,
+        brandSize: getComputedStyle(brand).fontSize,
       }
     })
     expect(readability).not.toBeNull()
     expect(readability.transliteration).toBe('rgba(255, 255, 255, 0.68)')
-    expect(Number(readability.transliterationWeight)).toBeGreaterThanOrEqual(400)
+    expect(readability.transliterationWeight).toBe('400')
     expect(readability.brand).toBe('rgb(255, 255, 255)')
     expect(readability.brandOpacity).toBe('1')
+    expect(readability.brandSize).toBe('15px')
 
     const hierarchy = await rootStage.evaluate((stage) => {
       const intro = stage.querySelector('.root-intro .eyebrow')
@@ -307,9 +309,11 @@ test.describe('approved Quran Universe UI contracts', () => {
       return {
         introColor: introStyle.color,
         introSize: introStyle.fontSize,
+        introWeight: introStyle.fontWeight,
         formsColor: formsStyle.color,
         formsSize: formsStyle.fontSize,
         readingColor: readingStyle.color,
+        readingWeight: readingStyle.fontWeight,
         readingMarginTop: readingStyle.marginTop,
         rootMetaColor: rootMetaStyle.color,
         starOpacity: getComputedStyle(star).opacity,
@@ -318,9 +322,11 @@ test.describe('approved Quran Universe UI contracts', () => {
     expect(hierarchy).not.toBeNull()
     expect(hierarchy.introColor).toBe('rgba(255, 255, 255, 0.72)')
     expect(hierarchy.introSize).toBe('11px')
+    expect(hierarchy.introWeight).toBe('400')
     expect(hierarchy.formsColor).toBe('rgba(255, 255, 255, 0.74)')
     expect(hierarchy.formsSize).toBe('13px')
     expect(hierarchy.readingColor).toBe('rgba(255, 255, 255, 0.72)')
+    expect(hierarchy.readingWeight).toBe('400')
     expect(hierarchy.readingMarginTop).toBe('6px')
     expect(hierarchy.rootMetaColor).toBe('rgba(255, 255, 255, 0.46)')
     expect(hierarchy.starOpacity).toBe('1')
