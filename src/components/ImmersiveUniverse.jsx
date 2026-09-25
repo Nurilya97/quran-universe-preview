@@ -40,6 +40,7 @@ export function ImmersiveUniverse() {
   const [rootZoom, setRootZoom] = useState(1)
   const [reducedMotion, setReducedMotion] = useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches)
   const timer = useRef(null)
+  const sheetCloseTimer = useRef(null)
   const dialog = useRef(null)
   const input = useRef(null)
   const destinationHeading = useRef(null)
@@ -47,6 +48,7 @@ export function ImmersiveUniverse() {
   const rootViewport = useRef(null)
   const rootZoomRef = useRef(1)
   const rootGesture = useRef({ mode: null, startDistance: 0, startZoom: 1, lastX: 0, lastY: 0 })
+  const sheetGesture = useRef({ active: false, pointerId: null, startY: 0, lastY: 0 })
   const t = COPY[language]
   const currentRoot = ROOT_DEMOS[rootKey] || ROOT_DEMOS.wqy
   const currentRootForms = formsForRoot(currentRoot.id)
@@ -61,13 +63,19 @@ export function ImmersiveUniverse() {
     const media = matchMedia('(prefers-reduced-motion: reduce)')
     const update = () => setReducedMotion(media.matches)
     media.addEventListener('change', update)
-    return () => { media.removeEventListener('change', update); clearTimeout(timer.current) }
+    return () => {
+      media.removeEventListener('change', update)
+      clearTimeout(timer.current)
+      clearTimeout(sheetCloseTimer.current)
+    }
   }, [])
 
   useEffect(() => {
     if (panel && dialog.current) {
       if (!dialog.current.open) dialog.current.showModal()
       dialog.current.scrollTop = 0
+      dialog.current.style.removeProperty('--sheet-drag-y')
+      dialog.current.classList.remove('is-dragging', 'is-settling', 'is-dismissing')
     }
     if (!panel && dialog.current?.open) dialog.current.close()
   }, [panel])
@@ -238,8 +246,81 @@ export function ImmersiveUniverse() {
   }
 
   function closePanel() {
+    clearTimeout(sheetCloseTimer.current)
+    const sheet = dialog.current
+    sheet?.style.removeProperty('--sheet-drag-y')
+    sheet?.classList.remove('is-dragging', 'is-settling', 'is-dismissing')
+    sheetGesture.current = { active: false, pointerId: null, startY: 0, lastY: 0 }
     setPanel(null)
     requestAnimationFrame(() => panelTrigger.current?.focus?.({ preventScroll: true }))
+  }
+
+  function handleSheetPointerDown(event) {
+    if (!matchMedia('(max-width: 600px)').matches) return
+    if (event.pointerType === 'mouse' && event.button !== 0) return
+    const sheet = dialog.current
+    if (!sheet) return
+
+    clearTimeout(sheetCloseTimer.current)
+    sheet.classList.remove('is-settling', 'is-dismissing')
+    sheet.classList.add('is-dragging')
+    sheetGesture.current = {
+      active: true,
+      pointerId: event.pointerId,
+      startY: event.clientY,
+      lastY: event.clientY,
+    }
+    event.currentTarget.setPointerCapture?.(event.pointerId)
+  }
+
+  function handleSheetPointerMove(event) {
+    const gesture = sheetGesture.current
+    if (!gesture.active || gesture.pointerId !== event.pointerId) return
+    const sheet = dialog.current
+    if (!sheet) return
+
+    const distance = Math.max(0, event.clientY - gesture.startY)
+    gesture.lastY = event.clientY
+    sheet.style.setProperty('--sheet-drag-y', Math.min(distance, window.innerHeight) + 'px')
+    event.preventDefault()
+  }
+
+  function finishSheetDrag(event, cancelled = false) {
+    const gesture = sheetGesture.current
+    if (!gesture.active || gesture.pointerId !== event.pointerId) return
+    const sheet = dialog.current
+    if (!sheet) return
+
+    const distance = Math.max(0, gesture.lastY - gesture.startY)
+    sheetGesture.current = { active: false, pointerId: null, startY: 0, lastY: 0 }
+    sheet.classList.remove('is-dragging')
+    event.currentTarget.releasePointerCapture?.(event.pointerId)
+
+    if (!cancelled && distance >= 72) {
+      if (reducedMotion) {
+        closePanel()
+        return
+      }
+      sheet.classList.add('is-dismissing')
+      sheet.style.setProperty('--sheet-drag-y', '105dvh')
+      sheetCloseTimer.current = setTimeout(closePanel, 180)
+      return
+    }
+
+    sheet.classList.add('is-settling')
+    sheet.style.setProperty('--sheet-drag-y', '0px')
+    sheetCloseTimer.current = setTimeout(() => {
+      sheet.classList.remove('is-settling')
+      sheet.style.removeProperty('--sheet-drag-y')
+    }, reducedMotion ? 0 : 220)
+  }
+
+  function handleSheetPointerUp(event) {
+    finishSheetDrag(event, false)
+  }
+
+  function handleSheetPointerCancel(event) {
+    finishSheetDrag(event, true)
   }
 
   function openAyah(item) {
@@ -431,7 +512,14 @@ export function ImmersiveUniverse() {
       onCancel={(event) => { event.preventDefault(); closePanel() }}
       onClick={(event) => { if (event.target === event.currentTarget) closePanel() }}>
       <div className="sheet-inner">
-        <div className="sheet-handle" aria-hidden="true" />
+        <div
+          className="sheet-handle"
+          aria-hidden="true"
+          onPointerDown={handleSheetPointerDown}
+          onPointerMove={handleSheetPointerMove}
+          onPointerUp={handleSheetPointerUp}
+          onPointerCancel={handleSheetPointerCancel}
+        />
         <header className={'sheet-header' + (panel === 'structure' ? ' sheet-header-compact' : '')}>
           {panel !== 'structure' && <div><p className="eyebrow">{panel === 'forms' || panel === 'root' ? t.rootSpace : t.orbit}</p><h2 id="sheet-title">{panelTitle}</h2></div>}
           <button className="icon-button" autoFocus onClick={closePanel} aria-label={t.close}><Icon name="close" /></button>
