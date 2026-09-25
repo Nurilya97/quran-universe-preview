@@ -239,7 +239,7 @@ test.describe('approved Quran Universe UI contracts', () => {
       }
     })
     expect(quranAccent).not.toBeNull()
-    expect(quranAccent.arabic).toBe('rgb(233, 237, 239)')
+    expect(quranAccent.arabic).toBe('rgb(255, 255, 255)')
     expect(quranAccent.point).toBe('rgb(114, 255, 134)')
     expect(quranAccent.pointWidth).toBe('6px')
     expect(quranAccent.pointHeight).toBe('6px')
@@ -259,6 +259,22 @@ test.describe('approved Quran Universe UI contracts', () => {
     expect(markerSizes.ordinary.length).toBeGreaterThan(0)
     expect(new Set(markerSizes.ordinary)).toEqual(new Set(['4px']))
     expect(markerSizes.legend).toBe('6px')
+
+    const whiteStructure = await rootStage.evaluate((stage) => {
+      const orbit = stage.querySelector('.root-orbit:not(.root-orbit-inner)')
+      const label = orbit?.querySelector('span')
+      const word = stage.querySelector('.root-star .arabic')
+      if (!orbit || !label || !word) return null
+      return {
+        word: getComputedStyle(word).color,
+        orbit: getComputedStyle(orbit).borderTopColor,
+        orbitLabel: getComputedStyle(label).color,
+      }
+    })
+    expect(whiteStructure).not.toBeNull()
+    expect(whiteStructure.word).toBe('rgb(255, 255, 255)')
+    expect(whiteStructure.orbit).toBe('rgba(255, 255, 255, 0.14)')
+    expect(whiteStructure.orbitLabel).toBe('rgba(255, 255, 255, 0.52)')
 
     const rootLabel = rootStage.locator('.root-core h1')
     await expect(rootLabel).toHaveAttribute('lang', 'ar')
