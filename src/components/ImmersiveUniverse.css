@@ -1181,20 +1181,24 @@ h1:focus { outline: none; }
   font-size: 9px;
 }
 
-/* Quran-attested words are the only coloured stars. */
+/* Quran attestation is encoded by the star point, not by the word itself. */
 .root-star-quranic .arabic {
-  color: #72ff86;
-  text-shadow: 0 0 11px #72ff862c, 0 1px 10px #000;
+  color: #e9edef;
+  text-shadow: 0 1px 10px #000;
 }
 .root-star-quranic .star-point {
   background: #72ff86;
   box-shadow: 0 0 7px 2px #72ff865c, 0 0 24px 7px #72ff8618;
 }
-.root-star-quranic .transliteration { color: #86c995; }
+.root-star-quranic .transliteration { color: #7a858c; }
 .root-star-quranic:hover .arabic,
 .root-star-quranic:focus-visible .arabic {
-  color: #b8ffc3;
-  text-shadow: 0 0 16px #72ff8642, 0 1px 10px #000;
+  color: #fff;
+  text-shadow: 0 1px 10px #000;
+}
+.root-star-quranic:hover .star-point,
+.root-star-quranic:focus-visible .star-point {
+  box-shadow: 0 0 10px 3px #72ff8670, 0 0 30px 10px #72ff8624;
 }
 
 @media (max-width: 720px) {
