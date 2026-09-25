@@ -248,6 +248,11 @@ export function ImmersiveUniverse() {
   function closePanel() {
     clearTimeout(sheetCloseTimer.current)
     const sheet = dialog.current
+
+    /* Close while the sheet is still at its current translated position.
+       Clearing transform first causes a visible snap-back before the dialog disappears. */
+    if (sheet?.open) sheet.close()
+
     sheet?.style.removeProperty('--sheet-drag-y')
     sheet?.classList.remove('is-dragging', 'is-settling', 'is-dismissing')
     sheetGesture.current = { active: false, pointerId: null, startY: 0, lastY: 0 }
