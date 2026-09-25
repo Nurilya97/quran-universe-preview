@@ -1,0 +1,477 @@
+.ayah-journey-viewport {
+  position: absolute;
+  z-index: 8;
+  inset: 108px 0 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(150,164,171,.18) transparent;
+}
+
+.ayah-journey {
+  width: min(900px, calc(100vw - 40px));
+  margin: 0 auto;
+  padding: 42px 0 110px;
+}
+
+.ayah-journey-hero {
+  width: min(790px, 100%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ayah-journey-kicker,
+.ayah-journey-parts header > small,
+.ayah-journey-deeper > small {
+  margin: 0;
+  color: #738087;
+  font-size: 10px;
+  font-weight: 620;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.ayah-journey-arabic {
+  margin: 22px auto 0;
+  color: #f0f3f4;
+  font-family: var(--arabic-font);
+  font-size: clamp(34px, 5.8vw, 58px);
+  font-weight: 400;
+  line-height: 1.9;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.ayah-journey-reference {
+  margin-top: 8px;
+  color: #7c878d;
+  font-size: 11px;
+  letter-spacing: .04em;
+}
+
+.ayah-journey-guide {
+  max-width: 760px;
+  margin: 30px auto 0;
+  color: #d7dddf;
+  font-size: clamp(18px, 2.2vw, 22px);
+  font-weight: 440;
+  line-height: 1.75;
+  text-wrap: balance;
+}
+
+.ayah-journey-guide-note {
+  max-width: 650px;
+  margin: 14px auto 0;
+  color: #78848a;
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+.ayah-translation-layer {
+  width: min(780px, 100%);
+  margin: 42px auto 0;
+  border-top: 1px solid rgba(255,255,255,.065);
+  border-bottom: 1px solid rgba(255,255,255,.055);
+}
+
+.ayah-translation-toggle {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "title icon"
+    "meta icon";
+  width: 100%;
+  min-height: 72px;
+  padding: 14px 2px;
+  border: 0;
+  background: transparent;
+  color: #d9dfe1;
+  text-align: left;
+}
+
+.ayah-translation-toggle > span {
+  grid-area: title;
+  font-size: 15px;
+  font-weight: 580;
+}
+
+.ayah-translation-toggle > small {
+  grid-area: meta;
+  margin-top: 4px;
+  color: #6f7a80;
+  font-size: 10.5px;
+}
+
+.ayah-translation-toggle > b {
+  grid-area: icon;
+  align-self: center;
+  color: #7e8a90;
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.ayah-translation-body {
+  padding: 4px 0 24px;
+}
+
+.ayah-translation-language {
+  display: inline-flex;
+  gap: 4px;
+  padding: 3px;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 999px;
+  background: rgba(7,10,12,.38);
+}
+
+.ayah-translation-language button {
+  min-width: 44px;
+  height: 34px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #707b81;
+  font: inherit;
+  font-size: 10.5px;
+}
+
+.ayah-translation-language button[aria-pressed='true'] {
+  background: rgba(255,255,255,.07);
+  color: #eef2f3;
+}
+
+.ayah-translation-note {
+  max-width: 650px;
+  margin: 14px 0 0;
+  color: #717d82;
+  font-size: 11.5px;
+  line-height: 1.6;
+}
+
+.ayah-translation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.ayah-translation-source {
+  min-height: 150px;
+  padding: 18px 18px 20px;
+  border: 1px solid rgba(255,255,255,.065);
+  border-radius: 18px;
+  background: rgba(8,12,14,.42);
+}
+
+.ayah-translation-source header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ayah-translation-source strong {
+  color: #e7ecee;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.ayah-translation-source a {
+  color: #718087;
+  font-size: 9.5px;
+  text-decoration: none;
+}
+
+.ayah-translation-source p {
+  margin: 16px 0 0;
+  color: #aeb8bd;
+  font-size: 13.5px;
+  line-height: 1.72;
+}
+
+.ayah-translation-source .ayah-translation-loading,
+.ayah-translation-source .ayah-translation-unavailable {
+  color: #6f7a80;
+  font-size: 11.5px;
+}
+
+.ayah-journey-parts {
+  width: min(780px, 100%);
+  margin: 78px auto 0;
+}
+
+.ayah-journey-parts > header {
+  max-width: 610px;
+  margin: 0 auto 34px;
+  text-align: center;
+}
+
+.ayah-journey-parts h2,
+.ayah-journey-deeper h2 {
+  margin: 10px 0 0;
+  color: #e8edef;
+  font-size: 28px;
+  font-weight: 620;
+  line-height: 1.25;
+}
+
+.ayah-journey-parts > header p,
+.ayah-journey-deeper p {
+  margin: 13px auto 0;
+  color: #7f8b91;
+  font-size: 13px;
+  line-height: 1.68;
+}
+
+.ayah-journey-thread {
+  position: relative;
+  width: 100%;
+}
+
+.ayah-journey-thread::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  bottom: 16px;
+  left: 21px;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(198,211,216,.12) 5%, rgba(198,211,216,.12) 95%, transparent);
+}
+
+.ayah-journey-step {
+  position: relative;
+  padding: 28px 0 34px 66px;
+  border-bottom: 1px solid rgba(255,255,255,.045);
+}
+
+.ayah-journey-step:last-child {
+  border-bottom: 0;
+}
+
+.ayah-journey-step-marker {
+  position: absolute;
+  left: 0;
+  top: 34px;
+  display: grid;
+  grid-template-columns: 43px;
+  place-items: center;
+  color: #657178;
+}
+
+.ayah-journey-step-marker i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #b6c4c9;
+  box-shadow: 0 0 14px rgba(182,196,201,.22);
+}
+
+.ayah-journey-step-marker span {
+  margin-top: 9px;
+  font-size: 9px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ayah-journey-phrase {
+  color: #dce2e4;
+  font-family: var(--arabic-font);
+  font-size: clamp(29px, 4vw, 42px);
+  line-height: 1.8;
+  text-align: left;
+}
+
+.ayah-journey-phrase button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  cursor: pointer;
+  transition: color .18s var(--ease-soft), text-shadow .18s var(--ease-soft);
+}
+
+.ayah-journey-phrase button:hover,
+.ayah-journey-phrase button:focus-visible {
+  color: #f5f7f8;
+  text-shadow: 0 0 14px rgba(210,227,233,.16);
+  outline: none;
+}
+
+.ayah-journey-step h3 {
+  max-width: 620px;
+  margin: 11px 0 0;
+  color: #e7ecee;
+  font-size: 18px;
+  font-weight: 590;
+  line-height: 1.42;
+}
+
+.ayah-journey-step > p {
+  max-width: 650px;
+  margin: 8px 0 0;
+  color: #8f9aa0;
+  font-size: 13px;
+  line-height: 1.68;
+}
+
+.ayah-journey-deeper {
+  width: min(650px, 100%);
+  margin: 72px auto 0;
+  padding: 34px 0 0;
+  border-top: 1px solid rgba(255,255,255,.065);
+  text-align: center;
+}
+
+.ayah-journey-deeper button {
+  min-height: 46px;
+  margin-top: 22px;
+  padding: 0 18px;
+  border: 1px solid rgba(210,222,227,.13);
+  border-radius: 999px;
+  background: rgba(12,17,20,.56);
+  color: #dfe5e7;
+  font: inherit;
+  font-size: 12px;
+}
+
+.ayah-experience-nav {
+  position: absolute;
+  z-index: 29;
+  top: 57px;
+  left: 50%;
+  display: inline-flex;
+  gap: 3px;
+  transform: translateX(-50%);
+  padding: 3px;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 999px;
+  background: rgba(7,10,12,.52);
+  box-shadow: 0 14px 42px rgba(0,0,0,.18);
+  backdrop-filter: blur(16px);
+}
+
+.ayah-experience-nav button {
+  min-height: 44px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #6e7a80;
+  font: inherit;
+  font-size: 11px;
+}
+
+.ayah-experience-nav button[aria-selected='true'] {
+  background: linear-gradient(180deg, rgba(255,255,255,.085), rgba(255,255,255,.035));
+  color: #eef2f4;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.ayah-space-shell.is-research .ayah-space-modes {
+  top: 108px;
+}
+
+.ayah-space-shell.is-research .ayah-space-viewport {
+  top: 50px;
+}
+
+@media (max-width: 760px) {
+  .ayah-journey-viewport {
+    inset-top: 108px;
+  }
+
+  .ayah-journey {
+    width: min(100% - 28px, 690px);
+    padding-top: 34px;
+  }
+
+  .ayah-journey-arabic {
+    font-size: 34px;
+    line-height: 1.95;
+  }
+
+  .ayah-journey-guide {
+    margin-top: 24px;
+    font-size: 18px;
+    line-height: 1.72;
+  }
+
+  .ayah-journey-guide-note {
+    font-size: 11.5px;
+  }
+
+  .ayah-translation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ayah-translation-source {
+    min-height: 0;
+  }
+
+  .ayah-journey-parts {
+    margin-top: 64px;
+  }
+
+  .ayah-journey-parts h2,
+  .ayah-journey-deeper h2 {
+    font-size: 25px;
+  }
+
+  .ayah-journey-step {
+    padding-left: 52px;
+  }
+
+  .ayah-journey-thread::before {
+    left: 17px;
+  }
+
+  .ayah-journey-step-marker {
+    grid-template-columns: 35px;
+  }
+
+  .ayah-journey-phrase {
+    font-size: 30px;
+    text-align: right;
+  }
+
+  .ayah-journey-step h3 {
+    font-size: 17px;
+  }
+
+  .ayah-experience-nav {
+    width: calc(100vw - 36px);
+  }
+
+  .ayah-experience-nav button {
+    flex: 1;
+    padding-inline: 10px;
+  }
+
+  .ayah-space-shell.is-research .ayah-space-modes {
+    top: 108px;
+    width: calc(100vw - 36px);
+  }
+}
+
+@media (max-width: 420px) {
+  .ayah-journey {
+    width: calc(100% - 24px);
+  }
+
+  .ayah-journey-arabic {
+    font-size: 31px;
+  }
+
+  .ayah-journey-guide {
+    font-size: 17px;
+  }
+
+  .ayah-journey-step {
+    padding-left: 46px;
+  }
+
+  .ayah-journey-phrase {
+    font-size: 28px;
+  }
+}
