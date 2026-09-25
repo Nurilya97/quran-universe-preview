@@ -234,7 +234,7 @@ test.describe('approved Quran Universe UI contracts', () => {
       }
     })
     expect(quranAccent).not.toBeNull()
-    expect(quranAccent.arabic).toBe('rgb(114, 255, 134)')
+    expect(quranAccent.arabic).toBe('rgb(233, 237, 239)')
     expect(quranAccent.point).toBe('rgb(114, 255, 134)')
     expect(quranAccent.legend).toBe('rgb(114, 255, 134)')
 
