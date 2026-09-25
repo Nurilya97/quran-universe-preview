@@ -1765,3 +1765,32 @@ details.morph-board-callout[open] .morph-board-callout-body {
 .morphology-entry-board .morph-board-callout-form summary > b {
   color: #eaff5b !important;
 }
+
+
+/* Final Word Structure color contract:
+   Russian/UI labels stay white. Yellow belongs only to the visual Form marker
+   and the Arabic form/pattern itself. */
+.structure-sheet .morph-view-tabs button.is-active {
+  color: #f7f8fa !important;
+}
+
+.structure-sheet .morphology-entry-neon .morph-block-label,
+.structure-sheet .morphology-entry-neon .morph-pattern-heading > strong,
+.structure-sheet .morphology-entry-board .morph-board-callout-form .morph-board-callout-label,
+.structure-sheet .morphology-entry-board .morph-board-callout-form summary > span {
+  color: #f7f8fa !important;
+}
+
+.structure-sheet .morph-legend-form {
+  color: #f7f8fa !important;
+}
+.structure-sheet .morph-legend-form > i {
+  background: #eaff5b !important;
+}
+
+.structure-sheet .morphology-entry-neon .morph-taqwa-form .morph-pattern-heading .morph-arabic-pair > span,
+.structure-sheet .morphology-entry-neon .morph-pattern-effect .morph-pattern-heading .morph-arabic-pair > span,
+.structure-sheet .morphology-entry-board .morph-board-callout-form .morph-board-callout-term > [lang='ar'],
+.structure-sheet .morphology-entry-board .morph-board-callout-form summary > b {
+  color: #eaff5b !important;
+}
