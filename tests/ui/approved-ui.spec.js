@@ -223,6 +223,21 @@ test.describe('approved Quran Universe UI contracts', () => {
     await expect(rootStage.locator('.root-legend-orbit')).toHaveCount(1)
     await expect(rootStage.locator('.root-legend-inner')).toHaveCount(1)
 
+    const quranAccent = await rootStage.evaluate((stage) => {
+      const star = stage.querySelector('.root-star-quranic')
+      const legendDot = stage.querySelector('.root-legend-quran')
+      if (!star || !legendDot) return null
+      return {
+        arabic: getComputedStyle(star.querySelector('.arabic')).color,
+        point: getComputedStyle(star.querySelector('.star-point')).backgroundColor,
+        legend: getComputedStyle(legendDot).backgroundColor,
+      }
+    })
+    expect(quranAccent).not.toBeNull()
+    expect(quranAccent.arabic).toBe('rgb(255, 154, 47)')
+    expect(quranAccent.point).toBe('rgb(255, 154, 47)')
+    expect(quranAccent.legend).toBe('rgb(255, 154, 47)')
+
     const rootLabel = rootStage.locator('.root-core h1')
     await expect(rootLabel).toHaveAttribute('lang', 'ar')
     await expect(rootLabel).toHaveAttribute('dir', 'rtl')
