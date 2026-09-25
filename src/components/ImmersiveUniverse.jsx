@@ -39,6 +39,7 @@ export function ImmersiveUniverse() {
   const [ayahFocus, setAyahFocus] = useState(null)
   const [rootZoom, setRootZoom] = useState(1)
   const [reducedMotion, setReducedMotion] = useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches)
+  const [mobileSheet, setMobileSheet] = useState(() => matchMedia('(max-width: 600px)').matches)
   const timer = useRef(null)
   const sheetCloseTimer = useRef(null)
   const dialog = useRef(null)
@@ -71,19 +72,23 @@ export function ImmersiveUniverse() {
   }, [])
 
   useEffect(() => {
+    const media = matchMedia('(max-width: 600px)')
+    const update = () => setMobileSheet(media.matches)
+    update()
+    media.addEventListener('change', update)
+    return () => media.removeEventListener('change', update)
+  }, [])
+
+  useEffect(() => {
     if (panel && dialog.current) {
-      const mobileSheet = matchMedia('(max-width: 600px)').matches
-      if (!dialog.current.open) {
-        if (mobileSheet) dialog.current.show()
-        else dialog.current.showModal()
-      }
+      if (!mobileSheet && !dialog.current.open) dialog.current.showModal()
       dialog.current.dataset.presentation = mobileSheet ? 'sheet' : 'modal'
       dialog.current.scrollTop = 0
       dialog.current.style.removeProperty('--sheet-drag-y')
       dialog.current.classList.remove('is-dragging', 'is-settling', 'is-dismissing')
     }
-    if (!panel && dialog.current?.open) dialog.current.close()
-  }, [panel])
+    if (!panel && !mobileSheet && dialog.current?.open) dialog.current.close()
+  }, [panel, mobileSheet])
 
   useEffect(() => {
     const viewport = rootViewport.current
@@ -256,7 +261,7 @@ export function ImmersiveUniverse() {
 
     /* Close while the sheet is still at its current translated position.
        Clearing transform first causes a visible snap-back before the dialog disappears. */
-    if (sheet?.open) sheet.close()
+    if (!mobileSheet && sheet?.open) sheet.close()
 
     sheet?.style.removeProperty('--sheet-drag-y')
     sheet?.classList.remove('is-dragging', 'is-settling', 'is-dismissing')
@@ -268,7 +273,7 @@ export function ImmersiveUniverse() {
   }
 
   function handleSheetPointerDown(event) {
-    if (!matchMedia('(max-width: 600px)').matches) return
+    if (!mobileSheet) return
     if (event.pointerType === 'mouse' && event.button !== 0) return
     const sheet = dialog.current
     if (!sheet) return
@@ -412,6 +417,7 @@ export function ImmersiveUniverse() {
     { key: 'structure', left: '84%', top: '48%' },
     { key: 'meaning', left: '35%', top: '77%' },
   ]
+  const SheetElement = mobileSheet ? 'section' : 'dialog'
 
   return <main className={className}>
     <Cosmos scene={scene} journey={journey} paused={paused} reducedMotion={reducedMotion} />
@@ -518,11 +524,16 @@ export function ImmersiveUniverse() {
     </section>}
 
 
-    <dialog ref={dialog} className={'detail-sheet' + (panel ? ' detail-sheet-' + panel : '') + (panel === 'structure' ? ' structure-sheet' : '')}
+    <SheetElement
+      ref={dialog}
+      hidden={mobileSheet && !panel}
+      role={mobileSheet ? 'dialog' : undefined}
+      aria-modal={mobileSheet ? 'false' : undefined}
+      className={'detail-sheet' + (panel ? ' detail-sheet-' + panel : '') + (panel === 'structure' ? ' structure-sheet' : '')}
       aria-labelledby={panel === 'structure' ? undefined : 'sheet-title'}
       aria-label={panel === 'structure' ? t.structure : undefined}
-      onCancel={(event) => { event.preventDefault(); closePanel() }}
-      onClick={(event) => { if (event.target === event.currentTarget) closePanel() }}>
+      onCancel={!mobileSheet ? (event) => { event.preventDefault(); closePanel() } : undefined}
+      onClick={(event) => { if (!mobileSheet && event.target === event.currentTarget) closePanel() }}>
       <div className="sheet-inner">
         <div
           className="sheet-handle"
@@ -534,7 +545,7 @@ export function ImmersiveUniverse() {
         />
         <header className={'sheet-header' + (panel === 'structure' ? ' sheet-header-compact' : '')}>
           {panel !== 'structure' && <div><p className="eyebrow">{panel === 'forms' || panel === 'root' ? t.rootSpace : t.orbit}</p><h2 id="sheet-title">{panelTitle}</h2></div>}
-          <button className="icon-button" autoFocus onClick={closePanel} aria-label={t.close}><Icon name="close" /></button>
+          <button className="icon-button" autoFocus={!mobileSheet} onClick={closePanel} aria-label={t.close}><Icon name="close" /></button>
         </header>
         {panel !== 'forms' && panel !== 'structure' && <div className="sheet-word-label"><p className="sheet-word" lang="ar" dir="rtl">{panel === 'root' ? currentRoot.arabic : word.arabic}</p><small className="transliteration" lang="ar-Latn" dir="ltr">{panel === 'root' ? currentRoot.reading : word.reading}</small></div>}
         {panel === 'root' && <RootDetails language={language} rootKey={currentRoot.id} />}
@@ -544,7 +555,7 @@ export function ImmersiveUniverse() {
             <span className="word-label"><span className="arabic" lang="ar" dir="rtl">{form.arabic}</span><small className="transliteration" lang="ar-Latn" dir="ltr">{form.reading}</small></span><span>{t[form.type]}{form.lexicalOnly && <small className="lexical-tag">{t.lexical}</small>}</span><Icon name="arrow" /></button>)}
         </section>)}<p className="sheet-note">{t.formsNote}</p></>}
       </div>
-    </dialog>
+    </SheetElement>
   </main>
 }
 
