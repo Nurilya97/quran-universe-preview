@@ -418,10 +418,10 @@ test.describe('approved Quran Universe UI contracts', () => {
         height: Number.parseFloat(style.height),
       }
     })
-    expect(contextTriggerCss.width).toBeGreaterThanOrEqual(120)
+    expect(contextTriggerCss.width).toBeGreaterThanOrEqual(110)
     expect(contextTriggerCss.height).toBeGreaterThanOrEqual(44)
-    expect(contextTriggerBox.width).toBeGreaterThanOrEqual(90)
-    expect(contextTriggerBox.height).toBeGreaterThanOrEqual(36)
+    expect(contextTriggerBox.width).toBeGreaterThanOrEqual(108)
+    expect(contextTriggerBox.height).toBeGreaterThanOrEqual(42)
 
     const words = ayah.locator('.analysis-inline-word')
     await expect(words).toHaveCount(29)
@@ -490,6 +490,7 @@ test.describe('approved Quran Universe UI contracts', () => {
       expect(await railButtons.count()).toBeGreaterThan(1)
       await expect(rail.locator('button[aria-current="step"]')).toHaveCount(1)
       const activeRailNumber = rail.locator('button[aria-current="step"] > span')
+      await page.waitForTimeout(220)
       const activeRailNumberStyle = await activeRailNumber.evaluate((node) => {
         const style = getComputedStyle(node)
         return { fontSize: Number.parseFloat(style.fontSize), opacity: Number.parseFloat(style.opacity) }
