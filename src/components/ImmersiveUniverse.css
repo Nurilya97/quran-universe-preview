@@ -957,6 +957,22 @@ h1:focus { outline: none; }
 .source-link svg { width: 15px; flex-shrink: 0; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 @media (max-width: 600px) {
+  /* Mobile sheet opening must never own transform: drag/settle/dismiss are the
+     sole transform owners. Otherwise the opening keyframes resume on pointer-up
+     and visibly snap the sheet back upward before close. */
+  .detail-sheet.is-open {
+    animation: sheet-in-mobile .20s var(--ease-soft) both;
+  }
+  .detail-sheet.is-dragging,
+  .detail-sheet.is-settling,
+  .detail-sheet.is-dismissing {
+    animation: none !important;
+  }
+  @keyframes sheet-in-mobile {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
   /* Mobile sheets can be opened immediately after arriving in Word/Root space.
      Keep scene geometry fixed from the first frame so closing a sheet never
      reveals an orbit that has continued scaling underneath it. */
