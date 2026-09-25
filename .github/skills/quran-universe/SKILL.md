@@ -436,6 +436,7 @@ For both **Composition** and **Rhetoric**, navigation is a vertical reading flow
 - mouse/trackpad wheel moves through the flow vertically; pinch and the explicit +/- controls remain available for scale;
 - a thin constellation-style reading rail may sit in the side gutter to show the current block and jump between verified blocks; it must read as spatial wayfinding, not as a conventional scrollbar, card, or second content column;
 - the rail must remain visually subordinate: neutral line, small nodes, one restrained active glow, no persistent text labels except a compact active index;
+- when the reading rail is present, do not repeat stage numbers inside Composition or Rhetoric content blocks; numbering belongs to the rail, while the content keeps only its structural point/thread and semantic heading;
 - on mobile, the active step index must remain comfortably readable rather than decorative micro-type; target roughly 12px with full active opacity;
 - this vertical-only navigation rule does not apply to Analysis or Root Space.
 
