@@ -56,8 +56,7 @@ test.describe('approved Quran Universe UI contracts', () => {
     const diagramTab = viewTabs.getByRole('button', { name: 'Схема' })
     await diagramTab.click()
     await expect(diagramTab).toHaveClass(/is-active/)
-    const diagramTabColour = await diagramTab.evaluate((node) => getComputedStyle(node).color)
-    expect(diagramTabColour).toBe('rgb(234, 255, 91)')
+    await expect.poll(async () => diagramTab.evaluate((node) => getComputedStyle(node).color)).toBe('rgb(234, 255, 91)')
 
     const board = page.locator('.morph-board')
     await expect(board).toBeVisible()
