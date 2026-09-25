@@ -14,8 +14,22 @@ test.describe('approved Quran Universe UI contracts', () => {
     await openSearch(page, 'taqwa')
 
     await expect(page.locator('.word-stage')).toBeVisible()
+
+    const structureNodeColour = await page.locator('.node-structure .node-light').evaluate((node) => getComputedStyle(node).backgroundColor)
+    expect(structureNodeColour).toBe('rgb(234, 255, 91)')
+
     await page.locator('.node-structure').click()
     await expect(page.locator('.detail-sheet.is-open')).toBeVisible()
+
+    const viewTabs = page.locator('.morph-view-tabs')
+    const analysisTab = viewTabs.getByRole('button', { name: 'Разбор' })
+    await expect(analysisTab).toHaveClass(/is-active/)
+    const analysisTabStyle = await analysisTab.evaluate((node) => ({
+      color: getComputedStyle(node).color,
+      underline: getComputedStyle(node, '::after').backgroundColor,
+    }))
+    expect(analysisTabStyle.color).toBe('rgb(234, 255, 91)')
+    expect(analysisTabStyle.underline).not.toBe('rgba(0, 0, 0, 0)')
 
     const analysisColours = await page.locator('.morphology-entry-taqwa.morphology-entry-neon').evaluate((root) => {
       const changed = root.querySelector('.morph-analysis .morph-rootShift')
@@ -39,7 +53,11 @@ test.describe('approved Quran Universe UI contracts', () => {
     expect(analysisColours.form).not.toBe(analysisColours.root)
     expect(analysisColours.changedBackground).toBe('none')
 
-    await page.locator('.morph-view-tabs').getByRole('button', { name: 'Схема' }).click()
+    const diagramTab = viewTabs.getByRole('button', { name: 'Схема' })
+    await diagramTab.click()
+    await expect(diagramTab).toHaveClass(/is-active/)
+    await expect.poll(async () => diagramTab.evaluate((node) => getComputedStyle(node).color)).toBe('rgb(234, 255, 91)')
+
     const board = page.locator('.morph-board')
     await expect(board).toBeVisible()
 
