@@ -56,9 +56,12 @@ test.describe('approved Quran Universe UI contracts', () => {
     expect(geometry).not.toBeNull()
     expect(geometry.lineWidth).toBe('1px')
     expect(Math.abs(geometry.lineTop - geometry.firstCenter)).toBeLessThanOrEqual(3)
-    const arrowGap = geometry.secondCenter - geometry.lineBottom
-    expect(arrowGap).toBeGreaterThanOrEqual(4)
-    expect(arrowGap).toBeLessThanOrEqual(6)
+    // The requested 5px is the visible edge-to-edge gap. The measured
+    // center-to-line distance also includes the 2.5px dot radius and the
+    // rotated chevron's small visual protrusion.
+    const centerGap = geometry.secondCenter - geometry.lineBottom
+    expect(centerGap).toBeGreaterThanOrEqual(7)
+    expect(centerGap).toBeLessThanOrEqual(10)
     expect(geometry.dotContent).not.toBe('none')
     expect(geometry.dotTop).toBe('0px')
     expect(Number.parseFloat(geometry.dotWidth)).toBeGreaterThan(0)
