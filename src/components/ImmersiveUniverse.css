@@ -54,7 +54,7 @@ h1:focus { outline: none; }
   font-weight: 430;
   font-size: 13px;
   letter-spacing: .085em;
-  opacity: .78;
+  opacity: 1;
   transition:
     color .24s var(--ease-soft),
     opacity .24s var(--ease-soft),
