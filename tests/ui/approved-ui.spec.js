@@ -259,7 +259,9 @@ test.describe('approved Quran Universe UI contracts', () => {
     // The contract is marker styling consistency, not a minimum occurrence count.
     expect(markerSizes.quranic.length).toBeGreaterThan(0)
     expect(new Set(markerSizes.quranic)).toEqual(new Set(['6px']))
-    expect(new Set(markerSizes.featuredQuranic)).toEqual(new Set(['6px']))
+    if (markerSizes.featuredQuranic.length > 0) {
+      expect(new Set(markerSizes.featuredQuranic)).toEqual(new Set(['6px']))
+    }
     expect(markerSizes.ordinary.length).toBeGreaterThan(0)
     expect(new Set(markerSizes.ordinary)).toEqual(new Set(['4px']))
     expect(markerSizes.legend).toBe('6px')
