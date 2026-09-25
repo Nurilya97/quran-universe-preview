@@ -401,4 +401,72 @@ test.describe('approved Quran Universe UI contracts', () => {
     await expect(note.getByRole('heading', { name: 'Consciousness' })).toBeVisible()
     await expect(note).toContainText('state of understanding, realizing, or being aware')
   })
+
+  test('mobile polish keeps canonical Arabic typography, neutral hint, and 44px controls', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 })
+    await openSearch(page, 'taqwa')
+
+    const wordStage = page.locator('.word-stage')
+    await expect(wordStage).toBeVisible()
+
+    const coreTypography = await wordStage.locator('.word-core h1').evaluate((element) => {
+      const style = getComputedStyle(element)
+      return {
+        fontFamily: style.fontFamily,
+        animationDuration: getComputedStyle(element.closest('.stage-reveal')).animationDuration,
+      }
+    })
+    expect(coreTypography.fontFamily).toContain('Noto Sans Arabic')
+    expect(Number.parseFloat(coreTypography.animationDuration)).toBeLessThanOrEqual(.32)
+
+    await page.locator('.node-quran').click()
+    const reference = page.locator('.quran-reference-grid button.has-prototype').filter({ hasText: '2:197' })
+    await reference.click()
+
+    const ayah = page.locator('.ayah-space-shell')
+    await expect(ayah).toBeVisible()
+
+    for (const selector of ['.ayah-back', '.ayah-context-trigger', '.ayah-space-zoom button']) {
+      const target = ayah.locator(selector).first()
+      const size = await target.evaluate((element) => {
+        const rect = element.getBoundingClientRect()
+        return { width: rect.width, height: rect.height }
+      })
+      expect(size.width).toBeGreaterThanOrEqual(44)
+      expect(size.height).toBeGreaterThanOrEqual(44)
+    }
+
+    const hint = ayah.locator('.analysis-tap-hint')
+    await expect(hint).toBeVisible()
+    const hintStyle = await hint.evaluate((element) => {
+      const style = getComputedStyle(element)
+      return {
+        position: style.position,
+        textShadow: style.textShadow,
+        color: style.color,
+      }
+    })
+    expect(hintStyle.position).toBe('static')
+    expect(hintStyle.textShadow).toBe('none')
+    expect(hintStyle.color).not.toBe('rgb(121, 246, 255)')
+  })
+
+
+  test('reduced-motion preference disables the new interaction transitions', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' })
+    await page.setViewportSize({ width: 390, height: 844 })
+    await page.goto('spatial.html')
+
+    const searchTransition = await page.locator('.search-submit').evaluate((element) => getComputedStyle(element).transitionDuration)
+    expect(Number.parseFloat(searchTransition)).toBeLessThanOrEqual(.001)
+
+    await openSearch(page, 'taqwa')
+    await page.locator('.node-quran').click()
+    const reference = page.locator('.quran-reference-grid button.has-prototype').filter({ hasText: '2:197' })
+    await reference.click()
+
+    const backTransition = await page.locator('.ayah-back').evaluate((element) => getComputedStyle(element).transitionDuration)
+    expect(Number.parseFloat(backTransition)).toBeLessThanOrEqual(.001)
+  })
+
 })

@@ -558,8 +558,8 @@
   }
   .ayah-back,
   .ayah-context-trigger {
-    width: 37px;
-    height: 37px;
+    width: var(--touch-target);
+    height: var(--touch-target);
     padding: 0;
     justify-content: center;
   }
@@ -670,7 +670,10 @@
   background: #dce7ed;
   box-shadow: 0 0 8px #d9ecf55d;
   opacity: .52;
-  transition: all .18s ease;
+  transition:
+    opacity var(--motion-fast) var(--ease-out),
+    transform var(--motion-fast) var(--ease-out),
+    box-shadow var(--motion-fast) var(--ease-out);
 }
 .analysis-arabic-word > span {
   display: block;
@@ -2899,8 +2902,8 @@
     border-radius: 14px;
   }
   .ayah-space-zoom button {
-    width: 42px !important;
-    height: 42px !important;
+    width: var(--touch-target) !important;
+    height: var(--touch-target) !important;
     font-size: 18px !important;
   }
   .ayah-space-zoom span {
@@ -5050,22 +5053,6 @@
 }
 
 
-/* Current Ayah Space onboarding: keep the cyan cue visibly separated below the ayah reference. */
-.analysis-tap-hint {
-  position: static !important;
-  left: auto !important;
-  top: auto !important;
-  width: auto !important;
-  margin-top: 22px;
-  transform: none !important;
-  color: rgba(121,246,255,.95) !important;
-  font-size: 14px !important;
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: .015em;
-  text-shadow: 0 0 12px rgba(121,246,255,.18) !important;
-}
-
 /* Context headings are reading anchors, not metadata labels. */
 .ayah-context-section > small {
   color: #d7e7df !important;
@@ -5123,12 +5110,6 @@
 }
 
 @media (max-width:760px) {
-  .analysis-tap-hint {
-    margin-top: 20px;
-    font-size: 15px !important;
-    text-shadow: 0 0 12px rgba(121,246,255,.18) !important;
-  }
-
   .ayah-context-section > small {
     font-size: 13.5px !important;
   }
@@ -5150,11 +5131,6 @@
 }
 
 @media (max-width:420px) {
-  .analysis-tap-hint {
-    margin-top: 18px;
-    font-size: 14px !important;
-  }
-
   .analysis-morphology-level.first-level,
   .analysis-morphology-level.second-level {
     gap: 14px !important;
@@ -5194,10 +5170,15 @@
 }
 
 
-/* Ayah onboarding hint: neutral, readable guidance below the verse reference.
-   Keep it clearly subordinate to the Arabic ayah text. */
+/* Ayah onboarding hint: one canonical neutral rule.
+   It owns both placement and appearance so no legacy cyan layer is required. */
 .analysis-ayah-group .analysis-tap-hint {
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  width: auto !important;
   margin-top: 50px !important;
+  transform: none !important;
   color: rgba(214, 219, 223, .78) !important;
   font-size: 17px !important;
   font-weight: 400;
@@ -7539,5 +7520,36 @@
 
   .rhetoric-connection > h4 {
     font-size: 22px;
+  }
+}
+
+
+/* 2026-09-25 interaction polish: tactile feedback without moving spatial geometry. */
+.ayah-back,
+.ayah-context-trigger,
+.ayah-space-modes button,
+.ayah-space-zoom button,
+.analysis-focus-view-switch button {
+  transition:
+    opacity var(--motion-fast) var(--ease-out),
+    color var(--motion-fast) var(--ease-out),
+    background-color var(--motion-fast) var(--ease-out);
+}
+.ayah-back:active,
+.ayah-context-trigger:active,
+.ayah-space-modes button:active,
+.ayah-space-zoom button:active,
+.analysis-focus-view-switch button:active {
+  opacity: .72;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .ayah-back,
+  .ayah-context-trigger,
+  .ayah-space-modes button,
+  .ayah-space-zoom button,
+  .analysis-focus-view-switch button {
+    transition: none;
   }
 }
