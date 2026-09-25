@@ -234,9 +234,9 @@ test.describe('approved Quran Universe UI contracts', () => {
       }
     })
     expect(quranAccent).not.toBeNull()
-    expect(quranAccent.arabic).toBe('rgb(255, 154, 47)')
-    expect(quranAccent.point).toBe('rgb(255, 154, 47)')
-    expect(quranAccent.legend).toBe('rgb(255, 154, 47)')
+    expect(quranAccent.arabic).toBe('rgb(141, 255, 176)')
+    expect(quranAccent.point).toBe('rgb(141, 255, 176)')
+    expect(quranAccent.legend).toBe('rgb(141, 255, 176)')
 
     const rootLabel = rootStage.locator('.root-core h1')
     await expect(rootLabel).toHaveAttribute('lang', 'ar')
