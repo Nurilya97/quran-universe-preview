@@ -259,17 +259,21 @@ export function ImmersiveUniverse() {
     clearTimeout(sheetCloseTimer.current)
     const sheet = dialog.current
 
-    /* Close while the sheet is still at its current translated position.
-       Clearing transform first causes a visible snap-back before the dialog disappears. */
+    /* On mobile the sheet is a normal in-layer <section>. Hide it before
+       clearing its translated drag position; otherwise there is one painted
+       frame at translateY(0) before React applies hidden=true. */
+    if (mobileSheet && sheet) sheet.hidden = true
     if (!mobileSheet && sheet?.open) sheet.close()
 
-    sheet?.style.removeProperty('--sheet-drag-y')
-    sheet?.classList.remove('is-dragging', 'is-settling', 'is-dismissing')
-    sheetGesture.current = { active: false, pointerId: null, startY: 0, lastY: 0 }
     setPanel(null)
-    if (restoreFocus) {
-      requestAnimationFrame(() => panelTrigger.current?.focus?.({ preventScroll: true }))
-    }
+
+    requestAnimationFrame(() => {
+      sheet?.style.removeProperty('--sheet-drag-y')
+      sheet?.classList.remove('is-dragging', 'is-settling', 'is-dismissing')
+      if (restoreFocus) panelTrigger.current?.focus?.({ preventScroll: true })
+    })
+
+    sheetGesture.current = { active: false, pointerId: null, startY: 0, lastY: 0 }
   }
 
   function handleSheetPointerDown(event) {
