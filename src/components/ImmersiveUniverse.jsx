@@ -529,10 +529,11 @@ export function ImmersiveUniverse() {
       hidden={mobileSheet && !panel}
       role={mobileSheet ? 'dialog' : undefined}
       aria-modal={mobileSheet ? 'false' : undefined}
-      className={'detail-sheet' + (panel ? ' detail-sheet-' + panel : '') + (panel === 'structure' ? ' structure-sheet' : '')}
+      className={'detail-sheet' + (panel ? ' is-open detail-sheet-' + panel : '') + (panel === 'structure' ? ' structure-sheet' : '')}
       aria-labelledby={panel === 'structure' ? undefined : 'sheet-title'}
       aria-label={panel === 'structure' ? t.structure : undefined}
       onCancel={!mobileSheet ? (event) => { event.preventDefault(); closePanel() } : undefined}
+      onKeyDown={mobileSheet ? (event) => { if (event.key === 'Escape') closePanel() } : undefined}
       onClick={(event) => { if (!mobileSheet && event.target === event.currentTarget) closePanel() }}>
       <div className="sheet-inner">
         <div
