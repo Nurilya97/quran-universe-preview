@@ -444,6 +444,20 @@ test.describe('approved Quran Universe UI contracts', () => {
       expect(Number.isFinite(after.x)).toBeTruthy()
       expect(Math.abs(after.x)).toBeLessThan(.01)
       expect(Math.abs(after.y - before.y)).toBeGreaterThan(20)
+
+      const rail = ayah.locator('.ayah-reading-rail')
+      await expect(rail).toBeVisible()
+      const railButtons = rail.locator('button')
+      expect(await railButtons.count()).toBeGreaterThan(1)
+      await expect(rail.locator('button[aria-current="step"]')).toHaveCount(1)
+
+      const beforeJump = await cameraOffset()
+      await railButtons.last().click()
+      await page.waitForTimeout(320)
+      const afterJump = await cameraOffset()
+      expect(Math.abs(afterJump.x)).toBeLessThan(.01)
+      expect(Math.abs(afterJump.y - beforeJump.y)).toBeGreaterThan(20)
+      await expect(railButtons.last()).toHaveAttribute('aria-current', 'step')
     }
   })
 
