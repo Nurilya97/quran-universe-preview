@@ -75,6 +75,40 @@ test.describe('approved Quran Universe UI contracts', () => {
     })
   })
 
+  test('mobile detail sheets keep close on the right and drag handle dismisses', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 })
+    await openSearch(page, 'taqwa')
+
+    await page.locator('.node-structure').click()
+    const structureSheet = page.locator('dialog.detail-sheet[open]')
+    await expect(structureSheet).toBeVisible()
+
+    const structureClose = structureSheet.locator('.sheet-header-compact .icon-button')
+    const closeBox = await structureClose.boundingBox()
+    expect(closeBox).not.toBeNull()
+    expect(390 - (closeBox.x + closeBox.width)).toBeLessThanOrEqual(32)
+
+    const handle = structureSheet.locator('.sheet-handle')
+    await expect(handle).toBeVisible()
+    const handleBox = await handle.boundingBox()
+    expect(handleBox).not.toBeNull()
+    const x = handleBox.x + handleBox.width / 2
+    const y = handleBox.y + handleBox.height / 2
+    await page.mouse.move(x, y)
+    await page.mouse.down()
+    await page.mouse.move(x, y + 110, { steps: 8 })
+    await page.mouse.up()
+    await expect(page.locator('dialog.detail-sheet[open]')).toHaveCount(0)
+
+    await page.locator('.node-meaning').click()
+    const meaningSheet = page.locator('dialog.detail-sheet[open]')
+    await expect(meaningSheet).toBeVisible()
+    const meaningClose = meaningSheet.locator('.sheet-header .icon-button')
+    const meaningCloseBox = await meaningClose.boundingBox()
+    expect(meaningCloseBox).not.toBeNull()
+    expect(390 - (meaningCloseBox.x + meaningCloseBox.width)).toBeLessThanOrEqual(32)
+  })
+
   test('ل ب ب root space keeps its orbit legend and same-family inner ring', async ({ page }, testInfo) => {
     await page.setViewportSize({ width: 390, height: 844 })
     await openSearch(page, 'lbb')
