@@ -215,7 +215,7 @@ test.describe('approved Quran Universe UI contracts', () => {
       }
     })
     expect(meaningHeaderSurface.backgroundImage).not.toBe('none')
-    expect(meaningHeaderSurface.backdropFilter).toContain('blur(')
+    expect(meaningHeaderSurface.backgroundColor).not.toBe('rgba(0, 0, 0, 0)')
 
     await meaningSheet.evaluate((node) => { node.scrollTop = 220 })
     await page.waitForTimeout(80)
