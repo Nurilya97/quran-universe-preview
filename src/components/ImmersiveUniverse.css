@@ -957,6 +957,17 @@ h1:focus { outline: none; }
 .source-link svg { width: 15px; flex-shrink: 0; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 @media (max-width: 600px) {
+  /* Mobile sheets can be opened immediately after arriving in Word/Root space.
+     Keep scene geometry fixed from the first frame so closing a sheet never
+     reveals an orbit that has continued scaling underneath it. */
+  .stage-reveal {
+    animation: reveal-mobile .28s var(--ease-soft) both;
+  }
+  @keyframes reveal-mobile {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
   /* Keep the underlying orbit visually continuous on mobile.
      Native dialog backdrops leave the top layer in a separate frame on close,
      which reads as a screen switch after drag-dismiss. */
