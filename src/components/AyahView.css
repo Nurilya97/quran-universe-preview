@@ -44,7 +44,16 @@
     transform .24s var(--ease-space);
 }
 .ayah-back { justify-self: start; }
-.ayah-context-trigger { justify-self: end; }
+.ayah-context-trigger {
+  justify-self: end;
+  min-width: 112px;
+  min-height: 44px;
+  padding: 0 13px;
+  border-color: rgba(220,230,235,.13);
+  background: rgba(10,15,18,.66);
+  color: #d4dde1;
+  box-shadow: 0 8px 24px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.025);
+}
 .ayah-back:hover {
   transform: translateX(-2px);
   border-color: #ffffff0f;
@@ -52,10 +61,12 @@
   color: #eef2f4;
 }
 .ayah-context-trigger:hover,
+.ayah-context-trigger:focus-visible,
 .ayah-context-trigger.is-open {
-  border-color: #ffffff0f;
-  background: #ffffff04;
-  color: #eef2f4;
+  border-color: rgba(226,236,241,.24);
+  background: rgba(15,22,27,.82);
+  color: #f1f5f6;
+  box-shadow: 0 10px 30px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.045);
 }
 .ayah-space-reference {
   display: inline-flex;
@@ -602,15 +613,23 @@
     right: 9px;
     top: 5px;
   }
-  .ayah-back,
-  .ayah-context-trigger {
+  .ayah-back {
     width: 37px;
     height: 37px;
     padding: 0;
     justify-content: center;
   }
-  .ayah-back span,
-  .ayah-context-trigger span { display: none; }
+  .ayah-context-trigger {
+    width: auto;
+    min-width: 96px;
+    height: 40px;
+    padding: 0 12px;
+    justify-content: center;
+    gap: 7px;
+    font-size: 11.5px;
+  }
+  .ayah-back span { display: none; }
+  .ayah-context-trigger span { display: inline; }
   .ayah-space-reference small { display: none; }
   .ayah-space-modes {
     top: 52px;
@@ -2905,10 +2924,17 @@
 /* Mobile UX readability pass across the whole Ayah Space */
 @media (max-width: 760px) {
   /* Fixed interface: readable labels + 44px touch targets */
-  .ayah-back,
-  .ayah-context-trigger {
+  .ayah-back {
     width: 44px !important;
     height: 44px !important;
+    border-radius: 14px;
+  }
+  .ayah-context-trigger {
+    width: 124px !important;
+    min-width: 124px !important;
+    height: 44px !important;
+    padding-inline: 14px;
+    flex: 0 0 124px;
     border-radius: 14px;
   }
 
@@ -7749,9 +7775,10 @@
   right: 31px;
   transform: translateY(-50%);
   color: color-mix(in srgb, var(--rail-accent) 72%, #68737a);
-  font-size: 9px;
+  font-size: 11px;
+  font-weight: 560;
   font-variant-numeric: tabular-nums;
-  letter-spacing: .04em;
+  letter-spacing: .035em;
   opacity: 0;
   transition: opacity .18s var(--ease-soft);
 }
@@ -7767,8 +7794,8 @@
   border-radius: 999px;
 }
 .ayah-reading-rail button.is-active > i {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   background: var(--rail-accent);
   box-shadow:
     0 0 10px color-mix(in srgb, var(--rail-accent) 48%, transparent),
@@ -7776,7 +7803,7 @@
   opacity: 1;
 }
 .ayah-reading-rail button.is-active > span {
-  opacity: .76;
+  opacity: 1;
 }
 
 @media (max-width: 760px) {
@@ -7791,8 +7818,9 @@
     height: 44px;
   }
   .ayah-reading-rail button > span {
-    right: 29px;
-    font-size: 9.5px;
+    right: 28px;
+    font-size: 12px;
+    font-weight: 600;
   }
 }
 

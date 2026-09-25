@@ -113,13 +113,16 @@ export function Cosmos({ scene, journey, paused, reducedMotion }) {
       ctx.fillRect(0, 0, width, height)
 
       const size = Math.max(width, height) * 1.3 * zoom
-      ctx.save()
-      ctx.translate(width * .53 + parallaxX * 14, height * .49 + parallaxY * 10)
-      ctx.rotate(Math.sin(time * .022) * .018)
-      ctx.globalAlpha = .84
-      ctx.drawImage(dust, -size * .5, -size * .4, size, size * .8)
-      ctx.restore()
-      glow(width * .53, height * .5, Math.min(width, height) * .6, '184,156,102', .07)
+      const compactSpatialScene = width <= 760 && (current.scene === 'root' || current.scene === 'word')
+      if (!compactSpatialScene) {
+        ctx.save()
+        ctx.translate(width * .53 + parallaxX * 14, height * .49 + parallaxY * 10)
+        ctx.rotate(Math.sin(time * .022) * .018)
+        ctx.globalAlpha = .84
+        ctx.drawImage(dust, -size * .5, -size * .4, size, size * .8)
+        ctx.restore()
+      }
+      glow(width * .53, height * .5, Math.min(width, height) * .6, '184,156,102', compactSpatialScene ? .045 : .07)
 
       const scale = Math.max(width, height) * .82
       for (const star of stars) {
