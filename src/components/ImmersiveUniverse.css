@@ -52,8 +52,8 @@ h1:focus { outline: none; }
   color: #fff;
   font-family: var(--ui-font);
   font-weight: 430;
-  font-size: 13px;
-  letter-spacing: .085em;
+  font-size: 15px;
+  letter-spacing: .08em;
   opacity: 1;
   transition:
     color .24s var(--ease-soft),
@@ -530,7 +530,7 @@ h1:focus { outline: none; }
 .root-intro .eyebrow {
   color: rgba(255,255,255,.72);
   font-size: 11px;
-  font-weight: 520;
+  font-weight: 400;
   letter-spacing: .13em;
 }
 
@@ -668,7 +668,7 @@ h1:focus { outline: none; }
   margin-top: 5px;
   color: rgba(255,255,255,.72);
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: .13em;
   line-height: 1.2;
 }
@@ -727,7 +727,7 @@ h1:focus { outline: none; }
 .root-star-featured .star-point { width: 6px; height: 6px; }
 .root-star .transliteration {
   color: rgba(255,255,255,.66);
-  font-weight: 460;
+  font-weight: 400;
   letter-spacing: .01em;
 }
 .form-type {
@@ -1023,7 +1023,7 @@ h1:focus { outline: none; }
     padding-left: max(18px, env(safe-area-inset-left));
   }
   .brand-button {
-    font-size: 12px;
+    font-size: 15px;
     letter-spacing: .075em;
   }
   .header-actions { gap: 6px; }
@@ -1302,7 +1302,7 @@ h1:focus { outline: none; }
 .root-stage-lbb .root-star .transliteration {
   color: rgba(255,255,255,.68);
   font-size: 8.5px;
-  font-weight: 460;
+  font-weight: 400;
   letter-spacing: .01em;
 }
 @media (max-width: 720px) {
