@@ -728,6 +728,8 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
   const [activeWordIndex, setActiveWordIndex] = useState(focusWordIndex || null)
   const [camera, setCamera] = useState(() => ({ x: 0, y: 0, scale: defaultScale() }))
   const [readingStep, setReadingStep] = useState(0)
+  const [readingJumpIndex, setReadingJumpIndex] = useState(null)
+  const readingJumpTimer = useRef(null)
   const pointers = useRef(new Map())
   const gesture = useRef(null)
   const viewportRef = useRef(null)
@@ -736,6 +738,10 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
   useEffect(() => {
     cameraRef.current = camera
   }, [camera])
+
+  useEffect(() => () => {
+    if (readingJumpTimer.current) window.clearTimeout(readingJumpTimer.current)
+  }, [])
 
   useEffect(() => {
     const onKeyDown = (event) => {
@@ -756,6 +762,11 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     setSelectedWord(null)
     setActiveWordIndex(focusWordIndex || null)
     setReadingStep(0)
+    setReadingJumpIndex(null)
+    if (readingJumpTimer.current) {
+      window.clearTimeout(readingJumpTimer.current)
+      readingJumpTimer.current = null
+    }
     setCamera({ x: 0, y: 0, scale: defaultScale() })
     pointers.current.clear()
     gesture.current = null
@@ -777,6 +788,11 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
   useEffect(() => {
     if (mode === 'analysis' || !viewportRef.current) {
       setReadingStep(0)
+      return undefined
+    }
+
+    if (readingJumpIndex !== null) {
+      setReadingStep(readingJumpIndex)
       return undefined
     }
 
@@ -819,7 +835,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     })
 
     return () => cancelAnimationFrame(frame)
-  }, [mode, camera.y, camera.scale, language, ayah?.reference])
+  }, [mode, camera.y, camera.scale, language, ayah?.reference, readingJumpIndex])
 
   if (!ayah) {
     return <section className={'ayah-space-shell' + (selectedWord && mode === 'analysis' ? ' has-word-focus' : '')}><button className="ayah-back" onClick={onBack}><ArrowIcon /></button></section>
@@ -899,6 +915,14 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     setCamera(next)
   }
 
+  function releaseReadingJump() {
+    if (readingJumpTimer.current) {
+      window.clearTimeout(readingJumpTimer.current)
+      readingJumpTimer.current = null
+    }
+    setReadingJumpIndex(null)
+  }
+
   function zoomBy(delta) {
     const current = cameraRef.current
     const next = clampCamera({ ...current, scale: current.scale + delta })
@@ -908,6 +932,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
 
   function onWheel(event) {
     event.preventDefault()
+    releaseReadingJump()
     if (mode === 'composition' || mode === 'rhetoric') {
       const current = cameraRef.current
       const deltaY = finiteNumber(event.deltaY, 0)
@@ -920,6 +945,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
   }
 
   function onPointerDown(event) {
+    releaseReadingJump()
     // Word buttons must receive their click instead of the canvas capturing it.
     if (event.target.closest('button')) return
     if (event.button !== undefined && event.button !== 0) return
@@ -1012,11 +1038,23 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     const current = cameraRef.current
     const next = clampCamera({ ...current, x: 0, y: current.y + (readingLine - nodeAnchor) }, mode)
     cameraRef.current = next
-    setCamera(next)
+    setReadingJumpIndex(index)
     setReadingStep(index)
+    setCamera(next)
+
+    if (readingJumpTimer.current) window.clearTimeout(readingJumpTimer.current)
+    readingJumpTimer.current = window.setTimeout(() => {
+      readingJumpTimer.current = null
+      setReadingJumpIndex(null)
+    }, 340)
   }
 
-    function changeMode(nextMode) {
+  function changeMode(nextMode) {
+    if (readingJumpTimer.current) {
+      window.clearTimeout(readingJumpTimer.current)
+      readingJumpTimer.current = null
+    }
+    setReadingJumpIndex(null)
     setMode(nextMode)
     setReadingStep(0)
     setSelectedWord(null)
