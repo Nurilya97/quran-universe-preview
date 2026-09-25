@@ -377,10 +377,6 @@
 }
 
 @media (max-width: 760px) {
-  .ayah-journey-viewport {
-    inset-top: 108px;
-  }
-
   .ayah-journey {
     width: min(100% - 28px, 690px);
     padding-top: 34px;
@@ -473,5 +469,24 @@
 
   .ayah-journey-phrase {
     font-size: 28px;
+  }
+}
+
+
+.ayah-space-shell.has-word-focus .ayah-journey-viewport {
+  filter: blur(8px) brightness(.28) saturate(.58);
+  transform: scale(1.018);
+  transition: filter .22s var(--ease-soft), transform .24s var(--ease-space);
+}
+
+.ayah-space-shell.has-word-focus .ayah-experience-nav {
+  opacity: .28;
+  filter: blur(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ayah-journey-phrase button,
+  .ayah-space-shell.has-word-focus .ayah-journey-viewport {
+    transition: none;
   }
 }
