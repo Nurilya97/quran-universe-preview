@@ -297,6 +297,7 @@ function MorphBoardCallout({ label, ar, reading, text, tone = 'quiet', expandabl
 function MorphBoard({ word, profile, language }) {
   const c = MORPH_COPY[language]
   const ru = language === 'ru'
+  const isTaqwa = word?.id === 'taqwa'
   const isLbb = word?.rootKey === 'lbb'
   const rootStep = isLbb
     ? { ar: 'ل ب ب', reading: 'l-b-b', metaRu: 'корень', metaEn: 'root' }
@@ -397,7 +398,7 @@ function MorphBoard({ word, profile, language }) {
 
       <div className="morph-board-key" aria-label={ru ? 'Условные обозначения' : 'Legend'}>
         <span><i className="key-root" />{ru ? 'корневые буквы' : 'root letters'}</span>
-        <span><i className="key-added" />{ru ? 'добавленная структура' : 'added structure'}</span>
+        <span><i className="key-added" />{isTaqwa ? (ru ? 'элемент модели' : 'pattern element') : (ru ? 'добавленная структура' : 'added structure')}</span>
         {componentCopy.some(item => item.role === 'ending') && <span><i className="key-ending" />{ru ? 'окончание' : 'ending'}</span>}
       </div>
     </div>
@@ -411,7 +412,7 @@ function MorphologyStructure({ word, content, language, onPick }) {
   const ru = language === 'ru'
   const isBoard = structureView === 'board'
 
-  return <div className={'entry-copy morphology-entry ' + (isBoard ? 'morphology-entry-board' : 'morphology-entry-neon')}>
+  return <div className={'entry-copy morphology-entry' + (word.id === 'taqwa' ? ' morphology-entry-taqwa' : '') + ' ' + (isBoard ? 'morphology-entry-board' : 'morphology-entry-neon')}>
     <nav className="morph-view-tabs" aria-label={ru ? 'Вид строения слова' : 'Word structure view'}>
       <button
         type="button"
