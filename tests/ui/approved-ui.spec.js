@@ -17,6 +17,22 @@ test.describe('approved Quran Universe UI contracts', () => {
     await page.locator('.node-structure').click()
     await expect(page.locator('.detail-sheet.is-open')).toBeVisible()
 
+    const analysisColours = await page.locator('.morphology-entry-taqwa.morphology-entry-neon').evaluate((root) => {
+      const changed = root.querySelector('.morph-analysis .morph-rootShift')
+      const rootLetter = root.querySelector('.morph-analysis .morph-root')
+      if (!changed || !rootLetter) return null
+      const changedStyle = getComputedStyle(changed)
+      const rootStyle = getComputedStyle(rootLetter)
+      return {
+        changed: changedStyle.color,
+        root: rootStyle.color,
+        changedBackground: changedStyle.backgroundImage,
+      }
+    })
+    expect(analysisColours).not.toBeNull()
+    expect(analysisColours.changed).toBe(analysisColours.root)
+    expect(analysisColours.changedBackground).toBe('none')
+
     await page.locator('.morph-view-tabs').getByRole('button', { name: 'Схема' }).click()
     const board = page.locator('.morph-board')
     await expect(board).toBeVisible()
@@ -71,6 +87,26 @@ test.describe('approved Quran Universe UI contracts', () => {
     const target = board.locator('.morph-board-target-word')
     await expect(target).toHaveAttribute('lang', 'ar')
     await expect(target).toHaveAttribute('dir', 'rtl')
+
+    const targetColours = await board.evaluate((root) => {
+      const changed = root.querySelector('.morph-board-target-word .morph-board-rootShift')
+      const rootLetter = root.querySelector('.morph-board-target-word .morph-board-root')
+      const form = root.querySelector('.morph-board-target-word .morph-board-form')
+      const entry = root.closest('.morphology-entry')
+      if (!changed || !rootLetter || !form || !entry) return null
+      const entryStyle = getComputedStyle(entry)
+      return {
+        changed: getComputedStyle(changed).color,
+        root: getComputedStyle(rootLetter).color,
+        form: getComputedStyle(form).color,
+        added: entryStyle.getPropertyValue('--board-added').trim(),
+        paper: entryStyle.getPropertyValue('--board-paper').trim(),
+      }
+    })
+    expect(targetColours).not.toBeNull()
+    expect(targetColours.changed).toBe(targetColours.root)
+    expect(targetColours.changed).not.toBe(targetColours.added)
+    await expect(board.locator('.morph-board-key')).toContainText('элемент модели')
 
     await page.screenshot({
       path: testInfo.outputPath('taqwa-mobile-approved.png'),
