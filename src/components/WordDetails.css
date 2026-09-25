@@ -1740,3 +1740,21 @@ details.morph-board-callout[open] .morph-board-callout-body {
     font-size: 19px !important;
   }
 }
+
+
+/* Approved Form/model semantics: labels, model name, and Arabic pattern share the Form accent. */
+.morphology-entry-neon .morph-taqwa-form .morph-block-label,
+.morphology-entry-neon .morph-taqwa-form .morph-pattern-heading > strong,
+.morphology-entry-neon .morph-taqwa-form .morph-pattern-heading .morph-arabic-pair > span,
+.morphology-entry-neon .morph-pattern-effect .morph-block-label,
+.morphology-entry-neon .morph-pattern-effect .morph-pattern-heading > strong,
+.morphology-entry-neon .morph-pattern-effect .morph-pattern-heading .morph-arabic-pair > span {
+  color: var(--morph-form) !important;
+}
+
+.morphology-entry-board .morph-board-callout-form .morph-board-callout-label,
+.morphology-entry-board .morph-board-callout-form summary > span,
+.morphology-entry-board .morph-board-callout-form .morph-board-callout-term > [lang='ar'],
+.morphology-entry-board .morph-board-callout-form summary > b {
+  color: #eaff5b !important;
+}
