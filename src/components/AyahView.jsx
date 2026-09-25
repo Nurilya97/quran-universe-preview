@@ -611,7 +611,6 @@ function CompositionDiagram({ ayah, focusWordIndex, language }) {
           data-reading-id={item.id}
         >
           <i aria-hidden="true" />
-          <small>{String(index + 1).padStart(2, '0')}</small>
           <h3>{copy.title}</h3>
           <div className="composition-phrase" lang="ar" dir="rtl">
             {phraseTokens(ayah, item).map((token, tokenIndex) => {
@@ -640,7 +639,7 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
         const copy = item[language]
         const focusWords = item.focusWords || []
         return <section key={item.id} className="rhetoric-insight" data-reading-waypoint="rhetoric" data-reading-id={item.id}>
-          <h3><span className="rhetoric-title-step">{copy.step}</span>{copy.title}</h3>
+          <h3>{copy.title}</h3>
           <div className="rhetoric-phrase" lang="ar" dir="rtl">
             {phraseTokens(ayah, item).map((token, tokenIndex) => {
               const wordIndex = item.range[0] + tokenIndex
