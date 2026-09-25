@@ -72,7 +72,12 @@ export function ImmersiveUniverse() {
 
   useEffect(() => {
     if (panel && dialog.current) {
-      if (!dialog.current.open) dialog.current.showModal()
+      const mobileSheet = matchMedia('(max-width: 600px)').matches
+      if (!dialog.current.open) {
+        if (mobileSheet) dialog.current.show()
+        else dialog.current.showModal()
+      }
+      dialog.current.dataset.presentation = mobileSheet ? 'sheet' : 'modal'
       dialog.current.scrollTop = 0
       dialog.current.style.removeProperty('--sheet-drag-y')
       dialog.current.classList.remove('is-dragging', 'is-settling', 'is-dismissing')
@@ -516,6 +521,7 @@ export function ImmersiveUniverse() {
     <dialog ref={dialog} className={'detail-sheet' + (panel ? ' detail-sheet-' + panel : '') + (panel === 'structure' ? ' structure-sheet' : '')}
       aria-labelledby={panel === 'structure' ? undefined : 'sheet-title'}
       aria-label={panel === 'structure' ? t.structure : undefined}
+      aria-modal={dialog.current?.dataset.presentation === 'modal' ? 'true' : undefined}
       onCancel={(event) => { event.preventDefault(); closePanel() }}
       onClick={(event) => { if (event.target === event.currentTarget) closePanel() }}>
       <div className="sheet-inner">
