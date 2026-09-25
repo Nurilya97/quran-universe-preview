@@ -48,6 +48,17 @@ Do not force a root etymology directly into a translation. Root meaning explains
 
 Translation and explanation are different layers.
 
+Ayah Journey adds a third public layer: **Meaning Guide / Смысловой ориентир**. It is not presented as a published Quran translation. It should:
+- preserve the movement of the whole ayah in clear natural language;
+- keep difficult Quranic concepts such as `taqwā` transliterated when forcing a single target-language equivalent would bias the reader too early;
+- remain visibly separate from named published translations;
+- never quote a published translation and then silently rewrite it as Quran Universe copy.
+
+Published translations are comparison witnesses, not the canonical Quran Universe semantic layer. For the current comparison set use:
+- Russian: Elmir Kuliev and Abu Adel;
+- English: M. A. S. Abdel Haleem and Mustafa Khattab / The Clear Quran.
+Show attribution with every translation and allow side-by-side comparison.
+
 For a visible Quranic word, keep these separate:
 
 ### A. Translation
@@ -383,11 +394,24 @@ Morphological mechanics belong in structure/morphology, not in lexical meaning.
 
 Ayah Space is one connected semantic space, not a stack of unrelated cards.
 
+The default entry is **Ayah Journey / “Понять аят”**, not the research tabs. A first-time reader should be able to understand the ayah without guessing which analytical layer to open.
+
+The default learning order is:
+1. full Arabic ayah;
+2. Quran Universe **Meaning Guide / Смысловой ориентир** for the whole ayah;
+3. optional comparison of named published translations;
+4. the ayah broken into a small number of meaningful phrases;
+5. optional word tap for depth without losing the whole-ayāh context;
+6. only then the deeper research layers: Analysis, Composition, Rhetoric, Context, Word Orbit, Root Galaxy.
+
 At the overview level:
 - keep the full ayah readable;
 - keep the approved cosmic/minimal visual language;
-- let the user select a word or relation;
-- reveal detail progressively rather than covering the ayah with large cards.
+- maintain the whole-ayah meaning as the reader’s anchor;
+- let the user select a word or phrase only when more depth is wanted;
+- reveal detail progressively rather than covering the ayah with large cards;
+- do not require morphology, syntax, composition or rhetoric in order to understand the basic flow of the ayah;
+- treat **“Исследовать / Explore”** as a deeper second level, not as the first decision the user must make.
 
 For a selected word, the detailed information may expose:
 - translation;
