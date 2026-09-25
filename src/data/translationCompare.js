@@ -43,12 +43,16 @@ function resourceText(resource) {
 
 function plainText(value) {
   if (!value) return ''
-  if (typeof document === 'undefined') {
-    return String(value).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()
-  }
-  const node = document.createElement('div')
-  node.innerHTML = String(value)
-  return (node.textContent || '').replace(/\s+/g, ' ').trim()
+  return String(value)
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/&nbsp;|&#160;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;|&apos;/gi, "'")
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/\s+/g, ' ')
+    .trim()
 }
 
 function findResource(resources, provider) {
