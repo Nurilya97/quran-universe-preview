@@ -65,6 +65,15 @@ for (const match of agents.matchAll(/\.github\/skills\/([^/]+)\/SKILL\.md/g)) {
 
 const expectedWorkflows = ['pages-preview.yml', 'preview-integrity.yml', 'data-pilots.yml', 'system-health.yml', 'security-audit.yml', 'codeql.yml', 'dependency-review.yml']
 for (const wf of expectedWorkflows) if (!fs.existsSync(path.join(root, '.github/workflows', wf))) fail(`missing workflow ${wf}`)
+
+const workflowDir = path.join(root, '.github/workflows')
+for (const file of walk(workflowDir)) {
+  const name = path.basename(file)
+  const content = fs.readFileSync(file, 'utf8')
+  if (name !== 'pages-preview.yml' && /actions\/deploy-pages@/.test(content)) {
+    fail(`competing Pages deployment workflow found: ${name}; only pages-preview.yml may deploy the public site`)
+  }
+}
 const pilots = fs.readFileSync(path.join(root, '.github/workflows/data-pilots.yml'), 'utf8')
 if (/push:\s*[\s\S]*branches:\s*[\s\S]*main/.test(pilots)) fail('data-pilots workflow must not create skipped runs on every main push')
 if (fs.existsSync(path.join(root, 'src/components/archive'))) fail('obsolete production archive directory returned')

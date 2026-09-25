@@ -37,6 +37,13 @@ Never hand-edit generated:
 
 CI runs `npm run sync:check` and blocks drift.
 
+## Deployment authority
+
+- `main` is the only branch allowed to deploy the public GitHub Pages root.
+- Design/experiment branches may run validation and upload evidence artifacts, but must not call `actions/deploy-pages`.
+- Never publish an archived UI baseline over the live root.
+- After merging visual work, keep any long-lived design branch aligned with `main` or clearly mark it archival.
+
 ## Completion
 
 For repository/system work require:
