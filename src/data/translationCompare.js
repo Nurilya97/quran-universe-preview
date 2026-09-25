@@ -3,13 +3,13 @@ export const TRANSLATION_PROVIDERS = {
     {
       id: 'kuliev',
       label: 'Эльмир Кулиев',
-      match: [/kuliev/i, /kuliyev/i, /elmir/i],
-      externalUrl: 'https://quran.com/2:197?translations=45',
+      match: [/kuliev/i, /kuliyev/i, /кулиев/i, /elmir/i],
+      externalUrl: 'https://quran.com/2:197',
     },
     {
       id: 'abu-adel',
       label: 'Абу Адель',
-      match: [/abu adel/i, /abu adil/i],
+      match: [/abu adel/i, /abu adil/i, /абу адел/i, /адел/i],
       externalUrl: 'https://quran.com/2:197',
     },
   ],
@@ -24,7 +24,7 @@ export const TRANSLATION_PROVIDERS = {
       id: 'mustafa-khattab',
       label: 'Mustafa Khattab · The Clear Quran',
       match: [/mustafa khattab/i, /clear quran/i],
-      externalUrl: 'https://quran.com/2:197?translations=131',
+      externalUrl: 'https://quran.com/2:197',
     },
   ],
 }
@@ -34,7 +34,7 @@ const API_BASE = 'https://api.quran.com/api/v4'
 function resourceText(resource) {
   return [
     resource?.name,
-    resource?.translated_name?.name,
+    typeof resource?.translated_name === 'string' ? resource.translated_name : resource?.translated_name?.name,
     resource?.author_name,
     resource?.slug,
     resource?.language_name,
@@ -88,7 +88,7 @@ export async function loadTranslationComparison(reference, language, signal) {
         status: row?.text ? 'ready' : 'unavailable',
         text: plainText(row?.text),
         resourceId,
-        resourceName: resource?.name || resource?.translated_name?.name || provider.label,
+        resourceName: resource?.name || (typeof resource?.translated_name === 'string' ? resource.translated_name : resource?.translated_name?.name) || provider.label,
       }
     } catch (error) {
       if (error?.name === 'AbortError') throw error
