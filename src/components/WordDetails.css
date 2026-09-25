@@ -9,6 +9,19 @@
   background: linear-gradient(180deg, rgba(10,14,17,.96) 0%, rgba(10,14,17,.83) 72%, rgba(10,14,17,0) 100%);
   backdrop-filter: blur(12px);
 }
+.detail-sheet .sheet-header.sheet-header-compact {
+  position: absolute;
+  top: 26px;
+  right: 26px;
+  left: auto;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  border-bottom: 0;
+  background: transparent;
+  backdrop-filter: none;
+}
+
 .entry-copy p { font-size: 15px; line-height: 1.75; color: var(--muted); margin: 16px 0; }
 .detail-sheet-quran .entry-copy p,
 .detail-sheet-meaning .entry-copy p {
@@ -83,6 +96,12 @@
 @media (max-width: 600px) {
   .detail-sheet .sheet-header {
     padding-top: 2px;
+  }
+  .detail-sheet .sheet-header.sheet-header-compact {
+    top: 20px;
+    right: max(18px, env(safe-area-inset-right));
+    left: auto;
+    padding: 0;
   }
   .entry-copy p {
     line-height: 1.7;
