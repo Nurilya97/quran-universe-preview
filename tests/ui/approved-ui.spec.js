@@ -240,12 +240,12 @@ test.describe('approved Quran Universe UI contracts', () => {
     })
     expect(quranAccent).not.toBeNull()
     expect(quranAccent.arabic).toBe('rgb(255, 255, 255)')
-    expect(quranAccent.point).toBe('rgb(114, 255, 134)')
+    expect(quranAccent.point).toBe('rgb(255, 255, 255)')
     expect(quranAccent.pointWidth).toBe('6px')
     expect(quranAccent.pointHeight).toBe('6px')
-    expect(quranAccent.pointShadow).toBe('none')
-    expect(quranAccent.legend).toBe('rgb(114, 255, 134)')
-    expect(quranAccent.legendShadow).toBe('none')
+    expect(quranAccent.pointShadow).not.toBe('none')
+    expect(quranAccent.legend).toBe('rgb(255, 255, 255)')
+    expect(quranAccent.legendShadow).not.toBe('none')
 
     const markerSizes = await rootStage.evaluate((stage) => ({
       quranic: [...stage.querySelectorAll('.root-star-quranic .star-point')].map(point => getComputedStyle(point).width),
@@ -275,6 +275,23 @@ test.describe('approved Quran Universe UI contracts', () => {
     expect(whiteStructure.word).toBe('rgb(255, 255, 255)')
     expect(whiteStructure.orbit).toBe('rgba(255, 255, 255, 0.14)')
     expect(whiteStructure.orbitLabel).toBe('rgba(255, 255, 255, 0.52)')
+
+    const readability = await rootStage.evaluate((stage) => {
+      const transliteration = stage.querySelector('.root-star .transliteration')
+      const brand = document.querySelector('.brand-button')
+      if (!transliteration || !brand) return null
+      return {
+        transliteration: getComputedStyle(transliteration).color,
+        transliterationWeight: getComputedStyle(transliteration).fontWeight,
+        brand: getComputedStyle(brand).color,
+        brandOpacity: getComputedStyle(brand).opacity,
+      }
+    })
+    expect(readability).not.toBeNull()
+    expect(readability.transliteration).toBe('rgba(255, 255, 255, 0.62)')
+    expect(Number(readability.transliterationWeight)).toBeGreaterThanOrEqual(400)
+    expect(readability.brand).toBe('rgb(255, 255, 255)')
+    expect(readability.brandOpacity).toBe('1')
 
     const rootLabel = rootStage.locator('.root-core h1')
     await expect(rootLabel).toHaveAttribute('lang', 'ar')
