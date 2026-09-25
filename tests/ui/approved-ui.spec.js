@@ -260,7 +260,9 @@ test.describe('approved Quran Universe UI contracts', () => {
     expect(markerSizes.quranic.length).toBeGreaterThan(0)
     expect(new Set(markerSizes.quranic)).toEqual(new Set(['6px']))
     if (markerSizes.featuredQuranic.length > 0) {
+      if (markerSizes.featuredQuranic.length > 0) {
       expect(new Set(markerSizes.featuredQuranic)).toEqual(new Set(['6px']))
+    }
     }
     expect(markerSizes.ordinary.length).toBeGreaterThan(0)
     expect(new Set(markerSizes.ordinary)).toEqual(new Set(['4px']))
