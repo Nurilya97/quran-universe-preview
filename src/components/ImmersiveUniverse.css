@@ -823,6 +823,8 @@ h1:focus { outline: none; }
 .detail-sheet {
   --sheet-tone: #dce4e8;
   --sheet-glow: rgba(220,228,232,.055);
+  --sheet-surface-start: rgba(12,17,20,.97);
+  --sheet-surface-end: rgba(6,10,12,.985);
   position: fixed;
   inset: auto 28px 28px auto;
   width: min(440px, calc(100vw - 56px));
@@ -838,7 +840,7 @@ h1:focus { outline: none; }
   border-radius: 18px;
   background:
     radial-gradient(circle at 84% 4%, var(--sheet-glow) 0, transparent 28%),
-    linear-gradient(160deg, rgba(12,17,20,.97), rgba(6,10,12,.985));
+    linear-gradient(160deg, var(--sheet-surface-start), var(--sheet-surface-end));
   color: var(--paper);
   box-shadow:
     0 30px 100px rgba(0,0,0,.55),
