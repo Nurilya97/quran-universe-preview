@@ -594,7 +594,7 @@ function CompositionDiagram({ ayah, focusWordIndex, language }) {
 
   return <div className="diagram-view composition-diagram layer-themes">
     <div className="composition-flow" style={{ left: WORLD.width / 2, top: 150 }}>
-      <div className="composition-thread">
+      <div className="composition-thread" data-reading-waypoint="composition" data-reading-id="thread">
         <h2>{language === 'ru' ? 'Нить аята' : 'Ayah thread'}</h2>
         <p>{ayah.compositionThread?.[language]}</p>
       </div>
@@ -607,6 +607,8 @@ function CompositionDiagram({ ayah, focusWordIndex, language }) {
         return <section
           key={item.id}
           className={'composition-constellation' + (isEntry ? ' has-entry' : '')}
+          data-reading-waypoint="composition"
+          data-reading-id={item.id}
         >
           <i aria-hidden="true" />
           <small>{String(index + 1).padStart(2, '0')}</small>
@@ -637,7 +639,7 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
       {items.map((item) => {
         const copy = item[language]
         const focusWords = item.focusWords || []
-        return <section key={item.id} className="rhetoric-insight">
+        return <section key={item.id} className="rhetoric-insight" data-reading-waypoint="rhetoric" data-reading-id={item.id}>
           <h3><span className="rhetoric-title-step">{copy.step}</span>{copy.title}</h3>
           <div className="rhetoric-phrase" lang="ar" dir="rtl">
             {phraseTokens(ayah, item).map((token, tokenIndex) => {
@@ -664,7 +666,7 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
         </section>
       })}
 
-      {lens && <section className="rhetoric-passage-lens">
+      {lens && <section className="rhetoric-passage-lens" data-reading-waypoint="rhetoric" data-reading-id="passage-lens">
         <small>{ru ? 'СМЫСЛОВОЙ БЛОК' : 'MEANING-BLOCK'}</small>
         <h3>{lens[language].title}</h3>
         <p>{lens[language].text}</p>
@@ -689,6 +691,29 @@ function RhetoricDiagram({ ayah, focusWordIndex, language }) {
   </div>
 }
 
+function ReadingRail({ mode, steps, activeIndex, language, onSelect }) {
+  if (!steps.length) return null
+  const ru = language === 'ru'
+  const label = mode === 'composition'
+    ? (ru ? 'Навигация по композиции' : 'Composition navigation')
+    : (ru ? 'Навигация по риторике' : 'Rhetoric navigation')
+
+  return <nav className={'ayah-reading-rail mode-' + mode} aria-label={label}>
+    {steps.map((step, index) => <button
+      key={step.id}
+      type="button"
+      className={activeIndex === index ? 'is-active' : ''}
+      aria-current={activeIndex === index ? 'step' : undefined}
+      aria-label={(ru ? 'Перейти к: ' : 'Go to: ') + step.label}
+      title={step.label}
+      onClick={() => onSelect(index)}
+    >
+      <i aria-hidden="true" />
+      <span>{String(index + 1).padStart(2, '0')}</span>
+    </button>)}
+  </nav>
+}
+
 function CanvasWorld({ ayah, mode, focusWordIndex, language, selectedWord, onSelectWord }) {
   if (mode === 'composition') return <CompositionDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} />
   if (mode === 'rhetoric') return <RhetoricDiagram ayah={ayah} focusWordIndex={focusWordIndex} language={language} />
@@ -702,6 +727,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
   const [selectedWord, setSelectedWord] = useState(null)
   const [activeWordIndex, setActiveWordIndex] = useState(focusWordIndex || null)
   const [camera, setCamera] = useState(() => ({ x: 0, y: 0, scale: defaultScale() }))
+  const [readingStep, setReadingStep] = useState(0)
   const pointers = useRef(new Map())
   const gesture = useRef(null)
   const viewportRef = useRef(null)
@@ -729,10 +755,57 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     setContextOpen(false)
     setSelectedWord(null)
     setActiveWordIndex(focusWordIndex || null)
+    setReadingStep(0)
     setCamera({ x: 0, y: 0, scale: defaultScale() })
     pointers.current.clear()
     gesture.current = null
   }, [reference, focusWordIndex])
+
+  const readingSteps = useMemo(() => {
+    if (!ayah || mode === 'analysis') return []
+    if (mode === 'composition') {
+      return [
+        { id: 'thread', label: language === 'ru' ? 'Нить аята' : 'Ayah thread' },
+        ...ayah.blocks.map(item => ({ id: item.id, label: item[language]?.title || item.id })),
+      ]
+    }
+    const rhetoric = (ayah.rhetoric || []).map(item => ({ id: item.id, label: item[language]?.title || item.id }))
+    if (ayah.passageLens) rhetoric.push({ id: 'passage-lens', label: ayah.passageLens[language]?.title || (language === 'ru' ? 'Смысловой блок' : 'Meaning block') })
+    return rhetoric
+  }, [ayah, mode, language])
+
+  useEffect(() => {
+    if (mode === 'analysis' || !viewportRef.current) {
+      setReadingStep(0)
+      return undefined
+    }
+
+    const frame = requestAnimationFrame(() => {
+      const viewport = viewportRef.current
+      if (!viewport) return
+      const nodes = [...viewport.querySelectorAll(`[data-reading-waypoint="${mode}"]`)]
+      if (!nodes.length) return
+
+      const viewportRect = viewport.getBoundingClientRect()
+      const readingLine = viewportRect.top + viewportRect.height * .46
+      let nearestIndex = 0
+      let nearestDistance = Number.POSITIVE_INFINITY
+
+      nodes.forEach((node, index) => {
+        const rect = node.getBoundingClientRect()
+        const anchor = rect.top + Math.min(72, rect.height * .25)
+        const distance = Math.abs(anchor - readingLine)
+        if (distance < nearestDistance) {
+          nearestDistance = distance
+          nearestIndex = index
+        }
+      })
+
+      setReadingStep(nearestIndex)
+    })
+
+    return () => cancelAnimationFrame(frame)
+  }, [mode, camera.y, camera.scale, language, ayah?.reference])
 
   if (!ayah) {
     return <section className={'ayah-space-shell' + (selectedWord && mode === 'analysis' ? ' has-word-focus' : '')}><button className="ayah-back" onClick={onBack}><ArrowIcon /></button></section>
@@ -909,8 +982,29 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     }
   }
 
-  function changeMode(nextMode) {
+  function goToReadingStep(index) {
+    if (mode === 'analysis') return
+    const viewport = viewportRef.current
+    if (!viewport) return
+
+    const nodes = [...viewport.querySelectorAll(`[data-reading-waypoint="${mode}"]`)]
+    const node = nodes[index]
+    if (!node) return
+
+    const viewportRect = viewport.getBoundingClientRect()
+    const nodeRect = node.getBoundingClientRect()
+    const readingLine = viewportRect.top + viewportRect.height * .46
+    const nodeAnchor = nodeRect.top + Math.min(72, nodeRect.height * .25)
+    const current = cameraRef.current
+    const next = clampCamera({ ...current, x: 0, y: current.y + (readingLine - nodeAnchor) }, mode)
+    cameraRef.current = next
+    setCamera(next)
+    setReadingStep(index)
+  }
+
+    function changeMode(nextMode) {
     setMode(nextMode)
+    setReadingStep(0)
     setSelectedWord(null)
     setContextOpen(false)
     const scale = defaultScale()
@@ -990,6 +1084,14 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
         <CanvasWorld ayah={ayah} mode={mode} focusWordIndex={activeWordIndex || focusWordIndex} language={language} selectedWord={selectedWord} onSelectWord={selectWord} />
       </div>
     </div>
+
+    {(mode === 'composition' || mode === 'rhetoric') && <ReadingRail
+      mode={mode}
+      steps={readingSteps}
+      activeIndex={readingStep}
+      language={language}
+      onSelect={goToReadingStep}
+    />}
 
     {mode === 'analysis' && <WordFocusOverlay
       ayah={ayah}
