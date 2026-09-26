@@ -80,6 +80,75 @@ const COMPOSITION_COPY = {
   },
 }
 
+const RHETORIC_COPY = {
+  '2:197': {
+    ru: {
+      'rhetoric-frame': {
+        title: 'Установленное время',
+        evidence: 'ٱلْحَجُّ أَشْهُرٌ مَّعْلُومَاتٌ — хадж связан с известными месяцами.',
+        mechanism: 'Аят начинает с временной рамки: у хаджа есть установленный период.',
+        effect: 'Сначала задаётся порядок, внутри которого дальше рассматриваются действия паломника.',
+      },
+      'rhetoric-limits': {
+        title: 'Вступил в хадж → появились границы',
+        evidence: 'مَنْ ... فَلَا ... وَلَا ... وَلَا связывает вступление в хадж с тремя ограничениями: rafath, fusūq и jidāl.',
+        mechanism: 'فَ связывает условие со следствием, а повтор لَا / وَلَا собирает три ограничения в одну серию.',
+        effect: 'Они читаются как единый режим поведения во время хаджа.',
+      },
+      'rhetoric-knowledge': {
+        title: 'Действие человека → знание Аллаха',
+        evidence: 'وَمَا تَفْعَلُوا ... يَعْلَمْهُ ٱللَّهُ — «что бы вы ни сделали ... Аллах знает это».',
+        mechanism: 'Действие человека сразу связано со знанием Аллаха о нём.',
+        effect: 'Добро совершается с осознанием, что оно известно Аллаху.',
+      },
+      'rhetoric-provision': {
+        title: 'Дорожный запас → taqwā',
+        evidence: 'وَتَزَوَّدُوا ... ٱلزَّادِ ... ٱلتَّقْوَىٰ: сначала «запасайтесь», затем taqwā названа лучшим запасом.',
+        mechanism: 'Повтор корня ز و د связывает обычный запас для пути с образом «лучшего запаса».',
+        effect: 'Физическая подготовка к хаджу становится образом внутренней подготовки.',
+      },
+      'rhetoric-address': {
+        title: 'Taqwā → прямое обращение',
+        evidence: 'ٱلتَّقْوَىٰ сразу сменяется وَٱتَّقُونِ от того же корня و ق ي, затем идёт يَا أُولِي ٱلْأَلْبَابِ.',
+        mechanism: 'Названное качество превращается в повеление, после чего финал обращается к людям разумения.',
+        effect: 'Конец аята связывает taqwā с пониманием общей логики предыдущих наставлений.',
+      },
+    },
+    en: {
+      'rhetoric-frame': {
+        title: 'An appointed time',
+        evidence: 'ٱلْحَجُّ أَشْهُرٌ مَّعْلُومَاتٌ — Hajj is tied to known months.',
+        mechanism: 'The ayah begins with a time-frame: Hajj has an appointed period.',
+        effect: 'The order is established before the pilgrim’s actions are discussed.',
+      },
+      'rhetoric-limits': {
+        title: 'Entering Hajj → boundaries follow',
+        evidence: 'مَنْ ... فَلَا ... وَلَا ... وَلَا links entering Hajj with three limits: rafath, fusūq, and jidāl.',
+        mechanism: 'فَ links the condition to its consequence, while repeated لَا / وَلَا gathers the three limits into one series.',
+        effect: 'They read as one mode of conduct during Hajj.',
+      },
+      'rhetoric-knowledge': {
+        title: 'Human action → Allah’s knowledge',
+        evidence: 'وَمَا تَفْعَلُوا ... يَعْلَمْهُ ٱللَّهُ — “whatever you do ... Allah knows it.”',
+        mechanism: 'Human action is immediately connected to Allah’s knowledge of it.',
+        effect: 'Good is done with awareness that it is known to Allah.',
+      },
+      'rhetoric-provision': {
+        title: 'Travel provision → taqwā',
+        evidence: 'وَتَزَوَّدُوا ... ٱلزَّادِ ... ٱلتَّقْوَىٰ: first “take provision,” then taqwā is named as the best provision.',
+        mechanism: 'The repeated root ز و د links ordinary travel provision with the image of the “best provision.”',
+        effect: 'Physical preparation for Hajj becomes an image for inward preparation.',
+      },
+      'rhetoric-address': {
+        title: 'Taqwā → direct address',
+        evidence: 'ٱلتَّقْوَىٰ is immediately followed by وَٱتَّقُونِ from the same root و ق ي, then by يَا أُولِي ٱلْأَلْبَابِ.',
+        mechanism: 'The named quality becomes an imperative, and the close then addresses people of understanding.',
+        effect: 'The ending links taqwā with grasping the logic of the preceding guidance.',
+      },
+    },
+  },
+}
+
 function currentLanguage() {
   return document.documentElement.lang === 'en' ? 'en' : 'ru'
 }
@@ -146,11 +215,31 @@ function decorateComposition(context) {
   })
 }
 
+function decorateRhetoric(context) {
+  const { shell, reference, language } = context
+  const copy = RHETORIC_COPY[reference]?.[language]
+  if (!copy) return
+
+  shell.querySelectorAll('.rhetoric-insight[data-reading-id]').forEach((section) => {
+    const step = copy[section.dataset.readingId]
+    if (!step) return
+
+    const title = section.querySelector('h3')
+    const evidence = section.querySelector('.rhetoric-evidence')
+    const relation = section.querySelectorAll('.rhetoric-connection li > span')
+    if (title) title.textContent = step.title
+    if (evidence) evidence.textContent = step.evidence
+    if (relation[0]) relation[0].textContent = step.mechanism
+    if (relation[1]) relation[1].textContent = step.effect
+  })
+}
+
 function decorateAyah() {
   const context = currentAyah()
   if (!context) return
   decorateInlineWords(context)
   decorateComposition(context)
+  decorateRhetoric(context)
 }
 
 export function AyahInlineMeaningLayer() {
