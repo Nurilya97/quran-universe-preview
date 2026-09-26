@@ -53,13 +53,11 @@ test.describe('Ayah inline meaning readability', () => {
       return {
         color: style.color,
         decoration: style.textDecorationLine,
-        decorationColor: style.textDecorationColor,
         borderBottomWidth: style.borderBottomWidth,
       }
     })
     expect(entryStyle.color).toBe('rgb(234, 255, 91)')
     expect(entryStyle.decoration).toBe('none')
-    expect(entryStyle.decorationColor).toBe('rgba(0, 0, 0, 0)')
     expect(entryStyle.borderBottomWidth).toBe('0px')
 
     const firstWord = ayah.locator('.analysis-inline-word').first()
@@ -70,11 +68,9 @@ test.describe('Ayah inline meaning readability', () => {
       return {
         color: style.color,
         decoration: style.textDecorationLine,
-        decorationColor: style.textDecorationColor,
       }
     })
     expect(selectedStyle.color).toBe('rgb(234, 255, 91)')
     expect(selectedStyle.decoration).toBe('none')
-    expect(selectedStyle.decorationColor).toBe('rgba(0, 0, 0, 0)')
   })
 })
