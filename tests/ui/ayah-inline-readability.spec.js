@@ -76,6 +76,7 @@ test.describe('Ayah inline meaning readability', () => {
     await expect(related).toHaveCount(5)
     expect(await unrelated.count()).toBeGreaterThan(0)
 
+    await page.waitForTimeout(320)
     const relatedOpacity = await related.first().evaluate((node) => Number.parseFloat(getComputedStyle(node).opacity))
     const unrelatedOpacity = await unrelated.first().evaluate((node) => Number.parseFloat(getComputedStyle(node).opacity))
     expect(relatedOpacity).toBeGreaterThan(unrelatedOpacity)
