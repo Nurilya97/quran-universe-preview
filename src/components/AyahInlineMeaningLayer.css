@@ -1,6 +1,6 @@
-/* Ayah Space v2 experiment: meaning stays attached to each Arabic word.
-   This file is loaded after the approved AyahView.css so it can extend the
-   existing scene without creating another page or navigation layer. */
+/* Ayah Space v2: meaning stays attached to each Arabic word.
+   Loaded after AyahView.css so this layer can improve reading without
+   creating another page or navigation mode. */
 
 .ayah-space-shell.is-analysis .analysis-ayah-group {
   width: min(1880px, 88vw);
@@ -11,7 +11,8 @@
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: center;
-  gap: 22px 28px;
+  column-gap: 10px;
+  row-gap: 26px;
   max-width: 1820px;
   margin-inline: auto;
   direction: rtl;
@@ -19,19 +20,23 @@
   white-space: normal;
 }
 
+/* Keep the Arabic visually continuous. The gloss is positioned beneath the
+   word without contributing to the word's horizontal width, so a long Russian
+   gloss no longer pushes neighbouring Arabic words apart. */
 .ayah-space-shell.is-analysis .analysis-word-stack {
   position: relative;
   display: inline-flex;
   flex: 0 0 auto;
-  min-width: 74px;
-  max-width: 154px;
+  min-width: 0;
+  max-width: none;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 7px;
-  padding: 7px 4px 8px;
+  gap: 0;
+  padding: 5px 1px 36px;
   border-radius: 18px;
   isolation: isolate;
+  overflow: visible;
   transition:
     transform .28s var(--ease-space),
     opacity .22s var(--ease-soft),
@@ -41,14 +46,18 @@
 
 .ayah-space-shell.is-analysis .analysis-word-stack::after {
   content: attr(data-gloss);
+  position: absolute;
+  top: calc(100% - 31px);
+  left: 50%;
   display: block;
-  max-width: 146px;
-  min-height: 20px;
-  color: rgba(187, 198, 203, .72);
+  width: max-content;
+  max-width: 126px;
+  transform: translateX(-50%);
+  color: rgba(235, 240, 242, .9);
   font-family: var(--ui-font);
-  font-size: 10px;
-  font-weight: 430;
-  line-height: 1.32;
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1.28;
   letter-spacing: 0;
   direction: ltr;
   unicode-bidi: plaintext;
@@ -59,8 +68,35 @@
 }
 
 .ayah-space-shell.is-analysis .analysis-word-stack[data-translation-status='researching']::after {
-  color: rgba(206, 187, 139, .82);
-  font-size: 9px;
+  color: rgba(234, 255, 91, .82);
+  font-size: 11px;
+  font-weight: 520;
+}
+
+/* The semantic selection accent in Quran Universe is the existing neon lemon.
+   Selection is expressed by the Arabic glyph itself, never by an underline. */
+.ayah-space-shell.is-analysis .analysis-inline-word.is-entry,
+.ayah-space-shell.is-analysis .analysis-inline-word.is-selected {
+  color: #eaff5b !important;
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  text-shadow: 0 0 15px rgba(234, 255, 91, .34) !important;
+}
+
+.ayah-space-shell.is-analysis .analysis-inline-word.is-entry::before,
+.ayah-space-shell.is-analysis .analysis-inline-word.is-entry::after,
+.ayah-space-shell.is-analysis .analysis-inline-word.is-selected::before,
+.ayah-space-shell.is-analysis .analysis-inline-word.is-selected::after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  border: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
 }
 
 .ayah-space-shell.is-analysis .analysis-word-stack:has(.analysis-inline-word.is-entry)::before,
@@ -68,32 +104,32 @@
   content: '';
   position: absolute;
   z-index: -1;
-  inset: -7px -10px -10px;
+  inset: -7px -10px -4px;
   border-radius: 22px;
-  background: radial-gradient(circle at 50% 36%, rgba(188, 218, 230, .085), rgba(188, 218, 230, .018) 55%, transparent 76%);
-  box-shadow: 0 0 48px rgba(150, 194, 211, .055);
+  background: radial-gradient(circle at 50% 34%, rgba(234, 255, 91, .09), rgba(234, 255, 91, .018) 55%, transparent 76%);
+  box-shadow: 0 0 46px rgba(234, 255, 91, .07);
   pointer-events: none;
 }
 
 .ayah-space-shell.is-analysis .analysis-word-stack:has(.analysis-inline-word.is-selected) {
-  transform: translateY(-8px) scale(1.055);
+  transform: translateY(-6px) scale(1.045);
 }
 
 .ayah-space-shell.is-analysis .analysis-word-stack:has(.analysis-inline-word.is-selected)::after {
-  color: rgba(231, 237, 239, .94);
+  color: rgba(247, 249, 249, .98);
 }
 
 .ayah-space-shell.is-analysis .analysis-word-stack:has(.analysis-inline-word.is-related):not(:has(.analysis-inline-word.is-selected)) {
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, .012);
+  background: rgba(234, 255, 91, .012);
 }
 
 .ayah-space-shell.is-analysis.has-word-focus .analysis-word-stack:not(:has(.analysis-inline-word.is-related)) {
-  opacity: .33;
+  opacity: .38;
 }
 
 .ayah-space-shell.is-analysis.has-word-focus .analysis-word-stack:has(.analysis-inline-word.is-related)::after {
-  color: rgba(217, 225, 228, .84);
+  color: rgba(232, 237, 239, .9);
 }
 
 .ayah-space-shell.is-analysis .analysis-tap-hint {
@@ -106,42 +142,45 @@
   }
 
   .ayah-space-shell.is-analysis .analysis-ayah-continuous {
-    gap: 18px 20px;
+    column-gap: 8px;
+    row-gap: 24px;
     max-width: 1160px;
     padding-inline: 18px;
   }
 
   .ayah-space-shell.is-analysis .analysis-word-stack {
-    min-width: 66px;
-    max-width: 126px;
-    gap: 5px;
-    padding-inline: 2px;
+    min-width: 0;
+    max-width: none;
+    padding: 4px 0 34px;
   }
 
   .ayah-space-shell.is-analysis .analysis-word-stack::after {
-    max-width: 120px;
-    font-size: 9px;
-    line-height: 1.26;
+    top: calc(100% - 29px);
+    max-width: 112px;
+    font-size: 11.5px;
+    font-weight: 520;
+    line-height: 1.25;
   }
 
   .ayah-space-shell.is-analysis .analysis-word-stack[data-translation-status='researching']::after {
-    font-size: 8.3px;
+    font-size: 10.2px;
   }
 }
 
 @media (max-width: 430px) {
   .ayah-space-shell.is-analysis .analysis-ayah-continuous {
-    gap: 15px 15px;
+    column-gap: 6px;
+    row-gap: 22px;
   }
 
   .ayah-space-shell.is-analysis .analysis-word-stack {
-    min-width: 61px;
-    max-width: 112px;
+    min-width: 0;
+    max-width: none;
   }
 
   .ayah-space-shell.is-analysis .analysis-word-stack::after {
-    max-width: 108px;
-    font-size: 8.6px;
+    max-width: 104px;
+    font-size: 11.2px;
   }
 }
 
