@@ -60,4 +60,27 @@ test.describe('Ayah inline meaning readability', () => {
     expect(entryStyle.decoration).toBe('none')
     expect(entryStyle.borderBottomWidth).toBe('0px')
   })
+
+  test('word focus keeps the selected semantic phrase visible while unrelated words recede', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 })
+    await openAyah197(page)
+
+    const ayah = page.locator('.ayah-space-shell')
+    const entry = ayah.locator('.analysis-inline-word.is-entry')
+    await entry.click()
+    await expect(ayah).toHaveClass(/has-word-focus/)
+    await expect(page.locator('.word-meaning-view')).toBeVisible()
+
+    const related = ayah.locator('.analysis-word-stack:has(.analysis-inline-word.is-related)')
+    const unrelated = ayah.locator('.analysis-word-stack:not(:has(.analysis-inline-word.is-related))')
+    await expect(related).toHaveCount(5)
+    expect(await unrelated.count()).toBeGreaterThan(0)
+
+    await page.waitForTimeout(320)
+    const relatedOpacity = await related.first().evaluate((node) => Number.parseFloat(getComputedStyle(node).opacity))
+    const unrelatedOpacity = await unrelated.first().evaluate((node) => Number.parseFloat(getComputedStyle(node).opacity))
+    expect(relatedOpacity).toBeGreaterThan(unrelatedOpacity)
+    expect(relatedOpacity).toBeGreaterThanOrEqual(.6)
+    expect(unrelatedOpacity).toBeLessThanOrEqual(.15)
+  })
 })
