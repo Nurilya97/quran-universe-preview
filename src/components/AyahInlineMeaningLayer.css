@@ -12,7 +12,7 @@
   align-items: flex-start;
   justify-content: center;
   column-gap: 10px;
-  row-gap: 26px;
+  row-gap: 38px;
   max-width: 1820px;
   margin-inline: auto;
   direction: rtl;
@@ -33,7 +33,7 @@
   align-items: center;
   justify-content: flex-start;
   gap: 0;
-  padding: 5px 1px 36px;
+  padding: 5px 1px 48px;
   border-radius: 18px;
   isolation: isolate;
   overflow: visible;
@@ -47,16 +47,16 @@
 .ayah-space-shell.is-analysis .analysis-word-stack::after {
   content: attr(data-gloss);
   position: absolute;
-  top: calc(100% - 31px);
+  top: calc(100% - 41px);
   left: 50%;
   display: block;
   width: max-content;
-  max-width: 126px;
+  max-width: 150px;
   transform: translateX(-50%);
-  color: rgba(235, 240, 242, .9);
+  color: rgba(244, 247, 248, .96);
   font-family: var(--ui-font);
-  font-size: 12.5px;
-  font-weight: 500;
+  font-size: 15.5px;
+  font-weight: 560;
   line-height: 1.28;
   letter-spacing: 0;
   direction: ltr;
@@ -68,27 +68,44 @@
 }
 
 .ayah-space-shell.is-analysis .analysis-word-stack[data-translation-status='researching']::after {
-  color: rgba(234, 255, 91, .82);
-  font-size: 11px;
-  font-weight: 520;
+  color: rgba(234, 255, 91, .9);
+  font-size: 14px;
+  font-weight: 560;
 }
 
-/* The semantic selection accent in Quran Universe is the existing neon lemon.
-   Selection is expressed by the Arabic glyph itself, never by an underline. */
-.ayah-space-shell.is-analysis .analysis-inline-word.is-entry,
-.ayah-space-shell.is-analysis .analysis-inline-word.is-selected {
+/* No Arabic word in the Analysis line may inherit the old cyan underline.
+   Use explicit longhand properties and a deliberately strong selector because
+   the legacy AyahView.css still contains the former entry-word underline. */
+html body #root .ayah-space-shell.is-analysis .analysis-ayah-continuous .analysis-inline-word {
+  text-decoration-line: none !important;
+  text-decoration-style: solid !important;
+  text-decoration-color: transparent !important;
+  text-decoration-thickness: 0 !important;
+  text-underline-offset: 0 !important;
+  border-bottom: 0 !important;
+  background-image: none !important;
+}
+
+/* Selection is shown only through the approved neon-lemon glyph colour.
+   The entry word uses the same vocabulary so the old blue accent disappears. */
+html body #root .ayah-space-shell.is-analysis .analysis-ayah-continuous .analysis-inline-word.is-entry,
+html body #root .ayah-space-shell.is-analysis .analysis-ayah-continuous .analysis-inline-word.is-selected {
   color: #eaff5b !important;
   text-decoration: none !important;
+  text-decoration-line: none !important;
+  text-decoration-color: transparent !important;
+  text-decoration-thickness: 0 !important;
+  text-underline-offset: 0 !important;
   border-bottom: 0 !important;
   background-image: none !important;
   box-shadow: none !important;
   text-shadow: 0 0 15px rgba(234, 255, 91, .34) !important;
 }
 
-.ayah-space-shell.is-analysis .analysis-inline-word.is-entry::before,
-.ayah-space-shell.is-analysis .analysis-inline-word.is-entry::after,
-.ayah-space-shell.is-analysis .analysis-inline-word.is-selected::before,
-.ayah-space-shell.is-analysis .analysis-inline-word.is-selected::after {
+html body #root .ayah-space-shell.is-analysis .analysis-inline-word.is-entry::before,
+html body #root .ayah-space-shell.is-analysis .analysis-inline-word.is-entry::after,
+html body #root .ayah-space-shell.is-analysis .analysis-inline-word.is-selected::before,
+html body #root .ayah-space-shell.is-analysis .analysis-inline-word.is-selected::after {
   content: none !important;
   display: none !important;
   width: 0 !important;
@@ -96,7 +113,6 @@
   border: 0 !important;
   background: none !important;
   box-shadow: none !important;
-  text-decoration: none !important;
 }
 
 .ayah-space-shell.is-analysis .analysis-word-stack:has(.analysis-inline-word.is-entry)::before,
@@ -116,7 +132,7 @@
 }
 
 .ayah-space-shell.is-analysis .analysis-word-stack:has(.analysis-inline-word.is-selected)::after {
-  color: rgba(247, 249, 249, .98);
+  color: rgba(250, 252, 252, .99);
 }
 
 .ayah-space-shell.is-analysis .analysis-word-stack:has(.analysis-inline-word.is-related):not(:has(.analysis-inline-word.is-selected)) {
@@ -129,7 +145,7 @@
 }
 
 .ayah-space-shell.is-analysis.has-word-focus .analysis-word-stack:has(.analysis-inline-word.is-related)::after {
-  color: rgba(232, 237, 239, .9);
+  color: rgba(244, 248, 249, .96);
 }
 
 .ayah-space-shell.is-analysis .analysis-tap-hint {
@@ -143,7 +159,7 @@
 
   .ayah-space-shell.is-analysis .analysis-ayah-continuous {
     column-gap: 8px;
-    row-gap: 24px;
+    row-gap: 40px;
     max-width: 1160px;
     padding-inline: 18px;
   }
@@ -151,36 +167,41 @@
   .ayah-space-shell.is-analysis .analysis-word-stack {
     min-width: 0;
     max-width: none;
-    padding: 4px 0 34px;
+    padding: 4px 0 54px;
   }
 
+  /* The Ayah world is shown at ~60% on mobile, so this intentionally uses a
+     larger CSS size to remain legible after the whole scene is scaled. */
   .ayah-space-shell.is-analysis .analysis-word-stack::after {
-    top: calc(100% - 29px);
-    max-width: 112px;
-    font-size: 11.5px;
-    font-weight: 520;
-    line-height: 1.25;
+    top: calc(100% - 47px);
+    max-width: 144px;
+    font-size: 18px;
+    font-weight: 570;
+    line-height: 1.28;
   }
 
   .ayah-space-shell.is-analysis .analysis-word-stack[data-translation-status='researching']::after {
-    font-size: 10.2px;
+    max-width: 150px;
+    font-size: 15.5px;
   }
 }
 
 @media (max-width: 430px) {
   .ayah-space-shell.is-analysis .analysis-ayah-continuous {
     column-gap: 6px;
-    row-gap: 22px;
+    row-gap: 38px;
   }
 
   .ayah-space-shell.is-analysis .analysis-word-stack {
     min-width: 0;
     max-width: none;
+    padding-bottom: 52px;
   }
 
   .ayah-space-shell.is-analysis .analysis-word-stack::after {
-    max-width: 104px;
-    font-size: 11.2px;
+    top: calc(100% - 45px);
+    max-width: 138px;
+    font-size: 17.5px;
   }
 }
 
