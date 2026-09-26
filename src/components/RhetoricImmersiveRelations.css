@@ -1,0 +1,206 @@
+/* Rhetoric stays inside the same Ayah Space. The Arabic construction is the
+   diagram: relevant words become relation nodes, while prose explains what the
+   visible relation does. */
+
+.ayah-space-shell .rhetoric-diagram .rhetoric-flow {
+  --rhetoric-relation-accent: #eaff5b;
+}
+
+.ayah-space-shell .rhetoric-diagram .rhetoric-insight {
+  position: relative;
+  isolation: isolate;
+}
+
+.ayah-space-shell .rhetoric-diagram .rhetoric-insight::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 46px;
+  width: min(720px, 92%);
+  height: 250px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(234,255,91,.022), transparent 70%);
+  pointer-events: none;
+}
+
+.ayah-space-shell .rhetoric-diagram .rhetoric-phrase {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .04em .22em;
+  width: fit-content;
+  max-width: 720px !important;
+  margin: 12px auto 0 !important;
+  padding: 0 24px 32px;
+  color: #7f898e;
+}
+
+.ayah-space-shell .rhetoric-diagram .rhetoric-phrase::after {
+  content: '';
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 11px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(234,255,91,.20) 12%, rgba(234,255,91,.34) 50%, rgba(234,255,91,.20) 88%, transparent);
+  box-shadow: 0 0 16px rgba(234,255,91,.05);
+}
+
+.ayah-space-shell .rhetoric-diagram .rhetoric-phrase > span {
+  position: relative;
+  margin: 0 !important;
+  color: #778187;
+  opacity: .58;
+  text-shadow: none;
+  transition:
+    color .2s var(--ease-soft),
+    opacity .2s var(--ease-soft),
+    transform .22s var(--ease-space),
+    text-shadow .22s var(--ease-soft);
+}
+
+.ayah-space-shell .rhetoric-diagram .rhetoric-phrase > span.is-focus {
+  color: #eef2f3 !important;
+  opacity: 1;
+  text-shadow: 0 0 12px rgba(234,255,91,.08) !important;
+}
+
+.ayah-space-shell .rhetoric-diagram .rhetoric-phrase > span.is-focus::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -24px;
+  width: 7px;
+  height: 7px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: var(--rhetoric-relation-accent);
+  box-shadow: 0 0 11px rgba(234,255,91,.38), 0 0 24px rgba(234,255,91,.09);
+}
+
+.ayah-space-shell .rhetoric-diagram .rhetoric-phrase > span.is-entry {
+  color: var(--rhetoric-relation-accent) !important;
+  opacity: 1;
+  transform: translateY(-2px);
+  text-shadow: 0 0 16px rgba(234,255,91,.28) !important;
+}
+
+.ayah-space-shell .rhetoric-diagram .rhetoric-transliteration {
+  max-width: 680px;
+  margin: 5px auto 0;
+  color: #7f898e;
+  font-size: 12px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.ayah-space-shell .rhetoric-diagram .rhetoric-proof {
+  max-width: 700px;
+  margin-top: 20px;
+}
+
+.ayah-space-shell .rhetoric-diagram .rhetoric-proof .rhetoric-evidence {
+  max-width: 650px;
+  margin-inline: auto;
+  color: #aeb8bd;
+}
+
+.ayah-space-shell .rhetoric-diagram .rhetoric-connection > ul {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 42px;
+  margin: 24px auto 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ayah-space-shell .rhetoric-diagram .rhetoric-connection > ul > li {
+  position: relative;
+  padding: 17px 0 0 !important;
+  border-top: 1px solid rgba(234,255,91,.15);
+}
+
+.ayah-space-shell .rhetoric-diagram .rhetoric-connection > ul > li::before {
+  content: '' !important;
+  position: absolute;
+  left: 0 !important;
+  top: -4px !important;
+  width: 7px !important;
+  height: 7px !important;
+  border: 0 !important;
+  border-radius: 50%;
+  background: var(--rhetoric-relation-accent) !important;
+  box-shadow: 0 0 10px rgba(234,255,91,.28);
+}
+
+.ayah-space-shell .rhetoric-diagram .rhetoric-connection > ul > li:first-child::after {
+  content: '→';
+  position: absolute;
+  top: -13px;
+  right: -31px;
+  color: rgba(234,255,91,.68);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.ayah-space-shell .rhetoric-diagram .rhetoric-connection li > span {
+  color: #aeb8bd;
+  line-height: 1.68;
+}
+
+@media (max-width: 760px) {
+  .ayah-space-shell .rhetoric-diagram .rhetoric-phrase {
+    max-width: 540px !important;
+    padding-inline: 18px;
+    padding-bottom: 38px;
+    font-size: 41px !important;
+    line-height: 1.58 !important;
+  }
+
+  .ayah-space-shell .rhetoric-diagram .rhetoric-phrase > span.is-focus::after {
+    bottom: -28px;
+    width: 8px;
+    height: 8px;
+  }
+
+  .ayah-space-shell .rhetoric-diagram .rhetoric-transliteration {
+    max-width: 520px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .ayah-space-shell .rhetoric-diagram .rhetoric-proof {
+    max-width: 535px;
+  }
+
+  .ayah-space-shell .rhetoric-diagram .rhetoric-proof .rhetoric-evidence,
+  .ayah-space-shell .rhetoric-diagram .rhetoric-connection li > span {
+    font-size: 18px !important;
+    line-height: 1.62 !important;
+  }
+
+  .ayah-space-shell .rhetoric-diagram .rhetoric-connection > ul {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    margin-top: 28px;
+  }
+
+  .ayah-space-shell .rhetoric-diagram .rhetoric-connection > ul > li:first-child::after {
+    content: '↓';
+    left: 50%;
+    right: auto;
+    top: auto;
+    bottom: -28px;
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ayah-space-shell .rhetoric-diagram .rhetoric-phrase > span {
+    transition: none;
+  }
+}

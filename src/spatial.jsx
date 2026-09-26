@@ -6,6 +6,7 @@ import { AyahInlineMeaningLayer } from './components/AyahInlineMeaningLayer.jsx'
 import './components/Typography.css'
 import './components/WordOrbit.css'
 import './components/CompositionImmersiveFlow.css'
+import './components/RhetoricImmersiveRelations.css'
 
 const BUILD_SHA = import.meta.env.VITE_BUILD_SHA || ''
 
