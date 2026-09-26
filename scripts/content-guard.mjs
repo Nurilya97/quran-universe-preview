@@ -329,15 +329,6 @@ if (/религиоз/i.test(forbiddenPublicRussian)) {
   fail('forbidden vague Russian wording returned to public Quran Universe copy')
 }
 
-const journeyRu = pilotAyah.journey?.ru
-const journeySegments = pilotAyah.journey?.segments || []
-if (!journeyRu?.guide?.includes('лучший запас — taqwā') ||
-    !journeyRu?.guideNote?.includes('смысловой ориентир Quran Universe') ||
-    journeySegments.length !== 5 ||
-    journeySegments.at(-1)?.range?.[1] !== 29) {
-  fail('2:197 Ayah Journey must preserve the whole-ayah meaning guide and five ordered phrase steps')
-}
-
 const passageLensRu = pilotAyah.passageLens?.ru
 if (!passageLensRu?.title?.includes('единый смысловой блок о хадже') ||
     !passageLensRu?.text?.includes('единой хадж-темы') ||

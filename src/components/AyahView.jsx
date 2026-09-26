@@ -4,7 +4,6 @@ import { qacTreebankUrl } from '../data/ayahSchema.js'
 import { MORPHOLOGY, MORPH_ROLES } from '../morphologyWqy.js'
 import './AyahView.css'
 import { SyntaxView } from './SyntaxView.jsx'
-import { AyahJourney } from './AyahJourney.jsx'
 import './WordFocusViews.css'
 
 function ArrowIcon() {
@@ -723,7 +722,6 @@ function CanvasWorld({ ayah, mode, focusWordIndex, language, selectedWord, onSel
 export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWordOrbit }) {
   const ayah = getAyahPrototype(reference)
   const [mode, setMode] = useState('analysis')
-  const [experience, setExperience] = useState('journey')
   const [contextOpen, setContextOpen] = useState(false)
   const [selectedWord, setSelectedWord] = useState(null)
   const [activeWordIndex, setActiveWordIndex] = useState(focusWordIndex || null)
@@ -759,7 +757,6 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
 
   useEffect(() => {
     setMode('analysis')
-    setExperience('journey')
     setContextOpen(false)
     setSelectedWord(null)
     setActiveWordIndex(focusWordIndex || null)
@@ -1052,7 +1049,6 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
   }
 
   function changeMode(nextMode) {
-    setExperience('research')
     if (readingJumpTimer.current) {
       window.clearTimeout(readingJumpTimer.current)
       readingJumpTimer.current = null
@@ -1071,42 +1067,14 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
     })
   }
 
-  function openJourney() {
-    setSelectedWord(null)
-    setContextOpen(false)
-    setExperience('journey')
-  }
-
-  function openResearch() {
-    setSelectedWord(null)
-    setContextOpen(false)
-    setExperience('research')
-    if (mode !== 'analysis') {
-      changeMode(mode)
-      return
-    }
-    resetCamera('analysis')
-  }
-
-  const wordFocusActive = selectedWord && (experience === 'journey' || mode === 'analysis')
-
-  return <section className={'ayah-space-shell' + (experience === 'journey' ? ' is-journey' : ' is-research') + (experience === 'research' && mode === 'analysis' ? ' is-analysis' : '') + (wordFocusActive ? ' has-word-focus' : '')}>
+  return <section className={'ayah-space-shell' + (mode === 'analysis' ? ' is-analysis' : '') + (selectedWord && mode === 'analysis' ? ' has-word-focus' : '')}>
     <div className="ayah-space-topbar">
       <button className="ayah-back" onClick={onBack}><ArrowIcon /><span>{ru ? 'К слову' : 'Back'}</span></button>
       <div className="ayah-space-reference"><strong>{ayah.reference}</strong><small>{ayah.surah[language]}</small></div>
       <button className={'ayah-context-trigger' + (contextOpen ? ' is-open' : '')} onClick={() => setContextOpen(v => !v)}><InfoIcon /><span>{ru ? 'Контекст' : 'Context'}</span></button>
     </div>
 
-    <nav className="ayah-experience-nav" role="tablist" aria-label={ru ? 'Путь изучения аята' : 'Ayah study path'}>
-      <button type="button" role="tab" aria-selected={experience === 'journey'} onClick={openJourney}>
-        {ru ? 'Понять аят' : 'Understand'}
-      </button>
-      <button type="button" role="tab" aria-selected={experience === 'research'} onClick={openResearch}>
-        {ru ? 'Исследовать' : 'Explore'}
-      </button>
-    </nav>
-
-    {experience === 'research' && <nav className="ayah-space-modes" role="tablist" aria-label={ru ? 'Слои исследования' : 'Research layers'}>
+    <nav className="ayah-space-modes" role="tablist" aria-label={ru ? 'Слои Ayah Space' : 'Ayah Space layers'}>
       {modes.map(item => <button
         key={item.id}
         className={'mode-' + item.status}
@@ -1114,7 +1082,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
         aria-selected={mode === item.id}
         onClick={() => changeMode(item.id)}
       >{item.label}</button>)}
-    </nav>}
+    </nav>
 
     {contextOpen && <aside className="ayah-space-context">
       <header><span>{ru ? 'Контекст' : 'Context'}</span><button aria-label={ru ? 'Закрыть контекст' : 'Close context'} onClick={() => setContextOpen(false)}>×</button></header>
@@ -1149,14 +1117,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
       </div>
     </aside>}
 
-    {experience === 'journey' && <AyahJourney
-      ayah={ayah}
-      language={language}
-      onSelectWord={selectWord}
-      onExplore={openResearch}
-    />}
-
-    {experience === 'research' && <div
+    <div
       ref={viewportRef}
       className="ayah-space-viewport"
       data-pan-axis={mode === 'composition' || mode === 'rhetoric' ? 'vertical' : 'free'}
@@ -1173,9 +1134,9 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
       <div className="ayah-space-world" style={{ transform: `translate(-50%, -50%) translate(${camera.x}px, ${camera.y}px) scale(${selectedWord && mode === 'analysis' ? Math.min(camera.scale * 1.16, 1.18) : camera.scale})` }}>
         <CanvasWorld ayah={ayah} mode={mode} focusWordIndex={activeWordIndex || focusWordIndex} language={language} selectedWord={selectedWord} onSelectWord={selectWord} />
       </div>
-    </div>}
+    </div>
 
-    {experience === 'research' && (mode === 'composition' || mode === 'rhetoric') && <ReadingRail
+    {(mode === 'composition' || mode === 'rhetoric') && <ReadingRail
       mode={mode}
       steps={readingSteps}
       activeIndex={readingStep}
@@ -1183,7 +1144,7 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
       onSelect={goToReadingStep}
     />}
 
-    {(experience === 'journey' || mode === 'analysis') && <WordFocusOverlay
+    {mode === 'analysis' && <WordFocusOverlay
       ayah={ayah}
       selectedWord={selectedWord}
       language={language}
@@ -1191,11 +1152,11 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
       onOpenWordOrbit={onOpenWordOrbit}
     />}
 
-    {experience === 'research' && <div className="ayah-space-zoom">
+    <div className="ayah-space-zoom">
       <button aria-label={ru ? 'Увеличить масштаб' : 'Zoom in'} onClick={() => zoomBy(.08)}>+</button>
       <span>{Math.round(camera.scale * 100)}%</span>
       <button aria-label={ru ? 'Уменьшить масштаб' : 'Zoom out'} onClick={() => zoomBy(-.08)}>−</button>
-    </div>}
+    </div>
 
   </section>
 }
