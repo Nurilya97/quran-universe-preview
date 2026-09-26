@@ -104,7 +104,8 @@
 }
 
 .ayah-space-shell .composition-diagram .composition-transition::before {
-  content: '↓';
+  content: '↓' !important;
+  display: inline-block !important;
   color: var(--composition-flow-accent);
   font-size: 13px;
   line-height: 1;
