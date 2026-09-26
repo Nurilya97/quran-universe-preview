@@ -76,7 +76,7 @@
 /* No Arabic word in the Analysis line may inherit the old cyan underline.
    Use explicit longhand properties and a deliberately strong selector because
    the legacy AyahView.css still contains the former entry-word underline. */
-html body #root .ayah-space-shell.is-analysis .analysis-ayah-continuous .analysis-inline-word {
+html body #root .ayah-space-shell .analysis-ayah-continuous .analysis-inline-word {
   text-decoration-line: none !important;
   text-decoration-style: solid !important;
   text-decoration-color: transparent !important;
@@ -87,9 +87,10 @@ html body #root .ayah-space-shell.is-analysis .analysis-ayah-continuous .analysi
 }
 
 /* Selection is shown only through the approved neon-lemon glyph colour.
-   The entry word uses the same vocabulary so the old blue accent disappears. */
-html body #root .ayah-space-shell.is-analysis .analysis-ayah-continuous .analysis-inline-word.is-entry,
-html body #root .ayah-space-shell.is-analysis .analysis-ayah-continuous .analysis-inline-word.is-selected {
+   These selectors deliberately do not depend on .is-analysis because opening
+   a focused word changes the shell state while the source word remains visible. */
+html body #root .ayah-space-shell .analysis-ayah-continuous .analysis-inline-word.is-entry,
+html body #root .ayah-space-shell .analysis-ayah-continuous .analysis-inline-word.is-selected {
   color: #eaff5b !important;
   text-decoration: none !important;
   text-decoration-line: none !important;
@@ -102,10 +103,10 @@ html body #root .ayah-space-shell.is-analysis .analysis-ayah-continuous .analysi
   text-shadow: 0 0 15px rgba(234, 255, 91, .34) !important;
 }
 
-html body #root .ayah-space-shell.is-analysis .analysis-inline-word.is-entry::before,
-html body #root .ayah-space-shell.is-analysis .analysis-inline-word.is-entry::after,
-html body #root .ayah-space-shell.is-analysis .analysis-inline-word.is-selected::before,
-html body #root .ayah-space-shell.is-analysis .analysis-inline-word.is-selected::after {
+html body #root .ayah-space-shell .analysis-inline-word.is-entry::before,
+html body #root .ayah-space-shell .analysis-inline-word.is-entry::after,
+html body #root .ayah-space-shell .analysis-inline-word.is-selected::before,
+html body #root .ayah-space-shell .analysis-inline-word.is-selected::after {
   content: none !important;
   display: none !important;
   width: 0 !important;
