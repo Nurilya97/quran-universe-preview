@@ -153,6 +153,47 @@ html body #root .ayah-space-shell .analysis-inline-word.is-selected::after {
   margin-top: 24px;
 }
 
+/* Spatial continuity during word focus.
+   The focused panel should feel like moving closer to one word, not leaving the
+   ayah. Keep the semantic phrase faintly visible behind the focus layer while
+   the rest of the ayah recedes. */
+html body #root .ayah-space-shell.has-word-focus .ayah-space-world {
+  filter: brightness(.42) saturate(.72) !important;
+}
+
+html body #root .ayah-space-shell.has-word-focus .analysis-ayah-continuous {
+  opacity: .42 !important;
+  filter: none !important;
+}
+
+html body #root .ayah-space-shell.has-word-focus .analysis-word-stack {
+  opacity: .10 !important;
+  transition: opacity .24s var(--ease-soft), transform .28s var(--ease-space);
+}
+
+html body #root .ayah-space-shell.has-word-focus .analysis-word-stack:has(.analysis-inline-word.is-related) {
+  opacity: .66 !important;
+  transform: translateY(-2px) scale(1.018);
+}
+
+html body #root .ayah-space-shell.has-word-focus .analysis-word-stack:has(.analysis-inline-word.is-selected) {
+  opacity: 1 !important;
+  transform: translateY(-8px) scale(1.06);
+}
+
+html body #root .ayah-space-shell.has-word-focus .analysis-word-stack:has(.analysis-inline-word.is-related)::after {
+  color: rgba(238, 244, 246, .92);
+}
+
+html body #root .ayah-space-shell.has-word-focus .analysis-word-stack:has(.analysis-inline-word.is-selected)::after {
+  color: rgba(234, 255, 91, .94);
+}
+
+html body #root .ayah-space-shell.has-word-focus .analysis-focus-overlay {
+  background:
+    radial-gradient(circle at 50% 43%, rgba(1, 2, 3, .58) 0%, rgba(1, 2, 3, .72) 44%, rgba(1, 2, 3, .86) 100%) !important;
+}
+
 @media (max-width: 760px) {
   .ayah-space-shell.is-analysis .analysis-ayah-group {
     width: min(1880px, 156vw);
@@ -184,6 +225,15 @@ html body #root .ayah-space-shell .analysis-inline-word.is-selected::after {
   .ayah-space-shell.is-analysis .analysis-word-stack[data-translation-status='researching']::after {
     max-width: 150px;
     font-size: 15.5px;
+  }
+
+  html body #root .ayah-space-shell.has-word-focus .analysis-word-stack:has(.analysis-inline-word.is-related) {
+    opacity: .72 !important;
+  }
+
+  html body #root .ayah-space-shell.has-word-focus .analysis-focus-overlay {
+    background:
+      radial-gradient(circle at 50% 46%, rgba(1, 2, 3, .61) 0%, rgba(1, 2, 3, .76) 48%, rgba(1, 2, 3, .90) 100%) !important;
   }
 }
 
