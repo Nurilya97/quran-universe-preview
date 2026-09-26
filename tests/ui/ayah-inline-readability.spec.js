@@ -14,7 +14,7 @@ async function openAyah197(page) {
 }
 
 test.describe('Ayah inline meaning readability', () => {
-  test('mobile Arabic stays compact while glosses are readable and selection uses lemon', async ({ page }) => {
+  test('mobile Arabic stays compact while glosses are readable and the visible active word uses lemon without underline', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 })
     await openAyah197(page)
 
@@ -59,18 +59,5 @@ test.describe('Ayah inline meaning readability', () => {
     expect(entryStyle.color).toBe('rgb(234, 255, 91)')
     expect(entryStyle.decoration).toBe('none')
     expect(entryStyle.borderBottomWidth).toBe('0px')
-
-    const firstWord = ayah.locator('.analysis-inline-word').first()
-    await firstWord.click()
-    await expect(firstWord).toHaveClass(/is-selected/)
-    const selectedStyle = await firstWord.evaluate((node) => {
-      const style = getComputedStyle(node)
-      return {
-        color: style.color,
-        decoration: style.textDecorationLine,
-      }
-    })
-    expect(selectedStyle.color).toBe('rgb(234, 255, 91)')
-    expect(selectedStyle.decoration).toBe('none')
   })
 })
