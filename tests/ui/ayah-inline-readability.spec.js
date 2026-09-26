@@ -30,7 +30,7 @@ test.describe('Ayah inline meaning readability', () => {
       }
     })
     expect(layout.columnGap).toBeLessThanOrEqual(8)
-    expect(layout.rowGap).toBeGreaterThanOrEqual(20)
+    expect(layout.rowGap).toBeGreaterThanOrEqual(35)
 
     const gloss = await stacks.first().evaluate((node) => {
       const style = getComputedStyle(node, '::after')
@@ -41,8 +41,8 @@ test.describe('Ayah inline meaning readability', () => {
         position: style.position,
       }
     })
-    expect(gloss.fontSize).toBeGreaterThanOrEqual(11)
-    expect(gloss.fontWeight).toBeGreaterThanOrEqual(500)
+    expect(gloss.fontSize).toBeGreaterThanOrEqual(17)
+    expect(gloss.fontWeight).toBeGreaterThanOrEqual(550)
     expect(gloss.color).not.toBe('rgba(187, 198, 203, 0.72)')
     expect(gloss.position).toBe('absolute')
 
@@ -53,11 +53,28 @@ test.describe('Ayah inline meaning readability', () => {
       return {
         color: style.color,
         decoration: style.textDecorationLine,
+        decorationColor: style.textDecorationColor,
         borderBottomWidth: style.borderBottomWidth,
       }
     })
     expect(entryStyle.color).toBe('rgb(234, 255, 91)')
     expect(entryStyle.decoration).toBe('none')
+    expect(entryStyle.decorationColor).toBe('rgba(0, 0, 0, 0)')
     expect(entryStyle.borderBottomWidth).toBe('0px')
+
+    const firstWord = ayah.locator('.analysis-inline-word').first()
+    await firstWord.click()
+    await expect(firstWord).toHaveClass(/is-selected/)
+    const selectedStyle = await firstWord.evaluate((node) => {
+      const style = getComputedStyle(node)
+      return {
+        color: style.color,
+        decoration: style.textDecorationLine,
+        decorationColor: style.textDecorationColor,
+      }
+    })
+    expect(selectedStyle.color).toBe('rgb(234, 255, 91)')
+    expect(selectedStyle.decoration).toBe('none')
+    expect(selectedStyle.decorationColor).toBe('rgba(0, 0, 0, 0)')
   })
 })
