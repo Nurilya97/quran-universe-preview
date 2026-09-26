@@ -89,7 +89,13 @@
 .ayah-space-shell.is-analysis .analysis-inline-word.is-entry::after,
 .ayah-space-shell.is-analysis .analysis-inline-word.is-selected::before,
 .ayah-space-shell.is-analysis .analysis-inline-word.is-selected::after {
-  border-bottom-color: transparent !important;
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  border: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
   text-decoration: none !important;
 }
 
