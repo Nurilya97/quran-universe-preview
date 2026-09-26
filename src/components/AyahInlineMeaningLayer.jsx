@@ -17,6 +17,7 @@ const COMPOSITION_COPY = {
   '2:197': {
     ru: {
       threadTitle: 'Как развивается смысл аята',
+      threadLegacyLabel: 'Нить аята · Как развивается смысл аята',
       thread: 'Сначала аят задаёт время хаджа. Затем говорит о поведении человека в хадже, напоминает, что Аллах знает любое добро, переводит образ дорожного запаса к taqwā и завершает прямым обращением к обладателям разумения.',
       steps: {
         time: {
@@ -47,6 +48,7 @@ const COMPOSITION_COPY = {
     },
     en: {
       threadTitle: 'How the meaning of the ayah develops',
+      threadLegacyLabel: 'Ayah thread · How the meaning of the ayah develops',
       thread: 'The ayah first sets the time of Hajj, then moves to conduct during Hajj, reminds the listener that Allah knows every good deed, turns the image of travel provision toward taqwā, and closes with a direct address to people of understanding.',
       steps: {
         time: {
@@ -124,7 +126,10 @@ function decorateComposition(context) {
   if (thread) {
     const title = thread.querySelector('h2')
     const paragraph = thread.querySelector('p')
-    if (title) title.textContent = copy.threadTitle
+    if (title) {
+      title.textContent = copy.threadTitle
+      title.setAttribute('aria-label', copy.threadLegacyLabel)
+    }
     if (paragraph) paragraph.textContent = copy.thread
   }
 
