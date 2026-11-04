@@ -2,8 +2,8 @@
 
 ## Single source of truth
 
-- This repository is the only active Quran Universe source of truth.
-- Do not require Notion, `Nurilya97/research-by-heart-viz`, or any second control plane for implementation, validation, research status, or deployment.
+- This repository is the only active Quran Universe **runtime/product source of truth**. The canonical authored research methodology, lexical research notes and semantic decisions live in Google Drive / AI_WORKSPACE / `3_KNOWLEDGE/QURAN_RESEARCH`.
+- Do not require Notion, `Nurilya97/research-by-heart-viz`, or any second runtime/control plane for implementation, validation or deployment. Drive is the research knowledge owner, not a second runtime; bundled Skills are offline operational fallbacks.
 - If a fact is necessary for the product or its guards, store it here.
 - Legacy systems may be consulted only for a specific missing historical fact, never as current authority.
 - Do not recreate mirrored semantic runtimes or duplicate registries in another service/repository.
@@ -29,7 +29,7 @@ Before substantial Quran Universe implementation work:
 
 Authority order: latest explicit user instruction → AGENTS.md / Quran Universe skill → approved canonical UI/data → supporting skills such as Graphify, Ponytail, testing/debugging, accessibility, and skill-security review.
 
-These rules are the default source of truth for future Quran Universe changes.
+These rules govern future Quran Universe **implementation** changes. For research semantics reconcile with [Drive research](https://drive.google.com/file/d/1NmUdPOeHmoTwbKibnq2zfGWwYftbsPEB/view), [Golden Rules](https://drive.google.com/file/d/1hMV3igd_-TQmBCFe1cJp9vUeHGD2GwU1/view) and [Root Analysis](https://drive.google.com/file/d/1_U16BAfTNcRPK9AIoQ6Qvno1zHjwy8hv/view).
 
 ## 1. Writing hierarchy
 
@@ -149,7 +149,7 @@ The latest explicit user correction overrides older project notes. Remove stale 
 
 ## 6A. Root research authority
 
-For root meanings and semantic families, follow the **Root Research Protocol** in `.github/skills/quran-universe/SKILL.md`.
+For root meanings and semantic families, the canonical method is [Root Analysis](https://drive.google.com/file/d/1_U16BAfTNcRPK9AIoQ6Qvno1zHjwy8hv/view) in Google Drive; the Root Research Protocol in `.github/skills/quran-universe/SKILL.md` is its executable agent copy. Do not silently promote conflicting GitHub-only research rules.
 
 In particular:
 - triangulate multiple lexical/Quran sources;
