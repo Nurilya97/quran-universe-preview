@@ -5,7 +5,7 @@ description: Master Quran Universe specification for research, Quran-first seman
 
 # Quran Universe Master Skill
 
-This file is the primary project workflow for Quran Universe. It exists so a new root, word, ayah, or interface state is built correctly from the start instead of being repaired through repeated ad-hoc edits.
+This file is the primary **executable agent workflow** for Quran Universe. Canonical authored methodology and research decisions live in Google Drive / AI_WORKSPACE / `3_KNOWLEDGE/QURAN_RESEARCH`: [Research index](https://drive.google.com/file/d/1NmUdPOeHmoTwbKibnq2zfGWwYftbsPEB/view), [Golden Rules](https://drive.google.com/file/d/1hMV3igd_-TQmBCFe1cJp9vUeHGD2GwU1/view), [Root Analysis](https://drive.google.com/file/d/1_U16BAfTNcRPK9AIoQ6Qvno1zHjwy8hv/view). This GitHub copy supports offline runtime implementation but must not override newer reviewed research decisions in Drive. If Drive is unreachable, use this bundled workflow provisionally and flag reconciliation.
 
 ## 0. Authority and non-negotiables
 
@@ -13,14 +13,14 @@ Authority order:
 
 1. latest explicit user decision;
 2. this skill and `AGENTS.md`;
-3. approved canonical Quran Universe data and approved reference UI;
-4. supporting skills, corpora, lexicons, tafsir, and external datasets.
+3. Google Drive canonical authored research methods and reviewed semantic decisions when available;\n4. approved canonical Quran Universe runtime data and reference UI;
+5. supporting skills, corpora, lexicons, tafsir, and external datasets.
 
 Never silently replace an approved semantic decision, translation, layout, interaction, or visual language.
 
 When an older repository note conflicts with a later explicit user correction, the later correction wins and the stale rule must be removed or updated rather than left in parallel.
 
-This repository is the only active Quran Universe source of truth. Do not create a required Notion control plane, mirror repository, duplicate semantic runtime, or second source registry.
+This repository is the only active Quran Universe **application/runtime** source of truth, not the authored research master. Do not create a required Notion control plane, mirror repository, duplicate semantic runtime, or second runtime source registry. Reviewed research methods and semantic decisions belong to Drive; serialized runtime data must carry provenance.
 
 ---
 
@@ -111,7 +111,7 @@ For **وَاتَّقُونِ**, avoid unnatural Russian such as “опасай�
 
 ## 4. Root Research Protocol
 
-Use this protocol for every root. It is based on the method established while researching **ل ب ب**.
+Use this operational protocol for every root. The canonical research method is [Root Analysis](https://drive.google.com/file/d/1_U16BAfTNcRPK9AIoQ6Qvno1zHjwy8hv/view) and [Golden Rules](https://drive.google.com/file/d/1hMV3igd_-TQmBCFe1cJp9vUeHGD2GwU1/view) in Drive; it is based on the method established for **ل ب ب**. When a newer reviewed Drive decision conflicts, reconcile the difference rather than silently changing the research record.
 
 ### Step 1 — collect the full lexical family
 Do not start from one favourite gloss.
