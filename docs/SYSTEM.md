@@ -1,13 +1,13 @@
 # Quran Universe — single-system architecture
 
-As of 2026-09-22, **Nurilya97/quran-universe-preview is the only active source of truth and the only active runtime repository.**
+As of 2026-11-04, **Nurilya97/quran-universe-preview is the only active application/runtime repository.** Google Drive / AI_WORKSPACE / `3_KNOWLEDGE/QURAN_RESEARCH` is the canonical owner of authored research methodology and reviewed semantic research notes ([research index](https://drive.google.com/file/d/1NmUdPOeHmoTwbKibnq2zfGWwYftbsPEB/view)). Drive is a knowledge store, not a second runtime/control plane.
 
 ## What lives here
 
 - product UI and approved visual language;
 - canonical Quran Universe IDs and Ayah Space schema;
 - morphology and root/word data used by the product;
-- reviewed research-control records that materially affect product meaning;
+- reviewed machine-readable runtime research records that materially affect product meaning, with provenance;
 - source/licence registry;
 - cross-corpus adapters and pilot evidence;
 - content guards, browser contracts, CI and GitHub Pages deployment;
@@ -21,14 +21,14 @@ The former Notion Quran Universe control plane and the former private repository
 
 1. Latest explicit user instruction.
 2. `AGENTS.md` and the Quran Universe project skill.
-3. Structured canonical/research data in this repository.
+3. Drive-authored research methods/semantic decisions, and separately reviewed structured runtime data in this repository.
 4. Current implementation and tests in this repository.
 5. External sources as evidence, with provenance and licence rules.
 6. Legacy history only when explicitly needed.
 
 ## Simplicity rule
 
-Do not recreate a second control plane, mirror repository, duplicate semantic runtime, or external mandatory state store. If a fact is required to build or validate the product, it belongs in this repository.
+Do not recreate a second control plane, mirror repository or duplicate semantic runtime. Facts necessary for self-contained build/validation must be serialized in this repository with review status and provenance. Research methodology and authored semantic decisions are maintained in the Drive research knowledge base and must not be silently changed by runtime tooling.
 
 
 ## Automatic synchronization
