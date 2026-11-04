@@ -1,6 +1,6 @@
 # Quran Universe
 
-This repository is the **single active Quran Universe system**: product UI, canonical data, research-control records, provenance/licensing registry, validation, tests and deployment live here together.
+This repository is the **single active Quran Universe runtime/product system**: product UI, serialized canonical data, runtime research-control records, provenance/licensing registry, validation, tests and deployment live here together. Canonical authored methodology and research notes live in Google Drive / AI_WORKSPACE / `3_KNOWLEDGE/QURAN_RESEARCH` ([index](https://drive.google.com/file/d/1NmUdPOeHmoTwbKibnq2zfGWwYftbsPEB/view)), not in a second runtime.
 
 The former Notion control plane and `Nurilya97/research-by-heart-viz` repository are no longer operational dependencies. See [docs/SYSTEM.md](./docs/SYSTEM.md).
 
@@ -54,7 +54,7 @@ research tools.
 
 ## Research discipline
 
-Research and runtime now share one repository without becoming the same layer. Reviewed research state is stored under `src/data/research/`; reader-facing data, morphology, corpus mappings and UI remain separately structured and are protected by `npm run test:content`.
+Reviewed machine-readable **runtime research state** remains under `src/data/research/`, with provenance and content guards. Authored semantic research decisions and methods are canonical in Drive `3_KNOWLEDGE/QURAN_RESEARCH` and feed reviewed runtime records. Reader-facing data, morphology, corpus mappings and UI remain separately structured and are protected by `npm run test:content`.
 
 External corpora, tafsir and translations support verification, but they do not silently override Quran-first project decisions.
 
