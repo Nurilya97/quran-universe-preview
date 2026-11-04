@@ -1,6 +1,6 @@
 # Quran Universe — Root Semantic Reconstruction Method
 
-> **Normative authority:** `.github/skills/quran-universe/SKILL.md` is the canonical project skill. This document is a human-readable research reference. If the two ever diverge, update this document to match the master skill; do not create a second root-research authority.
+> **Research authority:** [Root_Analysis.md](https://drive.google.com/file/d/1_U16BAfTNcRPK9AIoQ6Qvno1zHjwy8hv/view) in Google Drive / AI_WORKSPACE is the canonical research methodology. This is a GitHub operational/reference copy, not a second research master. The executable agent workflow is `.github/skills/quran-universe/SKILL.md`; resolve differences against the verified Drive method. If Drive is temporarily unavailable, use this copy provisionally and flag reconciliation.
 
 ## Purpose
 
