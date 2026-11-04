@@ -40,7 +40,8 @@ test('Rhetoric shows the Arabic construction as relation nodes on mobile', async
   expect(relationNode.markerBackground).toBe('rgb(234, 255, 91)')
   expect(relationNode.markerSize).toBeGreaterThanOrEqual(7)
 
-  const provision = insights.filter({ hasText: 'Внешний → внутренний запас' })
+  // Anchor to the stable rhetoric record ID, not the editable user-facing heading.
+  const provision = rhetoric.locator('.rhetoric-insight[data-reading-id="rhetoric-provision"]')
   await expect(provision).toHaveCount(1)
   // Focus highlights rhetorical relations; is-entry only marks the actively selected word.
   // Opening this ayah does not necessarily select a word from the provision phrase.
