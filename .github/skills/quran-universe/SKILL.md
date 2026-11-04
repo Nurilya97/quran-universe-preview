@@ -13,7 +13,8 @@ Authority order:
 
 1. latest explicit user decision;
 2. this skill and `AGENTS.md`;
-3. Google Drive canonical authored research methods and reviewed semantic decisions when available;\n4. approved canonical Quran Universe runtime data and reference UI;
+3. Google Drive canonical authored research methods and reviewed semantic decisions when available;
+4. approved canonical Quran Universe runtime data and reference UI;
 5. supporting skills, corpora, lexicons, tafsir, and external datasets.
 
 Never silently replace an approved semantic decision, translation, layout, interaction, or visual language.
