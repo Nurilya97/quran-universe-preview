@@ -41,9 +41,18 @@ test('Rhetoric shows the Arabic construction as relation nodes on mobile', async
   expect(relationNode.markerSize).toBeGreaterThanOrEqual(7)
 
   const provision = insights.filter({ hasText: 'Внешний → внутренний запас' })
-  const entry = provision.locator('.rhetoric-phrase span.is-entry')
-  await expect(entry).toBeVisible()
-  expect(await entry.evaluate((node) => getComputedStyle(node).color)).toBe('rgb(234, 255, 91)')
+  await expect(provision).toHaveCount(1)
+  // Focus highlights rhetorical relations; is-entry only marks the actively selected word.
+  // Opening this ayah does not necessarily select a word from the provision phrase.
+  const relation = provision.locator('.rhetoric-phrase span.is-focus').first()
+  const ordinary = provision.locator('.rhetoric-phrase span:not(.is-focus)').first()
+  await expect(relation).toBeVisible()
+  await expect(ordinary).toBeVisible()
+  const colors = await relation.evaluate((node) => ({
+    relation: getComputedStyle(node).color,
+    ordinary: getComputedStyle(node.parentElement.querySelector('span:not(.is-focus)')).color,
+  }))
+  expect(colors.relation).not.toBe(colors.ordinary)
 
   const connection = insights.nth(1).locator('.rhetoric-connection > ul')
   const flow = await connection.evaluate((node) => ({
