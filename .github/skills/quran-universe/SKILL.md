@@ -7,13 +7,19 @@ description: Master Quran Universe specification for research, Quran-first seman
 
 This file is the primary **executable agent workflow** for Quran Universe. Canonical authored methodology and research decisions live in Google Drive / AI_WORKSPACE / `2_PROJECTS/Quran_Universe/QURAN_RESEARCH`: [Research index](https://drive.google.com/file/d/1NmUdPOeHmoTwbKibnq2zfGWwYftbsPEB/view), [Golden Rules](https://drive.google.com/file/d/1hMV3igd_-TQmBCFe1cJp9vUeHGD2GwU1/view), [Root Analysis](https://drive.google.com/file/d/1_U16BAfTNcRPK9AIoQ6Qvno1zHjwy8hv/view). This GitHub copy supports offline runtime implementation but must not override newer reviewed research decisions in Drive. If Drive is unreachable, use this bundled workflow provisionally and flag reconciliation.
 
+## Mandatory Quran-first research sequence (user decision 2026-11-05)
+
+This Skill is an *operational derivative* of the canonical [Drive Golden Rules](https://drive.google.com/file/d/1hMV3igd_-TQmBCFe1cJp9vUeHGD2GwU1/view). Before analyzing any root, word, or ayah, follow **Arabic Quran text → complete manageable root-occurrence list (count + ayahs + exact forms + immediate contexts; distinguish root / lemma / token frequency) → morphology of those occurrences → classical lexical family and falsification → syntax → comparison of translations and tafsirs → evidence-labeled semantic conclusion**. Word-panel display order is **not** this research workflow.
+
+Grow meaning by **root → actual word → phrase and syntax → full ayah → passage → surah → cross-Quran comparison**. Preserve source fact vs synthesis vs hypothesis vs spiritual reflection, and do not claim publication readiness without review. Apply to independent research and educational content, not only website implementation.
+
 ## 0. Authority and non-negotiables
 
 Authority order:
 
 1. latest explicit user decision;
-2. this skill and `AGENTS.md`;
-3. Google Drive canonical authored research methods and reviewed semantic decisions when available;
+2. Google Drive canonical authored research methods and reviewed semantic decisions when available (for research semantics); 
+3. this executable skill and `AGENTS.md` (for implementation instructions; never override canonical semantic research);
 4. approved canonical Quran Universe runtime data and reference UI;
 5. supporting skills, corpora, lexicons, tafsir, and external datasets.
 

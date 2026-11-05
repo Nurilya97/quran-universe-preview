@@ -8,6 +8,10 @@
 - Legacy systems may be consulted only for a specific missing historical fact, never as current authority.
 - Do not recreate mirrored semantic runtimes or duplicate registries in another service/repository.
 
+## Canonical Quran-first research order (2026-11-05)
+
+This is **research methodology**, independent of the website. The authoritative version is the Drive [Golden Rules](https://drive.google.com/file/d/1hMV3igd_-TQmBCFe1cJp9vUeHGD2GwU1/view). For any root/word/ayah investigation: **exact Arabic Quran text → all tractable Quran occurrences of each relevant root (report root-frequency, exact ayahs, forms, local contexts) → morphology of those forms → classical lexicons/full derivational family and counterexamples → syntax and relations between words → comparison of translations and tafsirs → evidence-labeled synthesis**. Count root hits separately from lemma/exact-token hits. Scale meaning as **root → word → phrase → ayah → group of ayahs → surah → inter-Quran parallels**. Never reverse this by choosing a dictionary gloss first and making Quranic contexts fit it; never present a spiritual reflection as a verified lexical fact. Website meaning-card display order is not the scientific research order. An independent research note or video never changes runtime/translation without human review.
+
 ## Project skills
 
 Before substantial Quran Universe implementation work:
