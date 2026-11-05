@@ -16,9 +16,9 @@ If several Arabic roots can all be translated as “remain”, “know”, “pr
 
 Likewise, when one root has many dictionary glosses, do not treat them as unrelated by default. Test whether one fundamental image can explain them consistently.
 
-## Current required research sequence (2026-11-05)
+## Current required root-first sequence (user correction 2026-11-05)
 
-The full operational **order starts with the Quran**: exact verse → all manageable Quranic root occurrences (count, ayah, exact forms, local context) → morphology → classical lexical family, concrete meanings and counterexamples → syntactic placement → comparing translations/tafsirs → provisional synthesis. The historical workflow below contains necessary lexical completeness checks, but its enumeration does **not** authorize starting from a preferred dictionary gloss before Quranic-context mapping. Build meaning across root → word → phrase → ayah → passage → surah. The latest Drive [Golden Rules](https://drive.google.com/file/d/1hMV3igd_-TQmBCFe1cJp9vUeHGD2GwU1/view) take precedence on semantic methodology.
+First examine **the root and its entire lexical family** in Almaany, Arabist and Hawramani Arabic Lexicon, attributing each dictionary contained in the aggregator. Reconstruct only a **testable** semantic nucleus from concrete, abstract and idiomatic attested senses. Then study morphological derivatives, **test that model** on every manageable Quran occurrence and record root-vs-lemma-vs-exact-form counts, verse IDs, syntax, context and counterexamples. Build meaning as root → word → phrase → ayah → passage → surah. Compare Kuliev, Abu Adel, Abdel Haleem, The Clear Quran / Mustafa Khattab, Sahih International **only as an optional final translation-fidelity check**. Quran text/context is final evidence for the *active* sense in each verse, but does not replace the root-first research order. Canonical [Golden Rules](https://drive.google.com/file/d/1hMV3igd_-TQmBCFe1cJp9vUeHGD2GwU1/view) prevail.
 
 ## Research workflow
 
