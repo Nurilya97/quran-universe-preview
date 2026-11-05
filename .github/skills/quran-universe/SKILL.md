@@ -5,7 +5,7 @@ description: Master Quran Universe specification for research, Quran-first seman
 
 # Quran Universe Master Skill
 
-This file is the primary **executable agent workflow** for Quran Universe. Canonical authored methodology and research decisions live in Google Drive / AI_WORKSPACE / `3_KNOWLEDGE/QURAN_RESEARCH`: [Research index](https://drive.google.com/file/d/1NmUdPOeHmoTwbKibnq2zfGWwYftbsPEB/view), [Golden Rules](https://drive.google.com/file/d/1hMV3igd_-TQmBCFe1cJp9vUeHGD2GwU1/view), [Root Analysis](https://drive.google.com/file/d/1_U16BAfTNcRPK9AIoQ6Qvno1zHjwy8hv/view). This GitHub copy supports offline runtime implementation but must not override newer reviewed research decisions in Drive. If Drive is unreachable, use this bundled workflow provisionally and flag reconciliation.
+This file is the primary **executable agent workflow** for Quran Universe. Canonical authored methodology and research decisions live in Google Drive / AI_WORKSPACE / `2_PROJECTS/Quran_Universe/QURAN_RESEARCH`: [Research index](https://drive.google.com/file/d/1NmUdPOeHmoTwbKibnq2zfGWwYftbsPEB/view), [Golden Rules](https://drive.google.com/file/d/1hMV3igd_-TQmBCFe1cJp9vUeHGD2GwU1/view), [Root Analysis](https://drive.google.com/file/d/1_U16BAfTNcRPK9AIoQ6Qvno1zHjwy8hv/view). This GitHub copy supports offline runtime implementation but must not override newer reviewed research decisions in Drive. If Drive is unreachable, use this bundled workflow provisionally and flag reconciliation.
 
 ## 0. Authority and non-negotiables
 
