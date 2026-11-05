@@ -1,6 +1,6 @@
 # Quran Universe — single-system architecture
 
-As of 2026-11-04, **Nurilya97/quran-universe-preview is the only active application/runtime repository.** Google Drive / AI_WORKSPACE / `3_KNOWLEDGE/QURAN_RESEARCH` is the canonical owner of authored research methodology and reviewed semantic research notes ([research index](https://drive.google.com/file/d/1NmUdPOeHmoTwbKibnq2zfGWwYftbsPEB/view)). Drive is a knowledge store, not a second runtime/control plane.
+As of 2026-11-04, **Nurilya97/quran-universe-preview is the only active application/runtime repository.** Google Drive / AI_WORKSPACE / `2_PROJECTS/Quran_Universe/QURAN_RESEARCH` is the canonical owner of authored research methodology and reviewed semantic research notes ([research index](https://drive.google.com/file/d/1NmUdPOeHmoTwbKibnq2zfGWwYftbsPEB/view)). Drive is a knowledge store, not a second runtime/control plane.
 
 ## What lives here
 

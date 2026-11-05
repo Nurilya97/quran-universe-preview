@@ -2,7 +2,7 @@
 
 ## Single source of truth
 
-- This repository is the only active Quran Universe **runtime/product source of truth**. The canonical authored research methodology, lexical research notes and semantic decisions live in Google Drive / AI_WORKSPACE / `3_KNOWLEDGE/QURAN_RESEARCH`.
+- This repository is the only active Quran Universe **runtime/product source of truth**. The canonical authored research methodology, lexical research notes and semantic decisions live in Google Drive / AI_WORKSPACE / `2_PROJECTS/Quran_Universe/QURAN_RESEARCH`.
 - Do not require Notion, `Nurilya97/research-by-heart-viz`, or any second runtime/control plane for implementation, validation or deployment. Drive is the research knowledge owner, not a second runtime; bundled Skills are offline operational fallbacks.
 - If a fact is necessary for the product or its guards, store it here.
 - Legacy systems may be consulted only for a specific missing historical fact, never as current authority.
