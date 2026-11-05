@@ -16,9 +16,9 @@ If several Arabic roots can all be translated as “remain”, “know”, “pr
 
 Likewise, when one root has many dictionary glosses, do not treat them as unrelated by default. Test whether one fundamental image can explain them consistently.
 
-## Current required root-first sequence (user correction 2026-11-05)
+## Original Quran wording: evidence tiers (user clarification 2026-11-05)
 
-First examine **the root and its entire lexical family** in Almaany, Arabist and Hawramani Arabic Lexicon, attributing each dictionary contained in the aggregator. Reconstruct only a **testable** semantic nucleus from concrete, abstract and idiomatic attested senses. Then study morphological derivatives, **test that model** on every manageable Quran occurrence and record root-vs-lemma-vs-exact-form counts, verse IDs, syntax, context and counterexamples. Build meaning as root → word → phrase → ayah → passage → surah. Compare Kuliev, Abu Adel, Abdel Haleem, The Clear Quran / Mustafa Khattab, Sahih International **only as an optional final translation-fidelity check**. Quran text/context is final evidence for the *active* sense in each verse, but does not replace the root-first research order. Canonical [Golden Rules](https://drive.google.com/file/d/1hMV3igd_-TQmBCFe1cJp9vUeHGD2GwU1/view) prevail.
+Quran-first means that **the revealed original Arabic word and whole ayah stand above any translation or human interpretive gloss**. The first research layer studies **the root / full lexical family → chosen word morphology → interaction with other words (syntax) → the ayah's integrated meaning**, using other Quranic occurrences to test hypotheses. This can support a first contextual understanding. A secondary layer, when needed, consults wider Quran/surah composition, verified asbab al-nuzul and directly relevant authenticated sahih reports. Tertiary comparison uses translations (Kuliev, Abu Adel, Abdel Haleem, The Clear Quran, Sahih International) and tafsirs as human interpretations, not original textual evidence. Multiple dictionary senses must not be treated as simultaneously present in the word without argument; meaning layers need support. See canonical [Drive Golden Rules](https://drive.google.com/file/d/1hMV3igd_-TQmBCFe1cJp9vUeHGD2GwU1/view).
 
 ## Research workflow
 
