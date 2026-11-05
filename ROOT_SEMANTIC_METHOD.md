@@ -16,6 +16,10 @@ If several Arabic roots can all be translated as “remain”, “know”, “pr
 
 Likewise, when one root has many dictionary glosses, do not treat them as unrelated by default. Test whether one fundamental image can explain them consistently.
 
+## Current required research sequence (2026-11-05)
+
+The full operational **order starts with the Quran**: exact verse → all manageable Quranic root occurrences (count, ayah, exact forms, local context) → morphology → classical lexical family, concrete meanings and counterexamples → syntactic placement → comparing translations/tafsirs → provisional synthesis. The historical workflow below contains necessary lexical completeness checks, but its enumeration does **not** authorize starting from a preferred dictionary gloss before Quranic-context mapping. Build meaning across root → word → phrase → ayah → passage → surah. The latest Drive [Golden Rules](https://drive.google.com/file/d/1hMV3igd_-TQmBCFe1cJp9vUeHGD2GwU1/view) take precedence on semantic methodology.
+
 ## Research workflow
 
 1. **Collect the family broadly**
