@@ -56,3 +56,44 @@ test('Composition explains the movement of 2:197 in direct beginner language', a
   await expect(steps.nth(4).locator('.composition-copy')).toContainText('Точный русский эквивалент пока оставляем открытым')
   await expect(steps.nth(4).locator('.composition-copy')).not.toContainText('остерегайтесь Меня')
 })
+
+
+for (const width of [360, 390, 768, 1280]) {
+  test(`Analysis glosses do not overlap at viewport width ${width}`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 844 })
+    await openAyah197(page)
+    const words = page.locator('.analysis-ayah-continuous > .analysis-word-stack')
+    await expect(words).toHaveCount(29)
+    await page.evaluate(() => document.fonts.ready)
+    await page.waitForFunction(() => {
+      const line = document.querySelector('.analysis-ayah-continuous')
+      return line && getComputedStyle(line).display === 'flex'
+        && line.getAnimations({ subtree: true }).every(a => a.playState !== 'running')
+    })
+    const geometry = await words.evaluateAll(nodes => {
+      const rects = nodes.map(node => node.getBoundingClientRect())
+      const overlaps = []
+      rects.forEach((a, i) => rects.slice(i + 1).forEach((b, j) => {
+        if (Math.min(a.right, b.right) - Math.max(a.left, b.left) > 1
+          && Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top) > 1) {
+          overlaps.push([i + 1, i + j + 2])
+        }
+      }))
+      const viewport = document.querySelector('.ayah-space-viewport').getBoundingClientRect()
+      const tabs = document.querySelector('.ayah-space-modes').getBoundingClientRect()
+      const zoom = document.querySelector('.ayah-space-zoom').getBoundingClientRect()
+      return {
+        overlaps,
+        allGlossesInFlow: nodes.every(node => getComputedStyle(node, '::after').position === 'static'),
+        controlsClear: viewport.top >= tabs.bottom - 1 && viewport.bottom <= zoom.top + 1,
+        left: Math.min(...rects.map(r => r.left)),
+        right: Math.max(...rects.map(r => r.right)),
+      }
+    })
+    expect(geometry.overlaps).toEqual([])
+    expect(geometry.allGlossesInFlow).toBe(true)
+    expect(geometry.controlsClear).toBe(true)
+    expect(geometry.left).toBeGreaterThanOrEqual(0)
+    expect(geometry.right).toBeLessThanOrEqual(width + 1)
+  })
+}

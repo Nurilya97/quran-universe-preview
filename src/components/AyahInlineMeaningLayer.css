@@ -2,8 +2,15 @@
    Loaded after AyahView.css so this layer can improve reading without
    creating another page or navigation mode. */
 
+/* Reserve the navigation and zoom controls outside the reading viewport. */
+.ayah-space-shell.is-analysis .ayah-space-viewport {
+  inset: 116px 0 66px;
+}
+
 .ayah-space-shell.is-analysis .analysis-ayah-group {
-  width: min(1880px, 88vw);
+  width: min(1880px, calc(135.135vw - 48px)) !important;
+  top: 950px !important;
+  transform: translate(-50%, -50%);
 }
 
 .ayah-space-shell.is-analysis .analysis-ayah-continuous {
@@ -11,8 +18,8 @@
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: center;
-  column-gap: 10px;
-  row-gap: 38px;
+  column-gap: 14px;
+  row-gap: 18px;
   max-width: 1820px;
   margin-inline: auto;
   direction: rtl;
@@ -20,20 +27,20 @@
   white-space: normal;
 }
 
-/* Keep the Arabic visually continuous. The gloss is positioned beneath the
-   word without contributing to the word's horizontal width, so a long Russian
-   gloss no longer pushes neighbouring Arabic words apart. */
+/* Keep the word and its gloss together in the flex layout. The gloss must
+   participate in intrinsic sizing; absolute positioning caused adjacent
+   translations to overlap on narrow screens. */
 .ayah-space-shell.is-analysis .analysis-word-stack {
   position: relative;
   display: inline-flex;
   flex: 0 0 auto;
   min-width: 0;
-  max-width: none;
+  max-width: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 0;
-  padding: 5px 1px 48px;
+  gap: 3px;
+  padding: 3px 2px 4px;
   border-radius: 18px;
   isolation: isolate;
   overflow: visible;
@@ -46,13 +53,12 @@
 
 .ayah-space-shell.is-analysis .analysis-word-stack::after {
   content: attr(data-gloss);
-  position: absolute;
-  top: calc(100% - 41px);
-  left: 50%;
+  position: static;
   display: block;
   width: max-content;
   max-width: 150px;
-  transform: translateX(-50%);
+  white-space: normal;
+  overflow-wrap: anywhere;
   color: rgba(244, 247, 248, .96);
   font-family: var(--ui-font);
   font-size: 15.5px;
@@ -195,27 +201,34 @@ html body #root .ayah-space-shell.has-word-focus .analysis-focus-overlay {
 }
 
 @media (max-width: 760px) {
+  .ayah-space-shell.is-analysis .ayah-space-viewport {
+    inset: 116px 0 68px;
+  }
+
   .ayah-space-shell.is-analysis .analysis-ayah-group {
-    width: min(1880px, 156vw);
+    width: min(1200px, calc(166.6667vw - 40px)) !important;
+  }
+
+  .ayah-space-shell.is-analysis .analysis-ayah-group .analysis-ayah-continuous {
+    line-height: 1.35 !important;
   }
 
   .ayah-space-shell.is-analysis .analysis-ayah-continuous {
-    column-gap: 8px;
-    row-gap: 40px;
-    max-width: 1160px;
-    padding-inline: 18px;
+    column-gap: 12px;
+    row-gap: 14px;
+    max-width: 1200px;
+    padding-inline: 0;
   }
 
   .ayah-space-shell.is-analysis .analysis-word-stack {
     min-width: 0;
-    max-width: none;
-    padding: 4px 0 54px;
+    max-width: 100%;
+    padding: 2px 2px 3px;
   }
 
   /* The Ayah world is shown at ~60% on mobile, so this intentionally uses a
      larger CSS size to remain legible after the whole scene is scaled. */
   .ayah-space-shell.is-analysis .analysis-word-stack::after {
-    top: calc(100% - 47px);
     max-width: 144px;
     font-size: 18px;
     font-weight: 570;
@@ -239,18 +252,17 @@ html body #root .ayah-space-shell.has-word-focus .analysis-focus-overlay {
 
 @media (max-width: 430px) {
   .ayah-space-shell.is-analysis .analysis-ayah-continuous {
-    column-gap: 6px;
-    row-gap: 38px;
+    column-gap: 10px;
+    row-gap: 12px;
   }
 
   .ayah-space-shell.is-analysis .analysis-word-stack {
     min-width: 0;
-    max-width: none;
-    padding-bottom: 52px;
+    max-width: 100%;
+    padding-bottom: 3px;
   }
 
   .ayah-space-shell.is-analysis .analysis-word-stack::after {
-    top: calc(100% - 45px);
     max-width: 138px;
     font-size: 17.5px;
   }
@@ -261,4 +273,9 @@ html body #root .ayah-space-shell.has-word-focus .analysis-focus-overlay {
   .ayah-space-shell.is-analysis .analysis-word-stack::after {
     transition: none;
   }
+}
+
+/* Keep the verse reference and reading hint in the same compact layout. */
+.ayah-space-shell.is-analysis .analysis-ayah-group .analysis-tap-hint {
+  margin-top: 12px !important;
 }

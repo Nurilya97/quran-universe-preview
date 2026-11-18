@@ -890,7 +890,24 @@ export function AyahView({ reference, focusWordIndex, language, onBack, onOpenWo
       }
     }
 
-    /* Analysis stays gently anchored around the verse. */
+    /* Use the laid-out verse rather than a fixed estimate. At high zoom or on
+       short mobile screens, every row must remain reachable above the zoom bar.
+       The group is centred in the analysis world; offset sizes are unscaled. */
+    const verse = targetMode === 'analysis'
+      ? viewportRef.current?.querySelector('.analysis-ayah-group')
+      : null
+    if (verse?.offsetWidth && verse?.offsetHeight) {
+      const pad = 12
+      const limitX = Math.max(0, (verse.offsetWidth * scale - viewport.width) / 2 + pad)
+      const limitY = Math.max(0, (verse.offsetHeight * scale - viewport.height) / 2 + pad)
+      return {
+        x: clamp(rawX, -limitX, limitX),
+        y: clamp(rawY, -limitY, limitY),
+        scale,
+      }
+    }
+
+    /* Fallback while the verse is not mounted yet. */
     const zoomProgress = clamp((scale - .48) / .60, 0, 1)
     const softLimitX = Math.min(viewport.width * .46, 120 + zoomProgress * 380)
     const softLimitY = Math.min(viewport.height * .38, 120 + zoomProgress * 300)
